@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>İSG Yapay Zeka Denetçi V26 (Laser Focus AI Eşleştirme)</title>
+    <title>İSG Yapay Zeka Denetçi V27 (Mobil App Sürümü)</title>
     
     <link rel="manifest" href="./manifest.json">
     <meta name="theme-color" content="#4f46e5">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="İSG Denetçi">
+    <link rel="apple-touch-icon" href="icon.png">
 
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -140,6 +141,10 @@
 
         details.card-details summary { font-size: 1.1rem; font-weight: 700; color: #475569; cursor: pointer; outline: none; display: flex; align-items: center; justify-content: space-between; }
         details.card-details summary::-webkit-details-marker { display: none; }
+        
+        /* Kurulum Butonu PWA */
+        #installAppBtn { display: none; background-color: var(--success); color: white; border: none; padding: 8px 15px; border-radius: 20px; font-weight: 800; font-size: 0.85rem; cursor: pointer; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2); transition: 0.2s; }
+        #installAppBtn:hover { transform: scale(1.05); background-color: var(--success-hover); }
     </style>
 </head>
 <body>
@@ -148,6 +153,8 @@
     <div class="header-bar">
         <h1>✨ İSG Yapay Zeka Denetçi</h1>
         <div class="header-actions">
+            <button id="installAppBtn">📲 Uygulamayı Yükle</button>
+            
             <button class="icon-btn" title="Uygulamayı Buluttan Zorla Güncelle (Önbelleği Temizle)" onclick="hardSyncFromCloud()">🔄</button>
             <button class="icon-btn" title="Hata Ayıklama Konsolu" onclick="document.getElementById('debugModal').style.display='flex'">🐞</button>
             <button class="btn btn-secondary btn-sm" onclick="document.getElementById('parserModal').style.display='flex'">⚙️ JSON Üret</button>
@@ -264,6 +271,7 @@
 </div>
 
 <script>
+    // --- PWA KURULUM VE BUTON MANTIĞI ---
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('./sw.js').then(reg => {
@@ -271,6 +279,33 @@
             }).catch(err => console.log('Service Worker Hatası:', err));
         });
     }
+
+    let deferredPrompt;
+    const installBtn = document.getElementById('installAppBtn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        // Chrome'un otomatik uyarı çıkarmasını engelle
+        e.preventDefault();
+        // Olayı hafızaya al
+        deferredPrompt = e;
+        // Kendi şık butonumuzu görünür yap
+        installBtn.style.display = 'block';
+    });
+
+    installBtn.addEventListener('click', async () => {
+        if (deferredPrompt) {
+            // Chrome'un indirme panelini tetikle
+            deferredPrompt.prompt();
+            // Kullanıcının kararını bekle
+            const { outcome } = await deferredPrompt.userChoice;
+            if (outcome === 'accepted') {
+                console.log('Kullanıcı uygulamayı yükledi.');
+                installBtn.style.display = 'none'; // Butonu gizle
+            }
+            deferredPrompt = null;
+        }
+    });
+    // ------------------------------------
 
     let mevzuatDB = [];
     let violationsArray = [];
@@ -699,7 +734,6 @@
         }
     }
 
-    // --- YENİ V26: YAPAY ZEKA AKILLI KELİME ÇIKARIMI (LASER FOCUS) ---
     async function runAISearch(vIndex) {
         if (apiKeys.length === 0) { alert("Lütfen ayarlardan geçerli bir API Key ekleyin."); return; }
         const checkedBoxes = Array.from(document.querySelectorAll(`#mevList_${vIndex} input[type="checkbox"]:checked`));
@@ -715,7 +749,6 @@
         try {
             loadingEl.innerHTML = `⏳ AI, mevzuatı tarıyor ve odak kelimeleri belirliyor...`;
             
-            // YENİ V26 SİSTEM PROMPTU (1 Hüküm + Odak Kelimeler)
             const systemPrompt = `Sen uzman bir İSG denetçisisin. SADECE ŞU MEVZUATLAR İÇİNDE DÜŞÜN: [ ${selectedNames} ]
 Kullanıcının girdiği ihlale karşılık gelen, seçilen mevzuattaki EN UYGUN 1 (BİR) ADET GERÇEK HÜKMÜ bul.
 
