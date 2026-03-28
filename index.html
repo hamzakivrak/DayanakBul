@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İSG Yapay Zeka Denetçi V20 (Kusursuz Hiyerarşi)</title>
+    <title>İSG Yapay Zeka Denetçi V21 (Tam Hiyerarşi & Fuzzy Match)</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
@@ -155,8 +155,8 @@
     <div class="modal-overlay" id="parserModal">
         <div class="modal-content">
             <span class="close-modal" onclick="document.getElementById('parserModal').style.display='none'">&times;</span>
-            <h2 style="border: none; color: var(--primary);">📚 JSON Dönüştürücü (Gelişmiş Hafıza V20)</h2>
-            <p style="font-size: 0.85rem; color: var(--text-muted);">TXT formatındaki mevzuatları içeren ZIP dosyasını seçin. <b>Roma rakamlı ekler ve çoklu atıflar otomatik tespit edilecektir.</b></p>
+            <h2 style="border: none; color: var(--primary);">📚 JSON Dönüştürücü (V21 Hiyerarşi)</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">TXT formatındaki mevzuatları içeren ZIP dosyasını seçin. <b>Fıkra hataları ve uzun çizgiler temizlenerek kusursuz hiyerarşi oluşturulur.</b></p>
             <div class="upload-area" onclick="document.getElementById('zipFileInput').click()">
                 <div style="font-size: 2.5rem; margin-bottom: 5px;">📦</div>
                 <strong style="color: var(--primary);">ZIP Dosyası Yükle</strong>
@@ -170,8 +170,11 @@
         <div class="modal-content" style="max-width: 900px; height: 85vh;">
             <span class="close-modal" onclick="closeZipSearchModal()">&times;</span>
             <h2 style="border:none; margin-bottom:10px; color: var(--primary);">📖 Orijinal Mevzuat Arşivi</h2>
+            
             <div class="zip-search-wrapper">
-                <div class="zip-info-card"><b>İpucu:</b> Kelimeleri virgül (,) veya noktalı virgül (;) ile ayırarak aratabilirsiniz. Noktalama işaretleri sistem tarafından tolere edilir.</div>
+                <div class="zip-info-card">
+                    <b>İpucu:</b> Kelimeleri virgül (,) veya noktalı virgül (;) ile ayırarak aratabilirsiniz. Noktalama işaretleri tolere edilir.
+                </div>
                 <div class="zip-search-box">
                     <input type="text" id="zipSearchInput" placeholder="Aranacak Kelime[; dosya filtresi]">
                     <button id="zipSearchButton" class="btn btn-primary">Bul</button>
@@ -277,7 +280,7 @@
         return cleanText.replace(/[.,;:'"!?()[\]{}<>\-\/\\_]/g, ' ').replace(/\s+/g, ' ').trim();
     }
 
-    // --- API KEY ---
+    // --- API KEY YÖNETİMİ ---
     window.onload = function() {
         const savedKeys = localStorage.getItem('isg_groq_keys');
         if (savedKeys) { 
@@ -376,7 +379,7 @@
         reader.readAsText(file);
     });
 
-    // --- ZIP'TEN JSON (YENİ V20 - ROMA RAKAMI VE ÇOKLU ATIF MOTORU) ---
+    // --- ZIP'TEN JSON (V21 - HİYERARŞİ VE EN-DASH ÇÖZÜCÜ MASTER MİMARİ) ---
     let zipProcessedData = [];
     document.getElementById('zipFileInput').addEventListener('change', async (e) => {
         const file = e.target.files[0];
@@ -405,7 +408,6 @@
         document.getElementById('parserModal').style.display='none';
     });
 
-    // ROMA RAKAMI ÇEVİRİCİ
     function normalizeEkNo(val) {
         const rMap = {'I':'1', 'II':'2', 'III':'3', 'IV':'4', 'V':'5', 'VI':'6', 'VII':'7', 'VIII':'8', 'IX':'9', 'X':'10'};
         let upper = val.toUpperCase();
@@ -423,38 +425,38 @@
         let currentMadde = null, currentFikra = null, currentEk = null, isInEk = false;
         let ekAtiflari = {}; 
 
-        const maddeRegex = /^MADDE\s+(\d+)\s*[-:]*(.*)/i;
+        // En-dash, em-dash gibi karakterleri tolere eden regex
+        const maddeRegex = /^MADDE\s+(\d+)\s*[-:–—]*\s*(.*)/i;
         const fikraRegex = /^\((\d+)\)\s*(.*)/;
         const bentRegex = /^([a-zçğıöşü]+)\)\s*(.*)/i;
-        const ekRegex = /^EK\s*[-:]*\s*([0-9]+[A-Z]?|[IVX]+[A-Z]?)(.*)/i; 
+        const ekRegex = /^EK\s*[-:–—]*\s*([0-9]+[A-Z]?|[IVX]+[A-Z]?)(.*)/i; 
         const ekAltMaddeRegex = /^(\d+[\.\d]*)\s*(.*)/; 
 
-        for (let i = 0; i < lines.length; i++) {
-            let line = lines[i].trim();
-            if (!line) continue;
-
+        // V21 Kilit Nokta: Atıfları doğru objeye bağlamak için iç fonksiyon
+        function checkAtif(textToCheck) {
             if (!isInEk && currentMadde) {
-                // RG değişiklik notlarını görmezden gel (Tuzak filtresi)
-                let safeLine = line.replace(/\(Ek\s*:[^)]+\)/gi, ''); 
-                
-                // Çoklu atıf yakalayıcı (Roma Rakamı dahil)
+                let safeLine = textToCheck.replace(/\(Ek\s*:[^)]+\)/gi, ''); 
                 let atifRegex = /\bEk\s*[-]?\s*([0-9]+[A-Z]?|[IVX]+[A-Z]?)\b/gi;
                 let match;
                 while ((match = atifRegex.exec(safeLine)) !== null) {
-                    let rawEkNo = match[1];
-                    let normEkNo = normalizeEkNo(rawEkNo);
-                    
+                    let normEkNo = normalizeEkNo(match[1]);
                     if (!ekAtiflari[normEkNo]) { 
                         let dStr = `Madde: ${currentMadde.madde_no}`;
                         if (currentFikra) dStr += `(${currentFikra.fikra_no})`;
-                        let bMatch = line.match(/^([a-zçğıöşü]+)\)/i);
-                        if (bMatch) dStr += ` ${bMatch[1].toLowerCase()}`;
-                        else if (currentFikra && currentFikra.bentler.length > 0) dStr += ` ${currentFikra.bentler[currentFikra.bentler.length - 1].bent_harfi}`;
-                        else if (currentMadde.bentler && currentMadde.bentler.length > 0 && !currentFikra) dStr += ` ${currentMadde.bentler[currentMadde.bentler.length - 1].bent_harfi}`;
+                        if (currentFikra && currentFikra.bentler && currentFikra.bentler.length > 0) {
+                            dStr += ` ${currentFikra.bentler[currentFikra.bentler.length - 1].bent_harfi}`;
+                        } else if (currentMadde.bentler && currentMadde.bentler.length > 0 && !currentFikra) {
+                            dStr += ` ${currentMadde.bentler[currentMadde.bentler.length - 1].bent_harfi}`;
+                        }
                         ekAtiflari[normEkNo] = dStr;
                     }
                 }
             }
+        }
+
+        for (let i = 0; i < lines.length; i++) {
+            let line = lines[i].trim();
+            if (!line) continue;
 
             let ekMatch = line.match(ekRegex);
             if (ekMatch) { 
@@ -475,28 +477,57 @@
             let maddeMatch = line.match(maddeRegex);
             if (maddeMatch) { 
                 let baslikMetni = maddeMatch[2] ? maddeMatch[2].trim() : "";
+                // V21 Kilit Nokta: Uzun çizgi (en-dash) kalıntılarını temizle!
+                baslikMetni = baslikMetni.replace(/^[\s\-–—:]+/g, '').trim(); 
+                
                 let yeniMadde = { madde_no: maddeMatch[1], baslik: baslikMetni, fikralar: [], bentler: [], metin: "" }; 
                 if (isInEk && currentEk) currentEk.maddeler.push(yeniMadde); else result.maddeler.push(yeniMadde); 
                 currentMadde = yeniMadde; currentFikra = null; 
                 
+                // Gizli Fıkra Yakalayıcı (Örn: MADDE 5 - (1) İşveren...)
                 let gizliFikraMatch = baslikMetni.match(/^\((\d+)\)\s*(.*)/);
                 if (gizliFikraMatch) {
                     let yeniFikra = { fikra_no: gizliFikraMatch[1], metin: gizliFikraMatch[2] ? gizliFikraMatch[2].trim() : "", bentler: [] };
                     currentMadde.fikralar.push(yeniFikra);
                     currentFikra = yeniFikra;
                 }
+                
+                checkAtif(baslikMetni);
                 continue; 
             }
-            if (isInEk && currentEk) { let ekAltMaddeMatch = line.match(ekAltMaddeRegex); if (ekAltMaddeMatch) { let yeniMadde = { madde_no: ekAltMaddeMatch[1].replace(/\.$/, ''), baslik: "", fikralar: [], bentler: [], metin: ekAltMaddeMatch[2] ? ekAltMaddeMatch[2].trim() : "" }; currentEk.maddeler.push(yeniMadde); currentMadde = yeniMadde; currentFikra = null; continue; } }
+            if (isInEk && currentEk) { 
+                let ekAltMaddeMatch = line.match(ekAltMaddeRegex); 
+                if (ekAltMaddeMatch) { 
+                    let yeniMadde = { madde_no: ekAltMaddeMatch[1].replace(/\.$/, ''), baslik: "", fikralar: [], bentler: [], metin: ekAltMaddeMatch[2] ? ekAltMaddeMatch[2].trim() : "" }; 
+                    currentEk.maddeler.push(yeniMadde); currentMadde = yeniMadde; currentFikra = null; 
+                    continue; 
+                } 
+            }
             let fikraMatch = line.match(fikraRegex);
-            if (fikraMatch && currentMadde) { let yeniFikra = { fikra_no: fikraMatch[1], metin: fikraMatch[2] ? fikraMatch[2].trim() : "", bentler: [] }; currentMadde.fikralar.push(yeniFikra); currentFikra = yeniFikra; continue; }
+            if (fikraMatch && currentMadde) { 
+                let yeniFikra = { fikra_no: fikraMatch[1], metin: fikraMatch[2] ? fikraMatch[2].trim() : "", bentler: [] }; 
+                currentMadde.fikralar.push(yeniFikra); currentFikra = yeniFikra; 
+                checkAtif(yeniFikra.metin);
+                continue; 
+            }
             let bentMatch = line.match(bentRegex);
-            if (bentMatch && bentMatch[1].length <= 2) { let yeniBent = { bent_harfi: bentMatch[1].toLowerCase(), metin: bentMatch[2] ? bentMatch[2].trim() : "" }; if (currentFikra) currentFikra.bentler.push(yeniBent); else if (currentMadde) { if (!currentMadde.bentler) currentMadde.bentler = []; currentMadde.bentler.push(yeniBent); } continue; }
+            if (bentMatch && bentMatch[1].length <= 2) { 
+                let yeniBent = { bent_harfi: bentMatch[1].toLowerCase(), metin: bentMatch[2] ? bentMatch[2].trim() : "" }; 
+                if (currentFikra) currentFikra.bentler.push(yeniBent); 
+                else if (currentMadde) { 
+                    if (!currentMadde.bentler) currentMadde.bentler = []; 
+                    currentMadde.bentler.push(yeniBent); 
+                } 
+                checkAtif(yeniBent.metin);
+                continue; 
+            }
             
             if (currentFikra && currentFikra.bentler && currentFikra.bentler.length > 0) currentFikra.bentler[currentFikra.bentler.length - 1].metin += " " + line;
             else if (currentFikra) currentFikra.metin += " " + line;
             else if (currentMadde) { if (currentMadde.bentler && currentMadde.bentler.length > 0) currentMadde.bentler[currentMadde.bentler.length - 1].metin += " " + line; else currentMadde.metin += " " + line; }
             else if (currentEk) { currentEk.metin += " " + line + "\n"; }
+
+            checkAtif(line);
         }
         return result;
     }
