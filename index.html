@@ -324,7 +324,7 @@
 <div class="modal-overlay" id="zipSearchModal">
     <div class="modal-content" style="max-width: 900px; height: 85vh;">
         <span class="close-modal" onclick="closeZipSearchModal()">&times;</span>
-        <h2 style="border:none; margin-bottom:10px; color: var(--primary);">📖 Orijinal Mevzuat Arşivi</h2>
+        <h2 style="border:none; margin:bottom:10px; color: var(--primary);">📖 Orijinal Mevzuat Arşivi</h2>
         <div class="zip-search-wrapper">
             <div class="zip-info-card"><b>İpucu:</b> Önce aranacak metni, sonra noktalı virgül (<b>;</b>), en son aramak istediğiniz yönetmeliğin adını yazın. (Örn: <i>hava hızı ; maden</i>)</div>
             <div class="zip-search-box">
@@ -608,11 +608,8 @@
             req.onsuccess = () => {
                 if (req.result && req.result.length > 0) { 
                     mevzuatDB = req.result; 
-                    
-                    // YENİ: precomputeTfIdf çağrılmadan ÖNCE buildSearchableChunks çalışmalı.
-                    precomputeTfIdf();
-                    
                     showDBReadySuccess("Hafızadan Yüklendi"); 
+                    precomputeTfIdf();
                 } else {
                     logDebug("Hafızada DB bulunamadı. Buluttan otomatik indiriliyor...", "warn");
                     fetch('./mevzuat_veritabani.json?v=' + new Date().getTime(), { cache: "no-store" })
@@ -620,44 +617,14 @@
                         .then(data => {
                             mevzuatDB = data; 
                             saveDBToIndexedDB(mevzuatDB); 
-                            precomputeTfIdf();
                             showDBReadySuccess("Buluttan Yüklendi");
+                            precomputeTfIdf();
                             logDebug("Veritabanı buluttan çekildi.", "success");
                         })
                         .catch(err => { logDebug(`Otomatik çekme başarısız: ${err.message}`, "error"); });
                 }
             };
         };
-    }
-
-    // ==========================================
-    // EKSİK OLAN HAYATİ FONKSİYON EKLENDİ!
-    // ==========================================
-    function buildSearchableChunks(mevzuatObj) {
-        let chunks = [];
-        let kDayanak = mevzuatObj.dayanak_kanun ? (mevzuatObj.dayanak_kanun + ", ") : "";
-        let mName = mevzuatObj.mevzuat_adi;
-        if(mevzuatObj.maddeler) {
-            mevzuatObj.maddeler.forEach(mad => {
-                if(mad.metin) chunks.push({ metin: mad.metin, dayanak: `(${kDayanak}${mName}, Madde: ${mad.madde_no})` });
-                if(mad.fikralar) mad.fikralar.forEach(fik => {
-                    if(fik.metin) chunks.push({ metin: fik.metin, dayanak: `(${kDayanak}${mName}, Madde: ${mad.madde_no}(${fik.fikra_no}))` });
-                    if(fik.bentler) fik.bentler.forEach(ben => chunks.push({ metin: ben.metin, dayanak: `(${kDayanak}${mName}, Madde: ${mad.madde_no}(${fik.fikra_no}) ${ben.bent_harfi})` }));
-                });
-                if(mad.bentler && (!mad.fikralar || mad.fikralar.length===0)) mad.bentler.forEach(ben => chunks.push({ metin: ben.metin, dayanak: `(${kDayanak}${mName}, Madde: ${mad.madde_no} ${ben.bent_harfi})` }));
-            });
-        }
-        if(mevzuatObj.ekler) {
-            mevzuatObj.ekler.forEach(ek => {
-                let bagli = ek.bagli_oldugu_madde ? `${ek.bagli_oldugu_madde}, ` : "";
-                if(ek.metin) chunks.push({ metin: ek.metin, dayanak: `(${kDayanak}${mName}, ${bagli}${ek.ek_no})` });
-                if(ek.maddeler) ek.maddeler.forEach(mad => {
-                    if(mad.metin) chunks.push({ metin: mad.metin, dayanak: `(${kDayanak}${mName}, ${bagli}${ek.ek_no}, Madde: ${mad.madde_no})` });
-                    if(mad.bentler) mad.bentler.forEach(ben => chunks.push({ metin: ben.metin, dayanak: `(${kDayanak}${mName}, ${bagli}${ek.ek_no}, Madde: ${mad.madde_no} ${ben.bent_harfi})` }));
-                });
-            });
-        }
-        return chunks;
     }
 
     // ==========================================
@@ -668,11 +635,11 @@
 
         const models = ['llama-3.3-70b-versatile', 'llama-3.1-8b-instant'];
 
-        for (let modelIdx = 0; modelIdx < models.length; modelIdx++) {
-            let currentModel = models[modelIdx];
+        for (let keyIdx = 0; keyIdx < apiKeys.length; keyIdx++) {
+            let currentKey = apiKeys[keyIdx];
 
-            for (let keyIdx = 0; keyIdx < apiKeys.length; keyIdx++) {
-                let currentKey = apiKeys[keyIdx];
+            for (let modelIdx = 0; modelIdx < models.length; modelIdx++) {
+                let currentModel = models[modelIdx];
                 
                 try {
                     const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
@@ -1321,7 +1288,6 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
                         let dbIdx = parseInt(checkedBoxes[targetMevIdx].value);
                         let mevChunks = provisionChunksCache.filter(c => c.mevIdx === dbIdx);
                         
-                        // YENİ: YZ Kelimelerini Ortak Şelale Motorundan Geçiriyoruz
                         let cascadeResult = performCascadeSearch(queryTokens, mevChunks);
                         let matchedChunks = cascadeResult.matchedChunks;
                         let successfulAttempts = cascadeResult.successfulAttempts;
@@ -1349,7 +1315,6 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
             aiRawHtml += `</div></details>`;
             document.getElementById(`aiKeywords_${vIndex}`).innerHTML = aiRawHtml;
 
-            // Sıralama ve Tekilleştirme
             allMatchedChunks.sort((a, b) => {
                 if (a.isOptimum && !b.isOptimum) return -1; 
                 if (!a.isOptimum && b.isOptimum) return 1;  
@@ -1387,7 +1352,6 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
         let selectedDbIndices = checkedBoxes.map(cb => parseInt(cb.value));
         let filteredChunks = provisionChunksCache.filter(c => selectedDbIndices.includes(c.mevIdx));
 
-        // Ortak Şelale Motorunu Çağır
         let cascadeResult = performCascadeSearch(queryTokens, filteredChunks);
         let matchedChunks = cascadeResult.matchedChunks;
         let successfulAttempts = cascadeResult.successfulAttempts;
@@ -1453,7 +1417,13 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
         
         keys.forEach(k => {
             const { selectedData, violation } = finalReportData[k];
-            let safeSearchQuery = `FUZZY:${getCleanTokens(selectedData.metin).slice(0, 5).join(' ')}`;
+            
+            // YENİ: Zip aramada dosyayı ve metni bulabilmesi için özel query oluşturuyoruz.
+            let textTokens = getCleanTokens(selectedData.metin).slice(0, 6).join(', '); // Virgül ile ayırıyoruz
+            let mevName = mevzuatDB[selectedData.mevIdx] ? mevzuatDB[selectedData.mevIdx].mevzuat_adi : "";
+            
+            let safeSearchQuery = `FUZZY:${textTokens} ; ${mevName}`;
+            
             let reportHTML = `<div class="report-item"><button class="btn-remove-item" onclick="removeReportItem(${k})">✖</button><div class="report-violation">${violation.number} ${violation.text}</div><div style="margin-bottom:5px;">${selectedData.metin}</div><div class="report-citation"><span>${selectedData.dayanak}</span><button class="btn btn-sm" style="background:var(--secondary); color:white; padding:4px 10px; font-size:0.75rem;" onclick="openZipSearchModal('${safeSearchQuery}')">🔍 Arşivde Gör</button></div></div>`;
             finalReportEl.innerHTML += reportHTML;
         });
@@ -1477,15 +1447,14 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
     let GLOBAL_MATCHES=[]; 
     let cachedZipData = null; 
 
-    // Gelişmiş Türkçe ve Büyük/Küçük Harf Toleransı İçin Özel Fonksiyon
     function normalizeForZipSearch(text) {
         if (!text) return "";
         return text.toLocaleLowerCase('tr-TR')
             .replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ş/g, 's')
             .replace(/ı/g, 'i').replace(/ö/g, 'o').replace(/ç/g, 'c')
             .replace(/â/g, 'a').replace(/î/g, 'i').replace(/i̇/g, 'i')
-            .replace(/[^a-z0-9\s]/g, ' ') // Noktalamaları boşluğa çevir
-            .replace(/\s+/g, ' ')         // Fazla boşlukları teke indir
+            .replace(/[^a-z0-9\s]/g, ' ') 
+            .replace(/\s+/g, ' ')         
             .trim();
     }
 
