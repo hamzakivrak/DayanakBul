@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>İSG Yapay Zeka Denetçi</title>
+    <title>İSG Yapay Zeka Denetçi V26 (Laser Focus AI Eşleştirme)</title>
     
     <link rel="manifest" href="./manifest.json">
     <meta name="theme-color" content="#4f46e5">
@@ -114,6 +114,7 @@
         .btn-remove-item { position: absolute; top: 0; right: 0; background: #fee2e2; color: #ef4444; border: none; border-radius: 50%; width: 26px; height: 26px; cursor: pointer; font-weight: bold; display: flex; align-items: center; justify-content: center; transition: 0.2s;}
         .btn-remove-item:hover { background: #fca5a5; color: #b91c1c; transform: scale(1.1);}
 
+        /* ZIP ARAMA CSS */
         .zip-search-wrapper { flex: 1; overflow-y: auto; padding-right: 5px; }
         .zip-info-card { background-color: #eef2ff; padding: 12px; border-radius: 8px; margin-bottom: 15px; font-size: 0.85rem; color: #475569; border-left: 4px solid var(--primary); }
         .zip-search-wrapper input[type="text"] { margin-bottom: 0; }
@@ -263,7 +264,6 @@
 </div>
 
 <script>
-    // --- PWA SERVICE WORKER KAYDI ---
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('./sw.js').then(reg => {
@@ -286,18 +286,13 @@
         logEl.scrollTop = logEl.scrollHeight;
     }
 
-    // --- ZORUNLU GÜNCELLEME (CACHE BUSTER) ---
     function hardSyncFromCloud() {
         if(confirm("Telefonunuzdaki/Tarayıcınızdaki eski önbellek silinip, sistem buluttan (GitHub) sıfırdan indirilecek. Onaylıyor musunuz?")) {
-            // Veritabanını patlat
             const req = indexedDB.deleteDatabase("ISG_MevzuatDB");
             req.onsuccess = function () {
-                // Tarayıcıyı zorla yenile ve cache'i bypass et (Zaman damgası hilesi)
                 window.location.href = window.location.pathname + "?v=" + new Date().getTime();
             };
-            req.onerror = function () {
-                alert("Önbellek temizlenemedi, tarayıcı ayarlarından verileri temizleyin.");
-            };
+            req.onerror = function () { alert("Önbellek temizlenemedi, tarayıcı ayarlarından verileri temizleyin."); };
         }
     }
 
@@ -378,8 +373,7 @@
                     mevzuatDB = req.result; 
                     showDBReadySuccess("Hafızadan Yüklendi"); 
                 } else {
-                    logDebug("Hafızada DB bulunamadı. Buluttan (GitHub) otomatik indiriliyor...", "warn");
-                    // Cache buster ekleyerek her zaman tazesini çekmeye zorluyoruz
+                    logDebug("Hafızada DB bulunamadı. Buluttan otomatik indiriliyor...", "warn");
                     fetch('./mevzuat_veritabani.json?v=' + new Date().getTime(), { cache: "no-store" })
                         .then(res => { if(!res.ok) throw new Error("Dosya yok."); return res.json(); })
                         .then(data => {
@@ -618,9 +612,9 @@
                     </div>
                     <div class="divider"></div>
                     <div class="tool-section">
-                        <span class="tool-header">🤖 2. AI İle Destek</span>
-                        <div class="tool-hint">AI senin için madde bulur.</div>
-                        <button class="btn btn-primary btn-sm" style="width: 100%; margin-top:4px;" id="btnHyde_${vIndex}" onclick="runAISearch(${vIndex})">✨ Eşleştir</button>
+                        <span class="tool-header">🤖 2. AI İle Destek (Akıllı Eşleştirme)</span>
+                        <div class="tool-hint">AI senin için en doğru 1 maddeyi ve anahtar kelimeleri bulur.</div>
+                        <button class="btn btn-primary btn-sm" style="width: 100%; margin-top:4px;" id="btnHyde_${vIndex}" onclick="runAISearch(${vIndex})">✨ Otomatik Eşleştir</button>
                     </div>
                 </div>
 
@@ -705,6 +699,7 @@
         }
     }
 
+    // --- YENİ V26: YAPAY ZEKA AKILLI KELİME ÇIKARIMI (LASER FOCUS) ---
     async function runAISearch(vIndex) {
         if (apiKeys.length === 0) { alert("Lütfen ayarlardan geçerli bir API Key ekleyin."); return; }
         const checkedBoxes = Array.from(document.querySelectorAll(`#mevList_${vIndex} input[type="checkbox"]:checked`));
@@ -718,13 +713,31 @@
         btnGen.disabled = true; loadingEl.style.display = 'flex'; optionsContainer.style.display = 'none';
 
         try {
-            loadingEl.innerHTML = `⏳ AI, mevzuatı tarıyor...`;
+            loadingEl.innerHTML = `⏳ AI, mevzuatı tarıyor ve odak kelimeleri belirliyor...`;
+            
+            // YENİ V26 SİSTEM PROMPTU (1 Hüküm + Odak Kelimeler)
+            const systemPrompt = `Sen uzman bir İSG denetçisisin. SADECE ŞU MEVZUATLAR İÇİNDE DÜŞÜN: [ ${selectedNames} ]
+Kullanıcının girdiği ihlale karşılık gelen, seçilen mevzuattaki EN UYGUN 1 (BİR) ADET GERÇEK HÜKMÜ bul.
+
+ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI:
+1. Toplam 5 adet anahtar kelime belirle.
+2. "işçi", "sağlık", "güvenlik", "işveren", "işyeri", "madde", "çalışan", "önlem", "gerekli", "ilgili", "dair", "olarak", "hakkında", "için", "göre" gibi genel geçer bağlaç ve kelimeleri ASLA KULLANMA.
+3. İLK ANAHTAR KELİME (1. kelime) KESİNLİKLE kullanıcının girdiği İHLAL METNİNDEKİ en kritik, en ayırt edici odak kelime olmalıdır.
+4. Geriye kalan 4 kelimeyi (2, 3, 4 ve 5. kelimeler) kendi bulduğun o 1 ADET MEVZUAT HÜKMÜNÜN içinden seç.
+5. Bütün kelimeler KESİNLİKLE EK ALMAMIŞ, YALIN (KÖK) halinde olmalıdır (Örn: "kapıları" yerine "kapı", "durumlarda" yerine "durum", "topraklaması" yerine "topraklama").
+
+Çıktı KESİNLİKLE aşağıdaki JSON formatında olmalıdır:
+{
+  "ai_maddeler": ["Bulduğun 1 adet mevzuat hükmünün metni..."],
+  "arama_kelimeleri": ["ihlalden_kök_kelime", "hükümden_kök_kelime1", "hükümden_kök_kelime2", "hükümden_kök_kelime3", "hükümden_kök_kelime4"]
+}`;
+
             const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
                 method: 'POST',
                 headers: { 'Authorization': `Bearer ${apiKeys[0]}`, 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     model: 'llama-3.3-70b-versatile',
-                    messages: [ { role: 'system', content: `SADECE ŞU MEVZUATLAR İÇİNDE DÜŞÜN: [ ${selectedNames} ]\nGerçek kanun cümlelerinden 3 maddeyi şu JSON ile ver:\n{ "ai_maddeler": ["Madde 1...", "Madde 2..."] }` }, { role: 'user', content: `İHLAL: ${violationsArray[vIndex].text}` } ],
+                    messages: [ { role: 'system', content: systemPrompt }, { role: 'user', content: `İHLAL: ${violationsArray[vIndex].text}` } ],
                     temperature: 0.2
                 })
             });
@@ -734,19 +747,36 @@
             const parsedJSON = safeParseJSON(data.choices[0].message.content);
             
             let ihlalTam = violationsArray[vIndex].text;
-            let aiRawHtml = `<details class="ai-details" open><summary style="align-items:flex-start;"><span>🤖 AI'nın Bulduğu Hükümler - <span style="font-weight:800; color:#1e293b;">İhlal: ${ihlalTam}</span></span></summary><ul style="margin-top:10px; font-size:0.85rem; color:#475569; padding-left:20px;">`;
-            parsedJSON.ai_maddeler.forEach(m => { aiRawHtml += `<li style="margin-bottom:6px;">${m}</li>`; });
-            aiRawHtml += `</ul></details>`;
+            let aiRawHtml = `<details class="ai-details" open><summary style="align-items:flex-start;"><span>🤖 AI Hükmü - <span style="font-weight:800; color:#1e293b;">İhlal: ${ihlalTam}</span></span></summary><ul style="margin-top:10px; font-size:0.85rem; color:#475569; padding-left:20px;">`;
+            
+            if(parsedJSON.ai_maddeler) {
+                parsedJSON.ai_maddeler.forEach(m => { aiRawHtml += `<li style="margin-bottom:6px;">${m}</li>`; });
+            }
+            aiRawHtml += `</ul>`;
+            
+            let aiKeywordsArray = [];
+            if(parsedJSON.arama_kelimeleri && Array.isArray(parsedJSON.arama_kelimeleri)) {
+                aiKeywordsArray = parsedJSON.arama_kelimeleri;
+                aiRawHtml += `<div style="margin-top:10px; padding:8px; background:#e0f2fe; border-radius:6px; color:#0369a1; font-weight:700; font-size:0.8rem;">
+                    🎯 AI Odak Kelimeleri: [ ${aiKeywordsArray.join(' | ')} ]
+                </div>`;
+            }
+            aiRawHtml += `</details>`;
             document.getElementById(`aiKeywords_${vIndex}`).innerHTML = aiRawHtml;
 
-            loadingEl.innerHTML = `⚡ Eşleşme aranıyor...`;
+            loadingEl.innerHTML = `⚡ Bulunan odak kelimelerle veritabanı taranıyor...`;
 
             let allChunks = [];
             checkedBoxes.forEach(cb => allChunks = allChunks.concat(buildSearchableChunks(mevzuatDB[cb.value])));
 
-            const idealTexts = parsedJSON.ai_maddeler.join(" "); 
-            let wordsArray = removePunctuation(idealTexts).split(/\s+/).filter(w => w.length > 3);
-            let idealWords = [...new Set(wordsArray)];
+            let searchKeywords = [];
+            if(aiKeywordsArray.length > 0) {
+                searchKeywords = aiKeywordsArray.map(w => normalizeText(w.trim()));
+            } else {
+                let idealTexts = parsedJSON.ai_maddeler.join(" "); 
+                searchKeywords = removePunctuation(idealTexts).split(/\s+/).filter(w => w.length > 4);
+            }
+            let idealWords = [...new Set(searchKeywords)];
             
             allChunks.forEach(chunk => {
                 let chunkText = removePunctuation(chunk.metin);
@@ -896,11 +926,6 @@
         navigator.clipboard.writeText(reportText).then(() => { alert("Şık formatlı rapor panoya kopyalandı!"); });
     }
 
-    // =========================================================================
-    // 6. GÖMÜLÜ ORİJİNAL MEVZUAT (ZIP) ARAMA MOTORU SİSTEMİ
-    // =========================================================================
-    
-    // GITHUB CLOUD UYUMLU URL
     const ZIP_URL = './MevzuatText.zip';
     let GLOBAL_MATCHES=[];
     let cachedZipData = null; 
@@ -948,8 +973,7 @@
 
         try {
             if (!cachedZipData) {
-                resEl.innerHTML = '<div class="zip-alert zip-alert-info">Arşiv indiriliyor (İlk arama için biraz sürebilir)...</div>';
-                // Cache buster ekleyerek her zaman en güncel ZIP'i zorla çektiriyoruz
+                resEl.innerHTML = '<div class="zip-alert zip-alert-info">Arşiv indiriliyor (Buluttan ilk çekim)...</div>';
                 const response = await fetch(ZIP_URL + '?v=' + new Date().getTime(), { cache: "no-store" });
                 if (!response.ok) throw new Error(`ZIP Dosyası bulunamadı. Lütfen GitHub reposuna MevzuatText.zip dosyasını ekleyin.`);
                 cachedZipData = await response.arrayBuffer();
