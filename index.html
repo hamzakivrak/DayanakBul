@@ -488,6 +488,25 @@
     }
 
     // ==========================================
+    // YARDIMCI AI FONKSİYONU (safeParseJSON)
+    // ==========================================
+    function safeParseJSON(rawString) {
+        try {
+            let clean = rawString.replace(/```json/gi, '').replace(/```/g, '').trim();
+            let match = clean.match(/\{[\s\S]*\}/);
+            if(match) clean = match[0];
+            clean = clean.replace(/,\s*]/g, ']').replace(/,\s*}/g, '}'); 
+            return JSON.parse(clean);
+        } catch (e) {
+            try { 
+                let matchArr = rawString.match(/\[\s*\{[\s\S]*\}\s*\]/); 
+                if(matchArr) return JSON.parse(matchArr[0]); 
+            } catch(e2){} 
+            throw new Error("JSON hatası.");
+        }
+    }
+
+    // ==========================================
     // GLOBAL DEĞİŞKENLER
     // ==========================================
     let mevzuatDB = [];
@@ -524,12 +543,10 @@
     }
 
     window.onload = function() {
-        // Temayı Yükle
         const savedTheme = localStorage.getItem('isg_theme') || 'light';
         document.getElementById('themeSelector').value = savedTheme;
         changeTheme(savedTheme);
 
-        // Keyleri Yükle
         const savedKeys = localStorage.getItem('isg_groq_keys');
         if (savedKeys) { 
             try { 
@@ -658,25 +675,6 @@
         }
         
         throw new Error("Mevcut tüm API Key'ler ve Modeller için günlük kotalar dolmuş! Lütfen yeni bir API Key ekleyin veya yarına kadar bekleyin.");
-    }
-
-    // ==========================================
-    // YARDIMCI AI FONKSİYONLARI (safeParseJSON) EKLENDİ!
-    // ==========================================
-    function safeParseJSON(rawString) {
-        try {
-            let clean = rawString.replace(/```json/gi, '').replace(/```/g, '').trim();
-            let match = clean.match(/\{[\s\S]*\}/);
-            if(match) clean = match[0];
-            clean = clean.replace(/,\s*]/g, ']').replace(/,\s*}/g, '}'); 
-            return JSON.parse(clean);
-        } catch (e) {
-            try { 
-                let matchArr = rawString.match(/\[\s*\{[\s\S]*\}\s*\]/); 
-                if(matchArr) return JSON.parse(matchArr[0]); 
-            } catch(e2){} 
-            throw new Error("JSON hatası.");
-        }
     }
 
     // ==========================================
@@ -1321,6 +1319,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
         let manualInput = document.getElementById(`manualKw_${vIndex}`).value.trim();
         if (!manualInput) { alert("Kelime girin!"); return; }
 
+        // YENİ: Zip aramada olduğu gibi [;,] ayırıcılarını kullanıyoruz
         let rawTokens = manualInput.split(/[,;]+/).map(t => t.trim()).filter(t => t.length > 0);
         let queryTokens = [];
         rawTokens.forEach(rt => { queryTokens = queryTokens.concat(getCleanTokens(rt)); });
@@ -1471,7 +1470,11 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
         let isFuzzy = raw.startsWith('FUZZY:'); 
         let termPart = isFuzzy ? raw.replace('FUZZY:', '') : raw;
         
-        let queryTokens = getCleanTokens(termPart);
+        // YENİ: ZIP aramasında noktalı virgül (;) ve virgül (,) ile ayırma eklendi
+        let rawTokens = termPart.split(/[,;]+/).map(t => t.trim()).filter(t => t.length > 0);
+        let queryTokens = [];
+        rawTokens.forEach(rt => { queryTokens = queryTokens.concat(getCleanTokens(rt)); });
+        
         if (queryTokens.length === 0) { resEl.innerHTML = '<div class="zip-alert zip-alert-warning">Geçersiz kelime.</div>'; return; }
         
         resEl.innerHTML = '<div class="zip-alert zip-alert-info">Arşiv taranıyor...</div>';
