@@ -328,7 +328,7 @@
         <div class="zip-search-wrapper">
             <div class="zip-info-card"><b>İpucu:</b> Kelimeleri virgül (,) veya noktalı virgül (;) ile ayırarak aratabilirsiniz. Noktalama işaretleri tolere edilir.</div>
             <div class="zip-search-box">
-                <input type="text" id="zipSearchInput" placeholder="Aranacak Kelime[; dosya filtresi]">
+                <input type="text" id="zipSearchInput" placeholder="Aranacak Kelime [Örn: hava hızı; maden]">
                 <button id="zipSearchButton" class="btn btn-primary">Bul</button>
             </div>
             <div id="zipSearchResults"></div>
@@ -502,7 +502,7 @@
                 let matchArr = rawString.match(/\[\s*\{[\s\S]*\}\s*\]/); 
                 if(matchArr) return JSON.parse(matchArr[0]); 
             } catch(e2){} 
-            throw new Error("JSON hatası.");
+            throw new Error("JSON formatı hatalı.");
         }
     }
 
@@ -1179,33 +1179,6 @@
         }
     }
 
-    function buildSearchableChunks(mevzuatObj) {
-        let chunks = [];
-        let kDayanak = mevzuatObj.dayanak_kanun ? (mevzuatObj.dayanak_kanun + ", ") : "";
-        let mName = mevzuatObj.mevzuat_adi;
-        if(mevzuatObj.maddeler) {
-            mevzuatObj.maddeler.forEach(mad => {
-                if(mad.metin) chunks.push({ metin: mad.metin, dayanak: `(${kDayanak}${mName}, Madde: ${mad.madde_no})` });
-                if(mad.fikralar) mad.fikralar.forEach(fik => {
-                    if(fik.metin) chunks.push({ metin: fik.metin, dayanak: `(${kDayanak}${mName}, Madde: ${mad.madde_no}(${fik.fikra_no}))` });
-                    if(fik.bentler) fik.bentler.forEach(ben => chunks.push({ metin: ben.metin, dayanak: `(${kDayanak}${mName}, Madde: ${mad.madde_no}(${fik.fikra_no}) ${ben.bent_harfi})` }));
-                });
-                if(mad.bentler && (!mad.fikralar || mad.fikralar.length===0)) mad.bentler.forEach(ben => chunks.push({ metin: ben.metin, dayanak: `(${kDayanak}${mName}, Madde: ${mad.madde_no} ${ben.bent_harfi})` }));
-            });
-        }
-        if(mevzuatObj.ekler) {
-            mevzuatObj.ekler.forEach(ek => {
-                let bagli = ek.bagli_oldugu_madde ? `${ek.bagli_oldugu_madde}, ` : "";
-                if(ek.metin) chunks.push({ metin: ek.metin, dayanak: `(${kDayanak}${mName}, ${bagli}${ek.ek_no})` });
-                if(ek.maddeler) ek.maddeler.forEach(mad => {
-                    if(mad.metin) chunks.push({ metin: mad.metin, dayanak: `(${kDayanak}${mName}, ${bagli}${ek.ek_no}, Madde: ${mad.madde_no})` });
-                    if(mad.bentler) mad.bentler.forEach(ben => chunks.push({ metin: ben.metin, dayanak: `(${kDayanak}${mName}, ${bagli}${ek.ek_no}, Madde: ${mad.madde_no} ${ben.bent_harfi})` }));
-                });
-            });
-        }
-        return chunks;
-    }
-
     // ==========================================
     // V31: ŞEFFAF YAPAY ZEKA VE EŞLEŞTİRME
     // ==========================================
@@ -1319,7 +1292,6 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
         let manualInput = document.getElementById(`manualKw_${vIndex}`).value.trim();
         if (!manualInput) { alert("Kelime girin!"); return; }
 
-        // YENİ: Zip aramada olduğu gibi [;,] ayırıcılarını kullanıyoruz
         let rawTokens = manualInput.split(/[,;]+/).map(t => t.trim()).filter(t => t.length > 0);
         let queryTokens = [];
         rawTokens.forEach(rt => { queryTokens = queryTokens.concat(getCleanTokens(rt)); });
@@ -1446,12 +1418,24 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
     }
     
     // ==========================================
-    // ORİJİNAL ARŞİV ARAMA (ZIP)
+    // ORİJİNAL ARŞİV ARAMA (ZIP) - GELİŞMİŞ VERSİYON
     // ==========================================
     const ZIP_URL = './MevzuatText.zip'; 
     let GLOBAL_MATCHES=[]; 
     let cachedZipData = null; 
-    
+
+    // Gelişmiş Türkçe ve Büyük/Küçük Harf Toleransı İçin Özel Fonksiyon
+    function normalizeForZipSearch(text) {
+        if (!text) return "";
+        return text.toLocaleLowerCase('tr-TR')
+            .replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ş/g, 's')
+            .replace(/ı/g, 'i').replace(/ö/g, 'o').replace(/ç/g, 'c')
+            .replace(/â/g, 'a').replace(/î/g, 'i').replace(/i̇/g, 'i')
+            .replace(/[^a-z0-9\s]/g, ' ') // Noktalamaları boşluğa çevir
+            .replace(/\s+/g, ' ')         // Fazla boşlukları teke indir
+            .trim();
+    }
+
     function openZipSearchModal(query) { 
         document.getElementById('zipSearchModal').style.display = 'flex'; 
         document.getElementById('zipSearchInput').value = query; 
@@ -1465,74 +1449,114 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
         const resEl = document.getElementById('zipSearchResults'); 
         GLOBAL_MATCHES = [];
         
-        if (!raw) { resEl.innerHTML = '<div class="zip-alert zip-alert-warning">Kelime girin.</div>'; return; }
+        if (!raw) { resEl.innerHTML = '<div class="zip-alert zip-alert-warning">Lütfen aranacak kelimeyi girin.</div>'; return; }
         
         let isFuzzy = raw.startsWith('FUZZY:'); 
         let termPart = isFuzzy ? raw.replace('FUZZY:', '') : raw;
         
-        // YENİ: ZIP aramasında noktalı virgül (;) ve virgül (,) ile ayırma eklendi
+        // Kullanıcının "hava hızı ; maden" gibi girişlerini noktalı virgül veya virgülden ayırıyoruz.
         let rawTokens = termPart.split(/[,;]+/).map(t => t.trim()).filter(t => t.length > 0);
-        let queryTokens = [];
-        rawTokens.forEach(rt => { queryTokens = queryTokens.concat(getCleanTokens(rt)); });
+        let queryTokens = rawTokens.map(t => normalizeForZipSearch(t)).filter(t => t.length > 0);
         
-        if (queryTokens.length === 0) { resEl.innerHTML = '<div class="zip-alert zip-alert-warning">Geçersiz kelime.</div>'; return; }
+        if (queryTokens.length === 0) { resEl.innerHTML = '<div class="zip-alert zip-alert-warning">Geçersiz arama terimi.</div>'; return; }
         
-        resEl.innerHTML = '<div class="zip-alert zip-alert-info">Arşiv taranıyor...</div>';
+        resEl.innerHTML = '<div class="zip-alert zip-alert-info">Arşiv taranıyor... Lütfen bekleyin.</div>';
+        
         try {
             if (!cachedZipData) { 
                 const response = await fetch(ZIP_URL + '?v=' + new Date().getTime(), { cache: "no-store" }); 
-                if (!response.ok) throw new Error(`ZIP Dosyası yok.`); 
+                if (!response.ok) throw new Error(`MevzuatText.zip dosyası bulunamadı. Dosyanın HTML ile aynı klasörde olduğundan emin olun.`); 
                 cachedZipData = await response.arrayBuffer(); 
             }
             
             const zip = await JSZip.loadAsync(cachedZipData);
             await Promise.all(Object.values(zip.files).map(async f => {
                 if (f.dir || !f.name.toLowerCase().endsWith('.txt')) return;
-                const mevzuat = f.name.replace(/\.txt$/i, ''); 
+                
+                const mevzuatAd = f.name.replace(/\.txt$/i, ''); 
+                const cleanMevzuatAd = normalizeForZipSearch(mevzuatAd); 
                 const content = await f.async('string'); 
                 const lines = content.split(/\r?\n/);
                 
                 let prevLine = "";
                 lines.forEach((ln, idx) => {
-                    let combinedText = tightNormalize(prevLine + " " + ln);
+                    let combinedText = normalizeForZipSearch(prevLine + " " + ln);
                     let matchCount = 0;
-                    queryTokens.forEach(tw => { if(combinedText.includes(tw)) matchCount++; });
-                    if(matchCount / queryTokens.length >= 0.7) { 
+                    
+                    queryTokens.forEach(tw => { 
+                        if(combinedText.includes(tw) || cleanMevzuatAd.includes(tw)) matchCount++; 
+                    });
+                    
+                    let threshold = isFuzzy ? Math.max(1, Math.floor(queryTokens.length * 0.6)) : queryTokens.length;
+                    
+                    if(matchCount >= threshold) { 
                         const m = ln.match(/madde\s+(\d+)/i) || prevLine.match(/madde\s+(\d+)/i); 
-                        GLOBAL_MATCHES.push({ mevzuatAdi: mevzuat, maddeNo: m ? m[1] : '-', snippet: ln.trim() || prevLine.trim(), lineNumber: idx, fullText: content, fuzzyWords: queryTokens, score: matchCount }); 
+                        GLOBAL_MATCHES.push({ 
+                            mevzuatAdi: mevzuatAd, 
+                            maddeNo: m ? m[1] : '-', 
+                            snippet: ln.trim() || prevLine.trim(), 
+                            lineNumber: idx, 
+                            fullText: content, 
+                            fuzzyWords: queryTokens, 
+                            score: matchCount 
+                        }); 
                     }
                     prevLine = ln;
                 });
             }));
             
-            if (!GLOBAL_MATCHES.length) { resEl.innerHTML = '<div class="zip-alert zip-alert-warning">Bulunamadı.</div>'; return; }
+            if (!GLOBAL_MATCHES.length) { resEl.innerHTML = '<div class="zip-alert zip-alert-warning">Aradığınız kriterlere uygun sonuç bulunamadı.</div>'; return; }
+            
             GLOBAL_MATCHES.sort((a,b) => b.score - a.score);
+            
             let html = '<div class="zip-table-responsive"><table><thead><tr><th>Mevzuat</th><th>Madde</th><th>Metin</th></tr></thead><tbody>';
-            GLOBAL_MATCHES.slice(0, 50).forEach((it, i) => {
+            
+            GLOBAL_MATCHES.slice(0, 100).forEach((it, i) => {
                 let snip = escapeHTML(it.snippet); 
-                it.fuzzyWords.forEach(fw => { 
-                    const regex = new RegExp('(' + fw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'); 
-                    snip = snip.replace(regex, '<mark>$1</mark>'); 
-                });
+                
+                let wordsToHighlight = [];
+                it.fuzzyWords.forEach(fw => wordsToHighlight.push(...fw.split(' ')));
+                wordsToHighlight = [...new Set(wordsToHighlight)].filter(w => w.length > 2).sort((a,b) => b.length - a.length);
+                
+                if (wordsToHighlight.length > 0) {
+                    let charMap = { 'i': '[iıİIîÎ]', 'g': '[gğGĞ]', 'u': '[uüUÜ]', 's': '[sşSŞ]', 'o': '[oöOÖ]', 'c': '[cçCÇ]', 'a': '[aâAÂ]' };
+                    let regParts = wordsToHighlight.map(fw => fw.split('').map(c => charMap[c] || c).join(''));
+                    let regex = new RegExp('(' + regParts.join('|') + ')', 'gi');
+                    snip = snip.replace(regex, '<mark>$1</mark>');
+                }
+                
                 html += `<tr class="match-row" data-i="${i}"><td>${escapeHTML(it.mevzuatAdi)}</td><td>${escapeHTML(it.maddeNo)}</td><td class="snippet-cell">${snip}</td></tr>`;
             });
             html += '</tbody></table></div>'; 
             resEl.innerHTML = html;
+            
             document.querySelectorAll('.zip-table-responsive .match-row').forEach(tr => tr.addEventListener('click', () => showZipDetail(GLOBAL_MATCHES[+tr.dataset.i])));
-        } catch (e) { resEl.innerHTML = `<div class="zip-alert zip-alert-danger">HATA: ${e.message}</div>`; }
+            
+        } catch (e) { 
+            resEl.innerHTML = `<div class="zip-alert zip-alert-danger">HATA: ${e.message}</div>`; 
+        }
     });
 
     function showZipDetail(match) {
         document.getElementById('zipDetailTitle').textContent = match.mevzuatAdi + ' – ' + match.maddeNo; 
         const cont = document.getElementById('zipDetailContent'); 
         cont.innerHTML = '';
+        
+        let wordsToHighlight = [];
+        match.fuzzyWords.forEach(fw => wordsToHighlight.push(...fw.split(' ')));
+        wordsToHighlight = [...new Set(wordsToHighlight)].filter(w => w.length > 2).sort((a,b) => b.length - a.length);
+        let regex = null;
+        if (wordsToHighlight.length > 0) {
+            let charMap = { 'i': '[iıİIîÎ]', 'g': '[gğGĞ]', 'u': '[uüUÜ]', 's': '[sşSŞ]', 'o': '[oöOÖ]', 'c': '[cçCÇ]', 'a': '[aâAÂ]' };
+            let regParts = wordsToHighlight.map(fw => fw.split('').map(c => charMap[c] || c).join(''));
+            regex = new RegExp('(' + regParts.join('|') + ')', 'gi');
+        }
+
         match.fullText.split(/\r?\n/).forEach((ln, idx) => {
             const div = document.createElement('div'); 
             let html = escapeHTML(ln); 
-            match.fuzzyWords.forEach(fw => { 
-                const regex = new RegExp('(' + fw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'); 
-                html = html.replace(regex, '<mark>$1</mark>'); 
-            });
+            if(regex) html = html.replace(regex, '<mark>$1</mark>'); 
+            
             div.style.marginBottom = "6px"; 
             if (idx === match.lineNumber) { div.className = 'zip-target-line'; div.id = 'zip-focus-line'; } 
             div.innerHTML = html || '&nbsp;'; cont.appendChild(div);
