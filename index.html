@@ -2,8 +2,15 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İSG Yapay Zeka Denetçi V22 (Kusursuz Regex & Hiyerarşi)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>İSG Yapay Zeka Denetçi</title>
+    
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#4f46e5">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="İSG Denetçi">
+
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
@@ -17,10 +24,11 @@
         body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text-main); margin: 0; padding: 15px; line-height: 1.5; }
         .container { max-width: 950px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
         
-        .header-bar { display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); padding: 12px 20px; border-radius: var(--radius); box-shadow: 0 2px 10px rgba(0,0,0,0.03); border: 1px solid var(--border); }
-        .header-bar h1 { margin: 0; font-size: 1.3rem; color: var(--primary); font-weight: 800; display: flex; align-items: center; gap: 8px;}
-        .icon-btn { background: #f1f5f9; border: none; font-size: 1.1rem; padding: 8px; border-radius: 50%; cursor: pointer; transition: 0.2s; }
+        .header-bar { display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); padding: 12px 20px; border-radius: var(--radius); box-shadow: 0 2px 10px rgba(0,0,0,0.03); border: 1px solid var(--border); flex-wrap: wrap; gap:10px;}
+        .header-bar h1 { margin: 0; font-size: 1.2rem; color: var(--primary); font-weight: 800; display: flex; align-items: center; gap: 8px;}
+        .icon-btn { background: #f1f5f9; border: none; font-size: 1.1rem; padding: 8px; border-radius: 50%; cursor: pointer; transition: 0.2s; display:inline-flex; align-items:center; justify-content:center; width: 40px; height: 40px;}
         .icon-btn:hover { background: #e2e8f0; transform: scale(1.1); }
+        .header-actions { display: flex; gap: 8px; align-items: center; }
 
         .card { background: var(--card-bg); padding: 20px; border-radius: var(--radius); box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid var(--border); }
         h2 { margin-top: 0; font-size: 1.1rem; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; display: flex; align-items: center; gap: 8px; color: #475569;}
@@ -29,7 +37,7 @@
         input[type="text"]:focus, input[type="password"]:focus, textarea:focus { border-color: var(--primary); }
         textarea { resize: vertical; min-height: 80px; }
         
-        .btn { color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; justify-content: gap: 6px; font-size: 0.9rem; }
+        .btn { color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.9rem; }
         .btn:active { transform: translateY(2px); }
         .btn-sm { padding: 8px 12px; font-size: 0.85rem; }
         .btn-primary { background: var(--primary); } .btn-primary:hover { background: var(--primary-hover); }
@@ -106,7 +114,6 @@
         .btn-remove-item { position: absolute; top: 0; right: 0; background: #fee2e2; color: #ef4444; border: none; border-radius: 50%; width: 26px; height: 26px; cursor: pointer; font-weight: bold; display: flex; align-items: center; justify-content: center; transition: 0.2s;}
         .btn-remove-item:hover { background: #fca5a5; color: #b91c1c; transform: scale(1.1);}
 
-        /* ZIP ARAMA CSS */
         .zip-search-wrapper { flex: 1; overflow-y: auto; padding-right: 5px; }
         .zip-info-card { background-color: #eef2ff; padding: 12px; border-radius: 8px; margin-bottom: 15px; font-size: 0.85rem; color: #475569; border-left: 4px solid var(--primary); }
         .zip-search-wrapper input[type="text"] { margin-bottom: 0; }
@@ -138,9 +145,12 @@
 
 <div class="container">
     <div class="header-bar">
-        <button class="icon-btn" title="Hata Ayıklama (Debug) Konsolu" onclick="document.getElementById('debugModal').style.display='flex'">🐞</button>
         <h1>✨ İSG Yapay Zeka Denetçi</h1>
-        <button class="btn btn-secondary btn-sm" onclick="document.getElementById('parserModal').style.display='flex'">⚙️ JSON Veritabanı Üret</button>
+        <div class="header-actions">
+            <button class="icon-btn" title="Uygulamayı Buluttan Zorla Güncelle (Önbelleği Temizle)" onclick="hardSyncFromCloud()">🔄</button>
+            <button class="icon-btn" title="Hata Ayıklama Konsolu" onclick="document.getElementById('debugModal').style.display='flex'">🐞</button>
+            <button class="btn btn-secondary btn-sm" onclick="document.getElementById('parserModal').style.display='flex'">⚙️ JSON Üret</button>
+        </div>
     </div>
 
     <div class="modal-overlay" id="debugModal">
@@ -155,8 +165,8 @@
     <div class="modal-overlay" id="parserModal">
         <div class="modal-content">
             <span class="close-modal" onclick="document.getElementById('parserModal').style.display='none'">&times;</span>
-            <h2 style="border: none; color: var(--primary);">📚 JSON Dönüştürücü (V22 Güçlendirilmiş)</h2>
-            <p style="font-size: 0.85rem; color: var(--text-muted);">TXT formatındaki mevzuatları içeren ZIP dosyasını seçin. <b>"Ekip" ve "Eki" gibi hatalı kelimeler filtrelenerek kusursuz bağlantı kurulacaktır.</b></p>
+            <h2 style="border: none; color: var(--primary);">📚 JSON Dönüştürücü</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">TXT formatındaki mevzuatları içeren ZIP dosyasını seçin.</p>
             <div class="upload-area" onclick="document.getElementById('zipFileInput').click()">
                 <div style="font-size: 2.5rem; margin-bottom: 5px;">📦</div>
                 <strong style="color: var(--primary);">ZIP Dosyası Yükle</strong>
@@ -171,9 +181,7 @@
             <span class="close-modal" onclick="closeZipSearchModal()">&times;</span>
             <h2 style="border:none; margin-bottom:10px; color: var(--primary);">📖 Orijinal Mevzuat Arşivi</h2>
             <div class="zip-search-wrapper">
-                <div class="zip-info-card">
-                    <b>İpucu:</b> Kelimeleri virgül (,) veya noktalı virgül (;) ile ayırarak aratabilirsiniz. Noktalama işaretleri sistem tarafından tolere edilir.
-                </div>
+                <div class="zip-info-card"><b>İpucu:</b> Kelimeleri virgül (,) veya noktalı virgül (;) ile ayırarak aratabilirsiniz. Noktalama işaretleri sistem tarafından tolere edilir.</div>
                 <div class="zip-search-box">
                     <input type="text" id="zipSearchInput" placeholder="Aranacak Kelime[; dosya filtresi]">
                     <button id="zipSearchButton" class="btn btn-primary">Bul</button>
@@ -255,6 +263,15 @@
 </div>
 
 <script>
+    // --- PWA SERVICE WORKER KAYDI ---
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js').then(reg => {
+                console.log('PWA Service Worker Kaydedildi!', reg);
+            }).catch(err => console.log('Service Worker Hatası:', err));
+        });
+    }
+
     let mevzuatDB = [];
     let violationsArray = [];
     let apiKeys = [];
@@ -269,6 +286,21 @@
         logEl.scrollTop = logEl.scrollHeight;
     }
 
+    // --- ZORUNLU GÜNCELLEME (CACHE BUSTER) ---
+    function hardSyncFromCloud() {
+        if(confirm("Telefonunuzdaki/Tarayıcınızdaki eski önbellek silinip, sistem buluttan (GitHub) sıfırdan indirilecek. Onaylıyor musunuz?")) {
+            // Veritabanını patlat
+            const req = indexedDB.deleteDatabase("ISG_MevzuatDB");
+            req.onsuccess = function () {
+                // Tarayıcıyı zorla yenile ve cache'i bypass et (Zaman damgası hilesi)
+                window.location.href = window.location.pathname + "?v=" + new Date().getTime();
+            };
+            req.onerror = function () {
+                alert("Önbellek temizlenemedi, tarayıcı ayarlarından verileri temizleyin.");
+            };
+        }
+    }
+
     function normalizeText(text) {
         if (!text) return "";
         return text.toLocaleLowerCase('tr-TR').replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ş/g, 's').replace(/ı/g, 'i').replace(/ö/g, 'o').replace(/ç/g, 'c').replace(/î/g, 'i').replace(/â/g, 'a').replace(/i̇/g, 'i');
@@ -279,7 +311,6 @@
         return cleanText.replace(/[.,;:'"!?()[\]{}<>\-\/\\_]/g, ' ').replace(/\s+/g, ' ').trim();
     }
 
-    // --- API KEY ---
     window.onload = function() {
         const savedKeys = localStorage.getItem('isg_groq_keys');
         if (savedKeys) { 
@@ -325,7 +356,6 @@
         });
     }
 
-    // --- INDEXEDDB VE CLOUD YÜKLEME ---
     function saveDBToIndexedDB(data) {
         const request = indexedDB.open("ISG_MevzuatDB", 1);
         request.onupgradeneeded = e => { e.target.result.createObjectStore("MevzuatStore"); };
@@ -349,7 +379,8 @@
                     showDBReadySuccess("Hafızadan Yüklendi"); 
                 } else {
                     logDebug("Hafızada DB bulunamadı. Buluttan (GitHub) otomatik indiriliyor...", "warn");
-                    fetch('./mevzuat_veritabani.json')
+                    // Cache buster ekleyerek her zaman tazesini çekmeye zorluyoruz
+                    fetch('./mevzuat_veritabani.json?v=' + new Date().getTime(), { cache: "no-store" })
                         .then(res => { if(!res.ok) throw new Error("Dosya yok."); return res.json(); })
                         .then(data => {
                             mevzuatDB = data; saveDBToIndexedDB(mevzuatDB); showDBReadySuccess("Buluttan (GitHub) Yüklendi");
@@ -378,7 +409,6 @@
         reader.readAsText(file);
     });
 
-    // --- ZIP'TEN JSON (V22 - KUSURSUZ REGEX MOTORU) ---
     let zipProcessedData = [];
     document.getElementById('zipFileInput').addEventListener('change', async (e) => {
         const file = e.target.files[0];
@@ -427,11 +457,9 @@
         const maddeRegex = /^MADDE\s+(\d+)\s*[-:–—]*\s*(.*)/i;
         const fikraRegex = /^\((\d+)\)\s*(.*)/;
         const bentRegex = /^([a-zçğıöşü]+)\)\s*(.*)/i;
-        // V22: Ekip, Eksik gibi kelimeleri dışlamak için katı sınır!
         const ekRegex = /^EK\s*(?:[-:–—]|\s+)\s*([0-9]+[a-zA-Z]?|[IVX]+)(.*)/i; 
         const ekAltMaddeRegex = /^(\d+[\.\d]*)\s*(.*)/; 
 
-        // V22: Eki, Ekip gibi kelimeleri dışlayan kusursuz atıf bulucu!
         function checkAtif(textToCheck) {
             if (!isInEk && currentMadde) {
                 let safeLine = textToCheck.replace(/\(Ek\s*:[^)]+\)/gi, ''); 
@@ -529,7 +557,6 @@
         return result;
     }
 
-    // --- İHLALLERİ AYIRMA VE SLIDER ---
     document.getElementById('splitBtn').addEventListener('click', () => {
         const rawText = document.getElementById('violationsInput').value;
         if (!rawText.trim()) return;
@@ -583,7 +610,7 @@
                 <div class="tools-toolbar">
                     <div class="tool-section">
                         <span class="tool-header">✍️ 1. Nokta Atışı Arama</span>
-                        <div class="tool-hint">Kelimeleri (;) ile ayır. (Örn: maske; toz)</div>
+                        <div class="tool-hint">Kelimeleri (;) ile ayır.</div>
                         <div class="input-group" style="margin-top:4px;">
                             <input type="text" id="manualKw_${vIndex}" placeholder="Kelimeler...">
                             <button class="btn btn-secondary btn-sm" onclick="runManualSearch(${vIndex})">Ara</button>
@@ -592,8 +619,8 @@
                     <div class="divider"></div>
                     <div class="tool-section">
                         <span class="tool-header">🤖 2. AI İle Destek</span>
-                        <div class="tool-hint">Seçtiğin mevzuatta AI senin için madde bulur.</div>
-                        <button class="btn btn-primary btn-sm" style="width: 100%; margin-top:4px;" id="btnHyde_${vIndex}" onclick="runAISearch(${vIndex})">✨ Otomatik Eşleştir</button>
+                        <div class="tool-hint">AI senin için madde bulur.</div>
+                        <button class="btn btn-primary btn-sm" style="width: 100%; margin-top:4px;" id="btnHyde_${vIndex}" onclick="runAISearch(${vIndex})">✨ Eşleştir</button>
                     </div>
                 </div>
 
@@ -678,7 +705,6 @@
         }
     }
 
-    // --- ARAMALAR ---
     async function runAISearch(vIndex) {
         if (apiKeys.length === 0) { alert("Lütfen ayarlardan geçerli bir API Key ekleyin."); return; }
         const checkedBoxes = Array.from(document.querySelectorAll(`#mevList_${vIndex} input[type="checkbox"]:checked`));
@@ -796,7 +822,6 @@
         optionsListEl.innerHTML = html;
     }
 
-    // --- RAPOR YÖNETİMİ ---
     function addSpecificToReport(vIndex, optIndex) {
         document.getElementById(`opt_${vIndex}_${optIndex}`).checked = true;
         const selectedData = window[`currentOptions_${vIndex}`][optIndex];
@@ -875,6 +900,7 @@
     // 6. GÖMÜLÜ ORİJİNAL MEVZUAT (ZIP) ARAMA MOTORU SİSTEMİ
     // =========================================================================
     
+    // GITHUB CLOUD UYUMLU URL
     const ZIP_URL = './MevzuatText.zip';
     let GLOBAL_MATCHES=[];
     let cachedZipData = null; 
@@ -922,8 +948,9 @@
 
         try {
             if (!cachedZipData) {
-                resEl.innerHTML = '<div class="zip-alert zip-alert-info">Arşiv indiriliyor (Buluttan ilk çekim)...</div>';
-                const response = await fetch(ZIP_URL);
+                resEl.innerHTML = '<div class="zip-alert zip-alert-info">Arşiv indiriliyor (İlk arama için biraz sürebilir)...</div>';
+                // Cache buster ekleyerek her zaman en güncel ZIP'i zorla çektiriyoruz
+                const response = await fetch(ZIP_URL + '?v=' + new Date().getTime(), { cache: "no-store" });
                 if (!response.ok) throw new Error(`ZIP Dosyası bulunamadı. Lütfen GitHub reposuna MevzuatText.zip dosyasını ekleyin.`);
                 cachedZipData = await response.arrayBuffer();
             }
