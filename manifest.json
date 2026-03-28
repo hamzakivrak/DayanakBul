@@ -1,7 +1,7 @@
 {
   "name": "İSG Yapay Zeka Denetçi",
   "short_name": "İSG Denetçi",
-  "start_url": ".",
+  "start_url": "/DayanakBul/",
   "display": "standalone",
   "background_color": "#f8fafc",
   "theme_color": "#4f46e5",
