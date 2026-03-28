@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>İSG Yapay Zeka Denetçi V28 (TF-IDF Çoklu Beyin)</title>
+    <title>İSG Yapay Zeka Denetçi V31 (Ön Eşleştirme & Şeffaf AI)</title>
     
     <link rel="manifest" href="./manifest.json">
     <meta name="theme-color" content="#4f46e5">
@@ -148,6 +148,8 @@
         /* Kurulum Butonu PWA */
         #installAppBtn { display: none; background-color: var(--success); color: white; border: none; padding: 8px 15px; border-radius: 20px; font-weight: 800; font-size: 0.85rem; cursor: pointer; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2); transition: 0.2s; }
         #installAppBtn:hover { transform: scale(1.05); background-color: var(--success-hover); }
+        
+        .opt-header-bar { font-weight: 800; color: #3730a3; background: #e0e7ff; padding: 10px 15px; border-radius: 8px; margin-bottom: 10px; font-size: 0.95rem; border-left: 4px solid #4f46e5; }
     </style>
 </head>
 <body>
@@ -273,7 +275,9 @@
 </div>
 
 <script>
-    // --- PWA KURULUM VE BUTON MANTIĞI ---
+    // ==========================================
+    // PWA KURULUM VE BUTON MANTIĞI
+    // ==========================================
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('./sw.js').then(reg => {
@@ -303,8 +307,25 @@
         }
     });
 
-    // --- TÜRKÇE STOP-WORDS VE NORMALIZER (TF-IDF İçin) ---
-    const trStopWords = ["acaba", "altı", "ama", "ancak", "arada", "artık", "asla", "aslında", "ayrıca", "az", "bana", "bazen", "bazı", "belki", "ben", "beni", "benim", "beş", "bile", "bin", "bir", "bira", "biraz", "biri", "birkaç", "birşey", "biz", "bize", "bizim", "böyle", "böylece", "bu", "buna", "bunda", "bundan", "bunlar", "bunları", "bunların", "bunu", "bunun", "burada", "bütün", "çünkü", "da", "daha", "dahi", "dair", "de", "defa", "değil", "diğer", "diye", "dokuz", "dolayı", "dur", "dört", "ebediyen", "eğer", "en", "gene", "gibi", "göre", "hala", "hangi", "hani", "hatta", "hem", "hep", "hepsi", "her", "herkes", "hâlâ", "için", "idü", "ile", "ilgili", "ise", "itibaren", "itibariyle", "iyi", "kaç", "kadar", "karşın", "kendi", "kendilerine", "kendini", "kendisi", "kendisine", "kendisini", "kez", "ki", "kim", "kimden", "kime", "kimi", "kimse", "kırk", "mı", "mi", "mu", "mü", "nasıl", "ne", "neden", "nedenle", "nerde", "nereye", "nitekim", "niye", "o", "on", "ona", "ondan", "onlar", "onlardan", "onları", "onların", "onu", "onun", "orada", "oysa", "pek", "rağmen", "sadece", "sanki", "sekiz", "sen", "senden", "seni", "senin", "siz", "sizden", "sizi", "sizin", "sonra", "şayet", "şey", "şimdi", "şöyle", "şu", "şuna", "şunda", "şundan", "şunlar", "şunu", "tarafından", "trilyon", "tüm", "üç", "üzere", "var", "vardı", "ve", "veya", "ya", "yani", "yapacak", "yapılan", "yapılması", "yaptı", "yedi", "yerine", "yetmiş", "yine", "yoksa", "yüz", "zaten", "zirâ"];
+    // ==========================================
+    // TÜRKÇE STOP-WORDS VE NORMALIZER (TF-IDF İçin)
+    // ==========================================
+    const trStopWords = [
+        "acaba", "altı", "ama", "ancak", "arada", "artık", "asla", "aslında", "ayrıca", "az", "bana", "bazen", 
+        "bazı", "belki", "ben", "beni", "benim", "beş", "bile", "bin", "bir", "bira", "biraz", "biri", "birkaç", 
+        "birşey", "biz", "bize", "bizim", "böyle", "böylece", "bu", "buna", "bunda", "bundan", "bunlar", "bunları", 
+        "bunların", "bunu", "bunun", "burada", "bütün", "çünkü", "da", "daha", "dahi", "dair", "de", "defa", 
+        "değil", "diğer", "diye", "dokuz", "dolayı", "dur", "dört", "ebediyen", "eğer", "en", "gene", "gibi", 
+        "göre", "hala", "hangi", "hani", "hatta", "hem", "hep", "hepsi", "her", "herkes", "hâlâ", "için", "idü", 
+        "ile", "ilgili", "ise", "itibaren", "itibariyle", "iyi", "kaç", "kadar", "karşın", "kendi", "kendilerine", 
+        "kendini", "kendisi", "kendisine", "kendisini", "kez", "ki", "kim", "kimden", "kime", "kimi", "kimse", 
+        "kırk", "mı", "mi", "mu", "mü", "nasıl", "ne", "neden", "nedenle", "nerde", "nereye", "nitekim", "niye", 
+        "o", "on", "ona", "ondan", "onlar", "onlardan", "onları", "onların", "onu", "onun", "orada", "oysa", 
+        "pek", "rağmen", "sadece", "sanki", "sekiz", "sen", "senden", "seni", "senin", "siz", "sizden", "sizi", 
+        "sizin", "sonra", "şayet", "şey", "şimdi", "şöyle", "şu", "şuna", "şunda", "şundan", "şunlar", "şunu", 
+        "tarafından", "trilyon", "tüm", "üç", "üzere", "var", "vardı", "ve", "veya", "ya", "yani", "yapacak", 
+        "yapılan", "yapılması", "yaptı", "yedi", "yerine", "yetmiş", "yine", "yoksa", "yüz", "zaten", "zirâ"
+    ];
     
     function tightNormalize(text) {
         if (!text) return "";
@@ -328,18 +349,22 @@
         if (!normalized) return [];
         return normalized.split(' ').filter(word => word.length > 1 && !trStopWords.includes(word));
     }
-    // ----------------------------------------------------
 
+    // ==========================================
+    // GLOBAL DEĞİŞKENLER
+    // ==========================================
     let mevzuatDB = [];
     let violationsArray = [];
     let apiKeys = [];
     let currentSlideIndex = 0; 
     let finalReportData = {};
     
-    // TF-IDF Globals
     let mevzuatIdfTable = {}; 
     let provisionChunksCache = []; 
 
+    // ==========================================
+    // TEMEL FONKSİYONLAR
+    // ==========================================
     function logDebug(msg, type="info") {
         const logEl = document.getElementById('debugLog');
         const time = new Date().toLocaleTimeString();
@@ -356,6 +381,11 @@
             };
             req.onerror = function () { alert("Önbellek temizlenemedi, tarayıcı ayarlarından verileri temizleyin."); };
         }
+    }
+
+    function normalizeText(text) {
+        if (!text) return "";
+        return text.toLocaleLowerCase('tr-TR').replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ş/g, 's').replace(/ı/g, 'i').replace(/ö/g, 'o').replace(/ç/g, 'c').replace(/î/g, 'i').replace(/â/g, 'a').replace(/i̇/g, 'i');
     }
 
     function removePunctuation(text) {
@@ -447,7 +477,9 @@
         };
     }
 
-    // --- TF-IDF PRECOMPUTE (IDF Tablosu Oluşturma) ---
+    // ==========================================
+    // TF-IDF ÖN HESAPLAMA VE SKORLAMA
+    // ==========================================
     function precomputeTfIdf() {
         if (!mevzuatDB || mevzuatDB.length === 0) return;
         logDebug("TF-IDF IDF tablosu hesaplanıyor...", "warn");
@@ -481,7 +513,6 @@
         logDebug(`TF-IDF Hazır. ${totalDocuments} madde, ${Object.keys(mevzuatIdfTable).length} kelime. Süre: ${((endTime - startTime)/1000).toFixed(2)}sn`, "success");
     }
 
-    // --- TF-IDF SKORLAMA FONKSİYONU ---
     function calculateTfIdfScore(chunkText, queryTokens) {
         if (!queryTokens || queryTokens.length === 0) return 0;
         let chunkTokens = getCleanTokens(chunkText);
@@ -505,10 +536,15 @@
 
     function showDBReadySuccess(msg) {
         const dbStatus = document.getElementById('dbStatus');
-        dbStatus.style.display = 'inline-flex'; dbStatus.className = 'status-badge success'; dbStatus.innerHTML = `✅ ${msg}`;
+        dbStatus.style.display = 'inline-flex'; 
+        dbStatus.className = 'status-badge success'; 
+        dbStatus.innerHTML = `✅ ${msg}`;
         document.getElementById('splitBtn').disabled = false;
     }
 
+    // ==========================================
+    // JSON DÖNÜŞTÜRME
+    // ==========================================
     document.getElementById('jsonFile').addEventListener('change', function(e) {
         const file = e.target.files[0];
         if (!file) return;
@@ -675,7 +711,10 @@
         return result;
     }
 
-    document.getElementById('splitBtn').addEventListener('click', () => {
+    // ==========================================
+    // İHLAL AYIRMA VE ÖN EŞLEŞTİRME (V31 YENİLİK)
+    // ==========================================
+    document.getElementById('splitBtn').addEventListener('click', async () => {
         const rawText = document.getElementById('violationsInput').value;
         if (!rawText.trim()) return;
 
@@ -698,21 +737,97 @@
         if(currentNum !== null) violationsArray.push({ number: currentNum + ".", text: currentText.trim().replace(/\s+/g, ' ') });
 
         if (violationsArray.length > 0) {
-            buildSliderUI(); currentSlideIndex = 0; updateSliderView();
-            renderFinalReport();
-            document.getElementById('workArea').style.display = 'block';
-            setTimeout(() => document.getElementById('workArea').scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+            // YENİ V31: EĞER API KEY VARSA ÖNCE OTOMATİK EŞLEŞTİRME YAP!
+            if (apiKeys.length > 0 && mevzuatDB.length > 0) {
+                await autoSelectMevzuats();
+            } else {
+                // Key yoksa normal manuel başlat
+                buildSliderUI(null); 
+                finishSetupAndShow();
+            }
         }
     });
 
-    function buildSliderUI() {
+    // YENİ V31: AI PRE-MATCH FONKSİYONU
+    async function autoSelectMevzuats() {
+        const btn = document.getElementById('splitBtn');
+        btn.disabled = true;
+        let originalText = btn.innerHTML;
+        btn.innerHTML = "⏳ Yapay Zeka İhlallerle Mevzuatları Eşleştiriyor... Lütfen Bekleyin";
+
+        let mapping = {}; // { 0: [3, 5], 1: [12] } şeklinde ihlal indexi ve mevzuat indexleri
+
+        try {
+            const mevList = mevzuatDB.map((m, i) => `[ID:${i}] ${m.mevzuat_adi}`).join("\n");
+            const vList = violationsArray.map((v, i) => `[İHLAL_ID:${i}] ${v.text}`).join("\n");
+
+            const prompt = `Sen uzman bir İSG denetçisisin. Aşağıdaki ihlalleri oku ve her bir ihlal için en uygun olan yönetmeliğin/kanunun ID numaralarını seç.
+SADECE LİSTEDEKİ ID NUMARALARINI KULLAN. Her ihlal için en az 1, en fazla 3 mevzuat seçebilirsin.
+
+Mevzuatlar:
+${mevList}
+
+İhlaller:
+${vList}
+
+ÇIKTI FORMATI SADECE JSON OLMALIDIR:
+{
+  "eslesmeler": [
+    { "ihlal_id": 0, "secilen_mevzuat_idleri": [3, 5] },
+    { "ihlal_id": 1, "secilen_mevzuat_idleri": [12] }
+  ]
+}`;
+            const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+                method: 'POST', 
+                headers: { 'Authorization': `Bearer ${apiKeys[0]}`, 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    model: 'llama-3.3-70b-versatile', 
+                    messages: [ { role: 'user', content: prompt } ], 
+                    temperature: 0.1 
+                })
+            });
+            const data = await response.json();
+            if(!response.ok) throw new Error(data.error?.message);
+
+            const parsedJSON = safeParseJSON(data.choices[0].message.content);
+            if (parsedJSON && parsedJSON.eslesmeler) {
+                parsedJSON.eslesmeler.forEach(item => {
+                    mapping[item.ihlal_id] = item.secilen_mevzuat_idleri;
+                });
+            }
+        } catch(e) {
+            console.error("Auto select failed", e);
+            alert("Yapay zeka otomatik mevzuat seçimi sırasında hata aldı. Lütfen manuel seçim yapınız.");
+        }
+
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+
+        buildSliderUI(mapping);
+        finishSetupAndShow();
+    }
+
+    function finishSetupAndShow() {
+        currentSlideIndex = 0; 
+        updateSliderView();
+        renderFinalReport();
+        document.getElementById('workArea').style.display = 'block';
+        setTimeout(() => document.getElementById('workArea').scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+    }
+
+    function buildSliderUI(mappingData) {
         const container = document.getElementById('violationsSliderContainer');
         container.innerHTML = '';
 
         violationsArray.forEach((violation, vIndex) => {
             let checkboxesHTML = '';
+            
+            // YENİ V31: AI'nın seçtiği ID'leri çek
+            let preCheckedIds = mappingData && mappingData[vIndex] ? mappingData[vIndex] : [];
+
             mevzuatDB.forEach((mev, index) => {
-                checkboxesHTML += `<label class="mev-check-item"><input type="checkbox" value="${index}" onchange="updateSelectedBadges(${vIndex})"><span class="mev-label-text">${mev.mevzuat_adi}</span></label>`;
+                let isChecked = preCheckedIds.includes(index) ? 'checked' : '';
+                checkboxesHTML += `<label class="mev-check-item"><input type="checkbox" value="${index}" ${isChecked} onchange="updateSelectedBadges(${vIndex})"><span class="mev-label-text">${mev.mevzuat_adi}</span></label>`;
             });
 
             const slide = document.createElement('div');
@@ -727,28 +842,33 @@
                 
                 <div class="tools-toolbar">
                     <div class="tool-section">
-                        <span class="tool-header">✍️ 1. Nokta Atışı Arama (TF-IDF)</span>
-                        <div class="tool-hint">Kelimeleri (;) ile ayır.</div>
+                        <span class="tool-header">✍️ 1. Şelale (Cascade) Arama</span>
+                        <div class="tool-hint">Kelimeleri (;) ile ayırın. Bulana kadar daraltır.</div>
                         <div class="input-group" style="margin-top:4px;">
-                            <input type="text" id="manualKw_${vIndex}" placeholder="Anahtar kelimeler...">
+                            <input type="text" id="manualKw_${vIndex}" placeholder="Kelimeler...">
                             <button class="btn btn-secondary btn-sm" onclick="runManualSearch(${vIndex})">Ara</button>
                         </div>
                     </div>
                     <div class="divider"></div>
                     <div class="tool-section">
-                        <span class="tool-header">🤖 2. AI & TF-IDF (Çoklu Mevzuat)</span>
-                        <div class="tool-hint">AI senin için en doğru maddeleri ve kelimeleri bulur.</div>
+                        <span class="tool-header">🤖 2. AI & TF-IDF Hibrit</span>
+                        <div class="tool-hint">AI senin için en doğru 1 maddeyi ve anahtar kelimeleri bulur.</div>
                         <button class="btn btn-primary btn-sm" style="width: 100%; margin-top:4px;" id="btnHyde_${vIndex}" onclick="runAISearch(${vIndex})">✨ Otomatik Eşleştir</button>
                     </div>
                 </div>
 
                 <div id="loading_${vIndex}" class="loading"></div>
                 <div id="optionsContainer_${vIndex}" class="options-container">
+                    <div class="opt-header-bar">📌 İhlal: ${violation.text}</div>
+                    
                     <div id="aiKeywords_${vIndex}"></div>
                     <div id="optionsList_${vIndex}"></div>
                 </div>
             `;
             container.appendChild(slide);
+
+            // Kutular oluşturulduktan sonra badgeleri hemen güncelle
+            setTimeout(() => { updateSelectedBadges(vIndex); }, 10);
         });
     }
 
@@ -832,7 +952,9 @@
         }
     }
 
-    // --- YENİ V28: YAPAY ZEKA VE TF-IDF (ÇOKLU MEVZUAT BEYNİ) ---
+    // ==========================================
+    // V31: ŞEFFAF YAPAY ZEKA VE EŞLEŞTİRME (AI Hüküm Metni Gösterimi)
+    // ==========================================
     async function runAISearch(vIndex) {
         if (apiKeys.length === 0) { alert("Lütfen ayarlardan API Key ekleyin."); return; }
         const checkedBoxes = Array.from(document.querySelectorAll(`#mevList_${vIndex} input[type="checkbox"]:checked`));
@@ -850,25 +972,22 @@
             
             const systemPrompt = `Sen uzman bir İSG denetçisisin. SADECE ŞU SEÇİLİ MEVZUATLAR İÇİNDE DÜŞÜN: [ ${selectedNames} ]
 
-Kullanıcının girdiği ihlali analiz et. Seçilen HER BİR mevzuat için (Eğer o mevzuatta konuyla ilgili hüküm varsa) en uygun GEREKÇE HÜKMÜNÜ bul.
+Kullanıcının girdiği İHLALİ analiz et. Seçilen HER BİR mevzuat için (Eğer o mevzuatta konuyla ilgili hüküm varsa) EN UYGUN 1 ADET GEREKÇE HÜKMÜNÜ bul.
 
-ÖNEMLİ:
-1. "işçi", "sağlık", "madde", "göre" gibi genel geçer kelimeleri anahtar kelime yapma. Kelimeler niş ve spesifik olmalı.
-2. Bütün kelimeler KESİNLİKLE EK ALMAMIŞ, YALIN KÖK halinde olmalı.
+ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
+1. "işçi", "sağlık", "güvenlik", "işveren", "işyeri", "madde", "çalışan", "gerekli", "ilgili", "dair", "olarak" gibi çöpleri ASLA kullanma.
+2. 1. ve 2. ANAHTAR KELİME: Kesinlikle kullanıcının girdiği İHLAL METNİNDEN (Birincil ve ikincil kelimeler) seçilecek.
+3. 3., 4. ve 5. ANAHTAR KELİME: Kesinlikle senin bulduğun o mevzuat hükmünün içinden seçilecek.
+4. Bütün kelimeler KESİNLİKLE EK ALMAMIŞ YALIN KÖK (Örn: "kapıları" -> "kapı") halinde olacak.
 
 ÇIKTI FORMATI (SADECE JSON):
 {
-  "optimum_mevzuat": "Bulduğun gerekçeler arasında ihlalle en doğrudan eşleşen, en optimum mevzuatın tam adı",
+  "optimum_mevzuat": "Bulduğun gerekçeler arasında ihlalle en doğrudan eşleşen mevzuatın adı",
   "analiz": [
     {
       "mevzuat_adi": "Mevzuat 1 tam adı",
       "hukum_metni": "Mevzuattaki gerekçe hükmünün tam metni",
-      "arama_kelimeleri": ["ihlalden_kök_kelime", "hükümden_kök1", "hükümden_kök2", "hükümden_kök3", "hükümden_kök4"]
-    },
-    {
-      "mevzuat_adi": "Mevzuat 2 tam adı",
-      "hukum_metni": "...",
-      "arama_kelimeleri": ["..."]
+      "arama_kelimeleri": ["ihlal_kök1", "ihlal_kök2", "hüküm_kök1", "hüküm_kök2", "hüküm_kök3"]
     }
   ]
 }`;
@@ -890,7 +1009,6 @@ Kullanıcının girdiği ihlali analiz et. Seçilen HER BİR mevzuat için (Eğe
             
             loadingEl.innerHTML = `⚡ Bulunan odak kelimelerle TF-IDF puanlaması yapılıyor...`;
 
-            let ihlalTam = violationsArray[vIndex].text;
             let optimumMev = parsedJSON.optimum_mevzuat || "Belirlenemedi";
             let aiRawHtml = `<details class="ai-details" open><summary>🤖 AI Analizi (Seçili ${checkedBoxes.length} Mevzuat) - Optimum: ${optimumMev}</summary><div style="margin-top:10px; font-size:0.8rem; color:#475569;">`;
             
@@ -898,8 +1016,14 @@ Kullanıcının girdiği ihlali analiz et. Seçilen HER BİR mevzuat için (Eğe
 
             if(parsedJSON.analiz && Array.isArray(parsedJSON.analiz)) {
                 parsedJSON.analiz.forEach((item, idx) => {
-                    aiRawHtml += `<div style="margin-bottom:8px; border-bottom:1px solid #e2e8f0; padding-bottom:5px;">
-                        <b>${item.mevzuat_adi}:</b> [ ${item.arama_kelimeleri.join(' | ')} ]
+                    
+                    // YENİ V31: AI'nın bulduğu Hüküm Metnini şeffafça ekranda gösteriyoruz!
+                    aiRawHtml += `<div style="margin-bottom:10px; border-bottom:1px solid #e2e8f0; padding-bottom:8px;">
+                        <b style="color:var(--primary); font-size:0.85rem;">${item.mevzuat_adi}</b><br>
+                        <div style="margin: 5px 0; padding: 6px 10px; background: white; border: 1px solid #cbd5e1; border-radius: 6px; font-style: italic; color: #334155;">
+                            "${item.hukum_metni}"
+                        </div>
+                        <span style="color:#059669; font-weight:800;">🔑 Kelimeler: [ ${item.arama_kelimeleri.join(' | ')} ]</span>
                     </div>`;
 
                     let queryTokens = item.arama_kelimeleri.map(w => tightNormalize(w));
@@ -922,7 +1046,7 @@ Kullanıcının girdiği ihlali analiz et. Seçilen HER BİR mevzuat için (Eğe
             aiRawHtml += `</div></details>`;
             document.getElementById(`aiKeywords_${vIndex}`).innerHTML = aiRawHtml;
 
-            // NİHAİ SIRALAMA MANTIĞI
+            // Sıralama
             allMatchedChunks.sort((a, b) => {
                 if (a.isOptimum && !b.isOptimum) return -1; 
                 if (!a.isOptimum && b.isOptimum) return 1;  
@@ -941,7 +1065,9 @@ Kullanıcının girdiği ihlali analiz et. Seçilen HER BİR mevzuat için (Eğe
         }
     }
 
-    // --- YENİ V28: NOKTA ATISI (TF-IDF VE 10 LİSTELEME) ---
+    // ==========================================
+    // ŞELALE (CASCADE) ARAMA ALGORİTMASI
+    // ==========================================
     function runManualSearch(vIndex) {
         const checkedBoxes = Array.from(document.querySelectorAll(`#mevList_${vIndex} input[type="checkbox"]:checked`));
         if (checkedBoxes.length === 0) { alert("Mevzuat seçmediniz!"); return; }
@@ -949,45 +1075,78 @@ Kullanıcının girdiği ihlali analiz et. Seçilen HER BİR mevzuat için (Eğe
         let manualInput = document.getElementById(`manualKw_${vIndex}`).value.trim();
         if (!manualInput) { alert("Kelime girin!"); return; }
 
-        let queryTokens = getCleanTokens(manualInput);
-        if (queryTokens.length === 0) { alert("Geçerli kelime bulunamadı (çok kısa veya genel)."); return; }
+        let rawTokens = manualInput.split(/[,;]+/).map(t => t.trim()).filter(t => t.length > 0);
+        let queryTokens = [];
+        rawTokens.forEach(rt => { queryTokens = queryTokens.concat(getCleanTokens(rt)); });
         
-        document.getElementById(`aiKeywords_${vIndex}`).innerHTML = `<div class="ai-details" style="border-left: 3px solid var(--secondary);">✍️ <b>TF-IDF Puanlı Arama:</b> [ ${queryTokens.join(" | ")} ]</div>`;
-
+        if (queryTokens.length === 0) { alert("Geçerli kelime bulunamadı (çok kısa veya stop-word)."); return; }
+        
         let selectedDbIndices = checkedBoxes.map(cb => parseInt(cb.value));
         let filteredChunks = provisionChunksCache.filter(c => selectedDbIndices.includes(c.mevIdx));
 
-        filteredChunks.forEach(chunk => {
-            chunk.tfIdfScore = calculateTfIdfScore(chunk.metin, queryTokens);
-        });
-
-        let matchedChunks = filteredChunks.filter(c => c.tfIdfScore > 0).sort((a, b) => b.tfIdfScore - a.tfIdfScore);
-
-        let uniqueResults = [];
-        for (let r of matchedChunks) { 
-            if(!uniqueResults.some(u => u.dayanak === r.dayanak)) uniqueResults.push(r); 
+        let attempts = [];
+        for (let start = 0; start < queryTokens.length; start++) {
+            for (let end = queryTokens.length; end > start; end--) {
+                attempts.push(queryTokens.slice(start, end));
+            }
         }
 
-        renderResults(vIndex, uniqueResults);
+        let matchedChunks = [];
+        let uniqueDayanaks = new Set();
+        let successfulAttempts = []; 
+
+        for (let attemptTokens of attempts) {
+            let results = filteredChunks.filter(chunk => {
+                let chunkText = tightNormalize(chunk.metin);
+                return attemptTokens.every(token => chunkText.includes(token));
+            });
+
+            if (results.length > 0) {
+                let clonedResults = results.map(c => ({...c}));
+                clonedResults.forEach(c => c.tfIdfScore = calculateTfIdfScore(c.metin, attemptTokens));
+                
+                clonedResults.sort((a, b) => b.tfIdfScore - a.tfIdfScore);
+                
+                let addedAny = false;
+                for (let r of clonedResults) {
+                    if (!uniqueDayanaks.has(r.dayanak)) {
+                        uniqueDayanaks.add(r.dayanak);
+                        matchedChunks.push(r);
+                        addedAny = true;
+                    }
+                    if (matchedChunks.length >= 10) break; 
+                }
+                
+                if (addedAny) successfulAttempts.push(attemptTokens);
+                if (matchedChunks.length >= 10) break; 
+            }
+        }
+
+        let statusHtml = `✍️ <b>Aranan:</b> [ ${queryTokens.join(" | ")} ]`;
+        if (successfulAttempts.length > 0) {
+            let comboStrings = successfulAttempts.map(arr => `[${arr.join(" ")}]`).join(", ");
+            statusHtml += `<br><span style="color:#059669; font-size:0.75rem;">(10'a Tamamlama Zinciri: <b>${comboStrings}</b>)</span>`;
+        }
+        
+        document.getElementById(`aiKeywords_${vIndex}`).innerHTML = `<div class="ai-details" style="border-left: 3px solid var(--secondary);">${statusHtml}</div>`;
+
+        renderResults(vIndex, matchedChunks);
         document.getElementById(`optionsContainer_${vIndex}`).style.display = 'block';
     }
 
-    // YENİ V28: 10 LİSTELEME VE SKOR GÖSTERİMİ
     function renderResults(vIndex, resultsArr) {
         const optionsListEl = document.getElementById(`optionsList_${vIndex}`);
         if (resultsArr.length === 0) { 
-            optionsListEl.innerHTML = `<div style="color:var(--danger); font-weight:800; padding:15px; background:#fee2e2; border-radius:8px; text-align:center;">⚠️ Eşleşen madde bulunamadı.</div>`; 
+            optionsListEl.innerHTML = `<div style="color:var(--danger); font-weight:800; padding:15px; background:#fee2e2; border-radius:8px; text-align:center;">⚠️ Eşleşen madde bulunamadı. Şelale algoritması bile pes etti!</div>`; 
             return; 
         }
         
-        // 10 ALTERNATİF LİSTELE
         let topResults = resultsArr.slice(0, 10); 
         window[`currentOptions_${vIndex}`] = topResults; 
         
         let html = ''; 
         topResults.forEach((res, idx) => {
             let scoreTag = res.tfIdfScore ? `<span class="tfidf-score" title="TF-IDF Puanı">🎯 ${res.tfIdfScore.toFixed(2)}</span>` : '';
-            
             html += `
             <div class="option-card" title="Çift tıklayarak rapora ekle.">
                 <input type="radio" name="opt_${vIndex}" id="opt_${vIndex}_${idx}" value="${idx}">
@@ -1037,7 +1196,9 @@ Kullanıcının girdiği ihlali analiz et. Seçilen HER BİR mevzuat için (Eğe
         navigator.clipboard.writeText(reportText).then(() => alert("Kopyalandı!")); 
     }
     
-    // --- ORİJİNAL ARŞİV ARAMA ---
+    // ==========================================
+    // ORİJİNAL ARŞİV ARAMA (ZIP)
+    // ==========================================
     const ZIP_URL = './MevzuatText.zip'; 
     let GLOBAL_MATCHES=[]; 
     let cachedZipData = null; 
