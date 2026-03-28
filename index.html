@@ -609,6 +609,8 @@
                 if (req.result && req.result.length > 0) { 
                     mevzuatDB = req.result; 
                     showDBReadySuccess("Hafızadan Yüklendi"); 
+                    
+                    // YENİ: precomputeTfIdf çağrılmadan ÖNCE buildSearchableChunks fonksiyonunun var olduğundan emin olunuyor.
                     precomputeTfIdf();
                 } else {
                     logDebug("Hafızada DB bulunamadı. Buluttan otomatik indiriliyor...", "warn");
@@ -625,6 +627,36 @@
                 }
             };
         };
+    }
+
+    // ==========================================
+    // EKSİK OLAN HAYATİ FONKSİYON EKLENDİ!
+    // ==========================================
+    function buildSearchableChunks(mevzuatObj) {
+        let chunks = [];
+        let kDayanak = mevzuatObj.dayanak_kanun ? (mevzuatObj.dayanak_kanun + ", ") : "";
+        let mName = mevzuatObj.mevzuat_adi;
+        if(mevzuatObj.maddeler) {
+            mevzuatObj.maddeler.forEach(mad => {
+                if(mad.metin) chunks.push({ metin: mad.metin, dayanak: `(${kDayanak}${mName}, Madde: ${mad.madde_no})` });
+                if(mad.fikralar) mad.fikralar.forEach(fik => {
+                    if(fik.metin) chunks.push({ metin: fik.metin, dayanak: `(${kDayanak}${mName}, Madde: ${mad.madde_no}(${fik.fikra_no}))` });
+                    if(fik.bentler) fik.bentler.forEach(ben => chunks.push({ metin: ben.metin, dayanak: `(${kDayanak}${mName}, Madde: ${mad.madde_no}(${fik.fikra_no}) ${ben.bent_harfi})` }));
+                });
+                if(mad.bentler && (!mad.fikralar || mad.fikralar.length===0)) mad.bentler.forEach(ben => chunks.push({ metin: ben.metin, dayanak: `(${kDayanak}${mName}, Madde: ${mad.madde_no} ${ben.bent_harfi})` }));
+            });
+        }
+        if(mevzuatObj.ekler) {
+            mevzuatObj.ekler.forEach(ek => {
+                let bagli = ek.bagli_oldugu_madde ? `${ek.bagli_oldugu_madde}, ` : "";
+                if(ek.metin) chunks.push({ metin: ek.metin, dayanak: `(${kDayanak}${mName}, ${bagli}${ek.ek_no})` });
+                if(ek.maddeler) ek.maddeler.forEach(mad => {
+                    if(mad.metin) chunks.push({ metin: mad.metin, dayanak: `(${kDayanak}${mName}, ${bagli}${ek.ek_no}, Madde: ${mad.madde_no})` });
+                    if(mad.bentler) mad.bentler.forEach(ben => chunks.push({ metin: ben.metin, dayanak: `(${kDayanak}${mName}, ${bagli}${ek.ek_no}, Madde: ${mad.madde_no} ${ben.bent_harfi})` }));
+                });
+            });
+        }
+        return chunks;
     }
 
     // ==========================================
@@ -1114,7 +1146,7 @@
                 <div class="tools-toolbar">
                     <div class="tool-section">
                         <span class="tool-header">✍️ 1. Şelale (Cascade) Arama</span>
-                        <div class="tool-hint">Aramak istediğiniz ifadeyi yazın.</div>
+                        <div class="tool-hint">Kelimeleri (;) ile ayırın. Bulana kadar daraltır.</div>
                         <div class="input-group" style="margin-top:4px;">
                             <input type="text" id="manualKw_${vIndex}" placeholder="Kelimeler...">
                             <button class="btn btn-secondary btn-sm" onclick="runManualSearch(${vIndex})">Ara</button>
