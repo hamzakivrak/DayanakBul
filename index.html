@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İSG Yapay Zeka Denetçi V21 (Tam Hiyerarşi & Fuzzy Match)</title>
+    <title>İSG Yapay Zeka Denetçi V22 (Kusursuz Regex & Hiyerarşi)</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
@@ -29,7 +29,7 @@
         input[type="text"]:focus, input[type="password"]:focus, textarea:focus { border-color: var(--primary); }
         textarea { resize: vertical; min-height: 80px; }
         
-        .btn { color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.9rem; }
+        .btn { color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; justify-content: gap: 6px; font-size: 0.9rem; }
         .btn:active { transform: translateY(2px); }
         .btn-sm { padding: 8px 12px; font-size: 0.85rem; }
         .btn-primary { background: var(--primary); } .btn-primary:hover { background: var(--primary-hover); }
@@ -155,8 +155,8 @@
     <div class="modal-overlay" id="parserModal">
         <div class="modal-content">
             <span class="close-modal" onclick="document.getElementById('parserModal').style.display='none'">&times;</span>
-            <h2 style="border: none; color: var(--primary);">📚 JSON Dönüştürücü (V21 Hiyerarşi)</h2>
-            <p style="font-size: 0.85rem; color: var(--text-muted);">TXT formatındaki mevzuatları içeren ZIP dosyasını seçin. <b>Fıkra hataları ve uzun çizgiler temizlenerek kusursuz hiyerarşi oluşturulur.</b></p>
+            <h2 style="border: none; color: var(--primary);">📚 JSON Dönüştürücü (V22 Güçlendirilmiş)</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">TXT formatındaki mevzuatları içeren ZIP dosyasını seçin. <b>"Ekip" ve "Eki" gibi hatalı kelimeler filtrelenerek kusursuz bağlantı kurulacaktır.</b></p>
             <div class="upload-area" onclick="document.getElementById('zipFileInput').click()">
                 <div style="font-size: 2.5rem; margin-bottom: 5px;">📦</div>
                 <strong style="color: var(--primary);">ZIP Dosyası Yükle</strong>
@@ -170,10 +170,9 @@
         <div class="modal-content" style="max-width: 900px; height: 85vh;">
             <span class="close-modal" onclick="closeZipSearchModal()">&times;</span>
             <h2 style="border:none; margin-bottom:10px; color: var(--primary);">📖 Orijinal Mevzuat Arşivi</h2>
-            
             <div class="zip-search-wrapper">
                 <div class="zip-info-card">
-                    <b>İpucu:</b> Kelimeleri virgül (,) veya noktalı virgül (;) ile ayırarak aratabilirsiniz. Noktalama işaretleri tolere edilir.
+                    <b>İpucu:</b> Kelimeleri virgül (,) veya noktalı virgül (;) ile ayırarak aratabilirsiniz. Noktalama işaretleri sistem tarafından tolere edilir.
                 </div>
                 <div class="zip-search-box">
                     <input type="text" id="zipSearchInput" placeholder="Aranacak Kelime[; dosya filtresi]">
@@ -280,7 +279,7 @@
         return cleanText.replace(/[.,;:'"!?()[\]{}<>\-\/\\_]/g, ' ').replace(/\s+/g, ' ').trim();
     }
 
-    // --- API KEY YÖNETİMİ ---
+    // --- API KEY ---
     window.onload = function() {
         const savedKeys = localStorage.getItem('isg_groq_keys');
         if (savedKeys) { 
@@ -379,7 +378,7 @@
         reader.readAsText(file);
     });
 
-    // --- ZIP'TEN JSON (V21 - HİYERARŞİ VE EN-DASH ÇÖZÜCÜ MASTER MİMARİ) ---
+    // --- ZIP'TEN JSON (V22 - KUSURSUZ REGEX MOTORU) ---
     let zipProcessedData = [];
     document.getElementById('zipFileInput').addEventListener('change', async (e) => {
         const file = e.target.files[0];
@@ -425,18 +424,18 @@
         let currentMadde = null, currentFikra = null, currentEk = null, isInEk = false;
         let ekAtiflari = {}; 
 
-        // En-dash, em-dash gibi karakterleri tolere eden regex
         const maddeRegex = /^MADDE\s+(\d+)\s*[-:–—]*\s*(.*)/i;
         const fikraRegex = /^\((\d+)\)\s*(.*)/;
         const bentRegex = /^([a-zçğıöşü]+)\)\s*(.*)/i;
-        const ekRegex = /^EK\s*[-:–—]*\s*([0-9]+[A-Z]?|[IVX]+[A-Z]?)(.*)/i; 
+        // V22: Ekip, Eksik gibi kelimeleri dışlamak için katı sınır!
+        const ekRegex = /^EK\s*(?:[-:–—]|\s+)\s*([0-9]+[a-zA-Z]?|[IVX]+)(.*)/i; 
         const ekAltMaddeRegex = /^(\d+[\.\d]*)\s*(.*)/; 
 
-        // V21 Kilit Nokta: Atıfları doğru objeye bağlamak için iç fonksiyon
+        // V22: Eki, Ekip gibi kelimeleri dışlayan kusursuz atıf bulucu!
         function checkAtif(textToCheck) {
             if (!isInEk && currentMadde) {
                 let safeLine = textToCheck.replace(/\(Ek\s*:[^)]+\)/gi, ''); 
-                let atifRegex = /\bEk\s*[-]?\s*([0-9]+[A-Z]?|[IVX]+[A-Z]?)\b/gi;
+                let atifRegex = /\b(?:EK|Ek|ek)\s*(?:[-:]|\s+)\s*([0-9]+[a-zA-Z]?|[IVX]+)/gi;
                 let match;
                 while ((match = atifRegex.exec(safeLine)) !== null) {
                     let normEkNo = normalizeEkNo(match[1]);
@@ -477,14 +476,12 @@
             let maddeMatch = line.match(maddeRegex);
             if (maddeMatch) { 
                 let baslikMetni = maddeMatch[2] ? maddeMatch[2].trim() : "";
-                // V21 Kilit Nokta: Uzun çizgi (en-dash) kalıntılarını temizle!
                 baslikMetni = baslikMetni.replace(/^[\s\-–—:]+/g, '').trim(); 
                 
                 let yeniMadde = { madde_no: maddeMatch[1], baslik: baslikMetni, fikralar: [], bentler: [], metin: "" }; 
                 if (isInEk && currentEk) currentEk.maddeler.push(yeniMadde); else result.maddeler.push(yeniMadde); 
                 currentMadde = yeniMadde; currentFikra = null; 
                 
-                // Gizli Fıkra Yakalayıcı (Örn: MADDE 5 - (1) İşveren...)
                 let gizliFikraMatch = baslikMetni.match(/^\((\d+)\)\s*(.*)/);
                 if (gizliFikraMatch) {
                     let yeniFikra = { fikra_no: gizliFikraMatch[1], metin: gizliFikraMatch[2] ? gizliFikraMatch[2].trim() : "", bentler: [] };
