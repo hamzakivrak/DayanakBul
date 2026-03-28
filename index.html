@@ -326,9 +326,9 @@
         <span class="close-modal" onclick="closeZipSearchModal()">&times;</span>
         <h2 style="border:none; margin-bottom:10px; color: var(--primary);">📖 Orijinal Mevzuat Arşivi</h2>
         <div class="zip-search-wrapper">
-            <div class="zip-info-card"><b>İpucu:</b> Kelimeleri virgül (,) veya noktalı virgül (;) ile ayırarak aratabilirsiniz. Noktalama işaretleri tolere edilir.</div>
+            <div class="zip-info-card"><b>İpucu:</b> Önce aranacak metni, sonra noktalı virgül (<b>;</b>), en son aramak istediğiniz yönetmeliğin adını yazın. (Örn: <i>hava hızı ; maden</i>)</div>
             <div class="zip-search-box">
-                <input type="text" id="zipSearchInput" placeholder="Aranacak Kelime [Örn: hava hızı; maden]">
+                <input type="text" id="zipSearchInput" placeholder="Arama [; Yönetmelik Filtresi]">
                 <button id="zipSearchButton" class="btn btn-primary">Bul</button>
             </div>
             <div id="zipSearchResults"></div>
@@ -1114,7 +1114,7 @@
                 <div class="tools-toolbar">
                     <div class="tool-section">
                         <span class="tool-header">✍️ 1. Şelale (Cascade) Arama</span>
-                        <div class="tool-hint">Kelimeleri (;) ile ayırın. Bulana kadar daraltır.</div>
+                        <div class="tool-hint">Aramak istediğiniz ifadeyi yazın.</div>
                         <div class="input-group" style="margin-top:4px;">
                             <input type="text" id="manualKw_${vIndex}" placeholder="Kelimeler...">
                             <button class="btn btn-secondary btn-sm" onclick="runManualSearch(${vIndex})">Ara</button>
@@ -1454,8 +1454,19 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
         let isFuzzy = raw.startsWith('FUZZY:'); 
         let termPart = isFuzzy ? raw.replace('FUZZY:', '') : raw;
         
-        // Kullanıcının "hava hızı ; maden" gibi girişlerini noktalı virgül veya virgülden ayırıyoruz.
-        let rawTokens = termPart.split(/[,;]+/).map(t => t.trim()).filter(t => t.length > 0);
+        // YENİ: Noktalı virgül (;) ile filtre ayrımı
+        let searchPart = termPart;
+        let legislationFilter = "";
+        
+        if (termPart.includes(';')) {
+            let parts = termPart.split(';');
+            searchPart = parts[0].trim();
+            // Virgül sonrasındaki filtreyi alıyoruz
+            legislationFilter = normalizeForZipSearch(parts.slice(1).join(' ').trim());
+        }
+
+        // Arama terimlerini virgülle (,) ayrılmışsa çoklu kalıp olarak al
+        let rawTokens = searchPart.split(',').map(t => t.trim()).filter(t => t.length > 0);
         let queryTokens = rawTokens.map(t => normalizeForZipSearch(t)).filter(t => t.length > 0);
         
         if (queryTokens.length === 0) { resEl.innerHTML = '<div class="zip-alert zip-alert-warning">Geçersiz arama terimi.</div>'; return; }
@@ -1475,6 +1486,10 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
                 
                 const mevzuatAd = f.name.replace(/\.txt$/i, ''); 
                 const cleanMevzuatAd = normalizeForZipSearch(mevzuatAd); 
+                
+                // YENİ: Eğer mevzuat filtresi varsa ve bu dosyanın adı filtreyle eşleşmiyorsa bu dosyayı direkt atla!
+                if (legislationFilter && !cleanMevzuatAd.includes(legislationFilter)) return;
+
                 const content = await f.async('string'); 
                 const lines = content.split(/\r?\n/);
                 
