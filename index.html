@@ -608,10 +608,11 @@
             req.onsuccess = () => {
                 if (req.result && req.result.length > 0) { 
                     mevzuatDB = req.result; 
-                    showDBReadySuccess("Hafızadan Yüklendi"); 
                     
-                    // YENİ: precomputeTfIdf çağrılmadan ÖNCE buildSearchableChunks fonksiyonunun var olduğundan emin olunuyor.
+                    // YENİ: precomputeTfIdf çağrılmadan ÖNCE buildSearchableChunks çalışmalı.
                     precomputeTfIdf();
+                    
+                    showDBReadySuccess("Hafızadan Yüklendi"); 
                 } else {
                     logDebug("Hafızada DB bulunamadı. Buluttan otomatik indiriliyor...", "warn");
                     fetch('./mevzuat_veritabani.json?v=' + new Date().getTime(), { cache: "no-store" })
@@ -619,8 +620,8 @@
                         .then(data => {
                             mevzuatDB = data; 
                             saveDBToIndexedDB(mevzuatDB); 
-                            showDBReadySuccess("Buluttan Yüklendi");
                             precomputeTfIdf();
+                            showDBReadySuccess("Buluttan Yüklendi");
                             logDebug("Veritabanı buluttan çekildi.", "success");
                         })
                         .catch(err => { logDebug(`Otomatik çekme başarısız: ${err.message}`, "error"); });
@@ -667,11 +668,11 @@
 
         const models = ['llama-3.3-70b-versatile', 'llama-3.1-8b-instant'];
 
-        for (let keyIdx = 0; keyIdx < apiKeys.length; keyIdx++) {
-            let currentKey = apiKeys[keyIdx];
+        for (let modelIdx = 0; modelIdx < models.length; modelIdx++) {
+            let currentModel = models[modelIdx];
 
-            for (let modelIdx = 0; modelIdx < models.length; modelIdx++) {
-                let currentModel = models[modelIdx];
+            for (let keyIdx = 0; keyIdx < apiKeys.length; keyIdx++) {
+                let currentKey = apiKeys[keyIdx];
                 
                 try {
                     const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
@@ -707,6 +708,50 @@
         }
         
         throw new Error("Mevcut tüm API Key'ler ve Modeller için günlük kotalar dolmuş! Lütfen yeni bir API Key ekleyin veya yarına kadar bekleyin.");
+    }
+
+    // ==========================================
+    // ORTAK ŞELALE ARAMA (CASCADE) BEYNİ
+    // ==========================================
+    function performCascadeSearch(queryTokens, chunksToSearch) {
+        let attempts = [];
+        for (let start = 0; start < queryTokens.length; start++) {
+            for (let end = queryTokens.length; end > start; end--) {
+                attempts.push(queryTokens.slice(start, end));
+            }
+        }
+
+        let matchedChunks = [];
+        let uniqueDayanaks = new Set();
+        let successfulAttempts = []; 
+
+        for (let attemptTokens of attempts) {
+            let results = chunksToSearch.filter(chunk => {
+                let chunkText = tightNormalize(chunk.metin);
+                return attemptTokens.every(token => chunkText.includes(token));
+            });
+
+            if (results.length > 0) {
+                let clonedResults = results.map(c => ({...c}));
+                clonedResults.forEach(c => c.tfIdfScore = calculateTfIdfScore(c.metin, attemptTokens));
+                
+                clonedResults.sort((a, b) => b.tfIdfScore - a.tfIdfScore);
+                
+                let addedAny = false;
+                for (let r of clonedResults) {
+                    if (!uniqueDayanaks.has(r.dayanak)) {
+                        uniqueDayanaks.add(r.dayanak);
+                        matchedChunks.push(r);
+                        addedAny = true;
+                    }
+                    if (matchedChunks.length >= 10) break; 
+                }
+                
+                if (addedAny) successfulAttempts.push(attemptTokens);
+                if (matchedChunks.length >= 10) break; 
+            }
+        }
+        return { matchedChunks, successfulAttempts };
     }
 
     // ==========================================
@@ -1146,7 +1191,7 @@
                 <div class="tools-toolbar">
                     <div class="tool-section">
                         <span class="tool-header">✍️ 1. Şelale (Cascade) Arama</span>
-                        <div class="tool-hint">Kelimeleri (;) ile ayırın. Bulana kadar daraltır.</div>
+                        <div class="tool-hint">Aramak istediğiniz kelimeleri yazın.</div>
                         <div class="input-group" style="margin-top:4px;">
                             <input type="text" id="manualKw_${vIndex}" placeholder="Kelimeler...">
                             <button class="btn btn-secondary btn-sm" onclick="runManualSearch(${vIndex})">Ara</button>
@@ -1212,7 +1257,7 @@
     }
 
     // ==========================================
-    // V31: ŞEFFAF YAPAY ZEKA VE EŞLEŞTİRME
+    // V31: ŞEFFAF YAPAY ZEKA VE ORTAK ŞELALE
     // ==========================================
     async function runAISearch(vIndex) {
         if (apiKeys.length === 0) { alert("Lütfen ayarlar menüsünden API Key ekleyin."); return; }
@@ -1258,7 +1303,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
 
             const parsedJSON = safeParseJSON(data.choices[0].message.content);
             
-            loadingEl.innerHTML = `⚡ Bulunan odak kelimelerle TF-IDF puanlaması yapılıyor...`;
+            loadingEl.innerHTML = `⚡ Bulunan odak kelimelerle Şelale ve TF-IDF algoritması çalıştırılıyor...`;
 
             let optimumMev = parsedJSON.optimum_mevzuat || "Belirlenemedi";
             let aiRawHtml = `<details class="ai-details" open><summary>🤖 AI Analizi (Seçili ${checkedBoxes.length} Mevzuat) - Optimum: ${optimumMev}</summary><div style="margin-top:10px; font-size:0.8rem;">`;
@@ -1267,35 +1312,44 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
 
             if(parsedJSON.analiz && Array.isArray(parsedJSON.analiz)) {
                 parsedJSON.analiz.forEach((item, idx) => {
+                    let queryTokens = item.arama_kelimeleri.map(w => tightNormalize(w));
+                    let targetMevIdx = checkedBoxes.findIndex(cb => cb.nextElementSibling.innerText === item.mevzuat_adi);
                     
+                    let hintHtml = "";
+
+                    if(targetMevIdx !== -1) {
+                        let dbIdx = parseInt(checkedBoxes[targetMevIdx].value);
+                        let mevChunks = provisionChunksCache.filter(c => c.mevIdx === dbIdx);
+                        
+                        // YENİ: YZ Kelimelerini Ortak Şelale Motorundan Geçiriyoruz
+                        let cascadeResult = performCascadeSearch(queryTokens, mevChunks);
+                        let matchedChunks = cascadeResult.matchedChunks;
+                        let successfulAttempts = cascadeResult.successfulAttempts;
+
+                        let isOptimum = (item.mevzuat_adi === optimumMev);
+                        matchedChunks.forEach(m => {
+                            m.aiOrder = idx;
+                            m.isOptimum = isOptimum;
+                            allMatchedChunks.push(m);
+                        });
+
+                        let comboStrings = successfulAttempts.map(arr => `[${arr.join(" ")}]`).join(", ");
+                        hintHtml = successfulAttempts.length > 0 ? `<br><span style="color:var(--secondary); font-size:0.75rem; font-style:italic;">(Şelale Yakalaması: ${comboStrings})</span>` : '';
+                    }
+
                     aiRawHtml += `<div style="margin-bottom:10px; border-bottom:1px solid var(--border); padding-bottom:8px;">
                         <b style="color:var(--primary); font-size:0.85rem;">${item.mevzuat_adi}</b><br>
                         <div style="margin: 5px 0; padding: 6px 10px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 6px; font-style: italic; color: var(--text-muted);">
                             "${item.hukum_metni}"
                         </div>
-                        <span style="color:var(--success); font-weight:800;">🔑 Kelimeler: [ ${item.arama_kelimeleri.join(' | ')} ]</span>
+                        <span style="color:var(--success); font-weight:800;">🔑 Kelimeler: [ ${item.arama_kelimeleri.join(' | ')} ]</span>${hintHtml}
                     </div>`;
-
-                    let queryTokens = item.arama_kelimeleri.map(w => tightNormalize(w));
-                    let targetMevIdx = checkedBoxes.findIndex(cb => cb.nextElementSibling.innerText === item.mevzuat_adi);
-                    
-                    if(targetMevIdx !== -1) {
-                        let dbIdx = parseInt(checkedBoxes[targetMevIdx].value);
-                        let mevChunks = provisionChunksCache.filter(c => c.mevIdx === dbIdx);
-                        
-                        mevChunks.forEach(chunk => {
-                            let score = calculateTfIdfScore(chunk.metin, queryTokens);
-                            if(score > 0) {
-                                let isOptimum = (item.mevzuat_adi === optimumMev);
-                                allMatchedChunks.push({...chunk, tfIdfScore: score, aiOrder: idx, isOptimum: isOptimum});
-                            }
-                        });
-                    }
                 });
             }
             aiRawHtml += `</div></details>`;
             document.getElementById(`aiKeywords_${vIndex}`).innerHTML = aiRawHtml;
 
+            // Sıralama ve Tekilleştirme
             allMatchedChunks.sort((a, b) => {
                 if (a.isOptimum && !b.isOptimum) return -1; 
                 if (!a.isOptimum && b.isOptimum) return 1;  
@@ -1333,43 +1387,10 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
         let selectedDbIndices = checkedBoxes.map(cb => parseInt(cb.value));
         let filteredChunks = provisionChunksCache.filter(c => selectedDbIndices.includes(c.mevIdx));
 
-        let attempts = [];
-        for (let start = 0; start < queryTokens.length; start++) {
-            for (let end = queryTokens.length; end > start; end--) {
-                attempts.push(queryTokens.slice(start, end));
-            }
-        }
-
-        let matchedChunks = [];
-        let uniqueDayanaks = new Set();
-        let successfulAttempts = []; 
-
-        for (let attemptTokens of attempts) {
-            let results = filteredChunks.filter(chunk => {
-                let chunkText = tightNormalize(chunk.metin);
-                return attemptTokens.every(token => chunkText.includes(token));
-            });
-
-            if (results.length > 0) {
-                let clonedResults = results.map(c => ({...c}));
-                clonedResults.forEach(c => c.tfIdfScore = calculateTfIdfScore(c.metin, attemptTokens));
-                
-                clonedResults.sort((a, b) => b.tfIdfScore - a.tfIdfScore);
-                
-                let addedAny = false;
-                for (let r of clonedResults) {
-                    if (!uniqueDayanaks.has(r.dayanak)) {
-                        uniqueDayanaks.add(r.dayanak);
-                        matchedChunks.push(r);
-                        addedAny = true;
-                    }
-                    if (matchedChunks.length >= 10) break; 
-                }
-                
-                if (addedAny) successfulAttempts.push(attemptTokens);
-                if (matchedChunks.length >= 10) break; 
-            }
-        }
+        // Ortak Şelale Motorunu Çağır
+        let cascadeResult = performCascadeSearch(queryTokens, filteredChunks);
+        let matchedChunks = cascadeResult.matchedChunks;
+        let successfulAttempts = cascadeResult.successfulAttempts;
 
         let statusHtml = `✍️ <b>Aranan:</b> [ ${queryTokens.join(" | ")} ]`;
         if (successfulAttempts.length > 0) {
@@ -1386,7 +1407,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
     function renderResults(vIndex, resultsArr) {
         const optionsListEl = document.getElementById(`optionsList_${vIndex}`);
         if (resultsArr.length === 0) { 
-            optionsListEl.innerHTML = `<div style="color:var(--danger); font-weight:800; padding:15px; background:rgba(239,68,68,0.1); border-radius:8px; text-align:center;">⚠️ Eşleşen madde bulunamadı. Şelale algoritması bile pes etti!</div>`; 
+            optionsListEl.innerHTML = `<div style="color:var(--danger); font-weight:800; padding:15px; background:rgba(239,68,68,0.1); border-radius:8px; text-align:center;">⚠️ Eşleşen madde bulunamadı. Lütfen daha az veya farklı kelimeler deneyin.</div>`; 
             return; 
         }
         
@@ -1486,18 +1507,15 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
         let isFuzzy = raw.startsWith('FUZZY:'); 
         let termPart = isFuzzy ? raw.replace('FUZZY:', '') : raw;
         
-        // YENİ: Noktalı virgül (;) ile filtre ayrımı
         let searchPart = termPart;
         let legislationFilter = "";
         
         if (termPart.includes(';')) {
             let parts = termPart.split(';');
             searchPart = parts[0].trim();
-            // Virgül sonrasındaki filtreyi alıyoruz
             legislationFilter = normalizeForZipSearch(parts.slice(1).join(' ').trim());
         }
 
-        // Arama terimlerini virgülle (,) ayrılmışsa çoklu kalıp olarak al
         let rawTokens = searchPart.split(',').map(t => t.trim()).filter(t => t.length > 0);
         let queryTokens = rawTokens.map(t => normalizeForZipSearch(t)).filter(t => t.length > 0);
         
@@ -1519,7 +1537,6 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
                 const mevzuatAd = f.name.replace(/\.txt$/i, ''); 
                 const cleanMevzuatAd = normalizeForZipSearch(mevzuatAd); 
                 
-                // YENİ: Eğer mevzuat filtresi varsa ve bu dosyanın adı filtreyle eşleşmiyorsa bu dosyayı direkt atla!
                 if (legislationFilter && !cleanMevzuatAd.includes(legislationFilter)) return;
 
                 const content = await f.async('string'); 
