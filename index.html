@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>İSG Yapay Zeka Denetçi V27 (Mobil App Sürümü)</title>
+    <title>İSG Yapay Zeka Denetçi V28 (TF-IDF Çoklu Beyin)</title>
     
     <link rel="manifest" href="./manifest.json">
     <meta name="theme-color" content="#4f46e5">
@@ -99,6 +99,9 @@
         .dbl-click-hint { font-size: 0.7rem; color: #64748b; background: #e2e8f0; padding: 2px 6px; border-radius: 8px; }
         .option-text { font-size: 0.9rem; color: var(--text-main); margin-bottom: 8px; font-weight: 600; }
         .option-citation { font-size: 0.8rem; color: var(--primary); font-style: italic; font-weight: 800; }
+        
+        /* TF-IDF Skoru Görünümü */
+        .tfidf-score { font-size: 0.7rem; color: #94a3b8; font-weight: 400; background: #f1f5f9; padding: 2px 5px; border-radius: 5px;}
 
         .ai-details { background:#eef2ff; padding:8px 12px; border-radius:8px; margin-bottom:10px; border:1px solid #c7d2fe; font-size: 0.85rem;}
         .ai-details summary { cursor: pointer; color: var(--primary); outline: none; display: flex; align-items: center;}
@@ -154,7 +157,6 @@
         <h1>✨ İSG Yapay Zeka Denetçi</h1>
         <div class="header-actions">
             <button id="installAppBtn">📲 Uygulamayı Yükle</button>
-            
             <button class="icon-btn" title="Uygulamayı Buluttan Zorla Güncelle (Önbelleği Temizle)" onclick="hardSyncFromCloud()">🔄</button>
             <button class="icon-btn" title="Hata Ayıklama Konsolu" onclick="document.getElementById('debugModal').style.display='flex'">🐞</button>
             <button class="btn btn-secondary btn-sm" onclick="document.getElementById('parserModal').style.display='flex'">⚙️ JSON Üret</button>
@@ -284,34 +286,59 @@
     const installBtn = document.getElementById('installAppBtn');
 
     window.addEventListener('beforeinstallprompt', (e) => {
-        // Chrome'un otomatik uyarı çıkarmasını engelle
         e.preventDefault();
-        // Olayı hafızaya al
         deferredPrompt = e;
-        // Kendi şık butonumuzu görünür yap
         installBtn.style.display = 'block';
     });
 
     installBtn.addEventListener('click', async () => {
         if (deferredPrompt) {
-            // Chrome'un indirme panelini tetikle
             deferredPrompt.prompt();
-            // Kullanıcının kararını bekle
             const { outcome } = await deferredPrompt.userChoice;
             if (outcome === 'accepted') {
                 console.log('Kullanıcı uygulamayı yükledi.');
-                installBtn.style.display = 'none'; // Butonu gizle
+                installBtn.style.display = 'none';
             }
             deferredPrompt = null;
         }
     });
-    // ------------------------------------
+
+    // --- TÜRKÇE STOP-WORDS VE NORMALIZER (TF-IDF İçin) ---
+    const trStopWords = ["acaba", "altı", "ama", "ancak", "arada", "artık", "asla", "aslında", "ayrıca", "az", "bana", "bazen", "bazı", "belki", "ben", "beni", "benim", "beş", "bile", "bin", "bir", "bira", "biraz", "biri", "birkaç", "birşey", "biz", "bize", "bizim", "böyle", "böylece", "bu", "buna", "bunda", "bundan", "bunlar", "bunları", "bunların", "bunu", "bunun", "burada", "bütün", "çünkü", "da", "daha", "dahi", "dair", "de", "defa", "değil", "diğer", "diye", "dokuz", "dolayı", "dur", "dört", "ebediyen", "eğer", "en", "gene", "gibi", "göre", "hala", "hangi", "hani", "hatta", "hem", "hep", "hepsi", "her", "herkes", "hâlâ", "için", "idü", "ile", "ilgili", "ise", "itibaren", "itibariyle", "iyi", "kaç", "kadar", "karşın", "kendi", "kendilerine", "kendini", "kendisi", "kendisine", "kendisini", "kez", "ki", "kim", "kimden", "kime", "kimi", "kimse", "kırk", "mı", "mi", "mu", "mü", "nasıl", "ne", "neden", "nedenle", "nerde", "nereye", "nitekim", "niye", "o", "on", "ona", "ondan", "onlar", "onlardan", "onları", "onların", "onu", "onun", "orada", "oysa", "pek", "rağmen", "sadece", "sanki", "sekiz", "sen", "senden", "seni", "senin", "siz", "sizden", "sizi", "sizin", "sonra", "şayet", "şey", "şimdi", "şöyle", "şu", "şuna", "şunda", "şundan", "şunlar", "şunu", "tarafından", "trilyon", "tüm", "üç", "üzere", "var", "vardı", "ve", "veya", "ya", "yani", "yapacak", "yapılan", "yapılması", "yaptı", "yedi", "yerine", "yetmiş", "yine", "yoksa", "yüz", "zaten", "zirâ"];
+    
+    function tightNormalize(text) {
+        if (!text) return "";
+        return text.trim()
+            .replace(/Ğ/g, 'g').replace(/ğ/g, 'g')
+            .replace(/Ü/g, 'u').replace(/ü/g, 'u')
+            .replace(/Ş/g, 's').replace(/ş/g, 's')
+            .replace(/I/g, 'i').replace(/ı/g, 'i') 
+            .replace(/İ/g, 'i').replace(/i̇/g, 'i').replace(/i/g, 'i')
+            .replace(/Ö/g, 'o').replace(/ö/g, 'o')
+            .replace(/Ç/g, 'c').replace(/ç/g, 'c')
+            .replace(/Â/g, 'a').replace(/â/g, 'a')
+            .replace(/Î/g, 'i').replace(/î/g, 'i')
+            .replace(/[^a-z0-9\sğüşıöç]/gi, '')
+            .replace(/\s+/g, ' ')
+            .toLowerCase();
+    }
+
+    function getCleanTokens(text) {
+        let normalized = tightNormalize(text);
+        if (!normalized) return [];
+        return normalized.split(' ').filter(word => word.length > 1 && !trStopWords.includes(word));
+    }
+    // ----------------------------------------------------
 
     let mevzuatDB = [];
     let violationsArray = [];
     let apiKeys = [];
     let currentSlideIndex = 0; 
     let finalReportData = {};
+    
+    // TF-IDF Globals
+    let mevzuatIdfTable = {}; 
+    let provisionChunksCache = []; 
 
     function logDebug(msg, type="info") {
         const logEl = document.getElementById('debugLog');
@@ -329,11 +356,6 @@
             };
             req.onerror = function () { alert("Önbellek temizlenemedi, tarayıcı ayarlarından verileri temizleyin."); };
         }
-    }
-
-    function normalizeText(text) {
-        if (!text) return "";
-        return text.toLocaleLowerCase('tr-TR').replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ş/g, 's').replace(/ı/g, 'i').replace(/ö/g, 'o').replace(/ç/g, 'c').replace(/î/g, 'i').replace(/â/g, 'a').replace(/i̇/g, 'i');
     }
 
     function removePunctuation(text) {
@@ -407,18 +429,78 @@
                 if (req.result && req.result.length > 0) { 
                     mevzuatDB = req.result; 
                     showDBReadySuccess("Hafızadan Yüklendi"); 
+                    precomputeTfIdf();
                 } else {
                     logDebug("Hafızada DB bulunamadı. Buluttan otomatik indiriliyor...", "warn");
                     fetch('./mevzuat_veritabani.json?v=' + new Date().getTime(), { cache: "no-store" })
                         .then(res => { if(!res.ok) throw new Error("Dosya yok."); return res.json(); })
                         .then(data => {
-                            mevzuatDB = data; saveDBToIndexedDB(mevzuatDB); showDBReadySuccess("Buluttan (GitHub) Yüklendi");
+                            mevzuatDB = data; 
+                            saveDBToIndexedDB(mevzuatDB); 
+                            showDBReadySuccess("Buluttan (GitHub) Yüklendi");
+                            precomputeTfIdf();
                             logDebug("Veritabanı buluttan çekildi.", "success");
                         })
                         .catch(err => { logDebug(`Otomatik çekme başarısız: ${err.message}`, "error"); });
                 }
             };
         };
+    }
+
+    // --- TF-IDF PRECOMPUTE (IDF Tablosu Oluşturma) ---
+    function precomputeTfIdf() {
+        if (!mevzuatDB || mevzuatDB.length === 0) return;
+        logDebug("TF-IDF IDF tablosu hesaplanıyor...", "warn");
+        
+        let startTime = performance.now();
+        mevzuatIdfTable = {}; 
+        provisionChunksCache = []; 
+        let wordDocumentCount = {}; 
+        
+        mevzuatDB.forEach((mev, mevIdx) => {
+            let chunks = buildSearchableChunks(mev);
+            chunks.forEach(chunk => {
+                provisionChunksCache.push({...chunk, mevIdx: mevIdx});
+                let tokens = getCleanTokens(chunk.metin);
+                let uniqueTokensInChunk = [...new Set(tokens)]; 
+                
+                uniqueTokensInChunk.forEach(token => {
+                    wordDocumentCount[token] = (wordDocumentCount[token] || 0) + 1;
+                });
+            });
+        });
+        
+        let totalDocuments = provisionChunksCache.length;
+        if (totalDocuments === 0) return;
+        
+        for (let token in wordDocumentCount) {
+            mevzuatIdfTable[token] = Math.log10(totalDocuments / (wordDocumentCount[token] + 1));
+        }
+        
+        let endTime = performance.now();
+        logDebug(`TF-IDF Hazır. ${totalDocuments} madde, ${Object.keys(mevzuatIdfTable).length} kelime. Süre: ${((endTime - startTime)/1000).toFixed(2)}sn`, "success");
+    }
+
+    // --- TF-IDF SKORLAMA FONKSİYONU ---
+    function calculateTfIdfScore(chunkText, queryTokens) {
+        if (!queryTokens || queryTokens.length === 0) return 0;
+        let chunkTokens = getCleanTokens(chunkText);
+        if (chunkTokens.length === 0) return 0;
+        
+        let tokenCounts = {};
+        chunkTokens.forEach(token => { tokenCounts[token] = (tokenCounts[token] || 0) + 1; });
+        
+        let score = 0;
+        let queryTokensUnique = [...new Set(queryTokens)]; 
+        
+        queryTokensUnique.forEach(token => {
+            if (tokenCounts[token] && mevzuatIdfTable[token]) {
+                let tf = tokenCounts[token];
+                let idf = mevzuatIdfTable[token];
+                score += tf * idf;
+            }
+        });
+        return score;
     }
 
     function showDBReadySuccess(msg) {
@@ -432,8 +514,12 @@
         if (!file) return;
         const reader = new FileReader();
         reader.onload = function(e) {
-            try { mevzuatDB = JSON.parse(e.target.result); saveDBToIndexedDB(mevzuatDB); showDBReadySuccess("Dosyadan Yüklendi"); } 
-            catch (err) { alert("Geçersiz JSON dosyası!"); }
+            try { 
+                mevzuatDB = JSON.parse(e.target.result); 
+                saveDBToIndexedDB(mevzuatDB); 
+                showDBReadySuccess("Dosyadan Yüklendi"); 
+                precomputeTfIdf();
+            } catch (err) { alert("Geçersiz JSON dosyası!"); }
         };
         reader.readAsText(file);
     });
@@ -462,7 +548,10 @@
         if (zipProcessedData.length === 0) return;
         const blob = new Blob([JSON.stringify(zipProcessedData, null, 2)], { type: "application/json" });
         saveAs(blob, "mevzuat_veritabani.json");
-        mevzuatDB = zipProcessedData; saveDBToIndexedDB(mevzuatDB); showDBReadySuccess("Yeni Üretildi");
+        mevzuatDB = zipProcessedData; 
+        saveDBToIndexedDB(mevzuatDB); 
+        showDBReadySuccess("Yeni Üretildi");
+        precomputeTfIdf();
         document.getElementById('parserModal').style.display='none';
     });
 
@@ -638,17 +727,17 @@
                 
                 <div class="tools-toolbar">
                     <div class="tool-section">
-                        <span class="tool-header">✍️ 1. Nokta Atışı Arama</span>
+                        <span class="tool-header">✍️ 1. Nokta Atışı Arama (TF-IDF)</span>
                         <div class="tool-hint">Kelimeleri (;) ile ayır.</div>
                         <div class="input-group" style="margin-top:4px;">
-                            <input type="text" id="manualKw_${vIndex}" placeholder="Kelimeler...">
+                            <input type="text" id="manualKw_${vIndex}" placeholder="Anahtar kelimeler...">
                             <button class="btn btn-secondary btn-sm" onclick="runManualSearch(${vIndex})">Ara</button>
                         </div>
                     </div>
                     <div class="divider"></div>
                     <div class="tool-section">
-                        <span class="tool-header">🤖 2. AI İle Destek (Akıllı Eşleştirme)</span>
-                        <div class="tool-hint">AI senin için en doğru 1 maddeyi ve anahtar kelimeleri bulur.</div>
+                        <span class="tool-header">🤖 2. AI & TF-IDF (Çoklu Mevzuat)</span>
+                        <div class="tool-hint">AI senin için en doğru maddeleri ve kelimeleri bulur.</div>
                         <button class="btn btn-primary btn-sm" style="width: 100%; margin-top:4px;" id="btnHyde_${vIndex}" onclick="runAISearch(${vIndex})">✨ Otomatik Eşleştir</button>
                     </div>
                 </div>
@@ -686,12 +775,17 @@
         });
         badgesContainer.innerHTML = badgesHTML;
     }
-    function uncheckMevzuat(vIndex, cbValue) { const cb = document.querySelector(`#mevList_${vIndex} input[type="checkbox"][value="${cbValue}"]`); if(cb) { cb.checked = false; updateSelectedBadges(vIndex); } }
+    
+    function uncheckMevzuat(vIndex, cbValue) { 
+        const cb = document.querySelector(`#mevList_${vIndex} input[type="checkbox"][value="${cbValue}"]`); 
+        if(cb) { cb.checked = false; updateSelectedBadges(vIndex); } 
+    }
+    
     function filterMevzuat(inputElem, listId) {
-        const filter = normalizeText(inputElem.value);
+        const filter = tightNormalize(inputElem.value);
         const labels = document.getElementById(listId).getElementsByTagName('label');
         for (let i = 0; i < labels.length; i++) {
-            labels[i].style.display = normalizeText(labels[i].querySelector('.mev-label-text').innerText).indexOf(filter) > -1 ? "" : "none";
+            labels[i].style.display = tightNormalize(labels[i].querySelector('.mev-label-text').innerText).indexOf(filter) > -1 ? "" : "none";
         }
     }
 
@@ -730,12 +824,17 @@
             clean = clean.replace(/,\s*]/g, ']').replace(/,\s*}/g, '}'); 
             return JSON.parse(clean);
         } catch (e) {
-            throw new Error("Yapay zeka format hatası yaptı. Lütfen butona tekrar basın.");
+            try { 
+                let matchArr = rawString.match(/\[\s*\{[\s\S]*\}\s*\]/); 
+                if(matchArr) return JSON.parse(matchArr[0]); 
+            } catch(e2){} 
+            throw new Error("JSON hatası.");
         }
     }
 
+    // --- YENİ V28: YAPAY ZEKA VE TF-IDF (ÇOKLU MEVZUAT BEYNİ) ---
     async function runAISearch(vIndex) {
-        if (apiKeys.length === 0) { alert("Lütfen ayarlardan geçerli bir API Key ekleyin."); return; }
+        if (apiKeys.length === 0) { alert("Lütfen ayarlardan API Key ekleyin."); return; }
         const checkedBoxes = Array.from(document.querySelectorAll(`#mevList_${vIndex} input[type="checkbox"]:checked`));
         if (checkedBoxes.length === 0) { alert("Mevzuat seçmediniz!"); return; }
 
@@ -747,136 +846,153 @@
         btnGen.disabled = true; loadingEl.style.display = 'flex'; optionsContainer.style.display = 'none';
 
         try {
-            loadingEl.innerHTML = `⏳ AI, mevzuatı tarıyor ve odak kelimeleri belirliyor...`;
+            loadingEl.innerHTML = `⏳ AI, seçilen ${checkedBoxes.length} mevzuatı analiz ediyor...`;
             
-            const systemPrompt = `Sen uzman bir İSG denetçisisin. SADECE ŞU MEVZUATLAR İÇİNDE DÜŞÜN: [ ${selectedNames} ]
-Kullanıcının girdiği ihlale karşılık gelen, seçilen mevzuattaki EN UYGUN 1 (BİR) ADET GERÇEK HÜKMÜ bul.
+            const systemPrompt = `Sen uzman bir İSG denetçisisin. SADECE ŞU SEÇİLİ MEVZUATLAR İÇİNDE DÜŞÜN: [ ${selectedNames} ]
 
-ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI:
-1. Toplam 5 adet anahtar kelime belirle.
-2. "işçi", "sağlık", "güvenlik", "işveren", "işyeri", "madde", "çalışan", "önlem", "gerekli", "ilgili", "dair", "olarak", "hakkında", "için", "göre" gibi genel geçer bağlaç ve kelimeleri ASLA KULLANMA.
-3. İLK ANAHTAR KELİME (1. kelime) KESİNLİKLE kullanıcının girdiği İHLAL METNİNDEKİ en kritik, en ayırt edici odak kelime olmalıdır.
-4. Geriye kalan 4 kelimeyi (2, 3, 4 ve 5. kelimeler) kendi bulduğun o 1 ADET MEVZUAT HÜKMÜNÜN içinden seç.
-5. Bütün kelimeler KESİNLİKLE EK ALMAMIŞ, YALIN (KÖK) halinde olmalıdır (Örn: "kapıları" yerine "kapı", "durumlarda" yerine "durum", "topraklaması" yerine "topraklama").
+Kullanıcının girdiği ihlali analiz et. Seçilen HER BİR mevzuat için (Eğer o mevzuatta konuyla ilgili hüküm varsa) en uygun GEREKÇE HÜKMÜNÜ bul.
 
-Çıktı KESİNLİKLE aşağıdaki JSON formatında olmalıdır:
+ÖNEMLİ:
+1. "işçi", "sağlık", "madde", "göre" gibi genel geçer kelimeleri anahtar kelime yapma. Kelimeler niş ve spesifik olmalı.
+2. Bütün kelimeler KESİNLİKLE EK ALMAMIŞ, YALIN KÖK halinde olmalı.
+
+ÇIKTI FORMATI (SADECE JSON):
 {
-  "ai_maddeler": ["Bulduğun 1 adet mevzuat hükmünün metni..."],
-  "arama_kelimeleri": ["ihlalden_kök_kelime", "hükümden_kök_kelime1", "hükümden_kök_kelime2", "hükümden_kök_kelime3", "hükümden_kök_kelime4"]
+  "optimum_mevzuat": "Bulduğun gerekçeler arasında ihlalle en doğrudan eşleşen, en optimum mevzuatın tam adı",
+  "analiz": [
+    {
+      "mevzuat_adi": "Mevzuat 1 tam adı",
+      "hukum_metni": "Mevzuattaki gerekçe hükmünün tam metni",
+      "arama_kelimeleri": ["ihlalden_kök_kelime", "hükümden_kök1", "hükümden_kök2", "hükümden_kök3", "hükümden_kök4"]
+    },
+    {
+      "mevzuat_adi": "Mevzuat 2 tam adı",
+      "hukum_metni": "...",
+      "arama_kelimeleri": ["..."]
+    }
+  ]
 }`;
 
             const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-                method: 'POST',
+                method: 'POST', 
                 headers: { 'Authorization': `Bearer ${apiKeys[0]}`, 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    model: 'llama-3.3-70b-versatile',
-                    messages: [ { role: 'system', content: systemPrompt }, { role: 'user', content: `İHLAL: ${violationsArray[vIndex].text}` } ],
-                    temperature: 0.2
+                body: JSON.stringify({ 
+                    model: 'llama-3.3-70b-versatile', 
+                    messages: [ { role: 'system', content: systemPrompt }, { role: 'user', content: `İHLAL: ${violationsArray[vIndex].text}` } ], 
+                    temperature: 0.1 
                 })
             });
+            
             const data = await response.json();
             if(!response.ok) throw new Error(data.error?.message);
 
             const parsedJSON = safeParseJSON(data.choices[0].message.content);
             
+            loadingEl.innerHTML = `⚡ Bulunan odak kelimelerle TF-IDF puanlaması yapılıyor...`;
+
             let ihlalTam = violationsArray[vIndex].text;
-            let aiRawHtml = `<details class="ai-details" open><summary style="align-items:flex-start;"><span>🤖 AI Hükmü - <span style="font-weight:800; color:#1e293b;">İhlal: ${ihlalTam}</span></span></summary><ul style="margin-top:10px; font-size:0.85rem; color:#475569; padding-left:20px;">`;
+            let optimumMev = parsedJSON.optimum_mevzuat || "Belirlenemedi";
+            let aiRawHtml = `<details class="ai-details" open><summary>🤖 AI Analizi (Seçili ${checkedBoxes.length} Mevzuat) - Optimum: ${optimumMev}</summary><div style="margin-top:10px; font-size:0.8rem; color:#475569;">`;
             
-            if(parsedJSON.ai_maddeler) {
-                parsedJSON.ai_maddeler.forEach(m => { aiRawHtml += `<li style="margin-bottom:6px;">${m}</li>`; });
+            let allMatchedChunks = [];
+
+            if(parsedJSON.analiz && Array.isArray(parsedJSON.analiz)) {
+                parsedJSON.analiz.forEach((item, idx) => {
+                    aiRawHtml += `<div style="margin-bottom:8px; border-bottom:1px solid #e2e8f0; padding-bottom:5px;">
+                        <b>${item.mevzuat_adi}:</b> [ ${item.arama_kelimeleri.join(' | ')} ]
+                    </div>`;
+
+                    let queryTokens = item.arama_kelimeleri.map(w => tightNormalize(w));
+                    let targetMevIdx = checkedBoxes.findIndex(cb => cb.nextElementSibling.innerText === item.mevzuat_adi);
+                    
+                    if(targetMevIdx !== -1) {
+                        let dbIdx = parseInt(checkedBoxes[targetMevIdx].value);
+                        let mevChunks = provisionChunksCache.filter(c => c.mevIdx === dbIdx);
+                        
+                        mevChunks.forEach(chunk => {
+                            let score = calculateTfIdfScore(chunk.metin, queryTokens);
+                            if(score > 0) {
+                                let isOptimum = (item.mevzuat_adi === optimumMev);
+                                allMatchedChunks.push({...chunk, tfIdfScore: score, aiOrder: idx, isOptimum: isOptimum});
+                            }
+                        });
+                    }
+                });
             }
-            aiRawHtml += `</ul>`;
-            
-            let aiKeywordsArray = [];
-            if(parsedJSON.arama_kelimeleri && Array.isArray(parsedJSON.arama_kelimeleri)) {
-                aiKeywordsArray = parsedJSON.arama_kelimeleri;
-                aiRawHtml += `<div style="margin-top:10px; padding:8px; background:#e0f2fe; border-radius:6px; color:#0369a1; font-weight:700; font-size:0.8rem;">
-                    🎯 AI Odak Kelimeleri: [ ${aiKeywordsArray.join(' | ')} ]
-                </div>`;
-            }
-            aiRawHtml += `</details>`;
+            aiRawHtml += `</div></details>`;
             document.getElementById(`aiKeywords_${vIndex}`).innerHTML = aiRawHtml;
 
-            loadingEl.innerHTML = `⚡ Bulunan odak kelimelerle veritabanı taranıyor...`;
-
-            let allChunks = [];
-            checkedBoxes.forEach(cb => allChunks = allChunks.concat(buildSearchableChunks(mevzuatDB[cb.value])));
-
-            let searchKeywords = [];
-            if(aiKeywordsArray.length > 0) {
-                searchKeywords = aiKeywordsArray.map(w => normalizeText(w.trim()));
-            } else {
-                let idealTexts = parsedJSON.ai_maddeler.join(" "); 
-                searchKeywords = removePunctuation(idealTexts).split(/\s+/).filter(w => w.length > 4);
-            }
-            let idealWords = [...new Set(searchKeywords)];
-            
-            allChunks.forEach(chunk => {
-                let chunkText = removePunctuation(chunk.metin);
-                let matchCount = 0;
-                idealWords.forEach(w => { if(chunkText.includes(w)) matchCount++; });
-                chunk.matchCount = matchCount;
+            // NİHAİ SIRALAMA MANTIĞI
+            allMatchedChunks.sort((a, b) => {
+                if (a.isOptimum && !b.isOptimum) return -1; 
+                if (!a.isOptimum && b.isOptimum) return 1;  
+                return b.tfIdfScore - a.tfIdfScore;
             });
 
-            let results = allChunks.filter(c => c.matchCount > 0).sort((a, b) => b.matchCount - a.matchCount);
             let uniqueResults = [];
-            for (let r of results) { if(!uniqueResults.some(u => u.dayanak === r.dayanak)) uniqueResults.push(r); }
+            for (let r of allMatchedChunks) { 
+                if(!uniqueResults.some(u => u.dayanak === r.dayanak)) uniqueResults.push(r); 
+            }
 
             renderResults(vIndex, uniqueResults);
             loadingEl.style.display = 'none'; optionsContainer.style.display = 'block'; btnGen.disabled = false;
-        } catch (err) {
-            loadingEl.style.display = 'none'; btnGen.disabled = false; alert(`HATA: ${err.message}`);
+        } catch (err) { 
+            loadingEl.style.display = 'none'; btnGen.disabled = false; alert(`HATA: ${err.message}`); 
         }
     }
 
+    // --- YENİ V28: NOKTA ATISI (TF-IDF VE 10 LİSTELEME) ---
     function runManualSearch(vIndex) {
         const checkedBoxes = Array.from(document.querySelectorAll(`#mevList_${vIndex} input[type="checkbox"]:checked`));
         if (checkedBoxes.length === 0) { alert("Mevzuat seçmediniz!"); return; }
 
-        let manualInput = document.getElementById(`manualKw_${vIndex}`).value;
-        if (!manualInput.trim()) { alert("Lütfen kelime girin!"); return; }
+        let manualInput = document.getElementById(`manualKw_${vIndex}`).value.trim();
+        if (!manualInput) { alert("Kelime girin!"); return; }
 
-        let searchKeywords = removePunctuation(manualInput).split(/\s+/).filter(w => w.length > 0);
-        document.getElementById(`aiKeywords_${vIndex}`).innerHTML = `<div class="ai-details" style="border-left: 3px solid var(--secondary);">✍️ <b>Puanlı Arama:</b> [ ${searchKeywords.join(" | ")} ]</div>`;
+        let queryTokens = getCleanTokens(manualInput);
+        if (queryTokens.length === 0) { alert("Geçerli kelime bulunamadı (çok kısa veya genel)."); return; }
+        
+        document.getElementById(`aiKeywords_${vIndex}`).innerHTML = `<div class="ai-details" style="border-left: 3px solid var(--secondary);">✍️ <b>TF-IDF Puanlı Arama:</b> [ ${queryTokens.join(" | ")} ]</div>`;
 
-        let allChunks = [];
-        checkedBoxes.forEach(cb => allChunks = allChunks.concat(buildSearchableChunks(mevzuatDB[cb.value])));
+        let selectedDbIndices = checkedBoxes.map(cb => parseInt(cb.value));
+        let filteredChunks = provisionChunksCache.filter(c => selectedDbIndices.includes(c.mevIdx));
 
-        allChunks.forEach(chunk => {
-            let chunkText = removePunctuation(chunk.metin);
-            let matchCount = 0;
-            searchKeywords.forEach(kw => { if(chunkText.includes(kw)) matchCount++; });
-            chunk.matchCount = matchCount;
+        filteredChunks.forEach(chunk => {
+            chunk.tfIdfScore = calculateTfIdfScore(chunk.metin, queryTokens);
         });
 
-        let matchedChunks = allChunks.filter(c => c.matchCount > 0).sort((a, b) => b.matchCount - a.matchCount);
+        let matchedChunks = filteredChunks.filter(c => c.tfIdfScore > 0).sort((a, b) => b.tfIdfScore - a.tfIdfScore);
+
         let uniqueResults = [];
         for (let r of matchedChunks) { 
             if(!uniqueResults.some(u => u.dayanak === r.dayanak)) uniqueResults.push(r); 
-            if(uniqueResults.length >= 5) break;
         }
 
         renderResults(vIndex, uniqueResults);
         document.getElementById(`optionsContainer_${vIndex}`).style.display = 'block';
     }
 
+    // YENİ V28: 10 LİSTELEME VE SKOR GÖSTERİMİ
     function renderResults(vIndex, resultsArr) {
         const optionsListEl = document.getElementById(`optionsList_${vIndex}`);
-        if (resultsArr.length === 0) {
-            optionsListEl.innerHTML = `<div style="color:var(--danger); font-weight:800; padding:15px; background:#fee2e2; border-radius:8px; text-align:center;">⚠️ Eşleşen madde bulunamadı.</div>`;
-            return;
+        if (resultsArr.length === 0) { 
+            optionsListEl.innerHTML = `<div style="color:var(--danger); font-weight:800; padding:15px; background:#fee2e2; border-radius:8px; text-align:center;">⚠️ Eşleşen madde bulunamadı.</div>`; 
+            return; 
         }
         
-        let topResults = resultsArr.slice(0, 5); 
+        // 10 ALTERNATİF LİSTELE
+        let topResults = resultsArr.slice(0, 10); 
         window[`currentOptions_${vIndex}`] = topResults; 
         
         let html = ''; 
         topResults.forEach((res, idx) => {
+            let scoreTag = res.tfIdfScore ? `<span class="tfidf-score" title="TF-IDF Puanı">🎯 ${res.tfIdfScore.toFixed(2)}</span>` : '';
+            
             html += `
-            <div class="option-card" title="Rapora eklemek için çift tıklayın!">
+            <div class="option-card" title="Çift tıklayarak rapora ekle.">
                 <input type="radio" name="opt_${vIndex}" id="opt_${vIndex}_${idx}" value="${idx}">
                 <label for="opt_${vIndex}_${idx}" ondblclick="addSpecificToReport(${vIndex}, ${idx})">
-                    <div class="option-title">Seçenek ${idx + 1} <span class="dbl-click-hint">🖱️ Çift Tıkla Ekle</span></div>
+                    <div class="option-title">Seçenek ${idx + 1} ${scoreTag} <span class="dbl-click-hint">🖱️ Çift Tıkla</span></div>
                     <div class="option-text">${res.metin}</div>
                     <div class="option-citation">${res.dayanak}</div>
                 </label>
@@ -886,280 +1002,144 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI:
     }
 
     function addSpecificToReport(vIndex, optIndex) {
-        document.getElementById(`opt_${vIndex}_${optIndex}`).checked = true;
-        const selectedData = window[`currentOptions_${vIndex}`][optIndex];
+        document.getElementById(`opt_${vIndex}_${optIndex}`).checked = true; 
+        const selectedData = window[`currentOptions_${vIndex}`][optIndex]; 
         const violation = violationsArray[vIndex];
-        
-        finalReportData[vIndex] = { selectedData, violation };
-        renderFinalReport();
-        logDebug(`İhlal ${vIndex+1} rapora eklendi/güncellendi.`, "success");
-        
-        if(currentSlideIndex < violationsArray.length - 1) {
-            setTimeout(() => changeSlide(1), 400); 
-        } else {
-            document.getElementById('finalReportCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        finalReportData[vIndex] = { selectedData, violation }; 
+        renderFinalReport(); 
+        logDebug(`Rapor güncellendi.`, "success");
+        if(currentSlideIndex < violationsArray.length - 1) setTimeout(() => changeSlide(1), 400); 
+        else document.getElementById('finalReportCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     function renderFinalReport() {
-        const finalReportEl = document.getElementById('finalReport');
-        finalReportEl.innerHTML = '';
-        
+        const finalReportEl = document.getElementById('finalReport'); 
+        finalReportEl.innerHTML = ''; 
         const keys = Object.keys(finalReportData).sort((a,b) => Number(a) - Number(b));
+        if(keys.length === 0) { finalReportEl.innerHTML = '<div style="color: #94a3b8; font-style: italic; text-align: center; margin-top: 30px;">Henüz madde eklenmedi.</div>'; return; }
         
-        if(keys.length === 0) {
-            finalReportEl.innerHTML = '<div style="color: #94a3b8; font-style: italic; text-align: center; margin-top: 30px;">Henüz rapora ekleme yapılmadı...</div>';
-            return;
-        }
-
         keys.forEach(k => {
             const { selectedData, violation } = finalReportData[k];
-            
-            let cleanM = selectedData.metin.replace(/^[\s\-\d\.\)]+/g, '').trim(); 
-            let textWords = removePunctuation(cleanM).split(/\s+/).filter(w => w.length > 3);
-            let safeQueryWords = textWords.slice(0, 5).join(' ');
-
-            let filterPart = "";
-            let parts = selectedData.dayanak.split(','); 
-            let yonetmelikPart = parts.find(p => p.toLowerCase().includes("yönetmelik") || p.toLowerCase().includes("yönetmeliği"));
-            if (yonetmelikPart) {
-                let yWords = removePunctuation(yonetmelikPart).split(/\s+/);
-                filterPart = yWords.slice(0, 5).join(' ');
-            } else {
-                let kanunPart = parts.find(p => p.toLowerCase().includes("kanun"));
-                if (kanunPart) {
-                    let kWords = removePunctuation(kanunPart).split(/\s+/);
-                    filterPart = kWords.slice(0, 5).join(' ');
-                }
-            }
-            let safeSearchQuery = `FUZZY:${safeQueryWords}; ${filterPart}`.trim();
-
-            let reportHTML = `
-            <div class="report-item">
-                <button class="btn-remove-item" onclick="removeReportItem(${k})" title="Bu maddeyi sil">✖</button>
-                <div class="report-violation">${violation.number} ${violation.text}</div>
-                <div style="margin-bottom:5px;">${selectedData.metin}</div>
-                <div class="report-citation">
-                    <span>${selectedData.dayanak}</span>
-                    <button class="btn btn-sm" style="background:#0f766e; color:white; padding:4px 10px; font-size:0.75rem;" onclick="openZipSearchModal('${safeSearchQuery}')">🔍 Mevzuatta Gör</button>
-                </div>
-            </div>`;
+            let safeSearchQuery = `FUZZY:${getCleanTokens(selectedData.metin).slice(0, 5).join(' ')}`;
+            let reportHTML = `<div class="report-item"><button class="btn-remove-item" onclick="removeReportItem(${k})">✖</button><div class="report-violation">${violation.number} ${violation.text}</div><div style="margin-bottom:5px;">${selectedData.metin}</div><div class="report-citation"><span>${selectedData.dayanak}</span><button class="btn btn-sm" style="background:#0f766e; color:white; padding:4px 10px; font-size:0.75rem;" onclick="openZipSearchModal('${safeSearchQuery}')">🔍 Arşivde Gör</button></div></div>`;
             finalReportEl.innerHTML += reportHTML;
         });
     }
 
     function removeReportItem(vIndex) { delete finalReportData[vIndex]; renderFinalReport(); }
-    function clearReport() { if(confirm("Rapordaki tüm maddeler silinecek. Emin misiniz?")) { finalReportData = {}; renderFinalReport(); } }
-    function copyFinalReport() {
-        const reportEl = document.getElementById('finalReport').cloneNode(true);
-        const btns = reportEl.querySelectorAll('button');
-        btns.forEach(b => b.remove());
-        const reportText = reportEl.innerText.trim();
-        if(reportText.includes("Henüz rapora") || reportText === "") { alert("Rapor boş!"); return; }
-        navigator.clipboard.writeText(reportText).then(() => { alert("Şık formatlı rapor panoya kopyalandı!"); });
+    function clearReport() { if(confirm("Rapor silinecek?")) { finalReportData = {}; renderFinalReport(); } }
+    function copyFinalReport() { 
+        const reportEl = document.getElementById('finalReport').cloneNode(true); 
+        const btns = reportEl.querySelectorAll('button'); 
+        btns.forEach(b => b.remove()); 
+        const reportText = reportEl.innerText.trim(); 
+        if(!reportText || reportText.includes("Henüz madde")) { alert("Rapor boş!"); return; } 
+        navigator.clipboard.writeText(reportText).then(() => alert("Kopyalandı!")); 
     }
-
-    const ZIP_URL = './MevzuatText.zip';
-    let GLOBAL_MATCHES=[];
+    
+    // --- ORİJİNAL ARŞİV ARAMA ---
+    const ZIP_URL = './MevzuatText.zip'; 
+    let GLOBAL_MATCHES=[]; 
     let cachedZipData = null; 
-
-    function openZipSearchModal(initialQuery = "") {
-        document.getElementById('zipSearchModal').style.display = 'flex';
-        const input = document.getElementById('zipSearchInput');
-        input.value = initialQuery;
-        if(initialQuery) { document.getElementById('zipSearchButton').click(); }
+    
+    function openZipSearchModal(query) { 
+        document.getElementById('zipSearchModal').style.display = 'flex'; 
+        document.getElementById('zipSearchInput').value = query; 
+        if(query) document.getElementById('zipSearchButton').click(); 
     }
-
     function closeZipSearchModal() { document.getElementById('zipSearchModal').style.display = 'none'; }
     function closeZipDetailPanel() { document.getElementById('zipDetailOverlay').style.display = 'none'; }
 
-    function createTrRegexPattern(text) {
-        text = text.trim().replace(/\s+/g, ' '); 
-        return text.split('').map(char => {
-            if (char === ' ') return '\\s+'; 
-            if (/[iıİI]/.test(char)) return '[iıİI]';
-            if (/[sşSŞ]/.test(char)) return '[sşSŞ]';
-            if (/[gğGĞ]/.test(char)) return '[gğGĞ]';
-            if (/[uüUÜ]/.test(char)) return '[uüUÜ]';
-            if (/[oöOÖ]/.test(char)) return '[oöOÖ]';
-            if (/[cçCÇ]/.test(char)) return '[cçCÇ]';
-            if (/[.*+?^${}()|[\]\\]/.test(char)) return '\\' + char;
-            return char;
-        }).join('');
-    }
-
     document.getElementById('zipSearchButton').addEventListener('click', async () => {
-        let raw = document.getElementById('zipSearchInput').value.trim();
-        const resEl = document.getElementById('zipSearchResults');
+        let raw = document.getElementById('zipSearchInput').value.trim(); 
+        const resEl = document.getElementById('zipSearchResults'); 
         GLOBAL_MATCHES = [];
         
-        if (!raw) { resEl.innerHTML = '<div class="zip-alert zip-alert-warning">Lütfen aranacak bir kelime girin.</div>'; return; }
-
-        let isFuzzy = raw.startsWith('FUZZY:');
-        let queryToParse = isFuzzy ? raw.replace('FUZZY:', '') : raw;
+        if (!raw) { resEl.innerHTML = '<div class="zip-alert zip-alert-warning">Kelime girin.</div>'; return; }
         
-        const [termPart, filterPart] = queryToParse.split(';').map(s => s.trim());
-        const term = termPart; 
-        const filter = filterPart ? filterPart : null;
-
-        resEl.innerHTML = '<div class="zip-alert zip-alert-info">Orijinal arşiv dosyaları taranıyor...</div>';
-
+        let isFuzzy = raw.startsWith('FUZZY:'); 
+        let termPart = isFuzzy ? raw.replace('FUZZY:', '') : raw;
+        
+        let queryTokens = getCleanTokens(termPart);
+        if (queryTokens.length === 0) { resEl.innerHTML = '<div class="zip-alert zip-alert-warning">Geçersiz kelime.</div>'; return; }
+        
+        resEl.innerHTML = '<div class="zip-alert zip-alert-info">Arşiv taranıyor...</div>';
         try {
-            if (!cachedZipData) {
-                resEl.innerHTML = '<div class="zip-alert zip-alert-info">Arşiv indiriliyor (Buluttan ilk çekim)...</div>';
-                const response = await fetch(ZIP_URL + '?v=' + new Date().getTime(), { cache: "no-store" });
-                if (!response.ok) throw new Error(`ZIP Dosyası bulunamadı. Lütfen GitHub reposuna MevzuatText.zip dosyasını ekleyin.`);
-                cachedZipData = await response.arrayBuffer();
+            if (!cachedZipData) { 
+                const response = await fetch(ZIP_URL + '?v=' + new Date().getTime(), { cache: "no-store" }); 
+                if (!response.ok) throw new Error(`ZIP Dosyası yok.`); 
+                cachedZipData = await response.arrayBuffer(); 
             }
-
+            
             const zip = await JSZip.loadAsync(cachedZipData);
-            
-            let targetWords = [];
-            let testFilterWords = [];
-            
-            if(isFuzzy) {
-                targetWords = term.split(/\s+/).map(w => normalizeText(w));
-                if(filter) testFilterWords = filter.split(/\s+/).map(w => normalizeText(w));
-            } else {
-                if(filter) testFilterWords = filter.split(/\s+/).map(w => normalizeText(w));
-            }
-
-            const searchPattern = createTrRegexPattern(term);
-            const testSearchRegex = new RegExp(searchPattern, 'i');
-
             await Promise.all(Object.values(zip.files).map(async f => {
                 if (f.dir || !f.name.toLowerCase().endsWith('.txt')) return;
-                const mevzuat = f.name.replace(/\.txt$/i, '');
-                
-                let fileNameClean = normalizeText(mevzuat);
-                if (testFilterWords.length > 0) {
-                    let filterMatch = true;
-                    testFilterWords.forEach(fw => { if (!fileNameClean.includes(fw)) filterMatch = false; });
-                    if (!filterMatch) return; 
-                }
-
-                const content = await f.async('string');
+                const mevzuat = f.name.replace(/\.txt$/i, ''); 
+                const content = await f.async('string'); 
                 const lines = content.split(/\r?\n/);
                 
-                if(isFuzzy) {
-                    let prevLine = "";
-                    let matchedLineIndexes = new Set();
-                    lines.forEach((ln, idx) => {
-                        let combined = prevLine + " " + ln;
-                        let cleanCombined = normalizeText(combined).replace(/[^\w\sğüşıöçĞÜŞİÖÇ]/gi, ' ');
-                        
-                        let matchCount = 0;
-                        targetWords.forEach(tw => { if(cleanCombined.includes(tw)) matchCount++; });
-                        
-                        let ratio = matchCount / targetWords.length;
-                        if(ratio >= 0.75) {
-                            if(!matchedLineIndexes.has(idx)) {
-                                const m = ln.match(/madde\s+(\d+)/i) || prevLine.match(/madde\s+(\d+)/i);
-                                GLOBAL_MATCHES.push({ mevzuatAdi: mevzuat, maddeNo: m ? m[1] : '-', snippet: ln.trim() || prevLine.trim(), lineNumber: idx, fullText: content, fuzzyWords: targetWords });
-                                matchedLineIndexes.add(idx);
-                            }
-                        }
-                        prevLine = ln;
-                    });
-                } else {
-                    lines.forEach((ln, idx) => {
-                        if (testSearchRegex.test(ln)) {
-                            const m = ln.match(/madde\s+(\d+)/i);
-                            GLOBAL_MATCHES.push({ mevzuatAdi: mevzuat, maddeNo: m ? m[1] : '-', snippet: ln.trim(), lineNumber: idx, fullText: content, isFuzzy: false, searchPattern: searchPattern });
-                        }
-                    });
-                }
+                let prevLine = "";
+                lines.forEach((ln, idx) => {
+                    let combinedText = tightNormalize(prevLine + " " + ln);
+                    let matchCount = 0;
+                    queryTokens.forEach(tw => { if(combinedText.includes(tw)) matchCount++; });
+                    if(matchCount / queryTokens.length >= 0.7) { 
+                        const m = ln.match(/madde\s+(\d+)/i) || prevLine.match(/madde\s+(\d+)/i); 
+                        GLOBAL_MATCHES.push({ mevzuatAdi: mevzuat, maddeNo: m ? m[1] : '-', snippet: ln.trim() || prevLine.trim(), lineNumber: idx, fullText: content, fuzzyWords: queryTokens, score: matchCount }); 
+                    }
+                    prevLine = ln;
+                });
             }));
-
-            if (!GLOBAL_MATCHES.length) {
-                resEl.innerHTML = '<div class="zip-alert zip-alert-warning">Kriterlere uygun orijinal metin bulunamadı. Lütfen kelimeleri azaltmayı deneyin.</div>'; return;
-            }
-
-            let html = '<div class="zip-table-responsive"><table><thead><tr><th>Mevzuat</th><th>Madde</th><th>Bulunan Metin (Hülasa)</th></tr></thead><tbody>';
             
-            GLOBAL_MATCHES.forEach((it, i) => {
-                let snip = escapeHTML(it.snippet);
-                if(it.fuzzyWords) {
-                    it.fuzzyWords.forEach(fw => {
-                        let fwRegex = new RegExp('(' + createTrRegexPattern(fw) + ')', 'gi');
-                        snip = snip.replace(fwRegex, '<mark>$1</mark>');
-                    });
-                } else {
-                    let highlightRegex = new RegExp('(' + it.searchPattern + ')', 'gi');
-                    snip = snip.replace(highlightRegex, '<mark>$1</mark>');
-                }
+            if (!GLOBAL_MATCHES.length) { resEl.innerHTML = '<div class="zip-alert zip-alert-warning">Bulunamadı.</div>'; return; }
+            GLOBAL_MATCHES.sort((a,b) => b.score - a.score);
+            let html = '<div class="zip-table-responsive"><table><thead><tr><th>Mevzuat</th><th>Madde</th><th>Metin</th></tr></thead><tbody>';
+            GLOBAL_MATCHES.slice(0, 50).forEach((it, i) => {
+                let snip = escapeHTML(it.snippet); 
+                it.fuzzyWords.forEach(fw => { 
+                    const regex = new RegExp('(' + fw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'); 
+                    snip = snip.replace(regex, '<mark>$1</mark>'); 
+                });
                 html += `<tr class="match-row" data-i="${i}"><td>${escapeHTML(it.mevzuatAdi)}</td><td>${escapeHTML(it.maddeNo)}</td><td class="snippet-cell">${snip}</td></tr>`;
             });
-            html += '</tbody></table></div>';
+            html += '</tbody></table></div>'; 
             resEl.innerHTML = html;
-
-            document.querySelectorAll('.zip-search-wrapper .match-row').forEach(tr => {
-                tr.addEventListener('click', () => showZipDetail(GLOBAL_MATCHES[+tr.dataset.i], isFuzzy));
-            });
-
-            if(isFuzzy) document.getElementById('zipSearchInput').value = queryToParse;
-
-        } catch (e) {
-            resEl.innerHTML = `<div class="zip-alert zip-alert-danger"><strong>Hata:</strong> ${e.message}</div>`;
-        }
+            document.querySelectorAll('.zip-table-responsive .match-row').forEach(tr => tr.addEventListener('click', () => showZipDetail(GLOBAL_MATCHES[+tr.dataset.i])));
+        } catch (e) { resEl.innerHTML = `<div class="zip-alert zip-alert-danger">HATA: ${e.message}</div>`; }
     });
 
-    document.getElementById('zipSearchInput').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') document.getElementById('zipSearchButton').click();
-    });
-
-    function showZipDetail(match, isFuzzy) {
-        document.getElementById('zipDetailTitle').textContent = match.mevzuatAdi + ' – Madde ' + match.maddeNo;
-        const cont = document.getElementById('zipDetailContent');
+    function showZipDetail(match) {
+        document.getElementById('zipDetailTitle').textContent = match.mevzuatAdi + ' – ' + match.maddeNo; 
+        const cont = document.getElementById('zipDetailContent'); 
         cont.innerHTML = '';
-
-        const lines = match.fullText.split(/\r?\n/);
-
-        lines.forEach((ln, idx) => {
-            const div = document.createElement('div');
-            let html = escapeHTML(ln);
-            
-            if(isFuzzy) {
-                match.fuzzyWords.forEach(fw => {
-                    let fwRegex = new RegExp('(' + createTrRegexPattern(fw) + ')', 'gi');
-                    html = html.replace(fwRegex, '<mark>$1</mark>');
-                });
-            } else {
-                let highlightRegex = new RegExp('(' + match.searchPattern + ')', 'gi');
-                html = html.replace(highlightRegex, '<mark>$1</mark>');
-            }
-
-            div.style.marginBottom = "6px";
-            if (idx === match.lineNumber) {
-                div.className = 'zip-target-line';
-                div.id = 'zip-focus-line';
-            }
-            div.innerHTML = html || '&nbsp;';
-            cont.appendChild(div);
+        match.fullText.split(/\r?\n/).forEach((ln, idx) => {
+            const div = document.createElement('div'); 
+            let html = escapeHTML(ln); 
+            match.fuzzyWords.forEach(fw => { 
+                const regex = new RegExp('(' + fw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'); 
+                html = html.replace(regex, '<mark>$1</mark>'); 
+            });
+            div.style.marginBottom = "6px"; 
+            if (idx === match.lineNumber) { div.className = 'zip-target-line'; div.id = 'zip-focus-line'; } 
+            div.innerHTML = html || '&nbsp;'; cont.appendChild(div);
         });
-
         document.getElementById('zipDetailOverlay').style.display = 'flex';
-
-        setTimeout(() => {
-            const tgt = document.getElementById('zip-focus-line');
-            if (tgt) {
-                const scrollContainer = document.getElementById('zipDetailContent');
-                scrollContainer.scrollTop = Math.max(0, tgt.offsetTop - scrollContainer.clientHeight / 2);
-            }
+        setTimeout(() => { 
+            const tgt = document.getElementById('zip-focus-line'); 
+            if (tgt) { 
+                const scroll = document.getElementById('zipDetailContent'); 
+                scroll.scrollTop = Math.max(0, tgt.offsetTop - scroll.clientHeight / 2); 
+            } 
         }, 50);
     }
-
+    
     const escapeHTML = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     
-    document.addEventListener('keydown', function(event){
-        if(event.key === "Escape"){
-            if(document.getElementById('zipDetailOverlay').style.display === 'flex') closeZipDetailPanel();
-            else if(document.getElementById('zipSearchModal').style.display === 'flex') closeZipSearchModal();
-            else if(document.getElementById('parserModal').style.display === 'flex') document.getElementById('parserModal').style.display = 'none';
-            else if(document.getElementById('debugModal').style.display === 'flex') document.getElementById('debugModal').style.display = 'none';
-        }
+    document.addEventListener('keydown', e => { 
+        if(e.key === "Escape") { 
+            document.querySelectorAll('.modal-overlay').forEach(m => m.style.display = 'none'); 
+        } 
     });
 </script>
-
 </body>
 </html>
