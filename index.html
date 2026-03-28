@@ -177,6 +177,20 @@
         #installAppBtn:hover { transform: scale(1.05); background-color: var(--success-hover); }
         
         .opt-header-bar { font-weight: 800; color: var(--primary); background: rgba(79,70,229,0.1); padding: 10px 15px; border-radius: 8px; margin-bottom: 10px; font-size: 0.95rem; border-left: 4px solid var(--primary); }
+
+        /* MANUEL EŞLEŞTİRME MODAL CSS */
+        .mapping-container { display: flex; gap: 15px; flex: 1; overflow: hidden; margin-top: 10px; flex-wrap: wrap; }
+        .mapping-pane { flex: 1; min-width: 250px; border: 1px solid var(--border); border-radius: 8px; display: flex; flex-direction: column; background: var(--bg); max-height: 55vh;}
+        .mapping-pane-header { padding: 10px; font-weight: bold; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;}
+        .mapping-list { flex: 1; overflow-y: auto; padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+        
+        .map-viol-item { padding: 10px; background: var(--card-bg); border: 2px solid transparent; border-radius: 6px; cursor: pointer; font-size: 0.85rem; color: var(--text-main); transition: 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.05);}
+        .map-viol-item:hover { background: rgba(79,70,229,0.05); }
+        .map-viol-item.active { border-color: var(--primary); background: rgba(79,70,229,0.05); }
+        
+        .map-mev-item { display: flex; align-items: center; gap: 8px; padding: 8px; font-size: 0.85rem; cursor: pointer; border-radius: 4px; color: var(--text-main); transition: 0.1s;}
+        .map-mev-item:hover { background: rgba(14,165,233,0.1); }
+        .map-badge-count { background: var(--success); color: white; border-radius: 12px; padding: 2px 8px; font-size: 0.75rem; font-weight: 800; margin-left: auto; }
     </style>
 </head>
 <body>
@@ -213,7 +227,7 @@
         <div class="card">
             <h2>📝 İhlalleri Yapıştır</h2>
             <textarea id="violationsInput" placeholder="Her satıra numaralı olarak yazın...&#10;1. Acil çıkış kapıları dışarı açılır vaziyette değildir."></textarea>
-            <button id="splitBtn" class="btn btn-primary" style="width: 100%;" disabled>🚀 İhlalleri Ayır ve Eşleştirmeye Başla</button>
+            <button id="splitBtn" class="btn btn-primary" style="width: 100%;" disabled>🚀 İhlalleri Ayır ve Ön Eşleştirmeyi Başlat</button>
         </div>
 
         <div id="workArea" style="display: none; margin-top: 15px;">
@@ -329,6 +343,43 @@
             <span class="close-modal" style="position: static;" onclick="closeZipDetailPanel()">&times;</span>
         </div>
         <div id="zipDetailContent"></div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="manualMappingModal">
+    <div class="modal-content" style="max-width: 950px; height: 85vh;">
+        <span class="close-modal" onclick="document.getElementById('manualMappingModal').style.display='none'">&times;</span>
+        <h2 style="border:none; margin-bottom: 5px; color: var(--primary);">🔗 Mevzuat Etiketleme (Ön Eşleştirme)</h2>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 5px;">Sol taraftan ihlali seçin, sağ taraftan o ihlalle ilişkili olabilecek mevzuatları işaretleyin.</p>
+        
+        <div class="mapping-container">
+            <div class="mapping-pane">
+                <div class="mapping-pane-header" style="background: rgba(79,70,229,0.1); color: var(--primary); flex-direction: column; align-items: stretch; gap: 8px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <span>📋 Ayrıştırılan İhlaller</span>
+                        <div style="display:flex; gap:5px;">
+                            <button class="btn btn-secondary btn-sm" style="padding: 4px 8px; font-size: 0.75rem;" onclick="selectAllMappingViolations()">Tümünü Seç</button>
+                            <button class="btn btn-danger btn-sm" style="padding: 4px 8px; font-size: 0.75rem;" onclick="deselectAllMappingViolations()">Temizle</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mapping-list" id="mappingViolationsList">
+                    </div>
+            </div>
+
+            <div class="mapping-pane">
+                <div class="mapping-pane-header" style="background: rgba(14,165,233,0.1); color: var(--secondary); flex-direction: column; align-items: stretch; gap: 8px;">
+                    <div style="display:flex; justify-content:space-between;">📚 Mevzuat Kütüphanesi <span style="font-size:0.75rem; font-weight:normal;" id="mappingStatusText"></span></div>
+                    <input type="text" id="mappingSearchInput" placeholder="Mevzuat Ara (Örn: Yapı, Ekipman)..." onkeyup="filterMappingMevzuat(this.value)" style="margin-bottom: 0; padding: 6px; font-size: 0.85rem; height: 30px;">
+                </div>
+                <div class="mapping-list" id="mappingMevzuatList">
+                    </div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 15px; display: flex; justify-content: flex-end;">
+            <button class="btn btn-success" onclick="confirmManualMapping()">✅ Etiketlemeyi Tamamla ve İlerle</button>
+        </div>
     </div>
 </div>
 
@@ -448,6 +499,9 @@
     let mevzuatIdfTable = {}; 
     let provisionChunksCache = []; 
 
+    let manualUserMapping = {}; 
+    let selectedMappedVIndices = []; 
+
     // ==========================================
     // TEMEL FONKSİYONLAR
     // ==========================================
@@ -467,16 +521,6 @@
             };
             req.onerror = function () { alert("Önbellek temizlenemedi, tarayıcı ayarlarından verileri temizleyin."); };
         }
-    }
-
-    function normalizeText(text) {
-        if (!text) return "";
-        return text.toLocaleLowerCase('tr-TR').replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ş/g, 's').replace(/ı/g, 'i').replace(/ö/g, 'o').replace(/ç/g, 'c').replace(/î/g, 'i').replace(/â/g, 'a').replace(/i̇/g, 'i');
-    }
-
-    function removePunctuation(text) {
-        let cleanText = text.replace(/^[\s\-\d\.\)]+/g, '').trim();
-        return cleanText.replace(/[.,;:'"!?()[\]{}<>\-\/\\_]/g, ' ').replace(/\s+/g, ' ').trim();
     }
 
     window.onload = function() {
@@ -572,7 +616,6 @@
     async function fetchFromGroqWithFallback(messages, temperature) {
         if (apiKeys.length === 0) throw new Error("Lütfen ayarlar menüsünden API Key ekleyin.");
 
-        // Modelleri öncelik sırasına göre diziyoruz
         const models = ['llama-3.3-70b-versatile', 'llama-3.1-8b-instant'];
 
         for (let keyIdx = 0; keyIdx < apiKeys.length; keyIdx++) {
@@ -615,6 +658,25 @@
         }
         
         throw new Error("Mevcut tüm API Key'ler ve Modeller için günlük kotalar dolmuş! Lütfen yeni bir API Key ekleyin veya yarına kadar bekleyin.");
+    }
+
+    // ==========================================
+    // YARDIMCI AI FONKSİYONLARI (safeParseJSON) EKLENDİ!
+    // ==========================================
+    function safeParseJSON(rawString) {
+        try {
+            let clean = rawString.replace(/```json/gi, '').replace(/```/g, '').trim();
+            let match = clean.match(/\{[\s\S]*\}/);
+            if(match) clean = match[0];
+            clean = clean.replace(/,\s*]/g, ']').replace(/,\s*}/g, '}'); 
+            return JSON.parse(clean);
+        } catch (e) {
+            try { 
+                let matchArr = rawString.match(/\[\s*\{[\s\S]*\}\s*\]/); 
+                if(matchArr) return JSON.parse(matchArr[0]); 
+            } catch(e2){} 
+            throw new Error("JSON hatası.");
+        }
     }
 
     // ==========================================
@@ -852,9 +914,9 @@
     }
 
     // ==========================================
-    // İHLAL AYIRMA VE ÖN EŞLEŞTİRME (V31 YENİLİK)
+    // İHLAL AYIRMA VE MANUEL ÖN EŞLEŞTİRME
     // ==========================================
-    document.getElementById('splitBtn').addEventListener('click', async () => {
+    document.getElementById('splitBtn').addEventListener('click', () => {
         const rawText = document.getElementById('violationsInput').value;
         if (!rawText.trim()) return;
 
@@ -877,62 +939,147 @@
         if(currentNum !== null) violationsArray.push({ number: currentNum + ".", text: currentText.trim().replace(/\s+/g, ' ') });
 
         if (violationsArray.length > 0) {
-            if (apiKeys.length > 0 && mevzuatDB.length > 0) {
-                await autoSelectMevzuats();
-            } else {
-                buildSliderUI(null); 
-                finishSetupAndShow();
-            }
+            openManualMappingModal();
         }
     });
 
-    async function autoSelectMevzuats() {
-        const btn = document.getElementById('splitBtn');
-        btn.disabled = true;
-        let originalText = btn.innerHTML;
-        btn.innerHTML = "⏳ Yapay Zeka Mevzuatları Eşleştiriyor... Lütfen Bekleyin";
-
-        let mapping = {}; 
-
-        try {
-            const mevList = mevzuatDB.map((m, i) => `[ID:${i}] ${m.mevzuat_adi}`).join("\n");
-            const vList = violationsArray.map((v, i) => `[İHLAL_ID:${i}] ${v.text}`).join("\n");
-
-            const prompt = `Sen uzman bir İSG denetçisisin. Aşağıdaki ihlalleri oku ve her bir ihlal için en uygun olan yönetmeliğin/kanunun ID numaralarını seç.
-SADECE LİSTEDEKİ ID NUMARALARINI KULLAN. Her ihlal için en az 1, en fazla 3 mevzuat seçebilirsin.
-
-Mevzuatlar:
-${mevList}
-
-İhlaller:
-${vList}
-
-ÇIKTI FORMATI SADECE JSON OLMALIDIR:
-{
-  "eslesmeler": [
-    { "ihlal_id": 0, "secilen_mevzuat_idleri": [3, 5] },
-    { "ihlal_id": 1, "secilen_mevzuat_idleri": [12] }
-  ]
-}`;
-            
-            // YENİ: Akıllı İstek Mekanizması
-            const data = await fetchFromGroqWithFallback([ { role: 'user', content: prompt } ], 0.1);
-
-            const parsedJSON = safeParseJSON(data.choices[0].message.content);
-            if (parsedJSON && parsedJSON.eslesmeler) {
-                parsedJSON.eslesmeler.forEach(item => {
-                    mapping[item.ihlal_id] = item.secilen_mevzuat_idleri;
-                });
-            }
-        } catch(e) {
-            console.error("Auto select failed", e);
-            alert("Yapay zeka mevzuat seçimi sırasında hata aldı: " + e.message + "\nLütfen manuel seçim yapınız.");
-        } finally {
-            btn.innerHTML = originalText;
-            btn.disabled = false;
+    function openManualMappingModal() {
+        if (mevzuatDB.length === 0) {
+            alert("Sistemde yüklü mevzuat bulunamadı. Lütfen veritabanını kontrol edin.");
+            return;
         }
 
-        buildSliderUI(mapping);
+        manualUserMapping = {};
+        violationsArray.forEach((_, i) => manualUserMapping[i] = []);
+        selectedMappedVIndices = [0]; 
+        
+        document.getElementById('mappingSearchInput').value = "";
+        document.getElementById('manualMappingModal').style.display = 'flex';
+        
+        renderMappingViolations();
+        renderMappingMevzuats();
+    }
+
+    function renderMappingViolations() {
+        const listEl = document.getElementById('mappingViolationsList');
+        listEl.innerHTML = '';
+        
+        violationsArray.forEach((v, index) => {
+            const count = manualUserMapping[index] ? manualUserMapping[index].length : 0;
+            const badgeHtml = count > 0 ? `<span class="map-badge-count">${count}</span>` : '';
+            const activeClass = selectedMappedVIndices.includes(index) ? 'active' : '';
+            
+            listEl.innerHTML += `
+                <div class="map-viol-item ${activeClass}" onclick="toggleMappingViolation(${index})">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
+                        <div><b>${v.number}</b> ${v.text}</div>
+                        ${badgeHtml}
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    function selectAllMappingViolations() {
+        selectedMappedVIndices = violationsArray.map((_, i) => i);
+        renderMappingViolations();
+        renderMappingMevzuats();
+    }
+
+    function deselectAllMappingViolations() {
+        selectedMappedVIndices = [];
+        renderMappingViolations();
+        renderMappingMevzuats();
+    }
+
+    function toggleMappingViolation(index) {
+        const pos = selectedMappedVIndices.indexOf(index);
+        if (pos > -1) {
+            selectedMappedVIndices.splice(pos, 1); 
+        } else {
+            selectedMappedVIndices.push(index); 
+        }
+        renderMappingViolations();
+        renderMappingMevzuats();
+    }
+
+    function renderMappingMevzuats() {
+        const listEl = document.getElementById('mappingMevzuatList');
+        const searchInput = document.getElementById('mappingSearchInput').value;
+        const statusText = document.getElementById('mappingStatusText');
+        
+        listEl.innerHTML = '';
+        
+        if (selectedMappedVIndices.length === 0) {
+            statusText.innerHTML = `(<span style="color:var(--danger);font-weight:bold;">Lütfen sol taraftan ihlal seçin</span>)`;
+            return;
+        }
+
+        const selectedNums = selectedMappedVIndices.map(i => violationsArray[i].number.replace('.', '')).join(', ');
+        statusText.innerHTML = `(Seçili İhlaller: <b>${selectedNums}</b>)`;
+
+        mevzuatDB.forEach((mev, index) => {
+            let mappedCount = 0;
+            selectedMappedVIndices.forEach(vIdx => {
+                if (manualUserMapping[vIdx] && manualUserMapping[vIdx].includes(index)) mappedCount++;
+            });
+
+            let isChecked = (mappedCount === selectedMappedVIndices.length && mappedCount > 0) ? 'checked' : '';
+            let partialStyle = (mappedCount > 0 && mappedCount < selectedMappedVIndices.length) ? 'opacity: 0.6; border-left: 3px solid var(--secondary);' : '';
+
+            const filter = tightNormalize(searchInput);
+            const displayStyle = tightNormalize(mev.mevzuat_adi).indexOf(filter) > -1 ? "" : "display:none;";
+            
+            listEl.innerHTML += `
+                <label class="map-mev-item" style="${displayStyle} ${partialStyle}">
+                    <input type="checkbox" id="cb_mev_${index}" value="${index}" ${isChecked} onchange="toggleMappingMevzuat(${index}, this.checked)">
+                    <span>${mev.mevzuat_adi}</span>
+                </label>
+            `;
+        });
+
+        setTimeout(() => {
+            mevzuatDB.forEach((mev, index) => {
+                let mappedCount = 0;
+                selectedMappedVIndices.forEach(vIdx => {
+                    if (manualUserMapping[vIdx] && manualUserMapping[vIdx].includes(index)) mappedCount++;
+                });
+                if (mappedCount > 0 && mappedCount < selectedMappedVIndices.length) {
+                    const cb = document.getElementById(`cb_mev_${index}`);
+                    if (cb) cb.indeterminate = true;
+                }
+            });
+        }, 10);
+    }
+
+    function toggleMappingMevzuat(mevIndex, isChecked) {
+        selectedMappedVIndices.forEach(vIdx => {
+            if (!manualUserMapping[vIdx]) manualUserMapping[vIdx] = [];
+            if (isChecked) {
+                if (!manualUserMapping[vIdx].includes(mevIndex)) {
+                    manualUserMapping[vIdx].push(mevIndex);
+                }
+            } else {
+                manualUserMapping[vIdx] = manualUserMapping[vIdx].filter(i => i !== mevIndex);
+            }
+        });
+        
+        renderMappingViolations();
+        renderMappingMevzuats();
+    }
+
+    function filterMappingMevzuat(query) {
+        const filter = tightNormalize(query);
+        const labels = document.getElementById('mappingMevzuatList').getElementsByTagName('label');
+        for (let i = 0; i < labels.length; i++) {
+            const spanText = tightNormalize(labels[i].querySelector('span').innerText);
+            labels[i].style.display = spanText.indexOf(filter) > -1 ? "" : "none";
+        }
+    }
+
+    function confirmManualMapping() {
+        document.getElementById('manualMappingModal').style.display = 'none';
+        buildSliderUI(manualUserMapping);
         finishSetupAndShow();
     }
 
@@ -979,7 +1126,7 @@ ${vList}
                     <div class="tool-section">
                         <span class="tool-header">🤖 2. AI & TF-IDF Hibrit</span>
                         <div class="tool-hint">AI senin için en doğru 1 maddeyi bulur.</div>
-                        <button class="btn btn-primary btn-sm" style="width: 100%; margin-top:4px;" id="btnHyde_${vIndex}" onclick="runAISearch(${vIndex})">✨ Otomatik Eşleştir</button>
+                        <button class="btn btn-primary btn-sm" style="width: 100%; margin-top:4px;" id="btnHyde_${vIndex}" onclick="runAISearch(${vIndex})">✨ Otomatik Madde Bul</button>
                     </div>
                 </div>
 
@@ -1061,22 +1208,6 @@ ${vList}
         return chunks;
     }
 
-    function safeParseJSON(rawString) {
-        try {
-            let clean = rawString.replace(/```json/gi, '').replace(/```/g, '').trim();
-            let match = clean.match(/\{[\s\S]*\}/);
-            if(match) clean = match[0];
-            clean = clean.replace(/,\s*]/g, ']').replace(/,\s*}/g, '}'); 
-            return JSON.parse(clean);
-        } catch (e) {
-            try { 
-                let matchArr = rawString.match(/\[\s*\{[\s\S]*\}\s*\]/); 
-                if(matchArr) return JSON.parse(matchArr[0]); 
-            } catch(e2){} 
-            throw new Error("JSON hatası.");
-        }
-    }
-
     // ==========================================
     // V31: ŞEFFAF YAPAY ZEKA VE EŞLEŞTİRME
     // ==========================================
@@ -1117,7 +1248,6 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
   ]
 }`;
 
-            // YENİ: Akıllı İstek Mekanizması
             const data = await fetchFromGroqWithFallback([ 
                 { role: 'system', content: systemPrompt }, 
                 { role: 'user', content: `İHLAL: ${violationsArray[vIndex].text}` } 
