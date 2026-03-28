@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İSG Yapay Zeka Denetçi V19 (Cloud Edition)</title>
+    <title>İSG Yapay Zeka Denetçi V20 (Kusursuz Hiyerarşi)</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
@@ -155,8 +155,8 @@
     <div class="modal-overlay" id="parserModal">
         <div class="modal-content">
             <span class="close-modal" onclick="document.getElementById('parserModal').style.display='none'">&times;</span>
-            <h2 style="border: none; color: var(--primary);">📚 JSON Dönüştürücü (Gelişmiş Hafıza)</h2>
-            <p style="font-size: 0.85rem; color: var(--text-muted);">TXT formatındaki mevzuatları içeren ZIP dosyasını seçin. <b>Ek atıfları otomatik tespit edilecektir.</b></p>
+            <h2 style="border: none; color: var(--primary);">📚 JSON Dönüştürücü (Gelişmiş Hafıza V20)</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">TXT formatındaki mevzuatları içeren ZIP dosyasını seçin. <b>Roma rakamlı ekler ve çoklu atıflar otomatik tespit edilecektir.</b></p>
             <div class="upload-area" onclick="document.getElementById('zipFileInput').click()">
                 <div style="font-size: 2.5rem; margin-bottom: 5px;">📦</div>
                 <strong style="color: var(--primary);">ZIP Dosyası Yükle</strong>
@@ -170,11 +170,8 @@
         <div class="modal-content" style="max-width: 900px; height: 85vh;">
             <span class="close-modal" onclick="closeZipSearchModal()">&times;</span>
             <h2 style="border:none; margin-bottom:10px; color: var(--primary);">📖 Orijinal Mevzuat Arşivi</h2>
-            
             <div class="zip-search-wrapper">
-                <div class="zip-info-card">
-                    <b>İpucu:</b> Kelimeleri virgül (,) veya noktalı virgül (;) ile ayırarak aratabilirsiniz. Noktalama işaretleri sistem tarafından tolere edilir.
-                </div>
+                <div class="zip-info-card"><b>İpucu:</b> Kelimeleri virgül (,) veya noktalı virgül (;) ile ayırarak aratabilirsiniz. Noktalama işaretleri sistem tarafından tolere edilir.</div>
                 <div class="zip-search-box">
                     <input type="text" id="zipSearchInput" placeholder="Aranacak Kelime[; dosya filtresi]">
                     <button id="zipSearchButton" class="btn btn-primary">Bul</button>
@@ -280,7 +277,7 @@
         return cleanText.replace(/[.,;:'"!?()[\]{}<>\-\/\\_]/g, ' ').replace(/\s+/g, ' ').trim();
     }
 
-    // --- API KEY YÖNETİMİ ---
+    // --- API KEY ---
     window.onload = function() {
         const savedKeys = localStorage.getItem('isg_groq_keys');
         if (savedKeys) { 
@@ -326,7 +323,7 @@
         });
     }
 
-    // --- INDEXEDDB VE CLOUD (GITHUB) OTOMATİK VERİTABANI YÜKLEME ---
+    // --- INDEXEDDB VE CLOUD YÜKLEME ---
     function saveDBToIndexedDB(data) {
         const request = indexedDB.open("ISG_MevzuatDB", 1);
         request.onupgradeneeded = e => { e.target.result.createObjectStore("MevzuatStore"); };
@@ -349,22 +346,14 @@
                     mevzuatDB = req.result; 
                     showDBReadySuccess("Hafızadan Yüklendi"); 
                 } else {
-                    // YENİ V19 CLOUD ÖZELLİĞİ: Hafıza boşsa GitHub (Aynı Klasör) üzerinden otomatik çek!
                     logDebug("Hafızada DB bulunamadı. Buluttan (GitHub) otomatik indiriliyor...", "warn");
                     fetch('./mevzuat_veritabani.json')
-                        .then(res => {
-                            if(!res.ok) throw new Error("JSON dosyası sunucuda bulunamadı.");
-                            return res.json();
-                        })
+                        .then(res => { if(!res.ok) throw new Error("Dosya yok."); return res.json(); })
                         .then(data => {
-                            mevzuatDB = data;
-                            saveDBToIndexedDB(mevzuatDB);
-                            showDBReadySuccess("Buluttan (GitHub) Yüklendi");
-                            logDebug("Veritabanı buluttan başarıyla çekildi ve cihaza kaydedildi.", "success");
+                            mevzuatDB = data; saveDBToIndexedDB(mevzuatDB); showDBReadySuccess("Buluttan (GitHub) Yüklendi");
+                            logDebug("Veritabanı buluttan çekildi.", "success");
                         })
-                        .catch(err => {
-                            logDebug(`Otomatik çekme başarısız: ${err.message}. Kullanıcının manuel yüklemesi bekleniyor.`, "error");
-                        });
+                        .catch(err => { logDebug(`Otomatik çekme başarısız: ${err.message}`, "error"); });
                 }
             };
         };
@@ -387,7 +376,7 @@
         reader.readAsText(file);
     });
 
-    // --- ZIP'TEN JSON (DİNAMİK EK BAĞLAYICI VE GİZLİ FIKRA - V18/V19) ---
+    // --- ZIP'TEN JSON (YENİ V20 - ROMA RAKAMI VE ÇOKLU ATIF MOTORU) ---
     let zipProcessedData = [];
     document.getElementById('zipFileInput').addEventListener('change', async (e) => {
         const file = e.target.files[0];
@@ -416,6 +405,13 @@
         document.getElementById('parserModal').style.display='none';
     });
 
+    // ROMA RAKAMI ÇEVİRİCİ
+    function normalizeEkNo(val) {
+        const rMap = {'I':'1', 'II':'2', 'III':'3', 'IV':'4', 'V':'5', 'VI':'6', 'VII':'7', 'VIII':'8', 'IX':'9', 'X':'10'};
+        let upper = val.toUpperCase();
+        return rMap[upper] || upper;
+    }
+
     function parseMevzuatText(filename, text) {
         let cleanName = filename.replace(/\.txt$/i, '').trim();
         if (cleanName.toUpperCase().includes("İŞ SAĞLIĞI VE GÜVENLİĞİ KANUNU")) cleanName = "6331 Sayılı " + cleanName;
@@ -430,7 +426,7 @@
         const maddeRegex = /^MADDE\s+(\d+)\s*[-:]*(.*)/i;
         const fikraRegex = /^\((\d+)\)\s*(.*)/;
         const bentRegex = /^([a-zçğıöşü]+)\)\s*(.*)/i;
-        const ekRegex = /^EK\s*[-]*\s*(\d+[A-Z]?)(.*)/i;
+        const ekRegex = /^EK\s*[-:]*\s*([0-9]+[A-Z]?|[IVX]+[A-Z]?)(.*)/i; 
         const ekAltMaddeRegex = /^(\d+[\.\d]*)\s*(.*)/; 
 
         for (let i = 0; i < lines.length; i++) {
@@ -438,17 +434,24 @@
             if (!line) continue;
 
             if (!isInEk && currentMadde) {
-                let atifMatch = line.match(/Ek\s*[-]*\s*(\d+[A-Z]?)/i);
-                if (atifMatch) {
-                    let ekNo = atifMatch[1].toUpperCase();
-                    if (!ekAtiflari[ekNo]) { 
+                // RG değişiklik notlarını görmezden gel (Tuzak filtresi)
+                let safeLine = line.replace(/\(Ek\s*:[^)]+\)/gi, ''); 
+                
+                // Çoklu atıf yakalayıcı (Roma Rakamı dahil)
+                let atifRegex = /\bEk\s*[-]?\s*([0-9]+[A-Z]?|[IVX]+[A-Z]?)\b/gi;
+                let match;
+                while ((match = atifRegex.exec(safeLine)) !== null) {
+                    let rawEkNo = match[1];
+                    let normEkNo = normalizeEkNo(rawEkNo);
+                    
+                    if (!ekAtiflari[normEkNo]) { 
                         let dStr = `Madde: ${currentMadde.madde_no}`;
                         if (currentFikra) dStr += `(${currentFikra.fikra_no})`;
                         let bMatch = line.match(/^([a-zçğıöşü]+)\)/i);
                         if (bMatch) dStr += ` ${bMatch[1].toLowerCase()}`;
                         else if (currentFikra && currentFikra.bentler.length > 0) dStr += ` ${currentFikra.bentler[currentFikra.bentler.length - 1].bent_harfi}`;
                         else if (currentMadde.bentler && currentMadde.bentler.length > 0 && !currentFikra) dStr += ` ${currentMadde.bentler[currentMadde.bentler.length - 1].bent_harfi}`;
-                        ekAtiflari[ekNo] = dStr;
+                        ekAtiflari[normEkNo] = dStr;
                     }
                 }
             }
@@ -456,11 +459,12 @@
             let ekMatch = line.match(ekRegex);
             if (ekMatch) { 
                 isInEk = true; 
-                let rawEkNo = ekMatch[1].toUpperCase();
+                let rawEkNo = ekMatch[1];
+                let normEkNo = normalizeEkNo(rawEkNo);
                 currentEk = { 
-                    ek_no: "EK-" + rawEkNo, 
+                    ek_no: "EK-" + rawEkNo.toUpperCase(), 
                     baslik: ekMatch[2] ? ekMatch[2].trim() : "", 
-                    bagli_oldugu_madde: ekAtiflari[rawEkNo] || null, 
+                    bagli_oldugu_madde: ekAtiflari[normEkNo] || null, 
                     maddeler: [], metin: "" 
                 }; 
                 result.ekler.push(currentEk); 
@@ -795,7 +799,6 @@
         keys.forEach(k => {
             const { selectedData, violation } = finalReportData[k];
             
-            // V15: FUZZY ARŞİV SORGUSU ÜRETME
             let cleanM = selectedData.metin.replace(/^[\s\-\d\.\)]+/g, '').trim(); 
             let textWords = removePunctuation(cleanM).split(/\s+/).filter(w => w.length > 3);
             let safeQueryWords = textWords.slice(0, 5).join(' ');
@@ -841,10 +844,9 @@
     }
 
     // =========================================================================
-    // 6. GÖMÜLÜ ORİJİNAL MEVZUAT (ZIP) ARAMA MOTORU SİSTEMİ (V19 CLOUD)
+    // 6. GÖMÜLÜ ORİJİNAL MEVZUAT (ZIP) ARAMA MOTORU SİSTEMİ
     // =========================================================================
     
-    // YENİ V19: Artık Göreceli URL kullanıyor. GitHub Reposu'ndaki aynı klasörden ZIP'i okur.
     const ZIP_URL = './MevzuatText.zip';
     let GLOBAL_MATCHES=[];
     let cachedZipData = null; 
