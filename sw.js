@@ -1,14 +1,16 @@
-const CACHE_NAME = "isg-cache-v2";
+const CACHE_NAME = "isg-cache-v3";
+// GitHub Pages için DayanakBul klasörünü hafızaya alıyoruz
 const urlsToCache = [
-  "./",
-  "./index.html"
+  "/DayanakBul/",
+  "/DayanakBul/index.html",
+  "/DayanakBul/manifest.json"
 ];
 
 self.addEventListener("install", (e) => {
   self.skipWaiting();
   e.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      // Kurulum aşamasında ana HTML'yi hafızaya atıyoruz ki Chrome 'offline çalışıyor' sansın.
+      // Chrome 'internet yokken de bu site açılıyor' sansın diye ana dosyaları önbelleğe gömüyoruz
       return cache.addAll(urlsToCache);
     }).catch(err => console.log("Cache hatası:", err))
   );
@@ -19,11 +21,11 @@ self.addEventListener("activate", (e) => {
 });
 
 self.addEventListener("fetch", (e) => {
-  // JSON ve ZIP her zaman internetten taze çekilsin
+  // Mevzuat JSON ve ZIP dosyaları ağır olduğu için HER ZAMAN buluttan (internetten) çekilsin
   if (e.request.url.includes("mevzuat_veritabani.json") || e.request.url.includes("MevzuatText.zip")) {
     e.respondWith(fetch(e.request, { cache: "no-store" }));
   } else {
-    // Diğer dosyalar için: Önce internetten al, internet yoksa hafızadakini (cache) ver.
+    // Diğer her şey için: Önce interneti dene, internet yoksa önbellekteki dosyayı ver (Offline Testini Geç!)
     e.respondWith(
       fetch(e.request).catch(() => caches.match(e.request))
     );
