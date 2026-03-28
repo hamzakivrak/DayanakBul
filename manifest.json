@@ -1,0 +1,9 @@
+{
+  "name": "İSG Yapay Zeka Denetçi",
+  "short_name": "İSG Denetçi",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#4f46e5",
+  "description": "İş Sağlığı ve Güvenliği Mevzuat Arama ve Raporlama Sistemi"
+}
