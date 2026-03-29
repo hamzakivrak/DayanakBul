@@ -44,8 +44,8 @@
         /* HEADER & HAMBURGER */
         .header-bar { display: flex; justify-content: space-between; align-items: center; background: var(--header-bg); padding: 12px 20px; border-radius: var(--radius); box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid var(--border); }
         .header-bar h1 { margin: 0; font-size: 1.2rem; color: var(--primary); font-weight: 800; display: flex; align-items: center; gap: 8px;}
-        .hamburger-btn { background: transparent; border: none; font-size: 1.8rem; cursor: pointer; color: var(--text-main); display: flex; align-items: center; padding: 0;}
-        .hamburger-btn:hover { color: var(--primary); }
+        .hamburger-btn { background: transparent; border: none; font-size: 1.8rem; cursor: pointer; color: var(--text-main); display: flex; align-items: center; padding: 0; transition: 0.2s;}
+        .hamburger-btn:hover { color: var(--primary); transform: scale(1.1); }
 
         /* SIDEBAR (AYARLAR) */
         .sidebar-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); backdrop-filter: blur(3px); z-index: 2000; }
@@ -197,7 +197,10 @@
 
 <div class="container">
     <div class="header-bar">
-        <h1>✨ İSG Yapay Zeka Denetçi</h1>
+        <div style="display: flex; align-items: center;">
+            <button id="viewportToggleBtn" class="hamburger-btn" onclick="toggleViewport()" style="margin-right: 10px; font-size: 1.5rem;" title="Masaüstü Görünüme Geç">🖥️</button>
+            <h1>✨ İSG Yapay Zeka Denetçi</h1>
+        </div>
         <div style="display: flex; align-items: center;">
             <button id="installAppBtn">📲 Yükle</button>
             <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
@@ -400,6 +403,27 @@
 
 
 <script>
+    // ==========================================
+    // VİEWPORT (MASAÜSTÜ/MOBİL GEÇİŞ)
+    // ==========================================
+    window.isDesktopView = false;
+    function toggleViewport() {
+        const viewportMeta = document.querySelector('meta[name="viewport"]');
+        const toggleBtn = document.getElementById('viewportToggleBtn');
+        
+        if (!window.isDesktopView) {
+            viewportMeta.setAttribute('content', 'width=1200');
+            toggleBtn.innerHTML = '📱';
+            toggleBtn.title = 'Mobil Görünüme Geç';
+            window.isDesktopView = true;
+        } else {
+            viewportMeta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+            toggleBtn.innerHTML = '🖥️';
+            toggleBtn.title = 'Masaüstü Görünüme Geç';
+            window.isDesktopView = false;
+        }
+    }
+
     // ==========================================
     // UI/UX KONTROLLERİ (TABLAR, SIDEBAR, TEMA)
     // ==========================================
@@ -779,6 +803,7 @@
         
         logDebug("TF-IDF IDF tablosu hesaplanıyor...", "warn");
 
+        // UI donmasını engellemek için işlemi asenkron yapıyoruz
         setTimeout(() => {
             try {
                 let startTime = performance.now();
@@ -926,7 +951,7 @@
                 while ((match = atifRegex.exec(safeLine)) !== null) {
                     let normEkNo = normalizeEkNo(match[1]);
                     
-                    if (!ekAtiflari[normEkNo]) { ekAtiflari[normEkNo] = []; }
+                    if (!ekAtiflari[normEkNo]) { ekAtiflari[normEkNo] = []; } // YENİ: Dizi olarak başlat
 
                     let dStr = `Madde: ${currentMadde.madde_no}`;
                     if (currentFikra) dStr += `(${currentFikra.fikra_no})`;
@@ -936,6 +961,7 @@
                         dStr += ` ${currentMadde.bentler[currentMadde.bentler.length - 1].bent_harfi}`;
                     }
                     
+                    // YENİ: Eğer bu atıf daha önce listeye eklenmediyse ekle
                     if (!ekAtiflari[normEkNo].includes(dStr)) {
                         ekAtiflari[normEkNo].push(dStr);
                     }
@@ -1205,143 +1231,6 @@
         updateSliderView();
         renderFinalReport();
         document.getElementById('workArea').style.display = 'block';
-    }
-
-    // ==========================================
-    // YENİ: JSON GEZGİNİ (MEVZUATTA GÖR/SEÇ) FONKSİYONLARI
-    // ==========================================
-    function openJsonBrowser(vIndex, optIndex) {
-        const res = window[`currentOptions_${vIndex}`][optIndex];
-        const mevIdx = res.mevIdx;
-        currentBrowseTargetDayanak = res.dayanak;
-        currentBrowseVIndex = vIndex;
-        
-        const mevzuat = mevzuatDB[mevIdx];
-        if(!mevzuat) return;
-        
-        document.getElementById('jsonBrowseTitle').innerText = mevzuat.mevzuat_adi;
-        document.getElementById('jsonBrowseSearchInput').value = ""; // Reset search
-        
-        window.tempBrowseChunks = [];
-        let kDayanak = mevzuat.dayanak_kanun ? (mevzuat.dayanak_kanun + ", ") : "";
-        let mName = mevzuat.mevzuat_adi;
-
-        function addChunk(metin, dayanak) {
-            if(metin) window.tempBrowseChunks.push({ metin, dayanak, mevIdx });
-        }
-
-        if(mevzuat.maddeler) {
-            mevzuat.maddeler.forEach(mad => {
-                addChunk(mad.metin, `(${kDayanak}${mName}, Madde: ${mad.madde_no})`);
-                if(mad.fikralar) {
-                    mad.fikralar.forEach(fik => {
-                        addChunk(fik.metin, `(${kDayanak}${mName}, Madde: ${mad.madde_no}(${fik.fikra_no}))`);
-                        if(fik.bentler) {
-                            fik.bentler.forEach(ben => addChunk(ben.metin, `(${kDayanak}${mName}, Madde: ${mad.madde_no}(${fik.fikra_no}) ${ben.bent_harfi})`));
-                        }
-                    });
-                }
-                if(mad.bentler && (!mad.fikralar || mad.fikralar.length===0)) {
-                    mad.bentler.forEach(ben => addChunk(ben.metin, `(${kDayanak}${mName}, Madde: ${mad.madde_no} ${ben.bent_harfi})`));
-                }
-            });
-        }
-        if(mevzuat.ekler) {
-            mevzuat.ekler.forEach(ek => {
-                let bagli = ek.bagli_oldugu_madde ? `${ek.bagli_oldugu_madde}, ` : "";
-                addChunk(ek.metin, `(${kDayanak}${mName}, ${bagli}${ek.ek_no})`);
-                if(ek.maddeler) {
-                    ek.maddeler.forEach(mad => {
-                        addChunk(mad.metin, `(${kDayanak}${mName}, ${bagli}${ek.ek_no}, Madde: ${mad.madde_no})`);
-                        if(mad.bentler) {
-                            mad.bentler.forEach(ben => addChunk(ben.metin, `(${kDayanak}${mName}, ${bagli}${ek.ek_no}, Madde: ${mad.madde_no} ${ben.bent_harfi})`));
-                        }
-                    });
-                }
-            });
-        }
-        
-        renderJsonBrowser();
-        document.getElementById('jsonBrowseModal').style.display = 'flex';
-
-        // Otomatik Kaydırma (Scroll)
-        setTimeout(() => {
-            const targetEl = document.getElementById('jsonBrowseTarget');
-            const container = document.getElementById('jsonBrowseContent');
-            if(targetEl && container) {
-                container.scrollTop = targetEl.offsetTop - container.offsetTop - (container.clientHeight / 2) + (targetEl.clientHeight / 2);
-            }
-        }, 50);
-    }
-
-    function renderJsonBrowser() {
-        const query = tightNormalize(document.getElementById('jsonBrowseSearchInput').value);
-        let queryTokens = query ? query.split(' ').filter(t=>t.length>0) : [];
-        
-        let html = `<div class="zip-info-card" style="position:sticky; top:0; z-index:10; margin-top:-20px; padding:15px; margin-bottom:15px; border-bottom:1px solid var(--border); border-radius:0 0 8px 8px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);">
-            <b>İpucu:</b> İstediğiniz maddenin üzerine tıklayarak <b>İhlal ${violationsArray[currentBrowseVIndex].number}</b> için rapora direkt ekleyebilirsiniz. Sizin için bulduğumuz seçenek aşağıda işaretlenmiştir.
-        </div><div style="padding: 0 20px 20px 20px;">`;
-        
-        window.tempBrowseChunks.forEach((chunk, chunkIdx) => {
-            let textToSearch = tightNormalize(chunk.metin);
-            
-            // Filter logic
-            if (queryTokens.length > 0) {
-                let match = true;
-                queryTokens.forEach(qt => {
-                    if(!textToSearch.includes(qt)) match = false;
-                });
-                if(!match) return; 
-            }
-
-            let isTarget = chunk.dayanak === currentBrowseTargetDayanak;
-            let bgClass = isTarget ? 'background: #e0e7ff; border-left: 4px solid var(--primary); box-shadow: 0 4px 6px rgba(0,0,0,0.1); transform: scale(1.02); z-index: 1;' : 'background: #fff; border: 1px solid var(--border);';
-            let idStr = isTarget ? 'id="jsonBrowseTarget"' : '';
-            
-            // YENİ: Alt atıfları sarıya boyamak için Regex (Ek-III Madde 7(2) vb.)
-            let displayDayanak = chunk.dayanak;
-            displayDayanak = displayDayanak.replace(/\(Alt Atıflar: (.*?)\)/g, '<span style="background-color: #fef08a; padding: 0 4px; border-radius: 4px; font-size: 0.85em; color: #854d0e; margin-left: 4px;">(Alt Atıflar: $1)</span>');
-
-            // Highlight aranan kelimeler
-            let displayMetin = escapeHTML(chunk.metin);
-            if (queryTokens.length > 0) {
-                let wordsToHighlight = [...new Set(queryTokens)].filter(w => w.length > 2).sort((a,b) => b.length - a.length);
-                if(wordsToHighlight.length > 0) {
-                    let charMap = { 'i': '[iıİIîÎ]', 'g': '[gğGĞ]', 'u': '[uüUÜ]', 's': '[sşSŞ]', 'o': '[oöOÖ]', 'c': '[cçCÇ]', 'a': '[aâAÂ]' };
-                    let regParts = wordsToHighlight.map(fw => fw.split('').map(c => charMap[c] || c).join(''));
-                    let regex = new RegExp('(' + regParts.join('|') + ')', 'gi');
-                    displayMetin = displayMetin.replace(regex, '<mark style="background-color:rgba(250,204,21,0.5); padding:0 2px; border-radius:3px;">$1</mark>');
-                }
-            }
-
-            html += `<div ${idStr} style="padding: 12px; margin-bottom: 8px; border-radius: 8px; cursor: pointer; transition: 0.2s; ${bgClass}" class="map-viol-item" onclick="selectFromBrowser(${currentBrowseVIndex}, ${chunkIdx})">
-                <div style="font-size: 0.8rem; color: var(--primary); margin-bottom: 4px; font-weight: 800;">${displayDayanak}</div>
-                <div>${displayMetin}</div>
-            </div>`;
-        });
-        
-        html += "</div>";
-        document.getElementById('jsonBrowseContent').innerHTML = html;
-    }
-
-    function filterJsonBrowser() {
-        renderJsonBrowser();
-    }
-
-    function selectFromBrowser(vIndex, chunkIdx) {
-        let selectedData = window.tempBrowseChunks[chunkIdx];
-        const violation = violationsArray[vIndex];
-        finalReportData[vIndex] = { selectedData, violation }; 
-        renderFinalReport(); 
-        logDebug(`Rapor güncellendi (Mevzuat Gezgininden seçildi).`, "success");
-        
-        document.getElementById('jsonBrowseModal').style.display = 'none';
-        
-        if(currentSlideIndex < violationsArray.length - 1) {
-            setTimeout(() => changeSlide(1), 400); 
-        } else {
-            alert("✅ Tüm ihlaller eşleştirildi! Nihai Rapor sekmesinden raporunuzu alabilirsiniz.");
-        }
     }
 
     function buildSliderUI(mappingData) {
