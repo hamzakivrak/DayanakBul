@@ -324,7 +324,7 @@
 <div class="modal-overlay" id="zipSearchModal">
     <div class="modal-content" style="max-width: 900px; height: 85vh;">
         <span class="close-modal" onclick="closeZipSearchModal()">&times;</span>
-        <h2 style="border:none; margin:bottom:10px; color: var(--primary);">📖 Orijinal Mevzuat Arşivi</h2>
+        <h2 style="border:none; margin-bottom:10px; color: var(--primary);">📖 Orijinal Mevzuat Arşivi</h2>
         <div class="zip-search-wrapper">
             <div class="zip-info-card"><b>İpucu:</b> Önce aranacak metni, sonra noktalı virgül (<b>;</b>), en son aramak istediğiniz yönetmeliğin adını yazın. (Örn: <i>hava hızı ; maden</i>)</div>
             <div class="zip-search-box">
@@ -608,8 +608,7 @@
             req.onsuccess = () => {
                 if (req.result && req.result.length > 0) { 
                     mevzuatDB = req.result; 
-                    showDBReadySuccess("Hafızadan Yüklendi"); 
-                    precomputeTfIdf();
+                    precomputeTfIdf("Hafızadan Yüklendi"); 
                 } else {
                     logDebug("Hafızada DB bulunamadı. Buluttan otomatik indiriliyor...", "warn");
                     fetch('./mevzuat_veritabani.json?v=' + new Date().getTime(), { cache: "no-store" })
@@ -617,14 +616,43 @@
                         .then(data => {
                             mevzuatDB = data; 
                             saveDBToIndexedDB(mevzuatDB); 
-                            showDBReadySuccess("Buluttan Yüklendi");
-                            precomputeTfIdf();
+                            precomputeTfIdf("Buluttan Yüklendi");
                             logDebug("Veritabanı buluttan çekildi.", "success");
                         })
                         .catch(err => { logDebug(`Otomatik çekme başarısız: ${err.message}`, "error"); });
                 }
             };
         };
+    }
+
+    // ==========================================
+    // EKSİK OLAN HAYATİ FONKSİYON EKLENDİ!
+    // ==========================================
+    function buildSearchableChunks(mevzuatObj) {
+        let chunks = [];
+        let kDayanak = mevzuatObj.dayanak_kanun ? (mevzuatObj.dayanak_kanun + ", ") : "";
+        let mName = mevzuatObj.mevzuat_adi;
+        if(mevzuatObj.maddeler) {
+            mevzuatObj.maddeler.forEach(mad => {
+                if(mad.metin) chunks.push({ metin: mad.metin, dayanak: `(${kDayanak}${mName}, Madde: ${mad.madde_no})` });
+                if(mad.fikralar) mad.fikralar.forEach(fik => {
+                    if(fik.metin) chunks.push({ metin: fik.metin, dayanak: `(${kDayanak}${mName}, Madde: ${mad.madde_no}(${fik.fikra_no}))` });
+                    if(fik.bentler) fik.bentler.forEach(ben => chunks.push({ metin: ben.metin, dayanak: `(${kDayanak}${mName}, Madde: ${mad.madde_no}(${fik.fikra_no}) ${ben.bent_harfi})` }));
+                });
+                if(mad.bentler && (!mad.fikralar || mad.fikralar.length===0)) mad.bentler.forEach(ben => chunks.push({ metin: ben.metin, dayanak: `(${kDayanak}${mName}, Madde: ${mad.madde_no} ${ben.bent_harfi})` }));
+            });
+        }
+        if(mevzuatObj.ekler) {
+            mevzuatObj.ekler.forEach(ek => {
+                let bagli = ek.bagli_oldugu_madde ? `${ek.bagli_oldugu_madde}, ` : "";
+                if(ek.metin) chunks.push({ metin: ek.metin, dayanak: `(${kDayanak}${mName}, ${bagli}${ek.ek_no})` });
+                if(ek.maddeler) ek.maddeler.forEach(mad => {
+                    if(mad.metin) chunks.push({ metin: mad.metin, dayanak: `(${kDayanak}${mName}, ${bagli}${ek.ek_no}, Madde: ${mad.madde_no})` });
+                    if(mad.bentler) mad.bentler.forEach(ben => chunks.push({ metin: ben.metin, dayanak: `(${kDayanak}${mName}, ${bagli}${ek.ek_no}, Madde: ${mad.madde_no} ${ben.bent_harfi})` }));
+                });
+            });
+        }
+        return chunks;
     }
 
     // ==========================================
@@ -635,11 +663,11 @@
 
         const models = ['llama-3.3-70b-versatile', 'llama-3.1-8b-instant'];
 
-        for (let keyIdx = 0; keyIdx < apiKeys.length; keyIdx++) {
-            let currentKey = apiKeys[keyIdx];
+        for (let modelIdx = 0; modelIdx < models.length; modelIdx++) {
+            let currentModel = models[modelIdx];
 
-            for (let modelIdx = 0; modelIdx < models.length; modelIdx++) {
-                let currentModel = models[modelIdx];
+            for (let keyIdx = 0; keyIdx < apiKeys.length; keyIdx++) {
+                let currentKey = apiKeys[keyIdx];
                 
                 try {
                     const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
@@ -724,37 +752,52 @@
     // ==========================================
     // TF-IDF ÖN HESAPLAMA VE SKORLAMA
     // ==========================================
-    function precomputeTfIdf() {
-        if (!mevzuatDB || mevzuatDB.length === 0) return;
-        logDebug("TF-IDF IDF tablosu hesaplanıyor...", "warn");
-        
-        let startTime = performance.now();
-        mevzuatIdfTable = {}; 
-        provisionChunksCache = []; 
-        let wordDocumentCount = {}; 
-        
-        mevzuatDB.forEach((mev, mevIdx) => {
-            let chunks = buildSearchableChunks(mev);
-            chunks.forEach(chunk => {
-                provisionChunksCache.push({...chunk, mevIdx: mevIdx});
-                let tokens = getCleanTokens(chunk.metin);
-                let uniqueTokensInChunk = [...new Set(tokens)]; 
-                
-                uniqueTokensInChunk.forEach(token => {
-                    wordDocumentCount[token] = (wordDocumentCount[token] || 0) + 1;
-                });
-            });
-        });
-        
-        let totalDocuments = provisionChunksCache.length;
-        if (totalDocuments === 0) return;
-        
-        for (let token in wordDocumentCount) {
-            mevzuatIdfTable[token] = Math.log10(totalDocuments / (wordDocumentCount[token] + 1));
+    function precomputeTfIdf(sourceMsg) {
+        if (!Array.isArray(mevzuatDB) || mevzuatDB.length === 0) {
+            logDebug("HATA: Mevzuat veritabanı geçerli değil!", "error");
+            return;
         }
         
-        let endTime = performance.now();
-        logDebug(`TF-IDF Hazır. ${totalDocuments} madde, ${Object.keys(mevzuatIdfTable).length} kelime. Süre: ${((endTime - startTime)/1000).toFixed(2)}sn`, "success");
+        logDebug("TF-IDF IDF tablosu hesaplanıyor...", "warn");
+
+        // UI donmasını engellemek için işlemi asenkron yapıyoruz (Zırhlı)
+        setTimeout(() => {
+            try {
+                let startTime = performance.now();
+                mevzuatIdfTable = {}; 
+                provisionChunksCache = []; 
+                let wordDocumentCount = {}; 
+                
+                mevzuatDB.forEach((mev, mevIdx) => {
+                    if(!mev) return;
+                    let chunks = buildSearchableChunks(mev);
+                    chunks.forEach(chunk => {
+                        provisionChunksCache.push({...chunk, mevIdx: mevIdx});
+                        let tokens = getCleanTokens(chunk.metin);
+                        let uniqueTokensInChunk = [...new Set(tokens)]; 
+                        
+                        uniqueTokensInChunk.forEach(token => {
+                            wordDocumentCount[token] = (wordDocumentCount[token] || 0) + 1;
+                        });
+                    });
+                });
+                
+                let totalDocuments = provisionChunksCache.length;
+                if (totalDocuments > 0) {
+                    for (let token in wordDocumentCount) {
+                        mevzuatIdfTable[token] = Math.log10(totalDocuments / (wordDocumentCount[token] + 1));
+                    }
+                }
+                
+                let endTime = performance.now();
+                logDebug(`TF-IDF Hazır. ${totalDocuments} madde, ${Object.keys(mevzuatIdfTable).length} kelime. Süre: ${((endTime - startTime)/1000).toFixed(2)}sn`, "success");
+                
+                // Her şey pürüzsüzse butonu aktifleştir
+                showDBReadySuccess(sourceMsg || "Sistem Hazır");
+            } catch (err) {
+                logDebug(`HATA (TF-IDF): ${err.message}`, "error");
+            }
+        }, 50);
     }
 
     function calculateTfIdfScore(chunkText, queryTokens) {
@@ -797,8 +840,7 @@
             try { 
                 mevzuatDB = JSON.parse(e.target.result); 
                 saveDBToIndexedDB(mevzuatDB); 
-                showDBReadySuccess("Dosyadan Yüklendi"); 
-                precomputeTfIdf();
+                precomputeTfIdf("Dosyadan Yüklendi");
             } catch (err) { alert("Geçersiz JSON dosyası!"); }
         };
         reader.readAsText(file);
@@ -830,8 +872,7 @@
         saveAs(blob, "mevzuat_veritabani.json");
         mevzuatDB = zipProcessedData; 
         saveDBToIndexedDB(mevzuatDB); 
-        showDBReadySuccess("Yeni Üretildi");
-        precomputeTfIdf();
+        precomputeTfIdf("Yeni Üretildi");
         document.getElementById('parserModal').style.display='none';
     });
 
@@ -1418,8 +1459,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
         keys.forEach(k => {
             const { selectedData, violation } = finalReportData[k];
             
-            // YENİ: Zip aramada dosyayı ve metni bulabilmesi için özel query oluşturuyoruz.
-            let textTokens = getCleanTokens(selectedData.metin).slice(0, 6).join(', '); // Virgül ile ayırıyoruz
+            let textTokens = getCleanTokens(selectedData.metin).slice(0, 6).join(', ');
             let mevName = mevzuatDB[selectedData.mevIdx] ? mevzuatDB[selectedData.mevIdx].mevzuat_adi : "";
             
             let safeSearchQuery = `FUZZY:${textTokens} ; ${mevName}`;
