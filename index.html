@@ -126,7 +126,7 @@
         .options-container { display: none; margin-top: 15px; }
         .option-card { margin-bottom: 10px; position: relative; }
         .option-card input[type="radio"] { display: none; }
-        .option-card label { display: block; padding: 15px; background: var(--card-bg); border: 2px solid var(--border); border-radius: 10px; cursor: pointer; transition: all 0.2s; color: var(--text-main); }
+        .option-card label { display: block; padding: 15px 15px 45px 15px; background: var(--card-bg); border: 2px solid var(--border); border-radius: 10px; cursor: pointer; transition: all 0.2s; color: var(--text-main); }
         .option-card label:hover { border-color: var(--secondary); background: rgba(14,165,233,0.05); }
         .option-card input[type="radio"]:checked + label { border-color: var(--success); background: rgba(16,185,129,0.05); box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1); }
         .option-title { font-weight: 800; color: var(--success); margin-bottom: 5px; font-size: 0.95rem; display: flex; justify-content: space-between; }
@@ -346,6 +346,17 @@
     </div>
 </div>
 
+<div class="modal-overlay" id="jsonBrowseModal" style="z-index: 1200;">
+    <div class="modal-content" style="max-width: 800px; height: 85vh; padding:0; overflow:hidden;">
+        <div class="zip-modal-header">
+            <h2 id="jsonBrowseTitle" style="font-size:1.05rem; margin:0;">Mevzuat Görünümü</h2>
+            <span class="close-modal" style="position: static;" onclick="document.getElementById('jsonBrowseModal').style.display='none'">&times;</span>
+        </div>
+        <div id="jsonBrowseContent" style="padding: 0; overflow-y: auto; font-size: 0.9rem; line-height: 1.6; color: var(--text-main); background: var(--bg); height: 100%;">
+            </div>
+    </div>
+</div>
+
 <div class="modal-overlay" id="manualMappingModal">
     <div class="modal-content" style="max-width: 950px; height: 85vh;">
         <span class="close-modal" onclick="document.getElementById('manualMappingModal').style.display='none'">&times;</span>
@@ -520,6 +531,7 @@
 
     let manualUserMapping = {}; 
     let selectedMappedVIndices = []; 
+    let tempBrowseChunks = []; // JSON Modal'ında madde seçimi için geçici hafıza
 
     // ==========================================
     // TEMEL FONKSİYONLAR
@@ -760,7 +772,6 @@
         
         logDebug("TF-IDF IDF tablosu hesaplanıyor...", "warn");
 
-        // UI donmasını engellemek için işlemi asenkron yapıyoruz (Zırhlı)
         setTimeout(() => {
             try {
                 let startTime = performance.now();
@@ -792,7 +803,6 @@
                 let endTime = performance.now();
                 logDebug(`TF-IDF Hazır. ${totalDocuments} madde, ${Object.keys(mevzuatIdfTable).length} kelime. Süre: ${((endTime - startTime)/1000).toFixed(2)}sn`, "success");
                 
-                // Her şey pürüzsüzse butonu aktifleştir
                 showDBReadySuccess(sourceMsg || "Sistem Hazır");
             } catch (err) {
                 logDebug(`HATA (TF-IDF): ${err.message}`, "error");
@@ -830,7 +840,7 @@
     }
 
     // ==========================================
-    // JSON DÖNÜŞTÜRME
+    // JSON DÖNÜŞTÜRME & ÇOKLU ATIF PARSER MANTIĞI
     // ==========================================
     document.getElementById('jsonFile').addEventListener('change', function(e) {
         const file = e.target.files[0];
@@ -891,6 +901,8 @@
         const result = { mevzuat_adi: cleanName, mevzuat_turu: type, dayanak_kanun: type === "Yönetmelik" ? "6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30" : null, maddeler: [], ekler: [] };
         const lines = text.split('\n');
         let currentMadde = null, currentFikra = null, currentEk = null, isInEk = false;
+        
+        // YENİ: Çoklu atıf hafızası
         let ekAtiflari = {}; 
 
         const maddeRegex = /^MADDE\s+(\d+)\s*[-:–—]*\s*(.*)/i;
@@ -906,15 +918,20 @@
                 let match;
                 while ((match = atifRegex.exec(safeLine)) !== null) {
                     let normEkNo = normalizeEkNo(match[1]);
-                    if (!ekAtiflari[normEkNo]) { 
-                        let dStr = `Madde: ${currentMadde.madde_no}`;
-                        if (currentFikra) dStr += `(${currentFikra.fikra_no})`;
-                        if (currentFikra && currentFikra.bentler && currentFikra.bentler.length > 0) {
-                            dStr += ` ${currentFikra.bentler[currentFikra.bentler.length - 1].bent_harfi}`;
-                        } else if (currentMadde.bentler && currentMadde.bentler.length > 0 && !currentFikra) {
-                            dStr += ` ${currentMadde.bentler[currentMadde.bentler.length - 1].bent_harfi}`;
-                        }
-                        ekAtiflari[normEkNo] = dStr;
+                    
+                    if (!ekAtiflari[normEkNo]) { ekAtiflari[normEkNo] = []; } // YENİ: Dizi olarak başlat
+
+                    let dStr = `Madde: ${currentMadde.madde_no}`;
+                    if (currentFikra) dStr += `(${currentFikra.fikra_no})`;
+                    if (currentFikra && currentFikra.bentler && currentFikra.bentler.length > 0) {
+                        dStr += ` ${currentFikra.bentler[currentFikra.bentler.length - 1].bent_harfi}`;
+                    } else if (currentMadde.bentler && currentMadde.bentler.length > 0 && !currentFikra) {
+                        dStr += ` ${currentMadde.bentler[currentMadde.bentler.length - 1].bent_harfi}`;
+                    }
+                    
+                    // YENİ: Eğer bu atıf daha önce listeye eklenmediyse ekle
+                    if (!ekAtiflari[normEkNo].includes(dStr)) {
+                        ekAtiflari[normEkNo].push(dStr);
                     }
                 }
             }
@@ -929,10 +946,21 @@
                 isInEk = true; 
                 let rawEkNo = ekMatch[1];
                 let normEkNo = normalizeEkNo(rawEkNo);
+                
+                // YENİ: Alternatif atıfları birleştirip renkli span içine alma
+                let bagliStr = null;
+                if(ekAtiflari[normEkNo] && ekAtiflari[normEkNo].length > 0) {
+                    bagliStr = ekAtiflari[normEkNo][0]; // İlk atıf ana dayanak
+                    if(ekAtiflari[normEkNo].length > 1) {
+                        let altAtiflar = ekAtiflari[normEkNo].slice(1).join(', ');
+                        bagliStr += ` <span style="background-color: #fef08a; padding: 0 4px; border-radius: 4px; font-size: 0.85em; color: #854d0e; margin-left: 4px;" title="Alternatif Atıflar">(Alt Atıflar: ${altAtiflar})</span>`;
+                    }
+                }
+
                 currentEk = { 
                     ek_no: "EK-" + rawEkNo.toUpperCase(), 
                     baslik: ekMatch[2] ? ekMatch[2].trim() : "", 
-                    bagli_oldugu_madde: ekAtiflari[normEkNo] || null, 
+                    bagli_oldugu_madde: bagliStr, 
                     maddeler: [], metin: "" 
                 }; 
                 result.ekler.push(currentEk); 
@@ -1171,6 +1199,103 @@
         updateSliderView();
         renderFinalReport();
         document.getElementById('workArea').style.display = 'block';
+    }
+
+    // ==========================================
+    // YENİ: JSON GEZGİNİ (MEVZUATTA GÖR/SEÇ) FONKSİYONLARI
+    // ==========================================
+    function openJsonBrowser(vIndex, optIndex) {
+        const res = window[`currentOptions_${vIndex}`][optIndex];
+        const mevIdx = res.mevIdx;
+        const targetDayanak = res.dayanak;
+        const mevzuat = mevzuatDB[mevIdx];
+        if(!mevzuat) return;
+        
+        document.getElementById('jsonBrowseTitle').innerText = mevzuat.mevzuat_adi;
+        
+        let html = `<div class="zip-info-card" style="position:sticky; top:0; z-index:10; margin-top:-20px; padding:15px; margin-bottom:15px; border-bottom:1px solid var(--border); border-radius:0 0 8px 8px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);">
+            <b>İpucu:</b> İstediğiniz maddenin üzerine tıklayarak <b>İhlal ${violationsArray[vIndex].number}</b> için rapora direkt ekleyebilirsiniz. Sizin için bulduğumuz seçenek aşağıda işaretlenmiştir.
+        </div><div style="padding: 0 20px 20px 20px;">`;
+        
+        let kDayanak = mevzuat.dayanak_kanun ? (mevzuat.dayanak_kanun + ", ") : "";
+        let mName = mevzuat.mevzuat_adi;
+        
+        window.tempBrowseChunks = [];
+
+        function renderChunk(metin, dayanak) {
+            if(!metin) return "";
+            let isTarget = dayanak === targetDayanak;
+            let bgClass = isTarget ? 'background: #e0e7ff; border-left: 4px solid var(--primary); box-shadow: 0 4px 6px rgba(0,0,0,0.1); transform: scale(1.02); z-index: 1;' : 'background: #fff; border: 1px solid var(--border);';
+            let idStr = isTarget ? 'id="jsonBrowseTarget"' : '';
+            
+            let chunkIdx = window.tempBrowseChunks.length;
+            window.tempBrowseChunks.push({metin, dayanak, mevIdx});
+            
+            return `<div ${idStr} style="padding: 12px; margin-bottom: 8px; border-radius: 8px; cursor: pointer; transition: 0.2s; ${bgClass}" class="map-viol-item" onclick="selectFromBrowser(${vIndex}, ${chunkIdx})">
+                <div style="font-size: 0.8rem; color: var(--primary); margin-bottom: 4px; font-weight: 800;">${dayanak}</div>
+                <div>${metin}</div>
+            </div>`;
+        }
+
+        if(mevzuat.maddeler) {
+            mevzuat.maddeler.forEach(mad => {
+                if(mad.metin) html += renderChunk(mad.metin, `(${kDayanak}${mName}, Madde: ${mad.madde_no})`);
+                if(mad.fikralar) {
+                    mad.fikralar.forEach(fik => {
+                        if(fik.metin) html += renderChunk(fik.metin, `(${kDayanak}${mName}, Madde: ${mad.madde_no}(${fik.fikra_no}))`);
+                        if(fik.bentler) {
+                            fik.bentler.forEach(ben => html += renderChunk(ben.metin, `(${kDayanak}${mName}, Madde: ${mad.madde_no}(${fik.fikra_no}) ${ben.bent_harfi})`));
+                        }
+                    });
+                }
+                if(mad.bentler && (!mad.fikralar || mad.fikralar.length===0)) {
+                    mad.bentler.forEach(ben => html += renderChunk(ben.metin, `(${kDayanak}${mName}, Madde: ${mad.madde_no} ${ben.bent_harfi})`));
+                }
+            });
+        }
+        if(mevzuat.ekler) {
+            mevzuat.ekler.forEach(ek => {
+                let bagli = ek.bagli_oldugu_madde ? `${ek.bagli_oldugu_madde}, ` : "";
+                if(ek.metin) html += renderChunk(ek.metin, `(${kDayanak}${mName}, ${bagli}${ek.ek_no})`);
+                if(ek.maddeler) {
+                    ek.maddeler.forEach(mad => {
+                        if(mad.metin) html += renderChunk(mad.metin, `(${kDayanak}${mName}, ${bagli}${ek.ek_no}, Madde: ${mad.madde_no})`);
+                        if(mad.bentler) {
+                            mad.bentler.forEach(ben => html += renderChunk(ben.metin, `(${kDayanak}${mName}, ${bagli}${ek.ek_no}, Madde: ${mad.madde_no} ${ben.bent_harfi})`));
+                        }
+                    });
+                }
+            });
+        }
+        
+        html += "</div>";
+        document.getElementById('jsonBrowseContent').innerHTML = html;
+        document.getElementById('jsonBrowseModal').style.display = 'flex';
+
+        // Otomatik Kaydırma (Scroll)
+        setTimeout(() => {
+            const targetEl = document.getElementById('jsonBrowseTarget');
+            const container = document.getElementById('jsonBrowseContent');
+            if(targetEl && container) {
+                container.scrollTop = targetEl.offsetTop - container.offsetTop - (container.clientHeight / 2) + (targetEl.clientHeight / 2);
+            }
+        }, 50);
+    }
+
+    function selectFromBrowser(vIndex, chunkIdx) {
+        let selectedData = window.tempBrowseChunks[chunkIdx];
+        const violation = violationsArray[vIndex];
+        finalReportData[vIndex] = { selectedData, violation }; 
+        renderFinalReport(); 
+        logDebug(`Rapor güncellendi (Mevzuat Gezgininden seçildi).`, "success");
+        
+        document.getElementById('jsonBrowseModal').style.display = 'none';
+        
+        if(currentSlideIndex < violationsArray.length - 1) {
+            setTimeout(() => changeSlide(1), 400); 
+        } else {
+            alert("✅ Tüm ihlaller eşleştirildi! Nihai Rapor sekmesinden raporunuzu alabilirsiniz.");
+        }
     }
 
     function buildSliderUI(mappingData) {
@@ -1422,14 +1547,17 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
         let html = ''; 
         topResults.forEach((res, idx) => {
             let scoreTag = res.tfIdfScore ? `<span class="tfidf-score" title="TF-IDF Puanı">🎯 ${res.tfIdfScore.toFixed(2)}</span>` : '';
+            
+            // YENİ: "Mevzuatta Gör" butonu doğrudan seçeneğin içine eklendi
             html += `
-            <div class="option-card" title="Çift tıklayarak rapora ekle.">
+            <div class="option-card" style="position: relative;">
                 <input type="radio" name="opt_${vIndex}" id="opt_${vIndex}_${idx}" value="${idx}">
-                <label for="opt_${vIndex}_${idx}" ondblclick="addSpecificToReport(${vIndex}, ${idx})">
+                <label for="opt_${vIndex}_${idx}" ondblclick="addSpecificToReport(${vIndex}, ${idx})" style="padding-bottom:45px;">
                     <div class="option-title">Seçenek ${idx + 1} ${scoreTag} <span class="dbl-click-hint">🖱️ Çift Tıkla</span></div>
                     <div class="option-text">${res.metin}</div>
                     <div class="option-citation">${res.dayanak}</div>
                 </label>
+                <button type="button" class="btn btn-secondary btn-sm" style="position:absolute; bottom:12px; right:15px; z-index:10; background: var(--secondary);" onclick="openJsonBrowser(${vIndex}, ${idx})">📖 Mevzuatta Gezin ve Seç</button>
             </div>`;
         });
         optionsListEl.innerHTML = html;
@@ -1459,9 +1587,9 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
         keys.forEach(k => {
             const { selectedData, violation } = finalReportData[k];
             
+            // Arşiv araması için temiz ve güvenli sorgu oluşturma
             let textTokens = getCleanTokens(selectedData.metin).slice(0, 6).join(', ');
             let mevName = mevzuatDB[selectedData.mevIdx] ? mevzuatDB[selectedData.mevIdx].mevzuat_adi : "";
-            
             let safeSearchQuery = `FUZZY:${textTokens} ; ${mevName}`;
             
             let reportHTML = `<div class="report-item"><button class="btn-remove-item" onclick="removeReportItem(${k})">✖</button><div class="report-violation">${violation.number} ${violation.text}</div><div style="margin-bottom:5px;">${selectedData.metin}</div><div class="report-citation"><span>${selectedData.dayanak}</span><button class="btn btn-sm" style="background:var(--secondary); color:white; padding:4px 10px; font-size:0.75rem;" onclick="openZipSearchModal('${safeSearchQuery}')">🔍 Arşivde Gör</button></div></div>`;
