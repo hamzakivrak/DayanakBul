@@ -389,7 +389,12 @@
                 <h2 id="jsonBrowseTitle" style="font-size:1.05rem; margin:0;">Mevzuat Görünümü</h2>
                 <span class="close-modal" style="position: static;" onclick="document.getElementById('jsonBrowseModal').style.display='none'">&times;</span>
             </div>
-            <input type="text" id="jsonBrowseSearchInput" placeholder="Bu mevzuat içinde kelime ara..." onkeyup="filterJsonBrowser()" style="margin:0; padding:8px; font-size:0.85rem; width:100%; border: 1px solid var(--border); border-radius:6px; outline:none;">
+            <div style="display: flex; gap: 10px; width: 100%;">
+                <input type="text" id="jsonBrowseSearchInput" placeholder="Kelime ara..." onkeyup="filterJsonBrowser()" style="margin:0; padding:8px; font-size:0.85rem; flex: 1; border: 1px solid var(--border); border-radius:6px; outline:none;">
+                <label style="display:flex; align-items:center; gap:5px; font-size:0.8rem; background:var(--card-bg); padding:0 10px; border:1px solid var(--border); border-radius:6px; cursor:pointer; margin:0; font-weight: bold;">
+                    <input type="checkbox" id="searchAllMevzuatToggle" onchange="filterJsonBrowser()" style="width:auto; margin:0;"> Tüm Mevzuatlar
+    </label>
+            </div>
         </div>
         <div id="jsonBrowseContent" style="padding: 0; overflow-y: auto; font-size: 0.9rem; line-height: 1.6; color: var(--text-main); background: var(--bg); flex:1;">
             </div>
