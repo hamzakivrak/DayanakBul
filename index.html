@@ -228,14 +228,11 @@
 
     <div id="tab2" class="tab-content">
         <div class="card">
-            <h2>📝 İhlalleri Yapıştır (Akıllı Ayrıştırıcı)</h2>
+            <h2>📝 İhlalleri Yapıştır</h2>
             <div style="background: rgba(14,165,233,0.1); border-left: 4px solid var(--secondary); padding: 10px 15px; border-radius: 8px; margin-bottom: 15px; font-size: 0.85rem; color: var(--text-main);">
-                <b>💡 Pratik Giriş İpucu:</b> İhlallerinizi girerken sonuna noktalı virgül (<b>;</b>) ekleyerek <b>Mevzuat Adı</b> ve tekrar noktalı virgül ekleyerek <b>Kilit Anahtar Kelime</b> belirtebilirsiniz. Kilit kelime belirtirseniz sistem aramayı kesinlikle o kelime üzerinden yapacaktır.<br>
-                <br><i>Örnek 1:</i> 1. Acil çıkış kapıları dışarı açılır vaziyette değildir. ; Binaların Yangından Korunması ; kapı
-                <br><i>Örnek 2:</i> 2. Çalışanlara baret verilmemiş. ; İş Sağlığı ve Güvenliği
-                <br><i>Örnek 3:</i> 3. Makine koruyucusu yok. (Sadece ihlal de girebilirsiniz)
+                <b>💡 İpucu:</b> İhlallerinizi sadece metin olarak alt alta yapıştırın. İhlalleri ayırdıktan sonra açılacak <b>Mevzuat Etiketleme Ekranında</b> her ihlalin altında yer alan kutucuklardan hızlıca <b>Mevzuat Adı</b> ve <b>Kilit Kelime</b> ataması yapabilirsiniz.
             </div>
-            <textarea id="violationsInput" placeholder="Her satıra numaralı olarak yazın..."></textarea>
+            <textarea id="violationsInput" placeholder="Her satıra numaralı olarak yazın...&#10;1. Acil çıkış kapıları dışarı açılır vaziyette değildir."></textarea>
             <button id="splitBtn" class="btn btn-primary" style="width: 100%;" disabled>🚀 İhlalleri Ayır ve Ön Eşleştirmeyi Başlat</button>
         </div>
 
@@ -750,7 +747,7 @@
                 }
                 
                 logDebug(`[Başarılı] Model: ${currentCombo.model}`, "success");
-                globalComboIndex++; // Bir sonraki istekte doğrudan sıradaki temiz kombo kullanılsın
+                globalComboIndex++; 
                 return data;
                 
             } catch (err) {
@@ -1097,7 +1094,7 @@
     }
 
     // ==========================================
-    // YENİ: İHLAL AYIRMA (NOKTALI VİRGÜL PARSER'I)
+    // YENİ: İHLAL AYIRMA (SADECE METİN PARSER'I)
     // ==========================================
     document.getElementById('splitBtn').addEventListener('click', () => {
         const rawText = document.getElementById('violationsInput').value;
@@ -1110,29 +1107,12 @@
         const numRegex = /^\s*(\d+)[\.\)\-]\s*(.*)/;
 
         function processViolation(num, textStr) {
-            let parts = textStr.split(';');
-            let kw = null, mevName = null, cleanText = "";
-            
-            if (parts.length === 1) {
-                cleanText = parts[0];
-            } else if (parts.length === 2) {
-                mevName = parts[1];
-                cleanText = parts[0];
-            } else if (parts.length >= 3) {
-                kw = parts.pop();
-                mevName = parts.pop();
-                cleanText = parts.join(';');
-            }
-            
-            cleanText = cleanText.trim().replace(/\s+/g, ' ');
-            if(mevName) mevName = mevName.trim();
-            if(kw) kw = kw.trim();
-
+            let cleanText = textStr.trim().replace(/\s+/g, ' ');
             violationsArray.push({
                 number: num + ".",
                 text: cleanText,
-                suggestedMevzuat: mevName,
-                userKeyword: kw
+                suggestedMevzuat: "",
+                userKeyword: ""
             });
         }
 
@@ -1164,15 +1144,6 @@
         manualUserMapping = {};
         violationsArray.forEach((v, i) => {
             manualUserMapping[i] = [];
-            // Kullanıcı metin alanında noktalı virgülle mevzuat belirttiyse otomatik işaretle
-            if (v.suggestedMevzuat) {
-                let filter = tightNormalize(v.suggestedMevzuat);
-                mevzuatDB.forEach((m, mIdx) => {
-                    if (tightNormalize(m.mevzuat_adi).includes(filter)) {
-                        manualUserMapping[i].push(mIdx);
-                    }
-                });
-            }
         });
         selectedMappedVIndices = [0]; 
         
@@ -1210,6 +1181,37 @@
         toggleMappingViolation(isMulti, index);
     };
 
+    // YENİ: Arayüzden Uygula Butonu Mantığı
+    window.applyManualFilters = function(index) {
+        let mevName = document.getElementById(`mevNameInput_${index}`).value.trim();
+        let kw = document.getElementById(`kwInput_${index}`).value.trim();
+
+        violationsArray[index].suggestedMevzuat = mevName;
+        violationsArray[index].userKeyword = kw;
+
+        if (mevName) {
+            let filter = tightNormalize(mevName);
+            manualUserMapping[index] = [];
+            mevzuatDB.forEach((m, mIdx) => {
+                if (tightNormalize(m.mevzuat_adi).includes(filter)) {
+                    manualUserMapping[index].push(mIdx);
+                }
+            });
+        }
+
+        selectedMappedVIndices = [index];
+
+        const searchInput = document.getElementById('mappingSearchInput');
+        if(searchInput.value !== "") {
+            searchInput.value = "";
+            filterMappingMevzuat("");
+        }
+
+        renderMappingViolations();
+        renderMappingMevzuats();
+        logDebug(`İhlal ${index+1} için filtreler uygulandı.`, "success");
+    };
+
     function renderMappingViolations() {
         const listEl = document.getElementById('mappingViolationsList');
         listEl.innerHTML = '';
@@ -1229,6 +1231,14 @@
                     <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px; pointer-events:none;">
                         <div><b>${v.number}</b> ${v.text}</div>
                         ${badgeHtml}
+                    </div>
+                    <div style="margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap; cursor: default;"
+                         onclick="event.stopPropagation();"
+                         ontouchstart="event.stopPropagation();"
+                         oncontextmenu="event.stopPropagation();">
+                        <input type="text" id="mevNameInput_${index}" placeholder="Mevzuat Adı..." value="${v.suggestedMevzuat || ''}" style="flex: 1; min-width: 110px; padding: 6px; font-size: 0.8rem; margin-bottom: 0; border: 1px solid var(--border);">
+                        <input type="text" id="kwInput_${index}" placeholder="Kilit Kelime..." value="${v.userKeyword || ''}" style="flex: 1; min-width: 110px; padding: 6px; font-size: 0.8rem; margin-bottom: 0; border: 1px solid var(--border);">
+                        <button type="button" class="btn btn-primary btn-sm" onclick="applyManualFilters(${index})">Uygula</button>
                     </div>
                 </div>
             `;
@@ -1354,7 +1364,6 @@
         }
     }
     
-    // Otomatik Yapay Zeka Eşleştirmesi - SADECE EN İLİŞKİLİ 1 ADET
     async function autoSuggestMappingAI() {
         if (apiKeys.length === 0) { alert("Lütfen ayarlar menüsünden API Key ekleyin."); return; }
         const btn = document.getElementById('btnAutoMapAI');
@@ -1588,7 +1597,6 @@ ${JSON.stringify(allowedMevzuats)}
                 statusText.innerText = `İşleniyor: ${processedCount + 1} - ${processedCount + chunk.length} / ${bulkData.length} (Adım 1: Kelime Analizi)`;
                 progressBar.style.width = `${(processedCount / bulkData.length) * 100}%`;
 
-                // Kilit kelime dayatması
                 const prompt1 = `Sen uzman bir İSG denetçisisin. GÖREV: Aşağıdaki İHLAL listesinin her biri için, seçilmiş mevzuatlardan en uygun olanını ve TF-IDF araması için 3-5 adet YALIN KÖK arama kelimesini belirle.
 KURAL 1: Jenerik kelimeler kullanma. "işçi", "sağlık", "gerekli" gibi kelimeleri ASLA ekleme.
 KURAL 2: Eğer girdide "kullanici_anahtar_kelimesi" belirtilmişse ve "Yok" değilse, bu kelimeyi arama_kelimeleri dizisinin İLK ELEMANI olarak KESİNLİKLE koy!
@@ -1645,7 +1653,6 @@ ${JSON.stringify(chunk.map(d => ({
 
                         let queryTokens = item.arama_kelimeleri.map(w => tightNormalize(w));
                         
-                        // ZORUNLU KİLİT KELİME ENJEKSİYONU (AI Unutursa diye)
                         let userKw = violationsArray[vIndex].userKeyword;
                         if (userKw) {
                             let normKw = tightNormalize(userKw);
@@ -1692,7 +1699,6 @@ ${JSON.stringify(chunk.map(d => ({
                     });
                 }
 
-                // --- 2. AŞAMA: Toplu Groq Sıralaması ---
                 if(candidatePayload.length > 0) {
                     const prompt2 = `Sen baş denetçisin. Aşağıda ${candidatePayload.length} adet İHLAL ve potansiyel mevzuat maddeleri verilmiştir.
 GÖREV: Her ihlal için, o ihlale EN ÇOK UYAN 1 adet adayın 'id' değerini seç.
@@ -1773,7 +1779,7 @@ ${JSON.stringify(candidatePayload, null, 2)}`;
     // ==========================================
     async function runAISearch(vIndex) {
         if (apiKeys.length === 0) { alert("Lütfen ayarlar menüsünden API Key ekleyin."); return; }
-        const checkedBoxes = Array.from(document.querySelectorAll(`#mevList_${vIndex} input[type="checkbox"]:checked`));
+        const checkedBoxes = Array.from(document.querySelectorAll(`#meList_${vIndex} input[type="checkbox"]:checked`));
         if (checkedBoxes.length === 0) { alert("Mevzuat seçmediniz!"); return; }
 
         const selectedNames = checkedBoxes.map(cb => cb.nextElementSibling.innerText).join(", ");
@@ -1829,7 +1835,6 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
                 parsedJSON.analiz.forEach((item, idx) => {
                     let queryTokens = item.arama_kelimeleri.map(w => tightNormalize(w));
                     
-                    // ZORUNLU KİLİT KELİME ENJEKSİYONU
                     if (userKw) {
                         let normKw = tightNormalize(userKw);
                         if (!queryTokens.includes(normKw)) queryTokens.unshift(normKw);
@@ -2004,6 +2009,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
         }
     }
 
+    // --- YENİ: KUSURSUZ WORD UYUMLU NİHAİ RAPOR RENDERI ---
     function renderFinalReport() {
         const finalReportEl = document.getElementById('finalReport'); 
         finalReportEl.innerHTML = ''; 
@@ -2247,7 +2253,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
     }
 
     // ==========================================
-    // YENİ: JSON GEZGİNİ (MEVZUATTA GÖR/SEÇ) FONKSİYONLARI
+    // JSON GEZGİNİ (MEVZUATTA GÖR/SEÇ) FONKSİYONLARI
     // ==========================================
     
     function openJsonBrowserFromReport(vIndex) {
