@@ -379,7 +379,8 @@
                 <div class="mapping-pane-header" style="background: rgba(79,70,229,0.1); color: var(--primary); flex-direction: column; align-items: stretch; gap: 8px;">
                     <div style="display:flex; justify-content:space-between; align-items:center;">
                         <span>📋 Ayrıştırılan İhlaller</span>
-                        <div style="display:flex; gap:5px;">
+                        <div style="display:flex; gap:5px; flex-wrap: wrap; justify-content: flex-end;">
+                            <button class="btn btn-success btn-sm" style="padding: 4px 8px; font-size: 0.75rem;" onclick="applyAllManualFilters()">✔️ Hepsini Uygula</button>
                             <button class="btn btn-primary btn-sm" id="btnAutoMapAI" style="padding: 4px 8px; font-size: 0.75rem;" onclick="autoSuggestMappingAI()">🤖 AI ile Seç</button>
                             <button class="btn btn-secondary btn-sm" style="padding: 4px 8px; font-size: 0.75rem;" onclick="selectAllMappingViolations()">Tümünü Seç</button>
                             <button class="btn btn-danger btn-sm" style="padding: 4px 8px; font-size: 0.75rem;" onclick="deselectAllMappingViolations()">Temizle</button>
@@ -1181,7 +1182,6 @@
         toggleMappingViolation(isMulti, index);
     };
 
-    // YENİ: Arayüzden Uygula Butonu Mantığı
     window.applyManualFilters = function(index) {
         let mevName = document.getElementById(`mevNameInput_${index}`).value.trim();
         let kw = document.getElementById(`kwInput_${index}`).value.trim();
@@ -1197,6 +1197,8 @@
                     manualUserMapping[index].push(mIdx);
                 }
             });
+        } else {
+            manualUserMapping[index] = [];
         }
 
         selectedMappedVIndices = [index];
@@ -1210,6 +1212,36 @@
         renderMappingViolations();
         renderMappingMevzuats();
         logDebug(`İhlal ${index+1} için filtreler uygulandı.`, "success");
+    };
+
+    // YENİ EKLENEN: HEPSİNİ UYGULA FONKSİYONU
+    window.applyAllManualFilters = function() {
+        let appliedCount = 0;
+        for (let index = 0; index < violationsArray.length; index++) {
+            let mevName = violationsArray[index].suggestedMevzuat ? violationsArray[index].suggestedMevzuat.trim() : "";
+            
+            if (mevName) {
+                let filter = tightNormalize(mevName);
+                manualUserMapping[index] = []; 
+                mevzuatDB.forEach((m, mIdx) => {
+                    if (tightNormalize(m.mevzuat_adi).includes(filter)) {
+                        manualUserMapping[index].push(mIdx);
+                    }
+                });
+                appliedCount++;
+            }
+        }
+
+        const searchInput = document.getElementById('mappingSearchInput');
+        if(searchInput.value !== "") {
+            searchInput.value = "";
+            filterMappingMevzuat("");
+        }
+
+        selectedMappedVIndices = violationsArray.map((_, i) => i);
+        renderMappingViolations();
+        renderMappingMevzuats();
+        logDebug(`Tüm satırlar için filtreler uygulandı (${appliedCount} mevzuat eşleşmesi).`, "success");
     };
 
     function renderMappingViolations() {
@@ -1236,8 +1268,8 @@
                          onclick="event.stopPropagation();"
                          ontouchstart="event.stopPropagation();"
                          oncontextmenu="event.stopPropagation();">
-                        <input type="text" id="mevNameInput_${index}" placeholder="Mevzuat Adı..." value="${v.suggestedMevzuat || ''}" style="flex: 1; min-width: 110px; padding: 6px; font-size: 0.8rem; margin-bottom: 0; border: 1px solid var(--border);">
-                        <input type="text" id="kwInput_${index}" placeholder="Kilit Kelime..." value="${v.userKeyword || ''}" style="flex: 1; min-width: 110px; padding: 6px; font-size: 0.8rem; margin-bottom: 0; border: 1px solid var(--border);">
+                        <input type="text" id="mevNameInput_${index}" placeholder="Mevzuat Adı..." value="${v.suggestedMevzuat || ''}" oninput="violationsArray[${index}].suggestedMevzuat = this.value" style="flex: 1; min-width: 110px; padding: 6px; font-size: 0.8rem; margin-bottom: 0; border: 1px solid var(--border);">
+                        <input type="text" id="kwInput_${index}" placeholder="Kilit Kelime..." value="${v.userKeyword || ''}" oninput="violationsArray[${index}].userKeyword = this.value" style="flex: 1; min-width: 110px; padding: 6px; font-size: 0.8rem; margin-bottom: 0; border: 1px solid var(--border);">
                         <button type="button" class="btn btn-primary btn-sm" onclick="applyManualFilters(${index})">Uygula</button>
                     </div>
                 </div>
@@ -1626,6 +1658,7 @@ ${JSON.stringify(chunk.map(d => ({
                     parsed1 = safeParseJSON(data1.choices[0].message.content);
                 } catch(err) {
                     logDebug(`Adım 1 Hatası (Paket ${i}): ${err.message}. İhlaller için varsayılan TF-IDF uygulanacak.`, "error");
+                    // ÇÖKMEYİ ENGELLEYEN YEDEK (FALLBACK) SİSTEM
                     parsed1 = { 
                         analiz: chunk.map(c => {
                             let defaultKws = getCleanTokens(c.ihlal).slice(0, 5);
@@ -1653,6 +1686,7 @@ ${JSON.stringify(chunk.map(d => ({
 
                         let queryTokens = item.arama_kelimeleri.map(w => tightNormalize(w));
                         
+                        // ZORUNLU KİLİT KELİME ENJEKSİYONU (AI Unutursa diye)
                         let userKw = violationsArray[vIndex].userKeyword;
                         if (userKw) {
                             let normKw = tightNormalize(userKw);
@@ -1699,6 +1733,7 @@ ${JSON.stringify(chunk.map(d => ({
                     });
                 }
 
+                // --- 2. AŞAMA: Toplu Groq Sıralaması ---
                 if(candidatePayload.length > 0) {
                     const prompt2 = `Sen baş denetçisin. Aşağıda ${candidatePayload.length} adet İHLAL ve potansiyel mevzuat maddeleri verilmiştir.
 GÖREV: Her ihlal için, o ihlale EN ÇOK UYAN 1 adet adayın 'id' değerini seç.
@@ -1779,7 +1814,7 @@ ${JSON.stringify(candidatePayload, null, 2)}`;
     // ==========================================
     async function runAISearch(vIndex) {
         if (apiKeys.length === 0) { alert("Lütfen ayarlar menüsünden API Key ekleyin."); return; }
-        const checkedBoxes = Array.from(document.querySelectorAll(`#meList_${vIndex} input[type="checkbox"]:checked`));
+        const checkedBoxes = Array.from(document.querySelectorAll(`#mevList_${vIndex} input[type="checkbox"]:checked`));
         if (checkedBoxes.length === 0) { alert("Mevzuat seçmediniz!"); return; }
 
         const selectedNames = checkedBoxes.map(cb => cb.nextElementSibling.innerText).join(", ");
@@ -1835,6 +1870,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
                 parsedJSON.analiz.forEach((item, idx) => {
                     let queryTokens = item.arama_kelimeleri.map(w => tightNormalize(w));
                     
+                    // ZORUNLU KİLİT KELİME ENJEKSİYONU
                     if (userKw) {
                         let normKw = tightNormalize(userKw);
                         if (!queryTokens.includes(normKw)) queryTokens.unshift(normKw);
