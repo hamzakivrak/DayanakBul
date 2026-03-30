@@ -390,10 +390,10 @@
                 <span class="close-modal" style="position: static;" onclick="document.getElementById('jsonBrowseModal').style.display='none'">&times;</span>
             </div>
             <div style="display: flex; gap: 10px; width: 100%;">
-                <input type="text" id="jsonBrowseSearchInput" placeholder="Kelime ara..." onkeyup="filterJsonBrowser()" style="margin:0; padding:8px; font-size:0.85rem; flex: 1; border: 1px solid var(--border); border-radius:6px; outline:none;">
+                <input type="text" id="jsonBrowseSearchInput" placeholder="Arama [; Yönetmelik Filtresi]..." onkeyup="filterJsonBrowser()" style="margin:0; padding:8px; font-size:0.85rem; flex: 1; border: 1px solid var(--border); border-radius:6px; outline:none;">
                 <label style="display:flex; align-items:center; gap:5px; font-size:0.8rem; background:var(--card-bg); padding:0 10px; border:1px solid var(--border); border-radius:6px; cursor:pointer; margin:0; font-weight: bold;">
                     <input type="checkbox" id="searchAllMevzuatToggle" onchange="filterJsonBrowser()" style="width:auto; margin:0;"> Tüm Mevzuatlar
-    </label>
+                </label>
             </div>
         </div>
         <div id="jsonBrowseContent" style="padding: 0; overflow-y: auto; font-size: 0.9rem; line-height: 1.6; color: var(--text-main); background: var(--bg); flex:1;">
@@ -465,8 +465,6 @@
     // ==========================================
     // UI/UX KONTROLLERİ (TABLAR, SIDEBAR, TEMA)
     // ==========================================
-    
-    // YENİ: SEKME DEĞİŞTİRME BUG FIX EKLENDİ
     function switchTab(tabId) {
         document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
         document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
@@ -547,23 +545,31 @@
             
             let upperWord = word.toUpperCase();
             
-            // KURAL 1: Ek-I, Ek-IV gibi Roma rakamlı kısımları koru (Örn: EK-III, -> Ek-III,)
+            // KURAL 1: Ek-I, Ek-IV gibi Roma rakamlı kısımları koru
             let ekMatch = upperWord.match(/^(\(?EK-)([IVX]+)(.*)$/);
             if (ekMatch) {
                 let prefix = ekMatch[1] === "(EK-" ? "(Ek-" : "Ek-";
                 return prefix + ekMatch[2] + ekMatch[3].toLocaleLowerCase('tr-TR');
             }
 
-            // KURAL 2: Bent Harflerini küçük bırak (Örn: a), b), c) veya parantezsiz a, b)
+            // KURAL 2: Bent Harflerini küçük bırak
+            // Tek başına harf (Örn: a, b veya a), b) )
+            if (word.match(/^[a-zA-ZçğıöşüÇĞİÖŞÜ]{1}\)?$/)) {
+                return word.toLocaleLowerCase('tr-TR');
+            }
+            // Rakamla bitişik harf (Örn: 6a, 6a) )
+            if (word.match(/^\d+[a-zA-ZçğıöşüÇĞİÖŞÜ]\)?$/)) {
+                return word.toLocaleLowerCase('tr-TR');
+            }
+            // Bağlaç değilse 2 harfli bentleri küçük bırak
             if (index > 0 && word.match(/^[a-zA-ZçğıöşüÇĞİÖŞÜ]{1,2}\)?$/)) {
                 let lower = word.toLocaleLowerCase('tr-TR');
-                // ve, ile gibi bağlaçlar dayanak metninde bent harfi sanılmasın diye filtreliyoruz
                 if (!["ve", "ile", "veya", "da", "de"].includes(lower)) {
                     return lower;
                 }
             }
 
-            // KURAL 3: Parantezle başlayan kelimelerin ilk harfini doğru büyüt (Örn: "(binaların" yerine "(Binaların")
+            // KURAL 3: Parantezle başlayan kelimelerin ilk harfini doğru büyüt
             if (word.startsWith('(') && word.length > 1) {
                 return '(' + word.charAt(1).toLocaleUpperCase('tr-TR') + word.slice(2).toLocaleLowerCase('tr-TR');
             }
@@ -649,8 +655,9 @@
     let selectedMappedVIndices = []; 
     let currentBrowseTargetDayanak = "";
     let currentBrowseVIndex = -1;
+    let currentBrowseMevIdx = -1;
 
-    // API Limit Takipçisi (Yeni)
+    // API Limit Takipçisi
     let apiTracker = JSON.parse(localStorage.getItem('isg_api_tracker')) || {};
 
     function initTracker(key) {
@@ -873,6 +880,12 @@
         if(mevzuatObj.ekler) {
             mevzuatObj.ekler.forEach(ek => {
                 let bagli = ek.bagli_oldugu_madde ? `${ek.bagli_oldugu_madde}, ` : "";
+                
+                // KURAL 1: İŞ EKİPMANLARI EK-III ÖZEL KURALI (Gövde metnine 7(3) atıfı)
+                if (mName.toLocaleLowerCase('tr-TR').includes("iş ekipmanları") && (ek.ek_no === "EK-III" || ek.ek_no === "EK-3")) {
+                    bagli = "Madde: 7(3), ";
+                }
+
                 if(ek.metin) chunks.push({ metin: ek.metin, dayanak: `(${kDayanak}${mName}, ${bagli}${ek.ek_no})` });
                 if(ek.maddeler) ek.maddeler.forEach(mad => {
                     if(mad.metin) chunks.push({ metin: mad.metin, dayanak: `(${kDayanak}${mName}, ${bagli}${ek.ek_no}, Madde: ${mad.madde_no})` });
@@ -921,7 +934,6 @@
                     continue;
                 }
 
-                // YENİ: Token kullanımını kaydet
                 let tokensUsed = data.usageMetadata?.totalTokenCount || 0;
                 recordUsage(currentKey, tokensUsed);
 
@@ -980,7 +992,6 @@
                     continue;
                 }
                 
-                // YENİ: Token kullanımını kaydet
                 let tokensUsed = data.usage?.total_tokens || 0;
                 recordUsage(currentCombo.key, tokensUsed);
 
@@ -1635,8 +1646,13 @@
         btn.innerHTML = "⏳ Düşünüyor...";
         btn.disabled = true;
 
+        // KURAL 4: AI İSTİSNA LİSTESİ (EXCLUSION LIST) EKLENDİ
+        let excludedKeywords = ["binaların yangından", "işin durdurulması", "kanserojen mutajen", "elektrik kuvvetli akım", "ilk yardım", "tıbbi atık"];
         let allowedMevzuats = mevzuatDB.map((m, i) => ({ id: i, name: m.mevzuat_adi }))
-            .filter(m => !m.name.toLowerCase().includes("binaların yangından") && !m.name.toLowerCase().includes("tıbbi atık"));
+            .filter(m => {
+                let lowerName = m.name.toLocaleLowerCase('tr-TR');
+                return !excludedKeywords.some(ex => lowerName.includes(ex));
+            });
 
         let prompt = `Sen uzman bir İSG denetçisisin. Aşağıdaki İhlalleri, verilen Mevzuat ID'leri ile eşleştir.
 Kurallar:
@@ -2274,7 +2290,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
     }
 
     // ==========================================
-    // DÜZENLENEBİLİR NİHAİ RAPOR RENDERI (YENİ)
+    // DÜZENLENEBİLİR NİHAİ RAPOR RENDERI
     // ==========================================
     window.updateReportData = function(vIndex, field, element) {
         let val = element.innerHTML;
@@ -2292,7 +2308,6 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
         keys.forEach(k => {
             const { selectedData, violation } = finalReportData[k];
             
-            // Kullanıcı kendi düzenlemişse onu kullan, yoksa Title Case yapıp Alt Atıflar span'ini ekle
             let dayanakHTML = selectedData.editedDayanakHtml;
             if (!dayanakHTML) {
                 let tcDayanak = toTitleCaseTR(selectedData.dayanak);
@@ -2301,7 +2316,6 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
 
             let metinHTML = selectedData.editedMetinHtml || escapeHTML(selectedData.metin);
             
-            // Eğer ihlal metninde numara yoksa, objenin kendisinden ekleyelim (Sadece ilk defa renderlarken)
             let rawViolText = violation.number + " " + violation.text;
             let violHTML = violation.editedTextHtml || escapeHTML(rawViolText);
 
@@ -2336,7 +2350,6 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
         const btns = reportEl.querySelectorAll('.no-export'); 
         btns.forEach(b => b.remove()); 
         
-        // Temiz kopyalama için editable özellikleri kaldır
         reportEl.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
         
         const html = reportEl.innerHTML;
@@ -2362,7 +2375,6 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
         const btns = reportEl.querySelectorAll('.no-export'); 
         btns.forEach(b => b.remove()); 
         
-        // Temiz indirme için editable özellikleri kaldır
         reportEl.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
 
         if(reportEl.innerText.includes("Henüz madde")) { alert("Rapor boş!"); return; }
@@ -2545,122 +2557,31 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
     }
 
     // ==========================================
-    // JSON GEZGİNİ (MEVZUATTA GÖR/SEÇ) FONKSİYONLARI
+    // YENİ JENERASYON JSON GEZGİNİ (TÜM VERİTABANI ARAMA)
     // ==========================================
-    
     function openJsonBrowserFromReport(vIndex) {
         const selectedData = finalReportData[vIndex].selectedData;
-        const mevIdx = selectedData.mevIdx;
+        currentBrowseMevIdx = selectedData.mevIdx;
         currentBrowseTargetDayanak = selectedData.dayanak;
         currentBrowseVIndex = vIndex;
-
-        const mevzuat = mevzuatDB[mevIdx];
-        if(!mevzuat) return;
-
-        document.getElementById('jsonBrowseTitle').innerText = mevzuat.mevzuat_adi;
-        document.getElementById('jsonBrowseSearchInput').value = ""; 
-
-        window.tempBrowseChunks = [];
-        let kDayanak = mevzuat.dayanak_kanun ? (mevzuat.dayanak_kanun + ", ") : "";
-        let mName = mevzuat.mevzuat_adi;
-
-        function addChunk(metin, dayanak) {
-            if(metin) window.tempBrowseChunks.push({ metin, dayanak, mevIdx });
-        }
-
-        if(mevzuat.maddeler) {
-            mevzuat.maddeler.forEach(mad => {
-                addChunk(mad.metin, `(${kDayanak}${mName}, Madde: ${mad.madde_no})`);
-                if(mad.fikralar) {
-                    mad.fikralar.forEach(fik => {
-                        addChunk(fik.metin, `(${kDayanak}${mName}, Madde: ${mad.madde_no}(${fik.fikra_no}))`);
-                        if(fik.bentler) {
-                            fik.bentler.forEach(ben => addChunk(ben.metin, `(${kDayanak}${mName}, Madde: ${mad.madde_no}(${fik.fikra_no}) ${ben.bent_harfi})`));
-                        }
-                    });
-                }
-                if(mad.bentler && (!mad.fikralar || mad.fikralar.length===0)) {
-                    mad.bentler.forEach(ben => addChunk(ben.metin, `(${kDayanak}${mName}, Madde: ${mad.madde_no} ${ben.bent_harfi})`));
-                }
-            });
-        }
-        if(mevzuat.ekler) {
-            mevzuat.ekler.forEach(ek => {
-                let bagli = ek.bagli_oldugu_madde ? `${ek.bagli_oldugu_madde}, ` : "";
-                addChunk(ek.metin, `(${kDayanak}${mName}, ${bagli}${ek.ek_no})`);
-                if(ek.maddeler) {
-                    ek.maddeler.forEach(mad => {
-                        addChunk(mad.metin, `(${kDayanak}${mName}, ${bagli}${ek.ek_no}, Madde: ${mad.madde_no})`);
-                        if(mad.bentler) {
-                            mad.bentler.forEach(ben => addChunk(ben.metin, `(${kDayanak}${mName}, ${bagli}${ek.ek_no}, Madde: ${mad.madde_no} ${ben.bent_harfi})`));
-                        }
-                    });
-                }
-            });
-        }
-
-        renderJsonBrowser();
-        document.getElementById('jsonBrowseModal').style.display = 'flex';
-
-        setTimeout(() => {
-            const targetEl = document.getElementById('jsonBrowseTarget');
-            const container = document.getElementById('jsonBrowseContent');
-            if(targetEl && container) {
-                container.scrollTop = targetEl.offsetTop - container.offsetTop - (container.clientHeight / 2) + (targetEl.clientHeight / 2);
-            }
-        }, 50);
+        setupAndOpenJsonBrowser();
     }
 
     function openJsonBrowser(vIndex, optIndex) {
         const res = window[`currentOptions_${vIndex}`][optIndex];
-        const mevIdx = res.mevIdx;
+        currentBrowseMevIdx = res.mevIdx;
         currentBrowseTargetDayanak = res.dayanak;
         currentBrowseVIndex = vIndex;
+        setupAndOpenJsonBrowser();
+    }
 
-        const mevzuat = mevzuatDB[mevIdx];
+    function setupAndOpenJsonBrowser() {
+        const mevzuat = mevzuatDB[currentBrowseMevIdx];
         if(!mevzuat) return;
 
         document.getElementById('jsonBrowseTitle').innerText = mevzuat.mevzuat_adi;
         document.getElementById('jsonBrowseSearchInput').value = ""; 
-
-        window.tempBrowseChunks = [];
-        let kDayanak = mevzuat.dayanak_kanun ? (mevzuat.dayanak_kanun + ", ") : "";
-        let mName = mevzuat.mevzuat_adi;
-
-        function addChunk(metin, dayanak) {
-            if(metin) window.tempBrowseChunks.push({ metin, dayanak, mevIdx });
-        }
-
-        if(mevzuat.maddeler) {
-            mevzuat.maddeler.forEach(mad => {
-                addChunk(mad.metin, `(${kDayanak}${mName}, Madde: ${mad.madde_no})`);
-                if(mad.fikralar) {
-                    mad.fikralar.forEach(fik => {
-                        addChunk(fik.metin, `(${kDayanak}${mName}, Madde: ${mad.madde_no}(${fik.fikra_no}))`);
-                        if(fik.bentler) {
-                            fik.bentler.forEach(ben => addChunk(ben.metin, `(${kDayanak}${mName}, Madde: ${mad.madde_no}(${fik.fikra_no}) ${ben.bent_harfi})`));
-                        }
-                    });
-                }
-                if(mad.bentler && (!mad.fikralar || mad.fikralar.length===0)) {
-                    mad.bentler.forEach(ben => addChunk(ben.metin, `(${kDayanak}${mName}, Madde: ${mad.madde_no} ${ben.bent_harfi})`));
-                }
-            });
-        }
-        if(mevzuat.ekler) {
-            mevzuat.ekler.forEach(ek => {
-                let bagli = ek.bagli_oldugu_madde ? `${ek.bagli_oldugu_madde}, ` : "";
-                addChunk(ek.metin, `(${kDayanak}${mName}, ${bagli}${ek.ek_no})`);
-                if(ek.maddeler) {
-                    ek.maddeler.forEach(mad => {
-                        addChunk(mad.metin, `(${kDayanak}${mName}, ${bagli}${ek.ek_no}, Madde: ${mad.madde_no})`);
-                        if(mad.bentler) {
-                            mad.bentler.forEach(ben => addChunk(ben.metin, `(${kDayanak}${mName}, ${bagli}${ek.ek_no}, Madde: ${mad.madde_no} ${ben.bent_harfi})`));
-                        }
-                    });
-                }
-            });
-        }
+        document.getElementById('searchAllMevzuatToggle').checked = false;
 
         renderJsonBrowser();
         document.getElementById('jsonBrowseModal').style.display = 'flex';
@@ -2675,22 +2596,47 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
     }
 
     function renderJsonBrowser() {
-        const query = tightNormalize(document.getElementById('jsonBrowseSearchInput').value);
-        let queryTokens = query ? query.split(' ').filter(t=>t.length>0) : [];
+        const rawQuery = document.getElementById('jsonBrowseSearchInput').value.trim();
+        const searchAll = document.getElementById('searchAllMevzuatToggle').checked;
+        
+        let searchTerm = rawQuery;
+        let legFilter = "";
+        
+        if (rawQuery.includes(';')) {
+            let parts = rawQuery.split(';');
+            searchTerm = parts[0].trim();
+            legFilter = tightNormalize(parts.slice(1).join(' ').trim());
+        }
+        
+        let queryTokens = searchTerm ? tightNormalize(searchTerm).split(' ').filter(t=>t.length>0) : [];
+
+        let titlePrefix = searchAll ? "📚 Tüm Mevzuatlarda Arama" : "📄 Mevcut Mevzuatta Arama";
+        document.getElementById('jsonBrowseTitle').innerText = searchAll ? "Tüm Veritabanı" : (mevzuatDB[currentBrowseMevIdx] ? mevzuatDB[currentBrowseMevIdx].mevzuat_adi : "Mevzuat");
 
         let html = `<div class="zip-info-card" style="position:sticky; top:0; z-index:10; margin-top:-20px; padding:15px; margin-bottom:15px; border-bottom:1px solid var(--border); border-radius:0 0 8px 8px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);">
-            <b>İpucu:</b> İstediğiniz maddenin üzerine tıklayarak <b>İhlal ${violationsArray[currentBrowseVIndex].number}</b> için rapora direkt ekleyebilirsiniz. Sizin için bulduğumuz seçenek aşağıda işaretlenmiştir.
+            <b>${titlePrefix}:</b> İstediğiniz maddenin üzerine tıklayarak <b>İhlal ${violationsArray[currentBrowseVIndex].number}</b> için rapora direkt ekleyebilirsiniz.
         </div><div style="padding: 0 20px 20px 20px;">`;
 
-        window.tempBrowseChunks.forEach((chunk, chunkIdx) => {
-            let textToSearch = tightNormalize(chunk.metin);
+        let resultCount = 0;
+
+        for (let chunkIdx = 0; chunkIdx < provisionChunksCache.length; chunkIdx++) {
+            let chunk = provisionChunksCache[chunkIdx];
+            
+            if (!searchAll && chunk.mevIdx !== currentBrowseMevIdx) continue;
+            
+            if (legFilter) {
+                let chunkMevName = mevzuatDB[chunk.mevIdx] ? tightNormalize(mevzuatDB[chunk.mevIdx].mevzuat_adi) : "";
+                if (!chunkMevName.includes(legFilter)) continue;
+            }
+
+            let textToSearch = tightNormalize(chunk.metin) + " " + tightNormalize(chunk.dayanak);
 
             if (queryTokens.length > 0) {
                 let match = true;
                 queryTokens.forEach(qt => {
                     if(!textToSearch.includes(qt)) match = false;
                 });
-                if(!match) return;
+                if(!match) continue;
             }
 
             let isTarget = chunk.dayanak === currentBrowseTargetDayanak;
@@ -2716,7 +2662,18 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
                 <div style="font-size: 0.8rem; color: var(--primary); margin-bottom: 4px; font-weight: 800;">${displayDayanak}</div>
                 <div>${displayMetin}</div>
             </div>`;
-        });
+            
+            resultCount++;
+            
+            if (resultCount > 300 && !isTarget && queryTokens.length === 0 && searchAll) {
+                 html += `<div style="text-align:center; padding:15px; color:var(--text-muted); font-size:0.85rem; font-style:italic;">...Listeleme performansı için ilk 300 madde gösteriliyor. Daraltmak için kelime araması yapın...</div>`;
+                 break;
+            }
+        }
+
+        if (resultCount === 0) {
+            html += `<div style="text-align:center; padding:20px; color:var(--danger); font-weight:bold;">Aradığınız kriterlere uygun madde bulunamadı.</div>`;
+        }
 
         html += "</div>";
         document.getElementById('jsonBrowseContent').innerHTML = html;
@@ -2727,10 +2684,9 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
     }
 
     function selectFromBrowser(vIndex, chunkIdx) {
-        let selectedData = window.tempBrowseChunks[chunkIdx];
+        let selectedData = provisionChunksCache[chunkIdx];
         const violation = violationsArray[vIndex];
         
-        // Madde değiştiğinde eğer daha önce yapılmış bir el düzenlemesi varsa temizlenmeli ki yeni seçilen madde gelsin
         if(finalReportData[vIndex] && finalReportData[vIndex].selectedData) {
             selectedData.editedMetinHtml = null;
             selectedData.editedDayanakHtml = null;
