@@ -403,6 +403,7 @@
     </div>
 </div>
 
+
 <script>
     // ==========================================
     // VİEWPORT (MASAÜSTÜ/MOBİL GEÇİŞ)
@@ -1909,14 +1910,18 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
             let mevName = mevzuatDB[selectedData.mevIdx] ? mevzuatDB[selectedData.mevIdx].mevzuat_adi : "";
             let safeSearchQuery = `FUZZY:${textTokens} ; ${mevName}`;
             
-            // Format tam istediğin gibi: <p><b>İhlal</b></p><p><i>Hüküm</i></p><p><b>Dayanak</b></p>
+            // YENİ: Rapor ekranında Maddeyi Değiştir butonu ve aralara Word uyumlu ekstra boşluk (<br><br>)
             let reportHTML = `
             <div class="report-item">
                 <button class="btn-remove-item no-export" onclick="removeReportItem(${k})">✖</button>
                 <p style="margin: 0 0 8px 0;"><b>${violation.number} ${violation.text}</b></p>
                 <p style="margin: 0 0 8px 0;"><i>${selectedData.metin}</i></p>
                 <p style="margin: 0 0 8px 0;"><b>${displayDayanak}</b></p>
-                <button class="btn btn-sm no-export" style="background:var(--secondary); color:white; padding:4px 10px; font-size:0.75rem;" onclick="openZipSearchModal('${safeSearchQuery}')">🔍 Arşivde Gör</button>
+                <div class="no-export" style="margin-top: 8px;">
+                    <button class="btn btn-sm" style="background:var(--secondary); color:white; padding:4px 10px; font-size:0.75rem;" onclick="openZipSearchModal('${safeSearchQuery}')">🔍 Arşivde Gör</button>
+                    <button class="btn btn-sm" style="background:var(--primary); color:white; padding:4px 10px; font-size:0.75rem; margin-left: 5px;" onclick="openJsonBrowserFromReport(${k})">✏️ Maddeyi Değiştir</button>
+                </div>
+                <br><br>
             </div>`;
             finalReportEl.innerHTML += reportHTML;
         });
@@ -2135,6 +2140,72 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
     // ==========================================
     // YENİ: JSON GEZGİNİ (MEVZUATTA GÖR/SEÇ) FONKSİYONLARI
     // ==========================================
+    
+    // Rapor ekranından (Tab 3) Maddeyi Değiştir butonuna tıklandığında çalışır
+    function openJsonBrowserFromReport(vIndex) {
+        const selectedData = finalReportData[vIndex].selectedData;
+        const mevIdx = selectedData.mevIdx;
+        currentBrowseTargetDayanak = selectedData.dayanak;
+        currentBrowseVIndex = vIndex;
+
+        const mevzuat = mevzuatDB[mevIdx];
+        if(!mevzuat) return;
+
+        document.getElementById('jsonBrowseTitle').innerText = mevzuat.mevzuat_adi;
+        document.getElementById('jsonBrowseSearchInput').value = ""; 
+
+        window.tempBrowseChunks = [];
+        let kDayanak = mevzuat.dayanak_kanun ? (mevzuat.dayanak_kanun + ", ") : "";
+        let mName = mevzuat.mevzuat_adi;
+
+        function addChunk(metin, dayanak) {
+            if(metin) window.tempBrowseChunks.push({ metin, dayanak, mevIdx });
+        }
+
+        if(mevzuat.maddeler) {
+            mevzuat.maddeler.forEach(mad => {
+                addChunk(mad.metin, `(${kDayanak}${mName}, Madde: ${mad.madde_no})`);
+                if(mad.fikralar) {
+                    mad.fikralar.forEach(fik => {
+                        addChunk(fik.metin, `(${kDayanak}${mName}, Madde: ${mad.madde_no}(${fik.fikra_no}))`);
+                        if(fik.bentler) {
+                            fik.bentler.forEach(ben => addChunk(ben.metin, `(${kDayanak}${mName}, Madde: ${mad.madde_no}(${fik.fikra_no}) ${ben.bent_harfi})`));
+                        }
+                    });
+                }
+                if(mad.bentler && (!mad.fikralar || mad.fikralar.length===0)) {
+                    mad.bentler.forEach(ben => addChunk(ben.metin, `(${kDayanak}${mName}, Madde: ${mad.madde_no} ${ben.bent_harfi})`));
+                }
+            });
+        }
+        if(mevzuat.ekler) {
+            mevzuat.ekler.forEach(ek => {
+                let bagli = ek.bagli_oldugu_madde ? `${ek.bagli_oldugu_madde}, ` : "";
+                addChunk(ek.metin, `(${kDayanak}${mName}, ${bagli}${ek.ek_no})`);
+                if(ek.maddeler) {
+                    ek.maddeler.forEach(mad => {
+                        addChunk(mad.metin, `(${kDayanak}${mName}, ${bagli}${ek.ek_no}, Madde: ${mad.madde_no})`);
+                        if(mad.bentler) {
+                            mad.bentler.forEach(ben => addChunk(ben.metin, `(${kDayanak}${mName}, ${bagli}${ek.ek_no}, Madde: ${mad.madde_no} ${ben.bent_harfi})`));
+                        }
+                    });
+                }
+            });
+        }
+
+        renderJsonBrowser();
+        document.getElementById('jsonBrowseModal').style.display = 'flex';
+
+        setTimeout(() => {
+            const targetEl = document.getElementById('jsonBrowseTarget');
+            const container = document.getElementById('jsonBrowseContent');
+            if(targetEl && container) {
+                container.scrollTop = targetEl.offsetTop - container.offsetTop - (container.clientHeight / 2) + (targetEl.clientHeight / 2);
+            }
+        }, 50);
+    }
+
+    // Eşleştirme paneli seçenekler listesinden (Tab 2) Mevzuatta Gezin butonuna tıklandığında çalışır
     function openJsonBrowser(vIndex, optIndex) {
         const res = window[`currentOptions_${vIndex}`][optIndex];
         const mevIdx = res.mevIdx;
@@ -2225,6 +2296,8 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
             displayDayanak = displayDayanak.replace(/\(Alt Atıflar: (.*?)\)/g, '<span style="background-color: #fef08a; padding: 0 4px; border-radius: 4px; font-size: 0.85em; color: #854d0e; margin-left: 4px;">(Alt Atıflar: $1)</span>');
 
             let displayMetin = escapeHTML(chunk.metin);
+            
+            // YENİ: Arama Kutusunda Yazılanları Sarı Yap
             if (queryTokens.length > 0) {
                 let wordsToHighlight = [...new Set(queryTokens)].filter(w => w.length > 2).sort((a,b) => b.length - a.length);
                 if(wordsToHighlight.length > 0) {
@@ -2258,10 +2331,14 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
 
         document.getElementById('jsonBrowseModal').style.display = 'none';
 
-        if(currentSlideIndex < violationsArray.length - 1) {
-            setTimeout(() => changeSlide(1), 400);
-        } else {
-            alert("✅ Tüm ihlaller eşleştirildi! Nihai Rapor sekmesinden raporunuzu alabilirsiniz.");
+        // Eğer Rapor Sekmesinde değilsek otomatik sonraki slayta geç, Rapor sekmesindeysek hiçbir şey yapma (yerinde kalsın)
+        const tab3 = document.getElementById('tab3');
+        if (!tab3.classList.contains('active')) {
+            if(currentSlideIndex < violationsArray.length - 1) {
+                setTimeout(() => changeSlide(1), 400);
+            } else {
+                alert("✅ Tüm ihlaller eşleştirildi! Nihai Rapor sekmesinden raporunuzu alabilirsiniz.");
+            }
         }
     }
     
