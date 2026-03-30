@@ -1286,7 +1286,7 @@
 
         let prompt = `Sen uzman bir İSG denetçisisin. Aşağıdaki İhlalleri, verilen Mevzuat ID'leri ile eşleştir.
 Kurallar:
-1. Her ihlal için en az 1, en fazla 3 mevzuat ID'si seç.
+1. Her ihlal için SADECE EN İLİŞKİLİ 1 ADET mevzuat ID'si seç.
 2. Sadece sağlanan ID'leri kullan.
 
 GİRDİ İHLALLER:
@@ -1298,7 +1298,7 @@ ${JSON.stringify(allowedMevzuats)}
 ÇIKTI SADECE JSON FORMATINDA OLMALI (ASLA markdown, \`\`\`json veya açıklama ekleme):
 {
   "eslesmeler": [
-    { "ihlal_id": 0, "mevzuat_idleri": [5, 12] }
+    { "ihlal_id": 0, "mevzuat_idleri": [5] }
   ]
 }`;
 
