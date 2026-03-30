@@ -538,12 +538,37 @@
     });
 
     // ==========================================
-    // TÜRKÇE TITLE CASE DÜZELTİCİ (YENİ)
+    // TÜRKÇE TITLE CASE DÜZELTİCİ (YENİ - GELİŞMİŞ ROMA VE BENT UYUMU)
     // ==========================================
     function toTitleCaseTR(str) {
         if(!str) return "";
-        return str.split(' ').map(word => {
+        return str.split(' ').map((word, index) => {
             if(word.length === 0) return "";
+            
+            let upperWord = word.toUpperCase();
+            
+            // KURAL 1: Ek-I, Ek-IV gibi Roma rakamlı kısımları koru (Örn: EK-III, -> Ek-III,)
+            let ekMatch = upperWord.match(/^(\(?EK-)([IVX]+)(.*)$/);
+            if (ekMatch) {
+                let prefix = ekMatch[1] === "(EK-" ? "(Ek-" : "Ek-";
+                return prefix + ekMatch[2] + ekMatch[3].toLocaleLowerCase('tr-TR');
+            }
+
+            // KURAL 2: Bent Harflerini küçük bırak (Örn: a), b), c) veya parantezsiz a, b)
+            if (index > 0 && word.match(/^[a-zA-ZçğıöşüÇĞİÖŞÜ]{1,2}\)?$/)) {
+                let lower = word.toLocaleLowerCase('tr-TR');
+                // ve, ile gibi bağlaçlar dayanak metninde bent harfi sanılmasın diye filtreliyoruz
+                if (!["ve", "ile", "veya", "da", "de"].includes(lower)) {
+                    return lower;
+                }
+            }
+
+            // KURAL 3: Parantezle başlayan kelimelerin ilk harfini doğru büyüt (Örn: "(binaların" yerine "(Binaların")
+            if (word.startsWith('(') && word.length > 1) {
+                return '(' + word.charAt(1).toLocaleUpperCase('tr-TR') + word.slice(2).toLocaleLowerCase('tr-TR');
+            }
+
+            // Standart: İlk harf büyük, gerisi küçük
             return word.charAt(0).toLocaleUpperCase('tr-TR') + word.slice(1).toLocaleLowerCase('tr-TR');
         }).join(' ');
     }
