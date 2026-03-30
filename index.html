@@ -282,7 +282,24 @@
         </div>
 
         <div class="setting-group">
-            <label>🔑 Groq API Key Ekle</label>
+            <label>🤖 Öncelikli Yapay Zeka</label>
+            <select id="primaryAISelector" onchange="changePrimaryAI(this.value)">
+                <option value="gemini" selected>Gemini 2.5 Flash (Önerilen)</option>
+                <option value="groq">Grok Llama (Yedek Sistem)</option>
+            </select>
+        </div>
+
+        <div class="setting-group">
+            <label>✨ Gemini 2.5 Flash API Key Ekle</label>
+            <div style="display:flex; gap:10px;">
+                <input type="password" id="geminiApiKeyInput" placeholder="AIza... (Gizli)" style="margin-bottom:0;">
+                <button class="btn btn-primary" onclick="addGeminiApiKey()">Ekle</button>
+            </div>
+            <div id="geminiApiKeyList" class="selected-badges" style="margin-top:10px;"></div>
+        </div>
+
+        <div class="setting-group">
+            <label>🔑 Grok (Llama) API Key Ekle</label>
             <div style="display:flex; gap:10px;">
                 <input type="password" id="apiKeyInput" placeholder="gsk_... (Gizli)" style="margin-bottom:0;">
                 <button class="btn btn-primary" onclick="addApiKey()">Ekle</button>
@@ -455,6 +472,12 @@
         document.documentElement.setAttribute('data-theme', themeName);
         localStorage.setItem('isg_theme', themeName);
     }
+    
+    function changePrimaryAI(aiValue) {
+        primaryAI = aiValue;
+        localStorage.setItem('isg_primary_ai', primaryAI);
+        logDebug("Öncelikli AI Değiştirildi: " + primaryAI, "info");
+    }
 
     // ==========================================
     // PWA KURULUM VE BUTON MANTIĞI
@@ -555,7 +578,9 @@
     // ==========================================
     let mevzuatDB = [];
     let violationsArray = [];
-    let apiKeys = [];
+    let apiKeys = []; // Grok Keys
+    let geminiApiKeys = []; // Gemini Keys
+    let primaryAI = 'gemini';
     let currentSlideIndex = 0; 
     let finalReportData = {};
     
@@ -565,7 +590,6 @@
     let manualUserMapping = {}; 
     let selectedMappedVIndices = []; 
 
-    // Yeni Modal Gezgin Değişkenleri
     let currentBrowseTargetDayanak = "";
     let currentBrowseVIndex = -1;
 
@@ -595,16 +619,29 @@
         document.getElementById('themeSelector').value = savedTheme;
         changeTheme(savedTheme);
 
-        const savedKeys = localStorage.getItem('isg_groq_keys');
-        if (savedKeys) { 
+        primaryAI = localStorage.getItem('isg_primary_ai') || 'gemini';
+        document.getElementById('primaryAISelector').value = primaryAI;
+
+        const savedGroqKeys = localStorage.getItem('isg_groq_keys');
+        if (savedGroqKeys) { 
             try { 
-                apiKeys = JSON.parse(savedKeys); 
+                apiKeys = JSON.parse(savedGroqKeys); 
                 renderApiKeys(); 
             } catch(e){}
         }
+
+        const savedGeminiKeys = localStorage.getItem('isg_gemini_keys');
+        if (savedGeminiKeys) {
+            try {
+                geminiApiKeys = JSON.parse(savedGeminiKeys);
+                renderGeminiApiKeys();
+            } catch(e){}
+        }
+
         loadDBFromIndexedDB();
     };
 
+    // --- GROK KEY YÖNETİMİ ---
     function addApiKey() {
         const input = document.getElementById('apiKeyInput');
         const val = input.value.trim();
@@ -613,7 +650,7 @@
                 apiKeys.push(val);
                 localStorage.setItem('isg_groq_keys', JSON.stringify(apiKeys));
                 renderApiKeys();
-                logDebug("Yeni API Key eklendi.", "success");
+                logDebug("Yeni Grok API Key eklendi.", "success");
             }
             input.value = '';
         } else { alert('Lütfen geçerli bir Groq API Key girin (gsk_ ile başlayan).'); }
@@ -623,7 +660,7 @@
         apiKeys.splice(index, 1);
         localStorage.setItem('isg_groq_keys', JSON.stringify(apiKeys));
         renderApiKeys();
-        logDebug("API Key silindi.", "warn");
+        logDebug("Grok API Key silindi.", "warn");
     }
 
     function renderApiKeys() {
@@ -633,6 +670,38 @@
         apiKeys.forEach((k, i) => {
             const masked = k.substring(0, 3) + '******' + k.substring(k.length - 3);
             list.innerHTML += `<span class="badge" style="background:rgba(3,105,161,0.1); color:var(--secondary); border-color:var(--secondary);">🔑 ${masked} <span class="badge-remove" onclick="removeApiKey(${i})">✖</span></span>`;
+        });
+    }
+
+    // --- GEMİNİ KEY YÖNETİMİ ---
+    function addGeminiApiKey() {
+        const input = document.getElementById('geminiApiKeyInput');
+        const val = input.value.trim();
+        if(val.startsWith('AIza') && val.length > 20) {
+            if(!geminiApiKeys.includes(val)) {
+                geminiApiKeys.push(val);
+                localStorage.setItem('isg_gemini_keys', JSON.stringify(geminiApiKeys));
+                renderGeminiApiKeys();
+                logDebug("Yeni Gemini API Key eklendi.", "success");
+            }
+            input.value = '';
+        } else { alert('Lütfen geçerli bir Gemini API Key girin (AIza ile başlayan).'); }
+    }
+
+    function removeGeminiApiKey(index) {
+        geminiApiKeys.splice(index, 1);
+        localStorage.setItem('isg_gemini_keys', JSON.stringify(geminiApiKeys));
+        renderGeminiApiKeys();
+        logDebug("Gemini API Key silindi.", "warn");
+    }
+
+    function renderGeminiApiKeys() {
+        const list = document.getElementById('geminiApiKeyList');
+        list.innerHTML = '';
+        if(geminiApiKeys.length === 0) { list.innerHTML = '<span style="font-size:0.8rem; color:var(--text-muted); font-style:italic;">Henüz key eklemediniz...</span>'; return; }
+        geminiApiKeys.forEach((k, i) => {
+            const masked = k.substring(0, 4) + '******' + k.substring(k.length - 4);
+            list.innerHTML += `<span class="badge" style="background:rgba(79,70,229,0.1); color:var(--primary); border-color:var(--primary);">✨ ${masked} <span class="badge-remove" onclick="removeGeminiApiKey(${i})">✖</span></span>`;
         });
     }
 
@@ -674,7 +743,7 @@
     }
 
     // ==========================================
-    // ÇOKLU ATIF PARSERI İLE GÜNCELLENMİŞ FONKSİYON
+    // ÇOKLU ATIF PARSERI
     // ==========================================
     function buildSearchableChunks(mevzuatObj) {
         let chunks = [];
@@ -704,12 +773,64 @@
     }
 
     // ==========================================
-    // AKILLI KOTA VE YEDEKLEME SİSTEMİ (KIRILMAZ YÖNLENDİRİCİ)
+    // AKILLI KOTA VE YEDEKLEME SİSTEMİ (SMART AI ROUTER)
     // ==========================================
-    let globalComboIndex = 0;
-    
-    async function fetchFromGroqWithFallback(messages, temperature) {
-        if (apiKeys.length === 0) throw new Error("Lütfen ayarlar menüsünden API Key ekleyin.");
+    let globalGrokComboIndex = 0;
+    let globalGeminiComboIndex = 0;
+
+    async function fetchFromGeminiWithFallback(systemPrompt, userPrompt) {
+        if (geminiApiKeys.length === 0) throw new Error("Gemini API Key bulunamadı.");
+        let attempts = 0;
+        let maxAttempts = geminiApiKeys.length;
+
+        while (attempts < maxAttempts) {
+            let currentKey = geminiApiKeys[globalGeminiComboIndex % geminiApiKeys.length];
+            try {
+                let promptText = systemPrompt + (userPrompt ? "\n\n" + userPrompt : "");
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${currentKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: promptText }] }],
+                        generationConfig: { response_mime_type: "application/json" }
+                    })
+                });
+                const data = await response.json();
+
+                if (!response.ok) {
+                    const errMsg = data.error?.message || "";
+                    if (response.status === 429) {
+                        logDebug(`[Gemini Kota Dolu] 2 saniye beklenip diğer keye geçiliyor...`, "warn");
+                        await new Promise(r => setTimeout(r, 2000));
+                    } else {
+                        logDebug(`[Gemini Hatası] ${errMsg}`, "error");
+                    }
+                    globalGeminiComboIndex++;
+                    attempts++;
+                    continue;
+                }
+
+                logDebug(`[Başarılı] Model: Gemini 2.5 Flash`, "success");
+                globalGeminiComboIndex++;
+                
+                // Grok (OpenAI) formatına uyduruyoruz ki eski kodları bozmayalım
+                return {
+                    choices: [{
+                        message: { content: data.candidates[0].content.parts[0].text }
+                    }]
+                };
+            } catch (err) {
+                logDebug(`[Gemini Bağlantı Hatası] ${err.message}`, "error");
+                globalGeminiComboIndex++;
+                attempts++;
+                await new Promise(r => setTimeout(r, 2000));
+            }
+        }
+        throw new Error("Tüm Gemini API Key kotaları doldu veya keyler geçersiz!");
+    }
+
+    async function fetchFromGrokWithFallback(messages, temperature) {
+        if (apiKeys.length === 0) throw new Error("Grok API Key bulunamadı.");
         
         const models = ['llama-3.3-70b-versatile', 'llama-3.1-8b-instant'];
         let combos = [];
@@ -723,7 +844,7 @@
         let maxAttempts = combos.length;
 
         while (attempts < maxAttempts) {
-            let currentCombo = combos[globalComboIndex % combos.length];
+            let currentCombo = combos[globalGrokComboIndex % combos.length];
             try {
                 const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
                     method: 'POST', 
@@ -742,60 +863,57 @@
                     } else {
                         logDebug(`[API Hatası] ${errMsg}`, "error");
                     }
-                    globalComboIndex++;
+                    globalGrokComboIndex++;
                     attempts++;
                     continue;
                 }
                 
                 logDebug(`[Başarılı] Model: ${currentCombo.model}`, "success");
-                globalComboIndex++; 
+                globalGrokComboIndex++; 
                 return data;
                 
             } catch (err) {
                 logDebug(`[Bağlantı Hatası] ${err.message}`, "error");
-                globalComboIndex++;
+                globalGrokComboIndex++;
                 attempts++;
                 await new Promise(r => setTimeout(r, 2000));
             }
         }
-        throw new Error("Mevcut tüm API Key'ler ve Modeller için kotalar dolmuş veya Key'ler geçersiz!");
+        throw new Error("Mevcut tüm Grok API Key'ler ve Modeller için kotalar dolmuş veya Key'ler geçersiz!");
     }
 
-    async function fetchGroqRoundRobin(messages, temp, roundIndex) {
-        if (apiKeys.length === 0) throw new Error("API Key Yok!");
-        const models = ['llama-3.3-70b-versatile', 'llama-3.1-8b-instant'];
-        let combos = [];
-        
-        for(let k=0; k<apiKeys.length; k++) {
-            for(let m=0; m<models.length; m++) {
-                combos.push({key: apiKeys[k], model: models[m]});
-            }
+    // KIRILMAZ MERKEZİ YÖNLENDİRİCİ
+    async function smartAIFetch(messagesOrSystemPrompt, temperature = 0.1) {
+        let systemPrompt = "";
+        let userPrompt = "";
+
+        if (Array.isArray(messagesOrSystemPrompt)) {
+            let sysMessage = messagesOrSystemPrompt.find(m => m.role === 'system');
+            let usrMessage = messagesOrSystemPrompt.find(m => m.role === 'user');
+            if (sysMessage) systemPrompt = sysMessage.content;
+            if (usrMessage) userPrompt = usrMessage.content;
+        } else {
+            systemPrompt = messagesOrSystemPrompt;
         }
-        
-        let targetCombo = combos[roundIndex % combos.length];
-        
-        try {
-            const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-                method: 'POST', 
-                headers: { 'Authorization': `Bearer ${targetCombo.key}`, 'Content-Type': 'application/json' },
-                body: JSON.stringify({ model: targetCombo.model, messages: messages, temperature: temp })
-            });
-            const data = await response.json();
-            
-            if(!response.ok) {
-                 const errMsg = data.error?.message || "";
-                 if (response.status === 429 || errMsg.toLowerCase().includes("rate limit")) {
-                      logDebug(`[RoundRobin Kota] Combo (Model: ${targetCombo.model}) doldu. 2 saniye beklenip Fallback'e gidiliyor...`, "warn");
-                      await new Promise(r => setTimeout(r, 2000));
-                      return await fetchFromGroqWithFallback(messages, temp);
-                 }
-                 throw new Error(errMsg || "API Hatası");
+
+        if (primaryAI === 'gemini') {
+            try {
+                return await fetchFromGeminiWithFallback(systemPrompt, userPrompt);
+            } catch (err) {
+                logDebug(`Gemini başarısız oldu (${err.message}). Grok'a (Llama) geçiliyor...`, "warn");
+                let messages = [{ role: 'system', content: systemPrompt }];
+                if (userPrompt) messages.push({ role: 'user', content: userPrompt });
+                return await fetchFromGrokWithFallback(messages, temperature);
             }
-            logDebug(`[RoundRobin Başarılı] Index ${roundIndex}, Model: ${targetCombo.model}`, "success");
-            return data;
-        } catch(e) {
-            logDebug(`[RoundRobin Hatası] ${e.message}. Genel havuza (Fallback) geçiliyor...`, "error");
-            return await fetchFromGroqWithFallback(messages, temp);
+        } else {
+            try {
+                let messages = [{ role: 'system', content: systemPrompt }];
+                if (userPrompt) messages.push({ role: 'user', content: userPrompt });
+                return await fetchFromGrokWithFallback(messages, temperature);
+            } catch (err) {
+                logDebug(`Grok başarısız oldu (${err.message}). Gemini'ye geçiliyor...`, "warn");
+                return await fetchFromGeminiWithFallback(systemPrompt, userPrompt);
+            }
         }
     }
 
@@ -1095,7 +1213,7 @@
     }
 
     // ==========================================
-    // YENİ: İHLAL AYIRMA (SADECE METİN PARSER'I)
+    // İHLAL AYIRMA (SADECE METİN PARSER'I)
     // ==========================================
     document.getElementById('splitBtn').addEventListener('click', () => {
         const rawText = document.getElementById('violationsInput').value;
@@ -1214,7 +1332,6 @@
         logDebug(`İhlal ${index+1} için filtreler uygulandı.`, "success");
     };
 
-    // YENİ EKLENEN: HEPSİNİ UYGULA FONKSİYONU
     window.applyAllManualFilters = function() {
         let appliedCount = 0;
         for (let index = 0; index < violationsArray.length; index++) {
@@ -1397,7 +1514,7 @@
     }
     
     async function autoSuggestMappingAI() {
-        if (apiKeys.length === 0) { alert("Lütfen ayarlar menüsünden API Key ekleyin."); return; }
+        if (apiKeys.length === 0 && geminiApiKeys.length === 0) { alert("Lütfen ayarlar menüsünden API Key ekleyin."); return; }
         const btn = document.getElementById('btnAutoMapAI');
         const origText = btn.innerHTML;
         btn.innerHTML = "⏳ Düşünüyor...";
@@ -1425,7 +1542,7 @@ ${JSON.stringify(allowedMevzuats)}
 }`;
 
         try {
-            let data = await fetchFromGroqWithFallback([{role: 'system', content: prompt}], 0.1);
+            let data = await smartAIFetch(prompt);
             let parsed = safeParseJSON(data.choices[0].message.content);
             
             if(parsed && parsed.eslesmeler) {
@@ -1554,10 +1671,10 @@ ${JSON.stringify(allowedMevzuats)}
     }
 
     // ==========================================
-    // V31 YENİ: BÜTÜN İHLALLERİ TEK TIKLA OTOMATİK EŞLEŞTİRME (3'LÜ PARTİ - KIRILMAZ SİSTEM)
+    // TOPLU AI EŞLEŞTİRME (BATCHING - 3'LÜ PARTİ)
     // ==========================================
     async function runBulkAISearch() {
-        if (apiKeys.length === 0) { 
+        if (apiKeys.length === 0 && geminiApiKeys.length === 0) { 
             alert("Lütfen ayarlar menüsünden API Key ekleyin."); 
             return; 
         }
@@ -1654,11 +1771,10 @@ ${JSON.stringify(chunk.map(d => ({
                 let data1;
                 let parsed1;
                 try {
-                    data1 = await fetchFromGroqWithFallback([ { role: 'system', content: prompt1 } ], 0.1);
+                    data1 = await smartAIFetch([{ role: 'system', content: prompt1 }]);
                     parsed1 = safeParseJSON(data1.choices[0].message.content);
                 } catch(err) {
                     logDebug(`Adım 1 Hatası (Paket ${i}): ${err.message}. İhlaller için varsayılan TF-IDF uygulanacak.`, "error");
-                    // ÇÖKMEYİ ENGELLEYEN YEDEK (FALLBACK) SİSTEM
                     parsed1 = { 
                         analiz: chunk.map(c => {
                             let defaultKws = getCleanTokens(c.ihlal).slice(0, 5);
@@ -1686,7 +1802,6 @@ ${JSON.stringify(chunk.map(d => ({
 
                         let queryTokens = item.arama_kelimeleri.map(w => tightNormalize(w));
                         
-                        // ZORUNLU KİLİT KELİME ENJEKSİYONU (AI Unutursa diye)
                         let userKw = violationsArray[vIndex].userKeyword;
                         if (userKw) {
                             let normKw = tightNormalize(userKw);
@@ -1733,7 +1848,6 @@ ${JSON.stringify(chunk.map(d => ({
                     });
                 }
 
-                // --- 2. AŞAMA: Toplu Groq Sıralaması ---
                 if(candidatePayload.length > 0) {
                     const prompt2 = `Sen baş denetçisin. Aşağıda ${candidatePayload.length} adet İHLAL ve potansiyel mevzuat maddeleri verilmiştir.
 GÖREV: Her ihlal için, o ihlale EN ÇOK UYAN 1 adet adayın 'id' değerini seç.
@@ -1748,7 +1862,7 @@ GİRDİ:
 ${JSON.stringify(candidatePayload, null, 2)}`;
                     
                     try {
-                        let data2 = await fetchFromGroqWithFallback([ { role: 'system', content: prompt2 } ], 0.1);
+                        let data2 = await smartAIFetch([{ role: 'system', content: prompt2 }]);
                         let parsed2 = safeParseJSON(data2.choices[0].message.content);
 
                         if(parsed2 && parsed2.secimler && Array.isArray(parsed2.secimler)) {
@@ -1776,8 +1890,8 @@ ${JSON.stringify(candidatePayload, null, 2)}`;
                 progressBar.style.width = `${(processedCount / bulkData.length) * 100}%`;
 
                 if (i + BATCH_SIZE < bulkData.length) {
-                    statusText.innerText = `Nefes alınıyor... API limitleri için 2 saniye mola.`;
-                    await new Promise(r => setTimeout(r, 2000));
+                    statusText.innerText = `Nefes alınıyor... API limitleri için 3 saniye mola.`;
+                    await new Promise(r => setTimeout(r, 3000));
                 }
             }
 
@@ -1810,10 +1924,10 @@ ${JSON.stringify(candidatePayload, null, 2)}`;
     }
 
     // ==========================================
-    // V31: ŞEFFAF YAPAY ZEKA VE ORTAK ŞELALE (TEKİL KULLANIM)
+    // ŞEFFAF YAPAY ZEKA VE ORTAK ŞELALE (TEKİL KULLANIM)
     // ==========================================
     async function runAISearch(vIndex) {
-        if (apiKeys.length === 0) { alert("Lütfen ayarlar menüsünden API Key ekleyin."); return; }
+        if (apiKeys.length === 0 && geminiApiKeys.length === 0) { alert("Lütfen ayarlar menüsünden API Key ekleyin."); return; }
         const checkedBoxes = Array.from(document.querySelectorAll(`#mevList_${vIndex} input[type="checkbox"]:checked`));
         if (checkedBoxes.length === 0) { alert("Mevzuat seçmediniz!"); return; }
 
@@ -1852,10 +1966,10 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
   ]
 }`;
 
-            const data = await fetchFromGroqWithFallback([ 
+            const data = await smartAIFetch([ 
                 { role: 'system', content: systemPrompt }, 
                 { role: 'user', content: `İHLAL: ${violationsArray[vIndex].text}` } 
-            ], 0.1);
+            ]);
 
             const parsedJSON = safeParseJSON(data.choices[0].message.content);
             
@@ -1870,7 +1984,6 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
                 parsedJSON.analiz.forEach((item, idx) => {
                     let queryTokens = item.arama_kelimeleri.map(w => tightNormalize(w));
                     
-                    // ZORUNLU KİLİT KELİME ENJEKSİYONU
                     if (userKw) {
                         let normKw = tightNormalize(userKw);
                         if (!queryTokens.includes(normKw)) queryTokens.unshift(normKw);
@@ -1923,7 +2036,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
 
             let finalResults = uniqueResults.slice(0, 10);
             if (finalResults.length > 1) {
-                loadingEl.innerHTML = `🤖 Bulunan en iyi ${finalResults.length} madde Groq AI tarafından ihlale en uygun olana göre sıralanıyor...`;
+                loadingEl.innerHTML = `🤖 Bulunan en iyi ${finalResults.length} madde AI tarafından sıralanıyor...`;
                 try {
                     let candidatesText = finalResults.map((item, idx) => `ID [${idx}]: ${item.metin} (${item.dayanak})`).join('\n\n');
                     let rankPrompt = `Sen baş denetçisin. Aşağıdaki İHLAL metni için, listelenen ve ID numaraları verilen mevzuat hükümlerini ihlalle en çok ilişkili olandan en az ilişkili olana doğru sırala.
@@ -1932,10 +2045,10 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
 {
   "sirali_indexler": [en_uygun_ID, ikinci_uygun_ID, ..., en_az_uygun_ID]
 }`;
-                    const rankData = await fetchFromGroqWithFallback([
+                    const rankData = await smartAIFetch([
                         { role: 'system', content: rankPrompt },
                         { role: 'user', content: `İHLAL: ${violationsArray[vIndex].text}\n\nMADDELER:\n${candidatesText}` }
-                    ], 0.1);
+                    ]);
                     
                     const rankJSON = safeParseJSON(rankData.choices[0].message.content);
                     if (rankJSON && rankJSON.sirali_indexler && Array.isArray(rankJSON.sirali_indexler)) {
@@ -1953,7 +2066,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
                         finalResults = reordered;
                     }
                 } catch(rankErr) {
-                    logDebug("Groq Sıralama çağrısında hata, TF-IDF varsayılan sıralaması kullanılacak: " + rankErr.message, "warn");
+                    logDebug("AI Sıralama çağrısında hata, TF-IDF varsayılan sıralaması kullanılacak: " + rankErr.message, "warn");
                 }
             }
 
@@ -2045,7 +2158,9 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
         }
     }
 
-    // --- YENİ: KUSURSUZ WORD UYUMLU NİHAİ RAPOR RENDERI ---
+    // ==========================================
+    // NİHAİ RAPOR RENDERI
+    // ==========================================
     function renderFinalReport() {
         const finalReportEl = document.getElementById('finalReport'); 
         finalReportEl.innerHTML = ''; 
@@ -2125,7 +2240,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
     }
     
     // ==========================================
-    // ORİJİNAL ARŞİV ARAMA (ZIP) - GELİŞMİŞ VERSİYON
+    // ORİJİNAL ARŞİV ARAMA (ZIP)
     // ==========================================
     const ZIP_URL = './MevzuatText.zip'; 
     let GLOBAL_MATCHES=[]; 
