@@ -145,8 +145,12 @@
         .final-report-content { background: var(--card-bg); color: var(--text-main); padding: 25px; border-radius: 8px; font-family: 'Times New Roman', Times, serif; font-size: 1rem; min-height: 120px; border: 1px solid var(--border); }
         .report-item { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px dashed var(--border); position: relative; padding-right: 30px;}
         
-        /* Yenilenmiş Word Uyumu */
+        /* Yenilenmiş Word Uyumu ve Düzenlenebilir Alanlar */
         .report-item p { margin: 0 0 8px 0; }
+        .editable-field { padding: 4px; border-radius: 4px; outline: none; border-bottom: 1px dashed transparent; transition: background 0.2s, border 0.2s; min-height: 1.5em; }
+        .editable-field:hover { background: rgba(79,70,229,0.02); border-bottom: 1px dashed var(--border); cursor: text; }
+        .editable-field:focus { background: rgba(79,70,229,0.05); border-bottom: 1px dashed var(--primary); }
+
         .btn-remove-item { position: absolute; top: 0; right: 0; background: rgba(239,68,68,0.1); color: var(--danger); border: none; border-radius: 50%; width: 26px; height: 26px; cursor: pointer; font-weight: bold; display: flex; align-items: center; justify-content: center; transition: 0.2s;}
         .btn-remove-item:hover { background: var(--danger); color: white; transform: scale(1.1);}
 
@@ -191,6 +195,10 @@
         .map-mev-item { display: flex; align-items: center; gap: 8px; padding: 8px; font-size: 0.85rem; cursor: pointer; border-radius: 4px; color: var(--text-main); transition: 0.1s;}
         .map-mev-item:hover { background: rgba(14,165,233,0.1); }
         .map-badge-count { background: var(--success); color: white; border-radius: 12px; padding: 2px 8px; font-size: 0.75rem; font-weight: 800; margin-left: auto; }
+        
+        .usage-stats { font-size: 0.7rem; color: var(--text-muted); margin-top: 5px; margin-bottom: 10px; background: rgba(0,0,0,0.03); padding: 4px 8px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center;}
+        .usage-stats button { background: none; border: 1px solid var(--border); border-radius: 4px; font-size: 0.65rem; cursor: pointer; color: var(--text-muted); padding: 2px 6px;}
+        .usage-stats button:hover { background: var(--danger); color: white; border-color: var(--danger); }
     </style>
 </head>
 <body>
@@ -253,6 +261,9 @@
     <div id="tab3" class="tab-content">
         <div class="card" id="finalReportCard">
             <h2>📄 Nihai İSG Denetim Raporu</h2>
+            <div style="background: rgba(16,185,129,0.1); border-left: 4px solid var(--success); padding: 10px 15px; border-radius: 8px; margin-bottom: 15px; font-size: 0.85rem; color: var(--text-main);">
+                <b>💡 İpucu:</b> Aşağıdaki raporda yer alan <b>İhlal</b>, <b>Hüküm (Eğik Yazı)</b> ve <b>Dayanak Maddesi</b> metinlerinin üzerine tıklayarak doğrudan düzenleme yapabilirsiniz. Arşivden kopyaladıklarınızı buraya yapıştırabilirsiniz. Tüm değişiklikleriniz otomatik olarak kaydedilir!
+            </div>
             <div id="finalReport" class="final-report-content">
                 <div style="color: var(--text-muted); font-style: italic; text-align: center; margin-top: 30px;">Henüz rapora ekleme yapılmadı...</div>
             </div>
@@ -295,7 +306,7 @@
                 <input type="password" id="geminiApiKeyInput" placeholder="AIza... (Gizli)" style="margin-bottom:0;">
                 <button class="btn btn-primary" onclick="addGeminiApiKey()">Ekle</button>
             </div>
-            <div id="geminiApiKeyList" class="selected-badges" style="margin-top:10px;"></div>
+            <div id="geminiApiKeyList" style="margin-top:10px;"></div>
         </div>
 
         <div class="setting-group">
@@ -304,7 +315,7 @@
                 <input type="password" id="apiKeyInput" placeholder="gsk_... (Gizli)" style="margin-bottom:0;">
                 <button class="btn btn-primary" onclick="addApiKey()">Ekle</button>
             </div>
-            <div id="apiKeyList" class="selected-badges" style="margin-top:10px;"></div>
+            <div id="apiKeyList" style="margin-top:10px;"></div>
         </div>
 
         <div class="setting-group">
@@ -449,11 +460,21 @@
     // ==========================================
     // UI/UX KONTROLLERİ (TABLAR, SIDEBAR, TEMA)
     // ==========================================
+    
+    // YENİ: SEKME DEĞİŞTİRME BUG FIX EKLENDİ
     function switchTab(tabId) {
         document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
         document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
         document.getElementById(tabId).classList.add('active');
-        event.currentTarget.classList.add('active');
+        
+        if (window.event && window.event.currentTarget && window.event.type === 'click') {
+            window.event.currentTarget.classList.add('active');
+        } else {
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            if (tabId === 'tab1' && tabButtons[0]) tabButtons[0].classList.add('active');
+            else if (tabId === 'tab2' && tabButtons[1]) tabButtons[1].classList.add('active');
+            else if (tabId === 'tab3' && tabButtons[2]) tabButtons[2].classList.add('active');
+        }
     }
 
     function toggleSidebar() {
@@ -512,6 +533,17 @@
     });
 
     // ==========================================
+    // TÜRKÇE TITLE CASE DÜZELTİCİ (YENİ)
+    // ==========================================
+    function toTitleCaseTR(str) {
+        if(!str) return "";
+        return str.split(' ').map(word => {
+            if(word.length === 0) return "";
+            return word.charAt(0).toLocaleUpperCase('tr-TR') + word.slice(1).toLocaleLowerCase('tr-TR');
+        }).join(' ');
+    }
+
+    // ==========================================
     // TÜRKÇE STOP-WORDS VE NORMALIZER (TF-IDF İçin)
     // ==========================================
     const trStopWords = [
@@ -554,9 +586,6 @@
         return normalized.split(' ').filter(word => word.length > 1 && !trStopWords.includes(word));
     }
 
-    // ==========================================
-    // YARDIMCI AI FONKSİYONU (safeParseJSON)
-    // ==========================================
     function safeParseJSON(rawString) {
         try {
             let clean = rawString.replace(/```json/gi, '').replace(/```/g, '').trim();
@@ -574,7 +603,7 @@
     }
 
     // ==========================================
-    // GLOBAL DEĞİŞKENLER
+    // GLOBAL DEĞİŞKENLER VE API TRACKER
     // ==========================================
     let mevzuatDB = [];
     let violationsArray = [];
@@ -586,12 +615,54 @@
     
     let mevzuatIdfTable = {}; 
     let provisionChunksCache = []; 
-
     let manualUserMapping = {}; 
     let selectedMappedVIndices = []; 
-
     let currentBrowseTargetDayanak = "";
     let currentBrowseVIndex = -1;
+
+    // API Limit Takipçisi (Yeni)
+    let apiTracker = JSON.parse(localStorage.getItem('isg_api_tracker')) || {};
+
+    function initTracker(key) {
+        if (!apiTracker[key]) {
+            apiTracker[key] = { reqMin: 0, tokMin: 0, reqDay: 0, tokDay: 0, lastMin: Date.now(), lastDay: Date.now() };
+        }
+    }
+
+    function checkResetTracker(key) {
+        initTracker(key);
+        let now = Date.now();
+        let tracker = apiTracker[key];
+        
+        if (now - tracker.lastMin > 60000) {
+            tracker.reqMin = 0; tracker.tokMin = 0; tracker.lastMin = now;
+        }
+        
+        let d1 = new Date(tracker.lastDay);
+        let d2 = new Date(now);
+        if (d1.getDate() !== d2.getDate() || d1.getMonth() !== d2.getMonth() || d1.getFullYear() !== d2.getFullYear()) {
+            tracker.reqDay = 0; tracker.tokDay = 0; tracker.lastDay = now;
+        }
+    }
+
+    function recordUsage(key, tokens) {
+        checkResetTracker(key);
+        apiTracker[key].reqMin++;
+        apiTracker[key].reqDay++;
+        apiTracker[key].tokMin += (tokens || 0);
+        apiTracker[key].tokDay += (tokens || 0);
+        localStorage.setItem('isg_api_tracker', JSON.stringify(apiTracker));
+        renderApiKeys();
+        renderGeminiApiKeys();
+    }
+
+    window.manualResetUsage = function(key) {
+        apiTracker[key] = { reqMin: 0, tokMin: 0, reqDay: 0, tokDay: 0, lastMin: Date.now(), lastDay: Date.now() };
+        localStorage.setItem('isg_api_tracker', JSON.stringify(apiTracker));
+        renderApiKeys();
+        renderGeminiApiKeys();
+        logDebug(`API kullanım verileri sıfırlandı: ${key.substring(0,6)}...`, "warn");
+    };
 
     // ==========================================
     // TEMEL FONKSİYONLAR
@@ -607,9 +678,7 @@
     function hardSyncFromCloud() {
         if(confirm("Eski önbellek silinip, sistem buluttan (GitHub) sıfırdan indirilecek. Onaylıyor musunuz?")) {
             const req = indexedDB.deleteDatabase("ISG_MevzuatDB");
-            req.onsuccess = function () {
-                window.location.href = window.location.pathname + "?v=" + new Date().getTime();
-            };
+            req.onsuccess = function () { window.location.href = window.location.pathname + "?v=" + new Date().getTime(); };
             req.onerror = function () { alert("Önbellek temizlenemedi, tarayıcı ayarlarından verileri temizleyin."); };
         }
     }
@@ -624,18 +693,12 @@
 
         const savedGroqKeys = localStorage.getItem('isg_groq_keys');
         if (savedGroqKeys) { 
-            try { 
-                apiKeys = JSON.parse(savedGroqKeys); 
-                renderApiKeys(); 
-            } catch(e){}
+            try { apiKeys = JSON.parse(savedGroqKeys); renderApiKeys(); } catch(e){}
         }
 
         const savedGeminiKeys = localStorage.getItem('isg_gemini_keys');
         if (savedGeminiKeys) {
-            try {
-                geminiApiKeys = JSON.parse(savedGeminiKeys);
-                renderGeminiApiKeys();
-            } catch(e){}
+            try { geminiApiKeys = JSON.parse(savedGeminiKeys); renderGeminiApiKeys(); } catch(e){}
         }
 
         loadDBFromIndexedDB();
@@ -669,7 +732,16 @@
         if(apiKeys.length === 0) { list.innerHTML = '<span style="font-size:0.8rem; color:var(--text-muted); font-style:italic;">Henüz key eklemediniz...</span>'; return; }
         apiKeys.forEach((k, i) => {
             const masked = k.substring(0, 3) + '******' + k.substring(k.length - 3);
-            list.innerHTML += `<span class="badge" style="background:rgba(3,105,161,0.1); color:var(--secondary); border-color:var(--secondary);">🔑 ${masked} <span class="badge-remove" onclick="removeApiKey(${i})">✖</span></span>`;
+            checkResetTracker(k);
+            let u = apiTracker[k];
+            list.innerHTML += `
+            <div style="margin-bottom:8px; width:100%;">
+                <span class="badge" style="background:rgba(3,105,161,0.1); color:var(--secondary); border-color:var(--secondary);">🔑 ${masked} <span class="badge-remove" onclick="removeApiKey(${i})">✖</span></span>
+                <div class="usage-stats">
+                    <span>⏳ Dk: <b>${u.reqMin}</b>/30 İst. (${u.tokMin} Tok) | 📅 Gün: <b>${u.reqDay}</b>/14400 İst.</span>
+                    <button onclick="manualResetUsage('${k}')">Sıfırla</button>
+                </div>
+            </div>`;
         });
     }
 
@@ -701,7 +773,16 @@
         if(geminiApiKeys.length === 0) { list.innerHTML = '<span style="font-size:0.8rem; color:var(--text-muted); font-style:italic;">Henüz key eklemediniz...</span>'; return; }
         geminiApiKeys.forEach((k, i) => {
             const masked = k.substring(0, 4) + '******' + k.substring(k.length - 4);
-            list.innerHTML += `<span class="badge" style="background:rgba(79,70,229,0.1); color:var(--primary); border-color:var(--primary);">✨ ${masked} <span class="badge-remove" onclick="removeGeminiApiKey(${i})">✖</span></span>`;
+            checkResetTracker(k);
+            let u = apiTracker[k];
+            list.innerHTML += `
+            <div style="margin-bottom:8px; width:100%;">
+                <span class="badge" style="background:rgba(79,70,229,0.1); color:var(--primary); border-color:var(--primary);">✨ ${masked} <span class="badge-remove" onclick="removeGeminiApiKey(${i})">✖</span></span>
+                <div class="usage-stats">
+                    <span>⏳ Dk: <b>${u.reqMin}</b>/15 İst. (${u.tokMin} Tok) | 📅 Gün: <b>${u.reqDay}</b>/1500 İst.</span>
+                    <button onclick="manualResetUsage('${k}')">Sıfırla</button>
+                </div>
+            </div>`;
         });
     }
 
@@ -810,14 +891,15 @@
                     continue;
                 }
 
+                // YENİ: Token kullanımını kaydet
+                let tokensUsed = data.usageMetadata?.totalTokenCount || 0;
+                recordUsage(currentKey, tokensUsed);
+
                 logDebug(`[Başarılı] Model: Gemini 2.5 Flash`, "success");
                 globalGeminiComboIndex++;
                 
-                // Grok (OpenAI) formatına uyduruyoruz ki eski kodları bozmayalım
                 return {
-                    choices: [{
-                        message: { content: data.candidates[0].content.parts[0].text }
-                    }]
+                    choices: [{ message: { content: data.candidates[0].content.parts[0].text } }]
                 };
             } catch (err) {
                 logDebug(`[Gemini Bağlantı Hatası] ${err.message}`, "error");
@@ -868,6 +950,10 @@
                     continue;
                 }
                 
+                // YENİ: Token kullanımını kaydet
+                let tokensUsed = data.usage?.total_tokens || 0;
+                recordUsage(currentCombo.key, tokensUsed);
+
                 logDebug(`[Başarılı] Model: ${currentCombo.model}`, "success");
                 globalGrokComboIndex++; 
                 return data;
@@ -882,7 +968,6 @@
         throw new Error("Mevcut tüm Grok API Key'ler ve Modeller için kotalar dolmuş veya Key'ler geçersiz!");
     }
 
-    // KIRILMAZ MERKEZİ YÖNLENDİRİCİ
     async function smartAIFetch(messagesOrSystemPrompt, temperature = 0.1) {
         let systemPrompt = "";
         let userPrompt = "";
@@ -2159,8 +2244,15 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
     }
 
     // ==========================================
-    // NİHAİ RAPOR RENDERI
+    // DÜZENLENEBİLİR NİHAİ RAPOR RENDERI (YENİ)
     // ==========================================
+    window.updateReportData = function(vIndex, field, element) {
+        let val = element.innerHTML;
+        if(field === 'violation') finalReportData[vIndex].violation.editedTextHtml = val;
+        if(field === 'hukum') finalReportData[vIndex].selectedData.editedMetinHtml = val;
+        if(field === 'dayanak') finalReportData[vIndex].selectedData.editedDayanakHtml = val;
+    };
+
     function renderFinalReport() {
         const finalReportEl = document.getElementById('finalReport'); 
         finalReportEl.innerHTML = ''; 
@@ -2170,8 +2262,18 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
         keys.forEach(k => {
             const { selectedData, violation } = finalReportData[k];
             
-            let displayDayanak = selectedData.dayanak;
-            displayDayanak = displayDayanak.replace(/\(Alt Atıflar: (.*?)\)/g, '<span style="background-color: #fef08a; padding: 0 4px; border-radius: 4px; font-size: 0.85em; color: #854d0e; margin-left: 4px;">(Alt Atıflar: $1)</span>');
+            // Kullanıcı kendi düzenlemişse onu kullan, yoksa Title Case yapıp Alt Atıflar span'ini ekle
+            let dayanakHTML = selectedData.editedDayanakHtml;
+            if (!dayanakHTML) {
+                let tcDayanak = toTitleCaseTR(selectedData.dayanak);
+                dayanakHTML = tcDayanak.replace(/\(Alt Atıflar: (.*?)\)/gi, '<span style="background-color: #fef08a; padding: 0 4px; border-radius: 4px; font-size: 0.85em; color: #854d0e; margin-left: 4px;">(Alt Atıflar: $1)</span>');
+            }
+
+            let metinHTML = selectedData.editedMetinHtml || escapeHTML(selectedData.metin);
+            
+            // Eğer ihlal metninde numara yoksa, objenin kendisinden ekleyelim (Sadece ilk defa renderlarken)
+            let rawViolText = violation.number + " " + violation.text;
+            let violHTML = violation.editedTextHtml || escapeHTML(rawViolText);
 
             let textTokens = getCleanTokens(selectedData.metin).slice(0, 6).join(', ');
             let mevName = mevzuatDB[selectedData.mevIdx] ? mevzuatDB[selectedData.mevIdx].mevzuat_adi : "";
@@ -2179,15 +2281,18 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
             
             let reportHTML = `
             <div class="report-item">
-                <button class="btn-remove-item no-export" onclick="removeReportItem(${k})">✖</button>
-                <p style="margin: 0 0 8px 0;"><b>${violation.number} ${violation.text}</b></p>
-                <p style="margin: 0 0 8px 0;"><i>${selectedData.metin}</i></p>
-                <p style="margin: 0 0 8px 0;"><b>${displayDayanak}</b></p>
+                <button class="btn-remove-item no-export" onclick="removeReportItem(${k})" title="Bu maddeyi sil">✖</button>
+                
+                <div contenteditable="true" class="editable-field" onblur="updateReportData(${k}, 'violation', this)" style="margin: 0 0 8px 0; font-weight: bold;" title="Düzenlemek için tıklayın">${violHTML}</div>
+                
+                <div contenteditable="true" class="editable-field" onblur="updateReportData(${k}, 'hukum', this)" style="margin: 0 0 8px 0; font-style: italic;" title="Düzenlemek için tıklayın">${metinHTML}</div>
+                
+                <div contenteditable="true" class="editable-field" onblur="updateReportData(${k}, 'dayanak', this)" style="margin: 0 0 8px 0; font-weight: bold;" title="Düzenlemek için tıklayın">${dayanakHTML}</div>
+                
                 <div class="no-export" style="margin-top: 8px;">
-                    <button class="btn btn-sm" style="background:var(--secondary); color:white; padding:4px 10px; font-size:0.75rem;" onclick="openZipSearchModal('${safeSearchQuery}')">🔍 Arşivde Gör</button>
-                    <button class="btn btn-sm" style="background:var(--primary); color:white; padding:4px 10px; font-size:0.75rem; margin-left: 5px;" onclick="openJsonBrowserFromReport(${k})">✏️ Maddeyi Değiştir</button>
+                    <button class="btn btn-sm" style="background:var(--secondary); color:white; padding:4px 10px; font-size:0.75rem;" onclick="openZipSearchModal('${safeSearchQuery}')">🔍 Arşivde Gör & Kopyala</button>
+                    <button class="btn btn-sm" style="background:var(--primary); color:white; padding:4px 10px; font-size:0.75rem; margin-left: 5px;" onclick="openJsonBrowserFromReport(${k})">🔄 Farklı Madde Seç</button>
                 </div>
-                <br><br>
             </div>`;
             finalReportEl.innerHTML += reportHTML;
         });
@@ -2200,6 +2305,9 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
         const reportEl = document.getElementById('finalReport').cloneNode(true); 
         const btns = reportEl.querySelectorAll('.no-export'); 
         btns.forEach(b => b.remove()); 
+        
+        // Temiz kopyalama için editable özellikleri kaldır
+        reportEl.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
         
         const html = reportEl.innerHTML;
         const text = reportEl.innerText.trim(); 
@@ -2224,6 +2332,9 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
         const btns = reportEl.querySelectorAll('.no-export'); 
         btns.forEach(b => b.remove()); 
         
+        // Temiz indirme için editable özellikleri kaldır
+        reportEl.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+
         if(reportEl.innerText.includes("Henüz madde")) { alert("Rapor boş!"); return; }
 
         const header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>İSG Denetim Raporu</title></head><body>";
@@ -2588,6 +2699,13 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
     function selectFromBrowser(vIndex, chunkIdx) {
         let selectedData = window.tempBrowseChunks[chunkIdx];
         const violation = violationsArray[vIndex];
+        
+        // Madde değiştiğinde eğer daha önce yapılmış bir el düzenlemesi varsa temizlenmeli ki yeni seçilen madde gelsin
+        if(finalReportData[vIndex] && finalReportData[vIndex].selectedData) {
+            selectedData.editedMetinHtml = null;
+            selectedData.editedDayanakHtml = null;
+        }
+
         finalReportData[vIndex] = { selectedData, violation };
         renderFinalReport();
         logDebug(`Rapor güncellendi (Mevzuat Gezgininden seçildi).`, "success");
