@@ -254,6 +254,7 @@
         </div>
 
         <div id="workArea" style="display: none; margin-top: 15px;">
+            <label style="display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:.9rem;cursor:pointer"><input type="checkbox" id="chkStrictLabels" checked> Sadece benim etiketlediğim mevzuatlar içinde ara <small style="opacity:.7">(kapalıysa İPC tablosu etiket dışından da öneri ekleyebilir)</small></label>
             <button id="btnBulkAI" class="btn btn-success" style="width: 100%; margin-bottom: 15px; padding: 15px; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);" onclick="runBulkAISearch()">⚡ Tüm İhlalleri Tek Tıkla Otomatik Eşleştir (Toplu AI & Sıralama)</button>
             <div class="card">
                 <h2>🎯 İhlal Eşleştirme Paneli</h2>
@@ -2008,6 +2009,7 @@ ${JSON.stringify(allowedMevzuats)}
             return; 
         }
         
+        const strictLabels = document.getElementById('chkStrictLabels') ? document.getElementById('chkStrictLabels').checked : true;
         let bulkData = [];
         for(let i=0; i<violationsArray.length; i++) {
             let checkedBoxes = Array.from(document.querySelectorAll(`#mevList_${i} input[type="checkbox"]:checked`));
@@ -2168,7 +2170,7 @@ ${JSON.stringify(chunk.map(d => ({
                         // İPC rehberi: resmî tabloda benzer ihlalin bağlı olduğu hükümler adayların başına eklenir
                         let ipcChunks = [];
                         const selMev = new Set(targetData.mevzuatlar.map(m => parseInt(m.value)));
-                        ipcFind(targetData.ihlal, ipcAllMev(), 4, 0.3).filter(h => h.sc >= (selMev.has(h.r._mi) ? 0.3 : 0.38)).slice(0, 3).forEach(h => {
+                        ipcFind(targetData.ihlal, strictLabels ? selMev : ipcAllMev(), 4, 0.3).filter(h => h.sc >= (selMev.has(h.r._mi) ? 0.3 : 0.38)).slice(0, 3).forEach(h => {
                             ipcChunksFor(h.r).forEach(c => { if (!ipcChunks.some(x => x.dayanak === c.dayanak)) if (!isPenaltyChunk(c)) ipcChunks.push({...c, ipcRef: h.r, tfIdfScore: 0}); });
                         });
                         if (ipcChunks.length) uniqueResults = ipcChunks.concat(uniqueResults.filter(u => !ipcChunks.some(x => x.dayanak === u.dayanak)));
@@ -2227,7 +2229,9 @@ ${JSON.stringify(candidatePayload, null, 2)}`;
                 // KURAL: periyodik kontrol eksiklikleri -> İş Ekipmanları Yönetmeliği EK-III (AI seçimini geçersiz kılar)
                 chunk.forEach(c => {
                     const forced = findPeriyodikEkIII(c.ihlal);
-                    if (forced) {
+                    if (forced && strictLabels && !c.mevzuatlar.some(m => parseInt(m.value) === forced.chunk.mevIdx)) {
+                        logDebug(`[Kural] İhlal ${c.vIndex + 1}: EK-III ${forced.rule.madde} uygulanmadı (İş Ekipmanları etiketli değil).`, "warn");
+                    } else if (forced) {
                         finalReportData[c.vIndex] = { selectedData: {...forced.chunk}, violation: violationsArray[c.vIndex] };
                         logDebug(`[Kural] İhlal ${c.vIndex + 1} -> EK-III ${forced.rule.madde} (${forced.rule.ad})`, "success");
                     }
