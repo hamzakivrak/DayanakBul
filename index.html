@@ -1965,7 +1965,7 @@ ${JSON.stringify(allowedMevzuats)}
     // (anahtar kelimeler tightNormalize çıktısına göre, kelime başı eşleşmesiyle aranır)
     // ==========================================
     const PERIYODIK_KURALLAR = [
-        { madde: "2.3.1", ad: "Tesisatlar", kw: ["elektrik tesisat", "topraklama", "yildirim", "paratoner", "akumulator", "transformator", "jenerator", "katodik"] },
+        { madde: "2.3.1", ad: "Tesisatlar", kw: ["elektrik tesisat", "topraklama", "yildirim", "paratoner", "akumulator", "transformator", "jenerator", "katodik", "yangin sondur", "sondurme cihaz", "sondurucu", "portatif", "yangin tup", "yangin dolap", "yangin pompa", "yangin algilama", "yangin uyari", "hidrant", "sprinkler", "yagmurlama"] },
         { madde: "2.1.1", ad: "Basınçlı kap ve tesisatlar", kw: ["basincli", "kompresor", "hava tank", "lpg tank", "hidrofor", "kazan", "buhar", "otoklav", "genlesme tank"] },
         { madde: "2.2.1", ad: "Kaldırma ve iletme ekipmanları", kw: ["kaldirma", "vinc", "forklift", "caraskal", "istif makine", "platform", "sepetli", "asansor", "zincir", "sapan"] },
         { madde: "2.4.1", ad: "Tezgâhlar", kw: ["tezgah", "torna", "freze", "cnc", "matkap", "tasla", "testere", "abkant", "giyotin", "hidrolik pres", "mekanik pres", "eksantrik pres"] },
@@ -2168,7 +2168,7 @@ ${JSON.stringify(chunk.map(d => ({
                         // İPC rehberi: resmî tabloda benzer ihlalin bağlı olduğu hükümler adayların başına eklenir
                         let ipcChunks = [];
                         const selMev = new Set(targetData.mevzuatlar.map(m => parseInt(m.value)));
-                        ipcFind(targetData.ihlal, ipcAllMev(), 4, 0.3).filter(h => h.sc >= (selMev.has(h.r._mi) ? 0.3 : 0.45)).slice(0, 3).forEach(h => {
+                        ipcFind(targetData.ihlal, ipcAllMev(), 4, 0.3).filter(h => h.sc >= (selMev.has(h.r._mi) ? 0.3 : 0.38)).slice(0, 3).forEach(h => {
                             ipcChunksFor(h.r).forEach(c => { if (!ipcChunks.some(x => x.dayanak === c.dayanak)) if (!isPenaltyChunk(c)) ipcChunks.push({...c, ipcRef: h.r, tfIdfScore: 0}); });
                         });
                         if (ipcChunks.length) uniqueResults = ipcChunks.concat(uniqueResults.filter(u => !ipcChunks.some(x => x.dayanak === u.dayanak)));
