@@ -1167,10 +1167,96 @@
                 logDebug(`TF-IDF Hazır. ${totalDocuments} madde, ${Object.keys(mevzuatIdfTable).length} kelime. Süre: ${((endTime - startTime)/1000).toFixed(2)}sn`, "success");
                 
                 showDBReadySuccess(sourceMsg || "Sistem Hazır");
+                loadIPC();
             } catch (err) {
                 logDebug(`HATA (TF-IDF): ${err.message}`, "error");
             }
         }, 50);
+    }
+
+    // ==========================================
+    // BAKANLIK İPC TABLOSU (ipc_tablosu.json) - AI için rehber
+    // ==========================================
+    let ipcRows = [], ipcReady = false, ipcChunkMap = {}, ipcIdf = {};
+    function idbKV(mode, fn) {
+        return new Promise(res => {
+            const rq = indexedDB.open("ISG_MevzuatDB", 1);
+            rq.onupgradeneeded = e => e.target.result.createObjectStore("MevzuatStore");
+            rq.onsuccess = e => { try { const r = fn(e.target.result.transaction("MevzuatStore", mode).objectStore("MevzuatStore")); r.onsuccess = () => res(r.result); r.onerror = () => res(null); } catch (x) { res(null); } };
+            rq.onerror = () => res(null);
+        });
+    }
+    const ipcStem = t => t.slice(0, 5);
+    const ipcTokens = text => [...new Set(getCleanTokens(text).filter(t => t.length > 2).map(ipcStem))];
+    function ekCanon(s) {
+        const m = (s || '').match(/EK[- ]?([IVX]+|\d+)/i); if (!m) return '';
+        const v = m[1].toUpperCase(), R = { I: 1, II: 2, III: 3, IV: 4, V: 5, VI: 6, VII: 7, VIII: 8, IX: 9, X: 10 };
+        return String(R[v] || v);
+    }
+    function buildIpcIndex() {
+        ipcChunkMap = {}; const df = {};
+        ipcRows.forEach(r => {
+            r._mi = r.db_mevzuat_adi ? mevzuatDB.findIndex(m => m && m.mevzuat_adi === r.db_mevzuat_adi) : -1;
+            r._tok = ipcTokens(r.hukum); r._tok.forEach(t => df[t] = (df[t] || 0) + 1);
+        });
+        ipcIdf = {}; for (const t in df) ipcIdf[t] = Math.log(ipcRows.length / df[t]) + 1;
+        ipcRows.forEach(r => { r._w = Math.sqrt(r._tok.reduce((a, t) => a + ipcIdf[t] ** 2, 0)) || 1; });
+        provisionChunksCache.forEach(c => {
+            const s = c.dayanak.replace(/\)$/, '');
+            const e = s.match(/, (EK[- ]?[IVX\d]+), Madde: (\S+)$/i);
+            if (e) { const k = c.mevIdx + '|E|' + ekCanon(e[1]) + '|' + e[2]; if (!ipcChunkMap[k]) ipcChunkMap[k] = c; return; }
+            if (/, EK[- ]?[IVX\d]/i.test(s)) return;
+            const m = s.match(/Madde: (\S+?)(?:\((\d+)\))?(?: ([^\s,]+))?$/);
+            if (m) { const k = c.mevIdx + '|A|' + m[1] + '|' + (m[2] || '') + '|' + (m[3] || ''); if (!ipcChunkMap[k]) ipcChunkMap[k] = c; }
+        });
+    }
+    function ipcChunksFor(r) {
+        if (r._mi < 0) return [];
+        const out = [], add = c => { if (c && !out.includes(c)) out.push(c); };
+        if (r.bolum === 'ek') {
+            const ms = [...(r.madde || '').matchAll(/EK[- ]?([IVX]+|\d+)/gi)], ec = ms.length ? ekCanon(ms[ms.length - 1][0]) : '';
+            (r.ek_madde || '').split(/\s+/).filter(Boolean).forEach(n => add(ipcChunkMap[r._mi + '|E|' + ec + '|' + n]));
+        } else {
+            const b = (r.bent || '').split(/[.,\s]/)[0], k = r._mi + '|A|' + r.madde + '|';
+            add(ipcChunkMap[k + r.fikra + '|' + b] || ipcChunkMap[k + r.fikra + '|'] || ipcChunkMap[k + '|']);
+        }
+        return out.slice(0, 3);
+    }
+    function ipcFind(text, allowedMev, topN, minScore) {
+        if (!ipcReady) return [];
+        const q = ipcTokens(text); if (!q.length) return [];
+        const qw = Math.sqrt(q.reduce((a, t) => a + (ipcIdf[t] || 1) ** 2, 0)) || 1, res = [];
+        for (const r of ipcRows) {
+            if (r._mi < 0 || (allowedMev && !allowedMev.has(r._mi))) continue;
+            let dot = 0; for (const t of q) if (r._tok.includes(t)) dot += (ipcIdf[t] || 1) ** 2;
+            if (!dot) continue;
+            const sc = dot / (qw * r._w); if (sc >= minScore) res.push({ r: r, sc: sc });
+        }
+        return res.sort((a, b) => b.sc - a.sc).slice(0, topN);
+    }
+    async function fetchIPC() {
+        const res = await fetch('./ipc_tablosu.json?v=' + Date.now(), { cache: "no-store" });
+        if (!res.ok) throw new Error("ipc_tablosu.json bulunamadı");
+        const j = await res.json(); ipcRows = j.kayitlar || [];
+        idbKV('readwrite', s => s.put(ipcRows.map(({_mi, _tok, _w, ...r}) => r), 'IPCTablo'));
+        try { localStorage.setItem('isg_ipc_meta', JSON.stringify({ etag: res.headers.get('etag'), lm: res.headers.get('last-modified'), len: res.headers.get('content-length') })); } catch (e) {}
+        buildIpcIndex(); ipcReady = true;
+        logDebug(`İPC rehber tablosu hazır (${ipcRows.length} kayıt).`, "success");
+    }
+    async function loadIPC() {
+        try {
+            const rows = await idbKV('readonly', s => s.get('IPCTablo'));
+            if (rows && rows.length) {
+                ipcRows = rows; buildIpcIndex(); ipcReady = true;
+                logDebug(`İPC rehber tablosu hafızadan yüklendi (${rows.length} kayıt).`, "success");
+                setTimeout(async () => { try {
+                    const old = JSON.parse(localStorage.getItem('isg_ipc_meta') || 'null'), r = await fetch('./ipc_tablosu.json', { method: 'HEAD', cache: 'no-cache' });
+                    if (!r.ok || !old) return;
+                    const e = r.headers.get('etag'), l = r.headers.get('last-modified');
+                    if ((e && old.etag && e !== old.etag) || (l && old.lm && l !== old.lm)) await fetchIPC();
+                } catch (x) {} }, 5000);
+            } else await fetchIPC();
+        } catch (e) { logDebug("İPC tablosu yüklenemedi (eşleştirme onsuz devam eder): " + e.message, "warn"); }
     }
 
     function calculateTfIdfScore(chunkText, queryTokens, preTokens) {
@@ -1700,9 +1786,10 @@ Kurallar:
 3. İş ekipmanlarının periyodik kontrolü/muayenesi ile ilgili eksiklikleri 'İş Ekipmanlarının Kullanımında Sağlık ve Güvenlik Şartları Yönetmeliği' ile eşleştir (tesisatlar, kaldırma araçları, basınçlı tesisatlar vb. tablolarla belirtilen periyodik kontrol hükümleri).
 4. Kaçak akım rölesi (artık akım koruma) eksikliğini 'İşyeri Bina ve Eklentilerinde Alınacak Sağlık ve Güvenlik Önlemlerine İlişkin Yönetmelik' veya 'İş Ekipmanlarının Kullanımında Sağlık ve Güvenlik Şartları Yönetmeliği' ile eşleştir.
 5. Elektrik, topraklama, yangından korunma, ilkyardım gibi doğrudan 6331 dayanaklı olmayan yönetmelikleri ASLA seçme.
+6. İhlalde 'ipucu_mevzuat_idleri' varsa bunlar Bakanlığın resmî İPC tablosunda benzer ihlal metni bulunan mevzuatlardır; sadece kelime benzerliğiyle bulunduğu için hatalı olabilir. İhlalin konusuyla gerçekten örtüşüyorsa tercih et, örtüşmüyorsa yok say.
 
 GİRDİ İHLALLER:
-${JSON.stringify(violationsArray.map((v,i)=>({id:i, metin:v.text})))}
+${JSON.stringify(violationsArray.map((v,i)=>{ const ids=[...new Set(ipcFind(v.text, allowedIds, 3, 0.4).map(h=>h.r._mi))].slice(0,2); return ids.length ? {id:i, metin:v.text, ipucu_mevzuat_idleri:ids} : {id:i, metin:v.text}; }))}
 
 GİRDİ MEVZUATLAR:
 ${JSON.stringify(allowedMevzuats)}
@@ -2069,6 +2156,12 @@ ${JSON.stringify(chunk.map(d => ({
                             if(!uniqueResults.some(u => u.dayanak === r.dayanak)) uniqueResults.push(r); 
                         }
                         
+                        // İPC rehberi: resmî tabloda benzer ihlalin bağlı olduğu hükümler adayların başına eklenir
+                        let ipcChunks = [];
+                        ipcFind(targetData.ihlal, new Set(targetData.mevzuatlar.map(m => parseInt(m.value))), 3, 0.3).forEach(h => {
+                            ipcChunksFor(h.r).forEach(c => { if (!ipcChunks.some(x => x.dayanak === c.dayanak)) ipcChunks.push({...c, ipcRef: h.r, tfIdfScore: 0}); });
+                        });
+                        if (ipcChunks.length) uniqueResults = ipcChunks.concat(uniqueResults.filter(u => !ipcChunks.some(x => x.dayanak === u.dayanak)));
                         let top10 = uniqueResults.slice(0, 10);
                         chunkVIndicesResults[vIndex] = top10;
 
@@ -2076,7 +2169,7 @@ ${JSON.stringify(chunk.map(d => ({
                             candidatePayload.push({
                                 vIndex: vIndex,
                                 ihlal: targetData.ihlal,
-                                adaylar: top10.map((cand, idx) => ({ id: idx, metin: cand.metin, dayanak: cand.dayanak }))
+                                adaylar: top10.map((cand, idx) => ({ id: idx, metin: cand.metin, dayanak: cand.dayanak, ...(cand.ipcRef ? { ipc_notu: 'Bakanlık İPC tablosunda benzer ihlal: ' + cand.ipcRef.hukum.slice(0, 140) + ' (' + (cand.ipcRef.ceza_maddesi || '-') + ')' } : {}) }))
                             });
                         }
                     });
@@ -2084,7 +2177,7 @@ ${JSON.stringify(chunk.map(d => ({
 
                 if(candidatePayload.length > 0) {
                     const prompt2 = `Sen baş denetçisin. Aşağıda ${candidatePayload.length} adet İHLAL ve potansiyel mevzuat maddeleri verilmiştir.
-GÖREV: Her ihlal için, o ihlale EN ÇOK UYAN 1 adet adayın 'id' değerini seç. Periyodik kontrol eksikliklerinde İş Ekipmanları Yönetmeliği'nin tablolarla belirtilen (tesisat, kaldırma aracı, basınçlı tesisat vb.) ilgili periyodik kontrol hükmünü tercih et. Elektrik/topraklama/yangın/ilkyardım gibi 6331 dayanaklı olmayan yönetmeliklerden aday seçme.
+GÖREV: Her ihlal için, o ihlale EN ÇOK UYAN 1 adet adayın 'id' değerini seç. 'ipc_notu' bulunan aday, Bakanlığın resmî İPC tablosunda benzer ihlal için gösterdiği hükümdür; güçlü bir ipucudur, ihlalle çelişmiyorsa tercih et. Periyodik kontrol eksikliklerinde İş Ekipmanları Yönetmeliği'nin tablolarla belirtilen (tesisat, kaldırma aracı, basınçlı tesisat vb.) ilgili periyodik kontrol hükmünü tercih et. Elektrik/topraklama/yangın/ilkyardım gibi 6331 dayanaklı olmayan yönetmeliklerden aday seçme.
 ÇIKTI SADECE JSON OLMALIDIR (ASLA markdown, \`\`\`json veya açıklama ekleme):
 {
   "secimler": [
