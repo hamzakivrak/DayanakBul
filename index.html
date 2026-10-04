@@ -1847,6 +1847,44 @@ ${JSON.stringify(allowedMevzuats)}
     // ==========================================
     // TOPLU AI EŞLEŞTİRME (BATCHING - 3'LÜ PARTİ)
     // ==========================================
+    // ==========================================
+    // PERİYODİK KONTROL KURALLARI -> İŞ EKİPMANLARI YÖNETMELİĞİ EK-III
+    // (anahtar kelimeler tightNormalize çıktısına göre, kelime başı eşleşmesiyle aranır)
+    // ==========================================
+    const PERIYODIK_KURALLAR = [
+        { madde: "2.3.1", ad: "Tesisatlar", kw: ["elektrik tesisat", "topraklama", "yildirim", "paratoner", "akumulator", "transformator", "jenerator", "katodik"] },
+        { madde: "2.1.1", ad: "Basınçlı kap ve tesisatlar", kw: ["basincli", "kompresor", "hava tank", "lpg tank", "hidrofor", "kazan", "buhar", "otoklav", "genlesme tank"] },
+        { madde: "2.2.1", ad: "Kaldırma ve iletme ekipmanları", kw: ["kaldirma", "vinc", "forklift", "caraskal", "istif makine", "platform", "sepetli", "asansor", "zincir", "sapan"] },
+        { madde: "2.4.1", ad: "Tezgâhlar", kw: ["tezgah", "torna", "freze", "cnc", "matkap", "tasla", "testere", "abkant", "giyotin", "hidrolik pres", "mekanik pres", "eksantrik pres"] },
+        { madde: "2.5.1", ad: "Endüstriyel raf ve kapılar", kw: ["raf", "endustriyel kapi", "sektorel kapi", "rulo kapi", "garaj kapi", "sürgülü kapi", "surgulu kapi", "otomatik kapi"] },
+        { madde: "2.6.1", ad: "İş makineleri", kw: ["is makine", "ekskavator", "kepce", "dozer", "greyder", "loder", "beko", "kazici", "damper"] }
+    ];
+
+    let _ekIIIMap = null;
+    function getEkIIIMap() {
+        if (_ekIIIMap) return _ekIIIMap;
+        _ekIIIMap = {};
+        const idx = mevzuatDB.findIndex(m => m && tightNormalize(m.mevzuat_adi).includes("is ekipmanlarinin kullaninda"));
+        if (idx < 0) return _ekIIIMap;
+        (chunksByMev[idx] || []).forEach(c => {
+            const m = c.dayanak.match(/EK-(?:III|3), Madde: (2\.\d+\.\d+)\)$/);
+            if (m && !_ekIIIMap[m[1]]) _ekIIIMap[m[1]] = c;
+        });
+        return _ekIIIMap;
+    }
+
+    // İhlal metni periyodik kontrol içeriyorsa ve bir ekipman kuralına uyuyorsa ilgili EK-III hükmünü döndürür
+    function findPeriyodikEkIII(ihlalText) {
+        const n = tightNormalize(ihlalText);
+        if (!/(^| )(periyodik|muayene)/.test(n)) return null;
+        const map = getEkIIIMap();
+        for (const rule of PERIYODIK_KURALLAR) {
+            const hit = rule.kw.some(k => new RegExp("(^| )" + tightNormalize(k)).test(n));
+            if (hit && map[rule.madde]) return { chunk: map[rule.madde], rule: rule };
+        }
+        return null;
+    }
+
     async function runBulkAISearch() {
         if (apiKeys.length === 0 && geminiApiKeys.length === 0) { 
             alert("Lütfen ayarlar menüsünden API Key ekleyin."); 
@@ -2061,6 +2099,15 @@ ${JSON.stringify(candidatePayload, null, 2)}`;
                     }
                 }
                 
+                // KURAL: periyodik kontrol eksiklikleri -> İş Ekipmanları Yönetmeliği EK-III (AI seçimini geçersiz kılar)
+                chunk.forEach(c => {
+                    const forced = findPeriyodikEkIII(c.ihlal);
+                    if (forced) {
+                        finalReportData[c.vIndex] = { selectedData: {...forced.chunk}, violation: violationsArray[c.vIndex] };
+                        logDebug(`[Kural] İhlal ${c.vIndex + 1} -> EK-III ${forced.rule.madde} (${forced.rule.ad})`, "success");
+                    }
+                });
+
                 processedCount += chunk.length;
                 progressBar.style.width = `${(processedCount / bulkData.length) * 100}%`;
 
