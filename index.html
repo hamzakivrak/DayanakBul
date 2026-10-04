@@ -1548,7 +1548,7 @@
                          onclick="event.stopPropagation();"
                          ontouchstart="event.stopPropagation();"
                          oncontextmenu="event.stopPropagation();">
-                        <input type="text" id="mevNameInput_${index}" placeholder="Mevzuat Adı..." value="${v.suggestedMevzuat || ''}" oninput="violationsArray[${index}].suggestedMevzuat = this.value" style="flex: 1; min-width: 110px; padding: 6px; font-size: 0.8rem; margin-bottom: 0; border: 1px solid var(--border);">
+                        <input type="text" id="mevNameInput_${index}" placeholder="Mevzuat Adı..." value="${(v.suggestedMevzuat || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;')}" oninput="violationsArray[${index}].suggestedMevzuat = this.value" style="flex: 1; min-width: 110px; padding: 6px; font-size: 0.8rem; margin-bottom: 0; border: 1px solid var(--border);">
                         <input type="text" id="kwInput_${index}" placeholder="Kilit Kelime..." value="${v.userKeyword || ''}" oninput="violationsArray[${index}].userKeyword = this.value" style="flex: 1; min-width: 110px; padding: 6px; font-size: 0.8rem; margin-bottom: 0; border: 1px solid var(--border);">
                         <button type="button" class="btn btn-primary btn-sm" onclick="applyManualFilters(${index})">Uygula</button>
                     </div>
@@ -1722,11 +1722,28 @@ ${JSON.stringify(allowedMevzuats)}
                 parsed.eslesmeler.forEach(e => {
                     let vIdx = e.ihlal_id;
                     if(!manualUserMapping[vIdx]) manualUserMapping[vIdx] = [];
-                    e.mevzuat_idleri.forEach(mid => {
+                    let firstName = null;
+                    (e.mevzuat_idleri || []).forEach(mid => {
+                        mid = parseInt(mid);
                         if (!allowedIds.has(mid)) return;
                         if(!manualUserMapping[vIdx].includes(mid)) manualUserMapping[vIdx].push(mid);
+                        if (firstName === null) firstName = mevzuatDB[mid].mevzuat_adi;
                     });
+                    // AI'nın seçtiği mevzuat adı, soldaki "Mevzuat Adı" kutusuna düşer (kullanıcı silip değiştirebilir)
+                    if (firstName && violationsArray[vIdx] && !(violationsArray[vIdx].suggestedMevzuat || '').trim()) {
+                        violationsArray[vIdx].suggestedMevzuat = firstName;
+                    }
                 });
+                // KURAL: periyodik kontrol ihlalleri her zaman İş Ekipmanları Yönetmeliği'ne etiketlenir
+                const ieIdx = getIsEkipmanlariIdx();
+                if (ieIdx >= 0) {
+                    violationsArray.forEach((v, vIdx) => {
+                        if (!findPeriyodikEkIII(v.text)) return;
+                        if (!manualUserMapping[vIdx]) manualUserMapping[vIdx] = [];
+                        if (!manualUserMapping[vIdx].includes(ieIdx)) manualUserMapping[vIdx].push(ieIdx);
+                        v.suggestedMevzuat = mevzuatDB[ieIdx].mevzuat_adi;
+                    });
+                }
                 selectAllMappingViolations(); 
                 logDebug("Yapay zeka mevzuat önerileri uygulandı.", "success");
                 alert("✅ Yapay zeka eşleştirmeleri tamamladı. İstemediklerinizi sağdaki listeden çıkarabilir veya yeni yönetmelikleri elinizle ekleyebilirsiniz.");
@@ -1860,11 +1877,15 @@ ${JSON.stringify(allowedMevzuats)}
         { madde: "2.6.1", ad: "İş makineleri", kw: ["is makine", "ekskavator", "kepce", "dozer", "greyder", "loder", "beko", "kazici", "damper"] }
     ];
 
+    function getIsEkipmanlariIdx() {
+        return mevzuatDB.findIndex(m => m && tightNormalize(m.mevzuat_adi).includes("is ekipmanlarinin kullaniminda"));
+    }
+
     let _ekIIIMap = null;
     function getEkIIIMap() {
         if (_ekIIIMap) return _ekIIIMap;
         _ekIIIMap = {};
-        const idx = mevzuatDB.findIndex(m => m && tightNormalize(m.mevzuat_adi).includes("is ekipmanlarinin kullaninda"));
+        const idx = getIsEkipmanlariIdx();
         if (idx < 0) return _ekIIIMap;
         (chunksByMev[idx] || []).forEach(c => {
             const m = c.dayanak.match(/EK-(?:III|3), Madde: (2\.\d+\.\d+)\)$/);
