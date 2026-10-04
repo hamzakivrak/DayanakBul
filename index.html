@@ -1222,9 +1222,18 @@
         }
         return out.slice(0, 3);
     }
+    // Kanun m.26 (idari para cezaları) ihlal hükmü değil ceza maddesidir; aday olamaz
+    const isPenaltyChunk = c => /^\(6331[^,]*KANUNU, Madde: 26[\(\)\s]/i.test(c.dayanak);
+    function ipcAllMev() { return new Set(mevzuatDB.map((m, i) => (m && !isAIExcluded(m.mevzuat_adi)) ? i : -1).filter(i => i >= 0)); }
+    function ipcClean(t) {
+        return (t || '').replace(/\(\s*ek\s*-?\s*\d+\s*\)/gi, ' ').replace(/ekli\s+liste\w*(\s+belirtilen)?/gi, ' ').replace(/\d+\s*(kişi\w*|adet)/gi, ' ');
+    }
+    const IPC_SYN = { yenil: ['tekra'], yapti: ['yapil'], gorev: ['atama'] };
     function ipcFind(text, allowedMev, topN, minScore) {
         if (!ipcReady) return [];
-        const q = ipcTokens(text); if (!q.length) return [];
+        let q = ipcTokens(ipcClean(text)); if (!q.length) return [];
+        if (/sağlık raporu/i.test(text)) q = q.concat(['muaye', 'gozet']);
+        q.slice().forEach(t => (IPC_SYN[t] || []).forEach(s => { if (!q.includes(s)) q.push(s); }));
         const qw = Math.sqrt(q.reduce((a, t) => a + (ipcIdf[t] || 1) ** 2, 0)) || 1, res = [];
         for (const r of ipcRows) {
             if (r._mi < 0 || (allowedMev && !allowedMev.has(r._mi))) continue;
@@ -2158,10 +2167,12 @@ ${JSON.stringify(chunk.map(d => ({
                         
                         // İPC rehberi: resmî tabloda benzer ihlalin bağlı olduğu hükümler adayların başına eklenir
                         let ipcChunks = [];
-                        ipcFind(targetData.ihlal, new Set(targetData.mevzuatlar.map(m => parseInt(m.value))), 3, 0.3).forEach(h => {
-                            ipcChunksFor(h.r).forEach(c => { if (!ipcChunks.some(x => x.dayanak === c.dayanak)) ipcChunks.push({...c, ipcRef: h.r, tfIdfScore: 0}); });
+                        const selMev = new Set(targetData.mevzuatlar.map(m => parseInt(m.value)));
+                        ipcFind(targetData.ihlal, ipcAllMev(), 4, 0.3).filter(h => h.sc >= (selMev.has(h.r._mi) ? 0.3 : 0.45)).slice(0, 3).forEach(h => {
+                            ipcChunksFor(h.r).forEach(c => { if (!ipcChunks.some(x => x.dayanak === c.dayanak)) if (!isPenaltyChunk(c)) ipcChunks.push({...c, ipcRef: h.r, tfIdfScore: 0}); });
                         });
                         if (ipcChunks.length) uniqueResults = ipcChunks.concat(uniqueResults.filter(u => !ipcChunks.some(x => x.dayanak === u.dayanak)));
+                        uniqueResults = uniqueResults.filter(c => !isPenaltyChunk(c));
                         let top10 = uniqueResults.slice(0, 10);
                         chunkVIndicesResults[vIndex] = top10;
 
@@ -2169,7 +2180,7 @@ ${JSON.stringify(chunk.map(d => ({
                             candidatePayload.push({
                                 vIndex: vIndex,
                                 ihlal: targetData.ihlal,
-                                adaylar: top10.map((cand, idx) => ({ id: idx, metin: cand.metin, dayanak: cand.dayanak, ...(cand.ipcRef ? { ipc_notu: 'Bakanlık İPC tablosunda benzer ihlal: ' + cand.ipcRef.hukum.slice(0, 140) + ' (' + (cand.ipcRef.ceza_maddesi || '-') + ')' } : {}) }))
+                                adaylar: top10.map((cand, idx) => ({ id: idx, metin: cand.metin, dayanak: cand.dayanak, ...(cand.ipcRef ? { ipc_notu: 'Bakanlık İPC tablosunda benzer ihlal: ' + cand.ipcRef.hukum.slice(0, 140)} : {}) }))
                             });
                         }
                     });
