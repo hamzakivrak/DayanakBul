@@ -199,7 +199,16 @@
         .usage-stats { font-size: 0.7rem; color: var(--text-muted); margin-top: 5px; margin-bottom: 10px; background: rgba(0,0,0,0.03); padding: 4px 8px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center;}
         .usage-stats button { background: none; border: 1px solid var(--border); border-radius: 4px; font-size: 0.65rem; cursor: pointer; color: var(--text-muted); padding: 2px 6px;}
         .usage-stats button:hover { background: var(--danger); color: white; border-color: var(--danger); }
-    </style>
+    
+    /* --- Kullanılabilirlik cilası --- */
+    html { scroll-behavior: smooth; }
+    :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+    button, .btn { transition: transform .12s, box-shadow .2s, background-color .2s, opacity .2s; }
+    .btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(0,0,0,.12); }
+    .btn:active:not(:disabled) { transform: translateY(0); }
+    button:disabled, .btn:disabled { opacity: .55; cursor: not-allowed; }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
+</style>
 </head>
 <body>
 
@@ -616,10 +625,11 @@
             .toLowerCase();
     }
 
+    const trStopSet = new Set(trStopWords);
     function getCleanTokens(text) {
         let normalized = tightNormalize(text);
         if (!normalized) return [];
-        return normalized.split(' ').filter(word => word.length > 1 && !trStopWords.includes(word));
+        return normalized.split(' ').filter(word => word.length > 1 && !trStopSet.has(word));
     }
 
     function safeParseJSON(rawString) {
@@ -650,7 +660,7 @@
     let finalReportData = {};
     
     let mevzuatIdfTable = {}; 
-    let provisionChunksCache = []; 
+    let provisionChunksCache = []; let chunksByMev = {}; 
     let manualUserMapping = {}; 
     let selectedMappedVIndices = []; 
     let currentBrowseTargetDayanak = "";
@@ -708,7 +718,8 @@
         const logEl = document.getElementById('debugLog');
         const time = new Date().toLocaleTimeString();
         let colorClass = type==="error" ? "log-error" : type==="success" ? "log-success" : type==="warn" ? "log-warn" : "";
-        logEl.innerHTML += `<div class="${colorClass}">[${time}] ${msg}</div>`;
+        logEl.insertAdjacentHTML('beforeend', `<div class="${colorClass}">[${time}] ${msg}</div>`);
+        while (logEl.childElementCount > 300) logEl.removeChild(logEl.firstChild);
         logEl.scrollTop = logEl.scrollHeight;
     }
 
@@ -823,6 +834,27 @@
         });
     }
 
+    // Bulut sürümü (ETag / Last-Modified) takibi: önbellek eskiyse kullanıcıya haber verir
+    function saveDBMeta(res) {
+        try { localStorage.setItem('isg_db_meta', JSON.stringify({ etag: res.headers.get('etag'), lm: res.headers.get('last-modified'), len: res.headers.get('content-length') })); } catch(e) {}
+    }
+    async function checkDBUpdate() {
+        try {
+            const old = JSON.parse(localStorage.getItem('isg_db_meta') || 'null');
+            const r = await fetch('./mevzuat_veritabani.json', { method: 'HEAD', cache: 'no-cache' });
+            if (!r.ok) return;
+            const cur = { etag: r.headers.get('etag'), lm: r.headers.get('last-modified'), len: r.headers.get('content-length') };
+            if (!old) { try { localStorage.setItem('isg_db_meta', JSON.stringify(cur)); } catch(e) {} return; }
+            const diff = (cur.etag && old.etag) ? cur.etag !== old.etag : (cur.lm && old.lm) ? cur.lm !== old.lm : (cur.len && old.len && cur.len !== old.len);
+            if (diff) {
+                logDebug("Buluttaki mevzuat veritabanı güncellenmiş.", "warn");
+                if (confirm("Mevzuat veritabanında yeni bir sürüm var. Şimdi güncellensin mi?")) {
+                    indexedDB.deleteDatabase("ISG_MevzuatDB").onsuccess = () => { window.location.href = window.location.pathname + "?v=" + Date.now(); };
+                }
+            }
+        } catch(e) {}
+    }
+
     function saveDBToIndexedDB(data) {
         const request = indexedDB.open("ISG_MevzuatDB", 1);
         request.onupgradeneeded = e => { e.target.result.createObjectStore("MevzuatStore"); };
@@ -843,11 +875,11 @@
             req.onsuccess = () => {
                 if (req.result && req.result.length > 0) { 
                     mevzuatDB = req.result; 
-                    precomputeTfIdf("Hafızadan Yüklendi"); 
+                    precomputeTfIdf("Hafızadan Yüklendi"); setTimeout(checkDBUpdate, 4000);
                 } else {
                     logDebug("Hafızada DB bulunamadı. Buluttan otomatik indiriliyor...", "warn");
                     fetch('./mevzuat_veritabani.json?v=' + new Date().getTime(), { cache: "no-store" })
-                        .then(res => { if(!res.ok) throw new Error("Dosya yok."); return res.json(); })
+                        .then(res => { if(!res.ok) throw new Error("Dosya yok."); saveDBMeta(res); return res.json(); })
                         .then(data => {
                             mevzuatDB = data; 
                             saveDBToIndexedDB(mevzuatDB); 
@@ -1060,13 +1092,13 @@
 
         for (let attemptTokens of attempts) {
             let results = chunksToSearch.filter(chunk => {
-                let chunkText = tightNormalize(chunk.metin);
+                let chunkText = chunk.norm !== undefined ? chunk.norm : tightNormalize(chunk.metin);
                 return attemptTokens.every(token => chunkText.includes(token));
             });
 
             if (results.length > 0) {
                 let clonedResults = results.map(c => ({...c}));
-                clonedResults.forEach(c => c.tfIdfScore = calculateTfIdfScore(c.metin, attemptTokens));
+                clonedResults.forEach(c => c.tfIdfScore = calculateTfIdfScore(c.metin, attemptTokens, c.tokens));
                 
                 clonedResults.sort((a, b) => b.tfIdfScore - a.tfIdfScore);
                 
@@ -1105,12 +1137,17 @@
                 provisionChunksCache = []; 
                 let wordDocumentCount = {}; 
                 
+                chunksByMev = {};
                 mevzuatDB.forEach((mev, mevIdx) => {
                     if(!mev) return;
+                    let mevNorm = tightNormalize(mev.mevzuat_adi);
                     let chunks = buildSearchableChunks(mev);
                     chunks.forEach(chunk => {
-                        provisionChunksCache.push({...chunk, mevIdx: mevIdx});
-                        let tokens = getCleanTokens(chunk.metin);
+                        let norm = tightNormalize(chunk.metin);
+                        let tokens = norm ? norm.split(' ').filter(w => w.length > 1 && !trStopSet.has(w)) : [];
+                        let co = {...chunk, mevIdx: mevIdx, norm: norm, tokens: tokens, mevNorm: mevNorm, normDay: tightNormalize(chunk.dayanak)};
+                        provisionChunksCache.push(co);
+                        (chunksByMev[mevIdx] = chunksByMev[mevIdx] || []).push(co);
                         let uniqueTokensInChunk = [...new Set(tokens)]; 
                         
                         uniqueTokensInChunk.forEach(token => {
@@ -1136,9 +1173,9 @@
         }, 50);
     }
 
-    function calculateTfIdfScore(chunkText, queryTokens) {
+    function calculateTfIdfScore(chunkText, queryTokens, preTokens) {
         if (!queryTokens || queryTokens.length === 0) return 0;
-        let chunkTokens = getCleanTokens(chunkText);
+        let chunkTokens = preTokens || getCleanTokens(chunkText);
         if (chunkTokens.length === 0) return 0;
         
         let tokenCounts = {};
@@ -1639,6 +1676,12 @@
         }
     }
     
+    const AI_EXCLUDED = ["binaların yangından", "işin durdurulması", "kanserojen", "elektrik kuvvetli akım", "elektrik tesislerinde topraklamalar", "ilk yardım", "ilkyardım", "tıbbi atık", "dozolcumprompt", "mevzuatbulmaprompt"].map(x => tightNormalize(x).replace(/\s+/g, ''));
+    function isAIExcluded(name) {
+        const n = tightNormalize(name).replace(/\s+/g, '');
+        return AI_EXCLUDED.some(x => n.includes(x));
+    }
+
     async function autoSuggestMappingAI() {
         if (apiKeys.length === 0 && geminiApiKeys.length === 0) { alert("Lütfen ayarlar menüsünden API Key ekleyin."); return; }
         const btn = document.getElementById('btnAutoMapAI');
@@ -1646,18 +1689,17 @@
         btn.innerHTML = "⏳ Düşünüyor...";
         btn.disabled = true;
 
-        // KURAL 4: AI İSTİSNA LİSTESİ (EXCLUSION LIST) EKLENDİ
-        let excludedKeywords = ["binaların yangından", "işin durdurulması", "kanserojen mutajen", "elektrik kuvvetli akım", "ilk yardım", "tıbbi atık"];
-        let allowedMevzuats = mevzuatDB.map((m, i) => ({ id: i, name: m.mevzuat_adi }))
-            .filter(m => {
-                let lowerName = m.name.toLocaleLowerCase('tr-TR');
-                return !excludedKeywords.some(ex => lowerName.includes(ex));
-            });
+        // KURAL: 6331 dayanağıyla doğrudan çıkarılmamış yönetmelikler AI eşleştirmesine hiç gönderilmez
+        let allowedMevzuats = mevzuatDB.map((m, i) => ({ id: i, name: m.mevzuat_adi })).filter(m => !isAIExcluded(m.name));
+        const allowedIds = new Set(allowedMevzuats.map(m => m.id));
 
         let prompt = `Sen uzman bir İSG denetçisisin. Aşağıdaki İhlalleri, verilen Mevzuat ID'leri ile eşleştir.
 Kurallar:
 1. Her ihlal için SADECE EN İLİŞKİLİ 1 ADET mevzuat ID'si seç.
 2. Sadece sağlanan ID'leri kullan.
+3. İş ekipmanlarının periyodik kontrolü/muayenesi ile ilgili eksiklikleri 'İş Ekipmanlarının Kullanımında Sağlık ve Güvenlik Şartları Yönetmeliği' ile eşleştir (tesisatlar, kaldırma araçları, basınçlı tesisatlar vb. tablolarla belirtilen periyodik kontrol hükümleri).
+4. Kaçak akım rölesi (artık akım koruma) eksikliğini 'İşyeri Bina ve Eklentilerinde Alınacak Sağlık ve Güvenlik Önlemlerine İlişkin Yönetmelik' veya 'İş Ekipmanlarının Kullanımında Sağlık ve Güvenlik Şartları Yönetmeliği' ile eşleştir.
+5. Elektrik, topraklama, yangından korunma, ilkyardım gibi doğrudan 6331 dayanaklı olmayan yönetmelikleri ASLA seçme.
 
 GİRDİ İHLALLER:
 ${JSON.stringify(violationsArray.map((v,i)=>({id:i, metin:v.text})))}
@@ -1681,6 +1723,7 @@ ${JSON.stringify(allowedMevzuats)}
                     let vIdx = e.ihlal_id;
                     if(!manualUserMapping[vIdx]) manualUserMapping[vIdx] = [];
                     e.mevzuat_idleri.forEach(mid => {
+                        if (!allowedIds.has(mid)) return;
                         if(!manualUserMapping[vIdx].includes(mid)) manualUserMapping[vIdx].push(mid);
                     });
                 });
@@ -1879,6 +1922,7 @@ ${JSON.stringify(allowedMevzuats)}
 
                 const prompt1 = `Sen uzman bir İSG denetçisisin. GÖREV: Aşağıdaki İHLAL listesinin her biri için, seçilmiş mevzuatlardan en uygun olanını ve TF-IDF araması için 3-5 adet YALIN KÖK arama kelimesini belirle.
 KURAL 1: Jenerik kelimeler kullanma. "işçi", "sağlık", "gerekli" gibi kelimeleri ASLA ekleme.
+KURAL 3: Periyodik kontrol eksiklikleri için "periyodik kontrol" ile birlikte ekipman türünü (kaldırma, basınçlı, tesisat vb.) arama kelimesi yap. Kaçak akım rölesi için "kaçak akım" veya "artık akım" kullan.
 KURAL 2: Eğer girdide "kullanici_anahtar_kelimesi" belirtilmişse ve "Yok" değilse, bu kelimeyi arama_kelimeleri dizisinin İLK ELEMANI olarak KESİNLİKLE koy!
 ÇIKTI SADECE JSON FORMATINDA OLMALI (ASLA markdown, \`\`\`json veya açıklama ekleme):
 {
@@ -1945,7 +1989,7 @@ ${JSON.stringify(chunk.map(d => ({
 
                         targetData.mevzuatlar.forEach(mev => {
                             let dbIdx = parseInt(mev.value);
-                            let mevChunks = provisionChunksCache.filter(c => c.mevIdx === dbIdx);
+                            let mevChunks = (chunksByMev[dbIdx] || []);
                             let cascadeResult = performCascadeSearch(queryTokens, mevChunks);
                             
                             let isOptimum = (mev.name === item.optimum_mevzuat);
@@ -1981,7 +2025,7 @@ ${JSON.stringify(chunk.map(d => ({
 
                 if(candidatePayload.length > 0) {
                     const prompt2 = `Sen baş denetçisin. Aşağıda ${candidatePayload.length} adet İHLAL ve potansiyel mevzuat maddeleri verilmiştir.
-GÖREV: Her ihlal için, o ihlale EN ÇOK UYAN 1 adet adayın 'id' değerini seç.
+GÖREV: Her ihlal için, o ihlale EN ÇOK UYAN 1 adet adayın 'id' değerini seç. Periyodik kontrol eksikliklerinde İş Ekipmanları Yönetmeliği'nin tablolarla belirtilen (tesisat, kaldırma aracı, basınçlı tesisat vb.) ilgili periyodik kontrol hükmünü tercih et. Elektrik/topraklama/yangın/ilkyardım gibi 6331 dayanaklı olmayan yönetmeliklerden aday seçme.
 ÇIKTI SADECE JSON OLMALIDIR (ASLA markdown, \`\`\`json veya açıklama ekleme):
 {
   "secimler": [
@@ -2125,7 +2169,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
 
                     if(targetMevIdx !== -1) {
                         let dbIdx = parseInt(checkedBoxes[targetMevIdx].value);
-                        let mevChunks = provisionChunksCache.filter(c => c.mevIdx === dbIdx);
+                        let mevChunks = (chunksByMev[dbIdx] || []);
                         
                         let cascadeResult = performCascadeSearch(queryTokens, mevChunks);
                         let matchedChunks = cascadeResult.matchedChunks;
@@ -2625,11 +2669,11 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
             if (!searchAll && chunk.mevIdx !== currentBrowseMevIdx) continue;
             
             if (legFilter) {
-                let chunkMevName = mevzuatDB[chunk.mevIdx] ? tightNormalize(mevzuatDB[chunk.mevIdx].mevzuat_adi) : "";
+                let chunkMevName = chunk.mevNorm || "";
                 if (!chunkMevName.includes(legFilter)) continue;
             }
 
-            let textToSearch = tightNormalize(chunk.metin) + " " + tightNormalize(chunk.dayanak);
+            let textToSearch = chunk.searchText || (chunk.searchText = chunk.norm + " " + chunk.normDay);
 
             if (queryTokens.length > 0) {
                 let match = true;
