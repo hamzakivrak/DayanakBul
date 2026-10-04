@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>İSG Yapay Zeka Denetçi V32 (IPC Rehberli)</title>
+    <title>İSG Yapay Zeka Denetçi V31 (Ön Eşleştirme & Şeffaf AI)</title>
     
     <link rel="manifest" href="./manifest.json">
     <meta name="theme-color" content="#4f46e5">
@@ -332,7 +332,6 @@
             <p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:5px;">Buluttan otomatik çekilir. Manuel yüklemek için:</p>
             <input type="file" id="jsonFile" accept=".json" style="cursor: pointer; margin-bottom:5px; padding: 5px;">
             <div id="dbStatus" class="status-badge" style="display: none; width:100%; justify-content:center;"></div>
-            <div id="ipcDbStatus" class="status-badge" style="display: none; width:100%; justify-content:center; margin-top:5px;"></div>
         </div>
 
         <div class="setting-group">
@@ -546,7 +545,7 @@
     });
 
     // ==========================================
-    // TÜRKÇE TITLE CASE DÜZELTİCİ
+    // TÜRKÇE TITLE CASE DÜZELTİCİ (YENİ - GELİŞMİŞ ROMA VE BENT UYUMU)
     // ==========================================
     function toTitleCaseTR(str) {
         if(!str) return "";
@@ -555,18 +554,23 @@
             
             let upperWord = word.toUpperCase();
             
+            // KURAL 1: Ek-I, Ek-IV gibi Roma rakamlı kısımları koru
             let ekMatch = upperWord.match(/^(\(?EK-)([IVX]+)(.*)$/);
             if (ekMatch) {
                 let prefix = ekMatch[1] === "(EK-" ? "(Ek-" : "Ek-";
                 return prefix + ekMatch[2] + ekMatch[3].toLocaleLowerCase('tr-TR');
             }
 
+            // KURAL 2: Bent Harflerini küçük bırak
+            // Tek başına harf (Örn: a, b veya a), b) )
             if (word.match(/^[a-zA-ZçğıöşüÇĞİÖŞÜ]{1}\)?$/)) {
                 return word.toLocaleLowerCase('tr-TR');
             }
+            // Rakamla bitişik harf (Örn: 6a, 6a) )
             if (word.match(/^\d+[a-zA-ZçğıöşüÇĞİÖŞÜ]\)?$/)) {
                 return word.toLocaleLowerCase('tr-TR');
             }
+            // Bağlaç değilse 2 harfli bentleri küçük bırak
             if (index > 0 && word.match(/^[a-zA-ZçğıöşüÇĞİÖŞÜ]{1,2}\)?$/)) {
                 let lower = word.toLocaleLowerCase('tr-TR');
                 if (!["ve", "ile", "veya", "da", "de"].includes(lower)) {
@@ -574,16 +578,18 @@
                 }
             }
 
+            // KURAL 3: Parantezle başlayan kelimelerin ilk harfini doğru büyüt
             if (word.startsWith('(') && word.length > 1) {
                 return '(' + word.charAt(1).toLocaleUpperCase('tr-TR') + word.slice(2).toLocaleLowerCase('tr-TR');
             }
 
+            // Standart: İlk harf büyük, gerisi küçük
             return word.charAt(0).toLocaleUpperCase('tr-TR') + word.slice(1).toLocaleLowerCase('tr-TR');
         }).join(' ');
     }
 
     // ==========================================
-    // TÜRKÇE STOP-WORDS VE NORMALIZER
+    // TÜRKÇE STOP-WORDS VE NORMALIZER (TF-IDF İçin)
     // ==========================================
     const trStopWords = [
         "acaba", "altı", "ama", "ancak", "arada", "artık", "asla", "aslında", "ayrıca", "az", "bana", "bazen", 
@@ -660,11 +666,6 @@
     let currentBrowseTargetDayanak = "";
     let currentBrowseVIndex = -1;
     let currentBrowseMevIdx = -1;
-
-    // ⬇️⬇️⬇️ IPC REHBERİ DEĞİŞKENLERİ (YENİ) ⬇️⬇️⬇️
-    let ipcDB = [];
-    let ipcIndex = [];
-    // ⬆️⬆️⬆️ IPC REHBERİ DEĞİŞKENLERİ (YENİ) ⬆️⬆️⬆️
 
     // API Limit Takipçisi
     let apiTracker = JSON.parse(localStorage.getItem('isg_api_tracker')) || {};
@@ -749,7 +750,6 @@
         }
 
         loadDBFromIndexedDB();
-        loadIpcDB();  // ⬅️ YENİ: IPC rehberini AI context için yükle
     };
 
     // --- GROK KEY YÖNETİMİ ---
@@ -834,7 +834,7 @@
         });
     }
 
-    // Bulut sürümü takibi
+    // Bulut sürümü (ETag / Last-Modified) takibi: önbellek eskiyse kullanıcıya haber verir
     function saveDBMeta(res) {
         try { localStorage.setItem('isg_db_meta', JSON.stringify({ etag: res.headers.get('etag'), lm: res.headers.get('last-modified'), len: res.headers.get('content-length') })); } catch(e) {}
     }
@@ -893,85 +893,314 @@
     }
 
     // ==========================================
-    // ⬇️⬇️⬇️ IPC REHBERİ — AI'YA YOL GÖSTERİCİ (RAG CONTEXT) ⬇️⬇️⬇️
+    // ÇOKLU ATIF PARSERI
     // ==========================================
-    async function loadIpcDB() {
-        try {
-            const res = await fetch('./ipc_tablosu.json?v=' + new Date().getTime(), { cache: 'no-store' });
-            if (!res.ok) throw new Error("ipc_tablosu.json bulunamadı");
-            const data = await res.json();
-            ipcDB = data.kayitlar || [];
-
-            ipcIndex = ipcDB.map(r => {
-                const text = (r.hukum || "") + " " + (r.mevzuat || "");
-                return {
-                    rec: r,
-                    norm: tightNormalize(text),
-                    tokens: new Set(getCleanTokens(text))
-                };
+    function buildSearchableChunks(mevzuatObj) {
+        let chunks = [];
+        let kDayanak = mevzuatObj.dayanak_kanun ? (mevzuatObj.dayanak_kanun + ", ") : "";
+        let mName = mevzuatObj.mevzuat_adi;
+        if(mevzuatObj.maddeler) {
+            mevzuatObj.maddeler.forEach(mad => {
+                if(mad.metin) chunks.push({ metin: mad.metin, dayanak: `(${kDayanak}${mName}, Madde: ${mad.madde_no})` });
+                if(mad.fikralar) mad.fikralar.forEach(fik => {
+                    if(fik.metin) chunks.push({ metin: fik.metin, dayanak: `(${kDayanak}${mName}, Madde: ${mad.madde_no}(${fik.fikra_no}))` });
+                    if(fik.bentler) fik.bentler.forEach(ben => chunks.push({ metin: ben.metin, dayanak: `(${kDayanak}${mName}, Madde: ${mad.madde_no}(${fik.fikra_no}) ${ben.bent_harfi})` }));
+                });
+                if(mad.bentler && (!mad.fikralar || mad.fikralar.length===0)) mad.bentler.forEach(ben => chunks.push({ metin: ben.metin, dayanak: `(${kDayanak}${mName}, Madde: ${mad.madde_no} ${ben.bent_harfi})` }));
             });
+        }
+        if(mevzuatObj.ekler) {
+            mevzuatObj.ekler.forEach(ek => {
+                let bagli = ek.bagli_oldugu_madde ? `${ek.bagli_oldugu_madde}, ` : "";
+                
+                // KURAL 1: İŞ EKİPMANLARI EK-III ÖZEL KURALI (Gövde metnine 7(3) atıfı)
+                if (mName.toLocaleLowerCase('tr-TR').includes("iş ekipmanları") && (ek.ek_no === "EK-III" || ek.ek_no === "EK-3")) {
+                    bagli = "Madde: 7(3), ";
+                }
 
-            logDebug(`✅ IPC Rehberi yüklendi: ${ipcDB.length} kayıt (AI context için hazır).`, "success");
-            
-            const st = document.getElementById('ipcDbStatus');
-            if (st) {
-                st.style.display = 'inline-flex';
-                st.className = 'status-badge success';
-                st.innerHTML = `📋 IPC Rehberi: ${ipcDB.length} kayıt`;
+                if(ek.metin) chunks.push({ metin: ek.metin, dayanak: `(${kDayanak}${mName}, ${bagli}${ek.ek_no})` });
+                if(ek.maddeler) ek.maddeler.forEach(mad => {
+                    if(mad.metin) chunks.push({ metin: mad.metin, dayanak: `(${kDayanak}${mName}, ${bagli}${ek.ek_no}, Madde: ${mad.madde_no})` });
+                    if(mad.bentler) mad.bentler.forEach(ben => chunks.push({ metin: ben.metin, dayanak: `(${kDayanak}${mName}, ${bagli}${ek.ek_no}, Madde: ${mad.madde_no} ${ben.bent_harfi})` }));
+                });
+            });
+        }
+        return chunks;
+    }
+
+    // ==========================================
+    // AKILLI KOTA VE YEDEKLEME SİSTEMİ (SMART AI ROUTER)
+    // ==========================================
+    let globalGrokComboIndex = 0;
+    let globalGeminiComboIndex = 0;
+
+    async function fetchFromGeminiWithFallback(systemPrompt, userPrompt) {
+        if (geminiApiKeys.length === 0) throw new Error("Gemini API Key bulunamadı.");
+        let attempts = 0;
+        let maxAttempts = geminiApiKeys.length;
+
+        while (attempts < maxAttempts) {
+            let currentKey = geminiApiKeys[globalGeminiComboIndex % geminiApiKeys.length];
+            try {
+                let promptText = systemPrompt + (userPrompt ? "\n\n" + userPrompt : "");
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${currentKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: promptText }] }],
+                        generationConfig: { response_mime_type: "application/json" }
+                    })
+                });
+                const data = await response.json();
+
+                if (!response.ok) {
+                    const errMsg = data.error?.message || "";
+                    if (response.status === 429) {
+                        logDebug(`[Gemini Kota Dolu] 2 saniye beklenip diğer keye geçiliyor...`, "warn");
+                        await new Promise(r => setTimeout(r, 2000));
+                    } else {
+                        logDebug(`[Gemini Hatası] ${errMsg}`, "error");
+                    }
+                    globalGeminiComboIndex++;
+                    attempts++;
+                    continue;
+                }
+
+                let tokensUsed = data.usageMetadata?.totalTokenCount || 0;
+                recordUsage(currentKey, tokensUsed);
+
+                logDebug(`[Başarılı] Model: Gemini 2.5 Flash`, "success");
+                globalGeminiComboIndex++;
+                
+                return {
+                    choices: [{ message: { content: data.candidates[0].content.parts[0].text } }]
+                };
+            } catch (err) {
+                logDebug(`[Gemini Bağlantı Hatası] ${err.message}`, "error");
+                globalGeminiComboIndex++;
+                attempts++;
+                await new Promise(r => setTimeout(r, 2000));
             }
-        } catch (e) {
-            logDebug("IPC Rehberi yüklenemedi: " + e.message, "warn");
-            const st = document.getElementById('ipcDbStatus');
-            if (st) {
-                st.style.display = 'inline-flex';
-                st.className = 'status-badge error';
-                st.innerHTML = `⚠️ IPC Rehberi yüklenemedi`;
+        }
+        throw new Error("Tüm Gemini API Key kotaları doldu veya keyler geçersiz!");
+    }
+
+    async function fetchFromGrokWithFallback(messages, temperature) {
+        if (apiKeys.length === 0) throw new Error("Grok API Key bulunamadı.");
+        
+        const models = ['llama-3.3-70b-versatile', 'llama-3.1-8b-instant'];
+        let combos = [];
+        for (let k = 0; k < apiKeys.length; k++) {
+            for (let m = 0; m < models.length; m++) {
+                combos.push({key: apiKeys[k], model: models[m]});
+            }
+        }
+
+        let attempts = 0;
+        let maxAttempts = combos.length;
+
+        while (attempts < maxAttempts) {
+            let currentCombo = combos[globalGrokComboIndex % combos.length];
+            try {
+                const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+                    method: 'POST', 
+                    headers: { 'Authorization': `Bearer ${currentCombo.key}`, 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ model: currentCombo.model, messages: messages, temperature: temperature })
+                });
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    const errMsg = data.error?.message || "";
+                    if (response.status === 401 || errMsg.toLowerCase().includes("invalid api key")) {
+                        logDebug(`[Geçersiz Key] ${currentCombo.model} reddedildi. Sonrakine geçiliyor...`, "error");
+                    } else if (response.status === 429 || errMsg.toLowerCase().includes("rate limit")) {
+                        logDebug(`[Kota Dolu] ${currentCombo.model}. 2 sn beklenip sonrakine geçiliyor...`, "warn");
+                        await new Promise(r => setTimeout(r, 2000));
+                    } else {
+                        logDebug(`[API Hatası] ${errMsg}`, "error");
+                    }
+                    globalGrokComboIndex++;
+                    attempts++;
+                    continue;
+                }
+                
+                let tokensUsed = data.usage?.total_tokens || 0;
+                recordUsage(currentCombo.key, tokensUsed);
+
+                logDebug(`[Başarılı] Model: ${currentCombo.model}`, "success");
+                globalGrokComboIndex++; 
+                return data;
+                
+            } catch (err) {
+                logDebug(`[Bağlantı Hatası] ${err.message}`, "error");
+                globalGrokComboIndex++;
+                attempts++;
+                await new Promise(r => setTimeout(r, 2000));
+            }
+        }
+        throw new Error("Mevcut tüm Grok API Key'ler ve Modeller için kotalar dolmuş veya Key'ler geçersiz!");
+    }
+
+    async function smartAIFetch(messagesOrSystemPrompt, temperature = 0.1) {
+        let systemPrompt = "";
+        let userPrompt = "";
+
+        if (Array.isArray(messagesOrSystemPrompt)) {
+            let sysMessage = messagesOrSystemPrompt.find(m => m.role === 'system');
+            let usrMessage = messagesOrSystemPrompt.find(m => m.role === 'user');
+            if (sysMessage) systemPrompt = sysMessage.content;
+            if (usrMessage) userPrompt = usrMessage.content;
+        } else {
+            systemPrompt = messagesOrSystemPrompt;
+        }
+
+        if (primaryAI === 'gemini') {
+            try {
+                return await fetchFromGeminiWithFallback(systemPrompt, userPrompt);
+            } catch (err) {
+                logDebug(`Gemini başarısız oldu (${err.message}). Grok'a (Llama) geçiliyor...`, "warn");
+                let messages = [{ role: 'system', content: systemPrompt }];
+                if (userPrompt) messages.push({ role: 'user', content: userPrompt });
+                return await fetchFromGrokWithFallback(messages, temperature);
+            }
+        } else {
+            try {
+                let messages = [{ role: 'system', content: systemPrompt }];
+                if (userPrompt) messages.push({ role: 'user', content: userPrompt });
+                return await fetchFromGrokWithFallback(messages, temperature);
+            } catch (err) {
+                logDebug(`Grok başarısız oldu (${err.message}). Gemini'ye geçiliyor...`, "warn");
+                return await fetchFromGeminiWithFallback(systemPrompt, userPrompt);
             }
         }
     }
 
-    // Bir ihlal metnine en çok benzeyen IPC kayıtlarını döndürür
-    function findRelevantIpcRecords(ihlalText, topK = 5) {
-        if (ipcIndex.length === 0) return [];
-        const qTokens = getCleanTokens(ihlalText);
-        if (qTokens.length === 0) return [];
-
-        const scored = ipcIndex.map(item => {
-            let hits = 0;
-            qTokens.forEach(t => { if (item.tokens.has(t)) hits++; });
-            let bonus = 0;
-            if (qTokens.some(t => item.norm.includes(t))) bonus = 0.2;
-            return { score: hits + bonus, rec: item.rec, hits };
-        }).filter(x => x.hits >= 2)
-          .sort((a, b) => b.score - a.score)
-          .slice(0, topK);
-
-        return scored.map(x => x.rec);
-    }
-
-    // AI prompt'u için okunabilir bir "rehber bloğu" metni üretir
-    function buildIpcContextBlock(ihlalText) {
-        const refs = findRelevantIpcRecords(ihlalText, 5);
-        if (refs.length === 0) return "";
-
-        let block = `\n\n─── BAKANLIK İPC REHBERİ REFERANSLARI ───\n`;
-        block += `(Aşağıdaki kayıtlar, T.C. Çalışma ve Sosyal Güvenlik Bakanlığı'nın resmî İPC tablosundan alınmıştır. Bu ihlalin hangi mevzuat ve maddeyle ilişkilendirildiğine dair STRATEJİK yol göstericidir. Karar verirken bu referansları mutlaka dikkate al.)\n\n`;
-        refs.forEach((r, i) => {
-            const maddeStr = `${r.madde || '-'}${r.fikra ? '(' + r.fikra + ')' : ''}${r.bent ? ' ' + r.bent : ''}${r.ek_madde ? ' EK-' + r.ek_madde : ''}`;
-            block += `${i + 1}) Mevzuat: ${r.mevzuat}\n`;
-            block += `   Madde: ${maddeStr}\n`;
-            block += `   İhlal Metni: ${(r.hukum || '').substring(0, 280)}\n`;
-            if (r.aciklama) {
-                block += `   Açıklama: ${r.aciklama.substring(0, 200)}\n`;
+    // ==========================================
+    // ORTAK ŞELALE ARAMA (CASCADE) BEYNİ
+    // ==========================================
+    function performCascadeSearch(queryTokens, chunksToSearch) {
+        let attempts = [];
+        for (let start = 0; start < queryTokens.length; start++) {
+            for (let end = queryTokens.length; end > start; end--) {
+                attempts.push(queryTokens.slice(start, end));
             }
-            block += `\n`;
-        });
-        block += `ÖNEMLİ: Eğer seçili mevzuatlar arasında yukarıdaki rehber kayıtlarındaki mevzuat varsa, öncelikle onu tercih et. Rehberdeki madde numarası, senin bulacağın maddeyle büyük olasılıkla örtüşmelidir.\n`;
-        return block;
+        }
+
+        let matchedChunks = [];
+        let uniqueDayanaks = new Set();
+        let successfulAttempts = []; 
+
+        for (let attemptTokens of attempts) {
+            let results = chunksToSearch.filter(chunk => {
+                let chunkText = chunk.norm !== undefined ? chunk.norm : tightNormalize(chunk.metin);
+                return attemptTokens.every(token => chunkText.includes(token));
+            });
+
+            if (results.length > 0) {
+                let clonedResults = results.map(c => ({...c}));
+                clonedResults.forEach(c => c.tfIdfScore = calculateTfIdfScore(c.metin, attemptTokens, c.tokens));
+                
+                clonedResults.sort((a, b) => b.tfIdfScore - a.tfIdfScore);
+                
+                let addedAny = false;
+                for (let r of clonedResults) {
+                    if (!uniqueDayanaks.has(r.dayanak)) {
+                        uniqueDayanaks.add(r.dayanak);
+                        matchedChunks.push(r);
+                        addedAny = true;
+                    }
+                    if (matchedChunks.length >= 10) break; 
+                }
+                
+                if (addedAny) successfulAttempts.push(attemptTokens);
+                if (matchedChunks.length >= 10) break; 
+            }
+        }
+        return { matchedChunks, successfulAttempts };
     }
+
     // ==========================================
-    // ⬆️⬆️⬆️ IPC REHBERİ FONKSİYONLARI SONU ⬆️⬆️⬆️
+    // TF-IDF ÖN HESAPLAMA VE SKORLAMA
     // ==========================================
+    function precomputeTfIdf(sourceMsg) {
+        if (!Array.isArray(mevzuatDB) || mevzuatDB.length === 0) {
+            logDebug("HATA: Mevzuat veritabanı geçerli değil!", "error");
+            return;
+        }
+        
+        logDebug("TF-IDF IDF tablosu hesaplanıyor...", "warn");
+
+        setTimeout(() => {
+            try {
+                let startTime = performance.now();
+                mevzuatIdfTable = {}; 
+                provisionChunksCache = []; 
+                let wordDocumentCount = {}; 
+                
+                chunksByMev = {};
+                mevzuatDB.forEach((mev, mevIdx) => {
+                    if(!mev) return;
+                    let mevNorm = tightNormalize(mev.mevzuat_adi);
+                    let chunks = buildSearchableChunks(mev);
+                    chunks.forEach(chunk => {
+                        let norm = tightNormalize(chunk.metin);
+                        let tokens = norm ? norm.split(' ').filter(w => w.length > 1 && !trStopSet.has(w)) : [];
+                        let co = {...chunk, mevIdx: mevIdx, norm: norm, tokens: tokens, mevNorm: mevNorm, normDay: tightNormalize(chunk.dayanak)};
+                        provisionChunksCache.push(co);
+                        (chunksByMev[mevIdx] = chunksByMev[mevIdx] || []).push(co);
+                        let uniqueTokensInChunk = [...new Set(tokens)]; 
+                        
+                        uniqueTokensInChunk.forEach(token => {
+                            wordDocumentCount[token] = (wordDocumentCount[token] || 0) + 1;
+                        });
+                    });
+                });
+                
+                let totalDocuments = provisionChunksCache.length;
+                if (totalDocuments > 0) {
+                    for (let token in wordDocumentCount) {
+                        mevzuatIdfTable[token] = Math.log10(totalDocuments / (wordDocumentCount[token] + 1));
+                    }
+                }
+                
+                let endTime = performance.now();
+                logDebug(`TF-IDF Hazır. ${totalDocuments} madde, ${Object.keys(mevzuatIdfTable).length} kelime. Süre: ${((endTime - startTime)/1000).toFixed(2)}sn`, "success");
+                
+                showDBReadySuccess(sourceMsg || "Sistem Hazır");
+            } catch (err) {
+                logDebug(`HATA (TF-IDF): ${err.message}`, "error");
+            }
+        }, 50);
+    }
+
+    function calculateTfIdfScore(chunkText, queryTokens, preTokens) {
+        if (!queryTokens || queryTokens.length === 0) return 0;
+        let chunkTokens = preTokens || getCleanTokens(chunkText);
+        if (chunkTokens.length === 0) return 0;
+        
+        let tokenCounts = {};
+        chunkTokens.forEach(token => { tokenCounts[token] = (tokenCounts[token] || 0) + 1; });
+        
+        let score = 0;
+        let queryTokensUnique = [...new Set(queryTokens)]; 
+        
+        queryTokensUnique.forEach(token => {
+            if (tokenCounts[token] && mevzuatIdfTable[token]) {
+                let tf = tokenCounts[token];
+                let idf = mevzuatIdfTable[token];
+                score += tf * idf;
+            }
+        });
+        return score;
+    }
+
+    function showDBReadySuccess(msg) {
+        const dbStatus = document.getElementById('dbStatus');
+        dbStatus.style.display = 'inline-flex'; 
+        dbStatus.className = 'status-badge success'; 
+        dbStatus.innerHTML = `✅ ${msg}`;
+        document.getElementById('splitBtn').disabled = false;
+    }
 
     // ==========================================
     // JSON DÖNÜŞTÜRME & ÇOKLU ATIF PARSERI
@@ -1147,27 +1376,9 @@
     }
 
     // ==========================================
-    // İHLAL AYIRMA
+    // İHLAL AYIRMA (SADECE METİN PARSER'I)
     // ==========================================
-    // Buton başlangıçta disabled olduğu için, kullanıcı metin girdiğinde
-    // otomatik olarak aktif hale getiriyoruz. Böylece klavye ile yazma,
-    // yapıştırma ve mobil cihazlardaki girişlerin tamamı çalışır.
-    const violationsInputEl = document.getElementById('violationsInput');
-    const splitBtnEl = document.getElementById('splitBtn');
-
-    function updateSplitButtonState() {
-        if (!violationsInputEl || !splitBtnEl) return;
-        splitBtnEl.disabled = !violationsInputEl.value.trim();
-    }
-
-    if (violationsInputEl && splitBtnEl) {
-        violationsInputEl.addEventListener('input', updateSplitButtonState);
-        violationsInputEl.addEventListener('change', updateSplitButtonState);
-        // Sayfa açıldığında textarea'da veri varsa da doğru durumu göster.
-        updateSplitButtonState();
-    }
-
-    splitBtnEl.addEventListener('click', () => {
+    document.getElementById('splitBtn').addEventListener('click', () => {
         const rawText = document.getElementById('violationsInput').value;
         if (!rawText.trim()) return;
 
@@ -1478,6 +1689,7 @@
         btn.innerHTML = "⏳ Düşünüyor...";
         btn.disabled = true;
 
+        // KURAL: 6331 dayanağıyla doğrudan çıkarılmamış yönetmelikler AI eşleştirmesine hiç gönderilmez
         let allowedMevzuats = mevzuatDB.map((m, i) => ({ id: i, name: m.mevzuat_adi })).filter(m => !isAIExcluded(m.name));
         const allowedIds = new Set(allowedMevzuats.map(m => m.id));
 
@@ -1517,10 +1729,12 @@ ${JSON.stringify(allowedMevzuats)}
                         if(!manualUserMapping[vIdx].includes(mid)) manualUserMapping[vIdx].push(mid);
                         if (firstName === null) firstName = mevzuatDB[mid].mevzuat_adi;
                     });
+                    // AI'nın seçtiği mevzuat adı, soldaki "Mevzuat Adı" kutusuna düşer (kullanıcı silip değiştirebilir)
                     if (firstName && violationsArray[vIdx] && !(violationsArray[vIdx].suggestedMevzuat || '').trim()) {
                         violationsArray[vIdx].suggestedMevzuat = firstName;
                     }
                 });
+                // KURAL: periyodik kontrol ihlalleri her zaman İş Ekipmanları Yönetmeliği'ne etiketlenir
                 const ieIdx = getIsEkipmanlariIdx();
                 if (ieIdx >= 0) {
                     violationsArray.forEach((v, vIdx) => {
@@ -1648,7 +1862,11 @@ ${JSON.stringify(allowedMevzuats)}
     }
 
     // ==========================================
+    // TOPLU AI EŞLEŞTİRME (BATCHING - 3'LÜ PARTİ)
+    // ==========================================
+    // ==========================================
     // PERİYODİK KONTROL KURALLARI -> İŞ EKİPMANLARI YÖNETMELİĞİ EK-III
+    // (anahtar kelimeler tightNormalize çıktısına göre, kelime başı eşleşmesiyle aranır)
     // ==========================================
     const PERIYODIK_KURALLAR = [
         { madde: "2.3.1", ad: "Tesisatlar", kw: ["elektrik tesisat", "topraklama", "yildirim", "paratoner", "akumulator", "transformator", "jenerator", "katodik"] },
@@ -1676,6 +1894,7 @@ ${JSON.stringify(allowedMevzuats)}
         return _ekIIIMap;
     }
 
+    // İhlal metni periyodik kontrol içeriyorsa ve bir ekipman kuralına uyuyorsa ilgili EK-III hükmünü döndürür
     function findPeriyodikEkIII(ihlalText) {
         const n = tightNormalize(ihlalText);
         if (!/(^| )(periyodik|muayene)/.test(n)) return null;
@@ -1687,9 +1906,6 @@ ${JSON.stringify(allowedMevzuats)}
         return null;
     }
 
-    // ==========================================
-    // TOPLU AI EŞLEŞTİRME (BATCHING - 3'LÜ PARTİ)
-    // ==========================================
     async function runBulkAISearch() {
         if (apiKeys.length === 0 && geminiApiKeys.length === 0) { 
             alert("Lütfen ayarlar menüsünden API Key ekleyin."); 
@@ -1763,13 +1979,6 @@ ${JSON.stringify(allowedMevzuats)}
                 statusText.innerText = `İşleniyor: ${processedCount + 1} - ${processedCount + chunk.length} / ${bulkData.length} (Adım 1: Kelime Analizi)`;
                 progressBar.style.width = `${(processedCount / bulkData.length) * 100}%`;
 
-                // ⬇️⬇️⬇️ IPC REHBERİ CONTEXT BLOĞU (YENİ) ⬇️⬇️⬇️
-                const ipcContextBlock = chunk.map(c => {
-                    const refs = buildIpcContextBlock(c.ihlal);
-                    return refs ? `İHLAL #${c.vIndex + 1} İÇİN REHBER:\n${refs}\n` : "";
-                }).join("\n");
-                // ⬆️⬆️⬆️ IPC REHBERİ CONTEXT BLOĞU SONU ⬆️⬆️⬆️
-
                 const prompt1 = `Sen uzman bir İSG denetçisisin. GÖREV: Aşağıdaki İHLAL listesinin her biri için, seçilmiş mevzuatlardan en uygun olanını ve TF-IDF araması için 3-5 adet YALIN KÖK arama kelimesini belirle.
 KURAL 1: Jenerik kelimeler kullanma. "işçi", "sağlık", "gerekli" gibi kelimeleri ASLA ekleme.
 KURAL 3: Periyodik kontrol eksiklikleri için "periyodik kontrol" ile birlikte ekipman türünü (kaldırma, basınçlı, tesisat vb.) arama kelimesi yap. Kaçak akım rölesi için "kaçak akım" veya "artık akım" kullan.
@@ -1784,8 +1993,6 @@ KURAL 2: Eğer girdide "kullanici_anahtar_kelimesi" belirtilmişse ve "Yok" değ
     }
   ]
 }
-
-${ipcContextBlock}
 
 GİRDİ İHLALLER:
 ${JSON.stringify(chunk.map(d => ({ 
@@ -1913,6 +2120,7 @@ ${JSON.stringify(candidatePayload, null, 2)}`;
                     }
                 }
                 
+                // KURAL: periyodik kontrol eksiklikleri -> İş Ekipmanları Yönetmeliği EK-III (AI seçimini geçersiz kılar)
                 chunk.forEach(c => {
                     const forced = findPeriyodikEkIII(c.ihlal);
                     if (forced) {
@@ -1979,10 +2187,6 @@ ${JSON.stringify(candidatePayload, null, 2)}`;
             let userKw = violationsArray[vIndex].userKeyword;
             let kwRule = userKw ? `\nÖZEL KURAL: Kullanıcı bu ihlal için "${userKw}" anahtar kelimesini kilit olarak belirlemiştir. arama_kelimeleri dizisinin İLK ELEMANI KESİNLİKLE "${userKw}" olmalıdır!` : "";
 
-            // ⬇️⬇️⬇️ IPC REHBERİ CONTEXT BLOĞU (YENİ) ⬇️⬇️⬇️
-            const ipcContext = buildIpcContextBlock(violationsArray[vIndex].text);
-            // ⬆️⬆️⬆️ IPC REHBERİ CONTEXT BLOĞU SONU ⬆️⬆️⬆️
-
             const systemPrompt = `Sen uzman bir İSG denetçisisin. SADECE ŞU SEÇİLİ MEVZUATLAR İÇİNDE DÜŞÜN: [ ${selectedNames} ]
 
 Kullanıcının girdiği İHLALİ analiz et. Seçilen HER BİR mevzuat için (Eğer o mevzuatta konuyla ilgili hüküm varsa) EN UYGUN 1 ADET GEREKÇE HÜKMÜNÜ bul.${kwRule}
@@ -2003,7 +2207,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
       "arama_kelimeleri": ["ihlal_kök1", "ihlal_kök2", "hüküm_kök1", "hüküm_kök2", "hüküm_kök3"]
     }
   ]
-}${ipcContext}`;
+}`;
 
             const data = await smartAIFetch([ 
                 { role: 'system', content: systemPrompt }, 
@@ -2465,7 +2669,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
     }
 
     // ==========================================
-    // JSON GEZGİNİ
+    // YENİ JENERASYON JSON GEZGİNİ (TÜM VERİTABANI ARAMA)
     // ==========================================
     function openJsonBrowserFromReport(vIndex) {
         const selectedData = finalReportData[vIndex].selectedData;
