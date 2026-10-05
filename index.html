@@ -254,6 +254,7 @@
         </div>
 
         <div id="workArea" style="display: none; margin-top: 15px;">
+            <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:8px;font-size:.9rem"><strong>Eşleştirme kaynağı:</strong><label style="cursor:pointer"><input type="radio" name="matchSource" value="ipc" checked> 📘 İPC Rehberi (resmî tablo)</label><label style="cursor:pointer"><input type="radio" name="matchSource" value="mevzuat"> 📚 Mevzuat Veritabanı</label></div>
             <label style="display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:.9rem;cursor:pointer"><input type="checkbox" id="chkStrictLabels" checked> Sadece benim etiketlediğim mevzuatlar içinde ara <small style="opacity:.7">(kapalıysa İPC tablosu etiket dışından da öneri ekleyebilir)</small></label>
             <button id="btnBulkAI" class="btn btn-success" style="width: 100%; margin-bottom: 15px; padding: 15px; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);" onclick="runBulkAISearch()">⚡ Tüm İhlalleri Tek Tıkla Otomatik Eşleştir (Toplu AI & Sıralama)</button>
             <div class="card">
@@ -1223,8 +1224,8 @@
         }
         return out.slice(0, 3);
     }
-    // Kanun m.26 (idari para cezaları) ihlal hükmü değil ceza maddesidir; aday olamaz
-    const isPenaltyChunk = c => /^\(6331[^,]*KANUNU, Madde: 26[\(\)\s]/i.test(c.dayanak);
+    // Kanun m.26 (idari para cezası), m.30 (yönetmelik yetkisi) ve m.32-39 (yürürlükten kaldırma, geçici maddeler, yürürlük) ihlal hükmü değildir; aday olamaz
+    const isPenaltyChunk = c => /^\(6331[^,]*KANUNU, Madde: (?:26|30|3[2-9])[\(\)\s]/i.test(c.dayanak);
     function ipcAllMev() { return new Set(mevzuatDB.map((m, i) => (m && !isAIExcluded(m.mevzuat_adi)) ? i : -1).filter(i => i >= 0)); }
     function ipcClean(t) {
         return (t || '').replace(/\(\s*ek\s*-?\s*\d+\s*\)/gi, ' ').replace(/ekli\s+liste\w*(\s+belirtilen)?/gi, ' ').replace(/\d+\s*(kişi\w*|adet)/gi, ' ');
@@ -2009,6 +2010,8 @@ ${JSON.stringify(allowedMevzuats)}
             return; 
         }
         
+        const srcEl = document.querySelector('input[name="matchSource"]:checked');
+        const srcMode = srcEl ? srcEl.value : 'ipc';
         const strictLabels = document.getElementById('chkStrictLabels') ? document.getElementById('chkStrictLabels').checked : true;
         let bulkData = [];
         for(let i=0; i<violationsArray.length; i++) {
@@ -2125,6 +2128,7 @@ ${JSON.stringify(chunk.map(d => ({
 
                 let candidatePayload = [];
                 let chunkVIndicesResults = {};
+                let altPools = {};
 
                 if (parsed1 && parsed1.analiz && Array.isArray(parsed1.analiz)) {
                     parsed1.analiz.forEach(item => {
@@ -2167,22 +2171,27 @@ ${JSON.stringify(chunk.map(d => ({
                             if(!uniqueResults.some(u => u.dayanak === r.dayanak)) uniqueResults.push(r); 
                         }
                         
-                        // İPC rehberi: resmî tabloda benzer ihlalin bağlı olduğu hükümler adayların başına eklenir
+                        // KAYNAK: İPC Rehberi modunda en uygun İPC satırlarının bağlı olduğu hükümler (ceza maddeleri hariç) aday olur;
+                        // İPC'de karşılık yoksa mevzuat veritabanı sonuçlarına düşülür. Mevzuat modunda İPC kullanılmaz.
+                        uniqueResults = uniqueResults.filter(c => !isPenaltyChunk(c));
                         let ipcChunks = [];
                         const selMev = new Set(targetData.mevzuatlar.map(m => parseInt(m.value)));
-                        ipcFind(targetData.ihlal, strictLabels ? selMev : ipcAllMev(), 4, 0.3).filter(h => h.sc >= (selMev.has(h.r._mi) ? 0.3 : 0.38)).slice(0, 3).forEach(h => {
-                            ipcChunksFor(h.r).forEach(c => { if (!ipcChunks.some(x => x.dayanak === c.dayanak)) if (!isPenaltyChunk(c)) ipcChunks.push({...c, ipcRef: h.r, tfIdfScore: 0}); });
-                        });
-                        if (ipcChunks.length) uniqueResults = ipcChunks.concat(uniqueResults.filter(u => !ipcChunks.some(x => x.dayanak === u.dayanak)));
-                        uniqueResults = uniqueResults.filter(c => !isPenaltyChunk(c));
-                        let top10 = uniqueResults.slice(0, 10);
+                        if (srcMode === 'ipc' && ipcReady) {
+                            ipcFind(targetData.ihlal, strictLabels ? selMev : ipcAllMev(), 8, 0.15).filter(h => h.sc >= (selMev.has(h.r._mi) ? 0.15 : 0.38)).slice(0, 6).forEach(h => {
+                                ipcChunksFor(h.r).forEach(c => { if (!ipcChunks.some(x => x.dayanak === c.dayanak) && !isPenaltyChunk(c)) ipcChunks.push({...c, ipcRef: h.r, tfIdfScore: 0}); });
+                            });
+                            ipcChunks = ipcChunks.slice(0, 8);
+                        }
+                        let pool = ipcChunks.concat(uniqueResults.filter(u => !ipcChunks.some(x => x.dayanak === u.dayanak)));
+                        altPools[vIndex] = pool.slice(0, 12);
+                        let top10 = ipcChunks.length ? ipcChunks : uniqueResults.slice(0, 10);
                         chunkVIndicesResults[vIndex] = top10;
 
                         if(top10.length > 0) {
                             candidatePayload.push({
                                 vIndex: vIndex,
                                 ihlal: targetData.ihlal,
-                                adaylar: top10.map((cand, idx) => ({ id: idx, metin: cand.metin, dayanak: cand.dayanak, ...(cand.ipcRef ? { ipc_notu: 'Bakanlık İPC tablosunda benzer ihlal: ' + cand.ipcRef.hukum.slice(0, 140)} : {}) }))
+                                adaylar: top10.map((cand, idx) => ({ id: idx, metin: cand.metin, dayanak: cand.dayanak, ...(cand.ipcRef ? { ihlal_hukmu: cand.ipcRef.hukum.slice(0, 200) } : {}) }))
                             });
                         }
                     });
@@ -2190,7 +2199,7 @@ ${JSON.stringify(chunk.map(d => ({
 
                 if(candidatePayload.length > 0) {
                     const prompt2 = `Sen baş denetçisin. Aşağıda ${candidatePayload.length} adet İHLAL ve potansiyel mevzuat maddeleri verilmiştir.
-GÖREV: Her ihlal için, o ihlale EN ÇOK UYAN 1 adet adayın 'id' değerini seç. 'ipc_notu' bulunan aday, Bakanlığın resmî İPC tablosunda benzer ihlal için gösterdiği hükümdür; güçlü bir ipucudur, ihlalle çelişmiyorsa tercih et. Periyodik kontrol eksikliklerinde İş Ekipmanları Yönetmeliği'nin tablolarla belirtilen (tesisat, kaldırma aracı, basınçlı tesisat vb.) ilgili periyodik kontrol hükmünü tercih et. Elektrik/topraklama/yangın/ilkyardım gibi 6331 dayanaklı olmayan yönetmeliklerden aday seçme.
+GÖREV: Her ihlal için, o ihlale EN ÇOK UYAN 1 adet adayın 'id' değerini seç. 'ihlal_hukmu' alanı, adayın Bakanlığın resmî İPC tablosundaki ihlal tanımıdır; ihlali en iyi karşılayan adayı seç, Ceza maddesi içeren aday seçme. Periyodik kontrol eksikliklerinde İş Ekipmanları Yönetmeliği'nin tablolarla belirtilen (tesisat, kaldırma aracı, basınçlı tesisat vb.) ilgili periyodik kontrol hükmünü tercih et. Elektrik/topraklama/yangın/ilkyardım gibi 6331 dayanaklı olmayan yönetmeliklerden aday seçme.
 ÇIKTI SADECE JSON OLMALIDIR (ASLA markdown, \`\`\`json veya açıklama ekleme):
 {
   "secimler": [
@@ -2235,6 +2244,15 @@ ${JSON.stringify(candidatePayload, null, 2)}`;
                         finalReportData[c.vIndex] = { selectedData: {...forced.chunk}, violation: violationsArray[c.vIndex] };
                         logDebug(`[Kural] İhlal ${c.vIndex + 1} -> EK-III ${forced.rule.madde} (${forced.rule.ad})`, "success");
                     }
+                });
+
+                // Her ihlal için seçili hüküm + en yüksek skorlu diğer öneriler (rapordan değiştirilebilir)
+                chunk.forEach(c => {
+                    const fr = finalReportData[c.vIndex];
+                    if (!fr || fr.alternatives) return;
+                    const pl = altPools[c.vIndex] || chunkVIndicesResults[c.vIndex] || [];
+                    fr.alternatives = [fr.selectedData].concat(pl.filter(p => p.dayanak !== fr.selectedData.dayanak)).slice(0, ALT_COUNT).map(x => ({...x}));
+                    fr.altIdx = 0;
                 });
 
                 processedCount += chunk.length;
@@ -2519,6 +2537,20 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
         if(field === 'dayanak') finalReportData[vIndex].selectedData.editedDayanakHtml = val;
     };
 
+    const ALT_COUNT = 3;
+    function altLabel(a) {
+        const mev = mevzuatDB[a.mevIdx] ? mevzuatDB[a.mevIdx].mevzuat_adi : '';
+        let sh = /KANUNU$/i.test(mev) ? '6331 Kanunu' : mev.replace(/\s+(ile ilgili\s+)?(Hakkında\s+)?(Yönetmeliği?|Kanunu)$/i, '');
+        if (sh.length > 30) sh = sh.slice(0, 30).replace(/\s+\S*$/, '') + '…';
+        const mad = (a.dayanak.match(/Madde: ([^,)]+(?:\)\s?[a-zçğıöşü])?)\)?$/i) || [])[1] || '';
+        const ek = (a.dayanak.match(/(EK-[IVX\d]+), Madde:/i) || [])[1];
+        return `${sh} · ${ek ? ek + ' ' : ''}${mad}`;
+    }
+    function pickAlternative(k, i) {
+        const d = finalReportData[k]; if (!d || !d.alternatives || !d.alternatives[i]) return;
+        d.altIdx = i; d.selectedData = {...d.alternatives[i], editedMetinHtml: null, editedDayanakHtml: null};
+        renderFinalReport();
+    }
     function renderFinalReport() {
         const finalReportEl = document.getElementById('finalReport'); 
         finalReportEl.innerHTML = ''; 
@@ -2553,6 +2585,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
                 
                 <div contenteditable="true" class="editable-field" onblur="updateReportData(${k}, 'dayanak', this)" style="margin: 0 0 8px 0; font-weight: bold;" title="Düzenlemek için tıklayın">${dayanakHTML}</div>
                 
+                ${(finalReportData[k].alternatives && finalReportData[k].alternatives.length > 1) ? `<div class="no-export" style="margin:8px 0; display:flex; flex-wrap:wrap; gap:6px; align-items:center; font-size:0.8rem;"><span style="color:var(--text-muted)">Öneriler:</span>${finalReportData[k].alternatives.map((a, ai) => `<button type="button" class="btn btn-sm" title="${escapeHTML((a.metin || '').slice(0, 220))}" style="padding:3px 9px; font-size:0.75rem; border:1px solid var(--primary); ${ai === finalReportData[k].altIdx ? 'background:var(--primary); color:#fff;' : 'background:transparent; color:var(--primary);'}" onclick="pickAlternative(${k}, ${ai})">${ai + 1}. ${escapeHTML(altLabel(a))}${ai === 0 ? ' ★' : ''}</button>`).join('')}</div>` : ''}
                 <div class="no-export" style="margin-top: 8px;">
                     <button class="btn btn-sm" style="background:var(--secondary); color:white; padding:4px 10px; font-size:0.75rem;" onclick="openZipSearchModal('${safeSearchQuery}')">🔍 Arşivde Gör & Kopyala</button>
                     <button class="btn btn-sm" style="background:var(--primary); color:white; padding:4px 10px; font-size:0.75rem; margin-left: 5px;" onclick="openJsonBrowserFromReport(${k})">🔄 Farklı Madde Seç</button>
@@ -2912,7 +2945,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
             selectedData.editedDayanakHtml = null;
         }
 
-        finalReportData[vIndex] = { selectedData, violation };
+        finalReportData[vIndex] = { selectedData, violation, alternatives: (finalReportData[vIndex] || {}).alternatives, altIdx: -1 };
         renderFinalReport();
         logDebug(`Rapor güncellendi (Mevzuat Gezgininden seçildi).`, "success");
 
