@@ -393,6 +393,19 @@
     </div>
 </div>
 
+<div class="modal-overlay" id="altPanelModal" style="z-index: 1100;">
+    <div class="modal-content" style="max-width: 900px; height: 90vh; padding:0; display:flex; flex-direction:column; overflow:hidden;">
+        <div class="zip-modal-header" style="flex-direction:column; align-items:stretch; gap:6px;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h2 id="altPanelTitle" style="font-size:1.05rem; margin:0;">🔍 Alternatif Dayanak Ara</h2>
+                <span class="close-modal" style="position: static;" onclick="closeAltPanel()">&times;</span>
+            </div>
+            <div style="font-size:0.78rem; color:var(--text-muted);">① Mevzuat seçin &nbsp;→&nbsp; ② Şelale ile kelime arayın <i>veya</i> AI ile bulun &nbsp;→&nbsp; ③ Seçeneğe <b>✅ Bunu Kullan</b> deyin; rapordaki madde değişir.</div>
+        </div>
+        <div id="altPanelBody" style="padding: 15px 20px 20px 20px; overflow-y: auto; flex:1; background: var(--bg);"></div>
+    </div>
+</div>
+
 <div class="modal-overlay" id="jsonBrowseModal" style="z-index: 1200;">
     <div class="modal-content" style="max-width: 800px; height: 85vh; padding:0; display:flex; flex-direction:column; overflow:hidden;">
         <div class="zip-modal-header" style="flex-direction:column; align-items:stretch; gap:10px;">
@@ -1868,6 +1881,7 @@ ${JSON.stringify(allowedMevzuats)}
     }
 
     function buildSliderUI(mappingData) {
+        closeAltPanel();
         const container = document.getElementById('violationsSliderContainer');
         container.innerHTML = '';
 
@@ -2507,6 +2521,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
                     <div class="option-citation">${displayDayanak}</div>
                 </label>
                 <button type="button" class="btn btn-secondary btn-sm" style="position:absolute; bottom:12px; right:15px; z-index:10; background: var(--secondary);" onclick="openJsonBrowser(${vIndex}, ${idx})">📖 Mevzuatta Gezin ve Seç</button>
+                <button type="button" class="btn btn-sm" style="position:absolute; bottom:12px; left:15px; z-index:10; background: var(--success, #10b981); color:#fff;" onclick="addSpecificToReport(${vIndex}, ${idx})">✅ Bunu Kullan</button>
             </div>`;
         });
         optionsListEl.innerHTML = html;
@@ -2514,11 +2529,12 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
 
     function addSpecificToReport(vIndex, optIndex) {
         document.getElementById(`opt_${vIndex}_${optIndex}`).checked = true; 
-        const selectedData = window[`currentOptions_${vIndex}`][optIndex]; 
+        const selectedData = {...window[`currentOptions_${vIndex}`][optIndex], editedMetinHtml: null, editedDayanakHtml: null}; 
         const violation = violationsArray[vIndex];
-        finalReportData[vIndex] = { selectedData, violation }; 
+        finalReportData[vIndex] = { selectedData, violation, alternatives: (finalReportData[vIndex] || {}).alternatives, altIdx: -1 }; 
         renderFinalReport(); 
         logDebug(`Rapor güncellendi.`, "success");
+        if (altPanelState && altPanelState.vIndex === vIndex) { closeAltPanel(); return; }
         
         if(currentSlideIndex < violationsArray.length - 1) {
             setTimeout(() => changeSlide(1), 400); 
@@ -2536,6 +2552,42 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
         if(field === 'hukum') finalReportData[vIndex].selectedData.editedMetinHtml = val;
         if(field === 'dayanak') finalReportData[vIndex].selectedData.editedDayanakHtml = val;
     };
+
+    // ==========================================
+    // RAPORDAN ALTERNATİF ARAMA: eşleştirme panelinin (mevzuat seçimi + şelale + AI/TF-IDF) ekranı
+    // modal içine taşınır; aynı kod ve aynı kutular kullanıldığı için sonuçlar paneldekiyle birebir aynıdır.
+    // ==========================================
+    let altPanelState = null;
+    function openAltPanel(vIndex) {
+        closeAltPanel();
+        const slide = document.getElementById('slide_' + vIndex);
+        if (!slide || !slide.parentNode) { alert("Bu ihlalin eşleştirme paneli bulunamadı. Önce ihlalleri eşleştirme ekranından başlatın."); return; }
+        const ph = document.createComment('slide-placeholder');
+        slide.parentNode.insertBefore(ph, slide);
+        document.getElementById('altPanelBody').appendChild(slide);
+        slide.classList.add('active');
+        altPanelState = { vIndex: vIndex, slide: slide, ph: ph };
+        document.getElementById('altPanelTitle').innerText = '🔍 Alternatif Dayanak Ara · İhlal ' + (violationsArray[vIndex] ? violationsArray[vIndex].number : (vIndex + 1));
+        document.getElementById('altPanelModal').style.display = 'flex';
+        document.getElementById('altPanelBody').scrollTop = 0;
+        setTimeout(() => { const kw = document.getElementById('manualKw_' + vIndex); if (kw) kw.focus(); }, 60);
+    }
+    function closeAltPanel() {
+        if (!altPanelState) { const m = document.getElementById('altPanelModal'); if (m) m.style.display = 'none'; return; }
+        const s = altPanelState; altPanelState = null;
+        if (s.ph && s.ph.parentNode) { s.ph.parentNode.insertBefore(s.slide, s.ph); s.ph.parentNode.removeChild(s.ph); }
+        s.slide.classList.remove('active');
+        document.getElementById('altPanelModal').style.display = 'none';
+        if (violationsArray.length && document.getElementById('slide_' + currentSlideIndex)) updateSliderView();
+    }
+    function renderUnmatchedBlock() {
+        const missing = violationsArray.map((v, i) => i).filter(i => !finalReportData[i]);
+        if (!missing.length) return '';
+        return `<details class="no-export" style="margin-top:14px; border:1px dashed var(--border); border-radius:8px; padding:8px 12px;">
+            <summary style="cursor:pointer; font-weight:700; font-size:0.85rem; color:var(--text-muted);">Rapora eklenmemiş ihlaller (${missing.length})</summary>
+            ${missing.map(i => `<div style="display:flex; gap:8px; align-items:center; justify-content:space-between; padding:6px 0; border-top:1px solid var(--border); font-size:0.85rem;"><span>${escapeHTML(violationsArray[i].number + ' ' + violationsArray[i].text)}</span><button type="button" class="btn btn-sm" style="flex-shrink:0; background:var(--primary); color:#fff; padding:4px 10px; font-size:0.75rem;" onclick="openAltPanel(${i})">🔍 Alternatif Ara</button></div>`).join('')}
+        </details>`;
+    }
 
     const ALT_COUNT = 3;
     function altLabel(a) {
@@ -2555,7 +2607,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
         const finalReportEl = document.getElementById('finalReport'); 
         finalReportEl.innerHTML = ''; 
         const keys = Object.keys(finalReportData).sort((a,b) => Number(a) - Number(b));
-        if(keys.length === 0) { finalReportEl.innerHTML = '<div style="color: var(--text-muted); font-style: italic; text-align: center; margin-top: 30px;">Henüz madde eklenmedi.</div>'; return; }
+        if(keys.length === 0) { finalReportEl.innerHTML = '<div style="color: var(--text-muted); font-style: italic; text-align: center; margin-top: 30px;">Henüz madde eklenmedi.</div>' + renderUnmatchedBlock(); return; }
         
         keys.forEach(k => {
             const { selectedData, violation } = finalReportData[k];
@@ -2589,10 +2641,12 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
                 <div class="no-export" style="margin-top: 8px;">
                     <button class="btn btn-sm" style="background:var(--secondary); color:white; padding:4px 10px; font-size:0.75rem;" onclick="openZipSearchModal('${safeSearchQuery}')">🔍 Arşivde Gör & Kopyala</button>
                     <button class="btn btn-sm" style="background:var(--primary); color:white; padding:4px 10px; font-size:0.75rem; margin-left: 5px;" onclick="openJsonBrowserFromReport(${k})">🔄 Farklı Madde Seç</button>
+                    <button class="btn btn-sm" style="background:var(--success, #10b981); color:white; padding:4px 10px; font-size:0.75rem; margin-left: 5px;" onclick="openAltPanel(${k})" title="Mevzuat seçip şelale veya AI ile alternatif ara">🔍 Alternatif Ara</button>
                 </div>
             </div>`;
             finalReportEl.innerHTML += reportHTML;
         });
+        finalReportEl.insertAdjacentHTML('beforeend', renderUnmatchedBlock());
     }
 
     function removeReportItem(vIndex) { delete finalReportData[vIndex]; renderFinalReport(); }
@@ -2950,6 +3004,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
         logDebug(`Rapor güncellendi (Mevzuat Gezgininden seçildi).`, "success");
 
         document.getElementById('jsonBrowseModal').style.display = 'none';
+        if (altPanelState && altPanelState.vIndex === vIndex) closeAltPanel();
 
         const tab3 = document.getElementById('tab3');
         if (!tab3.classList.contains('active')) {
@@ -2965,6 +3020,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
     
     document.addEventListener('keydown', e => { 
         if(e.key === "Escape") { 
+            closeAltPanel();
             document.querySelectorAll('.modal-overlay').forEach(m => m.style.display = 'none');
             const sidebar = document.getElementById('settingsSidebar');
             if(sidebar.classList.contains('open')) toggleSidebar();
