@@ -313,6 +313,12 @@
         </div>
 
         <div class="setting-group">
+            <label>📥 API Key'leri .txt Dosyasından Yükle</label>
+            <p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:5px;">Dosyada her satıra bir key yazın (başlık satırları <b>grok:</b> / <b>gemini:</b> olabilir). Key'ler öneklerinden tanınır (gsk_ = Grok, AIza = Gemini) ve hemen aktif olur. Dosya cihazınızdan çıkmaz.</p>
+            <input type="file" id="apiKeyFile" accept=".txt,text/plain" onchange="importApiKeysFromFile(this)">
+        </div>
+
+        <div class="setting-group">
             <label>✨ Gemini 2.5 Flash API Key Ekle</label>
             <div style="display:flex; gap:10px;">
                 <input type="password" id="geminiApiKeyInput" placeholder="AIza... (Gizli)" style="margin-bottom:0;">
@@ -763,6 +769,40 @@
         loadDBFromIndexedDB();
         if (typeof merkezBaslat === 'function') merkezBaslat();
     };
+
+    // --- KEY'LERİ .TXT DOSYASINDAN YÜKLE ---
+    // Biçim: "grok:" / "gemini:" başlıkları ve satır başına bir key (başlıklar zorunlu değil, key'ler önekten tanınır)
+    function parseApiKeysFromText(text) {
+        const uniq = a => [...new Set(a || [])];
+        return {
+            groq: uniq(String(text).match(/gsk_[A-Za-z0-9]{20,}/g)),
+            gemini: uniq(String(text).match(/AIza[0-9A-Za-z_\-]{30,}/g))
+        };
+    }
+    function importApiKeysFromFile(inp) {
+        const f = inp.files && inp.files[0];
+        if (!f) return;
+        const rd = new FileReader();
+        rd.onerror = () => { alert('Dosya okunamadı.'); inp.value = ''; };
+        rd.onload = () => {
+            const { groq, gemini } = parseApiKeysFromText(rd.result);
+            let yeniG = 0, yeniM = 0;
+            groq.forEach(k => { if (!apiKeys.includes(k)) { apiKeys.push(k); yeniG++; } });
+            gemini.forEach(k => { if (!geminiApiKeys.includes(k)) { geminiApiKeys.push(k); yeniM++; } });
+            if (yeniG) localStorage.setItem('isg_groq_keys', JSON.stringify(apiKeys));
+            if (yeniM) localStorage.setItem('isg_gemini_keys', JSON.stringify(geminiApiKeys));
+            renderApiKeys(); renderGeminiApiKeys();
+            if (!groq.length && !gemini.length) {
+                alert('Dosyada geçerli key bulunamadı.\n\nÖrnek biçim:\ngrok:\ngsk_...\ngsk_...\ngemini:\nAIza...\nAIza...');
+            } else {
+                const mevcut = (groq.length - yeniG) + (gemini.length - yeniM);
+                alert(`✅ ${yeniG} Grok ve ${yeniM} Gemini key eklendi ve aktif.` + (mevcut ? `\n(${mevcut} key zaten kayıtlıydı.)` : ''));
+                logDebug(`Dosyadan key yüklendi: ${yeniG} Grok, ${yeniM} Gemini.`, 'success');
+            }
+            inp.value = '';
+        };
+        rd.readAsText(f, 'utf-8');
+    }
 
     // --- GROK KEY YÖNETİMİ ---
     function addApiKey() {

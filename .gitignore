@@ -1,2 +1,7 @@
 guncelleme_raporu.md
 node_modules/
+# API key dosyaları ASLA depoya yüklenmesin (depo herkese açık)
+keys*.txt
+anahtar*.txt
+apikey*.txt
+*.key
