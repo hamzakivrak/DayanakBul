@@ -271,8 +271,8 @@
                 const tb = MP.extractTables(metin);
                 const ok = tb.filter(t => t.guvenilir);
                 if (!ok.length) return hata("Metinde tablo bulunamadı. 'Tablo-1: …' başlıklı EK-III bölümünü de yapıştırdığınızdan emin olun.");
-                if (ok.length < tb.length) uyarilar.push(`${tb.length - ok.length} tablo güvenilir ayrıştırılamadı, bunlar kaydedilmez.`);
-                html = `<div class="gm-ok">${ok.length} tablo çıkarıldı: ${ok.map(t => esc(t.baslik.split(':')[0]) + ' (' + t.satirlar.length + ' satır)').join(', ')}</div>`;
+                if (ok.length < tb.length) uyarilar.push(`Güvenilir ayrıştırılamayan tablo(lar): ${tb.filter(t => !t.guvenilir).map(t => 'Tablo-' + t.no).join(', ')} — bunlar kaydedilmez. Tabloyu başlığıyla (Tablo-n: …) birlikte, satırlar sekmeyle ayrılmış olarak yapıştırdığınızdan emin olun.`);
+                html = `<div class="gm-ok">${ok.length} tablo çıkarıldı: ${ok.map(t => esc(t.baslik.split(':')[0]) + ' (' + t.satirlar.length + ' satır)').join(', ')}. Yapıştırmadığınız tablolar olduğu gibi korunur.</div>`;
                 _onizleme = { mod, ad, tablolar: ok };
             } else if (mod === 'madde') {
                 if (!eski) return hata('Madde bazlı güncelleme için mevzuat kayıtlı olmalı.');
@@ -331,8 +331,12 @@
 
         if (o.tablolar) {
             rec.oncekiTablolarYerel = (await idbKV('readonly', s => s.get(KEY_TABLO))) || null;
+            // Yapıştırılan tablolar aynı numaralıların yerine geçer; yapıştırılmayan tablolar korunur
+            const harita = new Map(((window.periyodikTablolar && window.periyodikTablolar.tablolar) || []).map(t => [t.no, t]));
+            o.tablolar.forEach(t => harita.set(t.no, t));
+            const birlesik = [...harita.values()].sort((a, b) => a.no - b.no);
             const doc = { mevzuat: 'İş Ekipmanlarının Kullanımında Sağlık ve Güvenlik Şartları Yönetmeliği', ek: 'EK-III',
-                kaynak: 'Mevzuat Güncelleme Merkezi' + (not ? ' — ' + not : ''), guncelleme: ts, tablolar: o.tablolar };
+                kaynak: 'Mevzuat Güncelleme Merkezi' + (not ? ' — ' + not : ''), guncelleme: ts, tablolar: birlesik };
             await idbKV('readwrite', s => s.put(doc, KEY_TABLO));
             window.periyodikTablolar = doc;
         }

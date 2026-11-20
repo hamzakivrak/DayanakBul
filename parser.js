@@ -219,8 +219,35 @@
                 if (titleRe.test(lines[j]) || headingRe.test(lines[j]) || /^_{3,}$/.test(lines[j])) { end = j; break; }
             }
 
+            let cells = [], dipnotlar = [], kolonlar = [], notlar = [], satirlar = [];
+
+            // --- SEKMELİ BİÇİM: siteden / Word'den / Excel'den kopyalanan tablo (her satır: ad <TAB> periyot <TAB> kriter) ---
+            const bolge = lines.slice(i + 1, end);
+            const sekmeli = bolge.some(l => l.indexOf('\t') >= 0);
+            if (sekmeli) {
+                const donemOk = c => c.length > 0 && c.length < 140 && (/\d+\s*(?:yıl|ay|gün|hafta)/i.test(c) || /süre/i.test(c));
+                let son = null, bosVar = false;
+                for (const l of bolge) {
+                    if (!l) { bosVar = true; continue; }
+                    if (l.indexOf('\t') < 0 && /^\(\d+\)\s+\S/.test(l)) { dipnotlar.push(l); continue; }
+                    const c = l.split('\t').map(x => x.trim());
+                    const kalan = c.slice(2).filter(Boolean).join(' ');
+                    if (c.length >= 3 && c[0] && donemOk(c[1]) && kalan && !/^EKİPMAN\s+ADI/i.test(c[0]) && !/PERİYODİK\s+KONTROL\s+DÖNEMİ/i.test(c[1])) {
+                        son = { ad: c[0], periyot: c[1], kriter: kalan }; satirlar.push(son); bosVar = false; continue;
+                    }
+                    if (son && c.length === 2 && c[0] && c[1]) {
+                        // birleştirilmiş hücre (rowspan): eksik olan hücre bir önceki satırdan devralınır
+                        if (donemOk(c[1])) satirlar.push(son = { ad: c[0], periyot: c[1], kriter: son.kriter });
+                        else satirlar.push(son = { ad: c[0], periyot: son.periyot, kriter: c[1] });
+                        bosVar = false; continue;
+                    }
+                    if (son && !bosVar && l.indexOf('\t') < 0) son.kriter += '\n' + l; // çok satırlı kriter hücresi
+                }
+            }
+
+            if (!sekmeli) {
             // hücreler: ardışık dolu satırlar = bir hücre
-            let cells = [], cur = [];
+            let cur = [];
             for (let j = i + 1; j < end; j++) {
                 if (!lines[j]) { if (cur.length) { cells.push(cur.join('\n')); cur = []; } }
                 else cur.push(lines[j]);
@@ -228,7 +255,6 @@
             if (cur.length) cells.push(cur.join('\n'));
 
             // dipnotlar: "(1) ...." ile başlayan hücreler
-            const dipnotlar = [];
             cells = cells.filter(c => { if (/^\(\d+\)\s+\S/.test(c)) { dipnotlar.push(c.replace(/\n/g, ' ')); return false; } return true; });
 
             // bölünmüş periyot hücresi: "Standartlarda süre belirtilmemişse" + "1 Yıl"
@@ -243,8 +269,6 @@
             const P = [];
             cells.forEach((c, k) => { if (c.length < 90 && !c.includes('\n') && PERIYOT_RE.test(c) && k >= 1) P.push(k); });
 
-            const kolonlar = [], notlar = [];
-            const satirlar = [];
             if (P.length) {
                 // başlık: ilk satırın ekipman adından önceki hücreler
                 cells.slice(0, P[0] - 1).forEach(h => {
@@ -262,6 +286,7 @@
                     });
                 });
             }
+            }
 
             // bağlı olduğu bölüm: bu tabloya atıf yapan en yakın önceki "2.N.M." maddesi
             let bolum = null, madde = null;
@@ -274,6 +299,7 @@
                 for (let j = i - 1; j >= 0; j--) { const cm = lines[j].match(clauseRe); if (cm) { bolum = cm[1] + '.' + cm[2]; break; } }
             }
 
+            if (!bolum) bolum = '2.' + no;   // EK-III düzeni: Tablo-n  ->  2.n bölümü (yalnız tek tablo yapıştırılsa da eşleşsin)
             const guvenilir = satirlar.length > 0 && satirlar.every(s => s.ad && s.periyot && s.kriter);
             tablolar.push({
                 no: no,
