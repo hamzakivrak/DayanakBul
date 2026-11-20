@@ -2516,8 +2516,8 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
                 
                 <div contenteditable="true" class="editable-field" onblur="updateReportData(${k}, 'hukum', this)" style="margin: 0 0 8px 0; font-style: italic;" title="Düzenlemek için tıklayın">${metinHTML}</div>
                 
-                <div contenteditable="true" class="editable-field" onblur="updateReportData(${k}, 'dayanak', this)" style="margin: 0 0 8px 0; font-weight: bold;" title="Düzenlemek için tıklayın">${dayanakHTML}</div>
                 ${typeof renderPeriyodikTablo === 'function' ? renderPeriyodikTablo(k) : ''}
+                <div contenteditable="true" class="editable-field" onblur="updateReportData(${k}, 'dayanak', this)" style="margin: 0 0 8px 0; font-weight: bold;" title="Düzenlemek için tıklayın">${dayanakHTML}</div>
                 
                 ${(finalReportData[k].alternatives && finalReportData[k].alternatives.length > 1) ? `<div class="no-export" style="margin:8px 0; display:flex; flex-wrap:wrap; gap:6px; align-items:center; font-size:0.8rem;"><span style="color:var(--text-muted)">Öneriler:</span>${finalReportData[k].alternatives.map((a, ai) => `<button type="button" class="btn btn-sm" title="${escapeHTML((a.metin || '').slice(0, 220))}" style="padding:3px 9px; font-size:0.75rem; border:1px solid var(--primary); ${ai === finalReportData[k].altIdx ? 'background:var(--primary); color:#fff;' : 'background:transparent; color:var(--primary);'}" onclick="pickAlternative(${k}, ${ai})">${ai + 1}. ${escapeHTML(altLabel(a))}${ai === 0 ? ' ★' : ''}</button>`).join('')}</div>` : ''}
                 <div class="no-export" style="margin-top: 8px;">
