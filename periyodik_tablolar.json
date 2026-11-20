@@ -1,0 +1,514 @@
+{
+  "mevzuat": "İş Ekipmanlarının Kullanımında Sağlık ve Güvenlik Şartları Yönetmeliği",
+  "ek": "EK-III",
+  "kaynak": "MevzuatText.zip içindeki İş Ekipmanları Yönetmeliği metni (Mart 2025 sürümü)",
+  "guncelleme": "2025-03-11",
+  "tablolar": [
+    {
+      "no": 1,
+      "baslik": "Tablo-1: Basınçlı kap ve tesisatların periyodik kontrol süreleri ile kontrol kriterleri",
+      "bolum": "2.1",
+      "madde": "2.1.1",
+      "kolonlar": [
+        "EKİPMAN ADI",
+        "KONTROL PERİYODU (Azami Süre)",
+        "PERİYODİK KONTROL KRİTERLERİ"
+      ],
+      "satirlar": [
+        {
+          "ad": "Buhar ve kızgın su kazanları",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 12952 serisi, TS EN 12953 ve TS 497 serisi standartlarında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Isıtma (Kalorifer, sıcak su ve benzeri) kazanları",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 303 serisi, TS 497, TS 430, TS EN 14394+A1 ve TS EN 12828+A1standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Kızgın yağ kazanları",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "DIN 4754-1 standardında belirtilen kriterlere uygun olarak yapılır.\nSıvılaştırılmış gaz tankları (LPG, ve benzeri) (yerüstü) (1)\nStandartlarda süre belirtilmemişse 1 Yıl (yalnızca muayene)\n(10 yılın sonunda yeniden değerlendirme veya periyodik kontrol)\nTS EN 13445-5, TS 1446, TS EN 12817 ve TS EN 12819 standartlarında belirtilen kriterlere uygun olarak yapılır.\nSıvılaştırılmış gaz tankları (LPG, ve benzeri) (yer altı) (1)\nStandartlarda süre belirtilmemişse 1 Yıl (yalnızca muayene)\n(10 yılın sonunda yeniden değerlendirme)\nTS EN 13445-5, TS 1446, TS  EN 12817, TS EN 12819 standartlarında belirtilen kriterlere uygun olarak  yapılır."
+        },
+        {
+          "ad": "Basınçlı hava ve gaz tankları (2)",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS 1203 EN 286-1, TS EN 13445-5, TS EN 764-7 standartlarında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Kapalı genleşme tankları",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS 10576, TS 1911, TS 11490, TS EN 13831, TS EN 764-7 standartlarında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Boyler ve akümülasyon tankları",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS 736, TS EN 12897+A1 standartlarında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Boyama makinaları (kazanları)",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN ISO 11111-1, TS EN ISO 11111-7, TS EN 764-7 standartlarında belirtilen kriterlere uygun olarak yapılır.\nKriyojenik tanklar\nTS EN ISO 21009-2 ve TS EN 14197-3 standartlarında belirtilen sürelerde\nTS EN ISO 21009-2 ve TS EN 14197-3 standartlarında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Buharlı pişirme kazanları",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS 11673 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Otoklav",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 285+A1 ve TS EN 13060+A1 standartlarında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Atmosferik, bombeli yatay veya dikey silindirik, prizmatik, çelik veya termoplastik, açık veya kapalı tehlikeli sıvı depolama tankı (3)",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 12285-2, TS 8991, TS 712, TS EN 12573-1, TS EN 12573-2, TS EN 12573-3 standartlarında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Atmosferik, dik, silindirik, yer üstü, çelik kaynaklı birleştirmeli, açık ya da kapalı tavanlı tehlikeli sıvı depolama tankları (3)",
+          "periyot": "Standartlarda süre belirtilmemişse 10 Yıl",
+          "kriter": "API 620, API 650, API 653 ve API 2610 standartlarında belirtilen kriterlere uygun olarak yapılır."
+        }
+      ],
+      "dipnotlar": [
+        "(1) LPG tankları, buhar kazanları, kızgın su kazanları, kriyojenik tanklar gibi standartlarında emniyet valf testleri bulunan ekipmanlar için emniyet valfleri, standartlarda belirtilen azami süreler içerisinde teste tabi tutulur.",
+        "(2) Seyyar veya sabit kompresör hava tankları ile basınçlı hava ihtiva eden her türlü kap ve bunların sabit donanımı.",
+        "(3) Tehlikeli sıvılar: aşındırıcı veya sağlığa zararlı sıvılardır."
+      ],
+      "notlar": [
+        "(İlgili standardın             öngördüğü süreler saklı kalmak koşulu ile)"
+      ],
+      "guvenilir": true
+    },
+    {
+      "no": 2,
+      "baslik": "Tablo-2: Kaldırma ve iletme ekipmanlarının periyodik kontrol süreleri ve kontrol kriterleri",
+      "bolum": "2.2",
+      "madde": "2.2.1",
+      "kolonlar": [
+        "EKİPMAN ADI",
+        "KONTROL PERİYODU (Azami Süre)",
+        "PERİYODİK KONTROL KRİTERLERİ"
+      ],
+      "satirlar": [
+        {
+          "ad": "Kablolu taşıma tesisatları",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 1709 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Krenler (köprülü, portal, mobil, yükleyici, kule, kıyı ötesi, döner kollu ve benzeri)",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 15011, TS EN 14985, TS EN 13852-1, TS EN 13852-2, TS EN 13000+A1, TS EN 12999, TS EN 14439+A2, TS EN 13001 serisi, TS ISO 9927-1 standartlarında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Vinçler ve kaldırma teçhizatları (monoray, traksiyonel, çektirme, gerdirme ve benzeri)",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 14492-1+A1, TS EN 13157+A1 standartlarında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Endüstriyel araçlar (forklift, transpalet, yük ve personel taşıyıcı, değişken erişimli araç, sipariş toplayıcı ve benzeri)",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN ISO 3691 serisi, FEM 4.004 standartlarında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Araç kaldırma liftleri",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 1493 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Kaldırma tablaları",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 1570-1+A1, TS EN 1570-2 standartlarında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Sütunlu çalışma platformları",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 1495+A2 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Asılı erişim donanımları",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 1808 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Yükseltilebilen seyyar iş platformları",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 280+A1 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "İnşaat asansörleri",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 12159, TS EN 12158-1, TS EN 16719 standartlarında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Eğimli yük taşıma tertibatları",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 12158-2+A1 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Hareket engelliler için güç tahrikli kaldırma platformları",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 81-40, TS EN 81-41 standartlarında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Servis asansörleri",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 81-3+A1 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Kren asansörleri",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 81-43 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Yük asansörleri(1)",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 81-31 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Manipülatörler",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 14238+A1 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Uçak yer destek donanımları(2)",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 12312-1, TS EN 12312-3+A1, TS EN 12312-4, TS EN 12312-6, TS EN 12312-8, TS EN 12312-9, TS EN 12312-10+A1, TS EN 12312-11,  TS EN 12312-15, TS EN 12312-19+A1 standartlarında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Yürüyen merdivenler ve yürüyen yollar",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 115-1 ve TS EN 115-2 standartlarında belirtilen şartlar kapsamında yapılır."
+        },
+        {
+          "ad": "Yapı iskeleleri(3)",
+          "periyot": "Standartlarda süre belirtilmemişse 6 Ay",
+          "kriter": "TS EN 12810-1, TS EN 12810-2 TS EN 12811-1 ve TS 13662 standartlarında belirtilen kriterlere uygun olarak ve EK-II’nin 4 üncü maddesinde belirtilen hususlar dikkate alınarak yapılır."
+        },
+        {
+          "ad": "Mobil erişim ve çalışma kuleleri (seyyar iskeleler)",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 1004-1 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Sürekli taşıma donanımları (konveyörler)",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 618+A1, TS EN 619+A1, TS EN 620 standartlarında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Kaldırma aksesuarları ve taşıyıcılar (sapanlar, kıskaçlar, vakum kaldırıcı, manyetik kaldırıcı ve benzeri)",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 14502-1, TS EN 13414-2+A2, TS EN 1492 serisi, TS EN 818-6+A1, TS EN 13155 standartlarında belirtilen kriterlere uygun olarak yapılır."
+        }
+      ],
+      "dipnotlar": [
+        "(1) Yükleme amaçlı erişilebilen, taşıyıcı (kabin veya platform) içinde insan seyri bulunmayan, sadece yüklerin taşındığı asansörlerdir.",
+        "(2) Kapsamı, sadece donanımların kaldırma iletme ekipmanları ve aksesuarlarıdır.",
+        "(3) İskeleler, taşıyabilecekleri azami yük görünecek şekilde işaretlenir."
+      ],
+      "notlar": [
+        "(İlgili standardın öngördüğü süreler saklı kalmak koşulu ile)"
+      ],
+      "guvenilir": true
+    },
+    {
+      "no": 3,
+      "baslik": "Tablo-3: Tesisatların periyodik kontrol süreleri ile kontrol kriterleri",
+      "bolum": "2.3",
+      "madde": "2.3.4",
+      "kolonlar": [
+        "EKİPMAN ADI",
+        "PERİYODİK KONTROL DÖNEMİ (Azami Süre)",
+        "PERİYODİK KONTROL KRİTERLERİ"
+      ],
+      "satirlar": [
+        {
+          "ad": "Elektrik tesisatı ve topraklama tesisatı",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "21/8/2001 tarihli ve 24500 sayılı Resmî Gazete’de yayımlanan Elektrik Tesislerinde Topraklamalar Yönetmeliği, 30/11/2000 tarihli ve 24246 sayılı Resmî Gazete‘de yayımlanan Elektrik Kuvvetli Akım Tesisleri Yönetmeliği ve 4/11/1984 tarihli ve 18565 sayılı Resmî Gazete’de yayımlanan Elektrik İç Tesisleri Yönetmeliği ile TS EN 60079 serisi, TS HD 60364-4 serisi, TS HD 60364-5 Serisi, TS HD 60364-6 standartlarında belirtilen hususlara göre yapılır."
+        },
+        {
+          "ad": "Yıldırımdan korunma tesisatı (kafes sistemi, hava sonlandırma çubuğu, doğal hava sonlandırma bileşenleri, paratoner ve benzeri)",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 62305 serisi standartlarında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Akümülatör",
+          "periyot": "1 Yıl",
+          "kriter": "İmalatçının belirleyeceği şartlar kapsamında yapılır."
+        },
+        {
+          "ad": "Transformatör",
+          "periyot": "1 Yıl",
+          "kriter": "İmalatçının belirleyeceği şartlar kapsamında yapılır."
+        },
+        {
+          "ad": "Jeneratör",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS ISO 8528 serisi standartlarında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Katodik koruma tesisatı",
+          "periyot": "Standartlarda süre belirtilmemişse 6 Ay",
+          "kriter": "TS EN 13509, TS EN 12954, TS EN 13636, TS EN ISO 13174 standartlarında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Yangın söndürme sistemleri, otomatik yağmurlama sistemleri, otomatik gazlı söndürme sistemleri, mutfak davlumbaz söndürme sistemleri (yangın su deposu, yangın pompa dairesi ve yangın pompaları performans testleri, sabit boru tesisatı, sprinkler sistemi, yangın dolapları, hidrant sistemi ve benzeri)",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "Projede belirtilen kriterlere ve Binaların Yangından Korunması Hakkında Yönetmeliğe uygun şekilde gerçekleştirilir."
+        },
+        {
+          "ad": "Portatif yangın söndürücüler (yangın söndürme cihazları)",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "Binaların Yangından Korunması Hakkında Yönetmeliğe uygun şekilde gerçekleştirilir.\n(TSE ISO/TS 11602-2 standartında belirtilen kriterlere uygun olarak yapılır.)"
+        },
+        {
+          "ad": "Kaçış yolu basınçlandırma sistemleri ve duman tahliye sistemleri",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "Binaların Yangından Korunması Hakkında Yönetmeliğe Uygun Şekilde Gerçekleştirilir."
+        },
+        {
+          "ad": "Yangın algılama ve uyarı sistemleri",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "Projede belirtilen kriterlere ve TSE CEN/TS 54-14 standartında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Havalandırma ve klima tesisatı",
+          "periyot": "1 Yıl",
+          "kriter": "Projede belirtilen kriterlere uygun olup olmadığının belirlenmesine yönelik olarak yapılır."
+        }
+      ],
+      "dipnotlar": [],
+      "notlar": [
+        "(İlgili standardın öngördüğü süreler saklı kalmak koşulu ile)"
+      ],
+      "guvenilir": true
+    },
+    {
+      "no": 4,
+      "baslik": "Tablo-4: Tezgâhların periyodik kontrol süreleri ile kontrol kriterleri",
+      "bolum": "2.4",
+      "madde": "2.4.1",
+      "kolonlar": [
+        "EKİPMAN ADI",
+        "PERİYODİK KONTROL DÖNEMİ (Azami Süre)",
+        "PERİYODİK KONTROL KRİTERLERİ"
+      ],
+      "satirlar": [
+        {
+          "ad": "Mekanik presler",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN ISO 16092-1 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Hidrolik presler",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN ISO 16092-3 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Hidrolik abkant presler",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 12622+A1 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Pnömatik presler",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 16092-1, TS EN 16092-4 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Torna tezgahları",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN ISO 23125 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Ağaç işleme tezgahları",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 847-3 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Freze tezgahları",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 16090-1 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Soğuk metal testereleri",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN ISO 16093 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Hareketsiz taşlama makineleri",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN ISO 16089 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Şerit testere (ağaç işleme makinaları)",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 1807-2 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "İşleme merkezleri",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 16090-1 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Şerit testere (gıda işleme makineleri)",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 12268 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Delme makinaları",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 12717+A1 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Giyotin makaslar",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 13985+A1 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Transfer tipi ve özel amaçlı tezgâhlar",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 16090-1 standardında belirtilen kriterlere uygun olarak yapılır."
+        }
+      ],
+      "dipnotlar": [],
+      "notlar": [
+        "(İlgili standardın öngördüğü süreler saklı kalmak koşulu ile)"
+      ],
+      "guvenilir": true
+    },
+    {
+      "no": 5,
+      "baslik": "Tablo-5: Endüstriyel raf ve kapıların periyodik kontrol süreleri ile kontrol kriterleri",
+      "bolum": "2.5",
+      "madde": "2.5.3",
+      "kolonlar": [
+        "EKİPMAN ADI",
+        "PERİYODİK KONTROL DÖNEMİ (Azami Süre)",
+        "PERİYODİK KONTROL KRİTERLERİ"
+      ],
+      "satirlar": [
+        {
+          "ad": "Endüstriyel raflar",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 15635 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Endüstriyel kapılar",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 13241+A2, TS EN 12453, TS EN 12604+A1 standartlarında belirtilen kriterlere uygun olarak yapılır."
+        }
+      ],
+      "dipnotlar": [],
+      "notlar": [
+        "(İlgili standardın öngördüğü süreler saklı kalmak koşulu ile)"
+      ],
+      "guvenilir": true
+    },
+    {
+      "no": 6,
+      "baslik": "Tablo-6: İş makinelerinin periyodik kontrol süreleri ile kontrol kriterleri",
+      "bolum": "2.6",
+      "madde": "2.6.3",
+      "kolonlar": [
+        "EKİPMAN ADI",
+        "PERİYODİK KONTROL DÖNEMİ (Azami Süre)",
+        "PERİYODİK KONTROL KRİTERLERİ"
+      ],
+      "satirlar": [
+        {
+          "ad": "Sondaj makinaları",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 16228 serisi standartlarında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Çekici dozerler",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 474-2+A1 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Yükleyiciler",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 474-3+A1 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Kazıcı yükleyiciler",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 474-4+A2 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Hidrolik kazıcılar",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 474-5+A3 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Damperli kamyonlar",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 474-6+A1 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Skreyperler",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 474-7+A1 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Greyderler",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 474-8+A1 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Boru döşeyiciler",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 474-9+A1 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Trençerler",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 474-10+A1 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Toprak ve çöp sıkıştırıcılar",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 474-11+ A1 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Halatlı kazıcılar",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 474-12+A1 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Yol düzeltme makinaları",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 500-2+A1 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Zemin stabilize makinaları",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 500-3+A1 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Zemin sıkıştırma makinaları",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 500-4 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Asfaltlama makinaları",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 500-6+A1 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Beton ve harç için taşıma - püskürtme ve yerleştirme makineleri (beton pompası)",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 12001 standardında belirtilen kriterlere uygun olarak yapılır."
+        }
+      ],
+      "dipnotlar": [],
+      "notlar": [
+        "(İlgili standardın öngördüğü süreler saklı kalmak koşulu ile)"
+      ],
+      "guvenilir": true
+    }
+  ]
+}

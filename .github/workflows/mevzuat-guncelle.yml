@@ -1,0 +1,51 @@
+name: Mevzuat Güncelle
+
+on:
+  schedule:
+    - cron: '0 5 * * 1'        # her Pazartesi 08:00 (Türkiye saati)
+  workflow_dispatch:           # elle başlatma: Actions sekmesi → Run workflow
+    inputs:
+      sadece_test:
+        description: 'Sadece test: siteye erişimi dene, hiçbir şeyi değiştirme'
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  guncelle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: mevzuat.gov.tr'den çek ve karşılaştır
+        id: g
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.sadece_test }}" = "true" ]; then
+            node tools/guncelle.js --test
+          else
+            node tools/guncelle.js
+          fi
+
+      - name: Değişiklik varsa Pull Request aç
+        if: steps.g.outputs.degisti == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          DAL="mevzuat-guncelle-${{ github.run_id }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$DAL"
+          git add mevzuat_veritabani.json guncelleme_gunlugu.json
+          [ -f periyodik_tablolar.json ] && git add periyodik_tablolar.json
+          git commit -m "Mevzuat güncellemesi (otomatik)"
+          git push origin "$DAL"
+          gh pr create --base "${{ github.event.repository.default_branch }}" --head "$DAL" \
+            --title "Mevzuat güncellemesi $(date -u +%Y-%m-%d)" --body-file guncelleme_raporu.md

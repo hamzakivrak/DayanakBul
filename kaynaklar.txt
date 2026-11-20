@@ -1,0 +1,55 @@
+# DayanakBul — otomatik güncelleme kaynakları
+# Satır biçimi:  Mevzuat Adı | mevzuat.gov.tr adresi
+# Adresi boş bırakılan satırlar otomatik kontrole girmez. Başına # koyarak da kapatabilirsiniz.
+# Adres: mevzuat.gov.tr'de mevzuatı açın, tarayıcının adres çubuğundaki adresin tamamını | işaretinden sonra yapıştırın.
+#   (örnek biçim: https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=XXXX&MevzuatTur=7&MevzuatTertip=5)
+
+İŞYERİ HEKİMİ VE DİĞER SAĞLIK PERSONELİNİN GÖREV, YETKİ, SORUMLULUK VE EĞİTİMLERİ HAKKINDA YÖNETMELİK | 
+İşyerlerinde Acil Durumlar Hakkında Yönetmelik | 
+İşyerlerinde İşin Durdurulmasına Dair Yönetmelik | 
+Kanserojen veya Matujen Maddelerle Çalışmalarda Sağlık ve Güvenlik Önlemleri Hakkında Yönetmelik | 
+Kimyasal Maddelerle Çalışmalarda Sağlık ve Güvenlik Önlemleri Hakkında Yönetmelik | 
+KİŞİSEL KORUYUCU DONANIM YÖNETMELİĞİ | 
+Kişisel Koruyucu Donanımların İşyerlerinde Kullanılması Hakkında Yönetmelik | 
+Maden İşyerlerinde İş Sağlığı ve Güvenliği Yönetmeliği | 
+MUHTEMEL PATLAYICI ORTAMDA KULLANILAN TEÇHİZAT VE KORUYUCU SİSTEMLER İLE İLGİLİ YÖNETMELİK | 
+SAĞLIK KURALLARI BAKIMINDAN GÜNDE AZAMİ YEDİ BUÇUK SAAT VEYA DAHA AZ ÇALIŞILMASI GEREKEN İŞLER HAKKINDA YÖNETMELİK | 
+Sağlık ve Güvenlik İşaretleri Yönetmeliği | 
+TEHLİKELİ VE ÇOK TEHLİKELİ SINIFTA YER ALAN İŞLERDE ÇALIŞTIRILACAKLARIN MESLEKİ EĞİTİMLERİNE DAİR YÖNETMELİK | 
+TIBBİ ATIKLARIN KONTROLÜ YÖNETMELİĞİ | 
+TOZLA MÜCADELE YÖNETMELİĞİ | 
+YAPI İŞLERİNDE İŞ SAĞLIĞI VE GÜVENLİĞİ YÖNETMELİĞİ | 
+ALT İŞVERENLİK YÖNETMELİĞİ | 
+ASBESTLE ÇALIŞMALARDA SAĞLIK VE GÜVENLİK ÖNLEMLERİ HAKKINDA YÖNETMELİK | 
+BASINÇLI EKİPMANLAR YÖNETMELİĞİ | 
+BASİT BASINÇLI KAPLAR YÖNETMELİĞİ | 
+BİNALARIN YANGINDAN KORUNMASI HAKKINDA YÖNETMELİK | 
+BİYOLOJİK ETKENLERE MARUZİYET RİSKLERİNİN ÖNLENMESİ HAKKINDA YÖNETMELİK | 
+ÇALIŞANLARIN GÜRÜLTÜ İLE İLGİLİ RİSKLERDEN KORUNMALARINA DAİR YÖNETMELİK | 
+ÇALIŞANLARIN İŞ SAĞLIĞI VE GÜVENLİĞİ EĞİTİMLERİNİN USUL VE ESASLARI HAKKINDA YÖNETMELİK | 
+ÇALIŞANLARIN PATLAYICI ORTAMLARIN TEHLİKELERİNDEN KORUNMASI HAKKINDA YÖNETMELİK | 
+ÇALIŞANLARIN SAĞLIK GÖZETİMİNE YÖNELİK TIBBİ TETKİKLERİN USUL VE ESASLARI HAKKINDA YÖNETMELİK | 
+ÇALIŞANLARIN TİTREŞİMLE İLGİLİ RİSKLERDEN KORUNMALARINA DAİR YÖNETMELİK | 
+ÇALIŞMA VE SOSYAL GÜVENLİK BAKANLIĞI İŞ TEFTİŞ KURULU YÖNETMELİĞİ | 
+ÇOCUK VE GENÇ İŞÇİLERİN ÇALIŞTIRILMA USUL VE ESASLARI HAKKINDA YÖNETMELİK | 
+dozolcumPrompt | 
+EKRANLI ARAÇLARLA ÇALIŞMALARDA SAĞLIK VE GÜVENLİK ÖNLEMLERİ HAKKINDA YÖNETMELİK | 
+ELEKTRİK KUVVETLİ AKIM TESİSLERİ YÖNETMELİĞİ | 
+ELEKTRİK TESİSLERİNDE TOPRAKLAMALAR YÖNETMELİĞİ | 
+ELLE TAŞIMA İŞLERİ YÖNETMELİĞİ | 
+GEBE VEYA EMZİREN KADINLARIN ÇALIŞTIRILMA ŞARTLARIYLA EMZİRME ODALARI VE ÇOCUK BAKIM YURTLARINA DAİR YÖNETMELİK | 
+GEÇİCİ VEYA BELİRLİ SÜRELİ İŞLERDE İŞ SAĞLIĞI VE GÜVENLİĞİ HAKKINDA YÖNETMELİK | 
+HAZIRLAMA, TAMAMLAMA VE TEMİZLEME İŞLERİ YÖNETMELİĞİ | 
+HİJYEN EĞİTİMİ YÖNETMELİĞİ | 
+İLKYARDIM YÖNETMELİĞİ | 
+İSGMevzuatBulmaPRomptu | 
+İş Ekipmanlarının Kullanımında Sağlık ve Güvenlik Şartları Yönetmeliği | 
+İŞ GÜVENLİĞİ UZMANLARININ GÖREV, YETKİ, SORUMLULUK VE EĞİTİMLERİ HAKKINDA YÖNETMELİK | 
+4857 Sayılı İş Kanunu | 
+İŞ SAĞLIĞI VE GÜVENLİĞİ HİZMETLERİ YÖNETMELİĞİ | 
+İŞ SAĞLIĞI VE GÜVENLİĞİ HİZMETLERİNİN DESTEKLENMESİ HAKKINDA YÖNETMELİK | 
+6331 Sayılı İŞ SAĞLIĞI VE GÜVENLİĞİ KANUNU | 
+İŞ SAĞLIĞI VE GÜVENLİĞİ KURULLARI HAKKINDA YÖNETMELİK | 
+İŞ SAĞLIĞI VE GÜVENLİĞİ RİSK DEĞERLENDİRMESİ YÖNETMELİĞİ | 
+İŞ TEFTİŞİ HAKKINDA YÖNETMELİK | 
+İşyeri Bina ve Eklentilerinde Alınacak Sağlık ve Güvenlik Önlemlerine İlişkin Yönetmelik | 
