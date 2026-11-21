@@ -326,6 +326,25 @@
             .replace(/[^\p{L}\p{N}]+/gu, '').toLocaleLowerCase('tr');
     }
     function ws(s) { return String(s || '').replace(/\s+/g, ' ').trim(); }
+    // Kayıtlı bir yönetmeliği, arşiv araması için satır satır düz metne çevirir (madde başlığı, fıkra ve bent satırları, ekler)
+    function duzMetin(reg) {
+        const out = [reg.mevzuat_adi || ''];
+        const maddeSatirlari = (m, onek) => {
+            out.push(`${onek}MADDE ${m.madde_no} – ${[m.baslik, m.metin].filter(Boolean).join(' ')}`.trim());
+            (m.fikralar || []).forEach(f => {
+                if (f.metin) out.push(`(${f.fikra_no}) ${f.metin}`);
+                (f.bentler || []).forEach(b => out.push(`${b.bent_harfi}) ${b.metin}`));
+            });
+            (m.bentler || []).forEach(b => out.push(`${b.bent_harfi}) ${b.metin}`));
+        };
+        (reg.maddeler || []).forEach(m => maddeSatirlari(m, ''));
+        (reg.ekler || []).forEach(e => {
+            out.push('', `${e.ek_no}${e.baslik ? ' – ' + e.baslik : ''}${e.bagli_oldugu_madde ? ' (' + e.bagli_oldugu_madde + ')' : ''}`);
+            if (e.metin) out.push(e.metin);
+            (e.maddeler || []).forEach(m => maddeSatirlari(m, e.ek_no + ' '));
+        });
+        return out.join('\n');
+    }
     function maddeFlat(m) {
         const p = [m.baslik, m.metin];
         (m.fikralar || []).forEach(f => { p.push('(' + f.fikra_no + ')', f.metin); (f.bentler || []).forEach(b => p.push(b.bent_harfi + ')', b.metin)); });
@@ -445,7 +464,7 @@
         normalizeEkNo: normalizeEkNo, parseMevzuatText: parseMevzuatText,
         htmlToText: htmlToText, extractTables: extractTables,
         diffRegulations: diffRegulations, diffOzet: diffOzet, wordDiffHtml: wordDiffHtml,
-        mergeMaddeler: mergeMaddeler, mergeEkler: mergeEkler, ekAnahtar: ekAnahtar, normName: normName, findRegulationIndex: findRegulationIndex,
+        mergeMaddeler: mergeMaddeler, duzMetin: duzMetin, mergeEkler: mergeEkler, ekAnahtar: ekAnahtar, normName: normName, findRegulationIndex: findRegulationIndex,
         maddeFlat: maddeFlat, deepCopy: deepCopy, escHtml: escHtml
     };
 });

@@ -258,6 +258,7 @@
             <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:8px;font-size:.9rem"><strong>Eşleştirme kaynağı:</strong><label style="cursor:pointer"><input type="radio" name="matchSource" value="ipc" checked> 📘 İPC Rehberi (resmî tablo)</label><label style="cursor:pointer"><input type="radio" name="matchSource" value="mevzuat"> 📚 Mevzuat Veritabanı</label></div>
             <label style="display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:.9rem;cursor:pointer"><input type="checkbox" id="chkStrictLabels" checked> Sadece benim etiketlediğim mevzuatlar içinde ara <small style="opacity:.7">(kapalıysa İPC tablosu etiket dışından da öneri ekleyebilir)</small></label>
             <button id="btnBulkAI" class="btn btn-success" style="width: 100%; margin-bottom: 15px; padding: 15px; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);" onclick="runBulkAISearch()">⚡ Tüm İhlalleri Tek Tıkla Otomatik Eşleştir (Toplu AI & Sıralama)</button>
+            <button id="btnBulkCascade" class="btn btn-secondary" style="width: 100%; margin-bottom: 15px; padding: 12px; font-size: 1rem;" onclick="runBulkCascadeSearch()" title="Yapay zeka kullanmaz; her ihlal için yazdığınız anahtar kelimelerle şelale aramasını çalıştırır">✍️ Tüm İhlalleri Şelale (Anahtar Kelime) ile Eşleştir — AI'sız</button>
             <div class="card">
                 <h2>🎯 İhlal Eşleştirme Paneli</h2>
                 <div class="slider-nav">
@@ -295,6 +296,11 @@
         <button class="sidebar-close" onclick="toggleSidebar()">&times;</button>
     </div>
     <div class="sidebar-content">
+        <div class="setting-group">
+            <label>📎 Dayanakta "Alt Atıflar"</label>
+            <label style="font-weight:400;font-size:0.85rem;display:flex;gap:8px;align-items:flex-start;cursor:pointer;"><input type="checkbox" id="chkAltAtifGizle" onchange="setAltAtifGizle(this.checked)"> <span>Dayanak yazılırken "(Alt Atıflar: …)" bölümünü gösterme.<br><small style="color:var(--text-muted)">Bir ek birden çok maddeye atıf alıyorsa, diğer maddeler bu etiketle yazılır.</small></span></label>
+            <script>try{document.getElementById('chkAltAtifGizle').checked=localStorage.getItem('altAtifGizle')==='1';}catch(e){}</script>
+        </div>
         <div class="setting-group">
             <label>🎨 Görünüm Teması</label>
             <select id="themeSelector" onchange="changeTheme(this.value)">
@@ -943,6 +949,15 @@
             };
         };
     }
+
+    // "(Alt Atıflar: Madde: 10(2) c)" — aynı eke birden çok maddenin atıf yaptığı durumda, ek bağlı olduğu ilk maddenin yanında diğer atıf yapan maddeleri gösterir.
+    const ALT_ATIF_RE = /\(Alt Atıflar: ((?:[^()]|\([^()]*\))*)\)/gi;
+    function altAtifGizli() { try { return localStorage.getItem('altAtifGizle') === '1'; } catch (e) { return false; } }
+    function altAtifBicimle(str) {
+        if (altAtifGizli()) return String(str).replace(/\s*\(Alt Atıflar: ((?:[^()]|\([^()]*\))*)\)/gi, '');
+        return String(str).replace(ALT_ATIF_RE, '<span style="background-color: #fef08a; padding: 0 4px; border-radius: 4px; font-size: 0.85em; color: #854d0e; margin-left: 4px;">(Alt Atıflar: $1)</span>');
+    }
+    function setAltAtifGizle(v) { try { localStorage.setItem('altAtifGizle', v ? '1' : '0'); } catch (e) { /* */ } if (typeof renderFinalReport === 'function') { try { renderFinalReport(); } catch (e) { /* */ } } }
 
     // ==========================================
     // ÇOKLU ATIF PARSERI
@@ -1939,6 +1954,44 @@ ${JSON.stringify(allowedMevzuats)}
         return null;
     }
 
+    // Yapay zeka kullanmadan toplu eşleştirme: her ihlal için, o ihlalin "şelale" kutusundaki (ya da kayıtlı) anahtar kelimeleriyle
+    // seçili mevzuatlarda arama yapar, en yüksek puanlı hükmü seçer; diğer öneriler rapordan değiştirilebilir.
+    function runBulkCascadeSearch() {
+        const strictLabels = document.getElementById('chkStrictLabels') ? document.getElementById('chkStrictLabels').checked : true;
+        let islenen = 0, bulunamayan = [], kelimesiz = [], mevzuatsiz = [];
+        for (let i = 0; i < violationsArray.length; i++) {
+            const v = violationsArray[i];
+            const checked = Array.from(document.querySelectorAll(`#mevList_${i} input[type="checkbox"]:checked`)).map(cb => parseInt(cb.value));
+            if (!checked.length) { mevzuatsiz.push(i + 1); continue; }
+            const kwEl = document.getElementById(`manualKw_${i}`);
+            let giris = ((kwEl && kwEl.value.trim()) || v.userKeyword || '').trim();
+            let queryTokens = [];
+            if (giris) giris.split(/[,;]+/).map(t => t.trim()).filter(Boolean).forEach(rt => { queryTokens = queryTokens.concat(getCleanTokens(rt)); });
+            else { kelimesiz.push(i + 1); queryTokens = getCleanTokens(v.text).slice(0, 6); }
+            if (!queryTokens.length) { bulunamayan.push(i + 1); continue; }
+            let havuz = [];
+            checked.forEach(dbIdx => { performCascadeSearch(queryTokens, chunksByMev[dbIdx] || []).matchedChunks.forEach(m => havuz.push(m)); });
+            havuz.sort((a, b) => (b.tfIdfScore || 0) - (a.tfIdfScore || 0));
+            let uniq = [];
+            for (const r of havuz) { if (!isPenaltyChunk(r) && !uniq.some(u => u.dayanak === r.dayanak)) uniq.push(r); }
+            let secilen = uniq[0];
+            const forced = findPeriyodikEkIII(v.text);
+            if (forced && (!strictLabels || checked.includes(forced.chunk.mevIdx))) { secilen = { ...forced.chunk }; uniq = [secilen].concat(uniq); }
+            if (!secilen) { bulunamayan.push(i + 1); continue; }
+            finalReportData[i] = { selectedData: secilen, violation: v,
+                alternatives: [secilen].concat(uniq.filter(p => p.dayanak !== secilen.dayanak)).slice(0, ALT_COUNT).map(x => ({ ...x })), altIdx: 0 };
+            islenen++;
+        }
+        if (!islenen) { alert('Hiçbir ihlal eşleşmedi. Önce ihlallere mevzuat etiketi atayın (ve istenirse şelale kutusuna anahtar kelime yazın).'); return; }
+        renderFinalReport();
+        let not = `✅ ${islenen} ihlal eşleştirildi (AI kullanılmadı).`;
+        if (mevzuatsiz.length) not += `\n⚠ Mevzuat etiketi olmadığı için atlanan: ${mevzuatsiz.join(', ')}`;
+        if (kelimesiz.length) not += `\nℹ Anahtar kelime yazılmadığı için ihlal metninden kelime alınan: ${kelimesiz.join(', ')}`;
+        if (bulunamayan.length) not += `\n⚠ Eşleşme bulunamayan: ${bulunamayan.join(', ')}`;
+        alert(not);
+        switchTab('tab3');
+    }
+
     async function runBulkAISearch() {
         if (apiKeys.length === 0 && geminiApiKeys.length === 0) { 
             alert("Lütfen ayarlar menüsünden API Key ekleyin."); 
@@ -2431,7 +2484,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
             let scoreTag = res.tfIdfScore ? `<span class="tfidf-score" title="TF-IDF Puanı">🎯 ${res.tfIdfScore.toFixed(2)}</span>` : '';
             
             let displayDayanak = res.dayanak;
-            displayDayanak = displayDayanak.replace(/\(Alt Atıflar: (.*?)\)/g, '<span style="background-color: #fef08a; padding: 0 4px; border-radius: 4px; font-size: 0.85em; color: #854d0e; margin-left: 4px;">(Alt Atıflar: $1)</span>');
+            displayDayanak = altAtifBicimle(displayDayanak);
 
             html += `
             <div class="option-card" style="position: relative;">
@@ -2536,7 +2589,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
             let dayanakHTML = selectedData.editedDayanakHtml;
             if (!dayanakHTML) {
                 let tcDayanak = toTitleCaseTR(selectedData.dayanak);
-                dayanakHTML = tcDayanak.replace(/\(Alt Atıflar: (.*?)\)/gi, '<span style="background-color: #fef08a; padding: 0 4px; border-radius: 4px; font-size: 0.85em; color: #854d0e; margin-left: 4px;">(Alt Atıflar: $1)</span>');
+                dayanakHTML = altAtifBicimle(tcDayanak);
             }
 
             let metinHTML = selectedData.editedMetinHtml || escapeHTML(selectedData.metin);
@@ -2674,22 +2727,28 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
         resEl.innerHTML = '<div class="zip-alert zip-alert-info">Arşiv taranıyor... Lütfen bekleyin.</div>';
         
         try {
-            if (!cachedZipData) { 
-                const response = await fetch(ZIP_URL + '?v=' + new Date().getTime(), { cache: "no-store" }); 
-                if (!response.ok) throw new Error(`MevzuatText.zip dosyası bulunamadı. Dosyanın HTML ile aynı klasörde olduğundan emin olun.`); 
-                cachedZipData = await response.arrayBuffer(); 
+            // Kaynak: canlı veritabanı (Güncelleme Merkezi'nde yapılan ve buluttan gelen değişiklikler dahil).
+            // Veritabanı yüklenememişse eski MevzuatText.zip'e düşülür.
+            let kaynaklar = [];
+            if (typeof mevzuatDB !== 'undefined' && mevzuatDB.length && window.MevzuatParser && MevzuatParser.duzMetin) {
+                kaynaklar = mevzuatDB.filter(Boolean).map(m => ({ ad: m.mevzuat_adi, content: MevzuatParser.duzMetin(m) }));
+            } else {
+                if (!cachedZipData) {
+                    const response = await fetch(ZIP_URL + '?v=' + new Date().getTime(), { cache: "no-store" });
+                    if (!response.ok) throw new Error(`Mevzuat veritabanı ve MevzuatText.zip yüklenemedi.`);
+                    cachedZipData = await response.arrayBuffer();
+                }
+                const zip = await JSZip.loadAsync(cachedZipData);
+                for (const f of Object.values(zip.files)) {
+                    if (f.dir || !f.name.toLowerCase().endsWith('.txt')) continue;
+                    kaynaklar.push({ ad: f.name.replace(/\.txt$/i, ''), content: await f.async('string') });
+                }
             }
-            
-            const zip = await JSZip.loadAsync(cachedZipData);
-            await Promise.all(Object.values(zip.files).map(async f => {
-                if (f.dir || !f.name.toLowerCase().endsWith('.txt')) return;
-                
-                const mevzuatAd = f.name.replace(/\.txt$/i, ''); 
-                const cleanMevzuatAd = normalizeForZipSearch(mevzuatAd); 
-                
+            kaynaklar.forEach(kay => {
+                const mevzuatAd = kay.ad;
+                const cleanMevzuatAd = normalizeForZipSearch(mevzuatAd);
                 if (legislationFilter && !cleanMevzuatAd.includes(legislationFilter)) return;
-
-                const content = await f.async('string'); 
+                const content = kay.content;
                 const lines = content.split(/\r?\n/);
                 
                 let prevLine = "";
@@ -2717,7 +2776,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
                     }
                     prevLine = ln;
                 });
-            }));
+            });
             
             if (!GLOBAL_MATCHES.length) { resEl.innerHTML = '<div class="zip-alert zip-alert-warning">Aradığınız kriterlere uygun sonuç bulunamadı.</div>'; return; }
             
@@ -2873,7 +2932,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
             let idStr = isTarget ? 'id="jsonBrowseTarget"' : '';
 
             let displayDayanak = chunk.dayanak;
-            displayDayanak = displayDayanak.replace(/\(Alt Atıflar: (.*?)\)/g, '<span style="background-color: #fef08a; padding: 0 4px; border-radius: 4px; font-size: 0.85em; color: #854d0e; margin-left: 4px;">(Alt Atıflar: $1)</span>');
+            displayDayanak = altAtifBicimle(displayDayanak);
 
             let displayMetin = escapeHTML(chunk.metin);
             
