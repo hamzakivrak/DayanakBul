@@ -1013,13 +1013,13 @@
     let globalGrokComboIndex = 0;
     let globalGeminiComboIndex = 0;
 
-    async function fetchFromGeminiWithFallback(systemPrompt, userPrompt) {
+    async function fetchFromGeminiWithFallback(systemPrompt, userPrompt, pin) {
         if (geminiApiKeys.length === 0) throw new Error("Gemini API Key bulunamadı.");
         let attempts = 0;
         let maxAttempts = geminiApiKeys.length;
 
         while (attempts < maxAttempts) {
-            let currentKey = geminiApiKeys[globalGeminiComboIndex % geminiApiKeys.length];
+            let currentKey = geminiApiKeys[(pin === undefined ? globalGeminiComboIndex : pin) % geminiApiKeys.length];
             try {
                 let promptText = systemPrompt + (userPrompt ? "\n\n" + userPrompt : "");
                 const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${currentKey}`, {
@@ -1040,7 +1040,7 @@
                     } else {
                         logDebug(`[Gemini Hatası] ${errMsg}`, "error");
                     }
-                    globalGeminiComboIndex++;
+                    if (pin === undefined) globalGeminiComboIndex++; else pin++;
                     attempts++;
                     continue;
                 }
@@ -1056,7 +1056,7 @@
                 };
             } catch (err) {
                 logDebug(`[Gemini Bağlantı Hatası] ${err.message}`, "error");
-                globalGeminiComboIndex++;
+                if (pin === undefined) globalGeminiComboIndex++; else pin++;
                 attempts++;
                 await new Promise(r => setTimeout(r, 2000));
             }
@@ -1064,7 +1064,7 @@
         throw new Error("Tüm Gemini API Key kotaları doldu veya keyler geçersiz!");
     }
 
-    async function fetchFromGrokWithFallback(messages, temperature) {
+    async function fetchFromGrokWithFallback(messages, temperature, pin) {
         if (apiKeys.length === 0) throw new Error("Grok API Key bulunamadı.");
         
         const models = ['llama-3.3-70b-versatile', 'llama-3.1-8b-instant'];
@@ -1075,11 +1075,12 @@
             }
         }
 
+        if (pin !== undefined) pin = pin * models.length; // işçi n, n. key'in ilk modelinden başlar
         let attempts = 0;
         let maxAttempts = combos.length;
 
         while (attempts < maxAttempts) {
-            let currentCombo = combos[globalGrokComboIndex % combos.length];
+            let currentCombo = combos[(pin === undefined ? globalGrokComboIndex : pin) % combos.length];
             try {
                 const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
                     method: 'POST', 
@@ -1098,7 +1099,7 @@
                     } else {
                         logDebug(`[API Hatası] ${errMsg}`, "error");
                     }
-                    globalGrokComboIndex++;
+                    if (pin === undefined) globalGrokComboIndex++; else pin++;
                     attempts++;
                     continue;
                 }
@@ -1112,7 +1113,7 @@
                 
             } catch (err) {
                 logDebug(`[Bağlantı Hatası] ${err.message}`, "error");
-                globalGrokComboIndex++;
+                if (pin === undefined) globalGrokComboIndex++; else pin++;
                 attempts++;
                 await new Promise(r => setTimeout(r, 2000));
             }
@@ -1120,7 +1121,7 @@
         throw new Error("Mevcut tüm Grok API Key'ler ve Modeller için kotalar dolmuş veya Key'ler geçersiz!");
     }
 
-    async function smartAIFetch(messagesOrSystemPrompt, temperature = 0.1) {
+    async function smartAIFetch(messagesOrSystemPrompt, temperature = 0.1, pin) {
         let systemPrompt = "";
         let userPrompt = "";
 
@@ -1135,21 +1136,21 @@
 
         if (primaryAI === 'gemini') {
             try {
-                return await fetchFromGeminiWithFallback(systemPrompt, userPrompt);
+                return await fetchFromGeminiWithFallback(systemPrompt, userPrompt, pin);
             } catch (err) {
                 logDebug(`Gemini başarısız oldu (${err.message}). Grok'a (Llama) geçiliyor...`, "warn");
                 let messages = [{ role: 'system', content: systemPrompt }];
                 if (userPrompt) messages.push({ role: 'user', content: userPrompt });
-                return await fetchFromGrokWithFallback(messages, temperature);
+                return await fetchFromGrokWithFallback(messages, temperature, pin);
             }
         } else {
             try {
                 let messages = [{ role: 'system', content: systemPrompt }];
                 if (userPrompt) messages.push({ role: 'user', content: userPrompt });
-                return await fetchFromGrokWithFallback(messages, temperature);
+                return await fetchFromGrokWithFallback(messages, temperature, pin);
             } catch (err) {
                 logDebug(`Grok başarısız oldu (${err.message}). Gemini'ye geçiliyor...`, "warn");
-                return await fetchFromGeminiWithFallback(systemPrompt, userPrompt);
+                return await fetchFromGeminiWithFallback(systemPrompt, userPrompt, pin);
             }
         }
     }
@@ -1740,6 +1741,22 @@
         return AI_EXCLUDED.some(x => n.includes(x));
     }
 
+    // En fazla 2 işçi (birincil sağlayıcının key sayısına göre): her işçi kendi key'ine bağlı çalışır,
+    // bir grup çalışırken diğer key dinlenir. Tek key varsa sıralı çalışır.
+    async function paralelIsle(isler, fn, nefesMs = 1000) {
+        const keyN = primaryAI === 'gemini' ? geminiApiKeys.length : apiKeys.length;
+        const W = Math.max(1, Math.min(2, keyN, isler.length));
+        let sira = 0;
+        await Promise.all(Array.from({ length: W }, async (_, w) => {
+            let ilk = true;
+            while (sira < isler.length) {
+                const is = isler[sira++];
+                if (!ilk) await new Promise(r => setTimeout(r, nefesMs));
+                ilk = false;
+                await fn(is, w);
+            }
+        }));
+    }
     function ilkKw(s) { return String(s || '').split(/[,;]+/)[0].trim(); }
     // Kilit kelime kutusundaki tüm kelimeler (virgülle ayrılmış) -> yalın kök dizisi
     function kilitTokenleri(s) { let t = []; String(s || '').split(/[,;]+/).map(x => x.trim()).filter(Boolean).forEach(x => { t = t.concat(getCleanTokens(x)); }); return t; }
@@ -1767,8 +1784,10 @@ Kurallar:
 ÇIKTI SADECE JSON (markdown yok): {"eslesmeler":[{"ihlal_id":0,"mevzuat_idleri":[5],"kilit":["kök1","kök2"]}]}`;
         const mevListe = allowedMevzuats.map(m => m.id + '|' + m.name).join('\n');
         let okunan = 0, hataliGrup = 0;
-        for (let st = 0; st < violationsArray.length; st += GRUP) {
-            btn.innerHTML = `⏳ Düşünüyor... ${Math.min(st + GRUP, violationsArray.length)}/${violationsArray.length}`;
+        const gruplar = []; for (let st = 0; st < violationsArray.length; st += GRUP) gruplar.push(st);
+        let bitenIhlal = 0;
+        await paralelIsle(gruplar, async (st, w) => {
+            btn.innerHTML = `⏳ Düşünüyor... ${bitenIhlal}/${violationsArray.length}`;
             const girdi = violationsArray.slice(st, st + GRUP).map((v, k) => {
                 const ids = [...new Set(ipcFind(v.text, allowedIds, 3, 0.4).map(h => h.r._mi))].slice(0, 2);
                 return (st + k) + '|' + v.text + (ids.length ? ' |ipucu:' + ids.join(',') : '');
@@ -1776,10 +1795,10 @@ Kurallar:
             const prompt = kurallar + '\n\nİHLALLER (id|metin):\n' + girdi + '\n\nMEVZUATLAR (id|ad):\n' + mevListe;
             let parsed = null;
             try {
-                let data = await smartAIFetch(prompt);
+                let data = await smartAIFetch(prompt, 0.1, w);
                 parsed = safeParseJSON(data.choices[0].message.content);
-            } catch (e) { hataliGrup++; logDebug(`Mevzuat öneri grubu ${st + 1}. ihlalden başlayan: ${e.message}`, "warn"); continue; }
-            if (!parsed || !Array.isArray(parsed.eslesmeler)) { hataliGrup++; continue; }
+            } catch (e) { hataliGrup++; logDebug(`Mevzuat öneri grubu ${st + 1}. ihlalden başlayan: ${e.message}`, "warn"); return; }
+            if (!parsed || !Array.isArray(parsed.eslesmeler)) { hataliGrup++; return; }
             okunan++;
             parsed.eslesmeler.forEach(e => {
                 let vIdx = e.ihlal_id;
@@ -1797,8 +1816,9 @@ Kurallar:
                 const kl = (Array.isArray(e.kilit) ? e.kilit : []).map(x => String(x).trim()).filter(x => x.length > 2).slice(0, 3);
                 if (kl.length && !(violationsArray[vIdx].userKeyword || '').trim()) { violationsArray[vIdx].userKeyword = kl.join(', '); violationsArray[vIdx].kwFromAI = true; }
             });
-            if (st + GRUP < violationsArray.length) await new Promise(r => setTimeout(r, 600));
-        }
+            bitenIhlal += Math.min(GRUP, violationsArray.length - st);
+            btn.innerHTML = `⏳ Düşünüyor... ${bitenIhlal}/${violationsArray.length}`;
+        }, 600);
         if (okunan === 0) { alert("Yapay zeka önerisi alınamadı. Anahtarlarınızı ve kotanızı kontrol edin."); return; }
         try {
             {
@@ -2083,7 +2103,8 @@ Kurallar:
         let hasError = false;
 
         try {
-            for (let i = 0; i < bulkData.length; i += BATCH_SIZE) {
+            const paketler = []; for (let i = 0; i < bulkData.length; i += BATCH_SIZE) paketler.push(i);
+            await paralelIsle(paketler, async (i, w) => {
                 let chunk = bulkData.slice(i, i + BATCH_SIZE);
                 
                 statusText.innerText = `İşleniyor: ${processedCount + 1} - ${processedCount + chunk.length} / ${bulkData.length} (Adım 1: Kelime Analizi)`;
@@ -2124,7 +2145,7 @@ ${JSON.stringify(chunk.map(d => ({
                 try {
                     if (aiyeGidecek.length) {
                         const p1 = prompt1.slice(0, prompt1.indexOf('GİRDİ İHLALLER:')) + 'GİRDİ İHLALLER:\n' + JSON.stringify(aiyeGidecek.map(d => ({ vIndex: d.vIndex, ihlal: d.ihlal, secili_mevzuatlar: d.mevzuatlar.map(m=>m.name), kullanici_anahtar_kelimesi: ilkKw(violationsArray[d.vIndex].userKeyword) || "Yok" })));
-                        data1 = await smartAIFetch([{ role: 'system', content: p1 }]);
+                        data1 = await smartAIFetch([{ role: 'system', content: p1 }], 0.1, w);
                         parsed1 = safeParseJSON(data1.choices[0].message.content);
                     } else parsed1 = { analiz: [] };
                     if (parsed1 && Array.isArray(parsed1.analiz)) parsed1.analiz = parsed1.analiz.concat(hazirAnaliz);
@@ -2231,7 +2252,7 @@ GİRDİ:
 ${JSON.stringify(candidatePayload)}`;
                     
                     try {
-                        let data2 = await smartAIFetch([{ role: 'system', content: prompt2 }]);
+                        let data2 = await smartAIFetch([{ role: 'system', content: prompt2 }], 0.1, w);
                         let parsed2 = safeParseJSON(data2.choices[0].message.content);
 
                         if(parsed2 && parsed2.secimler && Array.isArray(parsed2.secimler)) {
@@ -2278,11 +2299,7 @@ ${JSON.stringify(candidatePayload)}`;
                 processedCount += chunk.length;
                 progressBar.style.width = `${(processedCount / bulkData.length) * 100}%`;
 
-                if (i + BATCH_SIZE < bulkData.length) {
-                    statusText.innerText = `Nefes alınıyor... API limitleri için kısa mola.`;
-                    await new Promise(r => setTimeout(r, 1200));
-                }
-            }
+            }, 1200);
 
             renderFinalReport();
             
