@@ -201,7 +201,18 @@
           <h3>📜 Bu cihazdaki değişiklikler</h3>
           <div id="gmGecmis"></div>
 
-          <h3>📥 Dışa aktar (tüm cihazlarda geçerli kılmak için)</h3>
+          <h3>☁ GitHub'a gönder (tüm cihazlarda geçerli olsun)</h3>
+          <div class="gm-help">Bu cihazda yaptığınız değişiklikleri <b>doğrudan depoya yazar</b>; birkaç dakika sonra uygulamayı açan her cihaz yeni veriyi görür ve değişiklik geçmişinde de görünür. İlk kullanımda bir <b>GitHub token</b> girmeniz gerekir: GitHub → Settings → Developer settings → <i>Fine-grained tokens</i> → yalnızca bu depo, izin: <b>Contents: Read and write</b>. Token yalnızca bu cihazın tarayıcısında saklanır, depoya ya da başka yere gönderilmez.</div>
+          <input type="text" id="gmGhRepo" placeholder="kullanıcı/depo  (örn. hamzakivrak/DayanakBul)" style="margin-bottom:6px;">
+          <input type="password" id="gmGhToken" placeholder="github_pat_… (kayıtlıysa boş bırakabilirsiniz)" autocomplete="off">
+          <div id="gmGhBekleyen" style="margin:8px 0;font-size:0.88rem;"></div>
+          <div class="gm-actions">
+            <button class="btn btn-success" id="gmGhBtn" onclick="gmGitHubGonder()">☁ Değişiklikleri GitHub'a gönder</button>
+            <button class="btn btn-secondary" onclick="gmGhTokenSil()">Token'ı bu cihazdan sil</button>
+          </div>
+          <div id="gmGhSonuc"></div>
+
+          <h3>📥 Dışa aktar (elle yüklemek isterseniz)</h3>
           <div class="gm-help">Dosyaları indirip GitHub deponuza yükleyin: depo sayfası → <b>Add file → Upload files</b> → dosyaları sürükleyin → <b>Commit changes</b>. Uygulama bir sonraki açılışta yeni sürümü kendiliğinden alır.</div>
           <div class="gm-actions">
             <button class="btn btn-secondary" onclick="gmDisaAktar('db')">mevzuat_veritabani.json</button>
@@ -232,7 +243,7 @@
         sel.innerHTML = mevzuatDB.map((m, i) => m ? `<option value="${esc(m.mevzuat_adi)}">${esc(m.mevzuat_adi)}</option>` : '').join('') + '<option value="__yeni__">➕ Yeni mevzuat ekle…</option>';
         if (onceki && [...sel.options].some(o => o.value === onceki)) sel.value = onceki;
         document.getElementById('gmModal').style.display = 'flex';
-        gmSecimDegisti(); gmGecmisCiz(); gmListeCiz(); gmBulutGunluguCiz(); gmTopluYenile(); gmKaynaklariCiz();
+        gmSecimDegisti(); gmGecmisCiz(); gmListeCiz(); gmBulutGunluguCiz(); gmTopluYenile(); gmKaynaklariCiz(); gmGhDurum();
     };
 
     // ---- mevzuat.gov.tr kaynakları: kaynaklar.txt + Actions'ın 'kaynak-metinler' dalına yazdığı metinler
@@ -331,7 +342,9 @@
         const filtre = sel.value;
         const kayitlar = [];
         _bulutGunluk.forEach(x => kayitlar.push({ ts: x.tarih, mevzuat: x.mevzuat, ozet: x.ozet, kaynak: '☁ ' + (x.kaynak || 'GitHub otomatik çekim'), detay: x.detay || null, var: !!x.detay }));
+        const bulutAnahtar = new Set(_bulutGunluk.map(x => x.tarih + '|' + x.mevzuat));
         yerel.forEach(rec => {
+            if (bulutAnahtar.has(rec.ts + '|' + rec.mevzuat_adi)) return; // GitHub'a gönderilmiş; bulut kaydı zaten gösteriliyor
             let detay = null;
             try { if (rec.mod !== 'tablo' && rec.onceki) { const yeni = kayitSonucu(rec.onceki, rec); if (yeni) detay = MP.diffRegulations(rec.onceki, yeni); } } catch (e) { /* özet yeter */ }
             const tur = rec.mod === 'tam' ? 'tamamı' : rec.mod === 'madde' ? 'madde ' + (rec.maddeNos || []).join(', ') : rec.mod === 'ek' ? 'ek ' + (rec.ekNos || []).join(', ') : 'tablolar';
@@ -679,9 +692,9 @@
         if (!list.length) { el.innerHTML = '<div style="color:var(--text-muted);font-size:0.85rem;">Bu cihazda kayıtlı yerel değişiklik yok.</div>'; return; }
         const sonId = {}; list.forEach(r => { sonId[MP.normName(r.mevzuat_adi) + '|' + (r.mod === 'tablo' ? 't' : 'm')] = r.id; });
         el.innerHTML = list.slice().reverse().map(r => {
-            const geriAlinabilir = sonId[MP.normName(r.mevzuat_adi) + '|' + (r.mod === 'tablo' ? 't' : 'm')] === r.id;
+            const geriAlinabilir = sonId[MP.normName(r.mevzuat_adi) + '|' + (r.mod === 'tablo' ? 't' : 'm')] === r.id && !r.gonderildi;
             return `<div class="gm-satir"><div><b>${esc(r.mevzuat_adi)}</b><br><span style="color:var(--text-muted)">${esc(new Date(r.ts).toLocaleString('tr-TR'))} · ${esc(r.mod === 'tam' ? 'tamamı' : r.mod === 'madde' ? 'madde ' + (r.maddeNos || []).join(', ') : r.mod === 'ek' ? 'ek ' + (r.ekNos || []).join(', ') : 'tablolar')} · ${esc(r.ozet)}${r.not ? ' · ' + esc(r.not) : ''}</span></div>
-            <button class="btn btn-secondary btn-sm" ${geriAlinabilir ? '' : 'disabled title="Yalnızca en son değişiklik geri alınabilir"'} onclick="gmGeriAl('${esc(r.id)}')">↩ Geri al</button></div>`;
+            <button class="btn btn-secondary btn-sm" ${geriAlinabilir ? '' : 'disabled title="' + (r.gonderildi ? 'GitHub gönderilmiş değişiklik buradan geri alınamaz; önceki metinle yeni bir güncelleme yapın' : 'Yalnızca en son değişiklik geri alınabilir') + '"'} onclick="gmGeriAl('${esc(r.id)}')">↩ Geri al</button></div>`;
         }).join('');
     }
 
@@ -720,6 +733,102 @@
             const list = await yerelDegisiklikleriYukle();
             kaydet(list.map(r => ({ ts: r.ts, mevzuat_adi: r.mevzuat_adi, mod: r.mod, maddeNos: r.maddeNos, ozet: r.ozet, not: r.not })), 'guncelleme_gunlugu.json');
         }
+    };
+
+
+    // =====================================================================
+    // C2) GitHub'a gönder: bu cihazdaki kayıtları depodaki güncel veritabanının üstüne uygulayıp yazar
+    // =====================================================================
+    function b64(str) {
+        const bytes = new TextEncoder().encode(str); let bin = '';
+        for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+        return btoa(bin);
+    }
+    function ghAyar() {
+        let repo = (document.getElementById('gmGhRepo').value || '').trim(), tok = (document.getElementById('gmGhToken').value || '').trim();
+        try { if (!tok) tok = localStorage.getItem('gh_token') || ''; if (!repo) repo = localStorage.getItem('gh_repo') || ''; } catch (e) { /* */ }
+        if (!repo) { const g = ghRepo(); if (g) repo = g.owner + '/' + g.repo; }
+        return { repo, tok };
+    }
+    window.gmGhTokenSil = function () { try { localStorage.removeItem('gh_token'); } catch (e) { /* */ } document.getElementById('gmGhToken').value = ''; document.getElementById('gmGhSonuc').innerHTML = '<div class="gm-ok">Token bu cihazdan silindi.</div>'; };
+    async function gmGhDurum() {
+        const el = document.getElementById('gmGhBekleyen'); if (!el) return;
+        const l = (await yerelDegisiklikleriYukle()).filter(r => !r.gonderildi);
+        el.innerHTML = l.length ? `📤 GitHub'a gönderilmeyi bekleyen <b>${l.length}</b> değişiklik var.` : '✅ Bu cihazdaki tüm değişiklikler GitHub\'a gönderilmiş (ya da hiç değişiklik yok).';
+        try { const r = localStorage.getItem('gh_repo'); const g = ghRepo(); document.getElementById('gmGhRepo').value = r || (g ? g.owner + '/' + g.repo : ''); document.getElementById('gmGhToken').placeholder = localStorage.getItem('gh_token') ? '(token kayıtlı — değiştirmek için yenisini yazın)' : 'github_pat_…'; } catch (e) { /* */ }
+    }
+    window.gmGitHubGonder = async function () {
+        const out = document.getElementById('gmGhSonuc'), btn = document.getElementById('gmGhBtn');
+        const { repo, tok } = ghAyar();
+        if (!/^[^/\s]+\/[^/\s]+$/.test(repo)) { out.innerHTML = '<div class="gm-hata">Depo adını "kullanıcı/depo" biçiminde yazın.</div>'; return; }
+        if (!tok) { out.innerHTML = '<div class="gm-hata">GitHub token girin (yukarıdaki açıklamaya bakın).</div>'; return; }
+        const tumu = await yerelDegisiklikleriYukle();
+        const bekleyen = tumu.filter(r => !r.gonderildi).sort((a, b) => String(a.ts).localeCompare(String(b.ts)));
+        if (!bekleyen.length) { out.innerHTML = '<div class="gm-ok">Gönderilecek yeni değişiklik yok.</div>'; return; }
+        if (!confirm(`${bekleyen.length} değişiklik ${repo} deposuna yazılacak (doğrudan ana dala). Devam edilsin mi?`)) return;
+        btn.disabled = true; out.innerHTML = '<div class="gm-box-fark">Gönderiliyor…</div>';
+        const url = yol => `https://api.github.com/repos/${repo}/contents/${yol}`;
+        const bas = (ek) => Object.assign({ Authorization: 'Bearer ' + tok, 'X-GitHub-Api-Version': '2022-11-28' }, ek || {});
+        async function oku(yol) {
+            const m = await fetch(url(yol), { headers: bas({ Accept: 'application/vnd.github+json' }), cache: 'no-store' });
+            if (m.status === 404) return null;
+            if (m.status === 401 || m.status === 403) throw new Error('GitHub token reddedildi (' + m.status + '). Token geçerli mi, bu depo için "Contents: Read and write" izni var mı?');
+            if (!m.ok) throw new Error(yol + ' okunamadı (' + m.status + ')');
+            const j = await m.json();
+            const r = await fetch(url(yol), { headers: bas({ Accept: 'application/vnd.github.raw+json' }), cache: 'no-store' });
+            if (!r.ok) throw new Error(yol + ' içeriği okunamadı (' + r.status + ')');
+            return { sha: j.sha, text: await r.text() };
+        }
+        async function yaz(yol, icerik, sha, mesaj) {
+            const r = await fetch(url(yol), { method: 'PUT', headers: bas({ Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' }), body: JSON.stringify({ message: mesaj, content: b64(icerik), ...(sha ? { sha } : {}) }) });
+            if (r.status === 409 || r.status === 422) throw new Error(yol + ' bu arada değişmiş (çakışma). Birkaç saniye sonra tekrar deneyin.');
+            if (!r.ok) throw new Error(yol + ' yazılamadı (' + r.status + ')');
+        }
+        try {
+            // 1) veritabanı: depodaki güncel sürümün üstüne kayıtlar
+            const dbDosya = await oku('mevzuat_veritabani.json');
+            if (!dbDosya) throw new Error('mevzuat_veritabani.json depoda bulunamadı.');
+            const db = JSON.parse(dbDosya.text);
+            const uygulanan = [];
+            bekleyen.forEach(rec => {
+                if (rec.mod === 'tablo') return;
+                const idx = MP.findRegulationIndex(db, rec.mevzuat_adi);
+                if (idx >= 0 && db[idx].guncelleme && db[idx].guncelleme >= rec.ts) return; // depo zaten daha yeni / aynı
+                const yeni = kayitSonucu(idx >= 0 ? db[idx] : null, rec);
+                if (!yeni) return;
+                if (idx >= 0) db[idx] = yeni; else db.push(yeni);
+                uygulanan.push(rec);
+            });
+            const ozetler = [...new Set(bekleyen.map(r => r.mevzuat_adi))];
+            const mesaj = 'Güncelleme Merkezi: ' + (ozetler.length > 3 ? ozetler.length + ' mevzuat' : ozetler.join(', '));
+            if (uygulanan.length) await yaz('mevzuat_veritabani.json', JSON.stringify(db, null, 2), dbDosya.sha, mesaj);
+            // 2) periyodik tablolar
+            let tabloYazildi = false;
+            if (bekleyen.some(r => r.mod === 'tablo' || r.oncekiTablolarYerel !== undefined) && window.periyodikTablolar) {
+                const td = await oku('periyodik_tablolar.json');
+                let depoTarih = ''; try { depoTarih = td ? (JSON.parse(td.text).guncelleme || '') : ''; } catch (e) { /* */ }
+                if (!depoTarih || depoTarih < (window.periyodikTablolar.guncelleme || '')) { await yaz('periyodik_tablolar.json', JSON.stringify(window.periyodikTablolar, null, 2) + '\n', td && td.sha, mesaj + ' (tablolar)'); tabloYazildi = true; }
+            }
+            // 3) değişiklik günlüğü (geçmiş ekranı için ayrıntılı)
+            if (uygulanan.length || tabloYazildi) {
+                const gd = await oku('guncelleme_gunlugu.json'); let g = []; try { g = gd ? JSON.parse(gd.text) : []; } catch (e) { g = []; }
+                const kes = t => String(t || '').length > 6000 ? String(t).slice(0, 6000) + ' …' : t;
+                bekleyen.forEach(rec => {
+                    let detay = null;
+                    try { if (rec.mod !== 'tablo' && rec.onceki) { const yeni = kayitSonucu(rec.onceki, rec); if (yeni) { const d = MP.diffRegulations(rec.onceki, yeni); detay = { eklenen: d.eklenen, silinen: d.silinen, degisen: d.degisen.map(x => ({ no: x.no, eski: kes(x.eski), yeni: kes(x.yeni) })), ekDegisen: d.ekDegisen }; } } } catch (e) { /* */ }
+                    g.push({ tarih: rec.ts, mevzuat: rec.mevzuat_adi, ozet: rec.ozet + (rec.not ? ' · ' + rec.not : ''), kaynak: 'Güncelleme Merkezi (elle)', detay });
+                });
+                await yaz('guncelleme_gunlugu.json', JSON.stringify(g.slice(-400), null, 2) + '\n', gd && gd.sha, mesaj + ' (günlük)');
+            }
+            // 4) gönderildi işareti
+            const simdi = new Date().toISOString(), ids = new Set(bekleyen.map(r => r.id));
+            await yerelKaydet(tumu.map(r => ids.has(r.id) ? Object.assign({}, r, { gonderildi: simdi }) : r));
+            try { localStorage.setItem('gh_repo', repo); localStorage.setItem('gh_token', tok); } catch (e) { /* */ }
+            document.getElementById('gmGhToken').value = '';
+            out.innerHTML = `<div class="gm-ok">✅ GitHub'a gönderildi: ${uygulanan.length} mevzuat kaydı${tabloYazildi ? ', periyodik tablolar' : ''}. Sayfa yayını birkaç dakika içinde yenilenir; diğer cihazlarda uygulamayı kapatıp açın.</div>`;
+            gmGhDurum(); gmBulutGunluguCiz(); gmGecmisCiz();
+        } catch (e) { out.innerHTML = `<div class="gm-hata">${esc(e.message)}</div>`; }
+        finally { btn.disabled = false; }
     };
 
     // =====================================================================

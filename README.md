@@ -27,6 +27,13 @@ Güncelleme Merkezi → **📂 Dosyalardan toplu güncelleme**: mevzuat.gov.tr'd
 
 Not: eski `.doc` biçiminde Word'ün otomatik liste numaraları (1-, 2- …) okunamaz; numaralar önemliyse Word'de *Farklı kaydet → .docx* yapıp onu yükleyin.
 
+## GitHub'a gönderme, kaynaklar, ek dosyaları
+
+- **☁ GitHub'a gönder:** Güncelleme Merkezi'nde cihazınızda yaptığınız değişiklikleri doğrudan depoya yazar (token gerekir: fine-grained, yalnızca bu depo, *Contents: Read and write*; yalnızca cihazınızda saklanır). Depodaki güncel veritabanının üstüne uygulanır, geçmişe ayrıntılı işlenir.
+- **🌐 mevzuat.gov.tr kaynakları:** `kaynaklar.txt`'teki her mevzuatın sayfasına bağlantı; Actions'ın çektiği güncel metni (ve sayfadaki ek dosyalarını) kopyalama / karşılaştırma alanına alma. Metinler Actions çalışınca `kaynak-metinler` dalına yazılır.
+- **Ayrı ek dosyası:** Toplu yüklemede her dosya "gövde + içindeki ekler" sayılır; ekler ayrı Word'deyse dosyanın altındaki ➕ düğmesiyle eklenir.
+- **Arşiv araması** artık canlı veritabanını tarar (güncellemeler görünür). **AI'sız şelale eşleştirme:** eşleştirme ekranındaki "✍️ Tüm İhlalleri Şelale ile Eşleştir" düğmesi.
+
 ## Değişiklik geçmişi
 
 Güncelleme Merkezi → **🕘 Değişiklik geçmişi**: otomatik çekimle (GitHub) ve bu cihazda yapılan tüm değişiklikler tarih sırasıyla listelenir; mevzuata göre süzülür, her kaydın **Ayrıntıyı göster** bölümünde madde madde eski/yeni metin farkı görünür. Otomatik çekimde ayrıntı, PR birleştirildiğinde `guncelleme_gunlugu.json` içine yazılır (bu özellikten sonraki çekimler için).
