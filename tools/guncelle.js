@@ -189,7 +189,14 @@ async function main() {
         }
         const yeni = P.parseMevzuatText(k.ad + '.txt', metin);
         if (!yeni.maddeler.length) { rows.push({ ad: k.ad, durum: '⚠ Atlandı: madde ayrıştırılamadı', detay: 'Sayfa biçimi beklenenden farklı.' }); continue; }
-        if (eski) { yeni.mevzuat_adi = eski.mevzuat_adi; yeni.mevzuat_turu = eski.mevzuat_turu; yeni.dayanak_kanun = eski.dayanak_kanun; }
+        if (eski) {
+            yeni.mevzuat_adi = eski.mevzuat_adi; yeni.mevzuat_turu = eski.mevzuat_turu; yeni.dayanak_kanun = eski.dayanak_kanun;
+            if (eski.mevzuat_no && !yeni.mevzuat_no) yeni.mevzuat_no = eski.mevzuat_no;
+            // Ekler çoğu zaman sayfada değil ayrı belgelerde durur: sayfada bulunmayan mevcut ekler KORUNUR, sayfada bulunanlar (aynı numaralıysa) güncellenir.
+            const sayfadakiEkler = yeni.ekler || [];
+            const taban = P.deepCopy(yeni); taban.ekler = P.deepCopy(eski.ekler || []);
+            yeni.ekler = P.mergeEkler(taban, sayfadakiEkler).ekler;
+        }
 
         let d = null;
         if (eski) {
