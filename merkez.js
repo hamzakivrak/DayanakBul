@@ -149,12 +149,6 @@
             Değişiklik bu cihazda hemen geçerli olur ve bulut veritabanı yenilense bile silinmez. Tüm cihazlarda geçerli olması için aşağıdaki "Dışa aktar" bölümüne bakın.</div>
           <a class="btn btn-secondary btn-sm" href="https://www.mevzuat.gov.tr/" target="_blank" rel="noopener">🌐 mevzuat.gov.tr'yi aç</a>
 
-          <h3>🌐 mevzuat.gov.tr kaynakları</h3>
-          <div class="gm-help">Her mevzuatın resmî sayfasına buradan gidebilir, <b>otomatik çekilmiş güncel metni</b> kopyalayabilir ya da tek tıkla aşağıdaki karşılaştırma alanına alabilirsiniz. Sayfanın sonunda <i>"eklerini görmek için tıklayınız"</i> bağlantısı varsa ekler de ayrıca listelenir. Metinler, GitHub Actions <b>Mevzuat Güncelle</b> görevi her çalıştığında (haftalık ya da elle) yenilenir.</div>
-          <input type="text" id="gmKaynakAra" placeholder="Mevzuat ara…" oninput="gmKaynaklariCiz()" style="margin-bottom:6px;">
-          <div id="gmKaynakDurum" style="font-size:0.8rem;color:var(--text-muted);"></div>
-          <div id="gmKaynakListe"></div>
-
           <h3>📂 Dosyalardan toplu güncelleme (Word / txt)</h3>
           <div class="gm-help">mevzuat.gov.tr'den indirdiğiniz <b>.doc / .docx / .txt</b> dosyalarını <b>birden çok seçerek</b> yükleyin. Her dosya <b>yönetmelik gövdesi + içindeki ekler</b> olarak ele alınır ve hangi mevzuata ait olduğu otomatik tahmin edilir (yanlışsa kutudan değiştirin). Ekler ayrı bir Word'deyse, ilgili dosyanın altındaki <b>➕ Ayrı ek dosyası ekle</b> düğmesini kullanın.</div>
           <input type="file" id="gmCokluDosya" multiple accept=".txt,.doc,.docx,.htm,.html" onchange="gmDosyalariEkle(this)">
@@ -170,6 +164,35 @@
           <label class="gm-l">1 · Hangi mevzuat?</label>
           <select id="gmMevzuat" onchange="gmSecimDegisti()"></select>
           <div id="gmYeniAdSatir" style="display:none;margin-top:8px;"><input type="text" id="gmYeniAd" placeholder="Yeni mevzuatın tam adı (örn. ... Yönetmeliği)"></div>
+          <div id="gmKaynakSatir" class="gm-box-fark" style="display:none;margin-top:8px;">
+            <div id="gmKaynakBaslik" style="font-weight:700;margin-bottom:6px;"></div>
+            <div class="gm-actions" style="margin-top:0;">
+              <a class="btn btn-secondary btn-sm" id="gmKaynakAc" href="#" target="_blank" rel="noopener">🌐 Yeni sekmede aç</a>
+              <button class="btn btn-secondary btn-sm" onclick="gmKaynakPencere()">🪟 Uygulama içinde göster</button>
+              <button class="btn btn-primary btn-sm" onclick="gmKaynakGetir(-1)">⬇ Güncel metni metin kutusuna getir</button>
+            </div>
+            <div id="gmKaynakEkler"></div>
+            <div id="gmKaynakDurum" style="font-size:0.82rem;color:var(--text-muted);margin-top:6px;"></div>
+            <details><summary style="font-size:0.82rem;">⚙ Doğrudan çekme ayarı (isteğe bağlı)</summary>
+              <div class="gm-help" style="margin:6px 0;">Tarayıcılar mevzuat.gov.tr'den doğrudan metin çekemez. Kendi <b>Cloudflare Worker</b> adresinizi yazarsanız (kod: depodaki <code>tools/cloudflare-worker.js</code>) metin anında çekilir. Yazmazsanız, GitHub Actions'ın son çektiği metin kullanılır.</div>
+              <input type="text" id="gmProxy" placeholder="https://mevzuat-proxy.KULLANICI.workers.dev" onchange="gmProxyKaydet(this.value)">
+            </details>
+          </div>
+          <div class="modal-overlay" id="gmKaynakOverlay" style="display:none;z-index:1300;">
+            <div class="modal-box" style="max-width:900px;width:96vw;height:90vh;display:flex;flex-direction:column;padding:12px;">
+              <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:6px;">
+                <b id="gmKaynakPBaslik" style="flex:1 1 100%;font-size:0.9rem;"></b>
+                <button class="btn btn-secondary btn-sm" onclick="gmKaynakPSekme('sayfa')">🌐 Resmî sayfa</button>
+                <button class="btn btn-secondary btn-sm" onclick="gmKaynakPSekme('metin')">📄 Metin</button>
+                <button class="btn btn-primary btn-sm" onclick="gmKaynakGetir(-1,true)">⬇ Metin kutusuna al</button>
+                <button class="btn btn-secondary btn-sm" onclick="gmKaynakPKapat()">✕ Kapat</button>
+              </div>
+              <div id="gmKaynakPNot" style="font-size:0.78rem;color:var(--text-muted);margin-bottom:4px;"></div>
+              <iframe id="gmKaynakFrame" style="flex:1;width:100%;border:1px solid var(--border);border-radius:8px;background:#fff;" referrerpolicy="no-referrer"></iframe>
+              <pre id="gmKaynakMetin" style="display:none;flex:1;overflow:auto;white-space:pre-wrap;border:1px solid var(--border);border-radius:8px;padding:10px;margin:0;font-size:0.82rem;"></pre>
+            </div>
+          </div>
+
 
           <label class="gm-l">2 · Ne değişecek?</label>
           <div class="gm-radios">
@@ -243,11 +266,11 @@
         sel.innerHTML = mevzuatDB.map((m, i) => m ? `<option value="${esc(m.mevzuat_adi)}">${esc(m.mevzuat_adi)}</option>` : '').join('') + '<option value="__yeni__">➕ Yeni mevzuat ekle…</option>';
         if (onceki && [...sel.options].some(o => o.value === onceki)) sel.value = onceki;
         document.getElementById('gmModal').style.display = 'flex';
-        gmSecimDegisti(); gmGecmisCiz(); gmListeCiz(); gmBulutGunluguCiz(); gmTopluYenile(); gmKaynaklariCiz(); gmGhDurum();
+        gmSecimDegisti(); gmGecmisCiz(); gmListeCiz(); gmBulutGunluguCiz(); gmTopluYenile(); gmKaynakSatiriCiz(); gmGhDurum();
     };
 
-    // ---- mevzuat.gov.tr kaynakları: kaynaklar.txt + Actions'ın 'kaynak-metinler' dalına yazdığı metinler
-    let _kaynak = { liste: [], ayna: null, gr: null };
+    // ---- mevzuat.gov.tr kaynağı: seçili mevzuatın bağlantısı + (Worker varsa canlı, yoksa Actions'ın çektiği) metin
+    let _kaynak = { liste: [], ayna: null, gr: null, yuklendi: false };
     function ghRepo() {
         try { const o = localStorage.getItem('gh_repo'); if (o && o.includes('/')) { const [a, b] = o.split('/'); return { owner: a.trim(), repo: b.trim() }; } } catch (e) { /* */ }
         const h = location.hostname;
@@ -255,11 +278,23 @@
         return null;
     }
     window.ghRepo = ghRepo;
+    const proxyAdresi = () => { try { return (localStorage.getItem('mevzuat_proxy') || '').trim().replace(/\/$/, ''); } catch (e) { return ''; } };
+    window.gmProxyKaydet = function (v) { try { localStorage.setItem('mevzuat_proxy', (v || '').trim()); } catch (e) { /* */ } document.getElementById('gmKaynakDurum').textContent = v ? '✅ Doğrudan çekme adresi kaydedildi.' : 'Doğrudan çekme adresi silindi.'; };
     async function kaynakMetniGetir(slug) {
         const gr = _kaynak.gr; if (!gr || !slug) throw new Error('GitHub deposu belirlenemedi');
         const r = await fetch(`https://raw.githubusercontent.com/${gr.owner}/${gr.repo}/kaynak-metinler/${slug}.txt?v=${Date.now()}`, { cache: 'no-store' });
         if (!r.ok) throw new Error('metin alınamadı (' + r.status + ')');
         return r.text();
+    }
+    async function proxyIstek(url) {
+        const px = proxyAdresi(); if (!px) throw new Error('proxy yok');
+        const r = await fetch(px + (px.includes('?') ? '&' : '?') + 'url=' + encodeURIComponent(url), { cache: 'no-store' });
+        if (!r.ok) throw new Error('proxy yanıtı ' + r.status);
+        return r;
+    }
+    function iframeAdresi(url) {
+        try { const u = new URL(url), no = u.searchParams.get('MevzuatNo'), tur = u.searchParams.get('MevzuatTur'), t = u.searchParams.get('MevzuatTertip'); if (no && tur && t) return `${u.origin}/anasayfa/MevzuatFihristDetayIframe?MevzuatTur=${tur}&MevzuatNo=${no}&MevzuatTertip=${t}`; } catch (e) { /* */ }
+        return url;
     }
     async function panoyaKopyala(t) {
         try { await navigator.clipboard.writeText(t); return true; } catch (e) {
@@ -267,53 +302,114 @@
             let ok = false; try { ok = document.execCommand('copy'); } catch (e2) { /* */ } ta.remove(); return ok;
         }
     }
-    window.gmKaynakIslem = async function (i, k, islem) {
-        const kay = _kaynak.liste[i], ay = kay && kay.ayna; if (!ay) return;
-        const slug = k < 0 ? ay.slug : (ay.ekler[k] || {}).slug;
-        const d = document.getElementById('gmKaynakDurum');
+    async function kaynakYukle() {
+        if (_kaynak.yuklendi) return;
+        let liste = [];
+        try {
+            const t = await (await fetch('./kaynaklar.txt?v=' + Date.now(), { cache: 'no-store' })).text();
+            liste = t.split('\n').map(l => l.trim()).filter(l => l && !l.startsWith('#') && l.includes('|'))
+                .map(l => { const i = l.lastIndexOf('|'); return { ad: l.slice(0, i).trim(), url: l.slice(i + 1).trim() }; }).filter(k => /^https?:\/\//i.test(k.url));
+        } catch (e) { /* liste boş kalır */ }
+        _kaynak.gr = ghRepo(); let ayna = null;
+        if (_kaynak.gr) { try { const r = await fetch(`https://raw.githubusercontent.com/${_kaynak.gr.owner}/${_kaynak.gr.repo}/kaynak-metinler/index.json?v=${Date.now()}`, { cache: 'no-store' }); if (r.ok) ayna = await r.json(); } catch (e) { /* */ } }
+        liste.forEach(k => { k.ayna = ayna ? (ayna.kaynaklar || []).find(a => a.ad === k.ad) || null : null; });
+        _kaynak.liste = liste; _kaynak.ayna = ayna; _kaynak.yuklendi = true;
+    }
+    function seciliKaynak() {
+        const ad = document.getElementById('gmMevzuat').value; if (!ad || ad === '__yeni__') return null;
+        const n = MP.normName(ad);
+        return _kaynak.liste.find(k => MP.normName(k.ad) === n) || null;
+    }
+    // Seçili mevzuatın bağlantısı ve ek dosyaları "1 · Hangi mevzuat?" altında görünür
+    window.gmKaynakSatiriCiz = async function () {
+        await kaynakYukle();
+        const satir = document.getElementById('gmKaynakSatir'), kay = seciliKaynak();
+        if (!kay) { satir.style.display = 'none'; return; }
+        satir.style.display = 'block';
+        document.getElementById('gmKaynakBaslik').textContent = '🌐 ' + kay.ad + ' — resmî kaynak';
+        document.getElementById('gmKaynakAc').href = kay.url;
+        document.getElementById('gmProxy').value = proxyAdresi();
+        const ek = document.getElementById('gmKaynakEkler');
+        const ekler = (kay.ayna && kay.ayna.ekler) || kay.canliEkler || [];
+        ek.innerHTML = ekler.length ? ekler.map((e, j) => e.slug || e.href
+            ? `<div style="margin-top:6px;font-size:0.82rem;">📎 ${esc(e.dosya || e.href)} <button class="btn btn-primary btn-sm" onclick="gmKaynakGetir(${j})">⬇ Ek olarak metin kutusuna getir</button></div>`
+            : `<div style="margin-top:6px;font-size:0.8rem;color:var(--text-muted);">📎 ${esc(e.dosya)} — ${esc(e.durum || 'alınamadı')}; resmî sayfadaki "eklerini görmek için tıklayınız" bağlantısından indirip aşağıdan yükleyin.</div>`).join('') : '';
+        document.getElementById('gmKaynakDurum').textContent = proxyAdresi() ? 'Metin, doğrudan çekme adresiniz üzerinden anında alınır.'
+            : _kaynak.ayna ? `Metin, GitHub Actions'ın son çekiminden alınır (${new Date(_kaynak.ayna.tarih).toLocaleString('tr-TR')}).` : "Henüz otomatik çekilmiş metin yok (GitHub → Actions → Mevzuat Güncelle → Run workflow) ve doğrudan çekme adresi yazılmamış; yine de bağlantıyı açıp metni kopyalayabilirsiniz.";
+    };
+    // Metni al: önce Worker (canlı), olmazsa Actions'ın çektiği kopya. k: -1 gövde, >=0 ek sırası
+    async function kaynakMetniAl(kay, k) {
+        const hatalar = [];
+        if (proxyAdresi()) {
+            try {
+                if (k < 0) {
+                    const html = await (await proxyIstek(iframeAdresi(kay.url))).text();
+                    const metin = MP.htmlToText(html);
+                    if (!/MADDE\s+\d+/i.test(metin)) throw new Error('sayfadan madde metni çıkarılamadı');
+                    const hr = []; const re = /<a\b[^>]*\bhref\s*=\s*["']([^"']+\.(?:docx?|zip))["']/gi; let m; while ((m = re.exec(html))) if (!hr.includes(m[1])) hr.push(m[1]);
+                    kay.canliEkler = hr.map(h => ({ href: h, dosya: decodeURIComponent(h) }));
+                    return { metin, kaynak: 'canlı (doğrudan çekme)' };
+                }
+                const e = (kay.canliEkler || [])[k];
+                if (e) return { metin: await canliEkMetni(kay, e.href), kaynak: 'canlı (doğrudan çekme)' };
+            } catch (err) { hatalar.push('doğrudan çekme: ' + err.message); }
+        }
+        const ay = kay.ayna;
+        const slug = ay ? (k < 0 ? ay.slug : (ay.ekler[k] || {}).slug) : null;
+        if (slug) { try { return { metin: await kaynakMetniGetir(slug), kaynak: 'GitHub Actions kopyası' + (_kaynak.ayna ? ' (' + new Date(_kaynak.ayna.tarih).toLocaleString('tr-TR') + ')' : '') }; } catch (err) { hatalar.push(err.message); } }
+        throw new Error(hatalar.join(' · ') || "Metin alınamadı: doğrudan çekme adresi yok ve Actions henüz çalışmamış. Resmî sayfayı açıp metni kopyalayın.");
+    }
+    async function canliEkMetni(kay, href) {
+        const u = new URL(kay.url), tur = u.searchParams.get('MevzuatTur'), o = u.origin, klasor = { 7: 'yonetmelik', 1: 'kanun' }[tur] || 'yonetmelik';
+        const adaylar = [new URL(href, iframeAdresi(kay.url)).href, `${o}/MevzuatMetin/${klasor}/${href}`, `${o}/MevzuatMetin/${href}`, `${o}/${href}`];
+        for (const a of [...new Set(adaylar)]) {
+            try {
+                const r = await proxyIstek(a); if (/text\/html/i.test(r.headers.get('content-type') || '')) continue;
+                const ab = await r.arrayBuffer(); if (ab.byteLength < 500) continue;
+                if (/\.zip$/i.test(href)) {
+                    const z = await window.JSZip.loadAsync(ab), p = [];
+                    for (const f of Object.values(z.files)) { if (!f.dir && /\.(docx?|txt)$/i.test(f.name)) p.push((await window.BelgeOkuyucu.oku(await f.async('arraybuffer'), f.name, window.JSZip, MP.htmlToText)).metin); }
+                    return p.join('\n\n');
+                }
+                return (await window.BelgeOkuyucu.oku(ab, href, window.JSZip, MP.htmlToText)).metin;
+            } catch (e) { /* sonraki aday */ }
+        }
+        throw new Error('ek dosyası indirilemedi');
+    }
+    // Metin kutusuna getir (ve önizle)
+    window.gmKaynakGetir = async function (k, pencereden) {
+        const kay = seciliKaynak(), d = document.getElementById('gmKaynakDurum'); if (!kay) return;
         try {
             d.textContent = 'Metin getiriliyor…';
-            const t = await kaynakMetniGetir(slug);
-            if (islem === 'kopyala') { d.textContent = (await panoyaKopyala(t)) ? `✅ Panoya kopyalandı (${t.length.toLocaleString('tr-TR')} karakter).` : 'Kopyalanamadı; "Karşılaştırma alanına al"ı kullanın.'; return; }
-            // karşılaştırma alanına al
-            const idx = MP.findRegulationIndex(mevzuatDB, kay.ad), sel = document.getElementById('gmMevzuat');
-            if (idx >= 0) sel.value = mevzuatDB[idx].mevzuat_adi; else { sel.value = '__yeni__'; document.getElementById('gmYeniAd').value = kay.ad; }
-            gmSecimDegisti();
+            const { metin, kaynak } = await kaynakMetniAl(kay, k);
             document.querySelector(`#gmModal input[name=gmMod][value=${k < 0 ? 'tam' : 'ek'}]`).checked = true;
             gmSecimDegisti();
-            document.getElementById('gmMetin').value = t;
+            document.getElementById('gmMetin').value = metin;
             gmFarkGoster();
-            d.textContent = k < 0 ? '✅ Metin karşılaştırma alanına alındı; aşağıdaki farkı inceleyip uygulayın.' : '✅ Ek metni karşılaştırma alanına alındı (ek olarak).';
+            if (pencereden) gmKaynakPKapat();
+            await gmKaynakSatiriCiz();
+            d.textContent = `✅ ${k < 0 ? 'Güncel metin' : 'Ek metni'} metin kutusuna alındı — kaynak: ${kaynak}. Aşağıdaki farkı inceleyip uygulayın.`;
             document.getElementById('gmFark').scrollIntoView({ behavior: 'smooth', block: 'center' });
         } catch (e) { d.textContent = '⚠ ' + e.message; }
     };
-    window.gmKaynaklariCiz = async function () {
-        const el = document.getElementById('gmKaynakListe'), d = document.getElementById('gmKaynakDurum');
-        if (!_kaynak.yuklendi) {
-            d.textContent = 'Kaynak listesi yükleniyor…';
-            let liste = [];
-            try {
-                const t = await (await fetch('./kaynaklar.txt?v=' + Date.now(), { cache: 'no-store' })).text();
-                liste = t.split('\n').map(l => l.trim()).filter(l => l && !l.startsWith('#') && l.includes('|'))
-                    .map(l => { const i = l.lastIndexOf('|'); return { ad: l.slice(0, i).trim(), url: l.slice(i + 1).trim() }; }).filter(k => /^https?:\/\//i.test(k.url));
-            } catch (e) { /* liste boş kalır */ }
-            _kaynak.gr = ghRepo(); let ayna = null;
-            if (_kaynak.gr) { try { const r = await fetch(`https://raw.githubusercontent.com/${_kaynak.gr.owner}/${_kaynak.gr.repo}/kaynak-metinler/index.json?v=${Date.now()}`, { cache: 'no-store' }); if (r.ok) ayna = await r.json(); } catch (e) { /* */ } }
-            liste.forEach(k => { k.ayna = ayna ? (ayna.kaynaklar || []).find(a => a.ad === k.ad) || null : null; });
-            _kaynak.liste = liste; _kaynak.ayna = ayna; _kaynak.yuklendi = true;
+    // Uygulama içi pencere: resmî sayfa (çerçeve) ya da metin görünümü
+    window.gmKaynakPencere = function () {
+        const kay = seciliKaynak(); if (!kay) return;
+        document.getElementById('gmKaynakPBaslik').textContent = kay.ad;
+        document.getElementById('gmKaynakOverlay').style.display = 'flex';
+        gmKaynakPSekme(proxyAdresi() || kay.ayna ? 'metin' : 'sayfa');
+    };
+    window.gmKaynakPKapat = function () { document.getElementById('gmKaynakOverlay').style.display = 'none'; document.getElementById('gmKaynakFrame').src = 'about:blank'; };
+    window.gmKaynakPSekme = async function (t) {
+        const kay = seciliKaynak(); if (!kay) return;
+        const fr = document.getElementById('gmKaynakFrame'), pre = document.getElementById('gmKaynakMetin'), nt = document.getElementById('gmKaynakPNot');
+        if (t === 'sayfa') {
+            pre.style.display = 'none'; fr.style.display = 'block'; fr.src = iframeAdresi(kay.url);
+            nt.textContent = "Resmî sayfa burada açılmazsa (site çerçevelemeye izin vermeyebilir) «Yeni sekmede aç»ı ya da «Metin» sekmesini kullanın.";
+        } else {
+            fr.style.display = 'none'; pre.style.display = 'block'; pre.textContent = 'Metin getiriliyor…';
+            try { const r = await kaynakMetniAl(kay, -1); pre.textContent = r.metin; nt.textContent = 'Kaynak: ' + r.kaynak; } catch (e) { pre.textContent = '⚠ ' + e.message; nt.textContent = ''; }
         }
-        const f = MP.normName(document.getElementById('gmKaynakAra').value || '');
-        d.textContent = !_kaynak.liste.length ? 'kaynaklar.txt içinde adresi yazılı mevzuat yok.'
-            : _kaynak.ayna ? `Otomatik çekilen metinlerin tarihi: ${new Date(_kaynak.ayna.tarih).toLocaleString('tr-TR')}` : 'Henüz otomatik çekilmiş metin yok (GitHub → Actions → Mevzuat Güncelle → Run workflow). Bağlantılar yine de çalışır.';
-        el.innerHTML = _kaynak.liste.map((k, i) => ({ k, i })).filter(x => !f || MP.normName(x.k.ad).includes(f)).map(({ k, i }) => `<div class="gm-satir" style="flex-wrap:wrap;">
-                <div style="flex:1 1 100%;"><b>${esc(k.ad)}</b></div>
-                <a class="btn btn-secondary btn-sm" href="${esc(k.url)}" target="_blank" rel="noopener">🌐 mevzuat.gov.tr'de aç</a>
-                ${k.ayna ? `<button class="btn btn-secondary btn-sm" onclick="gmKaynakIslem(${i},-1,'kopyala')">📋 Metni kopyala</button>
-                <button class="btn btn-primary btn-sm" onclick="gmKaynakIslem(${i},-1,'al')">⬇ Karşılaştırma alanına al</button>` : ''}
-                ${k.ayna ? (k.ayna.ekler || []).map((e, j) => e.slug
-                    ? `<div style="flex:1 1 100%;margin-left:10px;font-size:0.8rem;">📎 ${esc(e.dosya)} <button class="btn btn-secondary btn-sm" onclick="gmKaynakIslem(${i},${j},'kopyala')">📋 Kopyala</button> <button class="btn btn-primary btn-sm" onclick="gmKaynakIslem(${i},${j},'al')">⬇ Ek olarak al</button></div>`
-                    : `<div style="flex:1 1 100%;margin-left:10px;font-size:0.8rem;color:var(--text-muted);">📎 ${esc(e.dosya)} — ${esc(e.durum || 'alınamadı')}; sayfadaki "eklerini görmek için tıklayınız" bağlantısından indirip aşağıdan yükleyin.</div>`).join('') : ''}
-            </div>`).join('');
     };
     // ---- Tam değişiklik geçmişi: bulut (otomatik çekim) + bu cihazdaki kayıtlar, tek zaman çizelgesinde
     let _bulutGunluk = [];
@@ -374,6 +470,7 @@
         document.getElementById('gmMaddeNoSatir').style.display = (gmMod() === 'madde' || gmMod() === 'ek') ? 'block' : 'none';
         document.getElementById('gmMaddeNo').placeholder = gmMod() === 'ek' ? "Yapıştırdığınız metinde 'EK-1' başlığı yoksa ek numarasını yazın (örn. 1)" : "Yapıştırdığınız metinde 'MADDE 7 –' başlığı yoksa madde numarasını yazın (örn. 7)";
         _onizleme = null; document.getElementById('gmUygulaBtn').disabled = true; document.getElementById('gmFark').innerHTML = '';
+        if (typeof gmKaynakSatiriCiz === 'function' && _kaynak) gmKaynakSatiriCiz();
     };
 
     async function dosyaMetni(f) {

@@ -30,7 +30,9 @@ Not: eski `.doc` biçiminde Word'ün otomatik liste numaraları (1-, 2- …) oku
 ## GitHub'a gönderme, kaynaklar, ek dosyaları
 
 - **☁ GitHub'a gönder:** Güncelleme Merkezi'nde cihazınızda yaptığınız değişiklikleri doğrudan depoya yazar (token gerekir: fine-grained, yalnızca bu depo, *Contents: Read and write*; yalnızca cihazınızda saklanır). Depodaki güncel veritabanının üstüne uygulanır, geçmişe ayrıntılı işlenir.
-- **🌐 mevzuat.gov.tr kaynakları:** `kaynaklar.txt`'teki her mevzuatın sayfasına bağlantı; Actions'ın çektiği güncel metni (ve sayfadaki ek dosyalarını) kopyalama / karşılaştırma alanına alma. Metinler Actions çalışınca `kaynak-metinler` dalına yazılır.
+- **Doğrudan çekme (isteğe bağlı):** `tools/cloudflare-worker.js` dosyasını Cloudflare'de bir Worker olarak yayınlayıp adresini Güncelleme Merkezi → «Doğrudan çekme ayarı» kutusuna yazarsanız, seçili mevzuatın güncel metni (ve ekleri) anında metin kutusuna gelir. Worker yalnızca mevzuat.gov.tr'ye izin verir. Yazılmazsa Actions'ın son çektiği kopya kullanılır.
+- **🌐 mevzuat.gov.tr kaynağı:** «1 · Hangi mevzuat?» altında seçili mevzuatın bağlantısı çıkar (yeni sekmede aç / uygulama içinde göster / metni metin kutusuna getir).
+- **(eski ad) kaynaklar:** `kaynaklar.txt`'teki her mevzuatın sayfasına bağlantı; Actions'ın çektiği güncel metni (ve sayfadaki ek dosyalarını) kopyalama / karşılaştırma alanına alma. Metinler Actions çalışınca `kaynak-metinler` dalına yazılır.
 - **Ayrı ek dosyası:** Toplu yüklemede her dosya "gövde + içindeki ekler" sayılır; ekler ayrı Word'deyse dosyanın altındaki ➕ düğmesiyle eklenir.
 - **Arşiv araması** artık canlı veritabanını tarar (güncellemeler görünür). **AI'sız şelale eşleştirme:** eşleştirme ekranındaki "✍️ Tüm İhlalleri Şelale ile Eşleştir" düğmesi.
 
