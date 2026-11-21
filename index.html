@@ -1027,7 +1027,7 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         contents: [{ parts: [{ text: promptText }] }],
-                        generationConfig: { response_mime_type: "application/json" }
+                        generationConfig: { response_mime_type: "application/json", thinkingConfig: { thinkingBudget: 0 } }
                     })
                 });
                 const data = await response.json();
@@ -1121,6 +1121,19 @@
         throw new Error("Mevcut tüm Grok API Key'ler ve Modeller için kotalar dolmuş veya Key'ler geçersiz!");
     }
 
+    // Karma havuz: hem Gemini hem Groq key'i varsa iş numarasına göre dönüşümlü dağıtılır (4G+2R: G0,G1,R0,G2,G3,R1)
+    function karmaHavuz() {
+        const G = geminiApiKeys.length, R = apiKeys.length;
+        if (!G || !R) return null;
+        const liste = [], adim = Math.ceil(Math.max(G, R) / Math.min(G, R)), cok = G >= R ? 'g' : 'r', az = G >= R ? 'r' : 'g';
+        const n = { g: G, r: R }; let ci = 0, ai = 0;
+        while (ci < n[cok]) {
+            for (let k = 0; k < adim && ci < n[cok]; k++) liste.push({ p: cok, i: ci++ });
+            if (ai < n[az]) liste.push({ p: az, i: ai++ });
+        }
+        while (ai < n[az]) liste.push({ p: az, i: ai++ });
+        return liste;
+    }
     async function smartAIFetch(messagesOrSystemPrompt, temperature = 0.1, pin) {
         let systemPrompt = "";
         let userPrompt = "";
@@ -1134,6 +1147,17 @@
             systemPrompt = messagesOrSystemPrompt;
         }
 
+        const karma = pin !== undefined ? karmaHavuz() : null;
+        if (karma) {
+            const e = karma[pin % karma.length];
+            const msgs = [{ role: 'system', content: systemPrompt }]; if (userPrompt) msgs.push({ role: 'user', content: userPrompt });
+            try {
+                return e.p === 'g' ? await fetchFromGeminiWithFallback(systemPrompt, userPrompt, e.i) : await fetchFromGrokWithFallback(msgs, temperature, e.i);
+            } catch (err) {
+                logDebug(`${e.p === 'g' ? 'Gemini' : 'Groq'} başarısız (${err.message}). Diğer sağlayıcıya geçiliyor...`, "warn");
+                return e.p === 'g' ? await fetchFromGrokWithFallback(msgs, temperature, pin) : await fetchFromGeminiWithFallback(systemPrompt, userPrompt, pin);
+            }
+        }
         if (primaryAI === 'gemini') {
             try {
                 return await fetchFromGeminiWithFallback(systemPrompt, userPrompt, pin);
@@ -1744,8 +1768,9 @@
     // Aynı anda 2 iş (tek key varsa 1). Her iş sıra numarasına göre key alır (iş k -> key k mod N); böylece
     // 4 key varsa önce 1-2, sonra 3-4, sonra tekrar 1-2 çalışır, diğer çift dinlenir. Tek key varsa sıralı çalışır.
     async function paralelIsle(isler, fn, nefesMs = 1000) {
-        const keyN = primaryAI === 'gemini' ? geminiApiKeys.length : apiKeys.length;
-        const W = Math.max(1, Math.min(2, keyN, isler.length)); // aynı anda 2 iş (çift); 1 key = sıralı
+        const karma = karmaHavuz();
+        const keyN = karma ? karma.length : (primaryAI === 'gemini' ? geminiApiKeys.length : apiKeys.length);
+        const W = Math.max(1, Math.min(karma ? 3 : 2, keyN, isler.length)); // karma havuzda aynı anda 3 iş, tek sağlayıcıda 2; 1 key = sıralı
         let sira = 0;
         await Promise.all(Array.from({ length: W }, async (_, w) => {
             let ilk = true;
@@ -1773,7 +1798,7 @@
         let allowedMevzuats = mevzuatDB.map((m, i) => ({ id: i, name: m.mevzuat_adi })).filter(m => !isAIExcluded(m.name));
         const allowedIds = new Set(allowedMevzuats.map(m => m.id));
 
-        const keySayisi = primaryAI === 'gemini' ? geminiApiKeys.length : apiKeys.length;
+        const keySayisi = geminiApiKeys.length + (geminiApiKeys.length ? apiKeys.length : 0) || apiKeys.length;
         const GRUP = keySayisi >= 2 ? 4 : 12; // çok key: her key'e 4'er ihlal (aynı anda); tek key: 12'li gruplarla kota tasarrufu
         const kurallar = `Sen uzman bir İSG denetçisisin. Her ihlal için mevzuat ID'si ve 2-3 kilit kelime belirle.
 Kurallar:
