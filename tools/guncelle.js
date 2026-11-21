@@ -11,6 +11,8 @@
 const fs = require('fs');
 const path = require('path');
 const P = require('../parser.js');
+const B = require('../belge.js');
+let JSZip = null; try { JSZip = require('jszip'); } catch (e) { /* docx/zip ekleri için gerekir; iş akışı kurar */ }
 
 const ROOT = path.join(__dirname, '..');
 const TEST = process.argv.includes('--test');
@@ -49,9 +51,9 @@ async function indir(url) {
             }
         });
         const buf = Buffer.from(await r.arrayBuffer());
-        return { ok: r.ok, status: r.status, tip: r.headers.get('content-type') || '', text: buf.toString('utf8'), bayt: buf.length };
+        return { ok: r.ok, status: r.status, tip: r.headers.get('content-type') || '', text: buf.toString('utf8'), bayt: buf.length, buf };
     } catch (e) {
-        return { ok: false, status: 0, tip: '', text: '', bayt: 0, hata: (e.cause && e.cause.code) || e.message };
+        return { ok: false, status: 0, tip: '', text: '', bayt: 0, buf: Buffer.alloc(0), hata: (e.cause && e.cause.code) || e.message };
     } finally { clearTimeout(to); }
 }
 
@@ -76,6 +78,66 @@ function adBenzerMi(ad, metin) {
     const bas = P.normName(metin.slice(0, 4000));
     const bulunan = kelimeler.filter(w => bas.includes(w)).length;
     return bulunan / kelimeler.length >= 0.6;
+}
+
+
+// ---- Yerel "ayna": uygulamanın (tarayıcıda CORS yüzünden mevzuat.gov.tr'ye erişemediği için) okuyacağı metinler
+const AYNA_DIR = path.join(ROOT, 'kaynak_metinler');
+const aynalar = [];
+const slugla = ad => P.normName(ad).replace(/ /g, '_').slice(0, 50);
+
+function ekBaglantilari(html) {
+    const out = []; const re = /<a\b[^>]*\bhref\s*=\s*["']([^"']+\.(?:docx?|zip|pdf))["']/gi; let m;
+    while ((m = re.exec(html))) if (!out.includes(m[1])) out.push(m[1]);
+    return out;
+}
+
+// Sayfadaki göreli ek bağlantısının gerçek adresi belgelenmediği için birkaç olası yol denenir; denemeler indekse yazılır.
+async function ekMetni(href, adres, tur) {
+    const o = new URL(adres).origin, klasor = { 7: 'yonetmelik', 1: 'kanun' }[tur] || 'yonetmelik';
+    const adaylar = [];
+    [() => new URL(href, adres).href, () => `${o}/MevzuatMetin/${klasor}/${href}`, () => `${o}/MevzuatMetin/${href}`, () => `${o}/${href}`]
+        .forEach(f => { try { const u = f(); if (!adaylar.includes(u)) adaylar.push(u); } catch (e) { /* */ } });
+    const denemeler = [];
+    for (const u of adaylar) {
+        const r = await indir(u);
+        denemeler.push(`${u.replace(/^https?:\/\//, '')} → ${r.status || 'hata'}${r.hata ? '(' + r.hata + ')' : ''} ${r.bayt}B ${(r.tip || '').split(';')[0]}`);
+        if (!(r.ok && r.bayt > 500 && !/text\/html/i.test(r.tip))) continue;
+        try {
+            const ab = r.buf.buffer.slice(r.buf.byteOffset, r.buf.byteOffset + r.buf.length);
+            if (/\.zip$/i.test(href)) {
+                if (!JSZip) return { denemeler, hata: 'zip için jszip kurulu değil' };
+                const z = await JSZip.loadAsync(ab), parca = [];
+                for (const f of Object.values(z.files)) {
+                    if (f.dir || !/\.(docx?|txt)$/i.test(f.name)) continue;
+                    const o2 = await B.oku(await f.async('arraybuffer'), f.name, JSZip, P.htmlToText);
+                    parca.push(o2.metin);
+                }
+                return { denemeler, metin: parca.join('\n\n'), adres: u };
+            }
+            const o2 = await B.oku(ab, href, JSZip, P.htmlToText);
+            return { denemeler, metin: o2.metin, adres: u };
+        } catch (e) { denemeler.push('okuma hatası: ' + e.message); }
+    }
+    return { denemeler, hata: 'indirilemedi' };
+}
+
+async function aynaYaz(k, sonuc, metin) {
+    fs.mkdirSync(AYNA_DIR, { recursive: true });
+    const slug = slugla(k.ad);
+    fs.writeFileSync(path.join(AYNA_DIR, slug + '.txt'), metin);
+    const u = new URL(sonuc.adres), tur = u.searchParams.get('MevzuatTur');
+    const ekler = [];
+    for (const href of ekBaglantilari(sonuc.r.text)) {
+        const dosya = decodeURIComponent(href);
+        if (/\.pdf$/i.test(href)) { ekler.push({ dosya, slug: null, durum: 'pdf (metne çevrilemez)' }); continue; }
+        const e = await ekMetni(href, sonuc.adres, tur);
+        const eslug = `${slug}.ek${ekler.length + 1}`;
+        if (e.metin) fs.writeFileSync(path.join(AYNA_DIR, eslug + '.txt'), e.metin);
+        ekler.push({ dosya, slug: e.metin ? eslug : null, durum: e.metin ? 'ok' : e.hata, adres: e.adres || null, denemeler: e.denemeler });
+        log(`    ek: ${dosya} → ${e.metin ? 'metne çevrildi' : e.hata}`);
+    }
+    aynalar.push({ ad: k.ad, slug, url: k.url, tarih: SIMDI, ekler });
 }
 
 function dbYaz(db) { fs.writeFileSync(DB_PATH, JSON.stringify(db, null, 2)); } // önceki biçimle aynı (sonda satır sonu yok)
@@ -119,6 +181,7 @@ async function main() {
             fs.writeFileSync(`tanilama/${slug}.metin.txt`, metin);
             fs.writeFileSync(`tanilama/${slug}.bilgi.txt`, `adres: ${sonuc.adres}\ntip: ${sonuc.r.tip}\nbayt: ${sonuc.r.bayt}\n`);
         } catch (e) { /* tanılama başarısız olsa da devam */ }
+        try { await aynaYaz(k, sonuc, metin); } catch (e) { log('    ayna yazılamadı: ' + e.message); }
         if (TEST) log(`    metnin ilk 160 karakteri: ${JSON.stringify(metin.slice(0, 160))}`);
         if (!adBenzerMi(k.ad, metin)) {
             rows.push({ ad: k.ad, durum: '⚠ Atlandı: sayfa başka bir mevzuat gibi görünüyor', detay: 'kaynaklar.txt adresini kontrol edin.' });
@@ -165,6 +228,7 @@ async function main() {
     }
 
     // ---- çıktılar
+    try { if (aynalar.length) fs.writeFileSync(path.join(AYNA_DIR, 'index.json'), JSON.stringify({ tarih: SIMDI, kaynaklar: aynalar }, null, 1)); } catch (e) { /* */ }
     if (!TEST && uygulananSayi > 0) {
         dbYaz(db);
         let g = []; try { g = JSON.parse(fs.readFileSync(GUNLUK_PATH, 'utf8')); } catch (e) { g = []; }

@@ -149,8 +149,14 @@
             Değişiklik bu cihazda hemen geçerli olur ve bulut veritabanı yenilense bile silinmez. Tüm cihazlarda geçerli olması için aşağıdaki "Dışa aktar" bölümüne bakın.</div>
           <a class="btn btn-secondary btn-sm" href="https://www.mevzuat.gov.tr/" target="_blank" rel="noopener">🌐 mevzuat.gov.tr'yi aç</a>
 
+          <h3>🌐 mevzuat.gov.tr kaynakları</h3>
+          <div class="gm-help">Her mevzuatın resmî sayfasına buradan gidebilir, <b>otomatik çekilmiş güncel metni</b> kopyalayabilir ya da tek tıkla aşağıdaki karşılaştırma alanına alabilirsiniz. Sayfanın sonunda <i>"eklerini görmek için tıklayınız"</i> bağlantısı varsa ekler de ayrıca listelenir. Metinler, GitHub Actions <b>Mevzuat Güncelle</b> görevi her çalıştığında (haftalık ya da elle) yenilenir.</div>
+          <input type="text" id="gmKaynakAra" placeholder="Mevzuat ara…" oninput="gmKaynaklariCiz()" style="margin-bottom:6px;">
+          <div id="gmKaynakDurum" style="font-size:0.8rem;color:var(--text-muted);"></div>
+          <div id="gmKaynakListe"></div>
+
           <h3>📂 Dosyalardan toplu güncelleme (Word / txt)</h3>
-          <div class="gm-help">mevzuat.gov.tr'den indirdiğiniz <b>.doc / .docx / .txt</b> dosyalarını <b>birden çok seçerek</b> yükleyin. Her dosyanın hangi mevzuata ait olduğu ve ne olduğu (ana metin, ayrı ek, tablolar) otomatik tahmin edilir; <b>yanlışsa kutudan değiştirin</b>. Yönetmelik gövdesinden ayrı gelen ek dosyaları için mevzuatı siz seçebilirsiniz.</div>
+          <div class="gm-help">mevzuat.gov.tr'den indirdiğiniz <b>.doc / .docx / .txt</b> dosyalarını <b>birden çok seçerek</b> yükleyin. Her dosya <b>yönetmelik gövdesi + içindeki ekler</b> olarak ele alınır ve hangi mevzuata ait olduğu otomatik tahmin edilir (yanlışsa kutudan değiştirin). Ekler ayrı bir Word'deyse, ilgili dosyanın altındaki <b>➕ Ayrı ek dosyası ekle</b> düğmesini kullanın.</div>
           <input type="file" id="gmCokluDosya" multiple accept=".txt,.doc,.docx,.htm,.html" onchange="gmDosyalariEkle(this)">
           <div id="gmDosyaListe"></div>
           <div class="gm-actions" id="gmTopluEylem" style="display:none;">
@@ -169,6 +175,7 @@
           <div class="gm-radios">
             <label><input type="radio" name="gmMod" value="tam" checked onchange="gmSecimDegisti()"> Tamamı — mevzuatın tüm güncel metnini yapıştıracağım</label>
             <label id="gmMaddeSecenek"><input type="radio" name="gmMod" value="madde" onchange="gmSecimDegisti()"> Yalnızca belirli madde(ler) — sadece değişen maddeleri yapıştıracağım</label>
+            <label id="gmEkSecenek"><input type="radio" name="gmMod" value="ek" onchange="gmSecimDegisti()"> Yalnızca ek(ler) — ekleri yapıştıracağım (EK-1, EK-2 … başlıklı)</label>
             <label id="gmTabloSecenek" style="display:none;"><input type="radio" name="gmMod" value="tablo" onchange="gmSecimDegisti()"> Yalnızca periyodik kontrol tabloları (EK-III) — metni yapıştırıp tabloları yenile</label>
           </div>
           <div id="gmMaddeNoSatir" style="display:none;"><input type="text" id="gmMaddeNo" placeholder="Yapıştırdığınız metinde 'MADDE 7 –' başlığı yoksa madde numarasını yazın (örn. 7)"></div>
@@ -225,7 +232,77 @@
         sel.innerHTML = mevzuatDB.map((m, i) => m ? `<option value="${esc(m.mevzuat_adi)}">${esc(m.mevzuat_adi)}</option>` : '').join('') + '<option value="__yeni__">➕ Yeni mevzuat ekle…</option>';
         if (onceki && [...sel.options].some(o => o.value === onceki)) sel.value = onceki;
         document.getElementById('gmModal').style.display = 'flex';
-        gmSecimDegisti(); gmGecmisCiz(); gmListeCiz(); gmBulutGunluguCiz(); gmTopluYenile();
+        gmSecimDegisti(); gmGecmisCiz(); gmListeCiz(); gmBulutGunluguCiz(); gmTopluYenile(); gmKaynaklariCiz();
+    };
+
+    // ---- mevzuat.gov.tr kaynakları: kaynaklar.txt + Actions'ın 'kaynak-metinler' dalına yazdığı metinler
+    let _kaynak = { liste: [], ayna: null, gr: null };
+    function ghRepo() {
+        try { const o = localStorage.getItem('gh_repo'); if (o && o.includes('/')) { const [a, b] = o.split('/'); return { owner: a.trim(), repo: b.trim() }; } } catch (e) { /* */ }
+        const h = location.hostname;
+        if (/\.github\.io$/.test(h)) return { owner: h.split('.')[0], repo: location.pathname.split('/')[1] || '' };
+        return null;
+    }
+    window.ghRepo = ghRepo;
+    async function kaynakMetniGetir(slug) {
+        const gr = _kaynak.gr; if (!gr || !slug) throw new Error('GitHub deposu belirlenemedi');
+        const r = await fetch(`https://raw.githubusercontent.com/${gr.owner}/${gr.repo}/kaynak-metinler/${slug}.txt?v=${Date.now()}`, { cache: 'no-store' });
+        if (!r.ok) throw new Error('metin alınamadı (' + r.status + ')');
+        return r.text();
+    }
+    async function panoyaKopyala(t) {
+        try { await navigator.clipboard.writeText(t); return true; } catch (e) {
+            const ta = document.createElement('textarea'); ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select();
+            let ok = false; try { ok = document.execCommand('copy'); } catch (e2) { /* */ } ta.remove(); return ok;
+        }
+    }
+    window.gmKaynakIslem = async function (i, k, islem) {
+        const kay = _kaynak.liste[i], ay = kay && kay.ayna; if (!ay) return;
+        const slug = k < 0 ? ay.slug : (ay.ekler[k] || {}).slug;
+        const d = document.getElementById('gmKaynakDurum');
+        try {
+            d.textContent = 'Metin getiriliyor…';
+            const t = await kaynakMetniGetir(slug);
+            if (islem === 'kopyala') { d.textContent = (await panoyaKopyala(t)) ? `✅ Panoya kopyalandı (${t.length.toLocaleString('tr-TR')} karakter).` : 'Kopyalanamadı; "Karşılaştırma alanına al"ı kullanın.'; return; }
+            // karşılaştırma alanına al
+            const idx = MP.findRegulationIndex(mevzuatDB, kay.ad), sel = document.getElementById('gmMevzuat');
+            if (idx >= 0) sel.value = mevzuatDB[idx].mevzuat_adi; else { sel.value = '__yeni__'; document.getElementById('gmYeniAd').value = kay.ad; }
+            gmSecimDegisti();
+            document.querySelector(`#gmModal input[name=gmMod][value=${k < 0 ? 'tam' : 'ek'}]`).checked = true;
+            gmSecimDegisti();
+            document.getElementById('gmMetin').value = t;
+            gmFarkGoster();
+            d.textContent = k < 0 ? '✅ Metin karşılaştırma alanına alındı; aşağıdaki farkı inceleyip uygulayın.' : '✅ Ek metni karşılaştırma alanına alındı (ek olarak).';
+            document.getElementById('gmFark').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } catch (e) { d.textContent = '⚠ ' + e.message; }
+    };
+    window.gmKaynaklariCiz = async function () {
+        const el = document.getElementById('gmKaynakListe'), d = document.getElementById('gmKaynakDurum');
+        if (!_kaynak.yuklendi) {
+            d.textContent = 'Kaynak listesi yükleniyor…';
+            let liste = [];
+            try {
+                const t = await (await fetch('./kaynaklar.txt?v=' + Date.now(), { cache: 'no-store' })).text();
+                liste = t.split('\n').map(l => l.trim()).filter(l => l && !l.startsWith('#') && l.includes('|'))
+                    .map(l => { const i = l.lastIndexOf('|'); return { ad: l.slice(0, i).trim(), url: l.slice(i + 1).trim() }; }).filter(k => /^https?:\/\//i.test(k.url));
+            } catch (e) { /* liste boş kalır */ }
+            _kaynak.gr = ghRepo(); let ayna = null;
+            if (_kaynak.gr) { try { const r = await fetch(`https://raw.githubusercontent.com/${_kaynak.gr.owner}/${_kaynak.gr.repo}/kaynak-metinler/index.json?v=${Date.now()}`, { cache: 'no-store' }); if (r.ok) ayna = await r.json(); } catch (e) { /* */ } }
+            liste.forEach(k => { k.ayna = ayna ? (ayna.kaynaklar || []).find(a => a.ad === k.ad) || null : null; });
+            _kaynak.liste = liste; _kaynak.ayna = ayna; _kaynak.yuklendi = true;
+        }
+        const f = MP.normName(document.getElementById('gmKaynakAra').value || '');
+        d.textContent = !_kaynak.liste.length ? 'kaynaklar.txt içinde adresi yazılı mevzuat yok.'
+            : _kaynak.ayna ? `Otomatik çekilen metinlerin tarihi: ${new Date(_kaynak.ayna.tarih).toLocaleString('tr-TR')}` : 'Henüz otomatik çekilmiş metin yok (GitHub → Actions → Mevzuat Güncelle → Run workflow). Bağlantılar yine de çalışır.';
+        el.innerHTML = _kaynak.liste.map((k, i) => ({ k, i })).filter(x => !f || MP.normName(x.k.ad).includes(f)).map(({ k, i }) => `<div class="gm-satir" style="flex-wrap:wrap;">
+                <div style="flex:1 1 100%;"><b>${esc(k.ad)}</b></div>
+                <a class="btn btn-secondary btn-sm" href="${esc(k.url)}" target="_blank" rel="noopener">🌐 mevzuat.gov.tr'de aç</a>
+                ${k.ayna ? `<button class="btn btn-secondary btn-sm" onclick="gmKaynakIslem(${i},-1,'kopyala')">📋 Metni kopyala</button>
+                <button class="btn btn-primary btn-sm" onclick="gmKaynakIslem(${i},-1,'al')">⬇ Karşılaştırma alanına al</button>` : ''}
+                ${k.ayna ? (k.ayna.ekler || []).map((e, j) => e.slug
+                    ? `<div style="flex:1 1 100%;margin-left:10px;font-size:0.8rem;">📎 ${esc(e.dosya)} <button class="btn btn-secondary btn-sm" onclick="gmKaynakIslem(${i},${j},'kopyala')">📋 Kopyala</button> <button class="btn btn-primary btn-sm" onclick="gmKaynakIslem(${i},${j},'al')">⬇ Ek olarak al</button></div>`
+                    : `<div style="flex:1 1 100%;margin-left:10px;font-size:0.8rem;color:var(--text-muted);">📎 ${esc(e.dosya)} — ${esc(e.durum || 'alınamadı')}; sayfadaki "eklerini görmek için tıklayınız" bağlantısından indirip aşağıdan yükleyin.</div>`).join('') : ''}
+            </div>`).join('');
     };
     // ---- Tam değişiklik geçmişi: bulut (otomatik çekim) + bu cihazdaki kayıtlar, tek zaman çizelgesinde
     let _bulutGunluk = [];
@@ -276,11 +353,13 @@
         const yeni = document.getElementById('gmMevzuat').value === '__yeni__';
         document.getElementById('gmYeniAdSatir').style.display = yeni ? 'block' : 'none';
         document.getElementById('gmMaddeSecenek').style.display = yeni ? 'none' : 'block';
+        document.getElementById('gmEkSecenek').style.display = yeni ? 'none' : 'block';
         const ie = !yeni && isEkipmanlariMi(document.getElementById('gmMevzuat').value);
         document.getElementById('gmTabloSecenek').style.display = ie ? 'block' : 'none';
         if (yeni) document.querySelector('#gmModal input[name=gmMod][value=tam]').checked = true;
         if (!ie && gmMod() === 'tablo') document.querySelector('#gmModal input[name=gmMod][value=tam]').checked = true;
-        document.getElementById('gmMaddeNoSatir').style.display = gmMod() === 'madde' ? 'block' : 'none';
+        document.getElementById('gmMaddeNoSatir').style.display = (gmMod() === 'madde' || gmMod() === 'ek') ? 'block' : 'none';
+        document.getElementById('gmMaddeNo').placeholder = gmMod() === 'ek' ? "Yapıştırdığınız metinde 'EK-1' başlığı yoksa ek numarasını yazın (örn. 1)" : "Yapıştırdığınız metinde 'MADDE 7 –' başlığı yoksa madde numarasını yazın (örn. 7)";
         _onizleme = null; document.getElementById('gmUygulaBtn').disabled = true; document.getElementById('gmFark').innerHTML = '';
     };
 
@@ -518,19 +597,31 @@
         _dosyalar.forEach(f => { if (!f.mevzuat && f.rol === 'tablo') { const ie = mevzuatDB.find(m => m && isEkipmanlariMi(m.mevzuat_adi)); if (ie) f.mevzuat = ie.mevzuat_adi; } });
         gmTopluYenile();
     };
+    // Ana dosyanın içinde olmayan ekleri ayrı Word/txt olarak, o mevzuata bağlı biçimde ekler
+    window.gmEkDosyasiEkle = async function (ebeveynId, inp) {
+        for (const file of [...(inp.files || [])]) {
+            try {
+                const r = await dosyaMetni(file);
+                _dosyalar.push({ id: ++_dosyaSayac, ad: file.name, tur: r.tur, metin: r.metin, mevzuatNo: '', rol: 'ek', ebeveyn: ebeveynId, mevzuat: '', baslik: '', no: '' });
+            } catch (e) { _dosyalar.push({ id: ++_dosyaSayac, ad: file.name, tur: '?', metin: '', rol: 'ek', ebeveyn: ebeveynId, mevzuat: '', okuHata: e.message, no: '' }); }
+        }
+        inp.value = '';
+        gmTopluYenile();
+    };
     window.gmDosyaDeger = function (id, alan, v) {
         const f = _dosyalar.find(x => x.id === id); if (!f) return;
         f[alan] = v;
         if (alan === 'mevzuat' && f.mevzuatNo) _dosyalar.forEach(x => { if (x !== f && x.mevzuatNo === f.mevzuatNo && !x.mevzuat) x.mevzuat = v; });
         gmTopluYenile();
     };
-    window.gmDosyaSil = function (id) { _dosyalar = _dosyalar.filter(x => x.id !== id); gmTopluYenile(); };
+    window.gmDosyaSil = function (id) { _dosyalar = _dosyalar.filter(x => x.id !== id && x.ebeveyn !== id); gmTopluYenile(); };
     window.gmDosyalariTemizle = function () { _dosyalar = []; gmTopluYenile(); };
 
     function gmTopluYenile() {
         const liste = document.getElementById('gmDosyaListe'), eylem = document.getElementById('gmTopluEylem'), btn = document.getElementById('gmTopluBtn');
         document.getElementById('gmTopluSonuc').innerHTML = '';
         eylem.style.display = _dosyalar.length ? 'flex' : 'none';
+        _dosyalar.forEach(f => { if (f.ebeveyn) { const e = _dosyalar.find(x => x.id === f.ebeveyn); f.mevzuat = e ? e.mevzuat : ''; f.baslik = e ? e.baslik : ''; } });
         // Önizleme sırası: ana → madde → ek → tablo (aynı mevzuata ait dosyalar birbirinin sonucu üzerine uygulanır)
         const calisma = new Map();
         const eskiBul = a => { const k = MP.normName(a); if (calisma.has(k)) return calisma.get(k); const i = MP.findRegulationIndex(mevzuatDB, a); return i >= 0 ? mevzuatDB[i] : null; };
@@ -544,19 +635,26 @@
         });
         const secenekler = f => '<option value="">— mevzuat seçin —</option>' + mevzuatDB.map(m => m ? `<option value="${esc(m.mevzuat_adi)}"${m.mevzuat_adi === f.mevzuat ? ' selected' : ''}>${esc(m.mevzuat_adi)}</option>` : '').join('')
             + `<option value="__yeni__"${f.mevzuat === '__yeni__' ? ' selected' : ''}>➕ Yeni mevzuat: ${esc(f.baslik || 'dosyadaki başlık')}</option>`;
-        liste.innerHTML = _dosyalar.map(f => {
+        const kartIci = f => {
             const r = sonuclar.get(f.id);
             const noGoster = f.rol === 'ek' || f.rol === 'madde';
-            return `<div class="gm-box-fark">
-                <div style="display:flex;justify-content:space-between;gap:8px;"><b>📄 ${esc(f.ad)}</b><button class="btn btn-secondary btn-sm" onclick="gmDosyaSil(${f.id})">✕</button></div>
-                <div style="color:var(--text-muted);font-size:0.78rem;">${esc(f.tur)}${f.mevzuatNo ? ' · mevzuat no ' + esc(f.mevzuatNo) : ''}</div>
+            const rolNotu = { ana: '📘 Yönetmelik gövdesi + dosyadaki ekler', ek: '📎 Ek dosyası', madde: '📄 Madde(ler)', tablo: '📊 Periyodik kontrol tabloları' }[f.rol];
+            return `<div style="display:flex;justify-content:space-between;gap:8px;"><b>${f.ebeveyn ? '📎' : '📄'} ${esc(f.ad)}</b><button class="btn btn-secondary btn-sm" onclick="gmDosyaSil(${f.id})">✕</button></div>
+                <div style="color:var(--text-muted);font-size:0.78rem;">${esc(f.tur)}${f.mevzuatNo ? ' · mevzuat no ' + esc(f.mevzuatNo) : ''} · ${rolNotu}</div>
                 ${f.tur === 'doc' ? `<div class="gm-uyari" style="font-weight:400;font-size:0.8rem;">⚠ ${esc(DOC_UYARI)}</div>` : ''}
-                <label class="gm-l" style="margin:8px 0 3px;">Bu dosya ne?</label>
-                <select onchange="gmDosyaDeger(${f.id},'rol',this.value)">${Object.keys(ROLLER).map(k => `<option value="${k}"${f.rol === k ? ' selected' : ''}>${ROLLER[k]}</option>`).join('')}</select>
-                <label class="gm-l" style="margin:8px 0 3px;">Hangi mevzuata ait?</label>
-                <select onchange="gmDosyaDeger(${f.id},'mevzuat',this.value)">${secenekler(f)}</select>
+                ${f.ebeveyn ? '' : `<label class="gm-l" style="margin:8px 0 3px;">Hangi mevzuata ait?</label>
+                <select onchange="gmDosyaDeger(${f.id},'mevzuat',this.value)">${secenekler(f)}</select>`}
                 ${noGoster ? `<input type="text" style="margin-top:6px;" value="${esc(f.no)}" placeholder="${f.rol === 'ek' ? "Ek numarası (yalnızca dosyada 'EK-1' başlığı yoksa gerekir)" : "Madde numarası (yalnızca dosyada 'MADDE n' başlığı yoksa gerekir)"}" onchange="gmDosyaDeger(${f.id},'no',this.value)">` : ''}
                 <div style="margin-top:8px;">${gorsel(r)}</div>
+                ${f.ebeveyn ? '' : `<details style="margin-top:6px;"><summary style="font-size:0.8rem;color:var(--text-muted);cursor:pointer;">Gelişmiş: dosya türü yanlış tahmin edildiyse</summary>
+                    <select onchange="gmDosyaDeger(${f.id},'rol',this.value)">${Object.keys(ROLLER).map(k => `<option value="${k}"${f.rol === k ? ' selected' : ''}>${ROLLER[k]}</option>`).join('')}</select></details>`}`;
+        };
+        liste.innerHTML = _dosyalar.filter(f => !f.ebeveyn).map(f => {
+            const cocuklar = _dosyalar.filter(c => c.ebeveyn === f.id);
+            return `<div class="gm-box-fark">${kartIci(f)}
+                ${cocuklar.map(c => `<div style="margin:8px 0 0 12px;padding:8px;border-left:3px solid var(--secondary);">${kartIci(c)}</div>`).join('')}
+                ${f.rol === 'ek' ? '' : `<label class="btn btn-secondary btn-sm" style="display:inline-block;margin-top:8px;cursor:pointer;">➕ Ayrı ek dosyası ekle<input type="file" multiple accept=".txt,.doc,.docx,.htm,.html" style="display:none;" onchange="gmEkDosyasiEkle(${f.id}, this)"></label>
+                <div style="color:var(--text-muted);font-size:0.75rem;margin-top:4px;">Ekler yönetmelikle aynı dosyadaysa bir şey yapmanız gerekmez. Ekler ayrı Word'lerde geliyorsa buradan ekleyin; bu mevzuata bağlanırlar.</div>`}
             </div>`;
         }).join('');
         const sirali = [..._dosyalar].sort((a, b) => ROL_SIRA[a.rol] - ROL_SIRA[b.rol] || a.id - b.id);

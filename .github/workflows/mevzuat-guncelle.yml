@@ -24,6 +24,9 @@ jobs:
         with:
           node-version: 22
 
+      - name: Gerekli paket (docx / zip ekleri için)
+        run: npm install --no-save jszip
+
       - name: mevzuat.gov.tr'den çek ve karşılaştır
         id: g
         run: |
@@ -33,20 +36,22 @@ jobs:
             node tools/guncelle.js
           fi
 
-      - name: Tanılama dosyalarını 'tanilama' dalına gönder
-        if: always() && github.event_name == 'workflow_dispatch'
+      - name: Çekilen metinleri ayrı dallara gönder (uygulama okur / tanılama)
+        if: always()
         continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          [ -d tanilama ] || exit 0
-          cp -r tanilama /tmp/tanilama
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout --orphan tanilama-dal
-          git rm -rf --quiet . || true
-          cp -r /tmp/tanilama/. .
-          git add -A
-          git commit -q -m "Tanılama: çekilen sayfalar"
-          git push -f origin tanilama-dal:tanilama
+          push_dir() {
+            d="$1"; b="$2"
+            [ -d "$d" ] || return 0
+            rm -rf /tmp/pd && mkdir /tmp/pd && cp -r "$d"/. /tmp/pd/
+            ( cd /tmp/pd && git init -q && git checkout -q -b "$b" && git add -A &&
+              git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Otomatik: $b" &&
+              git push -q -f "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" "$b:$b" )
+          }
+          push_dir kaynak_metinler kaynak-metinler
+          push_dir tanilama tanilama
 
       - name: Değişiklik varsa Pull Request aç
         if: steps.g.outputs.degisti == 'true'
