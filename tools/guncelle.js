@@ -154,7 +154,9 @@ async function main() {
         if (!TEST) {
             yeni.guncelleme = SIMDI; yeni.kaynak_url = k.url;
             if (idx >= 0) db[idx] = yeni; else db.push(yeni);
-            gunlukEkle.push({ tarih: SIMDI, mevzuat: yeni.mevzuat_adi, ozet: ozet });
+            const kes = t => String(t || '').length > 6000 ? String(t).slice(0, 6000) + ' …' : t;
+            gunlukEkle.push({ tarih: SIMDI, mevzuat: yeni.mevzuat_adi, ozet: ozet, kaynak: 'mevzuat.gov.tr (otomatik)', adres: k.url,
+                detay: d ? { eklenen: d.eklenen, silinen: d.silinen, degisen: d.degisen.map(x => ({ no: x.no, eski: kes(x.eski), yeni: kes(x.yeni) })), ekDegisen: d.ekDegisen } : null });
         }
         uygulananSayi++;
         let detay = d ? [d.eklenen.length ? 'Eklenen: ' + d.eklenen.join(', ') : '', d.silinen.length ? 'Silinen: ' + d.silinen.join(', ') : '', d.degisen.length ? 'Değişen: ' + d.degisen.map(x => x.no).join(', ') : '', d.ekDegisen.length ? 'Ekler: ' + d.ekDegisen.map(e => e.no + ' ' + e.durum).join(', ') : ''].filter(Boolean).join('<br>') : '';
@@ -166,7 +168,7 @@ async function main() {
     if (!TEST && uygulananSayi > 0) {
         dbYaz(db);
         let g = []; try { g = JSON.parse(fs.readFileSync(GUNLUK_PATH, 'utf8')); } catch (e) { g = []; }
-        g = g.concat(gunlukEkle).slice(-200);
+        g = g.concat(gunlukEkle).slice(-400);
         fs.writeFileSync(GUNLUK_PATH, JSON.stringify(g, null, 2) + '\n');
     }
     const baslik = TEST ? '## Mevzuat güncelleme — TEST (hiçbir dosya değiştirilmedi)' : '## Mevzuat güncelleme';

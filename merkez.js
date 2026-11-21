@@ -186,8 +186,10 @@
           </div>
           <div id="gmFark"></div>
 
-          <h3>☁ Son otomatik güncellemeler (GitHub)</h3>
-          <div id="gmBulutGunluk" style="font-size:0.85rem;color:var(--text-muted);">Yükleniyor…</div>
+          <h3>🕘 Değişiklik geçmişi (tümü)</h3>
+          <div class="gm-help">Otomatik çekimle (GitHub) ve bu cihazda yapılan tüm mevzuat değişiklikleri, en yeni en üstte. Her kaydın <b>Ayrıntıyı göster</b> bölümünde eski ve yeni metin arasındaki fark (silinen kırmızı, eklenen yeşil) görünür.</div>
+          <select id="gmTarihceFiltre" onchange="gmBulutGunluguCiz()"><option value="">Tüm mevzuatlar</option></select>
+          <div id="gmBulutGunluk" style="font-size:0.85rem;">Yükleniyor…</div>
 
           <h3>📜 Bu cihazdaki değişiklikler</h3>
           <div id="gmGecmis"></div>
@@ -225,16 +227,49 @@
         document.getElementById('gmModal').style.display = 'flex';
         gmSecimDegisti(); gmGecmisCiz(); gmListeCiz(); gmBulutGunluguCiz(); gmTopluYenile();
     };
+    // ---- Tam değişiklik geçmişi: bulut (otomatik çekim) + bu cihazdaki kayıtlar, tek zaman çizelgesinde
+    let _bulutGunluk = [];
+    function gecmisDetayHtml(d) {
+        if (!d) return '<div style="color:var(--text-muted)">Bu kayıt için ayrıntı saklanmamış.</div>';
+        let h = '';
+        if (d.eklenen && d.eklenen.length) h += `<div><b>Eklenen maddeler:</b> ${d.eklenen.map(esc).join(', ')}</div>`;
+        if (d.silinen && d.silinen.length) h += `<div><b>Silinen maddeler:</b> ${d.silinen.map(esc).join(', ')}</div>`;
+        if (d.ekDegisen && d.ekDegisen.length) h += `<div><b>Ekler:</b> ${d.ekDegisen.map(e => esc(e.no + ' ' + e.durum)).join(', ')}</div>`;
+        (d.degisen || []).forEach(x => { h += `<details><summary>Madde ${esc(x.no)}</summary><div style="margin-top:6px;">${MP.wordDiffHtml(x.eski, x.yeni)}</div></details>`; });
+        return h || '<div style="color:var(--text-muted)">Madde düzeyinde fark yok.</div>';
+    }
     async function gmBulutGunluguCiz() {
         const el = document.getElementById('gmBulutGunluk');
         try {
             const r = await fetch('./guncelleme_gunlugu.json?v=' + Date.now(), { cache: 'no-store' });
-            const g = r.ok ? await r.json() : [];
-            el.innerHTML = g.length
-                ? g.slice(-6).reverse().map(x => `<div class="gm-satir"><div><b>${esc(x.mevzuat)}</b><br>${esc(new Date(x.tarih).toLocaleDateString('tr-TR'))} · ${esc(x.ozet)}</div></div>`).join('')
-                : 'Henüz otomatik güncelleme yapılmadı. (GitHub\'daki otomatik görev değişiklik bulursa buraya düşer.)';
-        } catch (e) { el.textContent = 'Günlük okunamadı (çevrimdışı olabilirsiniz).'; }
+            _bulutGunluk = r.ok ? await r.json() : [];
+        } catch (e) { _bulutGunluk = []; }
+        const yerel = await yerelDegisiklikleriYukle();
+        // mevzuat filtresi
+        const sel = document.getElementById('gmTarihceFiltre');
+        const adlar = [...new Set([..._bulutGunluk.map(x => x.mevzuat), ...yerel.map(x => x.mevzuat_adi)])].sort((a, b) => a.localeCompare(b, 'tr'));
+        const onceki = sel.value;
+        sel.innerHTML = '<option value="">Tüm mevzuatlar</option>' + adlar.map(a => `<option value="${esc(a)}">${esc(a)}</option>`).join('');
+        if (onceki && adlar.includes(onceki)) sel.value = onceki;
+        const filtre = sel.value;
+        const kayitlar = [];
+        _bulutGunluk.forEach(x => kayitlar.push({ ts: x.tarih, mevzuat: x.mevzuat, ozet: x.ozet, kaynak: '☁ ' + (x.kaynak || 'GitHub otomatik çekim'), detay: x.detay || null, var: !!x.detay }));
+        yerel.forEach(rec => {
+            let detay = null;
+            try { if (rec.mod !== 'tablo' && rec.onceki) { const yeni = kayitSonucu(rec.onceki, rec); if (yeni) detay = MP.diffRegulations(rec.onceki, yeni); } } catch (e) { /* özet yeter */ }
+            const tur = rec.mod === 'tam' ? 'tamamı' : rec.mod === 'madde' ? 'madde ' + (rec.maddeNos || []).join(', ') : rec.mod === 'ek' ? 'ek ' + (rec.ekNos || []).join(', ') : 'tablolar';
+            kayitlar.push({ ts: rec.ts, mevzuat: rec.mevzuat_adi, ozet: rec.ozet + ' (' + tur + ')' + (rec.not ? ' · ' + rec.not : ''), kaynak: '💻 Bu cihaz', detay, var: !!detay });
+        });
+        const liste = kayitlar.filter(k => !filtre || k.mevzuat === filtre).sort((a, b) => String(b.ts).localeCompare(String(a.ts)));
+        el.innerHTML = liste.length ? liste.map(k => `<div class="gm-box-fark" style="margin-top:8px;">
+                <div><b>${esc(k.mevzuat)}</b></div>
+                <div style="color:var(--text-muted);font-size:0.8rem;">${esc(new Date(k.ts).toLocaleString('tr-TR'))} · ${esc(k.kaynak)}</div>
+                <div style="margin:4px 0;">${esc(k.ozet)}</div>
+                ${k.var ? `<details><summary>Ayrıntıyı göster</summary><div style="margin-top:6px;">${gecmisDetayHtml(k.detay)}</div></details>` : ''}
+            </div>`).join('')
+            : 'Henüz kayıtlı değişiklik yok. (Otomatik güncelleme ya da elle yaptığınız her değişiklik burada tarih sırasıyla birikir.)';
     }
+    window.gmBulutGunluguCiz = gmBulutGunluguCiz;
     window.gmKapat = function () { document.getElementById('gmModal').style.display = 'none'; };
 
     window.gmSecimDegisti = function () {
@@ -422,7 +457,7 @@
         }
         await yerelKaydet(kayitlar);
         precomputeTfIdf('Mevzuat güncellendi');
-        setTimeout(() => { gmGecmisCiz(); gmListeCiz(); try { renderFinalReport(); } catch (e) { /* */ } }, 600);
+        setTimeout(() => { gmGecmisCiz(); gmListeCiz(); gmBulutGunluguCiz(); try { renderFinalReport(); } catch (e) { /* */ } }, 600);
         return ozetler.join(' | ');
     }
 

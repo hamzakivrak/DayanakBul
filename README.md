@@ -27,6 +27,10 @@ Güncelleme Merkezi → **📂 Dosyalardan toplu güncelleme**: mevzuat.gov.tr'd
 
 Not: eski `.doc` biçiminde Word'ün otomatik liste numaraları (1-, 2- …) okunamaz; numaralar önemliyse Word'de *Farklı kaydet → .docx* yapıp onu yükleyin.
 
+## Değişiklik geçmişi
+
+Güncelleme Merkezi → **🕘 Değişiklik geçmişi**: otomatik çekimle (GitHub) ve bu cihazda yapılan tüm değişiklikler tarih sırasıyla listelenir; mevzuata göre süzülür, her kaydın **Ayrıntıyı göster** bölümünde madde madde eski/yeni metin farkı görünür. Otomatik çekimde ayrıntı, PR birleştirildiğinde `guncelleme_gunlugu.json` içine yazılır (bu özellikten sonraki çekimler için).
+
 ## Dosyalar
 
 | Dosya | Görev |
