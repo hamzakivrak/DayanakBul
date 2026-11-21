@@ -112,6 +112,13 @@ async function main() {
         }
         ulasilanSayi++;
         const { metin } = sonuc;
+        try { // tanılama: çekilen ham sayfa ve metne çevrilmiş hali (iş akışı bunları 'tanilama' dalına gönderir)
+            fs.mkdirSync('tanilama', { recursive: true });
+            const slug = P.normName(k.ad).replace(/ /g, '_').slice(0, 50);
+            fs.writeFileSync(`tanilama/${slug}.ham.html`, sonuc.r.text);
+            fs.writeFileSync(`tanilama/${slug}.metin.txt`, metin);
+            fs.writeFileSync(`tanilama/${slug}.bilgi.txt`, `adres: ${sonuc.adres}\ntip: ${sonuc.r.tip}\nbayt: ${sonuc.r.bayt}\n`);
+        } catch (e) { /* tanılama başarısız olsa da devam */ }
         if (TEST) log(`    metnin ilk 160 karakteri: ${JSON.stringify(metin.slice(0, 160))}`);
         if (!adBenzerMi(k.ad, metin)) {
             rows.push({ ad: k.ad, durum: '⚠ Atlandı: sayfa başka bir mevzuat gibi görünüyor', detay: 'kaynaklar.txt adresini kontrol edin.' });

@@ -33,6 +33,21 @@ jobs:
             node tools/guncelle.js
           fi
 
+      - name: Tanılama dosyalarını 'tanilama' dalına gönder
+        if: always() && github.event_name == 'workflow_dispatch'
+        continue-on-error: true
+        run: |
+          [ -d tanilama ] || exit 0
+          cp -r tanilama /tmp/tanilama
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan tanilama-dal
+          git rm -rf --quiet . || true
+          cp -r /tmp/tanilama/. .
+          git add -A
+          git commit -q -m "Tanılama: çekilen sayfalar"
+          git push -f origin tanilama-dal:tanilama
+
       - name: Değişiklik varsa Pull Request aç
         if: steps.g.outputs.degisti == 'true'
         env:
