@@ -1741,8 +1741,8 @@
         return AI_EXCLUDED.some(x => n.includes(x));
     }
 
-    // En fazla 2 işçi (birincil sağlayıcının key sayısına göre): her işçi kendi key'ine bağlı çalışır,
-    // bir grup çalışırken diğer key dinlenir. Tek key varsa sıralı çalışır.
+    // En fazla 2 eşzamanlı işçi. Her iş sıra numarasına göre key alır (iş k -> key k mod N); böylece
+    // 4 key varsa önce 1-2, sonra 3-4, sonra tekrar 1-2 çalışır, diğerleri dinlenir. Tek key varsa sıralı çalışır.
     async function paralelIsle(isler, fn, nefesMs = 1000) {
         const keyN = primaryAI === 'gemini' ? geminiApiKeys.length : apiKeys.length;
         const W = Math.max(1, Math.min(2, keyN, isler.length));
@@ -1750,10 +1750,11 @@
         await Promise.all(Array.from({ length: W }, async (_, w) => {
             let ilk = true;
             while (sira < isler.length) {
-                const is = isler[sira++];
+                const no = sira++;
+                const is = isler[no];
                 if (!ilk) await new Promise(r => setTimeout(r, nefesMs));
                 ilk = false;
-                await fn(is, w);
+                await fn(is, no); // iş no'su key'i belirler: 1-2. iş key 1-2, 3-4. iş key 3-4 ... (key'ler sırayla dinlenir)
             }
         }));
     }
@@ -1786,7 +1787,7 @@ Kurallar:
         let okunan = 0, hataliGrup = 0;
         const gruplar = []; for (let st = 0; st < violationsArray.length; st += GRUP) gruplar.push(st);
         let bitenIhlal = 0;
-        await paralelIsle(gruplar, async (st, w) => {
+        await paralelIsle(gruplar, async (st, jobNo) => {
             btn.innerHTML = `⏳ Düşünüyor... ${bitenIhlal}/${violationsArray.length}`;
             const girdi = violationsArray.slice(st, st + GRUP).map((v, k) => {
                 const ids = [...new Set(ipcFind(v.text, allowedIds, 3, 0.4).map(h => h.r._mi))].slice(0, 2);
@@ -1795,7 +1796,7 @@ Kurallar:
             const prompt = kurallar + '\n\nİHLALLER (id|metin):\n' + girdi + '\n\nMEVZUATLAR (id|ad):\n' + mevListe;
             let parsed = null;
             try {
-                let data = await smartAIFetch(prompt, 0.1, w);
+                let data = await smartAIFetch(prompt, 0.1, jobNo);
                 parsed = safeParseJSON(data.choices[0].message.content);
             } catch (e) { hataliGrup++; logDebug(`Mevzuat öneri grubu ${st + 1}. ihlalden başlayan: ${e.message}`, "warn"); return; }
             if (!parsed || !Array.isArray(parsed.eslesmeler)) { hataliGrup++; return; }
@@ -2104,7 +2105,7 @@ Kurallar:
 
         try {
             const paketler = []; for (let i = 0; i < bulkData.length; i += BATCH_SIZE) paketler.push(i);
-            await paralelIsle(paketler, async (i, w) => {
+            await paralelIsle(paketler, async (i, jobNo) => {
                 let chunk = bulkData.slice(i, i + BATCH_SIZE);
                 
                 statusText.innerText = `İşleniyor: ${processedCount + 1} - ${processedCount + chunk.length} / ${bulkData.length} (Adım 1: Kelime Analizi)`;
@@ -2145,7 +2146,7 @@ ${JSON.stringify(chunk.map(d => ({
                 try {
                     if (aiyeGidecek.length) {
                         const p1 = prompt1.slice(0, prompt1.indexOf('GİRDİ İHLALLER:')) + 'GİRDİ İHLALLER:\n' + JSON.stringify(aiyeGidecek.map(d => ({ vIndex: d.vIndex, ihlal: d.ihlal, secili_mevzuatlar: d.mevzuatlar.map(m=>m.name), kullanici_anahtar_kelimesi: ilkKw(violationsArray[d.vIndex].userKeyword) || "Yok" })));
-                        data1 = await smartAIFetch([{ role: 'system', content: p1 }], 0.1, w);
+                        data1 = await smartAIFetch([{ role: 'system', content: p1 }], 0.1, jobNo);
                         parsed1 = safeParseJSON(data1.choices[0].message.content);
                     } else parsed1 = { analiz: [] };
                     if (parsed1 && Array.isArray(parsed1.analiz)) parsed1.analiz = parsed1.analiz.concat(hazirAnaliz);
@@ -2252,7 +2253,7 @@ GİRDİ:
 ${JSON.stringify(candidatePayload)}`;
                     
                     try {
-                        let data2 = await smartAIFetch([{ role: 'system', content: prompt2 }], 0.1, w);
+                        let data2 = await smartAIFetch([{ role: 'system', content: prompt2 }], 0.1, jobNo);
                         let parsed2 = safeParseJSON(data2.choices[0].message.content);
 
                         if(parsed2 && parsed2.secimler && Array.isArray(parsed2.secimler)) {
