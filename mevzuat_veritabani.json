@@ -5869,7 +5869,23 @@
               },
               {
                 "bent_harfi": "ş",
-                "metin": "Yeraltı ve yerüstü maden işlerinin yapıldığı işyerleri: Madenlerin yeraltı veya yerüstünden çıkarılması, madenlerin çıkarma amacıyla araştırılması, çıkarılan madenlerin işlenmesi hariç, satışa hazırlanması işlerini, ifade eder. İKİNCİ BÖLÜM İşverenlerin ve Çalışanların Yükümlülükleri İşverenin genel yükümlülükleri"
+                "metin": "Yeraltı ve yerüstü maden işlerinin yapıldığı işyerleri: Madenlerin yeraltı veya yerüstünden çıkarılması, madenlerin çıkarma amacıyla araştırılması, çıkarılan madenlerin işlenmesi hariç, satışa hazırlanması işlerini,"
+              },
+              {
+                "bent_harfi": "t",
+                "metin": "(Ek:RG-21/7/2026-33316) Ana havalandırma fanı: Yeraltı maden işyerlerinde havalandırmayı sağlamak amacı ile kullanılan ana vantilatör ya da ana aspiratörü,"
+              },
+              {
+                "bent_harfi": "u",
+                "metin": "(Ek:RG-21/7/2026-33316) Tali havalandırma fanı: Ana havalandırma akışı ile bağlantısı bulunan hazırlık ve kurtarma çalışmalarının yapıldığı yerlerde kullanılan fanı,"
+              },
+              {
+                "bent_harfi": "ü",
+                "metin": "(Ek:RG-21/7/2026-33316) Yedek güç sistemi: Ana elektrik şebekesinden ve diğer dış besleme hatlarından bağımsız olarak çalışan, ana enerjinin kesilmesi halinde bağlı bulunduğu sistemleri besleyebilecek kapasitede tasarlanmış jeneratör veya jeneratör benzeri güç sistemlerini,"
+              },
+              {
+                "bent_harfi": "v",
+                "metin": "(Ek:RG-21/7/2026-33316) Yedek havalandırma fanı: Ana havalandırma fanının devre dışı kalması durumunda kullanılan vantilatörü ya da aspiratörü, ifade eder. İKİNCİ BÖLÜM İşverenlerin ve Çalışanların Yükümlülükleri İşverenin genel yükümlülükleri"
               }
             ]
           }
@@ -6070,11 +6086,11 @@
       },
       {
         "madde_no": "14",
-        "baslik": "(1) 11/3/1997 tarihli ve 22930 sayılı Resmî Gazete’de yayımlanan Grizulu Ocaklarda Elektrik Enerjisi Kullanılması Hakkında Yönetmelik, 13/4/1997 tarihli ve 22963 sayılı Resmî Gazete’de yayımlanan Deniz, Göl veya Nehir Altında Bulunan Madenlerdeki Çalışmalar Hakkında Yönetmelik, 28/5/1997 tarihli ve 23002 sayılı Resmî Gazete’de yayımlanan Yeraltı Maden İşletmelerinde Elektrikli Lokomotiflerin Kullanılması Hakkında Yönetmelik, 21/2/2004 tarihli ve 25380 sayılı Resmî Gazete’de yayımlanan Yeraltı ve Yerüstü Maden İşletmelerinde Sağlık ve Güvenlik Şartları Yönetmeliği ile 22/2/2004 tarihli ve 25381 sayılı Resmî Gazete’de yayımlanan Sondajla Maden Çıkarılan İşletmelerde Sağlık ve Güvenlik Şartları Yönetmeliği  yürürlükten kaldırılmıştır.",
+        "baslik": "(1) 11/3/1997 tarihli ve 22930 sayılı Resmî Gazete’de yayımlanan Grizulu Ocaklarda Elektrik Enerjisi Kullanılması Hakkında Yönetmelik, 13/4/1997 tarihli ve 22963 sayılı Resmî Gazete’de yayımlanan Deniz, Göl veya Nehir Altında Bulunan Madenlerdeki Çalışmalar Hakkında Yönetmelik, 28/5/1997 tarihli ve 23002 sayılı Resmî Gazete’de yayımlanan Yeraltı Maden İşletmelerinde Elektrikli Lokomotiflerin Kullanılması Hakkında Yönetmelik, 21/2/2004 tarihli ve 25380 sayılı Resmî Gazete’de yayımlanan Yeraltı ve Yerüstü Maden İşletmelerinde Sağlık ve Güvenlik Şartları Yönetmeliği ile 22/2/2004 tarihli ve 25381 sayılı Resmî Gazete’de yayımlanan Sondajla Maden Çıkarılan İşletmelerde Sağlık ve Güvenlik Şartları Yönetmeliği yürürlükten kaldırılmıştır.",
         "fikralar": [
           {
             "fikra_no": "1",
-            "metin": "11/3/1997 tarihli ve 22930 sayılı Resmî Gazete’de yayımlanan Grizulu Ocaklarda Elektrik Enerjisi Kullanılması Hakkında Yönetmelik, 13/4/1997 tarihli ve 22963 sayılı Resmî Gazete’de yayımlanan Deniz, Göl veya Nehir Altında Bulunan Madenlerdeki Çalışmalar Hakkında Yönetmelik, 28/5/1997 tarihli ve 23002 sayılı Resmî Gazete’de yayımlanan Yeraltı Maden İşletmelerinde Elektrikli Lokomotiflerin Kullanılması Hakkında Yönetmelik, 21/2/2004 tarihli ve 25380 sayılı Resmî Gazete’de yayımlanan Yeraltı ve Yerüstü Maden İşletmelerinde Sağlık ve Güvenlik Şartları Yönetmeliği ile 22/2/2004 tarihli ve 25381 sayılı Resmî Gazete’de yayımlanan Sondajla Maden Çıkarılan İşletmelerde Sağlık ve Güvenlik Şartları Yönetmeliği  yürürlükten kaldırılmıştır. EK MADDE 1 – (Ek:RG-24/9/2014-29129) (1)  (Değişik:RG-10/3/2015-29291) (3)",
+            "metin": "11/3/1997 tarihli ve 22930 sayılı Resmî Gazete’de yayımlanan Grizulu Ocaklarda Elektrik Enerjisi Kullanılması Hakkında Yönetmelik, 13/4/1997 tarihli ve 22963 sayılı Resmî Gazete’de yayımlanan Deniz, Göl veya Nehir Altında Bulunan Madenlerdeki Çalışmalar Hakkında Yönetmelik, 28/5/1997 tarihli ve 23002 sayılı Resmî Gazete’de yayımlanan Yeraltı Maden İşletmelerinde Elektrikli Lokomotiflerin Kullanılması Hakkında Yönetmelik, 21/2/2004 tarihli ve 25380 sayılı Resmî Gazete’de yayımlanan Yeraltı ve Yerüstü Maden İşletmelerinde Sağlık ve Güvenlik Şartları Yönetmeliği ile 22/2/2004 tarihli ve 25381 sayılı Resmî Gazete’de yayımlanan Sondajla Maden Çıkarılan İşletmelerde Sağlık ve Güvenlik Şartları Yönetmeliği yürürlükten kaldırılmıştır. EK MADDE 1 – (Ek:RG-24/9/2014-29129) (1) (Değişik:RG-10/3/2015-29291) (3)",
             "bentler": []
           },
           {
@@ -6087,7 +6103,7 @@
               },
               {
                 "bent_harfi": "b",
-                "metin": "Yeraltı kömür madenleri için bu kaçış hız ve sürelerini belirlerken; kaçış yolundaki engeller, galeri yüksekliği ve eğimi, madenin jeolojik yapısı ile kaçış yolunu aynı anda kullanacak kişi sayısı gibi hususları göz önünde bulundurur. Tablo-1: Kuyu, Desandre, Galeri ve Taban Yollarında Kaçış Hızları Eğim (Derece)\tKuyu, Desandre, Galeri, Taban Yolları Çıkışta Kaçış Hızı (m/dakika)\tİnişte Kaçış Hızı (m/dakika) 0->10\t40\t45 10->20\t25\t30 20->45\t15\t20 >45 (Kuyu, Bür)\t4\t8 Tablo-2: Üretim Alanlarında Kaçış Hızları Eğim (Derece)\tDamar Kalınlığı (m)\tÜretim Alanlarında Çıkışta Kaçış Hızı (m/dakika)\tİnişte Kaçış Hızı (m/dakika) 0->20\t0.50->1.00\t8\t8 0->20\t1.00->1.40\t10\t10 0->20\t1.40->1.80\t15\t15 0->20\t>1.80\t20\t25 20->45\t>1.00\t10\t15 >45 (Kelebe, Fere)\t>1.00\t4\t8"
+                "metin": "Yeraltı kömür madenleri için bu kaçış hız ve sürelerini belirlerken; kaçış yolundaki engeller, galeri yüksekliği ve eğimi, madenin jeolojik yapısı ile kaçış yolunu aynı anda kullanacak kişi sayısı gibi hususları göz önünde bulundurur. Tablo-1: Kuyu, Desandre, Galeri ve Taban Yollarında Kaçış Hızları Eğim (Derece) Kuyu, Desandre, Galeri, Taban Yolları Çıkışta Kaçış Hızı (m/dakika) İnişte Kaçış Hızı (m/dakika) 0->10 40 45 10->20 25 30 20->45 15 20 >45 (Kuyu, Bür) 4 8 Tablo-2: Üretim Alanlarında Kaçış Hızları Eğim (Derece) Damar Kalınlığı (m) Üretim Alanlarında Çıkışta Kaçış Hızı (m/dakika) İnişte Kaçış Hızı (m/dakika) 0->20 0.50->1.00 8 8 0->20 1.00->1.40 10 10 0->20 1.40->1.80 15 15 0->20 >1.80 20 25 20->45 >1.00 10 15 >45 (Kelebe, Fere) >1.00 4 8"
               },
               {
                 "bent_harfi": "c",
@@ -6150,7 +6166,7 @@
         "fikralar": [
           {
             "fikra_no": "1",
-            "metin": "Bu Yönetmelik hükümlerini Çalışma ve Sosyal Güvenlik Bakanı yürütür. ¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬__________",
+            "metin": "Bu Yönetmelik hükümlerini Çalışma ve Sosyal Güvenlik Bakanı yürütür. ­­­­­­­­­­­­­­­­­­­­­__________",
             "bentler": []
           },
           {
@@ -6160,7 +6176,7 @@
           },
           {
             "fikra_no": "2",
-            "metin": "Bu değişiklik 1/1/2016 tarihinden  geçerli olmak üzere yürürlüğe girer. Yönetmeliğin Yayımlandığı Resmî Gazete’nin Tarihi\tSayısı 19/9/2013\t28770 Yönetmelikte Değişiklik Yapan Yönetmeliklerin Yayımlandığı Resmî Gazetelerin Tarihi\tSayısı 1       \t24/9/2014\t29129 2\t10/3/2015\t29291 3\t24/3/2016 \t 29663 4       \t18/11/2017\t30244",
+            "metin": "Bu değişiklik 1/1/2016 tarihinden geçerli olmak üzere yürürlüğe girer. Yönetmeliğin Yayımlandığı Resmî Gazete’nin Tarihi Sayısı 19/9/2013 28770 Yönetmelikte Değişiklik Yapan Yönetmeliklerin Yayımlandığı Resmî Gazetelerin Tarihi Sayısı 1 24/9/2014 29129 2 10/3/2015 29291 3 24/3/2016 29663 4 18/11/2017 30244 5 21/7/2026 33316",
             "bentler": []
           }
         ],
@@ -6172,7 +6188,7 @@
       {
         "ek_no": "EK-1",
         "baslik": "",
-        "bagli_oldugu_madde": "Madde: 13(2) a",
+        "bagli_oldugu_madde": "Madde: 13(2) a (Alt Atıflar: Madde: 14(1))",
         "maddeler": [
           {
             "madde_no": "1",
@@ -6633,7 +6649,7 @@
             "baslik": "",
             "fikralar": [],
             "bentler": [],
-            "metin": "2/7/2013  tarihli ve 28695 sayılı Resmî Gazete’de yayımlanan Kişisel Koruyucu Donanımların İşyerinde Kullanılması Hakkında Yönetmelik hükümleri saklı kalmak kaydı ile çalışanların zararlı ortam havasına maruz kalabilecekleri yerlerde yeterli sayıda uygun solunum ve canlandırma ekipmanı bulundurulur. Bu yerlerde bu ekipmanı kullanabilecek eğitime sahip yeterli sayıda çalışan bulunur. Bu ekipman uygun yerlerde saklanır ve korunur."
+            "metin": "2/7/2013 tarihli ve 28695 sayılı Resmî Gazete’de yayımlanan Kişisel Koruyucu Donanımların İşyerinde Kullanılması Hakkında Yönetmelik hükümleri saklı kalmak kaydı ile çalışanların zararlı ortam havasına maruz kalabilecekleri yerlerde yeterli sayıda uygun solunum ve canlandırma ekipmanı bulundurulur. Bu yerlerde bu ekipmanı kullanabilecek eğitime sahip yeterli sayıda çalışan bulunur. Bu ekipman uygun yerlerde saklanır ve korunur."
           },
           {
             "madde_no": "5.3.4",
@@ -6682,14 +6698,14 @@
             "baslik": "",
             "fikralar": [],
             "bentler": [],
-            "metin": "Yangınla mücadele ekipmanları, 11/9/2013  tarihli ve 28762 sayılı Resmî Gazete’de yayımlanan Sağlık ve Güvenlik İşaretleri Yönetmeliği hükümlerine uygun şekilde işaretlenir. Bu işaretler uygun yerlere konur ve kalıcı olur."
+            "metin": "Yangınla mücadele ekipmanları, 11/9/2013 tarihli ve 28762 sayılı Resmî Gazete’de yayımlanan Sağlık ve Güvenlik İşaretleri Yönetmeliği hükümlerine uygun şekilde işaretlenir. Bu işaretler uygun yerlere konur ve kalıcı olur."
           },
           {
             "madde_no": "5.4.6",
             "baslik": "",
             "fikralar": [],
             "bentler": [],
-            "metin": "(Değişik:RG-10/3/2015-29291) Kendiliğinden yanmaya elverişli madenlerde, bekleme barajları dahil olmak üzere gerekli tedbirler alınır. Yangın veya sızdırmazlık bekleme barajları üretimi biten panoların ya da herhangi bir yangın riskine karşı asgari olarak her üretim panosunun alt taban ve üst taban yollarında kurulur, bunlar dışında kurulacak bölgeler sağlık ve güvenlik dokümanında belirlenir. Ocağın ana hava giriş ve çıkışında bir yangın tehlikesine karşı, ocağın giriş ve çıkışını tamamen kapatabilecek miktarda malzeme bulundurulur. Üretimi biten eski imalat ve panolardaki kalıcı bekleme barajları hava sızdırmaz, basınca dayanıklı ve tahrip olmayacak şekilde kurulur ve ocak gazları yönünden sürekli kontrol altında bulundurulur.  Bu barajlar, baraj arkalarında oluşabilecek gaz basıncı ve su baskınına karşı dayanımı hesaplanarak kurularak sağlık ve güvenlik dokümanında belirtilir. Barajların arkasında bulunan oksijen, metan, karbonmonoksit, hidrojensülfür vb. ocak gazları ile sıcaklık ölçümleri 10 günde bir, değişiklik tespit edilmesi halinde sürekli yapılır ve kayıt altına alınır. Barajların açılmasında gerekli güvenlik tedbirleri alınır. Bu barajlar hazırlanacak olan yeraltı çalışma planlarında gösterilir."
+            "metin": "(Değişik:RG-10/3/2015-29291) Kendiliğinden yanmaya elverişli madenlerde, bekleme barajları dahil olmak üzere gerekli tedbirler alınır. Yangın veya sızdırmazlık bekleme barajları üretimi biten panoların ya da herhangi bir yangın riskine karşı asgari olarak her üretim panosunun alt taban ve üst taban yollarında kurulur, bunlar dışında kurulacak bölgeler sağlık ve güvenlik dokümanında belirlenir. Ocağın ana hava giriş ve çıkışında bir yangın tehlikesine karşı, ocağın giriş ve çıkışını tamamen kapatabilecek miktarda malzeme bulundurulur. Üretimi biten eski imalat ve panolardaki kalıcı bekleme barajları hava sızdırmaz, basınca dayanıklı ve tahrip olmayacak şekilde kurulur ve ocak gazları yönünden sürekli kontrol altında bulundurulur. Bu barajlar, baraj arkalarında oluşabilecek gaz basıncı ve su baskınına karşı dayanımı hesaplanarak kurularak sağlık ve güvenlik dokümanında belirtilir. Barajların arkasında bulunan oksijen, metan, karbonmonoksit, hidrojensülfür vb. ocak gazları ile sıcaklık ölçümleri 10 günde bir, değişiklik tespit edilmesi halinde sürekli yapılır ve kayıt altına alınır. Barajların açılmasında gerekli güvenlik tedbirleri alınır. Bu barajlar hazırlanacak olan yeraltı çalışma planlarında gösterilir."
           },
           {
             "madde_no": "6",
@@ -6717,7 +6733,7 @@
             "baslik": "",
             "fikralar": [],
             "bentler": [],
-            "metin": "Yeraltındaki patlayıcı madde depoları, bir patlama halinde, çalışanların çalıştığı yerlere, yollara ve ana havalandırma yoluna zarar vermeyecek ve çalışanlar için tehlike oluşturmayacak uzaklıkta, çatlak ve göçük yapmayacak, olabildiğince su sızdırmayacak, alt ve üst kattaki çalışmalara zarar vermeyecek ve çalışmalardan zarar görmeyecek bir yerde olmalıdır. Patlayıcı madde depolarının yakınında çalışma yapılırken,  yangın ve patlamaya neden olunmaması için sağlık ve güvenlik tedbirleri alınır ve hiçbir tutuşturucu kaynakla çalışma yapılmaz. 50 kilogramdan az patlayıcı madde bulunan depolara ana yoldan 90 derecelik bir, daha çok patlayıcı madde bulunan depolara 90 derecelik iki dirsek oluşturan yolla girilmeli ve patlayıcı madde deponun son kısmına konulmalıdır. Bir patlama olasılığına karşı, patlayıcı madde depolarının karşısına, dirseklerden en az üç metre derinlikte hız kesici cepler yapılmalıdır. Yeraltı deposunda, sıcaklığın 8 dereceden aşağı ve 30 dereceden yukarı olmaması sağlanır. Patlayıcı madde dağıtımı, depo çıkışındaki özel bir cepte yapılır ve buralarda statik elektrik boşalmasına karşı gereken tedbirler alınır."
+            "metin": "Yeraltındaki patlayıcı madde depoları, bir patlama halinde, çalışanların çalıştığı yerlere, yollara ve ana havalandırma yoluna zarar vermeyecek ve çalışanlar için tehlike oluşturmayacak uzaklıkta, çatlak ve göçük yapmayacak, olabildiğince su sızdırmayacak, alt ve üst kattaki çalışmalara zarar vermeyecek ve çalışmalardan zarar görmeyecek bir yerde olmalıdır. Patlayıcı madde depolarının yakınında çalışma yapılırken, yangın ve patlamaya neden olunmaması için sağlık ve güvenlik tedbirleri alınır ve hiçbir tutuşturucu kaynakla çalışma yapılmaz. 50 kilogramdan az patlayıcı madde bulunan depolara ana yoldan 90 derecelik bir, daha çok patlayıcı madde bulunan depolara 90 derecelik iki dirsek oluşturan yolla girilmeli ve patlayıcı madde deponun son kısmına konulmalıdır. Bir patlama olasılığına karşı, patlayıcı madde depolarının karşısına, dirseklerden en az üç metre derinlikte hız kesici cepler yapılmalıdır. Yeraltı deposunda, sıcaklığın 8 dereceden aşağı ve 30 dereceden yukarı olmaması sağlanır. Patlayıcı madde dağıtımı, depo çıkışındaki özel bir cepte yapılır ve buralarda statik elektrik boşalmasına karşı gereken tedbirler alınır."
           },
           {
             "madde_no": "6.4",
@@ -6866,7 +6882,7 @@
             "baslik": "",
             "fikralar": [],
             "bentler": [],
-            "metin": "Yayaların kullandığı ve/veya araçlarla malzeme taşımada kullanılan yollar, kullanıcı sayısına ve işyerinde yapılan işin özelliğine uygun boyutlarda olmalıdır.  Madenin üretim yöntemi ve teknik özellikleri göz önünde bulundurularak çalışanların çalışma yerlerine ulaşmaları için gerekli teçhizat, donanım ve araç sağlanır. Malzeme taşınan yollarda yayalar için yeterli güvenlik mesafesi bırakılır."
+            "metin": "Yayaların kullandığı ve/veya araçlarla malzeme taşımada kullanılan yollar, kullanıcı sayısına ve işyerinde yapılan işin özelliğine uygun boyutlarda olmalıdır. Madenin üretim yöntemi ve teknik özellikleri göz önünde bulundurularak çalışanların çalışma yerlerine ulaşmaları için gerekli teçhizat, donanım ve araç sağlanır. Malzeme taşınan yollarda yayalar için yeterli güvenlik mesafesi bırakılır."
           },
           {
             "madde_no": "8.4",
@@ -7661,7 +7677,7 @@
             "baslik": "",
             "fikralar": [],
             "bentler": [],
-            "metin": "Ateşlemelerden ve donmaları izleyen arazi gevşemesi kar, yağmur vb. doğal olaylardan sonra, yeniden işe başlamalarda, kademe yüzleri ve çevresi bu işe ayrılmış deneyimli çalışanlar tarafından yukarıdan başlanıp aşağıya doğru sürdürülmek suretiyle çatlak sökümü yapılarak temizlenir. Bu çalışmalar  gerekli iş sağlığı ve güvenliği tedbirleri alınarak yapılır."
+            "metin": "Ateşlemelerden ve donmaları izleyen arazi gevşemesi kar, yağmur vb. doğal olaylardan sonra, yeniden işe başlamalarda, kademe yüzleri ve çevresi bu işe ayrılmış deneyimli çalışanlar tarafından yukarıdan başlanıp aşağıya doğru sürdürülmek suretiyle çatlak sökümü yapılarak temizlenir. Bu çalışmalar gerekli iş sağlığı ve güvenliği tedbirleri alınarak yapılır."
           },
           {
             "madde_no": "1.10",
@@ -7727,7 +7743,7 @@
       {
         "ek_no": "EK-3",
         "baslik": "",
-        "bagli_oldugu_madde": "Madde: 13(2) c",
+        "bagli_oldugu_madde": "Madde: 13(2) c (Alt Atıflar: Madde: 14(1), Madde: 14(2))",
         "maddeler": [
           {
             "madde_no": "1",
@@ -7811,7 +7827,7 @@
             "baslik": "",
             "fikralar": [],
             "bentler": [],
-            "metin": "Taşıma yollarında,  varageller ve kuyularda malzeme taşınmasında kullanılan araçların ve özellikle katarların yoldan kaçmalarını önlemek, çalışanların bu tehlikeli durumlardan korunmalarını sağlamak üzere, gerekli sağlık ve güvenlik tedbirleri alınır."
+            "metin": "Taşıma yollarında, varageller ve kuyularda malzeme taşınmasında kullanılan araçların ve özellikle katarların yoldan kaçmalarını önlemek, çalışanların bu tehlikeli durumlardan korunmalarını sağlamak üzere, gerekli sağlık ve güvenlik tedbirleri alınır."
           },
           {
             "madde_no": "3.7",
@@ -8171,7 +8187,7 @@
             "baslik": "",
             "fikralar": [],
             "bentler": [],
-            "metin": "Ana vantilatör ve aspiratörler birbirinden bağımsız iki ayrı enerji kaynağına bağlanır. Bu enerji kaynaklarından birinin durması halinde diğer kaynağın ocak havalandırmasını aksatmayacak en kısa zamanda devreye girmesi sağlanır."
+            "metin": "(Değişik cümle:RG-21/7/2026-33316) Ana havalandırma fanı ana enerji sistemi dışında yedek güç sistemine de bağlı durumda olur. Bu enerji kaynaklarından birinin durması halinde diğer kaynağın ocak havalandırmasını aksatmayacak en kısa zamanda devreye girmesi sağlanır."
           },
           {
             "madde_no": "8.9",
@@ -8218,10 +8234,14 @@
               },
               {
                 "bent_harfi": "f",
-                "metin": "Ölçümler sonrasında alınacak tedbirler, ile ilgili hususlar yer alır."
+                "metin": "Ölçümler sonrasında alınacak tedbirler,"
+              },
+              {
+                "bent_harfi": "g",
+                "metin": "(Ek:RG-21/7/2026-33316) Grizulu maden ocaklarında tali havalandırma fanının arızalanması durumunda tali havalandırma fanının yedeğinin kurulum talimatı ve bu işlemde görevlendirilen çalışanlar, ile ilgili hususlar yer alır."
               }
             ],
-            "metin": "Havalandırma ile ilgili aşağıdaki ayrıntıları kapsayan ve ilgili mevzuat hükümleri doğrultusunda hazırlanan bir yönerge hazırlanır ve çalışanların görebileceği yerlere asılır. Bu Yönergede;"
+            "metin": "Havalandırma ile ilgili aşağıdaki ayrıntıları kapsayan ve ilgili mevzuat hükümleri doğrultusunda (Mülga ibare:RG-21/7/2026-33316) bir yönerge hazırlanır ve çalışanların görebileceği yerlere asılır. Bu Yönergede;"
           },
           {
             "madde_no": "9",
@@ -8280,7 +8300,7 @@
             "baslik": "",
             "fikralar": [],
             "bentler": [],
-            "metin": "Grizulu ocaklarda havalandırma ile ilgili değerler her vardiyada ölçülür, metan gazı ölçümleri bu ölçümlerle beraber yapılır. Havada % 1’den çok metan gazı tespitinde, bu oran  % 1’in altına düşünceye kadar ölçümler aralıksız sürdürülür. Üretim ünitelerinden dönüş havası içinde ve üretim yerlerindeki gazların birikebileceği yerlerde metan gazı seviyesi sürekli olarak izlenir. (Ek cümleler:RG-10/3/2015-29291) Merkezi izleme sistemine bağlı sensörler; oksijen, metan, karbonmonoksit, hidrojensülfür, sıcaklık ve hava hızı değerlerini ölçecek şekilde, sayıları ve yerleri sağlık ve güvenlik dokümanında belirtilerek yerleştirilir. Ancak, bu sensörler, asgari olarak, ocağın ana hava giriş yolunda, üretim bölgelerinin her birinin temiz hava giriş ve hava dönüş yollarında, hazırlık çalışması yapılan bölgelerin hava dönüş yollarında ve ocağın kirli havasının ocak dışına çıktığı nefesliklerde bulunur. Sensör ölçümleri; farklı ölçüm metotlarıyla doğrulanır. Bu ölçümler sağlık ve güvenlik dokümanında belirtilen sıklıklara göre yapılır ve havalandırma defterine kaydedilir. Merkezi izleme sistemine bağlı sensörler ile bu sisteme bağlı diğer tamamlayıcı unsurların bakım ve onarımı İş Ekipmanlarının Kullanımında Sağlık ve Güvenlik Şartları Yönetmeliği hükümlerine uygun olması sağlanır."
+            "metin": "Grizulu ocaklarda havalandırma ile ilgili değerler her vardiyada ölçülür, metan gazı ölçümleri bu ölçümlerle beraber yapılır. Havada % 1’den çok metan gazı tespitinde, bu oran % 1’in altına düşünceye kadar ölçümler aralıksız sürdürülür. Üretim ünitelerinden dönüş havası içinde ve üretim yerlerindeki gazların birikebileceği yerlerde metan gazı seviyesi sürekli olarak izlenir. (Ek cümleler:RG-10/3/2015-29291) Merkezi izleme sistemine bağlı sensörler; oksijen, metan, karbonmonoksit, hidrojensülfür, sıcaklık ve hava hızı değerlerini ölçecek şekilde, sayıları ve yerleri sağlık ve güvenlik dokümanında belirtilerek yerleştirilir. Ancak, bu sensörler, asgari olarak, ocağın ana hava giriş yolunda, üretim bölgelerinin her birinin temiz hava giriş ve hava dönüş yollarında, hazırlık çalışması yapılan bölgelerin hava dönüş yollarında ve ocağın kirli havasının ocak dışına çıktığı nefesliklerde bulunur. Sensör ölçümleri; farklı ölçüm metotlarıyla doğrulanır. Bu ölçümler sağlık ve güvenlik dokümanında belirtilen sıklıklara göre yapılır ve havalandırma defterine kaydedilir. Merkezi izleme sistemine bağlı sensörler ile bu sisteme bağlı diğer tamamlayıcı unsurların bakım ve onarımı İş Ekipmanlarının Kullanımında Sağlık ve Güvenlik Şartları Yönetmeliği hükümlerine uygun olması sağlanır."
           },
           {
             "madde_no": "10.4",
@@ -8308,7 +8328,28 @@
             "baslik": "",
             "fikralar": [],
             "bentler": [],
-            "metin": "(Değişik:RG-10/3/2015-29291) Tali havalandırma sadece ana havalandırma akışı ile bağlantısı bulunan hazırlık ve kurtarma çalışmalarının yapıldığı yerlerde uygulanır. Tali havalandırmada kısa devreyi önleyecek tedbirler alınır. Tali havalandırmada kullanılan vantüpler antistatik ve alev yürütmez özellikte olur."
+            "metin": "(Değişik:RG-21/7/2026-33316) Tali havalandırma"
+          },
+          {
+            "madde_no": "10.7.1",
+            "baslik": "",
+            "fikralar": [],
+            "bentler": [],
+            "metin": "Tali havalandırma sadece ana havalandırma akışı ile bağlantısı bulunan hazırlık ve kurtarma çalışmalarının yapıldığı yerlerde uygulanır. Tali havalandırmada kısa devreyi önleyecek tedbirler alınır. Tali havalandırmada kullanılan vantüpler antistatik ve alev yürütmez özellikte olur."
+          },
+          {
+            "madde_no": "10.7.2",
+            "baslik": "",
+            "fikralar": [],
+            "bentler": [],
+            "metin": "Tali havalandırma yapılan bölgedeki fanın devre dışı kalması durumunda, buradaki çalışanlar derhal tahliye edilir. Uygun hava özellikleri ve havalandırma sağlanmadıkça çalışanlar bölgeye ve bu durumdan etkilenebilecek diğer tehlikeli bölgelere sokulmaz."
+          },
+          {
+            "madde_no": "10.7.3",
+            "baslik": "",
+            "fikralar": [],
+            "bentler": [],
+            "metin": "Tali havalandırma yapılan bölgelerde tali havalandırma fanının yedeği, vantüp bağlantı elemanları (kelepçe, tel vb.) ve kurulum için gerekli diğer teçhizat ile birlikte kuruluma hazır bir şekilde tali havalandırma fanının yanında bulundurulur. Tali havalandırma fanı yedeğinin kurulumu sırasında alınması gerekli tedbirler sağlık ve güvenlik dokümanında belirtilir."
           },
           {
             "madde_no": "10.8",
@@ -8343,14 +8384,14 @@
             "baslik": "",
             "fikralar": [],
             "bentler": [],
-            "metin": "(Değişik:RG-10/3/2015-29291)(3)  Grizulu veya yangına elverişli kömür damarlarının bulunduğu ocaklarda, tüm çalışanlar çalışma süresince, yanlarında Ek-1 inci maddede yer alan tabloda belirtilen kaçış sürelerini ve TS-EN 13794 sayılı standartta belirtilen kriterleri sağlayacak oksijenli ferdi kurtarıcı bulundurur ve gerektiğinde kullanır."
+            "metin": "(Değişik:RG-10/3/2015-29291)(3) Grizulu veya yangına elverişli kömür damarlarının bulunduğu ocaklarda, tüm çalışanlar çalışma süresince, yanlarında Ek-1 inci maddede yer alan tabloda belirtilen kaçış sürelerini ve TS-EN 13794 sayılı standartta belirtilen kriterleri sağlayacak oksijenli ferdi kurtarıcı bulundurur ve gerektiğinde kullanır."
           },
           {
             "madde_no": "10.13",
             "baslik": "",
             "fikralar": [],
             "bentler": [],
-            "metin": "Bütün grizulu ocaklarda her biri tek başına ocağın havalandırılmasını sağlayacak güçte, birinin herhangi bir nedenle durması halinde diğeri derhal çalışacak durumda iki havalandırma grubu bulunur."
+            "metin": "(Değişik:RG-21/7/2026-33316) Bütün grizulu ocaklarda, ocağın havalandırmasını sağlayacak güçte ana havalandırma fanı/fanları ve ana havalandırma fanı ile eşdeğer yedek havalandırma fanı/fanları bulundurulur. Ana havalandırma fanının herhangi bir nedenle durması halinde, yedek havalandırma fanının havalandırma sürekliliğini sağlayacak şekilde derhal devreye girmesi sağlanır. Yedek havalandırma fanının havalandırma sürekliliğini sağlayacak şekilde derhal devreye girdiğine ilişkin testler en geç ayda bir yapılır ve kayıt altına alınır. Yapılan testler sırasında alınması gerekli tedbirler sağlık ve güvenlik dokümanında belirtilir."
           },
           {
             "madde_no": "10.14",
@@ -8448,7 +8489,7 @@
             "baslik": "",
             "fikralar": [],
             "bentler": [],
-            "metin": "Zincirleme toz patlamalarına neden olabilecek yanıcı toz ve/veya grizu patlamalarının yayılması patlama barajları yapılarak önlenir. Patlamayı durdurucu bu barajların yerleri ocaktaki üretim ve faaliyetlerden kaynaklı değişikliklere göre güncellenir ve  yerleri imalat haritaları ve havalandırma planında gösterilir."
+            "metin": "Zincirleme toz patlamalarına neden olabilecek yanıcı toz ve/veya grizu patlamalarının yayılması patlama barajları yapılarak önlenir. Patlamayı durdurucu bu barajların yerleri ocaktaki üretim ve faaliyetlerden kaynaklı değişikliklere göre güncellenir ve yerleri imalat haritaları ve havalandırma planında gösterilir."
           },
           {
             "madde_no": "11.5",
@@ -9197,7 +9238,7 @@
             "baslik": "",
             "fikralar": [],
             "bentler": [],
-            "metin": "Bu değişiklikler  1/9/2015 tarihinde yürürlüğe girer."
+            "metin": "Bu değişiklikler 1/9/2015 tarihinde yürürlüğe girer."
           },
           {
             "madde_no": "2",
@@ -9214,9 +9255,10 @@
             "metin": "Bu değişiklik 1/1/2016 tarihinde yürürlüğe girer."
           }
         ],
-        "metin": " SONDAJLA MADEN ÇIKARILAN İŞLERİN YAPILDIĞI İŞYERLERİNDE\n UYGULANACAK  ASGARİ ÖZEL HÜKÜMLER\n Denizler ve Karalarda Yapılacak Çalışmalar İçin Ortak Hükümler\n"
+        "metin": " SONDAJLA MADEN ÇIKARILAN İŞLERİN YAPILDIĞI İŞYERLERİNDE\n UYGULANACAK ASGARİ ÖZEL HÜKÜMLER\n Denizler ve Karalarda Yapılacak Çalışmalar İçin Ortak Hükümler\n"
       }
-    ]
+    ],
+    "guncelleme": "2026-11-21T22:35:33.320Z"
   },
   {
     "mevzuat_adi": "MUHTEMEL PATLAYICI ORTAMDA KULLANILAN TEÇHİZAT VE KORUYUCU SİSTEMLER İLE İLGİLİ YÖNETMELİK",
