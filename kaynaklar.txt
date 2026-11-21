@@ -5,51 +5,51 @@
 #   (örnek biçim: https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=XXXX&MevzuatTur=7&MevzuatTertip=5)
 
 İŞYERİ HEKİMİ VE DİĞER SAĞLIK PERSONELİNİN GÖREV, YETKİ, SORUMLULUK VE EĞİTİMLERİ HAKKINDA YÖNETMELİK | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=18615&MevzuatTur=7&MevzuatTertip=5
-İşyerlerinde Acil Durumlar Hakkında Yönetmelik | 
-İşyerlerinde İşin Durdurulmasına Dair Yönetmelik | 
-Kanserojen veya Matujen Maddelerle Çalışmalarda Sağlık ve Güvenlik Önlemleri Hakkında Yönetmelik | 
-Kimyasal Maddelerle Çalışmalarda Sağlık ve Güvenlik Önlemleri Hakkında Yönetmelik | 
-KİŞİSEL KORUYUCU DONANIM YÖNETMELİĞİ | 
-Kişisel Koruyucu Donanımların İşyerlerinde Kullanılması Hakkında Yönetmelik | 
-Maden İşyerlerinde İş Sağlığı ve Güvenliği Yönetmeliği | 
-MUHTEMEL PATLAYICI ORTAMDA KULLANILAN TEÇHİZAT VE KORUYUCU SİSTEMLER İLE İLGİLİ YÖNETMELİK | 
-SAĞLIK KURALLARI BAKIMINDAN GÜNDE AZAMİ YEDİ BUÇUK SAAT VEYA DAHA AZ ÇALIŞILMASI GEREKEN İŞLER HAKKINDA YÖNETMELİK | 
-Sağlık ve Güvenlik İşaretleri Yönetmeliği | 
-TEHLİKELİ VE ÇOK TEHLİKELİ SINIFTA YER ALAN İŞLERDE ÇALIŞTIRILACAKLARIN MESLEKİ EĞİTİMLERİNE DAİR YÖNETMELİK | 
-TIBBİ ATIKLARIN KONTROLÜ YÖNETMELİĞİ | 
-TOZLA MÜCADELE YÖNETMELİĞİ | 
-YAPI İŞLERİNDE İŞ SAĞLIĞI VE GÜVENLİĞİ YÖNETMELİĞİ | 
-ALT İŞVERENLİK YÖNETMELİĞİ | 
-ASBESTLE ÇALIŞMALARDA SAĞLIK VE GÜVENLİK ÖNLEMLERİ HAKKINDA YÖNETMELİK | 
-BASINÇLI EKİPMANLAR YÖNETMELİĞİ | 
-BASİT BASINÇLI KAPLAR YÖNETMELİĞİ | 
-BİNALARIN YANGINDAN KORUNMASI HAKKINDA YÖNETMELİK | 
-BİYOLOJİK ETKENLERE MARUZİYET RİSKLERİNİN ÖNLENMESİ HAKKINDA YÖNETMELİK | 
-ÇALIŞANLARIN GÜRÜLTÜ İLE İLGİLİ RİSKLERDEN KORUNMALARINA DAİR YÖNETMELİK | 
-ÇALIŞANLARIN İŞ SAĞLIĞI VE GÜVENLİĞİ EĞİTİMLERİNİN USUL VE ESASLARI HAKKINDA YÖNETMELİK | 
-ÇALIŞANLARIN PATLAYICI ORTAMLARIN TEHLİKELERİNDEN KORUNMASI HAKKINDA YÖNETMELİK | 
-ÇALIŞANLARIN SAĞLIK GÖZETİMİNE YÖNELİK TIBBİ TETKİKLERİN USUL VE ESASLARI HAKKINDA YÖNETMELİK | 
-ÇALIŞANLARIN TİTREŞİMLE İLGİLİ RİSKLERDEN KORUNMALARINA DAİR YÖNETMELİK | 
-ÇALIŞMA VE SOSYAL GÜVENLİK BAKANLIĞI İŞ TEFTİŞ KURULU YÖNETMELİĞİ | 
-ÇOCUK VE GENÇ İŞÇİLERİN ÇALIŞTIRILMA USUL VE ESASLARI HAKKINDA YÖNETMELİK | 
+İşyerlerinde Acil Durumlar Hakkında Yönetmelik | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=18493&MevzuatTur=7&MevzuatTertip=5
+İşyerlerinde İşin Durdurulmasına Dair Yönetmelik | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=17253&MevzuatTur=7&MevzuatTertip=5
+Kanserojen veya Matujen Maddelerle Çalışmalarda Sağlık ve Güvenlik Önlemleri Hakkında Yönetmelik | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=18695&MevzuatTur=7&MevzuatTertip=5
+Kimyasal Maddelerle Çalışmalarda Sağlık ve Güvenlik Önlemleri Hakkında Yönetmelik | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=18709&MevzuatTur=7&MevzuatTertip=5
+KİŞİSEL KORUYUCU DONANIM YÖNETMELİĞİ | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=31465&MevzuatTur=7&MevzuatTertip=5
+Kişisel Koruyucu Donanımların İşyerlerinde Kullanılması Hakkında Yönetmelik | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=18540&MevzuatTur=7&MevzuatTertip=5
+Maden İşyerlerinde İş Sağlığı ve Güvenliği Yönetmeliği | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=18858&MevzuatTur=7&MevzuatTertip=5
+MUHTEMEL PATLAYICI ORTAMDA KULLANILAN TEÇHİZAT VE KORUYUCU SİSTEMLER İLE İLGİLİ YÖNETMELİK | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=22622&MevzuatTur=7&MevzuatTertip=5
+SAĞLIK KURALLARI BAKIMINDAN GÜNDE AZAMİ YEDİ BUÇUK SAAT VEYA DAHA AZ ÇALIŞILMASI GEREKEN İŞLER HAKKINDA YÖNETMELİK | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=18588&MevzuatTur=7&MevzuatTertip=5
+Sağlık ve Güvenlik İşaretleri Yönetmeliği | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=18829&MevzuatTur=7&MevzuatTertip=5
+TEHLİKELİ VE ÇOK TEHLİKELİ SINIFTA YER ALAN İŞLERDE ÇALIŞTIRILACAKLARIN MESLEKİ EĞİTİMLERİNE DAİR YÖNETMELİK | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=18581&MevzuatTur=7&MevzuatTertip=5
+TIBBİ ATIKLARIN KONTROLÜ YÖNETMELİĞİ | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=23273&MevzuatTur=7&MevzuatTertip=5
+TOZLA MÜCADELE YÖNETMELİĞİ | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=18989&MevzuatTur=7&MevzuatTertip=5
+YAPI İŞLERİNDE İŞ SAĞLIĞI VE GÜVENLİĞİ YÖNETMELİĞİ | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=18928&MevzuatTur=7&MevzuatTertip=5
+ALT İŞVERENLİK YÖNETMELİĞİ | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=12459&MevzuatTur=7&MevzuatTertip=5
+ASBESTLE ÇALIŞMALARDA SAĞLIK VE GÜVENLİK ÖNLEMLERİ HAKKINDA YÖNETMELİK | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=17050&MevzuatTur=7&MevzuatTertip=5
+BASINÇLI EKİPMANLAR YÖNETMELİĞİ | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=24436&MevzuatTur=7&MevzuatTertip=5
+BASİT BASINÇLI KAPLAR YÖNETMELİĞİ | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=23011&MevzuatTur=7&MevzuatTertip=5
+BİNALARIN YANGINDAN KORUNMASI HAKKINDA YÖNETMELİK | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=200712937&MevzuatTur=21&MevzuatTertip=5
+BİYOLOJİK ETKENLERE MARUZİYET RİSKLERİNİN ÖNLENMESİ HAKKINDA YÖNETMELİK | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=18485&MevzuatTur=7&MevzuatTertip=5
+ÇALIŞANLARIN GÜRÜLTÜ İLE İLGİLİ RİSKLERDEN KORUNMALARINA DAİR YÖNETMELİK | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=18647&MevzuatTur=7&MevzuatTertip=5
+ÇALIŞANLARIN İŞ SAĞLIĞI VE GÜVENLİĞİ EĞİTİMLERİNİN USUL VE ESASLARI HAKKINDA YÖNETMELİK | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=45087&MevzuatTur=7&MevzuatTertip=5
+ÇALIŞANLARIN PATLAYICI ORTAMLARIN TEHLİKELERİNDEN KORUNMASI HAKKINDA YÖNETMELİK | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=18335&MevzuatTur=7&MevzuatTertip=5
+ÇALIŞANLARIN SAĞLIK GÖZETİMİNE YÖNELİK TIBBİ TETKİKLERİN USUL VE ESASLARI HAKKINDA YÖNETMELİK | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=39291&MevzuatTur=7&MevzuatTertip=5
+ÇALIŞANLARIN TİTREŞİMLE İLGİLİ RİSKLERDEN KORUNMALARINA DAİR YÖNETMELİK | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=18759&MevzuatTur=7&MevzuatTertip=5
+ÇALIŞMA VE SOSYAL GÜVENLİK BAKANLIĞI İŞ TEFTİŞ KURULU YÖNETMELİĞİ | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=16724&MevzuatTur=7&MevzuatTertip=5
+ÇOCUK VE GENÇ İŞÇİLERİN ÇALIŞTIRILMA USUL VE ESASLARI HAKKINDA YÖNETMELİK | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5457&MevzuatTur=7&MevzuatTertip=5
 dozolcumPrompt | 
-EKRANLI ARAÇLARLA ÇALIŞMALARDA SAĞLIK VE GÜVENLİK ÖNLEMLERİ HAKKINDA YÖNETMELİK | 
-ELEKTRİK KUVVETLİ AKIM TESİSLERİ YÖNETMELİĞİ | 
-ELEKTRİK TESİSLERİNDE TOPRAKLAMALAR YÖNETMELİĞİ | 
-ELLE TAŞIMA İŞLERİ YÖNETMELİĞİ | 
-GEBE VEYA EMZİREN KADINLARIN ÇALIŞTIRILMA ŞARTLARIYLA EMZİRME ODALARI VE ÇOCUK BAKIM YURTLARINA DAİR YÖNETMELİK | 
+EKRANLI ARAÇLARLA ÇALIŞMALARDA SAĞLIK VE GÜVENLİK ÖNLEMLERİ HAKKINDA YÖNETMELİK | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=17288&MevzuatTur=7&MevzuatTertip=5
+ELEKTRİK KUVVETLİ AKIM TESİSLERİ YÖNETMELİĞİ | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=9949&MevzuatTur=7&MevzuatTertip=5
+ELEKTRİK TESİSLERİNDE TOPRAKLAMALAR YÖNETMELİĞİ | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=10392&MevzuatTur=7&MevzuatTertip=5
+ELLE TAŞIMA İŞLERİ YÖNETMELİĞİ | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=18627&MevzuatTur=7&MevzuatTertip=5
+GEBE VEYA EMZİREN KADINLARIN ÇALIŞTIRILMA ŞARTLARIYLA EMZİRME ODALARI VE ÇOCUK BAKIM YURTLARINA DAİR YÖNETMELİK | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=18728&MevzuatTur=7&MevzuatTertip=5
 GEÇİCİ VEYA BELİRLİ SÜRELİ İŞLERDE İŞ SAĞLIĞI VE GÜVENLİĞİ HAKKINDA YÖNETMELİK | 
-HAZIRLAMA, TAMAMLAMA VE TEMİZLEME İŞLERİ YÖNETMELİĞİ | 
-HİJYEN EĞİTİMİ YÖNETMELİĞİ | 
-İLKYARDIM YÖNETMELİĞİ | 
+HAZIRLAMA, TAMAMLAMA VE TEMİZLEME İŞLERİ YÖNETMELİĞİ | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5463&MevzuatTur=7&MevzuatTertip=5
+HİJYEN EĞİTİMİ YÖNETMELİĞİ | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=18552&MevzuatTur=7&MevzuatTertip=5
+İLKYARDIM YÖNETMELİĞİ | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=20992&MevzuatTur=7&MevzuatTertip=5
 İSGMevzuatBulmaPRomptu | 
 İş Ekipmanlarının Kullanımında Sağlık ve Güvenlik Şartları Yönetmeliği | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=18318&MevzuatTur=7&MevzuatTertip=5
-İŞ GÜVENLİĞİ UZMANLARININ GÖREV, YETKİ, SORUMLULUK VE EĞİTİMLERİ HAKKINDA YÖNETMELİK | 
-4857 Sayılı İş Kanunu | 
-İŞ SAĞLIĞI VE GÜVENLİĞİ HİZMETLERİ YÖNETMELİĞİ | 
-İŞ SAĞLIĞI VE GÜVENLİĞİ HİZMETLERİNİN DESTEKLENMESİ HAKKINDA YÖNETMELİK | 
-6331 Sayılı İŞ SAĞLIĞI VE GÜVENLİĞİ KANUNU | 
-İŞ SAĞLIĞI VE GÜVENLİĞİ KURULLARI HAKKINDA YÖNETMELİK | 
-İŞ SAĞLIĞI VE GÜVENLİĞİ RİSK DEĞERLENDİRMESİ YÖNETMELİĞİ | 
-İŞ TEFTİŞİ HAKKINDA YÖNETMELİK | 
-İşyeri Bina ve Eklentilerinde Alınacak Sağlık ve Güvenlik Önlemlerine İlişkin Yönetmelik | 
+İŞ GÜVENLİĞİ UZMANLARININ GÖREV, YETKİ, SORUMLULUK VE EĞİTİMLERİ HAKKINDA YÖNETMELİK | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=16923&MevzuatTur=7&MevzuatTertip=5
+4857 Sayılı İş Kanunu | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5
+İŞ SAĞLIĞI VE GÜVENLİĞİ HİZMETLERİ YÖNETMELİĞİ | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=16924&MevzuatTur=7&MevzuatTertip=5
+İŞ SAĞLIĞI VE GÜVENLİĞİ HİZMETLERİNİN DESTEKLENMESİ HAKKINDA YÖNETMELİK | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=19151&MevzuatTur=7&MevzuatTertip=5
+6331 Sayılı İŞ SAĞLIĞI VE GÜVENLİĞİ KANUNU | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6331&MevzuatTur=1&MevzuatTertip=5
+İŞ SAĞLIĞI VE GÜVENLİĞİ KURULLARI HAKKINDA YÖNETMELİK | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=17031&MevzuatTur=7&MevzuatTertip=5
+İŞ SAĞLIĞI VE GÜVENLİĞİ RİSK DEĞERLENDİRMESİ YÖNETMELİĞİ | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=16925&MevzuatTur=7&MevzuatTertip=5
+İŞ TEFTİŞİ HAKKINDA YÖNETMELİK | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5434&MevzuatTur=21&MevzuatTertip=5
+İşyeri Bina ve Eklentilerinde Alınacak Sağlık ve Güvenlik Önlemlerine İlişkin Yönetmelik | https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=18592&MevzuatTur=7&MevzuatTertip=5
