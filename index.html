@@ -1607,7 +1607,7 @@
                          ontouchstart="event.stopPropagation();"
                          oncontextmenu="event.stopPropagation();">
                         <input type="text" id="mevNameInput_${index}" placeholder="Mevzuat Adı..." value="${(v.suggestedMevzuat || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;')}" oninput="violationsArray[${index}].suggestedMevzuat = this.value" style="flex: 1; min-width: 110px; padding: 6px; font-size: 0.8rem; margin-bottom: 0; border: 1px solid var(--border);">
-                        <input type="text" id="kwInput_${index}" placeholder="Kilit Kelime..." value="${v.userKeyword || ''}" oninput="violationsArray[${index}].userKeyword = this.value" style="flex: 1; min-width: 110px; padding: 6px; font-size: 0.8rem; margin-bottom: 0; border: 1px solid var(--border);">
+                        <input type="text" id="kwInput_${index}" placeholder="Kilit Kelime..." value="${v.userKeyword || ''}" oninput="violationsArray[${index}].userKeyword = this.value; violationsArray[${index}].kwFromAI = false" style="flex: 1; min-width: 110px; padding: 6px; font-size: 0.8rem; margin-bottom: 0; border: 1px solid var(--border);">
                         <button type="button" class="btn btn-primary btn-sm" onclick="applyManualFilters(${index})">Uygula</button>
                     </div>
                 </div>
@@ -1740,6 +1740,10 @@
         return AI_EXCLUDED.some(x => n.includes(x));
     }
 
+    function ilkKw(s) { return String(s || '').split(/[,;]+/)[0].trim(); }
+    // Kilit kelime kutusundaki tüm kelimeler (virgülle ayrılmış) -> yalın kök dizisi
+    function kilitTokenleri(s) { let t = []; String(s || '').split(/[,;]+/).map(x => x.trim()).filter(Boolean).forEach(x => { t = t.concat(getCleanTokens(x)); }); return t; }
+
     async function autoSuggestMappingAI() {
         if (apiKeys.length === 0 && geminiApiKeys.length === 0) { alert("Lütfen ayarlar menüsünden API Key ekleyin."); return; }
         const btn = document.getElementById('btnAutoMapAI');
@@ -1751,48 +1755,53 @@
         let allowedMevzuats = mevzuatDB.map((m, i) => ({ id: i, name: m.mevzuat_adi })).filter(m => !isAIExcluded(m.name));
         const allowedIds = new Set(allowedMevzuats.map(m => m.id));
 
-        let prompt = `Sen uzman bir İSG denetçisisin. Aşağıdaki İhlalleri, verilen Mevzuat ID'leri ile eşleştir.
+        const GRUP = 12; // her istekte en fazla 12 ihlal: ilerleme görünür, hata olursa yalnız o grup tekrarlanır
+        const kurallar = `Sen uzman bir İSG denetçisisin. Her ihlal için mevzuat ID'si ve 2-3 kilit kelime belirle.
 Kurallar:
-1. Her ihlal için SADECE EN İLİŞKİLİ 1 ADET mevzuat ID'si seç.
-2. Sadece sağlanan ID'leri kullan.
-3. İş ekipmanlarının periyodik kontrolü/muayenesi ile ilgili eksiklikleri 'İş Ekipmanlarının Kullanımında Sağlık ve Güvenlik Şartları Yönetmeliği' ile eşleştir (tesisatlar, kaldırma araçları, basınçlı tesisatlar vb. tablolarla belirtilen periyodik kontrol hükümleri).
-4. Kaçak akım rölesi (artık akım koruma) eksikliğini 'İşyeri Bina ve Eklentilerinde Alınacak Sağlık ve Güvenlik Önlemlerine İlişkin Yönetmelik' veya 'İş Ekipmanlarının Kullanımında Sağlık ve Güvenlik Şartları Yönetmeliği' ile eşleştir.
-5. Elektrik, topraklama, yangından korunma, ilkyardım gibi doğrudan 6331 dayanaklı olmayan yönetmelikleri ASLA seçme.
-6. İhlalde 'ipucu_mevzuat_idleri' varsa bunlar Bakanlığın resmî İPC tablosunda benzer ihlal metni bulunan mevzuatlardır; sadece kelime benzerliğiyle bulunduğu için hatalı olabilir. İhlalin konusuyla gerçekten örtüşüyorsa tercih et, örtüşmüyorsa yok say.
-
-GİRDİ İHLALLER:
-${JSON.stringify(violationsArray.map((v,i)=>{ const ids=[...new Set(ipcFind(v.text, allowedIds, 3, 0.4).map(h=>h.r._mi))].slice(0,2); return ids.length ? {id:i, metin:v.text, ipucu_mevzuat_idleri:ids} : {id:i, metin:v.text}; }))}
-
-GİRDİ MEVZUATLAR:
-${JSON.stringify(allowedMevzuats)}
-
-ÇIKTI SADECE JSON FORMATINDA OLMALI (ASLA markdown, \`\`\`json veya açıklama ekleme):
-{
-  "eslesmeler": [
-    { "ihlal_id": 0, "mevzuat_idleri": [5] }
-  ]
-}`;
-
-        try {
-            let data = await smartAIFetch(prompt);
-            let parsed = safeParseJSON(data.choices[0].message.content);
-            
-            if(parsed && parsed.eslesmeler) {
-                parsed.eslesmeler.forEach(e => {
-                    let vIdx = e.ihlal_id;
-                    if(!manualUserMapping[vIdx]) manualUserMapping[vIdx] = [];
-                    let firstName = null;
-                    (e.mevzuat_idleri || []).forEach(mid => {
-                        mid = parseInt(mid);
-                        if (!allowedIds.has(mid)) return;
-                        if(!manualUserMapping[vIdx].includes(mid)) manualUserMapping[vIdx].push(mid);
-                        if (firstName === null) firstName = mevzuatDB[mid].mevzuat_adi;
-                    });
-                    // AI'nın seçtiği mevzuat adı, soldaki "Mevzuat Adı" kutusuna düşer (kullanıcı silip değiştirebilir)
-                    if (firstName && violationsArray[vIdx] && !(violationsArray[vIdx].suggestedMevzuat || '').trim()) {
-                        violationsArray[vIdx].suggestedMevzuat = firstName;
-                    }
+1. Her ihlal için SADECE EN İLİŞKİLİ 1 mevzuat ID'si seç; yalnız MEVZUATLAR listesindeki ID'leri kullan.
+2. İş ekipmanlarının periyodik kontrolü/muayenesi eksikliklerini 'İş Ekipmanlarının Kullanımında Sağlık ve Güvenlik Şartları Yönetmeliği' ile eşleştir (tesisat, kaldırma aracı, basınçlı tesisat vb.).
+3. Kaçak akım rölesi (artık akım koruma) eksikliğini 'İşyeri Bina ve Eklentilerinde Alınacak Sağlık ve Güvenlik Önlemlerine İlişkin Yönetmelik' veya İş Ekipmanları Yönetmeliği ile eşleştir.
+4. Elektrik, topraklama, yangından korunma, ilkyardım gibi doğrudan 6331 dayanaklı olmayan yönetmelikleri ASLA seçme.
+5. 'ipucu' varsa Bakanlığın İPC tablosunda benzer ihlal bulunan mevzuat ID'leridir; kelime benzerliğiyle bulunduğu için hatalı olabilir, konuyla gerçekten örtüşüyorsa tercih et.
+6. "kilit": ihlalin mevzuat dayanağını bulmaya yarayan 2-3 YALIN KÖK kelime (ek almamış, örn. "kapıları"->"kapı"). Biri ihlal metnindeki ayırt edici konu kelimesi, diğeri seçtiğin mevzuatın hükümde kullanacağı karşılığı olsun. "işçi","sağlık","güvenlik","işveren","işyeri","gerekli" gibi jenerik kelimeler YASAK.
+ÇIKTI SADECE JSON (markdown yok): {"eslesmeler":[{"ihlal_id":0,"mevzuat_idleri":[5],"kilit":["kök1","kök2"]}]}`;
+        const mevListe = allowedMevzuats.map(m => m.id + '|' + m.name).join('\n');
+        let okunan = 0, hataliGrup = 0;
+        for (let st = 0; st < violationsArray.length; st += GRUP) {
+            btn.innerHTML = `⏳ Düşünüyor... ${Math.min(st + GRUP, violationsArray.length)}/${violationsArray.length}`;
+            const girdi = violationsArray.slice(st, st + GRUP).map((v, k) => {
+                const ids = [...new Set(ipcFind(v.text, allowedIds, 3, 0.4).map(h => h.r._mi))].slice(0, 2);
+                return (st + k) + '|' + v.text + (ids.length ? ' |ipucu:' + ids.join(',') : '');
+            }).join('\n');
+            const prompt = kurallar + '\n\nİHLALLER (id|metin):\n' + girdi + '\n\nMEVZUATLAR (id|ad):\n' + mevListe;
+            let parsed = null;
+            try {
+                let data = await smartAIFetch(prompt);
+                parsed = safeParseJSON(data.choices[0].message.content);
+            } catch (e) { hataliGrup++; logDebug(`Mevzuat öneri grubu ${st + 1}. ihlalden başlayan: ${e.message}`, "warn"); continue; }
+            if (!parsed || !Array.isArray(parsed.eslesmeler)) { hataliGrup++; continue; }
+            okunan++;
+            parsed.eslesmeler.forEach(e => {
+                let vIdx = e.ihlal_id;
+                if (!violationsArray[vIdx]) return;
+                if(!manualUserMapping[vIdx]) manualUserMapping[vIdx] = [];
+                let firstName = null;
+                (e.mevzuat_idleri || []).forEach(mid => {
+                    mid = parseInt(mid);
+                    if (!allowedIds.has(mid)) return;
+                    if(!manualUserMapping[vIdx].includes(mid)) manualUserMapping[vIdx].push(mid);
+                    if (firstName === null) firstName = mevzuatDB[mid].mevzuat_adi;
                 });
+                // AI'nın seçtiği mevzuat adı ve kilit kelimeler kutulara düşer (kullanıcı silip değiştirebilir)
+                if (firstName && !(violationsArray[vIdx].suggestedMevzuat || '').trim()) violationsArray[vIdx].suggestedMevzuat = firstName;
+                const kl = (Array.isArray(e.kilit) ? e.kilit : []).map(x => String(x).trim()).filter(x => x.length > 2).slice(0, 3);
+                if (kl.length && !(violationsArray[vIdx].userKeyword || '').trim()) { violationsArray[vIdx].userKeyword = kl.join(', '); violationsArray[vIdx].kwFromAI = true; }
+            });
+            if (st + GRUP < violationsArray.length) await new Promise(r => setTimeout(r, 600));
+        }
+        if (okunan === 0) { alert("Yapay zeka önerisi alınamadı. Anahtarlarınızı ve kotanızı kontrol edin."); return; }
+        try {
+            {
                 // KURAL: periyodik kontrol ihlalleri her zaman İş Ekipmanları Yönetmeliği'ne etiketlenir
                 const ieIdx = getIsEkipmanlariIdx();
                 if (ieIdx >= 0) {
@@ -1805,7 +1814,7 @@ ${JSON.stringify(allowedMevzuats)}
                 }
                 selectAllMappingViolations(); 
                 logDebug("Yapay zeka mevzuat önerileri uygulandı.", "success");
-                alert("✅ Yapay zeka eşleştirmeleri tamamladı. İstemediklerinizi sağdaki listeden çıkarabilir veya yeni yönetmelikleri elinizle ekleyebilirsiniz.");
+                alert((hataliGrup ? "⚠ " + hataliGrup + " grup alınamadı (kota?); eksik kalanları tekrar deneyebilir veya elle girebilirsiniz.\n" : "") + "✅ Yapay zeka mevzuat ve kilit kelime önerilerini yazdı. İstemediklerinizi sağdaki listeden çıkarabilir veya yeni yönetmelikleri elinizle ekleyebilirsiniz.");
             }
         } catch(e) {
             alert("Yapay zeka önerisi alınamadı: " + e.message);
@@ -2069,7 +2078,7 @@ ${JSON.stringify(allowedMevzuats)}
         btnBulk.parentNode.insertBefore(loadingContainer, btnBulk.nextSibling);
         btnBulk.innerHTML = `⏳ 3'lü Dağıtıcı Analiz Başladı...`;
 
-        const BATCH_SIZE = 3; 
+        const BATCH_SIZE = 4; 
         let processedCount = 0;
         let hasError = false;
 
@@ -2100,20 +2109,31 @@ ${JSON.stringify(chunk.map(d => ({
     vIndex: d.vIndex, 
     ihlal: d.ihlal, 
     secili_mevzuatlar: d.mevzuatlar.map(m=>m.name),
-    kullanici_anahtar_kelimesi: violationsArray[d.vIndex].userKeyword || "Yok"
-})), null, 2)}`;
+    kullanici_anahtar_kelimesi: ilkKw(violationsArray[d.vIndex].userKeyword) || "Yok"
+})))}`;
 
                 let data1;
                 let parsed1;
+                // Kilit kelimesi hazır (2+ kök) ihlaller için AI'ya gerek yok: kota harcanmaz
+                const hazirAnaliz = [], aiyeGidecek = [];
+                chunk.forEach(c => {
+                    const kt = kilitTokenleri(violationsArray[c.vIndex].userKeyword);
+                    if (kt.length >= 2) hazirAnaliz.push({ vIndex: c.vIndex, optimum_mevzuat: "", arama_kelimeleri: kt.slice(0, 6) });
+                    else aiyeGidecek.push(c);
+                });
                 try {
-                    data1 = await smartAIFetch([{ role: 'system', content: prompt1 }]);
-                    parsed1 = safeParseJSON(data1.choices[0].message.content);
+                    if (aiyeGidecek.length) {
+                        const p1 = prompt1.slice(0, prompt1.indexOf('GİRDİ İHLALLER:')) + 'GİRDİ İHLALLER:\n' + JSON.stringify(aiyeGidecek.map(d => ({ vIndex: d.vIndex, ihlal: d.ihlal, secili_mevzuatlar: d.mevzuatlar.map(m=>m.name), kullanici_anahtar_kelimesi: ilkKw(violationsArray[d.vIndex].userKeyword) || "Yok" })));
+                        data1 = await smartAIFetch([{ role: 'system', content: p1 }]);
+                        parsed1 = safeParseJSON(data1.choices[0].message.content);
+                    } else parsed1 = { analiz: [] };
+                    if (parsed1 && Array.isArray(parsed1.analiz)) parsed1.analiz = parsed1.analiz.concat(hazirAnaliz);
                 } catch(err) {
                     logDebug(`Adım 1 Hatası (Paket ${i}): ${err.message}. İhlaller için varsayılan TF-IDF uygulanacak.`, "error");
                     parsed1 = { 
                         analiz: chunk.map(c => {
                             let defaultKws = getCleanTokens(c.ihlal).slice(0, 5);
-                            if (violationsArray[c.vIndex].userKeyword) defaultKws.unshift(violationsArray[c.vIndex].userKeyword);
+                            kilitTokenleri(violationsArray[c.vIndex].userKeyword).reverse().forEach(k => defaultKws.unshift(k));
                             return {
                                 vIndex: c.vIndex,
                                 optimum_mevzuat: "",
@@ -2138,7 +2158,7 @@ ${JSON.stringify(chunk.map(d => ({
 
                         let queryTokens = item.arama_kelimeleri.map(w => tightNormalize(w));
                         
-                        let userKw = violationsArray[vIndex].userKeyword;
+                        let userKw = ilkKw(violationsArray[vIndex].userKeyword);
                         if (userKw) {
                             let normKw = tightNormalize(userKw);
                             if (!queryTokens.includes(normKw)) {
@@ -2191,7 +2211,7 @@ ${JSON.stringify(chunk.map(d => ({
                             candidatePayload.push({
                                 vIndex: vIndex,
                                 ihlal: targetData.ihlal,
-                                adaylar: top10.map((cand, idx) => ({ id: idx, metin: cand.metin, dayanak: cand.dayanak, ...(cand.ipcRef ? { ihlal_hukmu: cand.ipcRef.hukum.slice(0, 200) } : {}) }))
+                                adaylar: top10.map((cand, idx) => ({ id: idx, metin: String(cand.metin).slice(0, 380), dayanak: cand.dayanak, ...(cand.ipcRef ? { ihlal_hukmu: cand.ipcRef.hukum.slice(0, 200) } : {}) }))
                             });
                         }
                     });
@@ -2208,7 +2228,7 @@ GÖREV: Her ihlal için, o ihlale EN ÇOK UYAN 1 adet adayın 'id' değerini se�
 }
 
 GİRDİ:
-${JSON.stringify(candidatePayload, null, 2)}`;
+${JSON.stringify(candidatePayload)}`;
                     
                     try {
                         let data2 = await smartAIFetch([{ role: 'system', content: prompt2 }]);
@@ -2259,8 +2279,8 @@ ${JSON.stringify(candidatePayload, null, 2)}`;
                 progressBar.style.width = `${(processedCount / bulkData.length) * 100}%`;
 
                 if (i + BATCH_SIZE < bulkData.length) {
-                    statusText.innerText = `Nefes alınıyor... API limitleri için 3 saniye mola.`;
-                    await new Promise(r => setTimeout(r, 3000));
+                    statusText.innerText = `Nefes alınıyor... API limitleri için kısa mola.`;
+                    await new Promise(r => setTimeout(r, 1200));
                 }
             }
 
@@ -2310,7 +2330,7 @@ ${JSON.stringify(candidatePayload, null, 2)}`;
         try {
             loadingEl.innerHTML = `⏳ AI, seçilen ${checkedBoxes.length} mevzuatı analiz ediyor...`;
             
-            let userKw = violationsArray[vIndex].userKeyword;
+            let userKw = ilkKw(violationsArray[vIndex].userKeyword);
             let kwRule = userKw ? `\nÖZEL KURAL: Kullanıcı bu ihlal için "${userKw}" anahtar kelimesini kilit olarak belirlemiştir. arama_kelimeleri dizisinin İLK ELEMANI KESİNLİKLE "${userKw}" olmalıdır!` : "";
 
             const systemPrompt = `Sen uzman bir İSG denetçisisin. SADECE ŞU SEÇİLİ MEVZUATLAR İÇİNDE DÜŞÜN: [ ${selectedNames} ]
