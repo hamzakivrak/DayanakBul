@@ -1,9 +1,10 @@
-const CACHE_NAME = "isg-cache-v4";
+const CACHE_NAME = "isg-cache-v5";
 // Göreli adresler: uygulama hangi depo/klasör adıyla yayınlanırsa yayınlansın çalışır
 const urlsToCache = [
   "./",
   "./index.html",
   "./parser.js",
+  "./belge.js",
   "./merkez.js",
   "./manifest.json"
 ];

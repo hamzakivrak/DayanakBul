@@ -21,12 +21,19 @@ Görev ayrıca her Pazartesi 08:00'de (Türkiye saati) kendiliğinden çalışı
 
 Uygulama → 🔄 *Mevzuat Güncelleme Merkezi* → mevzuatı seçin → *Tamamı* / *Yalnızca belirli madde(ler)* / *Yalnızca periyodik kontrol tabloları* → metni yapıştırın → *Farkları Göster* → *Uygula ve Kaydet*. Tüm cihazlarda geçerli olması için aynı ekrandaki *Dışa aktar* düğmeleriyle `mevzuat_veritabani.json` ve `periyodik_tablolar.json` dosyalarını indirip depoya yükleyin (*Add file → Upload files*).
 
+## Word / txt dosyalarından toplu güncelleme
+
+Güncelleme Merkezi → **📂 Dosyalardan toplu güncelleme**: mevzuat.gov.tr'den indirdiğiniz `.doc`, `.docx` veya `.txt` dosyalarını birden çok seçerek yükleyin. Her dosya için *ne olduğu* (ana metin / yalnız madde / ayrı ek / tablolar) ve *hangi mevzuata ait olduğu* otomatik tahmin edilir (başlıktan ya da `7.5.18318.doc` gibi dosya adındaki mevzuat numarasından); yanlışsa kutudan değiştirirsiniz. Yönetmelik gövdesinden ayrı gelen ek dosyalarını (örn. `7.5.18615_ek_1.doc`) ilgili mevzuata siz bağlarsınız; bir kez bağlanan mevzuatın numarası hatırlanır. Her dosyanın farkı ayrı görünür, *Hepsini uygula* tek seferde kaydeder; her kayıt ayrı geri alınabilir.
+
+Not: eski `.doc` biçiminde Word'ün otomatik liste numaraları (1-, 2- …) okunamaz; numaralar önemliyse Word'de *Farklı kaydet → .docx* yapıp onu yükleyin.
+
 ## Dosyalar
 
 | Dosya | Görev |
 |---|---|
 | `index.html` | Ana uygulama |
 | `merkez.js` | Güncelleme Merkezi + tablo gösterimi |
+| `belge.js` | .doc / .docx / .html okuyucu (tarayıcıda, sunucusuz) |
 | `parser.js` | Metin → JSON ayrıştırıcı, fark, tablo çıkarımı (uygulama ve Actions ortak kullanır) |
 | `mevzuat_veritabani.json` | Mevzuat veritabanı |
 | `periyodik_tablolar.json` | İş Ekipmanları EK-III tabloları |

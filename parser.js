@@ -25,14 +25,14 @@
         let type = cleanName.toLowerCase().includes("kanunu") ? "Kanun" : "Yönetmelik";
 
         const result = { mevzuat_adi: cleanName, mevzuat_turu: type, dayanak_kanun: type === "Yönetmelik" ? "6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30" : null, maddeler: [], ekler: [] };
-        const lines = text.split('\n');
+        const lines = String(text).replace(/\r/g, '').replace(/\t+/g, ' ').split('\n');   // sekmeli tablo satırları düz metin gibi okunur
         let currentMadde = null, currentFikra = null, currentEk = null, isInEk = false;
         let ekAtiflari = {}; 
 
         const maddeRegex = /^MADDE\s+(\d+)\s*[-:–—]*\s*(.*)/i;
         const fikraRegex = /^\((\d+)\)\s*(.*)/;
         const bentRegex = /^([a-zçğıöşü]+)\)\s*(.*)/i;
-        const ekRegex = /^EK\s*(?:[-:–—]|\s+)\s*([0-9]+[a-zA-Z]?|[IVX]+)(.*)/i; 
+        const ekRegex = /^EK\s*(?:[-:–—]|\s+)\s*([0-9]+[a-zA-Z]?|[IVX]+)(?![’'‘])(.*)/i; // "EK-1’deki örneğine…" gibi gövde cümleleri ek başlığı sayılmaz
         const ekAltMaddeRegex = /^(\d+[\.\d]*)\s*(.*)/; 
 
         function checkAtif(textToCheck) {
@@ -340,6 +340,34 @@
         });
         return out;
     }
+    // EK-III ile EK-3 aynı ektir; aynı numaralı birden çok kayıt tek grupta toplanır
+    function ekAnahtar(e) { return 'EK-' + normalizeEkNo(String(e.ek_no || '').replace(/^EK[\s\-:]*/i, '').trim()); }
+    function ekGrupla(list) {
+        const m = new Map();
+        (list || []).forEach(e => { const k = ekAnahtar(e); if (!m.has(k)) m.set(k, []); m.get(k).push(e); });
+        return m;
+    }
+    function ekGrupFlat(g) { return ws(g.map(ekFlat).join(' ')); }
+    function ekSirala(a, b) {
+        const n = x => { const v = parseInt(String(ekAnahtar(x)).replace(/^EK-/, ''), 10); return isNaN(v) ? 1e9 : v; };
+        return n(a) - n(b);
+    }
+    // Yönetmeliğin yalnızca verilen eklerini değiştirir/ekler; diğer eklere dokunmaz.
+    function mergeEkler(reg, yeniEkler) {
+        const out = deepCopy(reg);
+        out.ekler = out.ekler || [];
+        const gruplar = ekGrupla(yeniEkler);
+        gruplar.forEach((g, key) => {
+            const eskiler = out.ekler.filter(e => ekAnahtar(e) === key);
+            const bagli = eskiler.map(e => e.bagli_oldugu_madde).find(Boolean) || null;
+            const kopya = g.map(e => { const c = deepCopy(e); if (!c.bagli_oldugu_madde && bagli) c.bagli_oldugu_madde = bagli; return c; });
+            const i = out.ekler.findIndex(e => ekAnahtar(e) === key);
+            if (i >= 0) { out.ekler = out.ekler.filter(e => ekAnahtar(e) !== key); out.ekler.splice(i, 0, ...kopya); }
+            else out.ekler.push(...kopya);
+        });
+        out.ekler = out.ekler.map((e, k) => ({ e, k })).sort((a, b) => ekSirala(a.e, b.e) || a.k - b.k).map(x => x.e);
+        return out;
+    }
     function diffRegulations(eski, yeni) {
         const r = { eklenen: [], silinen: [], degisen: [], ekDegisen: [], eskiSayi: 0, yeniSayi: 0 };
         const ea = maddeAnahtarlari(eski && eski.maddeler), ya = maddeAnahtarlari(yeni && yeni.maddeler);
@@ -350,11 +378,9 @@
             else if (maddeFlat(em.get(key).m) !== maddeFlat(x.m)) r.degisen.push({ no: x.etiket, eski: maddeFlat(em.get(key).m), yeni: maddeFlat(x.m) });
         });
         em.forEach((x, key) => { if (!ym.has(key)) r.silinen.push(x.etiket); });
-        const ee = new Map(), ye = new Map();
-        (eski && eski.ekler || []).forEach(e => ee.set(e.ek_no, e));
-        (yeni && yeni.ekler || []).forEach(e => ye.set(e.ek_no, e));
-        ye.forEach((e, no) => { if (!ee.has(no)) r.ekDegisen.push({ no: no, durum: 'eklendi' }); else if (ekFlat(ee.get(no)) !== ekFlat(e)) r.ekDegisen.push({ no: no, durum: 'değişti' }); });
-        ee.forEach((e, no) => { if (!ye.has(no)) r.ekDegisen.push({ no: no, durum: 'silindi' }); });
+        const ee = ekGrupla(eski && eski.ekler), ye = ekGrupla(yeni && yeni.ekler);
+        ye.forEach((g, no) => { if (!ee.has(no)) r.ekDegisen.push({ no: no, durum: 'eklendi' }); else if (ekGrupFlat(ee.get(no)) !== ekGrupFlat(g)) r.ekDegisen.push({ no: no, durum: 'değişti' }); });
+        ee.forEach((g, no) => { if (!ye.has(no)) r.ekDegisen.push({ no: no, durum: 'silindi' }); });
         r.degisiklikVar = !!(r.eklenen.length || r.silinen.length || r.degisen.length || r.ekDegisen.length);
         return r;
     }
@@ -411,7 +437,7 @@
         normalizeEkNo: normalizeEkNo, parseMevzuatText: parseMevzuatText,
         htmlToText: htmlToText, extractTables: extractTables,
         diffRegulations: diffRegulations, diffOzet: diffOzet, wordDiffHtml: wordDiffHtml,
-        mergeMaddeler: mergeMaddeler, normName: normName, findRegulationIndex: findRegulationIndex,
+        mergeMaddeler: mergeMaddeler, mergeEkler: mergeEkler, ekAnahtar: ekAnahtar, normName: normName, findRegulationIndex: findRegulationIndex,
         maddeFlat: maddeFlat, deepCopy: deepCopy, escHtml: escHtml
     };
 });
