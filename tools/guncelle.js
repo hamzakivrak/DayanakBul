@@ -127,17 +127,18 @@ async function aynaYaz(k, sonuc, metin) {
     const slug = slugla(k.ad);
     fs.writeFileSync(path.join(AYNA_DIR, slug + '.txt'), metin);
     const u = new URL(sonuc.adres), tur = u.searchParams.get('MevzuatTur');
-    const ekler = [];
+    const ekler = [], hariciMetinler = [];
     for (const href of ekBaglantilari(sonuc.r.text)) {
         const dosya = decodeURIComponent(href);
         if (/\.pdf$/i.test(href)) { ekler.push({ dosya, slug: null, durum: 'pdf (metne çevrilemez)' }); continue; }
         const e = await ekMetni(href, sonuc.adres, tur);
         const eslug = `${slug}.ek${ekler.length + 1}`;
-        if (e.metin) fs.writeFileSync(path.join(AYNA_DIR, eslug + '.txt'), e.metin);
+        if (e.metin) { fs.writeFileSync(path.join(AYNA_DIR, eslug + '.txt'), e.metin); hariciMetinler.push(e.metin); }
         ekler.push({ dosya, slug: e.metin ? eslug : null, durum: e.metin ? 'ok' : e.hata, adres: e.adres || null, denemeler: e.denemeler });
         log(`    ek: ${dosya} → ${e.metin ? 'metne çevrildi' : e.hata}`);
     }
     aynalar.push({ ad: k.ad, slug, url: k.url, tarih: SIMDI, ekler });
+    return hariciMetinler;
 }
 
 function dbYaz(db) { fs.writeFileSync(DB_PATH, JSON.stringify(db, null, 2)); } // önceki biçimle aynı (sonda satır sonu yok)
@@ -181,7 +182,8 @@ async function main() {
             fs.writeFileSync(`tanilama/${slug}.metin.txt`, metin);
             fs.writeFileSync(`tanilama/${slug}.bilgi.txt`, `adres: ${sonuc.adres}\ntip: ${sonuc.r.tip}\nbayt: ${sonuc.r.bayt}\n`);
         } catch (e) { /* tanılama başarısız olsa da devam */ }
-        try { await aynaYaz(k, sonuc, metin); } catch (e) { log('    ayna yazılamadı: ' + e.message); }
+        let hariciEkMetinleri = [];
+        try { hariciEkMetinleri = await aynaYaz(k, sonuc, metin); } catch (e) { log('    ayna yazılamadı: ' + e.message); }
         if (TEST) log(`    metnin ilk 160 karakteri: ${JSON.stringify(metin.slice(0, 160))}`);
         if (!adBenzerMi(k.ad, metin)) {
             rows.push({ ad: k.ad, durum: '⚠ Atlandı: sayfa başka bir mevzuat gibi görünüyor', detay: 'kaynaklar.txt adresini kontrol edin.' });
@@ -189,13 +191,22 @@ async function main() {
         }
         const yeni = P.parseMevzuatText(k.ad + '.txt', metin);
         if (!yeni.maddeler.length) { rows.push({ ad: k.ad, durum: '⚠ Atlandı: madde ayrıştırılamadı', detay: 'Sayfa biçimi beklenenden farklı.' }); continue; }
+        // Ayrı belge olarak indirilen ekler (Word/zip) numaralarına göre ayrıştırılıp eklenir; sayfadaki aynı numaralı ek önceliklidir.
+        const sayfadakiEkler = yeni.ekler || [];
+        const sayfaAnahtarlari = new Set(sayfadakiEkler.map(P.ekAnahtar));
+        let hariciEkler = [];
+        for (const t of hariciEkMetinleri) {
+            const p = P.parseMevzuatText('ek.txt', t);
+            if (p.ekler.length && p.ekler.length <= 40) hariciEkler = hariciEkler.concat(p.ekler.filter(e => !sayfaAnahtarlari.has(P.ekAnahtar(e))));
+        }
         if (eski) {
             yeni.mevzuat_adi = eski.mevzuat_adi; yeni.mevzuat_turu = eski.mevzuat_turu; yeni.dayanak_kanun = eski.dayanak_kanun;
             if (eski.mevzuat_no && !yeni.mevzuat_no) yeni.mevzuat_no = eski.mevzuat_no;
-            // Ekler çoğu zaman sayfada değil ayrı belgelerde durur: sayfada bulunmayan mevcut ekler KORUNUR, sayfada bulunanlar (aynı numaralıysa) güncellenir.
-            const sayfadakiEkler = yeni.ekler || [];
+            // Sayfada/ayrı belgede bulunmayan mevcut ekler KORUNUR; bulunanlar (aynı numaralıysa) güncellenir.
             const taban = P.deepCopy(yeni); taban.ekler = P.deepCopy(eski.ekler || []);
-            yeni.ekler = P.mergeEkler(taban, sayfadakiEkler).ekler;
+            yeni.ekler = P.mergeEkler(taban, sayfadakiEkler.concat(hariciEkler)).ekler;
+        } else if (hariciEkler.length) {
+            yeni.ekler = P.mergeEkler(yeni, hariciEkler).ekler;
         }
 
         let d = null;
