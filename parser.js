@@ -179,6 +179,7 @@
         let t = String(html || '');
         t = t.replace(/<(script|style|noscript)\b[\s\S]*?<\/\1>/gi, '');
         t = t.replace(/<!--[\s\S]*?-->/g, '');
+        t = t.replace(/\s*\n\s*/g, ' ');   // HTML kaynağındaki satır kıvırmaları boşluktur (Word'den dışa aktarılan sayfalar sözcük ortasında satır böler)
         t = t.replace(/<br\s*\/?>/gi, '\n');
         t = t.replace(/<\/(td|th)\s*>/gi, '\n\n');
         t = t.replace(/<\/tr\s*>/gi, '\n\n');
@@ -317,6 +318,13 @@
     // ------------------------------------------------------------------
     // 5) FARK (DIFF) ve BİRLEŞTİRME
     // ------------------------------------------------------------------
+    // Karşılaştırma için: dipnot/değişiklik işaretleri ve boşluk-noktalama farkları yok sayılır (gösterim etkilenmez)
+    function karsilastirmaAnahtari(t) {
+        return String(t || '')
+            .replace(/\((?:Değişik|Ek|Mülga|İptal|Yürürlükten|Ek fıkra|Değişik fıkra|Değişik ibare|Ek ibare|Değişik cümle|Ek cümle|Değişik birinci|Değişik ikinci|Değişik üçüncü|Mülga fıkra|Ek bent|Değişik bent)[^)]*\)/gi, '')
+            .replace(/\[\d+\]/g, '').replace(/\(…\)/g, '')
+            .replace(/[^\p{L}\p{N}]+/gu, '').toLocaleLowerCase('tr');
+    }
     function ws(s) { return String(s || '').replace(/\s+/g, ' ').trim(); }
     function maddeFlat(m) {
         const p = [m.baslik, m.metin];
@@ -375,11 +383,11 @@
         r.eskiSayi = ea.length; r.yeniSayi = ya.length;
         ym.forEach((x, key) => {
             if (!em.has(key)) r.eklenen.push(x.etiket);
-            else if (maddeFlat(em.get(key).m) !== maddeFlat(x.m)) r.degisen.push({ no: x.etiket, eski: maddeFlat(em.get(key).m), yeni: maddeFlat(x.m) });
+            else if (karsilastirmaAnahtari(maddeFlat(em.get(key).m)) !== karsilastirmaAnahtari(maddeFlat(x.m))) r.degisen.push({ no: x.etiket, eski: maddeFlat(em.get(key).m), yeni: maddeFlat(x.m) });
         });
         em.forEach((x, key) => { if (!ym.has(key)) r.silinen.push(x.etiket); });
         const ee = ekGrupla(eski && eski.ekler), ye = ekGrupla(yeni && yeni.ekler);
-        ye.forEach((g, no) => { if (!ee.has(no)) r.ekDegisen.push({ no: no, durum: 'eklendi' }); else if (ekGrupFlat(ee.get(no)) !== ekGrupFlat(g)) r.ekDegisen.push({ no: no, durum: 'değişti' }); });
+        ye.forEach((g, no) => { if (!ee.has(no)) r.ekDegisen.push({ no: no, durum: 'eklendi' }); else if (karsilastirmaAnahtari(ekGrupFlat(ee.get(no))) !== karsilastirmaAnahtari(ekGrupFlat(g))) r.ekDegisen.push({ no: no, durum: 'değişti' }); });
         ee.forEach((g, no) => { if (!ye.has(no)) r.ekDegisen.push({ no: no, durum: 'silindi' }); });
         r.degisiklikVar = !!(r.eklenen.length || r.silinen.length || r.degisen.length || r.ekDegisen.length);
         return r;
