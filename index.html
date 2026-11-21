@@ -1741,11 +1741,11 @@
         return AI_EXCLUDED.some(x => n.includes(x));
     }
 
-    // Eşzamanlı iş sayısı = key sayısı (en çok 4). Her iş sıra numarasına göre key alır (iş k -> key k mod N); böylece
-    // 4 key varsa önce 1-2, sonra 3-4, sonra tekrar 1-2 çalışır, diğerleri dinlenir. Tek key varsa sıralı çalışır.
+    // Aynı anda 2 iş (tek key varsa 1). Her iş sıra numarasına göre key alır (iş k -> key k mod N); böylece
+    // 4 key varsa önce 1-2, sonra 3-4, sonra tekrar 1-2 çalışır, diğer çift dinlenir. Tek key varsa sıralı çalışır.
     async function paralelIsle(isler, fn, nefesMs = 1000) {
         const keyN = primaryAI === 'gemini' ? geminiApiKeys.length : apiKeys.length;
-        const W = Math.max(1, Math.min(4, keyN, isler.length)); // key sayısı kadar (en çok 4) eşzamanlı iş; 1 key = sıralı
+        const W = Math.max(1, Math.min(2, keyN, isler.length)); // aynı anda 2 iş (çift); 1 key = sıralı
         let sira = 0;
         await Promise.all(Array.from({ length: W }, async (_, w) => {
             let ilk = true;
