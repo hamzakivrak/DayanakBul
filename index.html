@@ -1773,7 +1773,8 @@
         let allowedMevzuats = mevzuatDB.map((m, i) => ({ id: i, name: m.mevzuat_adi })).filter(m => !isAIExcluded(m.name));
         const allowedIds = new Set(allowedMevzuats.map(m => m.id));
 
-        const GRUP = 12; // her istekte en fazla 12 ihlal: ilerleme görünür, hata olursa yalnız o grup tekrarlanır
+        const keySayisi = primaryAI === 'gemini' ? geminiApiKeys.length : apiKeys.length;
+        const GRUP = keySayisi >= 2 ? 4 : 12; // çok key: her key'e 4'er ihlal (aynı anda); tek key: 12'li gruplarla kota tasarrufu
         const kurallar = `Sen uzman bir İSG denetçisisin. Her ihlal için mevzuat ID'si ve 2-3 kilit kelime belirle.
 Kurallar:
 1. Her ihlal için SADECE EN İLİŞKİLİ 1 mevzuat ID'si seç; yalnız MEVZUATLAR listesindeki ID'leri kullan.
