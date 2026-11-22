@@ -1858,6 +1858,7 @@ Kurallar:
 3. Kaçak akım rölesi (artık akım koruma) eksikliğini 'İşyeri Bina ve Eklentilerinde Alınacak Sağlık ve Güvenlik Önlemlerine İlişkin Yönetmelik' veya İş Ekipmanları Yönetmeliği ile eşleştir.
 4. Elektrik, topraklama, yangından korunma, ilkyardım gibi doğrudan 6331 dayanaklı olmayan yönetmelikleri ASLA seçme.
 5. 'ipucu' varsa Bakanlığın İPC tablosunda benzer ihlal bulunan mevzuat ID'leridir; kelime benzerliğiyle bulunduğu için hatalı olabilir, konuyla gerçekten örtüşüyorsa tercih et.
+5b. 'onayli_ornek:ID(kelimeler)' varsa, kullanıcının benzer bir ihlal için daha önce onayladığı mevzuat ID'si ve kilit kelimelerdir; ihlal konu olarak gerçekten benzerse o ID'yi ve benzer kelimeleri tercih et, alakasızsa yok say.
 6. "kilit": ihlalin mevzuat dayanağını bulmaya yarayan 2-3 YALIN KÖK kelime (ek almamış, örn. "kapıları"->"kapı"). Biri ihlal metnindeki ayırt edici konu kelimesi, diğeri seçtiğin mevzuatın hükümde kullanacağı karşılığı olsun. "işçi","sağlık","güvenlik","işveren","işyeri","gerekli" gibi jenerik kelimeler YASAK.
 ÇIKTI SADECE JSON (markdown yok): {"eslesmeler":[{"ihlal_id":0,"mevzuat_idleri":[5],"kilit":["kök1","kök2"]}]}`;
         const mevListe = allowedMevzuats.map(m => m.id + '|' + m.name).join('\n');
@@ -1883,7 +1884,10 @@ Kurallar:
                 const v = violationsArray[i];
                 const ogIds = ogrenmeBul(v.text, allowedIds).slice(0, 1).map(b => b.chunk.mevIdx);
                 const ids = [...new Set(ogIds.concat(ipcFind(v.text, allowedIds, 3, 0.4).map(h => h.r._mi)))].slice(0, 2);
-                return i + '|' + v.text + (ids.length ? ' |ipucu:' + ids.join(',') : '');
+                // Kullanıcının daha önce onayladığı en benzer örnek (düşük benzerlik de olur): few-shot rehber
+                const orn = ogrenmeBul(v.text, allowedIds, 0.3).filter(b => !ogIds.length || b.chunk.mevIdx !== ogIds[0] || true)[0];
+                const ornS = orn ? ' |onayli_ornek:' + orn.chunk.mevIdx + (orn.kw ? '(' + orn.kw.slice(0, 40) + ')' : '') : '';
+                return i + '|' + v.text + (ids.length ? ' |ipucu:' + ids.join(',') : '') + ornS;
             }).join('\n');
             const prompt = kurallar + '\n\nİHLALLER (id|metin):\n' + girdi + '\n\nMEVZUATLAR (id|ad):\n' + mevListe;
             let parsed = null;
@@ -2149,11 +2153,11 @@ Kurallar:
         return { em: (em && em.replace(/\s+/g, ' ').trim() !== ozM) ? em : '', ed: (ed && ed.replace(/\s+/g, ' ').trim() !== ozD) ? ed : '' };
     }
     function dice(a, b) { if (!a.length || !b.length) return 0; const B = new Set(b); const k = a.filter(x => B.has(x)).length; return 2 * k / (a.length + b.length); }
-    function ogrenmeBul(text, izinli) {
+    function ogrenmeBul(text, izinli, minSim = 0.55) {
         const t = ipcTokens(text || ''); if (t.length < 2) return [];
         const out = [];
         ogrenmeOku().forEach(e => {
-            const sim = dice(t, e.t || []); if (sim < 0.55) return;
+            const sim = dice(t, e.t || []); if (sim < minSim) return;
             const c = provisionChunksCache.find(x => x.dayanak === e.d); if (!c) return;
             if (izinli && !izinli.has(c.mevIdx)) return;
             out.push({ chunk: c, sim, em: e.em || '', ed: e.ed || '', kw: e.kw || '' });
