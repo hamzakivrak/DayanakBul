@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-22T17:46:30.134Z",
+ "guncelleme": "2026-11-22T17:46:47.848Z",
  "kayitlar": [
   {
    "t": [
@@ -588,6 +588,26 @@
    "ts": 1795369587672,
    "kw": "sıvılaştırılmış, yıl",
    "id": "1hqhftt"
+  },
+  {
+   "t": [
+    "calis",
+    "antis",
+    "nitel",
+    "kisis",
+    "koruy",
+    "elbis",
+    "eldiv",
+    "ayakk",
+    "benze",
+    "donan",
+    "veril"
+   ],
+   "d": "(6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30, ÇALIŞANLARIN PATLAYICI ORTAMLARIN TEHLİKELERİNDEN KORUNMASI HAKKINDA YÖNETMELİK, Madde: 9(1) b (Alt Atıflar: Madde: 10(2) ç, Madde: 11(1) a), EK-2, Madde: 2.3)",
+   "m": "ÇALIŞANLARIN PATLAYICI ORTAMLARIN TEHLİKELERİNDEN KORUNMASI HAKKINDA YÖNETMELİK",
+   "ts": 1795369605387,
+   "kw": "antistatik, patlama, önlem, donanım",
+   "id": "1wcsfxs"
   }
  ]
 }
