@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-22T08:26:29.211Z",
+ "guncelleme": "2026-11-22T09:40:25.883Z",
  "kayitlar": [
   {
    "t": [
@@ -277,6 +277,26 @@
    "ts": 1795335986745,
    "em": "Risk değerlendirmesine göre hazırlanan patlamadan korunma dokümanında aksi belirtilmemesi halinde patlayıcı ortam oluşabilecek tüm yerlerdeki ekipman ve koruyucu sistemler, Muhtemel Patlayıcı Ortamda Kullanılan Teçhizat ve Koruyucu Sistemlerle İlgili Yönetmelikte (94/9/AT) belirtilen kategorilere göre seçilir.\n Özellikle gazlar, buharlar, sisler ve tozlar için aşağıda belirtilen bölgelerde, karşılarında verilen kategorideki ekipman kullanılır.\n Bölge 0 veya Bölge 20: Kategori 1 ekipman,\n Bölge 1 veya Bölge 21: Kategori 1 veya 2 ekipman,\n Bölge 2 veya Bölge 22: Kategori 1, 2 veya 3 ekipman.\n Not:\n Patlayıcı ortam oluşma ihtimali bulunan yerlerde 26/12/2003 tarihinden sonra üretilen veya işyerinde kullanılan iş ekipmanları Ek-2’de belirtilen asgari gerekleri ve bu ekte belirtilen kriterleri karşılamak zorundadır.",
    "id": "un7oqn"
+  },
+  {
+   "t": [
+    "calis",
+    "antis",
+    "nitel",
+    "kisis",
+    "koruy",
+    "elbis",
+    "eldiv",
+    "ayakk",
+    "benze",
+    "donan",
+    "veril"
+   ],
+   "d": "(6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30, Kişisel Koruyucu Donanımların İşyerlerinde Kullanılması Hakkında Yönetmelik, Madde: 8(1))",
+   "m": "Kişisel Koruyucu Donanımların İşyerlerinde Kullanılması Hakkında Yönetmelik",
+   "ts": 1795340422823,
+   "kw": "elbis, donanım",
+   "id": "zfve52"
   }
  ]
 }
