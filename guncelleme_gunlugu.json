@@ -699,5 +699,550 @@
       ],
       "ekDegisen": []
     }
+  },
+  {
+    "tarih": "2026-11-22T17:51:23.754Z",
+    "mevzuat": "İŞYERİ HEKİMİ VE DİĞER SAĞLIK PERSONELİNİN GÖREV, YETKİ, SORUMLULUK VE EĞİTİMLERİ HAKKINDA YÖNETMELİK",
+    "ozet": "12 ek değişti",
+    "kaynak": "mevzuat.gov.tr (otomatik)",
+    "adres": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=18615&MevzuatTur=7&MevzuatTertip=5",
+    "detay": {
+      "eklenen": [],
+      "silinen": [],
+      "degisen": [],
+      "ekDegisen": [
+        {
+          "no": "EK-1",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-2",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-3",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-4",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-5",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-6",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-7",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-8",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-9",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-10",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-11",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-12",
+          "durum": "eklendi"
+        }
+      ]
+    }
+  },
+  {
+    "tarih": "2026-11-22T17:51:23.754Z",
+    "mevzuat": "İşyerlerinde Acil Durumlar Hakkında Yönetmelik",
+    "ozet": "3 ek değişti",
+    "kaynak": "mevzuat.gov.tr (otomatik)",
+    "adres": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=18493&MevzuatTur=7&MevzuatTertip=5",
+    "detay": {
+      "eklenen": [],
+      "silinen": [],
+      "degisen": [],
+      "ekDegisen": [
+        {
+          "no": "EK-1",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-2",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-3",
+          "durum": "eklendi"
+        }
+      ]
+    }
+  },
+  {
+    "tarih": "2026-11-22T17:51:23.754Z",
+    "mevzuat": "KİŞİSEL KORUYUCU DONANIM YÖNETMELİĞİ",
+    "ozet": "9 ek değişti",
+    "kaynak": "mevzuat.gov.tr (otomatik)",
+    "adres": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=31465&MevzuatTur=7&MevzuatTertip=5",
+    "detay": {
+      "eklenen": [],
+      "silinen": [],
+      "degisen": [],
+      "ekDegisen": [
+        {
+          "no": "EK-1",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-2",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-3",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-4",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-5",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-6",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-7",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-8",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-9",
+          "durum": "eklendi"
+        }
+      ]
+    }
+  },
+  {
+    "tarih": "2026-11-22T17:51:23.754Z",
+    "mevzuat": "Kişisel Koruyucu Donanımların İşyerlerinde Kullanılması Hakkında Yönetmelik",
+    "ozet": "3 ek değişti",
+    "kaynak": "mevzuat.gov.tr (otomatik)",
+    "adres": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=18540&MevzuatTur=7&MevzuatTertip=5",
+    "detay": {
+      "eklenen": [],
+      "silinen": [],
+      "degisen": [],
+      "ekDegisen": [
+        {
+          "no": "EK-1",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-2",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-3",
+          "durum": "eklendi"
+        }
+      ]
+    }
+  },
+  {
+    "tarih": "2026-11-22T17:51:23.754Z",
+    "mevzuat": "MUHTEMEL PATLAYICI ORTAMDA KULLANILAN TEÇHİZAT VE KORUYUCU SİSTEMLER İLE İLGİLİ YÖNETMELİK",
+    "ozet": "2 madde değişti, 10 ek değişti",
+    "kaynak": "mevzuat.gov.tr (otomatik)",
+    "adres": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=22622&MevzuatTur=7&MevzuatTertip=5",
+    "detay": {
+      "eklenen": [],
+      "silinen": [],
+      "degisen": [
+        {
+          "no": "18",
+          "eski": "(1) CE işareti görülebilir, okunaklı ve silinemez bir biçimde ürüne veya ürünün bilgi levhasına iliştirilir. Bu durumun mümkün olmaması veya ürünün yapısı nedeniyle bu durumun garanti edilmemesi halinde ambalaja ve eşlik eden belgelere iliştirilir. (1) CE işareti görülebilir, okunaklı ve silinemez bir biçimde ürüne veya ürünün bilgi levhasına iliştirilir. Bu durumun mümkün olmaması veya ürünün yapısı nedeniyle bu durumun garanti edilmemesi halinde ambalaja ve eşlik eden belgelere iliştirilir. (2) CE işareti ürün piyasaya arz edilmeden önce iliştirilir. (3) CE işaretini, imalat kontrol safhasına müdahil olan onaylanmış kuruluşun kimlik kayıt numarası izler. Onaylanmış kuruluşun kimlik kayıt numarası kuruluşun kendisi tarafından veya talimatı ile (Değişik ibare:RG-27/6/2020-31168) imalatçı veya yetkili temsilcisi tarafından iliştirilir. (4) CE işaretini ve uygulanabildiği yerde onaylanmış kuruluşun kimlik kayıt numarasını, patlamaya karşı korunma özel işareti http://www.resmigazete.gov.tr/eskiler/2006/12/20061230M4-4_dosyalar/image002.jpg, teçhizat-grup ve kategorisinin simgeleri ve uygulanabildiği yerde, Ek-2’nin madde 1.0.5’inde belirtilen bilgi ve diğer işaretlemeler takip eder. (5) CE işaretini, diğer işaretleri, sembolleri ve dördüncü fıkrada belirtilen bilgiyi ve uygulanabildiği yerde onaylanmış kuruluşun kimlik kayıt numarasını özel bir riski veya kullanımı gösteren herhangi bir diğer işaret takip edebilir. Özellikli bir patlayıcı ortam için tasarımlanmış ürünler uygun şekilde işaretlenmelidir. (6) Bakanlık, CE işaretini düzenleyen mevzuatın doğru şekilde uygulanmasını sağlamak için mevcut mekanizmaları temel alır ve söz konusu işaretin uygunsuz kullanımı halinde gerekli tedbirleri alır. BEŞİNCİ BÖLÜM Uygunluk Değerlendirme Kuruluşlarının Görevlendirilmesi Bildirim",
+          "yeni": "(1) CE işareti görülebilir, okunaklı ve silinemez bir biçimde ürüne veya ürünün bilgi levhasına iliştirilir. Bu durumun mümkün olmaması veya ürünün yapısı nedeniyle bu durumun garanti edilmemesi halinde ambalaja ve eşlik eden belgelere iliştirilir. (1) CE işareti görülebilir, okunaklı ve silinemez bir biçimde ürüne veya ürünün bilgi levhasına iliştirilir. Bu durumun mümkün olmaması veya ürünün yapısı nedeniyle bu durumun garanti edilmemesi halinde ambalaja ve eşlik eden belgelere iliştirilir. (2) CE işareti ürün piyasaya arz edilmeden önce iliştirilir. (3) CE işaretini, imalat kontrol safhasına müdahil olan onaylanmış kuruluşun kimlik kayıt numarası izler. Onaylanmış kuruluşun kimlik kayıt numarası kuruluşun kendisi tarafından veya talimatı ile (Değişik ibare:RG-27/6/2020-31168) imalatçı veya yetkili temsilcisi tarafından iliştirilir. (4) CE işaretini ve uygulanabildiği yerde onaylanmış kuruluşun kimlik kayıt numarasını, patlamaya karşı korunma özel işareti , teçhizat-grup ve kategorisinin simgeleri ve uygulanabildiği yerde, Ek-2’nin madde 1.0.5’inde belirtilen bilgi ve diğer işaretlemeler takip eder. (5) CE işaretini, diğer işaretleri, sembolleri ve dördüncü fıkrada belirtilen bilgiyi ve uygulanabildiği yerde onaylanmış kuruluşun kimlik kayıt numarasını özel bir riski veya kullanımı gösteren herhangi bir diğer işaret takip edebilir. Özellikli bir patlayıcı ortam için tasarımlanmış ürünler uygun şekilde işaretlenmelidir. (6) Bakanlık, CE işaretini düzenleyen mevzuatın doğru şekilde uygulanmasını sağlamak için mevcut mekanizmaları temel alır ve söz konusu işaretin uygunsuz kullanımı halinde gerekli tedbirleri alır. BEŞİNCİ BÖLÜM Uygunluk Değerlendirme Kuruluşlarının Görevlendirilmesi Bildirim"
+        },
+        {
+          "no": "38",
+          "eski": "(1) 35 inci madde hükümleri saklı kalmak kaydıyla, aşağıdaki bulgulardan birinin tespit edilmesi halinde, Bakanlık ilgili iktisadi işletmeciden bu uygunsuzluğu sona erdirmesini ister: (1) 35 inci madde hükümleri saklı kalmak kaydıyla, aşağıdaki bulgulardan birinin tespit edilmesi halinde, Bakanlık ilgili iktisadi işletmeciden bu uygunsuzluğu sona erdirmesini ister: a) CE işaretinin, “CE” İşareti Yönetmeliğine veya 18 inci maddeye aykırı olarak iliştirilmesi. b) CE işaretinin iliştirilmesinin gerekli olduğu halde hiç iliştirilmemesi. c) Patlamaya karşı korunma özel işareti http://www.resmigazete.gov.tr/eskiler/2006/12/20061230M4-4_dosyalar/image002.jpg, teçhizat-grup ve kategorisinin simgeleri ve uygulanabildiği yerde, belirtilen diğer işaretleme ve bilgilerin Ek-2’nin Madde 1.0.5’ine aykırı olarak iliştirilmesi veya hiç iliştirilmemesi. ç) Onaylanmış kuruluşun ürünün kontrol safhasına müdahil olduğu durumlarda kuruluşun kimlik kayıt numarasının, 18 inci maddeye aykırı olarak iliştirilmesi veya hiç iliştirilmemesi. d) AB uygunluk beyanı veya uygunluk onayının ürünle birlikte gerektiği şekilde bulunmaması. e) AB uygunluk beyanı veya uygulanabildiği durumlarda uygunluk onayının doğru olarak hazırlanmaması. f) Teknik dosyanın mevcut olmaması veya eksik olması. g) 8 inci maddenin yedinci fıkrasında veya 10 uncu maddenin üçüncü fıkrasında belirtilen bilgilerin olmaması, hatalı veya eksik olması. ğ) 8 inci veya 10 uncu maddelerde belirtilen herhangi bir diğer idari şartın yerine getirilmemesi. (2) Birinci fıkrada belirtilen uygunsuzlukların devam etmesi halinde, Bakanlık piyasada mevcut olan ürünün yasaklanması veya kısıtlanması veya ürünün piyasadan çekilmesi veya geri çağrılmasını sağlamak için gerekli tüm tedbirleri alır. YEDİNCİ BÖLÜM Çeşitli ve Son Hükümler Komite işlemleri",
+          "yeni": "(1) 35 inci madde hükümleri saklı kalmak kaydıyla, aşağıdaki bulgulardan birinin tespit edilmesi halinde, Bakanlık ilgili iktisadi işletmeciden bu uygunsuzluğu sona erdirmesini ister: (1) 35 inci madde hükümleri saklı kalmak kaydıyla, aşağıdaki bulgulardan birinin tespit edilmesi halinde, Bakanlık ilgili iktisadi işletmeciden bu uygunsuzluğu sona erdirmesini ister: a) CE işaretinin, “CE” İşareti Yönetmeliğine veya 18 inci maddeye aykırı olarak iliştirilmesi. b) CE işaretinin iliştirilmesinin gerekli olduğu halde hiç iliştirilmemesi. c) Patlamaya karşı korunma özel işareti , teçhizat-grup ve kategorisinin simgeleri ve uygulanabildiği yerde, belirtilen diğer işaretleme ve bilgilerin Ek-2’nin Madde 1.0.5’ine aykırı olarak iliştirilmesi veya hiç iliştirilmemesi. ç) Onaylanmış kuruluşun ürünün kontrol safhasına müdahil olduğu durumlarda kuruluşun kimlik kayıt numarasının, 18 inci maddeye aykırı olarak iliştirilmesi veya hiç iliştirilmemesi. d) AB uygunluk beyanı veya uygunluk onayının ürünle birlikte gerektiği şekilde bulunmaması. e) AB uygunluk beyanı veya uygulanabildiği durumlarda uygunluk onayının doğru olarak hazırlanmaması. f) Teknik dosyanın mevcut olmaması veya eksik olması. g) 8 inci maddenin yedinci fıkrasında veya 10 uncu maddenin üçüncü fıkrasında belirtilen bilgilerin olmaması, hatalı veya eksik olması. ğ) 8 inci veya 10 uncu maddelerde belirtilen herhangi bir diğer idari şartın yerine getirilmemesi. (2) Birinci fıkrada belirtilen uygunsuzlukların devam etmesi halinde, Bakanlık piyasada mevcut olan ürünün yasaklanması veya kısıtlanması veya ürünün piyasadan çekilmesi veya geri çağrılmasını sağlamak için gerekli tüm tedbirleri alır. YEDİNCİ BÖLÜM Çeşitli ve Son Hükümler Komite işlemleri"
+        }
+      ],
+      "ekDegisen": [
+        {
+          "no": "EK-1",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-2",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-3",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-4",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-5",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-6",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-7",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-8",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-9",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-10",
+          "durum": "eklendi"
+        }
+      ]
+    }
+  },
+  {
+    "tarih": "2026-11-22T17:51:23.754Z",
+    "mevzuat": "Sağlık ve Güvenlik İşaretleri Yönetmeliği",
+    "ozet": "10 ek değişti",
+    "kaynak": "mevzuat.gov.tr (otomatik)",
+    "adres": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=18829&MevzuatTur=7&MevzuatTertip=5",
+    "detay": {
+      "eklenen": [],
+      "silinen": [],
+      "degisen": [],
+      "ekDegisen": [
+        {
+          "no": "EK-1",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-2",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-3",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-4",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-5",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-6",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-7",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-8",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-9",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-10",
+          "durum": "eklendi"
+        }
+      ]
+    }
+  },
+  {
+    "tarih": "2026-11-22T17:51:23.754Z",
+    "mevzuat": "TIBBİ ATIKLARIN KONTROLÜ YÖNETMELİĞİ",
+    "ozet": "2 ek değişti",
+    "kaynak": "mevzuat.gov.tr (otomatik)",
+    "adres": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=23273&MevzuatTur=7&MevzuatTertip=5",
+    "detay": {
+      "eklenen": [],
+      "silinen": [],
+      "degisen": [],
+      "ekDegisen": [
+        {
+          "no": "EK-1",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-2",
+          "durum": "eklendi"
+        }
+      ]
+    }
+  },
+  {
+    "tarih": "2026-11-22T17:51:23.754Z",
+    "mevzuat": "TOZLA MÜCADELE YÖNETMELİĞİ",
+    "ozet": "4 ek değişti",
+    "kaynak": "mevzuat.gov.tr (otomatik)",
+    "adres": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=18989&MevzuatTur=7&MevzuatTertip=5",
+    "detay": {
+      "eklenen": [],
+      "silinen": [],
+      "degisen": [],
+      "ekDegisen": [
+        {
+          "no": "EK-1",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-2",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-3",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-4",
+          "durum": "eklendi"
+        }
+      ]
+    }
+  },
+  {
+    "tarih": "2026-11-22T17:51:23.754Z",
+    "mevzuat": "BASINÇLI EKİPMANLAR YÖNETMELİĞİ",
+    "ozet": "4 ek değişti",
+    "kaynak": "mevzuat.gov.tr (otomatik)",
+    "adres": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=24436&MevzuatTur=7&MevzuatTertip=5",
+    "detay": {
+      "eklenen": [],
+      "silinen": [],
+      "degisen": [],
+      "ekDegisen": [
+        {
+          "no": "EK-1",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-2",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-3",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-4",
+          "durum": "eklendi"
+        }
+      ]
+    }
+  },
+  {
+    "tarih": "2026-11-22T17:51:23.754Z",
+    "mevzuat": "BASİT BASINÇLI KAPLAR YÖNETMELİĞİ",
+    "ozet": "4 ek değişti",
+    "kaynak": "mevzuat.gov.tr (otomatik)",
+    "adres": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=23011&MevzuatTur=7&MevzuatTertip=5",
+    "detay": {
+      "eklenen": [],
+      "silinen": [],
+      "degisen": [],
+      "ekDegisen": [
+        {
+          "no": "EK-1",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-2",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-3",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-4",
+          "durum": "eklendi"
+        }
+      ]
+    }
+  },
+  {
+    "tarih": "2026-11-22T17:51:23.754Z",
+    "mevzuat": "BİYOLOJİK ETKENLERE MARUZİYET RİSKLERİNİN ÖNLENMESİ HAKKINDA YÖNETMELİK",
+    "ozet": "7 ek değişti",
+    "kaynak": "mevzuat.gov.tr (otomatik)",
+    "adres": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=18485&MevzuatTur=7&MevzuatTertip=5",
+    "detay": {
+      "eklenen": [],
+      "silinen": [],
+      "degisen": [],
+      "ekDegisen": [
+        {
+          "no": "EK-1",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-2",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-3",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-4",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-5",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-6",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-7",
+          "durum": "eklendi"
+        }
+      ]
+    }
+  },
+  {
+    "tarih": "2026-11-22T17:51:23.754Z",
+    "mevzuat": "İŞ GÜVENLİĞİ UZMANLARININ GÖREV, YETKİ, SORUMLULUK VE EĞİTİMLERİ HAKKINDA YÖNETMELİK",
+    "ozet": "9 ek değişti",
+    "kaynak": "mevzuat.gov.tr (otomatik)",
+    "adres": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=16923&MevzuatTur=7&MevzuatTertip=5",
+    "detay": {
+      "eklenen": [],
+      "silinen": [],
+      "degisen": [],
+      "ekDegisen": [
+        {
+          "no": "EK-1",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-2",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-3",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-4",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-5",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-6",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-7",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-8",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-9",
+          "durum": "eklendi"
+        }
+      ]
+    }
+  },
+  {
+    "tarih": "2026-11-22T17:51:23.754Z",
+    "mevzuat": "İŞ SAĞLIĞI VE GÜVENLİĞİ HİZMETLERİ YÖNETMELİĞİ",
+    "ozet": "11 ek değişti",
+    "kaynak": "mevzuat.gov.tr (otomatik)",
+    "adres": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=16924&MevzuatTur=7&MevzuatTertip=5",
+    "detay": {
+      "eklenen": [],
+      "silinen": [],
+      "degisen": [],
+      "ekDegisen": [
+        {
+          "no": "EK-1",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-2",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-3",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-4",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-4B",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-4C",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-5A",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-5B",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-5C",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-6",
+          "durum": "eklendi"
+        },
+        {
+          "no": "EK-8",
+          "durum": "eklendi"
+        }
+      ]
+    }
   }
 ]
