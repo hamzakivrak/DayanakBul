@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-22T16:02:15.971Z",
+ "guncelleme": "2026-11-22T16:02:32.061Z",
  "kayitlar": [
   {
    "t": [
@@ -493,6 +493,53 @@
    "ts": 1795363333467,
    "kw": "maden, tahkimat, kilit",
    "id": "qce50x"
+  },
+  {
+   "t": [
+    "ocak",
+    "genel",
+    "bulun",
+    "devre",
+    "kesic",
+    "panol",
+    "kapak",
+    "civat",
+    "eksik",
+    "260",
+    "kotun",
+    "acik",
+    "durum",
+    "pano",
+    "expro",
+    "ozell",
+    "ortad",
+    "kalkm",
+    "ayric",
+    "vinc",
+    "motor",
+    "olup",
+    "uzeri",
+    "kablo",
+    "bagla",
+    "yapil",
+    "110",
+    "kotu",
+    "temiz",
+    "hava",
+    "giris",
+    "949",
+    "normu",
+    "atex",
+    "grup",
+    "kateg",
+    "uygun",
+    "degil"
+   ],
+   "d": "(6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30, Maden İşyerlerinde İş Sağlığı ve Güvenliği Yönetmeliği, Madde: 13(2) a (Alt Atıflar: Madde: 14(1)), EK-1, Madde: 2.1.6)",
+   "m": "Maden İşyerlerinde İş Sağlığı ve Güvenliği Yönetmeliği",
+   "ts": 1795363349561,
+   "kw": "patlayıcı, ex-proof, pano",
+   "id": "17g5phj"
   }
  ]
 }
