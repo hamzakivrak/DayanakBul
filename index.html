@@ -150,6 +150,8 @@
         .report-item p { margin: 0 0 8px 0; }
         .editable-field { padding: 4px; border-radius: 4px; outline: none; border-bottom: 1px dashed transparent; transition: background 0.2s, border 0.2s; min-height: 1.5em; }
         .editable-field:hover { background: rgba(79,70,229,0.02); border-bottom: 1px dashed var(--border); cursor: text; }
+        /* Dayanak metni kutusu: dışarıdan ne yapıştırılırsa yapıştırılsın her zaman italik ve ortak yazı tipinde kalır */
+        .hukum-box, .hukum-box * { font-style: italic !important; font-weight: normal !important; font-family: inherit !important; font-size: inherit !important; color: inherit !important; background: transparent !important; text-decoration: none !important; }
         .editable-field:focus { background: rgba(79,70,229,0.05); border-bottom: 1px dashed var(--primary); }
 
         .btn-remove-item { position: absolute; top: 0; right: 0; background: rgba(239,68,68,0.1); color: var(--danger); border: none; border-radius: 50%; width: 26px; height: 26px; cursor: pointer; font-weight: bold; display: flex; align-items: center; justify-content: center; transition: 0.2s;}
@@ -2920,6 +2922,14 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
     // ==========================================
     // DÜZENLENEBİLİR NİHAİ RAPOR RENDERI
     // ==========================================
+    // Rapor kutularına yapıştırma/bırakma: biçim taşınmaz, düz metin eklenir (özellikle Word/web'den gelen yazı tipi, boyut, renk)
+    function duzMetinEkle(e, metin) {
+        e.preventDefault();
+        const t = String(metin || '').replace(/\r\n?/g, '\n').replace(/\u00a0/g, ' ');
+        if (t) document.execCommand('insertText', false, t);
+    }
+    document.addEventListener('paste', e => { if (e.target && e.target.closest && e.target.closest('.editable-field')) duzMetinEkle(e, (e.clipboardData || window.clipboardData).getData('text/plain')); });
+    document.addEventListener('drop', e => { if (e.target && e.target.closest && e.target.closest('.editable-field') && e.dataTransfer) duzMetinEkle(e, e.dataTransfer.getData('text/plain')); });
     window.updateReportData = function(vIndex, field, element) {
         let val = element.innerHTML;
         if(field === 'violation') finalReportData[vIndex].violation.editedTextHtml = val;
@@ -3007,7 +3017,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
                 
                 <div contenteditable="true" class="editable-field" onblur="updateReportData(${k}, 'violation', this)" style="margin: 0 0 8px 0; font-weight: bold;" title="Düzenlemek için tıklayın">${violHTML}</div>
                 
-                <div contenteditable="true" class="editable-field" onblur="updateReportData(${k}, 'hukum', this)" style="margin: 0 0 8px 0; font-style: italic;" title="Düzenlemek için tıklayın">${metinHTML}</div>
+                <div contenteditable="true" class="editable-field hukum-box" onblur="updateReportData(${k}, 'hukum', this)" style="margin: 0 0 8px 0; font-style: italic;" title="Düzenlemek için tıklayın">${metinHTML}</div>
                 
                 ${typeof renderPeriyodikTablo === 'function' ? renderPeriyodikTablo(k) : ''}
                 <div contenteditable="true" class="editable-field" onblur="updateReportData(${k}, 'dayanak', this)" style="margin: 0 0 8px 0; font-weight: bold;" title="Düzenlemek için tıklayın">${dayanakHTML}</div>
