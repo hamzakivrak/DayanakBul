@@ -348,6 +348,27 @@
         const n = MP.normName(ad);
         return _kaynak.liste.find(k => MP.normName(k.ad) === n) || null;
     }
+    // Bir hükmün mevzuat.gov.tr'deki yerine açılır pencerede gider (metin parçası vurgulanarak kaydırılır: tarayıcı "metin parçası" desteği)
+    function metinParcasi(metin) {
+        let t = String(metin || '').replace(/\([^)]*\)/g, ' ').replace(/\[\d+\]/g, ' ').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+        t = t.replace(/^[\d\s().a-zçğıöşü]{1,6}\)\s*/i, '');
+        const w = t.split(' ').filter(x => /[\p{L}\p{N}]/u.test(x)).slice(0, 7).join(' ');
+        return w.length > 12 ? w : '';
+    }
+    window.mevzuatKaynaginaGit = async function (mevzuatAdi, metin) {
+        const feat = 'popup=yes,width=1100,height=850,left=80,top=40,resizable=yes,scrollbars=yes';
+        const w = window.open('about:blank', 'mevzuatKaynakPenceresi', feat);   // tıklama anında açılır (engellenmesin); adres sonra verilir
+        try {
+            await kaynakYukle();
+            const n = MP.normName(mevzuatAdi || '');
+            const k = _kaynak.liste.find(x => MP.normName(x.ad) === n) || _kaynak.liste.find(x => { const a = MP.normName(x.ad); return a.includes(n) || n.includes(a); });
+            if (!k) { if (w) w.close(); alert('Bu mevzuat için kaynaklar.txt dosyasında adres bulunamadı:\n' + mevzuatAdi); return; }
+            const parca = metinParcasi(metin);
+            const url = iframeAdresi(k.url) + (parca ? '#:~:text=' + encodeURIComponent(parca).replace(/-/g, '%2D') : '');
+            if (w) { w.location.href = url; w.focus(); } else window.open(url, '_blank');
+        } catch (e) { if (w) w.close(); alert('Kaynak açılamadı: ' + e.message); }
+    };
+
     // Seçili mevzuatın bağlantısı ve ek dosyaları "1 · Hangi mevzuat?" altında görünür
     window.gmKaynakSatiriCiz = async function () {
         await kaynakYukle();

@@ -1,4 +1,4 @@
-const CACHE_NAME = "isg-cache-v26";
+const CACHE_NAME = "isg-cache-v27";
 // Göreli adresler: uygulama hangi depo/klasör adıyla yayınlanırsa yayınlansın çalışır
 const urlsToCache = [
   "./",

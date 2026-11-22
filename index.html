@@ -418,7 +418,7 @@
 <div class="modal-overlay" id="zipDetailOverlay" style="z-index: 1100;">
     <div class="modal-content" id="zipDetailPanel">
         <div class="zip-modal-header">
-            <h2 id="zipDetailTitle">Detay</h2>
+            <h2 id="zipDetailTitle">Detay</h2><button type="button" id="zipDetailGit" class="btn btn-sm" style="padding:3px 10px;font-size:0.78rem;background:#0f766e;color:#fff;margin-left:10px;" onclick="if(window._zipSeciliMatch) mevzuatKaynaginaGit(window._zipSeciliMatch.mevzuatAdi, window._zipSeciliMatch.snippet)" title="Resmî metni mevzuat.gov.tr'de açılır pencerede açar">🌐 mevzuat.gov.tr</button>
             <span class="close-modal" style="position: static;" onclick="closeZipDetailPanel()">&times;</span>
         </div>
         <div id="zipDetailContent"></div>
@@ -2893,6 +2893,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
                     <div class="option-text">${res.metin}</div>
                     <div class="option-citation">${displayDayanak}</div>
                 </label>
+                <span style="position:absolute; top:8px; right:10px; z-index:10;">${kaynakDugme('gitSecenek(' + vIndex + ',' + idx + ')')}</span>
                 <button type="button" class="btn btn-secondary btn-sm" style="position:absolute; bottom:12px; right:15px; z-index:10; background: var(--secondary);" onclick="openJsonBrowser(${vIndex}, ${idx})">📖 Mevzuatta Gezin ve Seç</button>
                 <button type="button" class="btn btn-sm" style="position:absolute; bottom:12px; left:15px; z-index:10; background: var(--success, #10b981); color:#fff;" onclick="addSpecificToReport(${vIndex}, ${idx})">✅ Bunu Kullan</button>
             </div>`;
@@ -3198,7 +3199,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
                     snip = snip.replace(regex, '<mark>$1</mark>');
                 }
                 
-                html += `<tr class="match-row" data-i="${i}"><td>${escapeHTML(it.mevzuatAdi)}</td><td>${escapeHTML(it.maddeNo)}</td><td class="snippet-cell">${snip}</td></tr>`;
+                html += `<tr class="match-row" data-i="${i}"><td>${escapeHTML(it.mevzuatAdi)}</td><td>${escapeHTML(it.maddeNo)}<div style="margin-top:4px;">${kaynakDugme('gitArama(' + i + ')')}</div></td><td class="snippet-cell">${snip}</td></tr>`;
             });
             html += '</tbody></table></div>'; 
             resEl.innerHTML = html;
@@ -3212,6 +3213,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
 
     function showZipDetail(match) {
         document.getElementById('zipDetailTitle').textContent = match.mevzuatAdi + ' – ' + match.maddeNo; 
+        window._zipSeciliMatch = match;
         const cont = document.getElementById('zipDetailContent'); 
         cont.innerHTML = '';
         
@@ -3247,6 +3249,11 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
     // ==========================================
     // YENİ JENERASYON JSON GEZGİNİ (TÜM VERİTABANI ARAMA)
     // ==========================================
+    // "mevzuat.gov.tr'de aç" düğmeleri
+    function kaynakDugme(onclick) { return `<button type="button" class="btn btn-sm" style="flex-shrink:0; padding:2px 8px; font-size:0.72rem; background:#0f766e; color:#fff;" onclick="event.preventDefault(); event.stopPropagation(); ${onclick}" title="Resmî metni mevzuat.gov.tr'de açılır pencerede açar ve bu hükme kaydırmaya çalışır">🌐 mevzuat.gov.tr</button>`; }
+    function gitChunk(i) { const c = provisionChunksCache[i]; if (c) mevzuatKaynaginaGit((mevzuatDB[c.mevIdx] || {}).mevzuat_adi, c.metin); }
+    function gitSecenek(v, idx) { const c = (window['currentOptions_' + v] || [])[idx]; if (c) mevzuatKaynaginaGit((mevzuatDB[c.mevIdx] || {}).mevzuat_adi, c.metin); }
+    function gitArama(i) { const m = GLOBAL_MATCHES[i]; if (m) mevzuatKaynaginaGit(m.mevzuatAdi, m.snippet); }
     function kopyalaChunk(i, btn) {
         const c = provisionChunksCache[i]; if (!c) return;
         const txt = c.dayanak + '\n' + c.metin;
@@ -3355,7 +3362,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
 
             html += `<div ${idStr} style="padding: 12px; margin-bottom: 8px; border-radius: 8px; cursor: pointer; transition: 0.2s; user-select: text; -webkit-user-select: text; ${bgClass}" class="map-viol-item" onclick="if(!(window.getSelection() && String(window.getSelection()).length)) selectFromBrowser(${currentBrowseVIndex}, ${chunkIdx})">
                 <div style="display:flex; justify-content:space-between; gap:8px; align-items:flex-start;"><div style="font-size: 0.8rem; color: var(--primary); margin-bottom: 4px; font-weight: 800;">${displayDayanak}</div>
-                <button type="button" class="btn btn-sm" style="flex-shrink:0; padding:2px 8px; font-size:0.72rem; background:var(--secondary); color:#fff;" onclick="event.stopPropagation(); kopyalaChunk(${chunkIdx}, this)" title="Dayanak ve metni panoya kopyala">📋 Kopyala</button></div>
+                <button type="button" class="btn btn-sm" style="flex-shrink:0; padding:2px 8px; font-size:0.72rem; background:var(--secondary); color:#fff;" onclick="event.stopPropagation(); kopyalaChunk(${chunkIdx}, this)" title="Dayanak ve metni panoya kopyala">📋 Kopyala</button>${kaynakDugme('gitChunk(' + chunkIdx + ')')}</div>
                 <div>${displayMetin}</div>
             </div>`;
             
