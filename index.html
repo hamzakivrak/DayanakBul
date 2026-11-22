@@ -1858,6 +1858,7 @@ Kurallar:
 3. Kaçak akım rölesi (artık akım koruma) eksikliğini 'İşyeri Bina ve Eklentilerinde Alınacak Sağlık ve Güvenlik Önlemlerine İlişkin Yönetmelik' veya İş Ekipmanları Yönetmeliği ile eşleştir.
 4. Elektrik, topraklama, yangından korunma, ilkyardım gibi doğrudan 6331 dayanaklı olmayan yönetmelikleri ASLA seçme.
 5. 'ipucu' varsa Bakanlığın İPC tablosunda benzer ihlal bulunan mevzuat ID'leridir; kelime benzerliğiyle bulunduğu için hatalı olabilir, konuyla gerçekten örtüşüyorsa tercih et.
+4b. Çalışanlara eğitim verilmemesi/alınmaması -> 6331 sayılı Kanun (madde 17); sağlık raporu, sağlık muayenesi veya sağlık gözetimi eksikliği -> 6331 sayılı Kanun (madde 15). İlk yardım eğitimi veya ilk yardımcı sayısı eksikliği -> 'İşyerlerinde Acil Durumlar Hakkında Yönetmelik'.
 5b. 'onayli_ornek:ID(kelimeler)' varsa, kullanıcının benzer bir ihlal için daha önce onayladığı mevzuat ID'si ve kilit kelimelerdir; ihlal konu olarak gerçekten benzerse o ID'yi ve benzer kelimeleri tercih et, alakasızsa yok say.
 6. "kilit": ihlalin mevzuat dayanağını bulmaya yarayan 2-3 YALIN KÖK kelime (ek almamış, örn. "kapıları"->"kapı"). Biri ihlal metnindeki ayırt edici konu kelimesi, diğeri seçtiğin mevzuatın hükümde kullanacağı karşılığı olsun. "işçi","sağlık","güvenlik","işveren","işyeri","gerekli" gibi jenerik kelimeler YASAK.
 ÇIKTI SADECE JSON (markdown yok): {"eslesmeler":[{"ihlal_id":0,"mevzuat_idleri":[5],"kilit":["kök1","kök2"]}]}`;
@@ -1875,6 +1876,18 @@ Kurallar:
             if (!(v.userKeyword || '').trim() && b.kw) { v.userKeyword = b.kw; v.kwFromAI = true; }
             ogrenmeIdx.add(i); onDoldurulan++;
         });
+        // Konu kuralları (eğitim, sağlık raporu/gözetimi, ilk yardım): doğrudan ilgili mevzuata bağlanır, AI'ya sorulmaz
+        let kuralDoldurulan = 0;
+        violationsArray.forEach((v, i) => {
+            if (ogrenmeIdx.has(i)) return;
+            const km = konuMevzuat(v.text); if (!km) return;
+            const mi = mevzuatDB.findIndex((m, idx) => m && km.ad.test(m.mevzuat_adi) && allowedIds.has(idx)); if (mi < 0) return;
+            manualUserMapping[i] = [mi];
+            v.suggestedMevzuat = mevzuatDB[mi].mevzuat_adi;
+            if (!(v.userKeyword || '').trim()) { v.userKeyword = km.kw.join(', '); v.kwFromAI = true; }
+            ogrenmeIdx.add(i); kuralDoldurulan++;
+        });
+        onDoldurulan += kuralDoldurulan;
         const kalanIdx = violationsArray.map((_, i) => i).filter(i => !ogrenmeIdx.has(i));
         const gruplar = []; for (let st = 0; st < kalanIdx.length; st += GRUP) gruplar.push(kalanIdx.slice(st, st + GRUP));
         let bitenIhlal = 0; const basarisiz = [];
@@ -1946,7 +1959,7 @@ Kurallar:
                 }
                 selectAllMappingViolations(); 
                 logDebug("Yapay zeka mevzuat önerileri uygulandı.", "success");
-                alert((hataliGrup ? "⚠ " + hataliGrup + " grup alınamadı (kota?); eksik kalanları tekrar deneyebilir veya elle girebilirsiniz.\n" : "") + (onDoldurulan ? "🧠 " + onDoldurulan + " ihlal, öğrenilmiş eşleştirmelerden AI kullanılmadan dolduruldu.\n" : "") + "✅ Yapay zeka mevzuat ve kilit kelime önerilerini yazdı. İstemediklerinizi sağdaki listeden çıkarabilir veya yeni yönetmelikleri elinizle ekleyebilirsiniz.");
+                alert((hataliGrup ? "⚠ " + hataliGrup + " grup alınamadı (kota?); eksik kalanları tekrar deneyebilir veya elle girebilirsiniz.\n" : "") + (onDoldurulan ? "🧠 " + onDoldurulan + " ihlal, öğrenilmiş eşleştirme/konu kurallarıyla AI kullanılmadan dolduruldu.\n" : "") + "✅ Yapay zeka mevzuat ve kilit kelime önerilerini yazdı. İstemediklerinizi sağdaki listeden çıkarabilir veya yeni yönetmelikleri elinizle ekleyebilirsiniz.");
             }
         } catch(e) {
             alert("Yapay zeka önerisi alınamadı: " + e.message);
@@ -2108,17 +2121,34 @@ Kurallar:
     }
 
     // ---- Konu kuralları: belirli ihlal türlerinde kilit kelimelere eklenen sabit kelimeler
-    function konuKelimeleri(text) {
+    function konuKelimeleri(text) { return konuHam(text).map(k => tightNormalize(k)); }
+    function konuHam(text) {
         const n = tightNormalize(text || '');
         const r = [];
         if (/koruyucu|koruma/.test(n) && /(tezgah|torna|freze|matkap|pres|testere|makine|makina|giyotin|abkant|taslama|kesme|ekipman|cihaz)/.test(n)) r.push('temas', 'hareketli');
         if (/(hekim|\bdsp\b|diger saglik|saglik personel|uzman)/.test(n) && /(sure|dakika|gorevlendir|yetersiz)/.test(n)) r.push('dakika', 'tehlike');
+        const km = konuMevzuat(text); if (km) km.kw.forEach(k => { if (!r.includes(k)) r.push(k); });
         return r;
+    }
+    // Belirli ihlal türleri doğrudan ilgili mevzuata bağlanır: {ad: mevzuat adı ifadesi, kw: kilit kelimeler}
+    function konuMevzuat(text) {
+        const n = tightNormalize(text || '');
+        if (/ilk ?yard/.test(n) && /(egitim|sayi|eksik|yetersiz|yeterli|bulunm|bulundurul|gorevlendir|belge|destek elemani)/.test(n)) {
+            const egit = /egitim/.test(n);
+            return { ad: /Acil Durumlar/i, kw: egit ? ['ilk yardımcı', 'eğitim'] : ['ilk yardım', 'destek elemanı'] };
+        }
+        if (/saglik/.test(n) && /(rapor|gozetim|muayene)/.test(n)) {
+            return { ad: /6331/, kw: /gozetim/.test(n) ? ['sağlık gözetimine', 'tabi'] : /rapor/.test(n) ? ['sağlık raporu'] : ['sağlık muayenelerinin'] };
+        }
+        if (/egitim/.test(n) && /(verilme|alinma|almam|yok|bulunma|eksik|yetersiz|yapilma|saglanma|temel)/.test(n) && !/(ilk ?yard|tatbikat|yangin|acil|operator|forklift|vinc|mesleki|yeterlilik|belgesi)/.test(n)) {
+            return { ad: /6331/, kw: ['eğitim', 'işe başlamadan'] };
+        }
+        return null;
     }
     // Kilit kelime dizesine konu kelimelerini (başa) ekler, tekrarları atar
     function kilitZenginlestir(text, kwStr) {
         const mevcut = String(kwStr || '').split(/[,;]+/).map(x => x.trim()).filter(Boolean);
-        const ek = konuKelimeleri(text).filter(k => !mevcut.some(m => tightNormalize(m) === k));
+        const ek = konuHam(text).filter(k => !mevcut.some(m => tightNormalize(m) === tightNormalize(k)));
         return ek.concat(mevcut).join(', ');
     }
     // Periyodik kontrol/muayene ihlallerinde İş Ekipmanları EK-III hükümlerini öne alır (kararlı sıralama)
