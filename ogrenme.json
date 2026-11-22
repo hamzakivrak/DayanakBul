@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-22T07:59:33.929Z",
+ "guncelleme": "2026-11-22T08:00:23.491Z",
  "kayitlar": [
   {
    "t": [
@@ -16,6 +16,20 @@
    "m": "ÇALIŞANLARIN PATLAYICI ORTAMLARIN TEHLİKELERİNDEN KORUNMASI HAKKINDA YÖNETMELİK",
    "ts": 1795334371827,
    "id": "rm04h3"
+  },
+  {
+   "t": [
+    "kimya",
+    "kapla",
+    "gelis",
+    "konum",
+    "tespi",
+    "edilm"
+   ],
+   "d": "(6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30, Kimyasal Maddelerle Çalışmalarda Sağlık ve Güvenlik Önlemleri Hakkında Yönetmelik, Madde: 7(1) f)",
+   "m": "Kimyasal Maddelerle Çalışmalarda Sağlık ve Güvenlik Önlemleri Hakkında Yönetmelik",
+   "ts": 1795334420338,
+   "id": "1pffvos"
   }
  ]
 }
