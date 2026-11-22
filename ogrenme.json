@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-22T16:01:31.590Z",
+ "guncelleme": "2026-11-22T16:02:15.971Z",
  "kayitlar": [
   {
    "t": [
@@ -464,6 +464,35 @@
    "ts": 1795363288753,
    "kw": "maden, tahkimat, boşluk",
    "id": "iup2zh"
+  },
+  {
+   "t": [
+    "ocakt",
+    "taban",
+    "yolla",
+    "225",
+    "kotu",
+    "207",
+    "165",
+    "110",
+    "kotun",
+    "kotla",
+    "arasi",
+    "bagla",
+    "tahki",
+    "firca",
+    "kama",
+    "yuk",
+    "alan",
+    "kisim",
+    "kilit",
+    "eksik"
+   ],
+   "d": "(6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30, Maden İşyerlerinde İş Sağlığı ve Güvenliği Yönetmeliği, Madde: 13(2) c (Alt Atıflar: Madde: 14(1), Madde: 14(2)), EK-3, Madde: 7.1)",
+   "m": "Maden İşyerlerinde İş Sağlığı ve Güvenliği Yönetmeliği",
+   "ts": 1795363333467,
+   "kw": "maden, tahkimat, kilit",
+   "id": "qce50x"
   }
  ]
 }
