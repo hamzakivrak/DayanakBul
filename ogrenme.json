@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-22T13:14:53.668Z",
+ "guncelleme": "2026-11-22T13:17:37.619Z",
  "kayitlar": [
   {
    "t": [
@@ -359,6 +359,19 @@
    "ts": 1795353291236,
    "kw": "sağlık, muayene",
    "id": "tjhze2"
+  },
+  {
+   "t": [
+    "kayna",
+    "bolum",
+    "haval",
+    "yapil"
+   ],
+   "d": "(6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30, İşyeri Bina ve Eklentilerinde Alınacak Sağlık ve Güvenlik Önlemlerine İlişkin Yönetmelik, Madde: 5(1) a, EK-1, Madde: 16)",
+   "m": "İşyeri Bina ve Eklentilerinde Alınacak Sağlık ve Güvenlik Önlemlerine İlişkin Yönetmelik",
+   "ts": 1795353455088,
+   "kw": "kaynak, havalandırma",
+   "id": "13zlmpx"
   }
  ]
 }
