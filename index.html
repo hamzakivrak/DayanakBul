@@ -300,6 +300,8 @@
             <label>📎 Dayanakta "Alt Atıflar"</label>
             <label style="font-weight:400;font-size:0.85rem;display:flex;gap:8px;align-items:flex-start;cursor:pointer;"><input type="checkbox" id="chkAltAtifGizle" onchange="setAltAtifGizle(this.checked)"> <span>Dayanak yazılırken "(Alt Atıflar: …)" bölümünü gösterme (varsayılan: gösterme).<br><small style="color:var(--text-muted)">Bir ek birden çok maddeye atıf alıyorsa, diğer maddeler bu etiketle yazılır.</small></span></label>
             <script>try{document.getElementById('chkAltAtifGizle').checked=localStorage.getItem('altAtifGizle')!=='0';}catch(e){}</script>
+            <div style="margin-top:10px;font-size:0.85rem;">🧠 Öğrenilen eşleştirme: <b id="ogrenmeSayi">0</b> <button type="button" class="btn btn-sm" style="padding:2px 8px;font-size:0.75rem;margin-left:6px;" onclick="ogrenmeTemizle()">Temizle</button><br><small style="color:var(--text-muted)">Raporda "🧠 Bunu öğren"e bastığınız ihlal→hüküm çiftleri bu tarayıcıda saklanır; benzer ihlallerde öncelikli önerilir.</small></div>
+            <script>try{var _o=JSON.parse(localStorage.getItem('isg_ogrenme')||'[]');document.getElementById('ogrenmeSayi').textContent=_o.length;}catch(e){}</script>
         </div>
         <div class="setting-group">
             <label>🎨 Görünüm Teması</label>
@@ -1211,6 +1213,10 @@
     // ==========================================
     // ORTAK ŞELALE ARAMA (CASCADE) BEYNİ
     // ==========================================
+    // "Tezgahlar", "Genel hususlar" gibi yalnız başlık olan hükümler
+    function baslikMiMetin(t) { t = String(t || '').trim(); return t.length > 0 && t.length <= 70 && !/[.;:!?)]$/.test(t) && !/\t/.test(t) && t.split(/\s+/).length <= 9; }
+    // Başlık hükmü yerine altındaki ilk gerçek metin hükmünü döndürür
+    function baslikCoz(c) { let n = c, h = 0; while (n && n.baslikMi && n.sonraki && h < 4) { n = n.sonraki; h++; } return n || c; }
     function performCascadeSearch(queryTokens, chunksToSearch) {
         let attempts = [];
         for (let start = 0; start < queryTokens.length; start++) {
@@ -1236,7 +1242,8 @@
                 clonedResults.sort((a, b) => b.tfIdfScore - a.tfIdfScore);
                 
                 let addedAny = false;
-                for (let r of clonedResults) {
+                for (let r0 of clonedResults) {
+                    const r = r0.baslikMi ? { ...baslikCoz(r0), tfIdfScore: r0.tfIdfScore } : r0;
                     if (!uniqueDayanaks.has(r.dayanak)) {
                         uniqueDayanaks.add(r.dayanak);
                         matchedChunks.push(r);
@@ -1288,6 +1295,7 @@
                         let norm = tightNormalize(chunk.metin);
                         let tokens = norm ? norm.split(' ').filter(w => w.length > 1 && !trStopSet.has(w)) : [];
                         let co = {...chunk, mevIdx: mevIdx, norm: norm, tokens: tokens, mevNorm: mevNorm, normDay: tightNormalize(chunk.dayanak)};
+                        co.baslikMi = baslikMiMetin(chunk.metin);
                         provisionChunksCache.push(co);
                         (chunksByMev[mevIdx] = chunksByMev[mevIdx] || []).push(co);
                         let uniqueTokensInChunk = [...new Set(tokens)]; 
@@ -1298,6 +1306,8 @@
                     });
                 });
                 
+                // Yalnız başlıktan oluşan hükümlerin 'sonraki' bağlantısı (aynı mevzuattaki bir sonraki hüküm)
+                Object.keys(chunksByMev).forEach(mi => { const L = chunksByMev[mi]; for (let i = 0; i < L.length - 1; i++) if (L[i].baslikMi) L[i].sonraki = L[i + 1]; });
                 let totalDocuments = provisionChunksCache.length;
                 if (totalDocuments > 0) {
                     for (let token in wordDocumentCount) {
@@ -1354,7 +1364,7 @@
     }
     function ipcChunksFor(r) {
         if (r._mi < 0) return [];
-        const out = [], add = c => { if (c && !out.includes(c)) out.push(c); };
+        const out = [], add = c => { c = c && baslikCoz(c); if (c && !out.includes(c)) out.push(c); };
         if (r.bolum === 'ek') {
             const ms = [...(r.madde || '').matchAll(/EK[- ]?([IVX]+|\d+)/gi)], ec = ms.length ? ekCanon(ms[ms.length - 1][0]) : '';
             (r.ek_madde || '').split(/\s+/).filter(Boolean).forEach(n => add(ipcChunkMap[r._mi + '|E|' + ec + '|' + n]));
@@ -1840,25 +1850,27 @@ Kurallar:
 ÇIKTI SADECE JSON (markdown yok): {"eslesmeler":[{"ihlal_id":0,"mevzuat_idleri":[5],"kilit":["kök1","kök2"]}]}`;
         const mevListe = allowedMevzuats.map(m => m.id + '|' + m.name).join('\n');
         let okunan = 0, hataliGrup = 0;
-        const gruplar = []; for (let st = 0; st < violationsArray.length; st += GRUP) gruplar.push(st);
+        const gruplar = []; for (let st = 0; st < violationsArray.length; st += GRUP) gruplar.push(violationsArray.map((_, i) => i).slice(st, st + GRUP));
         let bitenIhlal = 0; const basarisiz = [];
-        const grupIsle = async (st, jobNo) => {
+        const grupIsle = async (grup, jobNo) => {
             btn.innerHTML = `⏳ Düşünüyor... ${bitenIhlal}/${violationsArray.length}`;
-            const girdi = violationsArray.slice(st, st + GRUP).map((v, k) => {
+            const girdi = grup.map(i => {
+                const v = violationsArray[i];
                 const ids = [...new Set(ipcFind(v.text, allowedIds, 3, 0.4).map(h => h.r._mi))].slice(0, 2);
-                return (st + k) + '|' + v.text + (ids.length ? ' |ipucu:' + ids.join(',') : '');
+                return i + '|' + v.text + (ids.length ? ' |ipucu:' + ids.join(',') : '');
             }).join('\n');
             const prompt = kurallar + '\n\nİHLALLER (id|metin):\n' + girdi + '\n\nMEVZUATLAR (id|ad):\n' + mevListe;
             let parsed = null;
             try {
                 let data = await smartAIFetch(prompt, 0.1, jobNo);
                 parsed = safeParseJSON(data.choices[0].message.content);
-            } catch (e) { logDebug(`Mevzuat öneri grubu ${st + 1}. ihlalden başlayan: ${e.message}`, "warn"); basarisiz.push(st); return; }
-            if (!parsed || !Array.isArray(parsed.eslesmeler)) { basarisiz.push(st); return; }
+            } catch (e) { logDebug(`Mevzuat öneri grubu ${grup[0] + 1}. ihlalden başlayan: ${e.message}`, "warn"); basarisiz.push(grup); return; }
+            if (!parsed || !Array.isArray(parsed.eslesmeler)) { basarisiz.push(grup); return; }
             okunan++;
-            parsed.eslesmeler.forEach(e => {
-                let vIdx = e.ihlal_id;
-                if (!violationsArray[vIdx]) return;
+            parsed.eslesmeler.forEach((e, pos) => {
+                let vIdx = parseInt(e.ihlal_id);
+                if (!grup.includes(vIdx)) vIdx = grup[pos]; // model numarayı kaydırdıysa sıraya göre eşle
+                if (vIdx === undefined || !violationsArray[vIdx]) return;
                 if(!manualUserMapping[vIdx]) manualUserMapping[vIdx] = [];
                 let firstName = null;
                 (e.mevzuat_idleri || []).forEach(mid => {
@@ -1870,9 +1882,9 @@ Kurallar:
                 // AI'nın seçtiği mevzuat adı ve kilit kelimeler kutulara düşer (kullanıcı silip değiştirebilir)
                 if (firstName && !(violationsArray[vIdx].suggestedMevzuat || '').trim()) violationsArray[vIdx].suggestedMevzuat = firstName;
                 const kl = (Array.isArray(e.kilit) ? e.kilit : []).map(x => String(x).trim()).filter(x => x.length > 2).slice(0, 3);
-                if (kl.length && !(violationsArray[vIdx].userKeyword || '').trim()) { violationsArray[vIdx].userKeyword = kl.join(', '); violationsArray[vIdx].kwFromAI = true; }
+                if (kl.length && !(violationsArray[vIdx].userKeyword || '').trim()) { violationsArray[vIdx].userKeyword = kilitZenginlestir(violationsArray[vIdx].text, kl.join(', ')); violationsArray[vIdx].kwFromAI = true; }
             });
-            bitenIhlal += Math.min(GRUP, violationsArray.length - st);
+            bitenIhlal += grup.length;
             btn.innerHTML = `⏳ Düşünüyor... ${bitenIhlal}/${violationsArray.length}`;
         };
         await paralelIsle(gruplar, grupIsle, 600);
@@ -1881,6 +1893,13 @@ Kurallar:
             btn.innerHTML = `⏳ ${tekrar.length} grup yeniden deneniyor...`;
             await paralelIsle(tekrar, (st, no) => grupIsle(st, no + 1), 1500);
             hataliGrup = basarisiz.length;
+        }
+        // Hâlâ mevzuat adı ve kilit kelimesi boş kalan ihlaller varsa onları ayrı gruplarla bir kez daha dene
+        const bos = violationsArray.map((v, i) => i).filter(i => !(violationsArray[i].userKeyword || '').trim() && !(manualUserMapping[i] || []).length);
+        if (bos.length && bos.length < violationsArray.length) {
+            const g2 = []; for (let i = 0; i < bos.length; i += GRUP) g2.push(bos.slice(i, i + GRUP));
+            btn.innerHTML = `⏳ ${bos.length} boş kalan ihlal yeniden deneniyor...`;
+            await paralelIsle(g2, (g, no) => grupIsle(g, no + 2), 1500);
         }
         if (okunan === 0) { alert("Yapay zeka önerisi alınamadı. Anahtarlarınızı ve kotanızı kontrol edin."); return; }
         try {
@@ -2058,6 +2077,65 @@ Kurallar:
         return null;
     }
 
+    // ---- Konu kuralları: belirli ihlal türlerinde kilit kelimelere eklenen sabit kelimeler
+    function konuKelimeleri(text) {
+        const n = tightNormalize(text || '');
+        const r = [];
+        if (/koruyucu|koruma/.test(n) && /(tezgah|torna|freze|matkap|pres|testere|makine|makina|giyotin|abkant|taslama|kesme|ekipman|cihaz)/.test(n)) r.push('temas', 'hareketli');
+        if (/(hekim|\bdsp\b|diger saglik|saglik personel|uzman)/.test(n) && /(sure|dakika|gorevlendir|yetersiz)/.test(n)) r.push('dakika', 'tehlike');
+        return r;
+    }
+    // Kilit kelime dizesine konu kelimelerini (başa) ekler, tekrarları atar
+    function kilitZenginlestir(text, kwStr) {
+        const mevcut = String(kwStr || '').split(/[,;]+/).map(x => x.trim()).filter(Boolean);
+        const ek = konuKelimeleri(text).filter(k => !mevcut.some(m => tightNormalize(m) === k));
+        return ek.concat(mevcut).join(', ');
+    }
+    // Periyodik kontrol/muayene ihlallerinde İş Ekipmanları EK-III hükümlerini öne alır (kararlı sıralama)
+    function periyodikOnce(text, list) {
+        if (!/(^| )(periyodik|muayene)/.test(tightNormalize(text || ''))) return list;
+        const ek3 = c => /İş Ekipmanlarının Kullanımında/i.test(c.dayanak) && /EK-(?:III|3)\b/.test(c.dayanak);
+        return list.filter(ek3).concat(list.filter(c => !ek3(c)));
+    }
+
+    // ---- Öğrenen eşleştirme: kullanıcının onayladığı (ihlal -> hüküm) çiftleri tarayıcıda saklanır
+    const OGRENME_KEY = 'isg_ogrenme';
+    function ogrenmeOku() { try { return JSON.parse(localStorage.getItem(OGRENME_KEY) || '[]'); } catch (e) { return []; } }
+    function ogrenmeYaz(l) { try { localStorage.setItem(OGRENME_KEY, JSON.stringify(l.slice(-400))); } catch (e) { /* dolu */ } }
+    function dice(a, b) { if (!a.length || !b.length) return 0; const B = new Set(b); const k = a.filter(x => B.has(x)).length; return 2 * k / (a.length + b.length); }
+    function ogrenmeBul(text, izinli) {
+        const t = ipcTokens(text || ''); if (t.length < 2) return [];
+        const out = [];
+        ogrenmeOku().forEach(e => {
+            const sim = dice(t, e.t || []); if (sim < 0.55) return;
+            const c = provisionChunksCache.find(x => x.dayanak === e.d); if (!c) return;
+            if (izinli && !izinli.has(c.mevIdx)) return;
+            out.push({ chunk: c, sim });
+        });
+        return out.sort((a, b) => b.sim - a.sim);
+    }
+    function ogrenmeOne(text, list, izinli) {
+        const o = ogrenmeBul(text, izinli).slice(0, 2).map(x => ({ ...x.chunk, tfIdfScore: 999, ogrenildi: true }));
+        if (!o.length) return list;
+        return o.concat(list.filter(c => !o.some(x => x.dayanak === c.dayanak)));
+    }
+    function adayIyilestir(text, list, izinli) { return ogrenmeOne(text, periyodikOnce(text, list), izinli); }
+    function ogrenildiMi(k) {
+        const fr = finalReportData[k]; if (!fr || !fr.selectedData) return false;
+        const t = ipcTokens(fr.violation.text);
+        return ogrenmeOku().some(e => e.d === fr.selectedData.dayanak && dice(t, e.t || []) >= 0.8);
+    }
+    function ogrenBu(k) {
+        const fr = finalReportData[k]; if (!fr || !fr.selectedData) return;
+        const t = ipcTokens(fr.violation.text), l = ogrenmeOku();
+        const i = l.findIndex(e => e.d === fr.selectedData.dayanak && dice(t, e.t || []) >= 0.8);
+        if (i >= 0) l.splice(i, 1); // ikinci tıklama: öğrenileni sil
+        else { l.forEach((e, j) => { if (dice(t, e.t || []) >= 0.8) e.eski = true; }); l.push({ t, d: fr.selectedData.dayanak, m: (mevzuatDB[fr.selectedData.mevIdx] || {}).mevzuat_adi || '', ts: Date.now() }); }
+        ogrenmeYaz(l.filter(e => !e.eski)); renderFinalReport(); ogrenmeSayisiGuncelle();
+    }
+    function ogrenmeSayisiGuncelle() { const el = document.getElementById('ogrenmeSayi'); if (el) el.textContent = ogrenmeOku().length; }
+    function ogrenmeTemizle() { if (confirm('Öğrenilen tüm eşleştirmeler silinsin mi?')) { ogrenmeYaz([]); ogrenmeSayisiGuncelle(); try { renderFinalReport(); } catch (e) { /* */ } } }
+
     // Yapay zeka kullanmadan toplu eşleştirme: her ihlal için, o ihlalin "şelale" kutusundaki (ya da kayıtlı) anahtar kelimeleriyle
     // seçili mevzuatlarda arama yapar, en yüksek puanlı hükmü seçer; diğer öneriler rapordan değiştirilebilir.
     function runBulkCascadeSearch() {
@@ -2071,13 +2149,14 @@ Kurallar:
             let giris = ((kwEl && kwEl.value.trim()) || v.userKeyword || '').trim();
             let queryTokens = [];
             if (giris) giris.split(/[,;]+/).map(t => t.trim()).filter(Boolean).forEach(rt => { queryTokens = queryTokens.concat(getCleanTokens(rt)); });
-            else { kelimesiz.push(i + 1); queryTokens = getCleanTokens(v.text).slice(0, 6); }
+            else { kelimesiz.push(i + 1); queryTokens = konuKelimeleri(v.text).concat(getCleanTokens(v.text).slice(0, 6)); }
             if (!queryTokens.length) { bulunamayan.push(i + 1); continue; }
             let havuz = [];
             checked.forEach(dbIdx => { performCascadeSearch(queryTokens, chunksByMev[dbIdx] || []).matchedChunks.forEach(m => havuz.push(m)); });
             havuz.sort((a, b) => (b.tfIdfScore || 0) - (a.tfIdfScore || 0));
             let uniq = [];
             for (const r of havuz) { if (!isPenaltyChunk(r) && !uniq.some(u => u.dayanak === r.dayanak)) uniq.push(r); }
+            uniq = adayIyilestir(v.text, uniq, strictLabels ? new Set(checked) : null);
             let secilen = uniq[0];
             const forced = findPeriyodikEkIII(v.text);
             if (forced && (!strictLabels || checked.includes(forced.chunk.mevIdx))) { secilen = { ...forced.chunk }; uniq = [secilen].concat(uniq); }
@@ -2241,6 +2320,7 @@ ${JSON.stringify(chunk.map(d => ({
                         if(!targetData) return;
 
                         let queryTokens = item.arama_kelimeleri.map(w => tightNormalize(w));
+                        konuKelimeleri(targetData.ihlal).reverse().forEach(k => { if (!queryTokens.includes(k)) queryTokens.unshift(k); });
                         
                         let userKw = ilkKw(violationsArray[vIndex].userKeyword);
                         if (userKw) {
@@ -2277,7 +2357,7 @@ ${JSON.stringify(chunk.map(d => ({
                         
                         // KAYNAK: İPC Rehberi modunda en uygun İPC satırlarının bağlı olduğu hükümler (ceza maddeleri hariç) aday olur;
                         // İPC'de karşılık yoksa mevzuat veritabanı sonuçlarına düşülür. Mevzuat modunda İPC kullanılmaz.
-                        uniqueResults = uniqueResults.filter(c => !isPenaltyChunk(c));
+                        uniqueResults = periyodikOnce(targetData.ihlal, uniqueResults.filter(c => !isPenaltyChunk(c)));
                         let ipcChunks = [];
                         const selMev = new Set(targetData.mevzuatlar.map(m => parseInt(m.value)));
                         if (srcMode === 'ipc' && ipcReady) {
@@ -2286,6 +2366,9 @@ ${JSON.stringify(chunk.map(d => ({
                             });
                             ipcChunks = ipcChunks.slice(0, 8);
                         }
+                        const izinliMev = strictLabels ? selMev : null;
+                        ipcChunks = ipcChunks.length ? adayIyilestir(targetData.ihlal, ipcChunks, izinliMev) : ipcChunks;
+                        uniqueResults = ogrenmeOne(targetData.ihlal, uniqueResults, izinliMev);
                         let pool = ipcChunks.concat(uniqueResults.filter(u => !ipcChunks.some(x => x.dayanak === u.dayanak)));
                         altPools[vIndex] = pool.slice(0, 12);
                         let top10 = ipcChunks.length ? ipcChunks : uniqueResults.slice(0, 10);
@@ -2295,7 +2378,7 @@ ${JSON.stringify(chunk.map(d => ({
                             candidatePayload.push({
                                 vIndex: vIndex,
                                 ihlal: targetData.ihlal,
-                                adaylar: top10.map((cand, idx) => ({ id: idx, metin: String(cand.metin).slice(0, 380), dayanak: cand.dayanak, ...(cand.ipcRef ? { ihlal_hukmu: cand.ipcRef.hukum.slice(0, 200) } : {}) }))
+                                adaylar: top10.map((cand, idx) => ({ id: idx, metin: String(cand.metin).slice(0, 380), dayanak: cand.dayanak, ...(cand.ogrenildi ? { kullanici_onayli: true } : {}), ...(cand.ipcRef ? { ihlal_hukmu: cand.ipcRef.hukum.slice(0, 200) } : {}) }))
                             });
                         }
                     });
@@ -2303,7 +2386,7 @@ ${JSON.stringify(chunk.map(d => ({
 
                 if(candidatePayload.length > 0) {
                     const prompt2 = `Sen baş denetçisin. Aşağıda ${candidatePayload.length} adet İHLAL ve potansiyel mevzuat maddeleri verilmiştir.
-GÖREV: Her ihlal için, o ihlale EN ÇOK UYAN 1 adet adayın 'id' değerini seç. 'ihlal_hukmu' alanı, adayın Bakanlığın resmî İPC tablosundaki ihlal tanımıdır; ihlali en iyi karşılayan adayı seç, Ceza maddesi içeren aday seçme. Periyodik kontrol eksikliklerinde İş Ekipmanları Yönetmeliği'nin tablolarla belirtilen (tesisat, kaldırma aracı, basınçlı tesisat vb.) ilgili periyodik kontrol hükmünü tercih et. Elektrik/topraklama/yangın/ilkyardım gibi 6331 dayanaklı olmayan yönetmeliklerden aday seçme.
+GÖREV: Her ihlal için, o ihlale EN ÇOK UYAN 1 adet adayın 'id' değerini seç. 'ihlal_hukmu' alanı, adayın Bakanlığın resmî İPC tablosundaki ihlal tanımıdır; ihlali en iyi karşılayan adayı seç, Ceza maddesi içeren aday seçme. 'kullanici_onayli': true olan aday, kullanıcının benzer bir ihlalde daha önce seçtiği hükümdür; açıkça uymuyorsa onu seç. Periyodik kontrol eksikliklerinde İş Ekipmanları Yönetmeliği'nin tablolarla belirtilen (tesisat, kaldırma aracı, basınçlı tesisat vb.) ilgili periyodik kontrol hükmünü tercih et. Elektrik/topraklama/yangın/ilkyardım gibi 6331 dayanaklı olmayan yönetmeliklerden aday seçme.
 ÇIKTI SADECE JSON OLMALIDIR (ASLA markdown, \`\`\`json veya açıklama ekleme):
 {
   "secimler": [
@@ -2452,6 +2535,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
             if(parsedJSON.analiz && Array.isArray(parsedJSON.analiz)) {
                 parsedJSON.analiz.forEach((item, idx) => {
                     let queryTokens = item.arama_kelimeleri.map(w => tightNormalize(w));
+                    konuKelimeleri(violationsArray[vIndex].text).reverse().forEach(k => { if (!queryTokens.includes(k)) queryTokens.unshift(k); });
                     
                     if (userKw) {
                         let normKw = tightNormalize(userKw);
@@ -2503,6 +2587,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
                 if(!uniqueResults.some(u => u.dayanak === r.dayanak)) uniqueResults.push(r); 
             }
 
+            uniqueResults = adayIyilestir(violationsArray[vIndex].text, uniqueResults, null);
             let finalResults = uniqueResults.slice(0, 10);
             if (finalResults.length > 1) {
                 loadingEl.innerHTML = `🤖 Bulunan en iyi ${finalResults.length} madde AI tarafından sıralanıyor...`;
@@ -2729,6 +2814,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
                     <button class="btn btn-sm" style="background:var(--secondary); color:white; padding:4px 10px; font-size:0.75rem;" onclick="openZipSearchModal('${safeSearchQuery}')">🔍 Arşivde Gör & Kopyala</button>
                     <button class="btn btn-sm" style="background:var(--primary); color:white; padding:4px 10px; font-size:0.75rem; margin-left: 5px;" onclick="openJsonBrowserFromReport(${k})">🔄 Farklı Madde Seç</button>
                     <button class="btn btn-sm" style="background:var(--success, #10b981); color:white; padding:4px 10px; font-size:0.75rem; margin-left: 5px;" onclick="openAltPanel(${k})" title="Mevzuat seçip şelale veya AI ile alternatif ara">🔍 Alternatif Ara</button>
+                    <button class="btn btn-sm" style="background:${ogrenildiMi(k) ? '#7c3aed' : 'transparent'}; color:${ogrenildiMi(k) ? '#fff' : '#7c3aed'}; border:1px solid #7c3aed; padding:4px 10px; font-size:0.75rem; margin-left: 5px;" onclick="ogrenBu(${k})" title="Bu ihlal türü için seçtiğiniz bu hükmü hatırla; sonraki benzer ihlallerde öncelik ver (tekrar tıklayınca siler)">${ogrenildiMi(k) ? '🧠 Öğrenildi ✓' : '🧠 Bunu öğren'}</button>
                 </div>
             </div>`;
             finalReportEl.innerHTML += reportHTML;
@@ -2959,6 +3045,13 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
     // ==========================================
     // YENİ JENERASYON JSON GEZGİNİ (TÜM VERİTABANI ARAMA)
     // ==========================================
+    function kopyalaChunk(i, btn) {
+        const c = provisionChunksCache[i]; if (!c) return;
+        const txt = c.dayanak + '\n' + c.metin;
+        const bitti = () => { if (btn) { const o = btn.textContent; btn.textContent = '✔ Kopyalandı'; setTimeout(() => btn.textContent = o, 1200); } };
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(bitti, () => { /* izin yok */ });
+        else { const ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); bitti(); } catch (e) { /* */ } ta.remove(); }
+    }
     function openJsonBrowserFromReport(vIndex) {
         const selectedData = finalReportData[vIndex].selectedData;
         currentBrowseMevIdx = selectedData.mevIdx;
@@ -3058,8 +3151,9 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
                 }
             }
 
-            html += `<div ${idStr} style="padding: 12px; margin-bottom: 8px; border-radius: 8px; cursor: pointer; transition: 0.2s; ${bgClass}" class="map-viol-item" onclick="selectFromBrowser(${currentBrowseVIndex}, ${chunkIdx})">
-                <div style="font-size: 0.8rem; color: var(--primary); margin-bottom: 4px; font-weight: 800;">${displayDayanak}</div>
+            html += `<div ${idStr} style="padding: 12px; margin-bottom: 8px; border-radius: 8px; cursor: pointer; transition: 0.2s; user-select: text; -webkit-user-select: text; ${bgClass}" class="map-viol-item" onclick="if(!(window.getSelection() && String(window.getSelection()).length)) selectFromBrowser(${currentBrowseVIndex}, ${chunkIdx})">
+                <div style="display:flex; justify-content:space-between; gap:8px; align-items:flex-start;"><div style="font-size: 0.8rem; color: var(--primary); margin-bottom: 4px; font-weight: 800;">${displayDayanak}</div>
+                <button type="button" class="btn btn-sm" style="flex-shrink:0; padding:2px 8px; font-size:0.72rem; background:var(--secondary); color:#fff;" onclick="event.stopPropagation(); kopyalaChunk(${chunkIdx}, this)" title="Dayanak ve metni panoya kopyala">📋 Kopyala</button></div>
                 <div>${displayMetin}</div>
             </div>`;
             

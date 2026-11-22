@@ -75,9 +75,32 @@
         if (!m) return null;
         return pt.tablolar.find(t => t.guvenilir && t.bolum === m[1] + '.' + m[2]) || null;
     }
+    // İhlaldeki ekipman sözcüğü, tablo satırında farklı adla geçiyorsa (örn. kompresör -> "Basınçlı hava ve gaz tankları")
+    const SATIR_ESANLAM = [
+        [/kompres/, /hava ve gaz tank/], [/hava tank|hava depo/, /hava ve gaz tank/], [/hidrofor|genlesme/, /genlesme|boyler/],
+        [/lpg|akaryakit tank|depolama tank/, /atmosferik/], [/kazan/, /kazan/], [/forklift|istif|transpalet/, /endustriyel arac/],
+        [/vinc|kren|caraskal/, /kren|vinc/], [/asansor/, /asansor/], [/kaldirma platform|sepetli|man lift/, /platform/],
+        [/iskele/, /iskele/], [/konveyor|tasima bant/, /konveyor|surekli tasima/], [/pres/, /pres/], [/torna/, /torna/], [/freze/, /freze/],
+        [/matkap|delme/, /delme/], [/testere/, /testere/], [/giyotin|makas/, /giyotin/], [/taslama|spiral/, /taslama/], [/jenerator/, /jenerator/],
+        [/trafo|transformator/, /transformator/], [/topraklama|elektrik tesisat/, /elektrik tesisat/], [/yildirim|paratoner/, /yildirim/],
+        [/sondurucu|yangin tup/, /sondurucu/], [/yangin sondur|sprinkler|yagmurlama/, /yangin sondur/], [/yangin alg|yangin uyar/, /yangin alg/]
+    ];
+    const _nrm = t => String(t || '').toLocaleLowerCase('tr-TR').replace(/ı/g, 'i').replace(/ş/g, 's').replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ö/g, 'o').replace(/ç/g, 'c').replace(/â/g, 'a').replace(/î/g, 'i').replace(/\s+/g, ' ');
     function satirSkorlari(tablo, ihlal) {
         const vt = new Set(ipcTokens(ihlal || ''));
-        return tablo.satirlar.map(s => ipcTokens(s.ad).filter(t => vt.has(t)).length);
+        const ni = _nrm(ihlal);
+        return tablo.satirlar.map(s => {
+            let sk = ipcTokens(s.ad).filter(t => vt.has(t)).length;
+            const na = _nrm(s.ad);
+            SATIR_ESANLAM.forEach(([a, b]) => { if (a.test(ni) && b.test(na)) sk += 2; });
+            return sk;
+        });
+    }
+    // Kullanıcının yazdığı filtre sözcükleri (virgül/boşlukla ayrılmış): hepsi satır adında geçmeli (önek eşleşir)
+    function satirFiltrele(tablo, f) {
+        const ks = _nrm(f).split(/[,;\s]+/).filter(x => x.length > 1);
+        if (!ks.length) return null;
+        return tablo.satirlar.map(s => { const na = _nrm(s.ad); return ks.every(k => na.includes(k.length > 5 ? k.slice(0, 5) : k) || SATIR_ESANLAM.some(([x, y]) => x.test(k) && y.test(na))); });
     }
     const TD = 'border:1px solid #475569;padding:4px 6px;vertical-align:top;font-size:0.85em;color:#0f172a;background:#ffffff;';
     const TH = 'border:1px solid #475569;padding:4px 6px;font-size:0.85em;color:#0f172a;background:#e2e8f0;text-align:left;';
@@ -89,15 +112,19 @@
         if (!tablo) return '';
         const sk = satirSkorlari(tablo, fr.violation && fr.violation.text);
         const mx = Math.max(0, ...sk);
+        const filtre = fr.tabloFiltre || '';
+        const fm = satirFiltrele(tablo, filtre);
         const mode = fr.tabloMode || (mx > 0 ? 'eslesen' : 'tum');
         const btn = (m, label) => `<button type="button" class="btn btn-sm" style="padding:3px 9px;font-size:0.75rem;border:1px solid var(--primary);${mode === m ? 'background:var(--primary);color:#fff;' : 'background:transparent;color:var(--primary);'}" onclick="setTabloMode(${k},'${m}')">${label}</button>`;
-        const kontrol = `<div class="no-export" style="margin:4px 0 8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:0.8rem;"><span style="color:var(--text-muted)">📊 ${esc(tablo.baslik.split(':')[0])}:</span>${mx > 0 ? btn('eslesen', 'Yalnız eşleşen satır') : ''}${btn('tum', 'Tüm tablo')}${btn('kapali', 'Gizle')}</div>`;
+        const kontrol = `<div class="no-export" style="margin:4px 0 8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:0.8rem;"><span style="color:var(--text-muted)">📊 ${esc(tablo.baslik.split(':')[0])}:</span>${btn('eslesen', 'Yalnız eşleşen satır')}${btn('tum', 'Tüm tablo')}${btn('kapali', 'Gizle')}<input type="text" value="${esc(filtre)}" placeholder="satır filtresi (örn. kompresör)" title="Yazıp Enter'a basın: yalnız adında bu sözcükler geçen satırlar gösterilir; boşaltınca kalkar" style="padding:3px 8px;font-size:0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--text-main);width:190px;" onchange="setTabloFiltre(${k}, this.value)"></div>`;
         if (mode === 'kapali') return `<div class="periyodik-tablo-kontrol">${kontrol}</div>`;
 
-        const satirlar = (mode === 'eslesen' && mx > 0) ? tablo.satirlar.filter((s, i) => sk[i] === mx) : tablo.satirlar;
+        let satirlar = tablo.satirlar;
+        if (fm) { const f = tablo.satirlar.filter((s, i) => fm[i]); satirlar = f.length ? f : tablo.satirlar; }
+        else if (mode === 'eslesen' && mx > 0) satirlar = tablo.satirlar.filter((s, i) => sk[i] === mx);
         const gorunenNo = new Set();
         satirlar.forEach(s => { const re = /\((\d+)\)/g; let m; while ((m = re.exec(s.ad))) gorunenNo.add(m[1]); });
-        const dipnot = tablo.dipnotlar.filter(d => { const m = d.match(/^\((\d+)\)/); return mode === 'tum' || (m && gorunenNo.has(m[1])); });
+        const dipnot = tablo.dipnotlar.filter(d => { const m = d.match(/^\((\d+)\)/); return (mode === 'tum' && !fm) || (m && gorunenNo.has(m[1])); });
         const html = `<div class="periyodik-tablo" style="margin:0 0 8px 0;">
             <div style="font-weight:bold;margin-bottom:4px;">${esc(tablo.baslik)}</div>
             <div style="overflow-x:auto;"><table style="border-collapse:collapse;width:100%;">
@@ -110,7 +137,8 @@
         const kaynak = `<div class="no-export" style="font-size:0.72rem;color:var(--text-muted);margin:-4px 0 8px;">Tablo kaynağı: ${esc(pt.kaynak || '')} (${esc(pt.guncelleme || '')}). Güncel değilse Mevzuat Güncelleme Merkezi'nden yenileyin.</div>`;
         return kontrol + html + kaynak;
     };
-    window.setTabloMode = function (k, m) { if (finalReportData[k]) { finalReportData[k].tabloMode = m; renderFinalReport(); } };
+    window.setTabloMode = function (k, m) { if (finalReportData[k]) { finalReportData[k].tabloMode = m; finalReportData[k].tabloFiltre = ''; renderFinalReport(); } };
+    window.setTabloFiltre = function (k, f) { if (finalReportData[k]) { finalReportData[k].tabloFiltre = String(f || '').trim(); if (finalReportData[k].tabloFiltre && finalReportData[k].tabloMode === 'kapali') finalReportData[k].tabloMode = 'eslesen'; renderFinalReport(); } };
 
     // =====================================================================
     // C) MEVZUAT GÜNCELLEME MERKEZİ
