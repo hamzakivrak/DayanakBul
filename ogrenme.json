@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-22T16:02:32.061Z",
+ "guncelleme": "2026-11-22T17:44:37.859Z",
  "kayitlar": [
   {
    "t": [
@@ -540,6 +540,21 @@
    "ts": 1795363349561,
    "kw": "patlayıcı, ex-proof, pano",
    "id": "17g5phj"
+  },
+  {
+   "t": [
+    "acik",
+    "vaziy",
+    "elekt",
+    "kablo",
+    "prizl",
+    "mevcu"
+   ],
+   "d": "(6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30, İşyeri Bina ve Eklentilerinde Alınacak Sağlık ve Güvenlik Önlemlerine İlişkin Yönetmelik, Madde: 5(1) a, EK-1, Madde: 4)",
+   "m": "İşyeri Bina ve Eklentilerinde Alınacak Sağlık ve Güvenlik Önlemlerine İlişkin Yönetmelik",
+   "ts": 1795369475076,
+   "kw": "açık, elektrik kablosu",
+   "id": "13t0gna"
   }
  ]
 }
