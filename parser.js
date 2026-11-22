@@ -227,10 +227,21 @@
             const sekmeli = bolge.some(l => l.indexOf('\t') >= 0);
             if (sekmeli) {
                 const donemOk = c => c.length > 0 && c.length < 140 && (/\d+\s*(?:yıl|ay|gün|hafta)/i.test(c) || /süre/i.test(c));
-                let son = null, bosVar = false;
+                let son = null, bosVar = false, grup = [];
+                // Sekmesiz ardışık satırlar: ya önceki satırın çok satırlı kriter hücresinin devamıdır, ya da (kopyalama sekmeleri kaybettiğinde)
+                // yeni bir satırdır: [ad] [periyot satırları...] [... uygun olarak yapılır.]  (örn. LPG tankları, Kriyojenik tanklar)
+                const grubuBosalt = () => {
+                    if (!grup.length) return;
+                    const oncekiTam = son && /yapılır\.?\s*$/i.test(son.kriter);
+                    const k = grup.findIndex((x, idx) => idx >= 2 && /uygun\s+olarak\s+yapılır\.?\s*$/i.test(x));
+                    if (oncekiTam && k >= 2) satirlar.push(son = { ad: grup[0], periyot: grup.slice(1, k).join(' '), kriter: grup.slice(k).join('\n') });
+                    else if (son) son.kriter += '\n' + grup.join('\n');
+                    grup = [];
+                };
                 for (const l of bolge) {
-                    if (!l) { bosVar = true; continue; }
-                    if (l.indexOf('\t') < 0 && /^\(\d+\)\s+\S/.test(l)) { dipnotlar.push(l); continue; }
+                    if (!l) { grubuBosalt(); bosVar = true; continue; }
+                    if (l.indexOf('\t') < 0 && /^\(\d+\)\s+\S/.test(l)) { grubuBosalt(); dipnotlar.push(l); continue; }
+                    if (l.indexOf('\t') >= 0) grubuBosalt();
                     const c = l.split('\t').map(x => x.trim());
                     const kalan = c.slice(2).filter(Boolean).join(' ');
                     if (c.length >= 3 && c[0] && donemOk(c[1]) && kalan && !/^EKİPMAN\s+ADI/i.test(c[0]) && !/PERİYODİK\s+KONTROL\s+DÖNEMİ/i.test(c[1])) {
@@ -242,8 +253,9 @@
                         else satirlar.push(son = { ad: c[0], periyot: son.periyot, kriter: c[1] });
                         bosVar = false; continue;
                     }
-                    if (son && !bosVar && l.indexOf('\t') < 0) son.kriter += '\n' + l; // çok satırlı kriter hücresi
+                    if (son && !bosVar && l.indexOf('\t') < 0) grup.push(l); // çok satırlı kriter hücresi ya da sekmesi kaybolmuş yeni satır
                 }
+                grubuBosalt();
             }
 
             if (!sekmeli) {
@@ -278,13 +290,23 @@
                         if (!/\(/.test(kolonlar[kolonlar.length - 1])) kolonlar[kolonlar.length - 1] += ' ' + hh; else notlar.push(hh);
                     } else kolonlar.push(hh);
                 });
+                // Birleşik hücreli (periyodu çok satırlı ya da standart adı olan) satırlar: [ad][periyot...][... uygun olarak yapılır.]
+                // önceki satırın kriter hücrelerine karışmasın (örn. LPG tankları, Kriyojenik tanklar)
+                const kriterTam = c => /uygun\s+olarak\s+yapılır\.?\s*$/i.test(c);
                 P.forEach((p, idx) => {
                     const sonraki = idx + 1 < P.length ? P[idx + 1] - 1 : cells.length;
-                    satirlar.push({
-                        ad: cells[p - 1].replace(/\n/g, ' '),
-                        periyot: cells[p].replace(/\n/g, ' '),
-                        kriter: cells.slice(p + 1, sonraki).join('\n')
-                    });
+                    let ad = cells[p - 1].replace(/\n/g, ' '), periyot = cells[p].replace(/\n/g, ' ');
+                    let rest = cells.slice(p + 1, sonraki);
+                    for (;;) {
+                        const ilk = rest.findIndex(kriterTam);
+                        const kalan = ilk >= 0 ? rest.slice(ilk + 1) : [];
+                        const k = kalan.findIndex((x, q) => q >= 2 && kriterTam(x));
+                        if (ilk < 0 || kalan.length < 3 || k < 0 || kalan[0].length > 160 || /[.;:]\s*$/.test(kalan[0])) {
+                            satirlar.push({ ad: ad, periyot: periyot, kriter: rest.join('\n') }); break;
+                        }
+                        satirlar.push({ ad: ad, periyot: periyot, kriter: rest.slice(0, ilk + 1).join('\n') });
+                        ad = kalan[0].replace(/\n/g, ' '); periyot = kalan.slice(1, k).join(' ').replace(/\n/g, ' '); rest = kalan.slice(k);
+                    }
                 });
             }
             }

@@ -2,7 +2,7 @@
   "mevzuat": "İş Ekipmanlarının Kullanımında Sağlık ve Güvenlik Şartları Yönetmeliği",
   "ek": "EK-III",
   "kaynak": "Mevzuat Güncelleme Merkezi",
-  "guncelleme": "2026-11-21T22:57:09.946Z",
+  "guncelleme": "2026-11-22T13:07:00.302Z",
   "tablolar": [
     {
       "no": 1,
@@ -28,7 +28,12 @@
         {
           "ad": "Kızgın yağ kazanları",
           "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
-          "kriter": "DIN 4754-1 standardında belirtilen kriterlere uygun olarak yapılır.\nSıvılaştırılmış gaz tankları (LPG ve benzeri) (yeraltı-yerüstü) (1)\nYazılı planda(4) verilen sürede (yalnızca muayene)\n(10 yılın sonunda yeniden değerlendirme)\nTS EN 13445-5, TS 1446, TS EN 12817 ve TS EN 12819 standartlarında belirtilen kriterlere uygun olarak yapılır."
+          "kriter": "DIN 4754-1 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Sıvılaştırılmış gaz tankları (LPG ve benzeri) (yeraltı-yerüstü) (1)",
+          "periyot": "Yazılı planda(4) verilen sürede (yalnızca muayene) (10 yılın sonunda yeniden değerlendirme)",
+          "kriter": "TS EN 13445-5, TS 1446, TS EN 12817 ve TS EN 12819 standartlarında belirtilen kriterlere uygun olarak yapılır."
         },
         {
           "ad": "Basınçlı hava ve gaz tankları (2)",
@@ -48,7 +53,12 @@
         {
           "ad": "Boyama makinaları (kazanları)",
           "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
-          "kriter": "TS EN ISO 11111-1, TS EN ISO 11111-7, TS EN 764-7 standartlarında belirtilen kriterlere uygun olarak yapılır.\nKriyojenik tanklar\nTS EN ISO 21009-2 ve TS EN 14197-3 standartlarında belirtilen sürelerde\nTS EN ISO 21009-2 ve TS EN 14197-3 standartlarında belirtilen kriterlere uygun olarak yapılır."
+          "kriter": "TS EN ISO 11111-1, TS EN ISO 11111-7, TS EN 764-7 standartlarında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Kriyojenik tanklar",
+          "periyot": "TS EN ISO 21009-2 ve TS EN 14197-3 standartlarında belirtilen sürelerde",
+          "kriter": "TS EN ISO 21009-2 ve TS EN 14197-3 standartlarında belirtilen kriterlere uygun olarak yapılır."
         },
         {
           "ad": "Buharlı pişirme kazanları",
@@ -151,7 +161,12 @@
         {
           "ad": "Servis asansörleri",
           "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
-          "kriter": "TS EN 81-3+A1 standardında belirtilen kriterlere uygun olarak yapılır.\nKren asansörleri\nStandartlarda süre belirtilmemişse\n1 Yıl\nTS EN 81-43 standardında belirtilen kriterlere uygun olarak yapılır."
+          "kriter": "TS EN 81-3+A1 standardında belirtilen kriterlere uygun olarak yapılır."
+        },
+        {
+          "ad": "Kren asansörleri",
+          "periyot": "Standartlarda süre belirtilmemişse 1 Yıl",
+          "kriter": "TS EN 81-43 standardında belirtilen kriterlere uygun olarak yapılır."
         },
         {
           "ad": "Rüzgar türbinlerindeki kaldırma donanımları (4)",
