@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-22T15:56:48.445Z",
+ "guncelleme": "2026-11-22T16:00:22.054Z",
  "kayitlar": [
   {
    "t": [
@@ -401,6 +401,38 @@
    "ts": 1795363005832,
    "kw": "maden, tahkimat, kırık",
    "id": "4m5w2k"
+  },
+  {
+   "t": [
+    "nefes",
+    "temiz",
+    "hava",
+    "giris",
+    "ana",
+    "nakli",
+    "yolun",
+    "kulla",
+    "proje",
+    "kablo",
+    "bagla",
+    "yeral",
+    "maden",
+    "uygun",
+    "949",
+    "normu",
+    "atex",
+    "grup",
+    "kateg",
+    "oldug",
+    "serti",
+    "ibraz",
+    "edile"
+   ],
+   "d": "(6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30, Maden İşyerlerinde İş Sağlığı ve Güvenliği Yönetmeliği, Madde: 13(2) a (Alt Atıflar: Madde: 14(1)), EK-1, Madde: 2.1.6)",
+   "m": "Maden İşyerlerinde İş Sağlığı ve Güvenliği Yönetmeliği",
+   "ts": 1795363219093,
+   "kw": "Uygun, AT",
+   "id": "bjovar"
   }
  ]
 }
