@@ -1862,13 +1862,27 @@ Kurallar:
 ÇIKTI SADECE JSON (markdown yok): {"eslesmeler":[{"ihlal_id":0,"mevzuat_idleri":[5],"kilit":["kök1","kök2"]}]}`;
         const mevListe = allowedMevzuats.map(m => m.id + '|' + m.name).join('\n');
         let okunan = 0, hataliGrup = 0;
-        const gruplar = []; for (let st = 0; st < violationsArray.length; st += GRUP) gruplar.push(violationsArray.map((_, i) => i).slice(st, st + GRUP));
+        // Öğrenilmiş benzer ihlal (benzerlik >= %70) varsa mevzuat ve kilit kelime AI'ya sorulmadan doldurulur (kota harcanmaz)
+        let onDoldurulan = 0; const ogrenmeIdx = new Set();
+        violationsArray.forEach((v, i) => {
+            const b = ogrenmeBul(v.text, allowedIds)[0];
+            if (!b || b.sim < 0.7) return;
+            const mi = b.chunk.mevIdx; if (!allowedIds.has(mi)) return;
+            if (!manualUserMapping[i]) manualUserMapping[i] = [];
+            if (!manualUserMapping[i].includes(mi)) manualUserMapping[i].push(mi);
+            if (!(v.suggestedMevzuat || '').trim()) v.suggestedMevzuat = mevzuatDB[mi].mevzuat_adi;
+            if (!(v.userKeyword || '').trim() && b.kw) { v.userKeyword = b.kw; v.kwFromAI = true; }
+            ogrenmeIdx.add(i); onDoldurulan++;
+        });
+        const kalanIdx = violationsArray.map((_, i) => i).filter(i => !ogrenmeIdx.has(i));
+        const gruplar = []; for (let st = 0; st < kalanIdx.length; st += GRUP) gruplar.push(kalanIdx.slice(st, st + GRUP));
         let bitenIhlal = 0; const basarisiz = [];
         const grupIsle = async (grup, jobNo) => {
             btn.innerHTML = `⏳ Düşünüyor... ${bitenIhlal}/${violationsArray.length}`;
             const girdi = grup.map(i => {
                 const v = violationsArray[i];
-                const ids = [...new Set(ipcFind(v.text, allowedIds, 3, 0.4).map(h => h.r._mi))].slice(0, 2);
+                const ogIds = ogrenmeBul(v.text, allowedIds).slice(0, 1).map(b => b.chunk.mevIdx);
+                const ids = [...new Set(ogIds.concat(ipcFind(v.text, allowedIds, 3, 0.4).map(h => h.r._mi)))].slice(0, 2);
                 return i + '|' + v.text + (ids.length ? ' |ipucu:' + ids.join(',') : '');
             }).join('\n');
             const prompt = kurallar + '\n\nİHLALLER (id|metin):\n' + girdi + '\n\nMEVZUATLAR (id|ad):\n' + mevListe;
@@ -1907,13 +1921,13 @@ Kurallar:
             hataliGrup = basarisiz.length;
         }
         // Hâlâ mevzuat adı ve kilit kelimesi boş kalan ihlaller varsa onları ayrı gruplarla bir kez daha dene
-        const bos = violationsArray.map((v, i) => i).filter(i => !(violationsArray[i].userKeyword || '').trim() && !(manualUserMapping[i] || []).length);
-        if (bos.length && bos.length < violationsArray.length) {
+        const bos = kalanIdx.filter(i => !(violationsArray[i].userKeyword || '').trim() && !(manualUserMapping[i] || []).length);
+        if (bos.length && bos.length < kalanIdx.length) {
             const g2 = []; for (let i = 0; i < bos.length; i += GRUP) g2.push(bos.slice(i, i + GRUP));
             btn.innerHTML = `⏳ ${bos.length} boş kalan ihlal yeniden deneniyor...`;
             await paralelIsle(g2, (g, no) => grupIsle(g, no + 2), 1500);
         }
-        if (okunan === 0) { alert("Yapay zeka önerisi alınamadı. Anahtarlarınızı ve kotanızı kontrol edin."); return; }
+        if (okunan === 0 && !onDoldurulan) { alert("Yapay zeka önerisi alınamadı. Anahtarlarınızı ve kotanızı kontrol edin."); return; }
         try {
             {
                 // KURAL: periyodik kontrol ihlalleri her zaman İş Ekipmanları Yönetmeliği'ne etiketlenir
@@ -1928,7 +1942,7 @@ Kurallar:
                 }
                 selectAllMappingViolations(); 
                 logDebug("Yapay zeka mevzuat önerileri uygulandı.", "success");
-                alert((hataliGrup ? "⚠ " + hataliGrup + " grup alınamadı (kota?); eksik kalanları tekrar deneyebilir veya elle girebilirsiniz.\n" : "") + "✅ Yapay zeka mevzuat ve kilit kelime önerilerini yazdı. İstemediklerinizi sağdaki listeden çıkarabilir veya yeni yönetmelikleri elinizle ekleyebilirsiniz.");
+                alert((hataliGrup ? "⚠ " + hataliGrup + " grup alınamadı (kota?); eksik kalanları tekrar deneyebilir veya elle girebilirsiniz.\n" : "") + (onDoldurulan ? "🧠 " + onDoldurulan + " ihlal, öğrenilmiş eşleştirmelerden AI kullanılmadan dolduruldu.\n" : "") + "✅ Yapay zeka mevzuat ve kilit kelime önerilerini yazdı. İstemediklerinizi sağdaki listeden çıkarabilir veya yeni yönetmelikleri elinizle ekleyebilirsiniz.");
             }
         } catch(e) {
             alert("Yapay zeka önerisi alınamadı: " + e.message);
@@ -2142,7 +2156,7 @@ Kurallar:
             const sim = dice(t, e.t || []); if (sim < 0.55) return;
             const c = provisionChunksCache.find(x => x.dayanak === e.d); if (!c) return;
             if (izinli && !izinli.has(c.mevIdx)) return;
-            out.push({ chunk: c, sim, em: e.em || '', ed: e.ed || '' });
+            out.push({ chunk: c, sim, em: e.em || '', ed: e.ed || '', kw: e.kw || '' });
         });
         return out.sort((a, b) => b.sim - a.sim);
     }
@@ -2177,6 +2191,7 @@ Kurallar:
             const du = ogrenmeDuzenleme(fr.selectedData);
             const e = { t, d: fr.selectedData.dayanak, m: (mevzuatDB[fr.selectedData.mevIdx] || {}).mevzuat_adi || '', ts: simdi + 1 };
             if (du.em) e.em = du.em; if (du.ed) e.ed = du.ed;
+            const kwO = String(fr.violation.userKeyword || '').trim(); if (kwO) e.kw = kwO;
             e.id = ogrenmeId(e); const i = l.findIndex(x => x.id === e.id); if (i >= 0) l[i] = e; else l.push(e);
         }
         ogrenmeHamYaz(l); renderFinalReport(); ogrenmeSayisiGuncelle(); ogrenmeOtomatikSenkron();
