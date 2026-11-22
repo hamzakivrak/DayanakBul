@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-22T13:14:03.463Z",
+ "guncelleme": "2026-11-22T13:14:07.192Z",
  "kayitlar": [
   {
    "t": [
@@ -325,9 +325,10 @@
    ],
    "d": "(6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30, İŞ SAĞLIĞI VE GÜVENLİĞİ HİZMETLERİ YÖNETMELİĞİ, Madde: 9(1))",
    "m": "İŞ SAĞLIĞI VE GÜVENLİĞİ HİZMETLERİ YÖNETMELİĞİ",
-   "ts": 1795353240612,
+   "ts": 1795353244785,
    "kw": "sağlık, muayene",
-   "id": "y13qgf"
+   "id": "y13qgf",
+   "silindi": true
   }
  ]
 }
