@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-22T13:34:39.817Z",
+ "guncelleme": "2026-11-22T15:56:48.445Z",
  "kayitlar": [
   {
    "t": [
@@ -372,6 +372,35 @@
    "ts": 1795353455088,
    "kw": "kaynak, havalandırma",
    "id": "13zlmpx"
+  },
+  {
+   "t": [
+    "225",
+    "kotu",
+    "165",
+    "110",
+    "kotun",
+    "kotla",
+    "arasi",
+    "bagla",
+    "yolla",
+    "tahki",
+    "ustte",
+    "yanda",
+    "zemin",
+    "baski",
+    "maruz",
+    "kalma",
+    "neden",
+    "yer",
+    "kiril",
+    "bulun"
+   ],
+   "d": "(6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30, Maden İşyerlerinde İş Sağlığı ve Güvenliği Yönetmeliği, Madde: 13(2) c (Alt Atıflar: Madde: 14(1), Madde: 14(2)), EK-3, Madde: 7.3)",
+   "m": "Maden İşyerlerinde İş Sağlığı ve Güvenliği Yönetmeliği",
+   "ts": 1795363005832,
+   "kw": "maden, tahkimat, kırık",
+   "id": "4m5w2k"
   }
  ]
 }
