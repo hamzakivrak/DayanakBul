@@ -300,8 +300,8 @@
             <label>📎 Dayanakta "Alt Atıflar"</label>
             <label style="font-weight:400;font-size:0.85rem;display:flex;gap:8px;align-items:flex-start;cursor:pointer;"><input type="checkbox" id="chkAltAtifGizle" onchange="setAltAtifGizle(this.checked)"> <span>Dayanak yazılırken "(Alt Atıflar: …)" bölümünü gösterme (varsayılan: gösterme).<br><small style="color:var(--text-muted)">Bir ek birden çok maddeye atıf alıyorsa, diğer maddeler bu etiketle yazılır.</small></span></label>
             <script>try{document.getElementById('chkAltAtifGizle').checked=localStorage.getItem('altAtifGizle')!=='0';}catch(e){}</script>
-            <div style="margin-top:10px;font-size:0.85rem;">🧠 Öğrenilen eşleştirme: <b id="ogrenmeSayi">0</b> <button type="button" class="btn btn-sm" style="padding:2px 8px;font-size:0.75rem;margin-left:6px;" onclick="ogrenmeTemizle()">Temizle</button><br><small style="color:var(--text-muted)">Raporda "🧠 Bunu öğren"e bastığınız ihlal→hüküm çiftleri bu tarayıcıda saklanır; benzer ihlallerde öncelikli önerilir.</small></div>
-            <script>try{var _o=JSON.parse(localStorage.getItem('isg_ogrenme')||'[]');document.getElementById('ogrenmeSayi').textContent=_o.length;}catch(e){}</script>
+            <div style="margin-top:10px;font-size:0.85rem;">🧠 Öğrenilen eşleştirme: <b id="ogrenmeSayi">0</b> <button type="button" class="btn btn-sm" style="padding:2px 8px;font-size:0.75rem;margin-left:6px;" onclick="ogrenmeSenkronDugme()">☁ GitHub ile senkronla</button><button type="button" class="btn btn-sm" style="padding:2px 8px;font-size:0.75rem;margin-left:6px;" onclick="ogrenmeTemizle()">Temizle</button><br><span id="ogrenmeDurum" style="font-size:0.78rem;color:var(--text-muted);"></span><br><small style="color:var(--text-muted)">Raporda "🧠 Bunu öğren"e bastığınız ihlal→hüküm çiftleri saklanır; benzer ihlallerde öncelikli önerilir. GitHub token kayıtlıysa her öğrenişte depodaki <code>ogrenme.json</code> dosyasına otomatik yazılır, her cihaz aynı birikimi okur.</small></div>
+            <script>try{var _o=JSON.parse(localStorage.getItem('isg_ogrenme')||'[]').filter(function(e){return !e.silindi});document.getElementById('ogrenmeSayi').textContent=_o.length;}catch(e){}</script>
         </div>
         <div class="setting-group">
             <label>🎨 Görünüm Teması</label>
@@ -1320,6 +1320,7 @@
                 
                 showDBReadySuccess(sourceMsg || "Sistem Hazır");
                 loadIPC();
+                setTimeout(() => { try { ogrenmeSenkron(true); } catch (e) { /* */ } }, 800);
             } catch (err) {
                 logDebug(`HATA (TF-IDF): ${err.message}`, "error");
             }
@@ -2100,8 +2101,16 @@ Kurallar:
 
     // ---- Öğrenen eşleştirme: kullanıcının onayladığı (ihlal -> hüküm) çiftleri tarayıcıda saklanır
     const OGRENME_KEY = 'isg_ogrenme';
-    function ogrenmeOku() { try { return JSON.parse(localStorage.getItem(OGRENME_KEY) || '[]'); } catch (e) { return []; } }
-    function ogrenmeYaz(l) { try { localStorage.setItem(OGRENME_KEY, JSON.stringify(l.slice(-400))); } catch (e) { /* dolu */ } }
+    // Kayıt: {id, t:[kökler], d:dayanak, m:mevzuat adı, ts:ms, silindi?:true}. Silinenler "mezar taşı" olarak kalır ki bulutla birleşince geri gelmesin.
+    function ogrenmeId(e) { let h = 5381; const x = (e.d || '') + '|' + (e.t || []).join(','); for (let i = 0; i < x.length; i++) h = ((h << 5) + h + x.charCodeAt(i)) | 0; return (h >>> 0).toString(36); }
+    function ogrenmeHam() { try { const l = JSON.parse(localStorage.getItem(OGRENME_KEY) || '[]'); l.forEach(e => { if (!e.id) e.id = ogrenmeId(e); }); return l; } catch (e) { return []; } }
+    function ogrenmeHamYaz(l) { try { localStorage.setItem(OGRENME_KEY, JSON.stringify(l.slice(-700))); } catch (e) { /* dolu */ } }
+    function ogrenmeOku() { return ogrenmeHam().filter(e => !e.silindi); }
+    function ogrenmeBirlestir(a, b) {
+        const m = new Map();
+        [].concat(a || [], b || []).forEach(e => { if (!e || !e.d) return; if (!e.id) e.id = ogrenmeId(e); const o = m.get(e.id); if (!o || (e.ts || 0) > (o.ts || 0)) m.set(e.id, e); });
+        return [...m.values()].sort((x, y) => (x.ts || 0) - (y.ts || 0));
+    }
     function dice(a, b) { if (!a.length || !b.length) return 0; const B = new Set(b); const k = a.filter(x => B.has(x)).length; return 2 * k / (a.length + b.length); }
     function ogrenmeBul(text, izinli) {
         const t = ipcTokens(text || ''); if (t.length < 2) return [];
@@ -2127,15 +2136,72 @@ Kurallar:
     }
     function ogrenBu(k) {
         const fr = finalReportData[k]; if (!fr || !fr.selectedData) return;
-        const t = ipcTokens(fr.violation.text), l = ogrenmeOku();
-        const i = l.findIndex(e => e.d === fr.selectedData.dayanak && dice(t, e.t || []) >= 0.8);
-        if (i >= 0) l.splice(i, 1); // ikinci tıklama: öğrenileni sil
-        else { l.forEach((e, j) => { if (dice(t, e.t || []) >= 0.8) e.eski = true; }); l.push({ t, d: fr.selectedData.dayanak, m: (mevzuatDB[fr.selectedData.mevIdx] || {}).mevzuat_adi || '', ts: Date.now() }); }
-        ogrenmeYaz(l.filter(e => !e.eski)); renderFinalReport(); ogrenmeSayisiGuncelle();
+        const t = ipcTokens(fr.violation.text), l = ogrenmeHam(), simdi = Date.now();
+        const benzer = l.filter(e => !e.silindi && e.d === fr.selectedData.dayanak && dice(t, e.t || []) >= 0.8);
+        if (benzer.length) benzer.forEach(e => { e.silindi = true; e.ts = simdi; }); // ikinci tıklama: öğrenileni sil
+        else { const e = { t, d: fr.selectedData.dayanak, m: (mevzuatDB[fr.selectedData.mevIdx] || {}).mevzuat_adi || '', ts: simdi }; e.id = ogrenmeId(e); const i = l.findIndex(x => x.id === e.id); if (i >= 0) l[i] = e; else l.push(e); }
+        ogrenmeHamYaz(l); renderFinalReport(); ogrenmeSayisiGuncelle(); ogrenmeOtomatikSenkron();
     }
     function ogrenmeSayisiGuncelle() { const el = document.getElementById('ogrenmeSayi'); if (el) el.textContent = ogrenmeOku().length; }
-    function ogrenmeTemizle() { if (confirm('Öğrenilen tüm eşleştirmeler silinsin mi?')) { ogrenmeYaz([]); ogrenmeSayisiGuncelle(); try { renderFinalReport(); } catch (e) { /* */ } } }
+    function ogrenmeTemizle() {
+        if (!confirm('Öğrenilen tüm eşleştirmeler silinsin mi? (GitHub senkronu açıksa buluttan da silinir)')) return;
+        const simdi = Date.now(); ogrenmeHamYaz(ogrenmeHam().map(e => Object.assign({}, e, { silindi: true, ts: simdi })));
+        ogrenmeSayisiGuncelle(); try { renderFinalReport(); } catch (e) { /* */ } ogrenmeOtomatikSenkron();
+    }
 
+    // ---- GitHub senkronu: öğrenilenler depodaki ogrenme.json dosyasında tutulur (her cihazdan aynı birikim)
+    function ogrenmeGhBilgi() {
+        let repo = '', tok = '';
+        try { repo = localStorage.getItem('gh_repo') || ''; tok = localStorage.getItem('gh_token') || ''; } catch (e) { /* */ }
+        if (!repo && typeof ghRepo === 'function') { const g = ghRepo(); if (g) repo = g.owner + '/' + g.repo; }
+        return { repo, tok };
+    }
+    function ogrenmeDurum(msg, hata) { const el = document.getElementById('ogrenmeDurum'); if (el) { el.textContent = msg; el.style.color = hata ? '#dc2626' : 'var(--text-muted)'; } }
+    // Token yoksa yalnız okur (yayınlanmış ogrenme.json); varsa okuyup birleştirir ve gerekiyorsa yazar
+    async function ogrenmeSenkron(sessiz) {
+        let { repo, tok } = ogrenmeGhBilgi();
+        try {
+            if (!tok) {
+                const r = await fetch('./ogrenme.json?v=' + Date.now(), { cache: 'no-store' });
+                if (!r.ok) { if (!sessiz) ogrenmeDurum('Henüz bulutta öğrenme dosyası yok. Göndermek için GitHub token gerekir.', true); return false; }
+                const j = await r.json(); ogrenmeHamYaz(ogrenmeBirlestir(ogrenmeHam(), j.kayitlar)); ogrenmeSayisiGuncelle();
+                ogrenmeDurum('Buluttan okundu (token yok, gönderme yapılmadı).'); return true;
+            }
+            if (!/^[^/\s]+\/[^/\s]+$/.test(repo)) throw new Error('Depo adı bulunamadı (Güncelleme Merkezi > GitHub bölümünde "kullanıcı/depo" yazın).');
+            const url = `https://api.github.com/repos/${repo}/contents/ogrenme.json`;
+            const bas = ek => Object.assign({ Authorization: 'Bearer ' + tok, 'X-GitHub-Api-Version': '2022-11-28' }, ek || {});
+            for (let deneme = 0; deneme < 2; deneme++) {
+                let sha = null, uzak = [];
+                const m = await fetch(url, { headers: bas({ Accept: 'application/vnd.github+json' }), cache: 'no-store' });
+                if (m.status === 401 || m.status === 403) throw new Error('GitHub token reddedildi (' + m.status + '). Contents: Read and write izni gerekir.');
+                if (m.status === 200) { sha = (await m.json()).sha; const r = await fetch(url, { headers: bas({ Accept: 'application/vnd.github.raw+json' }), cache: 'no-store' }); uzak = (JSON.parse(await r.text()).kayitlar) || []; }
+                else if (m.status !== 404) throw new Error('ogrenme.json okunamadı (' + m.status + ')');
+                const uMap = new Map(uzak.map(e => [e.id || ogrenmeId(e), e]));
+                const birlesik = ogrenmeBirlestir(ogrenmeHam(), uzak);
+                ogrenmeHamYaz(birlesik); ogrenmeSayisiGuncelle();
+                const degisti = birlesik.some(e => { const u = uMap.get(e.id); return !u || (u.ts || 0) < (e.ts || 0); });
+                if (!degisti) { ogrenmeDurum('Senkron tamam (bulutla aynı).'); return true; }
+                const govde = JSON.stringify({ guncelleme: new Date().toISOString(), kayitlar: birlesik.slice(-700) }, null, 1) + '\n';
+                const bytes = new TextEncoder().encode(govde); let bin = ''; for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+                const w = await fetch(url, { method: 'PUT', headers: bas({ Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' }), body: JSON.stringify({ message: 'Öğrenen eşleştirme güncellendi (' + ogrenmeOku().length + ' kayıt)', content: btoa(bin), ...(sha ? { sha } : {}) }) });
+                if (w.status === 409 || w.status === 422) continue; // arada değişti: yeniden oku-birleştir
+                if (!w.ok) throw new Error('ogrenme.json yazılamadı (' + w.status + ')');
+                ogrenmeDurum('✅ GitHub ile senkronlandı (' + ogrenmeOku().length + ' öğrenilmiş eşleştirme).'); return true;
+            }
+            throw new Error('Çakışma çözülemedi; biraz sonra tekrar deneyin.');
+        } catch (e) { ogrenmeDurum('Senkron hatası: ' + e.message, true); return false; }
+    }
+    let _ogrenmeTimer = null;
+    function ogrenmeOtomatikSenkron() { const { tok } = ogrenmeGhBilgi(); if (!tok) return; clearTimeout(_ogrenmeTimer); _ogrenmeTimer = setTimeout(() => ogrenmeSenkron(true), 1500); }
+    async function ogrenmeSenkronDugme() {
+        let { repo, tok } = ogrenmeGhBilgi();
+        if (!tok) {
+            const t = prompt('GitHub token (yalnız bu depo için, "Contents: Read and write" izinli). Bu cihazda saklanır, başka yere gönderilmez:');
+            if (!t) return;
+            try { localStorage.setItem('gh_token', t.trim()); if (repo) localStorage.setItem('gh_repo', repo); } catch (e) { /* */ }
+        }
+        ogrenmeDurum('Senkronlanıyor…'); await ogrenmeSenkron(false);
+    }
     // Yapay zeka kullanmadan toplu eşleştirme: her ihlal için, o ihlalin "şelale" kutusundaki (ya da kayıtlı) anahtar kelimeleriyle
     // seçili mevzuatlarda arama yapar, en yüksek puanlı hükmü seçer; diğer öneriler rapordan değiştirilebilir.
     function runBulkCascadeSearch() {
