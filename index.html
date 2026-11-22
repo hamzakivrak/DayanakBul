@@ -2113,7 +2113,7 @@ Kurallar:
     // ---- Öğrenen eşleştirme: kullanıcının onayladığı (ihlal -> hüküm) çiftleri tarayıcıda saklanır
     const OGRENME_KEY = 'isg_ogrenme';
     // Kayıt: {id, t:[kökler], d:dayanak, m:mevzuat adı, ts:ms, silindi?:true}. Silinenler "mezar taşı" olarak kalır ki bulutla birleşince geri gelmesin.
-    function ogrenmeId(e) { let h = 5381; const x = (e.d || '') + '|' + (e.t || []).join(','); for (let i = 0; i < x.length; i++) h = ((h << 5) + h + x.charCodeAt(i)) | 0; return (h >>> 0).toString(36); }
+    function ogrenmeId(e) { let h = 5381; const x = (e.d || '') + '|' + (e.t || []).join(',') + '|' + (e.em || '').length; for (let i = 0; i < x.length; i++) h = ((h << 5) + h + x.charCodeAt(i)) | 0; return (h >>> 0).toString(36); }
     function ogrenmeHam() { try { const l = JSON.parse(localStorage.getItem(OGRENME_KEY) || '[]'); l.forEach(e => { if (!e.id) e.id = ogrenmeId(e); }); return l; } catch (e) { return []; } }
     function ogrenmeHamYaz(l) { try { localStorage.setItem(OGRENME_KEY, JSON.stringify(l.slice(-700))); } catch (e) { /* dolu */ } }
     function ogrenmeOku() { return ogrenmeHam().filter(e => !e.silindi); }
@@ -2121,6 +2121,18 @@ Kurallar:
         const m = new Map();
         [].concat(a || [], b || []).forEach(e => { if (!e || !e.d) return; if (!e.id) e.id = ogrenmeId(e); const o = m.get(e.id); if (!o || (e.ts || 0) > (o.ts || 0)) m.set(e.id, e); });
         return [...m.values()].sort((x, y) => (x.ts || 0) - (y.ts || 0));
+    }
+    // Düzenlenmiş kutu içeriği (HTML) -> düz metin (satır sonları korunur)
+    function htmlDuz(h) {
+        if (!h) return '';
+        const d = document.createElement('div'); d.innerHTML = String(h).replace(/<br\s*\/?>/gi, '\n').replace(/<\/(p|div|li)>/gi, '\n');
+        return (d.textContent || '').replace(/\u00a0/g, ' ').replace(/\n{3,}/g, '\n\n').trim();
+    }
+    function ogrenmeDuzenleme(sd) {
+        // yalnız kullanıcı gerçekten değiştirdiyse (özgün metinden farklıysa) saklanır
+        const em = htmlDuz(sd.editedMetinHtml), ed = htmlDuz(sd.editedDayanakHtml);
+        const ozM = String(sd.metin || '').replace(/\s+/g, ' ').trim(), ozD = htmlDuz(altAtifBicimle(toTitleCaseTR(sd.dayanak))).replace(/\s+/g, ' ').trim();
+        return { em: (em && em.replace(/\s+/g, ' ').trim() !== ozM) ? em : '', ed: (ed && ed.replace(/\s+/g, ' ').trim() !== ozD) ? ed : '' };
     }
     function dice(a, b) { if (!a.length || !b.length) return 0; const B = new Set(b); const k = a.filter(x => B.has(x)).length; return 2 * k / (a.length + b.length); }
     function ogrenmeBul(text, izinli) {
@@ -2130,27 +2142,43 @@ Kurallar:
             const sim = dice(t, e.t || []); if (sim < 0.55) return;
             const c = provisionChunksCache.find(x => x.dayanak === e.d); if (!c) return;
             if (izinli && !izinli.has(c.mevIdx)) return;
-            out.push({ chunk: c, sim });
+            out.push({ chunk: c, sim, em: e.em || '', ed: e.ed || '' });
         });
         return out.sort((a, b) => b.sim - a.sim);
     }
     function ogrenmeOne(text, list, izinli) {
-        const o = ogrenmeBul(text, izinli).slice(0, 2).map(x => ({ ...x.chunk, tfIdfScore: 999, ogrenildi: true }));
+        const o = ogrenmeBul(text, izinli).slice(0, 2).map(x => {
+            const c = { ...x.chunk, tfIdfScore: 999, ogrenildi: true };
+            if (x.em) { c.metin = x.em; c.editedMetinHtml = escapeHTML(x.em).replace(/\n/g, '<br>'); }   // birleştirilmiş/düzenlenmiş metin
+            if (x.ed) c.editedDayanakHtml = escapeHTML(x.ed).replace(/\n/g, '<br>');
+            return c;
+        });
         if (!o.length) return list;
         return o.concat(list.filter(c => !o.some(x => x.dayanak === c.dayanak)));
     }
     function adayIyilestir(text, list, izinli) { return ogrenmeOne(text, periyodikOnce(text, list), izinli); }
-    function ogrenildiMi(k) {
-        const fr = finalReportData[k]; if (!fr || !fr.selectedData) return false;
+    // 0: öğrenilmedi, 1: öğrenildi (aynı), 2: öğrenilmiş ama sonradan düzenlendi (güncellenebilir)
+    function ogrenmeDurumu(k) {
+        const fr = finalReportData[k]; if (!fr || !fr.selectedData) return 0;
         const t = ipcTokens(fr.violation.text);
-        return ogrenmeOku().some(e => e.d === fr.selectedData.dayanak && dice(t, e.t || []) >= 0.8);
+        const e = ogrenmeOku().find(x => x.d === fr.selectedData.dayanak && dice(t, x.t || []) >= 0.8);
+        if (!e) return 0;
+        const du = ogrenmeDuzenleme(fr.selectedData);
+        return ((e.em || '') === du.em && (e.ed || '') === du.ed) ? 1 : 2;
     }
+    function ogrenildiMi(k) { return ogrenmeDurumu(k) === 1; }
     function ogrenBu(k) {
         const fr = finalReportData[k]; if (!fr || !fr.selectedData) return;
-        const t = ipcTokens(fr.violation.text), l = ogrenmeHam(), simdi = Date.now();
+        const t = ipcTokens(fr.violation.text), l = ogrenmeHam(), simdi = Date.now(), durum = ogrenmeDurumu(k);
         const benzer = l.filter(e => !e.silindi && e.d === fr.selectedData.dayanak && dice(t, e.t || []) >= 0.8);
-        if (benzer.length) benzer.forEach(e => { e.silindi = true; e.ts = simdi; }); // ikinci tıklama: öğrenileni sil
-        else { const e = { t, d: fr.selectedData.dayanak, m: (mevzuatDB[fr.selectedData.mevIdx] || {}).mevzuat_adi || '', ts: simdi }; e.id = ogrenmeId(e); const i = l.findIndex(x => x.id === e.id); if (i >= 0) l[i] = e; else l.push(e); }
+        if (durum === 1) benzer.forEach(e => { e.silindi = true; e.ts = simdi; }); // aynı haliyle öğrenilmişse ikinci tıklama siler
+        else {
+            benzer.forEach(e => { e.silindi = true; e.ts = simdi; }); // düzenlenmişse eskiyi sil, yenisini yaz
+            const du = ogrenmeDuzenleme(fr.selectedData);
+            const e = { t, d: fr.selectedData.dayanak, m: (mevzuatDB[fr.selectedData.mevIdx] || {}).mevzuat_adi || '', ts: simdi + 1 };
+            if (du.em) e.em = du.em; if (du.ed) e.ed = du.ed;
+            e.id = ogrenmeId(e); const i = l.findIndex(x => x.id === e.id); if (i >= 0) l[i] = e; else l.push(e);
+        }
         ogrenmeHamYaz(l); renderFinalReport(); ogrenmeSayisiGuncelle(); ogrenmeOtomatikSenkron();
     }
     function ogrenmeSayisiGuncelle() { const el = document.getElementById('ogrenmeSayi'); if (el) el.textContent = ogrenmeOku().length; }
@@ -2939,7 +2967,7 @@ ANAHTAR KELİME (arama_kelimeleri) SEÇİM KURALLARI (ÇOK ÖNEMLİ):
                     <button class="btn btn-sm" style="background:var(--secondary); color:white; padding:4px 10px; font-size:0.75rem;" onclick="openZipSearchModal('${safeSearchQuery}')">🔍 Arşivde Gör & Kopyala</button>
                     <button class="btn btn-sm" style="background:var(--primary); color:white; padding:4px 10px; font-size:0.75rem; margin-left: 5px;" onclick="openJsonBrowserFromReport(${k})">🔄 Farklı Madde Seç</button>
                     <button class="btn btn-sm" style="background:var(--success, #10b981); color:white; padding:4px 10px; font-size:0.75rem; margin-left: 5px;" onclick="openAltPanel(${k})" title="Mevzuat seçip şelale veya AI ile alternatif ara">🔍 Alternatif Ara</button>
-                    <button class="btn btn-sm" style="background:${ogrenildiMi(k) ? '#7c3aed' : 'transparent'}; color:${ogrenildiMi(k) ? '#fff' : '#7c3aed'}; border:1px solid #7c3aed; padding:4px 10px; font-size:0.75rem; margin-left: 5px;" onclick="ogrenBu(${k})" title="Bu ihlal türü için seçtiğiniz bu hükmü hatırla; sonraki benzer ihlallerde öncelik ver (tekrar tıklayınca siler)">${ogrenildiMi(k) ? '🧠 Öğrenildi ✓' : '🧠 Bunu öğren'}</button>
+                    <button class="btn btn-sm" style="background:${ogrenmeDurumu(k) === 1 ? '#7c3aed' : 'transparent'}; color:${ogrenmeDurumu(k) === 1 ? '#fff' : '#7c3aed'}; border:1px solid #7c3aed; padding:4px 10px; font-size:0.75rem; margin-left: 5px;" onclick="ogrenBu(${k})" title="Bu ihlal türü için seçtiğiniz hükmü, kutulardaki düzenlemelerle (birleştirilmiş metin/dayanak dahil) hatırla; sonraki benzer ihlallerde öncelik ver (öğrenilmişken tekrar tıklayınca siler)">${['🧠 Bunu öğren', '🧠 Öğrenildi ✓', '🧠 Düzenlemeyi güncelle'][ogrenmeDurumu(k)]}</button>
                 </div>
             </div>`;
             finalReportEl.innerHTML += reportHTML;
