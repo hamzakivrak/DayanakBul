@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-22T17:44:37.859Z",
+ "guncelleme": "2026-11-22T17:46:08.493Z",
  "kayitlar": [
   {
    "t": [
@@ -555,6 +555,22 @@
    "ts": 1795369475076,
    "kw": "açık, elektrik kablosu",
    "id": "13t0gna"
+  },
+  {
+   "t": [
+    "akary",
+    "tankl",
+    "periy",
+    "kontr",
+    "rapor",
+    "ibraz",
+    "edilm"
+   ],
+   "d": "(6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30, İş Ekipmanlarının Kullanımında Sağlık ve Güvenlik Şartları Yönetmeliği, Madde: 7(3), EK-III, Madde: 2.1.1)",
+   "m": "İş Ekipmanlarının Kullanımında Sağlık ve Güvenlik Şartları Yönetmeliği",
+   "ts": 1795369565154,
+   "kw": "tank, ekipman",
+   "id": "1h3qrri"
   }
  ]
 }
