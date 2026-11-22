@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-22T13:06:38.953Z",
+ "guncelleme": "2026-11-22T13:14:03.463Z",
  "kayitlar": [
   {
    "t": [
@@ -312,6 +312,22 @@
    "ed": "(6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30, İşyerlerinde Acil Durumlar Hakkında Yönetmelik, Madde: 13(1), 13 (2))",
    "kw": "tatbikat, acil",
    "id": "ykx0ig"
+  },
+  {
+   "t": [
+    "calis",
+    "periy",
+    "sagli",
+    "muaye",
+    "formu",
+    "ibraz",
+    "edilm"
+   ],
+   "d": "(6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30, İŞ SAĞLIĞI VE GÜVENLİĞİ HİZMETLERİ YÖNETMELİĞİ, Madde: 9(1))",
+   "m": "İŞ SAĞLIĞI VE GÜVENLİĞİ HİZMETLERİ YÖNETMELİĞİ",
+   "ts": 1795353240612,
+   "kw": "sağlık, muayene",
+   "id": "y13qgf"
   }
  ]
 }
