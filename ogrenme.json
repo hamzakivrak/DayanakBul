@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-22T08:01:32.069Z",
+ "guncelleme": "2026-11-22T08:03:26.828Z",
  "kayitlar": [
   {
    "t": [
@@ -47,6 +47,31 @@
    "m": "ÇALIŞANLARIN PATLAYICI ORTAMLARIN TEHLİKELERİNDEN KORUNMASI HAKKINDA YÖNETMELİK",
    "ts": 1795334489324,
    "id": "1luasjy"
+  },
+  {
+   "t": [
+    "guven",
+    "uzman",
+    "gorev",
+    "sures",
+    "1390",
+    "olup",
+    "calis",
+    "sayis",
+    "isyer",
+    "tehli",
+    "sinif",
+    "olmas",
+    "husus",
+    "dikka",
+    "alind",
+    "sure",
+    "yeter"
+   ],
+   "d": "(6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30, İŞ GÜVENLİĞİ UZMANLARININ GÖREV, YETKİ, SORUMLULUK VE EĞİTİMLERİ HAKKINDA YÖNETMELİK, Madde: 12(1) c)",
+   "m": "İŞ GÜVENLİĞİ UZMANLARININ GÖREV, YETKİ, SORUMLULUK VE EĞİTİMLERİ HAKKINDA YÖNETMELİK",
+   "ts": 1795334604205,
+   "id": "urbzr4"
   }
  ]
 }
