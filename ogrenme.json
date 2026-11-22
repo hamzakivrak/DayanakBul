@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-22T08:03:26.828Z",
+ "guncelleme": "2026-11-22T08:04:17.224Z",
  "kayitlar": [
   {
    "t": [
@@ -72,6 +72,30 @@
    "m": "İŞ GÜVENLİĞİ UZMANLARININ GÖREV, YETKİ, SORUMLULUK VE EĞİTİMLERİ HAKKINDA YÖNETMELİK",
    "ts": 1795334604205,
    "id": "urbzr4"
+  },
+  {
+   "t": [
+    "isyer",
+    "hekim",
+    "gorev",
+    "sures",
+    "695",
+    "olup",
+    "calis",
+    "sayis",
+    "tehli",
+    "sinif",
+    "olmas",
+    "husus",
+    "dikka",
+    "alind",
+    "sure",
+    "yeter"
+   ],
+   "d": "(6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30, İŞYERİ HEKİMİ VE DİĞER SAĞLIK PERSONELİNİN GÖREV, YETKİ, SORUMLULUK VE EĞİTİMLERİ HAKKINDA YÖNETMELİK, Madde: 12(1) a)",
+   "m": "İŞYERİ HEKİMİ VE DİĞER SAĞLIK PERSONELİNİN GÖREV, YETKİ, SORUMLULUK VE EĞİTİMLERİ HAKKINDA YÖNETMELİK",
+   "ts": 1795334654682,
+   "id": "3760l4"
   }
  ]
 }
