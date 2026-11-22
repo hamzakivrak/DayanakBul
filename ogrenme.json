@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-22T08:16:04.692Z",
+ "guncelleme": "2026-11-22T08:22:58.292Z",
  "kayitlar": [
   {
    "t": [
@@ -177,6 +177,21 @@
    "ts": 1795335361362,
    "ed": "(6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30, İşyeri Hekimi ve Diğer Sağlık Personelinin Görev, Yetki, Sorumluluk ve Eğitimleri Hakkında Yönetmelik, Madde: 12(1))",
    "id": "3ah50k"
+  },
+  {
+   "t": [
+    "atoly",
+    "icind",
+    "yaya",
+    "yolla",
+    "isare",
+    "tespi",
+    "edilm"
+   ],
+   "d": "(6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30, İşyeri Bina ve Eklentilerinde Alınacak Sağlık ve Güvenlik Önlemlerine İlişkin Yönetmelik, Madde: 5(1) a, EK-1, Madde: 38)",
+   "m": "İşyeri Bina ve Eklentilerinde Alınacak Sağlık ve Güvenlik Önlemlerine İlişkin Yönetmelik",
+   "ts": 1795335775287,
+   "id": "347awo"
   }
  ]
 }
