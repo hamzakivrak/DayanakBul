@@ -302,6 +302,17 @@
             <script>try{document.getElementById('chkAltAtifGizle').checked=localStorage.getItem('altAtifGizle')!=='0';}catch(e){}</script>
             <div style="margin-top:10px;font-size:0.85rem;">🧠 Öğrenilen eşleştirme: <b id="ogrenmeSayi">0</b> <button type="button" class="btn btn-sm" style="padding:2px 8px;font-size:0.75rem;margin-left:6px;" onclick="ogrenmeSenkronDugme()">☁ GitHub ile senkronla</button><button type="button" class="btn btn-sm" style="padding:2px 8px;font-size:0.75rem;margin-left:6px;" onclick="ogrenmeTemizle()">Temizle</button><br><span id="ogrenmeDurum" style="font-size:0.78rem;color:var(--text-muted);"></span><br><small style="color:var(--text-muted)">Raporda "🧠 Bunu öğren"e bastığınız ihlal→hüküm çiftleri saklanır; benzer ihlallerde öncelikli önerilir. GitHub token kayıtlıysa her öğrenişte depodaki <code>ogrenme.json</code> dosyasına otomatik yazılır, her cihaz aynı birikimi okur.</small></div>
             <script>try{var _o=JSON.parse(localStorage.getItem('isg_ogrenme')||'[]').filter(function(e){return !e.silindi});document.getElementById('ogrenmeSayi').textContent=_o.length;}catch(e){}</script>
+            <div style="margin-top:14px;padding-top:10px;border-top:1px solid var(--border);">
+                <div style="font-weight:700;font-size:0.9rem;margin-bottom:6px;">🔗 GitHub bağlantısı <span id="ghTik" style="margin-left:6px;"></span></div>
+                <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;">
+                    <input type="text" id="ghRepoGirdi" placeholder="kullanıcı/depo (örn. hamzakivrak/DayanakBul)" style="flex:1;min-width:200px;padding:7px;border-radius:6px;border:1px solid var(--border);background:var(--bg);color:var(--text-main);font-size:0.85rem;" autocomplete="off">
+                    <input type="password" id="ghTokenGirdi" placeholder="github_pat_…" style="flex:1;min-width:200px;padding:7px;border-radius:6px;border:1px solid var(--border);background:var(--bg);color:var(--text-main);font-size:0.85rem;" autocomplete="off">
+                    <button type="button" class="btn btn-sm" style="padding:6px 12px;font-size:0.8rem;background:var(--primary);color:#fff;" onclick="ghKaydetDogrula()">Kaydet ve doğrula</button>
+                    <button type="button" class="btn btn-sm" style="padding:6px 10px;font-size:0.8rem;" onclick="ghSil()">Sil</button>
+                </div>
+                <div id="ghDurumMetin" style="font-size:0.8rem;margin-top:5px;color:var(--text-muted);"></div>
+                <small style="color:var(--text-muted)">Token yalnız bu cihazda saklanır. Öğrenen eşleştirme senkronu ve Güncelleme Merkezi'ndeki "GitHub'a gönder" aynı bilgiyi kullanır. Fine-grained token: yalnız bu depo, <i>Contents: Read and write</i>.</small>
+            </div>
         </div>
         <div class="setting-group">
             <label>🎨 Görünüm Teması</label>
@@ -1320,7 +1331,7 @@
                 
                 showDBReadySuccess(sourceMsg || "Sistem Hazır");
                 loadIPC();
-                setTimeout(() => { try { ogrenmeSenkron(true); } catch (e) { /* */ } }, 800);
+                setTimeout(() => { try { ghAyarlariYukle(); ogrenmeSenkron(true); } catch (e) { /* */ } }, 800);
             } catch (err) {
                 logDebug(`HATA (TF-IDF): ${err.message}`, "error");
             }
@@ -2202,6 +2213,54 @@ Kurallar:
         }
         ogrenmeDurum('Senkronlanıyor…'); await ogrenmeSenkron(false);
     }
+    // ---- Ayarlar: GitHub bağlantısı (repo + token) kaydet/doğrula
+    function ghTikGoster(durum, metin) {
+        const t = document.getElementById('ghTik'), m = document.getElementById('ghDurumMetin');
+        if (t) t.innerHTML = durum === 'ok' ? '<span style="color:#16a34a;font-size:1.1rem;" title="Doğrulandı">✔</span>' : durum === 'hata' ? '<span style="color:#dc2626;font-size:1.1rem;">✖</span>' : '';
+        if (m) { m.textContent = metin || ''; m.style.color = durum === 'ok' ? '#16a34a' : durum === 'hata' ? '#dc2626' : 'var(--text-muted)'; }
+    }
+    async function ghDogrula(repo, tok) {
+        if (!/^[^/\s]+\/[^/\s]+$/.test(repo)) return { ok: false, msg: 'Depo adı "kullanıcı/depo" biçiminde olmalı.' };
+        if (!tok) return { ok: false, msg: 'Token girilmedi.' };
+        try {
+            const r = await fetch('https://api.github.com/repos/' + repo, { headers: { Authorization: 'Bearer ' + tok, Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' }, cache: 'no-store' });
+            if (r.status === 401) return { ok: false, msg: 'Token geçersiz veya süresi dolmuş (401).' };
+            if (r.status === 404 || r.status === 403) return { ok: false, msg: 'Depoya erişilemiyor (' + r.status + '): depo adı doğru mu, token bu depoyu kapsıyor mu?' };
+            if (!r.ok) return { ok: false, msg: 'GitHub yanıtı: ' + r.status };
+            const j = await r.json();
+            const yaz = j.permissions ? j.permissions.push !== false : true;
+            return { ok: true, msg: 'Bağlantı doğrulandı: ' + j.full_name + (yaz ? '' : ' (yazma izni görünmüyor; yalnız okuma yapılabilir)'), yaz };
+        } catch (e) { return { ok: false, msg: 'Ulaşılamadı (' + e.message + '). İnternet bağlantısını kontrol edin.' }; }
+    }
+    async function ghKaydetDogrula() {
+        const repo = (document.getElementById('ghRepoGirdi').value || '').trim();
+        let tok = (document.getElementById('ghTokenGirdi').value || '').trim();
+        if (!tok) { try { tok = localStorage.getItem('gh_token') || ''; } catch (e) { /* */ } }
+        ghTikGoster('', 'Doğrulanıyor…');
+        const d = await ghDogrula(repo, tok);
+        if (d.ok) {
+            try { localStorage.setItem('gh_repo', repo); localStorage.setItem('gh_token', tok); } catch (e) { /* */ }
+            document.getElementById('ghTokenGirdi').value = ''; document.getElementById('ghTokenGirdi').placeholder = '(token kayıtlı — değiştirmek için yenisini yazın)';
+            ghTikGoster('ok', d.msg);
+            ogrenmeSenkron(true);
+        } else ghTikGoster('hata', d.msg + ' (Kaydedilmedi.)');
+    }
+    function ghSil() {
+        try { localStorage.removeItem('gh_token'); } catch (e) { /* */ }
+        document.getElementById('ghTokenGirdi').value = ''; document.getElementById('ghTokenGirdi').placeholder = 'github_pat_…';
+        ghTikGoster('', 'Token bu cihazdan silindi.');
+    }
+    // Açılışta kayıtlı bilgiyi forma yazar ve sessizce doğrular
+    async function ghAyarlariYukle() {
+        const { repo, tok } = ogrenmeGhBilgi();
+        const re = document.getElementById('ghRepoGirdi'); if (!re) return;
+        re.value = repo;
+        if (!tok) { ghTikGoster('', 'Token kayıtlı değil.'); return; }
+        document.getElementById('ghTokenGirdi').placeholder = '(token kayıtlı — değiştirmek için yenisini yazın)';
+        const d = await ghDogrula(repo, tok);
+        ghTikGoster(d.ok ? 'ok' : 'hata', d.msg);
+    }
+
     // Yapay zeka kullanmadan toplu eşleştirme: her ihlal için, o ihlalin "şelale" kutusundaki (ya da kayıtlı) anahtar kelimeleriyle
     // seçili mevzuatlarda arama yapar, en yüksek puanlı hükmü seçer; diğer öneriler rapordan değiştirilebilir.
     function runBulkCascadeSearch() {
