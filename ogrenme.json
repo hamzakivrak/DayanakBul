@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-22T08:08:50.928Z",
+ "guncelleme": "2026-11-22T08:12:54.495Z",
  "kayitlar": [
   {
    "t": [
@@ -94,8 +94,35 @@
    ],
    "d": "(6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30, İŞYERİ HEKİMİ VE DİĞER SAĞLIK PERSONELİNİN GÖREV, YETKİ, SORUMLULUK VE EĞİTİMLERİ HAKKINDA YÖNETMELİK, Madde: 12(1) a)",
    "m": "İŞYERİ HEKİMİ VE DİĞER SAĞLIK PERSONELİNİN GÖREV, YETKİ, SORUMLULUK VE EĞİTİMLERİ HAKKINDA YÖNETMELİK",
-   "ts": 1795334928186,
-   "id": "3760l4"
+   "ts": 1795335171919,
+   "id": "3760l4",
+   "silindi": true
+  },
+  {
+   "t": [
+    "isyer",
+    "hekim",
+    "gorev",
+    "sures",
+    "695",
+    "olup",
+    "calis",
+    "sayis",
+    "tehli",
+    "sinif",
+    "olmas",
+    "husus",
+    "dikka",
+    "alind",
+    "sure",
+    "yeter"
+   ],
+   "d": "(6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30, İŞYERİ HEKİMİ VE DİĞER SAĞLIK PERSONELİNİN GÖREV, YETKİ, SORUMLULUK VE EĞİTİMLERİ HAKKINDA YÖNETMELİK, Madde: 12(1) a)",
+   "m": "İŞYERİ HEKİMİ VE DİĞER SAĞLIK PERSONELİNİN GÖREV, YETKİ, SORUMLULUK VE EĞİTİMLERİ HAKKINDA YÖNETMELİK",
+   "ts": 1795335171920,
+   "em": "(Değişik:RG-18/12/2014-29209) İşyeri hekimleri, bu Yönetmelikte belirtilen görevlerini yerine getirmek için aşağıda belirtilen sürelerde görev yaparlar:\nAz tehlikeli sınıfta yer alanlarda, çalışan başına ayda en az 5 dakika.Tehlikeli sınıfta yer alanlarda, çalışan başına ayda en az 10 dakika.\nÇok tehlikeli sınıfta yer alanlarda, çalışan başına ayda en az 15 dakika.",
+   "ed": "(6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30, İşyeri Hekimi ve Diğer Sağlık Personelinin Görev, Yetki, Sorumluluk ve Eğitimleri Hakkında Yönetmelik, Madde: 12(1))",
+   "id": "wcu2z8"
   }
  ]
 }
