@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-22T08:12:54.495Z",
+ "guncelleme": "2026-11-22T08:12:59.331Z",
  "kayitlar": [
   {
    "t": [
@@ -119,10 +119,11 @@
    ],
    "d": "(6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30, İŞYERİ HEKİMİ VE DİĞER SAĞLIK PERSONELİNİN GÖREV, YETKİ, SORUMLULUK VE EĞİTİMLERİ HAKKINDA YÖNETMELİK, Madde: 12(1) a)",
    "m": "İŞYERİ HEKİMİ VE DİĞER SAĞLIK PERSONELİNİN GÖREV, YETKİ, SORUMLULUK VE EĞİTİMLERİ HAKKINDA YÖNETMELİK",
-   "ts": 1795335171920,
+   "ts": 1795335176737,
    "em": "(Değişik:RG-18/12/2014-29209) İşyeri hekimleri, bu Yönetmelikte belirtilen görevlerini yerine getirmek için aşağıda belirtilen sürelerde görev yaparlar:\nAz tehlikeli sınıfta yer alanlarda, çalışan başına ayda en az 5 dakika.Tehlikeli sınıfta yer alanlarda, çalışan başına ayda en az 10 dakika.\nÇok tehlikeli sınıfta yer alanlarda, çalışan başına ayda en az 15 dakika.",
    "ed": "(6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30, İşyeri Hekimi ve Diğer Sağlık Personelinin Görev, Yetki, Sorumluluk ve Eğitimleri Hakkında Yönetmelik, Madde: 12(1))",
-   "id": "wcu2z8"
+   "id": "wcu2z8",
+   "silindi": true
   }
  ]
 }
