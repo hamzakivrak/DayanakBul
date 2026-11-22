@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-22T08:00:23.491Z",
+ "guncelleme": "2026-11-22T08:01:32.069Z",
  "kayitlar": [
   {
    "t": [
@@ -30,6 +30,23 @@
    "m": "Kimyasal Maddelerle Çalışmalarda Sağlık ve Güvenlik Önlemleri Hakkında Yönetmelik",
    "ts": 1795334420338,
    "id": "1pffvos"
+  },
+  {
+   "t": [
+    "boyah",
+    "bolum",
+    "icin",
+    "patla",
+    "korun",
+    "dokum",
+    "hazir",
+    "tespi",
+    "edilm"
+   ],
+   "d": "(6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30, ÇALIŞANLARIN PATLAYICI ORTAMLARIN TEHLİKELERİNDEN KORUNMASI HAKKINDA YÖNETMELİK, Madde: 10(3))",
+   "m": "ÇALIŞANLARIN PATLAYICI ORTAMLARIN TEHLİKELERİNDEN KORUNMASI HAKKINDA YÖNETMELİK",
+   "ts": 1795334489324,
+   "id": "1luasjy"
   }
  ]
 }
