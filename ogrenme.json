@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-22T13:14:14.989Z",
+ "guncelleme": "2026-11-22T13:14:53.668Z",
  "kayitlar": [
   {
    "t": [
@@ -343,6 +343,22 @@
    "ts": 1795353252620,
    "kw": "eğitim, çalışan",
    "id": "15sh5cl"
+  },
+  {
+   "t": [
+    "calis",
+    "periy",
+    "sagli",
+    "muaye",
+    "formu",
+    "ibraz",
+    "edilm"
+   ],
+   "d": "(6331 Sayılı İŞ SAĞLIĞI VE GÜVENLİĞİ KANUNU, Madde: 15(1) b)",
+   "m": "6331 Sayılı İŞ SAĞLIĞI VE GÜVENLİĞİ KANUNU",
+   "ts": 1795353291236,
+   "kw": "sağlık, muayene",
+   "id": "tjhze2"
   }
  ]
 }
