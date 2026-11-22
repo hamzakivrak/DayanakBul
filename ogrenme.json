@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-22T08:24:10.612Z",
+ "guncelleme": "2026-11-22T08:25:17.155Z",
  "kayitlar": [
   {
    "t": [
@@ -230,6 +230,21 @@
    "m": "İşyeri Bina ve Eklentilerinde Alınacak Sağlık ve Güvenlik Önlemlerine İlişkin Yönetmelik",
    "ts": 1795335847864,
    "id": "1agn29q"
+  },
+  {
+   "t": [
+    "tasla",
+    "tezga",
+    "yan",
+    "kapak",
+    "bulun",
+    "tespi",
+    "edilm"
+   ],
+   "d": "(6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30, İş Ekipmanlarının Kullanımında Sağlık ve Güvenlik Şartları Yönetmeliği, Madde: 6(1) a (Alt Atıflar: Madde: 6(1) b, Madde: 10(1) a), EK-I, Madde: 2.5)",
+   "m": "İş Ekipmanlarının Kullanımında Sağlık ve Güvenlik Şartları Yönetmeliği",
+   "ts": 1795335914096,
+   "id": "124h6mo"
   }
  ]
 }
