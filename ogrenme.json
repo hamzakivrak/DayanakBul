@@ -1,5 +1,5 @@
 {
- "guncelleme": "2026-11-22T09:40:25.883Z",
+ "guncelleme": "2026-11-22T09:45:27.740Z",
  "kayitlar": [
   {
    "t": [
@@ -297,6 +297,21 @@
    "ts": 1795340422823,
    "kw": "elbis, donanım",
    "id": "zfve52"
+  },
+  {
+   "t": [
+    "acil",
+    "durum",
+    "tatbi",
+    "yapil"
+   ],
+   "d": "(6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30, İşyerlerinde Acil Durumlar Hakkında Yönetmelik, Madde: 13(1))",
+   "m": "İşyerlerinde Acil Durumlar Hakkında Yönetmelik",
+   "ts": 1795340724916,
+   "em": "(Değişik:RG-1/10/2021-31615) Hazırlanan acil durum planının uygulama adımlarının düzenli olarak takip edilebilmesi ve uygulanabilirliğinden emin olunması için işyerlerinde, ikinci fıkrada belirtilen süreleri aşmamak kaydıyla belirlenen periyotlarla tatbikat yapılır, denetlenir ve gözden geçirilerek gerekli düzeltici ve önleyici tedbirler alınır. Gerçekleştirilen tatbikatın tarihi, görülen eksiklikler ve bu eksiklikler doğrultusunda yapılacak düzenlemeleri içeren tatbikat formu hazırlanır. Tatbikat formu hazırlanırken kullanılabilecek örnek form Ek-2’de yer almaktadır.\n\n(Ek:RG-1/10/2021-31615)(1) Tatbikat 19/9/2013 tarihli ve 28770 sayılı Resmî Gazete’de yayımlanan Maden İşyerlerinde İş Sağlığı ve Güvenliği Yönetmeliği kapsamındaki işyerleri için anılan Yönetmelik hükümlerine göre, diğer işyerleri için en geç yılda bir yapılır.",
+   "ed": "(6331 Sayılı İş Sağlığı ve Güvenliği Kanunu Madde: 30, İşyerlerinde Acil Durumlar Hakkında Yönetmelik, Madde: 13(1), 13 (2))",
+   "kw": "tatbikat, acil",
+   "id": "ykx0ig"
   }
  ]
 }
