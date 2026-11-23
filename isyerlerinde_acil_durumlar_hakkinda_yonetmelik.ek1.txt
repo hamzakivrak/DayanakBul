@@ -1,0 +1,109 @@
+EK-1 (Ek:RG-1/10/2021-31615)
+Acil Durum Planı Formu
+Hazırlayanın Adı Soyadı: Unvanı:	ACİL DURUM PLANI	Hazırlanma Tarihi:
+Geçerlilik Tarihi:
+Rev. No:
+Rev. Tarihi:
+1. İŞYERİ BİLGİLERİ
+İŞYERİ ADI/UNVANI:
+ADRES:
+İLETİŞİM:
+İŞVERENİN ADI SOYADI/UNVANI:
+TEHLİKE SINIFI:
+ÇALIŞAN SAYISI:
+2. İŞYERİ İÇİN BELİRLENEN ACİL DURUMLAR
+ACİL DURUM 1:
+ACİL DURUM 2:
+ACİL DURUM 3:
+3. TOPLANMA YERİ (Bu bölümde, işyerinde toplanma yerini işaret eden kroki yer alacaktır)
+4. İŞYERİNİ DIŞARIDAN ETKİLEYEBİLECEK İŞYERLERİ (Bu bölümde, işyerinin acil durumlar açısından etkilenebileceği işyerleri hakkında, asgari olarak, işyerinin unvanı, faaliyet konusu ve ne tür bir etkiye neden olabileceğine ilişkin bilgiler yer alacaktır.)
+5. ÖNLEYİCİ VE SINIRLANDIRICI TEDBİRLER (Bu bölümde işyeri için belirlenen “her acil durum için” acil durumun olumsuz etkilerini önleyici ve sınırlandırıcı tedbirler yer alacaktır.)
+BELİRLENEN ACİL DURUM	ÖNLEYİCİ VE SINIRLANDIRICI TEDBİRLER
+Acil durum 1
+Acil durum 2
+Acil durum 3
+…
+6. MÜDAHALE YÖNTEMLERİ (Bu bölümde, işyeri için belirlenen “her acil durum” için müdahale yöntemleri belirlenecektir. Müdahale yöntemleri, akış şeması veya maddeler halinde sıralanan prosedürler şeklinde oluşturulabilir.)
+7. TAHLİYE PLANLARI (Bu bölümde, işyerinin “her bölümü” için hazırlanan tahliye planları yer alacaktır. Tahliye planlarında asgari olarak;
+- yangın söndürme amaçlı kullanılacaklar da dâhil olmak üzere acil durum ekipmanlarının bulunduğu yerler,
+- ilk yardım malzemelerinin bulunduğu yerler,
+-kaçış yolları, toplanma yerleri ve -bulunması halinde- uyarı sistemlerinin de yer aldığı kroki,
+- görevlendirilen destek elemanlarının ve varsa yedeklerinin adı, soyadı, unvanı, sorumluluk alanı ve iletişim bilgileri,
+- acil durumlarla ilgili ulusal ve yerel kurum ve kuruluşların acil durum irtibat numaraları
+- işyerlerine ait özel risk (kimyasal yayılım, parlama veya patlama tehlikesi ve benzeri) barındıran bölümler,
+- elektrik ve gaz akışının kesim noktaları ve vanaları.
+bulunmalıdır.
+Acil durum planı kapsamında hazırlanan tahliye planları, işyeri bina ve eklentilerinin giriş ve çıkışları ile katlarda, çalışanların görüş seviyesine uygun yükseklikte ve görünür bir şekilde asılır.)
+8. ACİL DURUM EKİPLERİ (İşyerleri, acil durumlara müdahale ve acil durumlarla mücadele için söndürme ekibi, kurtarma ekibi, koruma ekibi ve ilk yardım ekibi olmak üzere 4 ekip görevlendirmelidir. İşletmenin bulunduğu tehlike sınıfı ve çalışan sayısına göre ekiplerde görevlendireceği kişi sayıları farklılık gösterecektir. Görevlendirilecek çalışan sayıları ile ilgili açıklama tablosu aşağıda verilmiştir: Söndürme, Kurtarma ve Koruma ekipleri için görevlendirilecek destek elemanı sayıları; Tehlike Sınıfı	Çalışan Sayısı
+Az tehlikeli	Her 50 çalışana kadar 1’er kişi
+Tehlikeli	Her 40 çalışana kadar 1’er kişi
+Çok tehlikeli	Her 30 çalışana kadar 1’er kişi
+SÖNDÜRME EKİBİ
+Sıra No	Adı Soyadı	Sorumluluk Alanı*	Ekipteki Görevi	İş-Ev Tel	Cep Tel	İmza
+1			Ekip Başı
+2			Ekip Personeli
+3			Ekip Personeli
+…
+KURTARMA EKİBİ
+Sıra No	Adı Soyadı	Sorumluluk Alanı	Ekipteki Görevi	İş-Ev Tel	Cep Tel	İmza
+1			Ekip Başı
+2			Ekip Personeli
+3			Ekip Personeli
+…
+KORUMA EKİBİ
+Sıra No	Adı Soyadı	Sorumluluk Alanı	Ekipteki Görevi	İş-Ev Tel	Cep Tel	İmza
+1			Ekip Başı **
+(Koordinasyonla görevli)
+2			Ekip Personeli**
+(Koordinasyonla görevli)
+3			Ekip Personeli
+…
+İLK YARDIM EKİBİ
+Sıra No	Adı Soyadı	Sorumluluk Alanı	Ekipteki Görevi	İş-Ev Tel	Cep Tel	İmza
+1			Ekip Başı
+2			Ekip Personeli
+3			Ekip Personeli
+…
+* Sorumluluk alanı; destek elemanının, acil durumlara ilişkin görevini gerçekleştireceği işyerinin ilgili birim veya bölümüdür.
+** Acil durum ekiplerinin koordinasyonu için koruma ekibinden sorumlu veya sorumlular tabloda belirtilmelidir.
+Acil Durum Planını Onaylayan (İşveren/İşveren Vekili)
+Adı Soyadı:
+İmza:
+
+EK-2 (Ek:RG-1/10/2021-31615)
+Tatbikat Formu
+İşyeri Adı/Unvanı:
+Tatbikat Adı:	Tatbikat Tarihi:
+Tatbikat Türü:
+Yangın Patlama Doğal Afet (………………………)
+Tehlikeli kimyasal, biyolojik, radyoaktif Zehirlenme veya salgın hastalıklar
+ve nükleer maddelerden kaynaklanan yayılım
+Sabotaj Diğer (………………………..)
+Tatbikata Katılım Sayıları
+Katılan Kişi Sayısı:
+Toplanma Yerindeki Sayım Sonucu:
+Tatbikat Süreleri
+Başlangıç saati:
+Bitiş saati:
+Tatbikat Konumu: (alan, bina, işyeri bölümü vs.)
+Tatbikatın Amacı
+Tatbikat Sonrası Değerlendirme
+Tatbikat esnasında doğru yapılanlar:
+Tatbikat esnasında yanlış yapılanlar:
+Çıkarılan sonuçlar:
+Tatbikatı Yürüten Adı Soyadı: Unvanı: İmza:	Tatbikatı Onaylayan (İşveren/İşveren Vekili)
+Adı Soyadı:
+İmza
+
+EK-3 (Ek:RG-1/10/2021-31615)
+Ekiplerin Görevlendirilmesine İlişkin Örnek Tablo
+Söndürme, kurtarma ve koruma ekiplerinin her biri için görevlendirilecek asgari destek elemanı sayısı	Toplam görevlendirilecek destek elemanı sayısı	Az Tehlikeli Sınıf Çalışan sayısı	Tehlikeli Sınıf Çalışan sayısı	Çok Tehlikeli Sınıf
+Çalışan sayısı
+1	1*	1-9	1-9	1-9
+1	3	10-50	10-40	10-30
+2	6	51-100	41-80	31-60
+3	9	101-150	81-120	61-90
+…**	…**	…**	…**	…**
+
+*10’dan az çalışanı olan işyerlerinde söndürme, kurtarma ve koruma ekiplerinin tamamı için en az bir çalışanın destek elemanı olarak görevlendirilmesi yeterlidir.
+** Söndürme, kurtarma ve koruma ekiplerinin hesaplanmasında yukarıda belirtilen çalışan sayılarındaki artış dikkate alınarak Yönetmeliğin 11 inci maddesinin üçüncü fıkrasına uygun olarak destek elemanı sayısı belirlenir ve görevlendirilir.”

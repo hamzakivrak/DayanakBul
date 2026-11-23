@@ -1,0 +1,274 @@
+EK-1
+İŞYERİ HEKİMLİĞİ BELGESİ
+
+EK-2
+İŞE GİRİŞ / PERİYODİK MUAYENE FORMU
+
+İŞYERİNİN :
+Unvanı:
+SGK Sicil No:
+Adresi:
+Tel No:
+Faks No:
+E-posta:
+
+İşe giriş/periyodik muayene olmayı kabul ettiğimi ve muayene sırasında verdiğim bilgilerin doğru ve eksiksiz olduğunu beyan ederim.
+
+Çalışanın Adı Soyadı
+İMZA
+
+ÇALIŞANIN :
+Adı ve Soyadı:
+T.C.Kimlik No:
+Doğum Yeri ve Tarihi:
+Cinsiyeti:
+Eğitim Durumu:
+Medeni Durumu: Çocuk Sayısı:
+Ev Adresi:
+Tel No:
+Mesleği:
+Yaptığı iş (Ayrıntılı olarak tanımlanacaktır) :
+
+Çalıştığı bölüm:
+Daha önce çalıştığı yerler (Bugünden geçmişe doğru):
+İşkolu : Yaptığı iş: Giriş-çıkış tarihi:
+1.
+2.
+3.
+
+Özgeçmişi :
+Kan grubu:
+Konjenital/kronik hastalık:
+Bağışıklama:
+- Tetanoz:
+- Hepatit:
+- Diğer:
+
+Soy geçmişi:
+Anne : Baba : Kardeş : Çocuk:
+
+TIBBİ ANAMNEZ :
+1. Aşağıdaki yakınmalardan herhangi birini yaşadınız mı?
+Hayır Evet
+- Balgamlı öksürük
+- Nefes darlığı
+- Göğüs ağrısı
+- Çarpıntı
+- Sırt ağrısı
+- İshal veya kabızlık
+- Eklemlerde ağrı
+2. Aşağıdaki hastalıklardan herhangi biri için teşhis konuldu mu?
+Hayır Evet
+- Kalp hastalığı
+- Şeker hastalığı
+- Böbrek rahatsızlığı
+- Sarılık
+- Mide veya on iki parmak ülseri
+- İşitme kaybı
+- Görme bozukluğu
+- Sinir sistemi hastalığı
+- Deri hastalığı
+- Besin zehirlenmesi
+3. Hastanede yattınız mı?
+Hayır Evet ise tanı…...............................................................................
+4. Ameliyat oldunuz mu?
+Hayır Evet ise neden?…..........................................................................
+5. İş kazası geçirdiniz mi?
+Hayır Evet ise ne oldu?….......................................................................
+6. Meslek hastalıkları şüphesi ile ilgili tetkik veya muayeneye tabi tutuldunuz mu?
+Hayır Evet ise sonuç…..........................................................................
+7. Maluliyet aldınız mı?
+Hayır Evet ise nedeni ve oranı…............................................................
+8. Şu anda herhangi bir tedavi görüyor musunuz?
+Hayır Evet ise nedir?…...........................................................................
+9. Sigara içiyor musunuz?
+Hayır
+Bırakmış ….......ay/yıl önce …..........ay/yıl içmiş …........adet/gün içmiş
+Evet ….......yıldır …...........adet/gün
+10. Alkol alıyor musunuz?
+Hayır
+Bırakmış …...........yıl önce …...........yıl içmiş ….............sıklıkla içmiş
+Evet …............yıldır …...........sıklıkla
+
+FİZİK MUAYENE SONUÇLARI :
+a) Duyu organları.
+- Göz
+- Kulak-Burun-Boğaz
+- Deri
+b) Kardiyovasküler sistem muayenesi.
+c) Solunum sistemi muayenesi.
+ç) Sindirim sistemi muayenesi.
+d) Ürogenital sistem muayenesi.
+e) Kas-iskelet sistemi muayenesi.
+f) Nörolojik muayene.
+g) Psikiyatrik muayene.
+ğ) Diğer.
+-TA: / mmHg
+-Nb: / dk.
+-Boy: Kilo: Vücut Kitle İndeksi:
+
+LABORATUVAR BULGULARI :
+a) Biyolojik analizler.
+- Kan
+- İdrar
+b) Radyolojik analizler.
+c) Fizyolojik analizler.
+- Odyometre
+- SFT
+ç) Psikolojik testler.
+d) Diğer.
+
+KANAAT VE SONUÇ* :
+……………………………………………………………….işinde bedenen ve ruhen
+
+çalışmaya elverişlidir.
+
+……………………………..…… şartıyla çalışmaya elverişlidir.
+
+……/……/……
+
+(*Yapılan muayene sonucunda çalışanın gece veya vardiyalı çalışma koşullarında çalışıp çalışamayacağı ile vücut sağlığını ve bütünlüğünü tamamlayıcı uygun alet teçhizat vs... bulunması durumunda çalışan için bu koşullarla çalışmaya elverişli olup olmadığı kanaati belirtilecektir.)
+
+İMZA
+Adı ve Soyadı:
+Diploma Tarih ve No:
+İşyeri Hekimliği Belgesi Tarih ve No:
+
+EK-3
+YILLIK DEĞERLENDİRME RAPORU
+İşyerinin:
+Unvanı:
+SGK Sicil No:
+Adresi:
+Tel ve Faks No: E-posta:
+İşkolu:
+Çalışan sayısı: Erkek: Kadın: Genç: Çocuk: Toplam:
+Sıra No.	Yapılan çalışmalar	Tarih	Yapan Kişi ve Unvanı	Tekrar Sayısı	Kullanılan Yöntem	Sonuç ve Yorum
+1	Risk değerlendirmesi
+2	Ortam ölçümleri
+3	İşe giriş muayeneleri
+4	Periyodik muayeneler
+5	Radyolojik analizler
+6	Biyolojik analizler
+7	Toksikolojik analizler
+8	Fizyolojik testler
+9	Psikolojik testler
+10	Eğitim çalışmaları
+11	Diğer çalışmalar
+
+Tarih
+
+İş Güvenliği Uzmanı İşveren İşyeri Hekimi
+İmza İmza İmza
+
+EK-4
+DİĞER SAĞLIK PERSONELİ BELGESİ
+
+EK – 5
+TABELA
+
+T.C.
+ÇALIŞMA VE SOSYAL GÜVENLİK BAKANLIĞI
+İŞ SAĞLIĞI VE GÜVENLİĞİ GENEL MÜDÜRLÜĞÜ
+
+ÖZEL
+“EĞİTİM KURUMU UNVANI”
+İŞYERİ HEKİMLİĞİ EĞİTİM KURUMU
+EK – 6
+EĞİTİM KURUMU YETKİ BELGESİ
+
+EK – 7
+……………………………………….. İŞYERİ HEKİMLİĞİ
+EĞİTİM KURUMU GÜNLÜK KATILIMCI DEVAM ÇİZELGESİ
+Program ID Kodu ve Türü:
+Tarih:
+Derslik Kontenjanı:
+No	Adı Soyadı	1. Ders	2. Ders	3. Ders	4. Ders	5. Ders	6. Ders
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+Eğitici
+İmza
+
+Sorumlu Müdür Onayı
+Adı Soyadı
+İmza
+
+EK – 8
+
+…Eğitim Kurumu
+EĞİTİM KATILIM BELGESİ
+Tarih:
+Belge No:
+
+İşyeri Hekimi ve Diğer Sağlık Personelinin Görev, Yetki, Sorumluluk ve Eğitimleri Hakkında Yönetmelik kapsamında aşağıda kimlik bilgileri yazılı ……………………………………….., yeterli katılımı sağlamış ve …………………………………. eğitim programını tamamlayarak bu belgeyi almaya hak kazanmıştır.
+
+Adı-Soyadı :…………………………..
+T.C. Kimlik No :…………………………..
+SGK Sicil No :…………………………..
+Mesleği :…………………………..
+Bitirdiği Program:…………………………..
+
+Eğitim kurumu yetki belgesi tarih/no:
+Pratik Eğitim Gördüğü Tarih Aralığı:
+Pratik Eğitim Gördüğü İşyeri Onayı: Eğitim Kurumu Yetkilisi (Kaşe-İmza) (Kaşe-İmza)
+
+EK – 9
+İŞYERİ HEKİMLİĞİ VE İŞ GÜVENLİĞİ UZMANLIĞI EĞİTİCİ BELGESİ
+
+EK – 10
+DİĞER SAĞLIK PERSONELİ EĞİTİCİ BELGESİ
+
+EK - 11
+İŞYERİ HEKİMLERİ, DİĞER SAĞLIK PERSONELİ, EĞİTİCİLER VE
+SORUMLU MÜDÜRLER İÇİN İHTAR TABLOSU
+
+Sıra No.	İhlalin Adı	İhlalin Derecesi	İhtar Puanı
+(Değişik satır:RG-7/3/2016-29646) İşyeri hekimlerinin görev ve yükümlülüklerini yerine getirmemesi durumunda denetim başına.	Orta	20
+(Değişik satır:RG-7/3/2016-29646) Diğer sağlık personelinin görev ve yükümlülüklerini yerine getirmemesi durumunda denetim başına.	Orta	20
+Sorumlu müdürlerin görev ve sorumluluklarını yerine getirmemesi durumunda aykırılık başına.	Hafif	10
+Eğiticilerin görev ve sorumluluklarını yerine getirmemesi durumunda aykırılık başına.	Hafif	10
+İşyeri hekimlerinin, Bakanlıkça tehlike sınıflarına göre belirlenen çalışma sürelerine uymaması durumunda.	Orta	20
+Diğer sağlık personelinin, Bakanlıkça tehlike sınıflarına göre belirlenen çalışma sürelerine uymaması durumunda.	Orta	20
+Denetim, kontrol ve incelemelerde istenen bilgi ve belgeleri vermemesi veya geciktirmesi durumunda.	Orta	20
+Eğiticilerin, Genel Müdürlükçe belirlenen müfredat gereği verebilecekleri dersler dışında ders vermesi durumunda.	Orta	20
+
+EK-12
+İŞYERİ HEKİMLİĞİ EĞİTİM KURUMLARI İÇİN İHTAR TABLOSU
+
+Sıra No.	İhlalin Adı	İhlalin Derecesi	İhtar Puanı
+Eğitim kurumlarınca, kurumun girişinin bulunduğu kısma ilgili maddede belirtilen tabelanın asılmaması durumunda.	Hafif	10
+Eğitim programının eğitim kurumu içerisinde ilan edilmemesi durumunda.	Hafif	10
+(Değişik satır:RG-7/3/2016-29646) 28 inci maddesinin on altıncı fıkrasındaki hususlar hariç olmak üzere eğitim kurumlarının görev ve sorumlulukları olarak belirtilen hususlara aykırılık durumunda her bir aykırılık başına	Hafif	10
+Eğitim kurumlarına ve katılımcılara ilişkin kayıtların eksik tutulması veya tutulmaması durumunda eğitim programı başına.	Hafif	10
+Genel Müdürlükçe belirlenen eğitim kriterlerine aykırılık durumunda ihlal başına.	Orta	20
+Tabela veya basılı evrakında yetki belgesinde belirtilen isim ve unvanlardan farklı isim ve unvan veya yabancı dildeki karşılıklarının kullanılması durumunda.	Orta	20
+Genel Müdürlükçe belirlenen eğitim kriterlerine uygun eğiticinin görevlendirilmemesi durumunda.	Orta	30
+Mekân ve donanım ile ilgili şartlara uygunluğun devamının sağlanmaması veya yerleşim planında Genel Müdürlük onayı alınmadan değişiklik yapılması durumunda uygunsuzluk başına.	Ağır	40
+Eğitici belgesi olmayanların derse girmesi durumunda eğitici başına.	Ağır	40
+Onaylanmamış programlarla eğitime başlanması durumunda program başına.	Ağır	40
+Onaylanmış eğitim programının herhangi bir unsurunda Bakanlığın onayı alınmadan değişiklik yapılması durumunda uygunsuzluk başına.	Ağır	40
+Tam süreli iş sözleşmesiyle istihdam edilmesi gereken eğiticilerin ayrılmasına rağmen 30 gün içinde yeni eğitici istihdam edilmemesi veya görevlendirilmemesi durumunda atanmayan eğitici başına.	Ağır	40
+(Değişik satır:RG-7/3/2016-29646) Eğitimin olduğu saatlerde kurumun kapalı olması, denetime engel olunması, denetimde istenen bilgi ve belgelerin verilmemesi hallerinden herhangi birinin olması durumunda	Ağır	100

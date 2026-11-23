@@ -1,0 +1,148 @@
+EK-1 (*)(**)
+
+TOZ MESLEKİ MARUZİYET SINIR DEĞERLERİ TABLOSU
+Maddenin Adı	CAS No (1)	Toplam Toz Miktarı TWA/ZAOD (mg/m3) (2)	Solunabilir Toz Miktarı
+TWA/ZAOD
+(mg/m3) (2)
+Alfa-alumina	1344-28-1	15	5
+Aluminyum Metal	7429-90-5	15	5
+Amonyum sülfamat	7773-06-0	15	5
+Bakır tozu	7440-50-8
+1
+Baryum sülfat	7727-43-7	15	5
+Benomil	17804-35-2	15	5
+Bizmut tellurit	1304-82-1	15	5
+Bor oksit	1303-86-2	15
+2-Chloro-6 (trichloromethyl) pyridine	1929-82-4	15	5
+Çinko oksit	1314-13-2	15	5
+Çinko siterat	557-05-1	15	5
+Clopidol	2971-90-6	15	5
+Disiklopentadien demir	102-54-5	15	5
+
+Ferbam	14484-64-1	15
+Ferro vanadyum tozu	12604-58-9
+1
+Gümüş	7440-22-4
+0.1
+Grafit, sentetik
+15	5
+Jips	13397-24-5	15	5
+Kalsiyum Karbonat(Mermer)	1317-65-3	15	5
+Kalsiyum Karbonat (Kireçtaşı)	1317-65-3	15	5
+Kalsiyum hidroksit	1305-62-0	15	5
+Kalsiyum silikat	1344-95-2	15	5
+Kalsiyum sülfat	7778-18-9	15	5
+Kaolin	1332-58-7	15	5
+Keten	463-51-4	0.5	0.9
+Kobalt metali, tozu ve buharı	7440-48-4
+0.1
+Magnezit	546-93-0	15	5
+Malatiyon	121-75-5	15
+Methoxychlor	72-43-5	15
+
+Molibdenyum (Mo olarak)
+Çözünebilir Bileşikler	7439-98-7
+
+5
+Molibdenyum	7439-98-7
+15
+Nişasta	9005-25-8	15	5
+Odun tozu
+5
+Paraquat	4685-14-7
+0.5
+Pamuk tozu (Çırçır, hallaç, iplik)
+0.5
+Pamuk tozu (Dokuma)
+0.75
+Pamuk tozu (Konfeksiyon)
+1
+Paratiyon	56-38-2	0.1
+Pentaeritritol	115-77-5	15	5
+Pikloram	1918-02-1	15	5
+Paris alçısı	26499-65-0	15	5
+
+Platinyum ( Pt)
+Çözünebilir tuzları	7440-06-4
+
+0.002
+Portland çimentosu	65997-15-1	15	5
+Rouge (Demir III- oksit)
+15	5
+Sakkaroz	57-50-1	15	5
+Selüloz(kağıt tozu)	9004-34-6	15	5
+Silikon	7440-21-3	15	5
+Silikon karbür	409-21-2	15	5
+Tahıl (yulaf, buğday, arpa…)
+10
+Tantal, metal ve oksit toz	7440-25-7
+5
+Tellüryum ve bileşikleri (Te olarak)	13494-80-9	0.1
+Temephos ( O,O′-(thiodi-4,1-phenylene) bis(O,O-dimethyl phosphorothioate)	3383-96-8	15	5
+4,4'-Tiyobis (6-tert Butil-m-kresol)	96-69-5	15	5
+Titanyum dioksit	13463-67-7	15
+
+Vanadyum (V2O5 toz olarak)
+	1314-62-1	0.5
+Zımpara	12415-34-8	15	5
+
+ÖZELLİĞİ OLAN KAYAÇ VEYA MİNERALLER MARUZİYET EŞİK SINIR DEĞERLERİ
+
+Kayaç-mineral	TWA
+Asbest	0,1 lif / cm3
+Silika (Kristal Yapıda)
+Kuvars (Solunabilir)	10mg/m3
+%SiO2+2
+Kuvars (Toplam)	30mg/m3
+%SiO2+2
+
+Kristobalit :Formülle hesaplanan kuvars değerinin ½ si kullanılır.
+Tridimit: Formülle hesaplanan kuvars değerinin ½ si kullanılır.
+Mineral	Sınır Değer (mg/m3)
+Amorf yapıda (doğal diatomalı toprak içeren )	80 mg/m³
+% SiO2+2
+Silikatlar (%1’den az kristal silika içeren)
+Mika
+Talk (Asbest içermeyen)
+Talk (asbest içeren) (***)
+Sabuntaşı
+Portland Çimentosu
+Grafit (Doğal)
+Kömür Tozu:
+%5 ve daha az SiO2 içeren solunabilir toz	2.4 mg/ m³
+%5’ten fazla SiO2 içeren solunabilir toz	10mg/m³
+% SiO2+2
+İnert veya İstenmeyen Toz
+Solunabilir Kısım	5 mg/ m³
+Toplam Toz	15 mg/ m³
+
+Mineral Lifler	lif/cm3	TWA/ZAOD
+Çapı ≤3.5 µm, uzunluğu≥ 10 µm. olan lifler
+Taş yünü	3 lif/cm3	5 mg/m3
+Fırın Curuf yünü	3 lif/cm3	5 mg/m3
+Sentetik Cam yünü	3 lif/cm3	5 mg/m3
+
+( * ) 1910.1000 numaralı OSHA standardına paralel olarak hazırlanmıştır.
+(**) 6331 sayılı Kanun uyarınca çıkarılan mevzuatın uygulanmasında uluslararası kuruluşlarca yayımlanmış sınır değerler de
+dikkate alınabilir.
+(***) 25/1/2013 tarihli 28539 sayılı Resmî Gazete’de yayımlanan Asbestle Çalışmalarda Sağlık ve Güvenlik Önlemleri Hakkında Yönetmelikte belirtilen değer alınmalıdır.
+
+(1) CAS : Kimyasal maddelerin servis kayıt numarası.
+(2) mg/m3 : 20 0C sıcaklıkta ve 101,3 kPa (760 mm cıva basıncı) basınçtaki 1 m3 havada bulunan maddenin miligram cinsinden miktarı.
+EK-2
+PNÖMOKONYOZ TANI ŞEMASI
+
+*İşyeri ortamında toza maruziyet öyküsü incelenirken çalışanın; ayrıntılı meslek öyküsü alınmalıdır (En son yaptığı ve daha önce çalıştığı işler, çalıştığı bölümler, kullandığı ve çalıştığı ortamdaki maddeler, iş dışı uğraşları, alışkanlıkları sorgulanmalıdır).
+** PA akciğer grafisinin (en az 35x35cm) veya dijital akciğer radyografilerinin değerlendirilmesi, Yönetmelik kapsamında okuyucular tarafından yapılır.
+*** Okuyucular tarafından pnömokonyoz olgusu ya da şüphesi biçiminde kabul edilen ve işverene bildirilen çalışanlar, meslek hastalıkları tanısı koymakla yetkili hastaneye sevk edilir.
+EK-3
+
+ILO ULUSLARARASI PNÖMOKONYOZ DEĞERLENDİRME KATEGORİSİ ÇİZELGESİ
+0. Kategori	0/-	0/0	0/1
+I. Kategori	1/0	1/1	1/2
+II. Kategori	2/1	2/2	2/3
+III. Kategori	3/2	3/3	3/+
+
+EK-4
+ILO ULUSLARARASI PNÖMOKONYOZ RADYOGRAFİLERİ
+SINIFLANDIRMASI EĞİTİMİ SERTİFİKASI

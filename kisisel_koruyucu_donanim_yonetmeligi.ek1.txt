@@ -1,0 +1,461 @@
+Ek-1
+Kişisel Koruyucu Donanımların Risk Kategorileri
+
+Bu ek, KKD’lerin kullanıcıları koruması amaçlanan risklerin kategorilerini gösterir.
+
+Kategori I
+Kategori I, sadece aşağıda belirtilen asgari düzeydeki riskleri içerir:
+a) Yüzeysel mekanik yaralanmalar,
+b) Zayıf etkili temizlik malzemeleri ile temas veya su ile uzun süreli temas,
+c) 50°C’yi geçmeyen sıcak yüzeylerle temas,
+d) Güneş ışığına maruziyet nedeniyle gözlerde meydana gelen hasar (güneşin doğrudan gözlenmesi hariç),
+e) Aşırı olmayan atmosferik şartlar.
+
+Kategori II
+Kategori II, Kategori I ve III dışında kalan riskleri içerir.
+
+Kategori III
+Kategori III özellikle, aşağıda belirtilen hususlardan dolayı meydana gelen ve ölüm veya sağlığa geri dönüşü olmayan zararlar gibi çok ciddi sonuçlara neden olan riskleri kapsar:
+a) Sağlığa zararlı maddeler ve karışımlar,
+b) Yetersiz oksijen bulunan ortamlar,
+c) Zararlı biyolojik ajanlar,
+d) İyonize radyasyon,
+e) Etkileri asgari 100°C sıcaklığındaki hava ile karşılaştırılabilen yüksek sıcaklıklı ortamlar,
+f) Etkileri -50°C ve daha düşük sıcaklıktaki hava ile karşılaştırılabilen düşük sıcaklıklı ortamlar,
+g) Yüksekten düşme,
+h) Elektrik şoku ve enerji hatlarında çalışmalar,
+i) Boğulma,
+j) Elde taşınan elektrikli testerenin neden olduğu kesilmeler
+k) Yüksek basınçlı püskürtme,
+l) Kurşun yaralanmaları veya bıçak batmaları,
+m) Zararlı gürültü.
+
+
+Ek-2
+Temel Sağlık ve Güvenlik Gerekleri
+Genel Esaslar
+1) Bu ekte belirtilen temel sağlık ve güvenlik gereklerine uyulması zorunludur.
+2) Temel sağlık ve güvenlik gereklilikleriyle ilgili yükümlülükler, yalnızca söz konusu KKD için ilgili riskin bulunduğu durumlarda uygulanır.
+3) Temel sağlık ve güvenlik gerekleri, tasarım ve imalat esnasında geçerli olan ve sağlık ve güvenliğin korunmasında en yüksek seviyedeki teknoloji ve güncel uygulamalar ile teknik ve ekonomik hususlar göz önünde bulundurulacak şekilde yorumlanmalı ve uygulanmalıdır.
+4) İmalatçı, KKD’lerinde geçerli olan riskleri tanımlamak için bir risk değerlendirmesi yapar. Tasarım ve imalatı, yapmış olduğu risk değerlendirmesini dikkate alarak gerçekleştirir.
+5) KKD’yi tasarlarken, imal ederken ve kullanım kılavuzunu hazırlarken imalatçı, KKD’nin sadece amaçlanan kullanımını değil, aynı zamanda makul ve öngörülebilir kullanım durumlarını da dikkate alır. Mümkün olduğu durumda, kullanıcı dışındaki kişilerin sağlığı ve güvenliği de sağlanır.
+1. Tüm KKD’lerde Bulunması Gereken Genel Özellikler
+KKD’ler amaçlanan doğrultuda kullanımı sırasında karşılaşılan tüm risklere karşı yeterli koruma sağlamalıdır.
+1.1. Tasarım Prensipleri
+1.1.1. Ergonomi
+KKD, risk ihtiva eden iş yapılırken, öngörülebilen koşullarda ve amaçlanan doğrultuda kullanımı sırasında kullanıcıyı mümkün olan en yüksek düzeyde koruyacak şekilde tasarlanarak imal edilmelidir.
+1.1.2. Koruma Düzeyleri ve Sınıfları
+1.1.2.1. Mümkün Olan En Üst Koruma Düzeyi
+Tasarım sırasında göz önüne alınacak en üst koruma düzeyi, KKD kullanımından kaynaklanan riske maruz kalındığında veya normal koşullarda işin yürütülmesi sırasında KKD’nin etkinliğinin azalmaya başladığı noktadır.
+1.1.2.2. Farklı Risk Düzeyleri İçin Uygun Koruma Sınıfları
+KKD’nin tasarımında, aynı risk faktörünün farklı düzeylerinin ayırt edilebilmesi gibi öngörülebilir kullanım koşullarının farklılık gösterdiği durumlarda uygun koruma sınıflandırmaları dikkate alınmalıdır.
+1.2. KKD’nin Kendisinin Tehlikeye Yol Açmaması
+1.2.1. KKD’nin Yapısından Kaynaklanan ve Rahatsızlık Veren Faktörlerin ve Diğer Risklerin Bulunmaması
+KKD, öngörülebilir koşullarda kullanımı sırasında tehlikelere ve yapısından kaynaklanabilen rahatsızlık verici diğer faktörlere neden olmayacak şekilde tasarlanarak imal edilmelidir.
+1.2.1.1. Uygun Malzemeden İmali
+KKD malzemesi ve parçaları, bozulma sonucu ortaya çıkan maddeler de dâhil olmak üzere, kullanıcının sağlık ve güvenliğini olumsuz yönde etkilememelidir.
+1.2.1.2. KKD’nin Kullanıcıya Temas Eden Yüzeyinin Uygunluğu
+Giyildiğinde veya takıldığında kullanıcıya temas eden veya etmesi muhtemel herhangi bir KKD elemanı, tahriş ya da yaralanmalara neden olabilecek derecede sert olmamalı, keskin kenarlar ve çıkıntılar bulundurmamalıdır.
+1.2.1.3. KKD’nin Kullanıcıyı Engellememesi
+KKD’nin vücudun duruş şekline ve hareket etmesine neden olduğu kısıtlamalar ile duyu organlarında yol açabileceği hassasiyet kaybı en aza indirilmeli ve KKD, kullanıcı veya diğer kişiler için tehlikeli olabilecek hareketlere neden olmamalıdır.
+1.3. Rahatlık ve Etkinlik
+1.3.1. KKD’nin Kullanıcının Vücut Yapısına Uygunluğu
+KKD, öngörülebilir kullanımı sırasında yapılacak hareketler ve vücudun duruş şekilleri ile ortam şartları göz önüne alınarak kullanıcı üzerinde doğru pozisyonda kolayca durmasını sağlayacak ve öngörülen kullanım süresinde yerinde kalacak şekilde tasarlanarak üretilmelidir. Bu amaçla KKD’nin ayarlanabilir ve eklenebilir sistemler yardımıyla veya farklı beden ölçülerinde üretilerek kullanıcının vücut yapısına uygunluğu sağlanarak en etkin şekilde kullanılabilmesi sağlanmalıdır.
+1.3.2. Hafiflik ve Dayanıklılık
+KKD, dayanıklılık ve işlevselliğini azaltmayacak şekilde olabildiğince hafif imal edilmelidir.
+KKD, 3 üncü maddede belirtilen risklere karşı yeterli korunma sağlayabilmek için yerine getirilmesi şart olan ve belirli riskler için ilave gereksinimlerle birlikte, öngörülen kullanım koşulları altındaki ortam koşullarının etkisine dayanabilmelidir.
+1.3.3. Aynı Anda Kullanılmak Üzere Tasarlanmış Farklı KKD Tipleri veya Sınıflarının Uyumu
+Aynı imalatçı, aynı anda birden fazla risk söz konusu olduğunda bu risklere karşı vücudun birbirine yakın kısımlarının eş zamanlı korunmasını sağlamak için farklı tip ve sınıflarda KKD modellerini piyasaya sunarsa, bunlar birbiriyle uyumlu olmalıdır.
+1.3.4. Ayrılabilir Koruyucu İçeren Koruyucu Giysiler
+Ayrılabilir koruyucu içeren koruyucu giyecekler birlikte KKD’yi oluşturur ve uygunluk değerlendirme işlemleri sırasında da birlikte değerlendirilmelidir.
+1.4. İmalatçı Tarafından Verilecek Bilgiler
+İmalatçı, ürünün imalatçısının veya yetkili temsilcisinin adı ve adresinin yanı sıra aşağıdaki hususları içeren kullanım kılavuzunu da piyasaya sunduğu KKD ile birlikte vermelidir:
+a) Depolama, kullanım, temizlik, bakım, onarım ve dezenfekte etmeye ilişkin bilgiler. İmalatçı tarafından önerilen temizlik, bakım ve enfeksiyondan arındırma maddeleri, kullanım kılavuzunda verilen talimata uygun olarak kullanıldığında kullanıcıya veya KKD’ye zarar vermemelidir.
+b) Söz konusu KKD’nin sağladığı korumanın sınıfını ya da seviyesini ölçmek için uygulanan teknik testlerde kaydedilen performans sonuçları.
+c) Uygulanabildiği durumda, söz konusu KKD’ye uygun aksesuarların ve yedek parçaların özellikleri.
+d) Uygulanabildiği durumda, farklı risk seviyeleri için uygun koruma sınıfları ve bunlara karşılık gelen kullanım limitleri.
+e) Uygulanabildiği durumda, KKD veya belirli parçalarının kullanma ömrü veya son kullanma tarihinin ay, yıl veya periyodu.
+f) Uygulanabildiği durumda, taşımaya uygun paketleme şekli.
+g) İşaretlerin anlamı.
+h) KKD’nin koruması amacıyla tasarlandığı riski.
+i) Bu Yönetmeliğe atıf ile eğer varsa, diğer uyumlaştırılmış mevzuata atıf.
+j) KKD’lerin uygunluk değerlendirme işlemlerinde yer alan onaylanmış kuruluş veya kuruluşların unvanı, adresi ve kimlik numarası.
+k) İlgili uyumlaştırılmış standart veya standartların referans numaraları ve tarihleri veya kullanılan diğer teknik şartnamelere atıflar.
+l) AB Uygunluk Beyanına ulaşılabilecek internet sitesi adresi.
+Yukarıda belirtilen (i), (j), (k) ve (l) maddelerindeki bilgilerin AB Uygunluk Beyanının ürüne eşlik ettiği durumda kullanım kılavuzunda yer alması gerekmez.
+Bu bilgiler, anlaşılır, kesin ve Türkçe olmalı veya KKD diğer bir üye devlette piyasaya arz ediliyorsa o üye devlerin resmi dil veya dillerinde olmalıdır.
+2. Bazı KKD Tipleri veya Sınıfları İçin Ortak İlave Gerekler
+2.1. Ayarlanabilir KKD’ler
+KKD’nin ayarlanabilir sistemleri varsa, bu sistemler, öngörülen kullanım koşullarında kullanıcının bilgisi dışında, yanlış bir ayarlamayı engelleyecek şekilde tasarlanarak imal edilmelidir.
+2.2. Korunacak Vücut Bölümünü Örten KKD’ler
+Korunacak vücut bölümünü örten KKD’ler, kullanım sırasında oluşan terlemeyi asgari seviyeye indirecek şekilde tasarlanmalı ve üretilmelidir. Eğer bu yapılamazsa, KKD teri emecek donanımlara sahip olmalıdır.
+2.3. Yüz, Göz ve Solunum Sistemi KKD’leri
+Yüz, göz ve solunum sistemi için kullanılan KKD’lerin, kullanıcının görüş alanında neden olacağı kısıtlamalar en aza indirilmelidir.
+Bu tip KKD’lerin görme sistemlerinin optik nötralite derecesi, kullanıcının yaptığı, nispeten uzun süreli veya titizlik gerektiren işlerle uyumlu olmalıdır. Gerektiğinde buğu oluşmasını engelleyici işlemden geçirilerek koruyucu malzeme ile takviye edilmelidir.
+Numaralı gözlük veya kontakt lens takmak zorunda olanların kullanacağı KKD modelleri, hali hazırda kullanılmakta olan numaralı gözlük veya kontakt lensle uyumlu olmalıdır.
+2.4. KKD’nin Kullanım Ömrü ve Kullanımdan Dolayı Özelliğini Kaybetmesi
+Yeni bir KKD’nin işlevinin zamana bağlı olarak önemli oranda azaldığı biliniyorsa, üretim tarihi ve mümkünse son kullanma tarihi her bir KKD parçasının ve değişebilen bölümlerinin üzerine, hiçbir yanlış anlamaya meydan vermeyecek şekilde, açıkça belirtilmeli ve bu bilgiler KKD’nin ambalajı üzerinde de bulunmalıdır.
+KKD’nin kullanımından dolayı özelliğini ne sürede kaybedeceğinin öngörülemediği durumda imalatçı, tüketici ve nihai kullanıcıya kullanım kılavuzunda KKD modelinin kalite seviyesi ve depolanması, kullanımı, temizlenmesi, hizmete sunumu ve bakımına ilişkin etken koşulları da dikkate alarak makul bir kullanım ömrünü ay ve yıl olarak belirtmelidir.
+KKD’nin temizlenmesinde periyodik olarak kullanılan ve imalatçının tavsiye ettiği bir temizleme işlemi sonucunda oluşan yıpranmalardan kaynaklanan, KKD’nin performansında hızlı şekilde azalmaya sebep olan koşullar; mümkün olduğu durumda, piyasaya arz edilen her bir KKD’nin üzerine kullanım ömrünün tamamlanmasından önce yapılabilecek azami temizleme sayısını içerecek şekilde gerekli işaretleme iliştirilmelidir. Bunun mümkün olmadığı durumda bu bilgiler kullanım kılavuzunda verilmelidir.
+2.5. Kullanım Sırasında Etraftaki Nesnelere Takılma Riski Taşıyan KKD’ler
+KKD, öngörülen kullanım koşullarında etraftaki hareketli nesnelere takılma riski taşıyor ve dolayısıyla kullanıcı için bir tehlike oluşturuyorsa, takılma halinde herhangi bir parçanın kırılmasına izin vererek tehlikeyi bertaraf edecek düzeyde düşük bir kırılma direncine sahip olmalıdır.
+2.6. Muhtemel Patlayıcı Ortamlarda Kullanılan KKD’ler
+Muhtemel patlayıcı ortamlarda kullanılacak KKD’ler, patlayıcı karışımların tutuşmasına neden olabilecek elektrik, statik elektrik, çarpma sonucu oluşan ark veya kıvılcım oluşturmayacak nitelikte tasarlanarak imal edilmelidir.
+2.7. Çabuk Takma ve/veya Çıkarma veya Acil Kullanım Amaçlı KKD’ler
+Bu KKD tipleri takma ve/veya çıkarma için gerekli zamanı en aza indirecek şekilde tasarlanarak imal edilmelidir.
+KKD’nin doğru şekilde takılmasına veya çıkarılmasına yarayan kısımları, kullanıcının çabuk ve kolay bir işlemle takma veya çıkarmasına izin verecek yapıda olmalıdır.
+2.8. Çok Tehlikeli Durumlarda Kullanılan KKD’ler
+Çok tehlikeli durumlarda kullanılan KKD’lerle birlikte sunulan ve imalatçı tarafından hazırlanan kullanım kılavuzu, özellikle, onları yorumlayacak ve KKD’nin kullanıcı tarafından doğru uygulanmasını sağlayacak şekilde gerekli niteliklere haiz eğitilmiş kişilerin özel olarak bilgilendirilmesi için gerekli bilgileri içermelidir.
+Ayrıca kullanım kılavuzunda, KKD giyildiğinde doğru ayarlanmasını ve işlevsel olmasını sağlamak için izlenecek yöntem belirtilmelidir.
+KKD, normal koruma düzeyini sağlamadığında harekete geçen bir alarm sistemine sahip ise, bu sistem, KKD’nin öngörülebilen kullanım şartlarına bağlı olarak kullanıcı tarafından kolayca fark edilecek şekilde tasarlanmalı ve yerleştirilmelidir.
+2.9. Kullanıcı Tarafından Takılabilen veya Çıkarılabilen Elemanlara Sahip KKD’ler
+Değiştirme amacıyla, kullanıcı tarafından takılıp çıkarılabilen KKD elemanları, herhangi bir alet kullanmadan kolayca takılıp çıkarılabilecek ve ayarlanabilecek şekilde tasarlanarak imal edilmelidir.
+2.10. Dışarıdan, Tamamlayıcı Diğer Bir Cihazla Bağlantılı KKD’ler
+KKD, bir diğeriyle bağlantı yapılabilecek tamamlayıcı sisteme sahipse, birleştirme mekanizması yalnızca uygun cihaza takılmaya izin verecek şekilde tasarlanarak imal edilmelidir.
+2.11. İçinde Akışkan Bir Dolaşım Sistemi Bulunduran KKD’ler
+KKD’lerin içinde akışkan bir dolaşım sistemi bulunması durumunda, bu sistem, korunacak vücut kısımlarının tamamının çevresinde yeterli akışkan beslemesini sağlayacak ve öngörülen kullanım koşullarında kullanıcının duruş biçiminden veya vücut hareketlerinden etkilenmeyecek şekilde seçilmeli veya tasarlanmalıdır.
+2.12. Üzerinde Dolaylı veya Doğrudan Sağlık ve Güvenlikle İlgili Bir veya Birden Fazla Tanımlayıcı İşaret Taşıyan KKD’ler
+KKD üzerine iliştirilmiş, dolaylı ya da doğrudan sağlık ve güvenlik ile ilgili tanımlayıcı işaretler, vermek istediği mesaja uygun ikaz işaretleri (piktogramlar veya ideogramlar) şeklinde olmalıdır. Bunlar, kolayca görünür ve okunaklı olmalıdır ve KKD’nin öngörülen kullanım ömrü boyunca kalıcı olmalıdır. Ayrıca, herhangi bir yanlış anlaşılmaya mahal vermeyecek şekilde bu işaretler anlaşılır, kesin ve tam olmalıdır. Özellikle, bu işaretler üzerinde yazılı bir ifade veya kelime bulunuyorsa, bunlar KKD’nin kullanılacağı devletin resmi dil veya dillerinde olmalıdır.
+KKD, gerekli işaretlerin tamamının veya bir kısmının konulamayacağı kadar küçük olduğu durumda, buna ait açıklayıcı bilgi, ambalaj üzerinde ve kullanım kılavuzunda bulunmalıdır.
+2.13. Kullanıcının Görülmesini Sağlayan KKD’ler
+Kullanıcının görülebilmesinin gerektiği koşullarda kullanılacak giyilebilen KKD, fotometrik ve kolorimetrik özelliklere sahip, yeterli şiddette görülebilir ışık yayan veya yansıtan, uygun pozisyonda yerleştirilmiş bir veya daha fazla donanıma sahip olmalıdır.
+2.14. Birden Fazla Riske Karşı Kullanılan KKD’ler
+Kullanıcıyı, aynı anda birden fazla olası riske karşı korumak üzere tasarlanmış KKD’ler, özellikle bu risklerin her birine ait temel sağlık ve güvenlik gereklerini karşılayacak şekilde tasarlanarak imal edilmelidir.
+3. Belirli Riskler İçin İlave Gereksinimler
+3.1. Mekanik Etkilere Karşı Korunma
+3.1.1. Düşen ya da Fırlayan Parçaların Çarpması ve Bir Engelle Çarpışma
+Bu tip tehlikeler için uygun KKD, çarpma sonucu meydana gelebilecek yaralanmaya engel olmak amacıyla, özellikle korunan kısmın zarar görmesini (kırılmasını, delinmesini, ezilmesini vb.) önleyecek düzeyde darbe emici nitelikte olmalıdır. Bu tip KKD’ler, bir yandan mümkün olan en üst düzeyde korumayı sağlamalı, diğer yandan, darbe emici donanımın ağırlığı ve boyutları, öngörülen kullanım süresince etkin kullanımı engellemeyecek düzeyde olmalıdır.
+3.1.2. Düşmeler
+3.1.2.1. Kayma Sonucu Meydana Gelen Düşmelerin Önlenmesi
+Kaymayı önlemek için tasarlanmış ayakkabının dış tabanı, basılacak yüzeyin durumu ve yapısı göz önüne alınarak yeterli tutunmayı sağlamak için tasarlanmalı ve üretilmeli ya da ek elemanlar ile takviye edilmelidir.
+3.1.2.2. Yüksekten Düşmelerin Önlenmesi
+Yüksekten düşmeleri veya yüksekten düşmelerin etkilerini önlemeye yönelik KKD, güvenli bir dış ankraj noktasına bağlanabilen bağlantı sistemi ve vücut emniyet kemeri tertibatı içermelidir. Frenleme kuvveti kullanıcıda fiziksel hasarda veya herhangi bir KKD elemanının kopması veya yırtılmasında kullanıcının düşmesine neden olacak sınır değere ulaşmazken, öngörülen kullanım koşullarında, kullanıcıların engellerle çarpışmasını önlemek için dikey düşme mesafesini en aza indirecek şekilde tasarlanmalı ve üretilmelidir.
+Bu tür KKD ayrıca, frenlemeden sonra, kullanıcının gerektiğinde yardım bekleyebileceği uygun bir pozisyonda kalmasını sağlamalıdır.
+Kullanım kılavuzu, özellikle şu hususlara ilişkin tüm ilgili bilgileri belirtmelidir:
+a) Güvenli bir dış ankraj noktası için aranan nitelikler ve kullanıcının altındaki asgari dikey mesafe,
+b) Vücut emniyet kemeri tertibatının kuşanılması ve güvenli bir dış ankraj noktası uygun bir şekilde bağlanması.
+3.1.3. Mekanik Titreşim
+Mekanik titreşimin etkilerini önlemek için tasarlanmış KKD, vücudun risk altında kalan bölümünde, zararlı titreşim bileşenlerinde yeterli düzeyde azalmayı sağlayabilecek kapasitede olmalıdır.
+3.2. Vücudun Herhangi Bir Kısmının Statik Baskıya Karşı Korunması
+Vücudun herhangi bir kısmını statik baskı gerilimine karşı korumak için tasarlanmış KKD, kronik şikayetleri ve ciddi yaralanmayı önlemek için baskı etkisini yeteri kadar azaltabilecek kapasitede olmalıdır.
+3.3. Mekanik Yaralanmalara Karşı Korunma
+Sıyrılma, delinme, kesilme ve sıkışma gibi yüzeysel yaralanmalara karşı, vücut bölümlerini korumak için tasarlanmış KKD materyali ve diğer parçaları, öngörülen kullanım koşulları altında yeterince dayanıklı olacak şekilde seçilmeli, tasarlanmalı ve birleştirilmelidir.
+3.4. Sıvı Ortam İçinde Korunma
+3.4.1. Boğulmanın Önlenmesi
+Boğulmayı önlemek için tasarlanmış KKD; sıvı ortam içine düştükten sonra bilinçsiz ve çok yorgun olabilecek kullanıcının mümkün olduğunca kısa sürede ve sağlığa zarar vermeksizin yüzeye dönmesini ve su üstünde nefes almasına izin verecek pozisyonda kalmasını sağlamalıdır.
+KKD, tamamen veya kısmen, kendiliğinden yüzen/batmaz materyalden yapılmalı veya elle ya da otomatik olarak gazla ya da nefesle şişirilebilir özellikte olmalıdır.
+Bu tip KKD’ler, öngörülen kullanım koşullarında;
+a) Rahat bir şekilde kullanımını engellemeden, sıvı ortamla temasın oluşturacağı etkilere ve bu ortamın doğal çevresel faktörlerine dayanabilecek kapasitede olmalıdır,
+b) Şişirilebilir KKD, kısa sürede ve tam olarak şişirilebilmelidir.
+Öngörülen bazı kullanım koşullarının gerektirdiği yerlerde, belirli tipteki KKD’ler, aşağıda belirtilen bir ya da daha fazla ilave özelliğe sahip olmalıdır.
+a) Şişme özelliğine sahip ise, şişirme için gerekli donanımları ve gerektiğinde bir ışık veya ses sinyalli cihazı bulundurulmalıdır,
+b) Kullanıcın sıvı ortamdan çekilip çıkarılabilmesi için vücuda bağlantı sağlayan bir tertibata sahip olmalıdır.
+c) Sıvı ortama girmeyi gerektiren veya içine düşme riski bulunan durumlarda, kullanıcının KKD’yi giyerek çalışması muhtemel işlerde, tüm çalışma süresince kullanıma uygun olmalıdır.
+3.4.2. Yüzdürme Yardımcıları
+Giyildiğinde güvenli olan, öngörülen kullanım koşullarına bağlı olarak, suda destek vererek etkili bir şekilde suyun üzerinde kalmayı sağlayan donanımlardır. Öngörülen kullanım koşullarında, bu tür KKD’ler kullanıcının hareket kabiliyetini kısıtlamamalı; özellikle, kullanıcının yüzebilmesini veya diğer kişileri kurtarabilmesini ya da tehlikeden uzaklaşacak hareketleri yapabilmesini sağlamalıdır.
+3.5. Gürültünün Zararlı Etkilerinden Korunma
+Gürültünün zararlı etkilerini önlemek üzere tasarlanmış KKD’ler, kullanıcının maruz kaldığı gürültüyü, 6/2/2003 tarihli ve 2003/10/EC sayılı Avrupa Parlamentosu ve Konseyi Direktifine paralel olarak hazırlanan ve 28/7/2013 tarihli ve 28721 sayılı Resmî Gazete'de yayımlanan Çalışanların Gürültü İle İlgili Risklerden Korunmalarına Dair Yönetmelikte belirtilen sınır değerleri, hiçbir durumda aşmayacak şekilde azaltmalıdır.
+Bütün KKD’lerde, gürültüyü azaltma düzeyinin belirtildiği etiketler bulunmalı, bu mümkün değilse, etiketler KKD'nin ambalajına iliştirilmelidir.
+3.6. Isı ve/veya Ateşe Karşı Korunma
+Isı ve/veya ateşin zararlı etkilerine karşı vücudun tamamını veya bir kısmını korumak üzere tasarlanmış KKD, öngörülen kullanım koşullarına uygun ısı izolasyon kapasitesine ve mekanik dayanıklılığa sahip olmalıdır.
+3.6.1. KKD’nin Yapıldığı Malzeme ve Diğer Elemanlar
+Radyant ve konvektif ısıya karşı korunmayı sağlayan KKD ve diğer elemanları, yeterli ısı iletim katsayısına sahip olmalı ve aynı zamanda ani alev almaya ve yanmaya yol açmayacak yeterli dayanıklılıkta malzemeden yapılmış olmalıdır.
+KKD’lerin yapıldığı malzeme ve bileşenlerin dış yüzeylerinin yansıtıcı olması gereken yerlerde; yansıtma gücü, kızıl ötesi aralıktaki radyant ısı akımının yoğunluğuna uygun olmalıdır.
+Yüksek sıcaklıktaki ortamlarda, kısa süreli kullanım için üretilmiş KKD’ler ile üzerine ergimiş madde gibi sıcak ürünlerin sıçrama olasılığı olan KKD’lerin yapıldığı malzeme ve diğer elemanlar, normal korumanın yanı sıra kullanıcının tehlikeli alandan uzaklaşıp KKD’yi üzerinden çıkarmasına kadar, depolanmış ısının büyük bir kısmını tutabilecek yeterli termal kapasiteye de sahip olmalıdır.
+Bu tip KKD materyali ve diğer elemanlar, aynı zamanda yeterli mekanik darbe emici özelliğe de sahip olmalıdır.
+Çıplak alevle kazara temas olasılığı bulunan KKD malzemesi ve diğer bileşenleri ile yangın söndürme ekipmanı imalatında kullanılan malzemeler, normal korumanın yanı sıra, öngörülen kullanım koşullarındaki risk sınıfına tekabül edecek düzeyde alev almazlık, termal veya ark ısısı koruma derecesine sahip olmalıdır. Bu malzemeler alevle karşılaştığında erimemeli ve alevin yayılmasına katkıda bulunmamalıdır.
+3.6.2. Kullanıma Hazır KKD’ler
+Öngörülen kullanım koşullarında;
+a) Giyildiği süre boyunca, risk altındaki vücut bölümlerinde oluşacak ısı birikiminin, herhangi bir şekilde sağlığa zarar verecek limite veya ağrı eşiğine ulaşmasını önlemek için, KKD tarafından kullanıcıya iletilen ısı miktarı yeterince düşük olmalıdır.
+b) KKD, gerektiği durumlarda sıvı ve buharın içeri sızmasını önlemeli ve bunların kullanıcı ile temas etmesi durumunda yanıklara neden olmamalıdır.
+Sıvı madde buharlaşması veya katı madde süblimleşmesi yoluyla ortamdaki ısının emilmesi esasına dayalı soğutma sistemine sahip KKD’ler; bu sistemden açığa çıkan uçucu maddeler, kullanıcıya doğru değil de, koruyucunun dış kısmına atılacak şekilde tasarlanmalıdır.
+Bir KKD ile birleştirilerek kullanılacak solunum cihazları öngörülen kullanım koşullarında, kendisinden beklenilen koruma görevini tam olarak gerçekleştirebilmelidir.
+Yüksek sıcaklıktaki ortamlarda, kısa süreli kullanım amaçlı KKD’lerin beraberinde verilmesi gereken kullanım kılavuzu özellikle öngörülen amaç doğrultusunda kullanıldığında, cihaz tarafından kullanıcıya iletilen ısıya maruziyetin müsaade edilen azami düzeyinin saptanması için gerekli bütün bilgileri bulundurmalıdır.
+3.7. Soğuktan Korunma
+Vücudun bir bölümünü veya tamamını soğuğun etkilerine karşı korumak için tasarlanmış KKD’ler, öngörülen kullanım koşullarına uygun mekanik dayanıklılık ve ısı yalıtım kapasitesine sahip olmalıdır.
+3.7.1. KKD’lerin Yapıldığı Malzeme ve Diğer Elemanlar
+Soğuğa karşı korunmaya uygun KKD malzemesi ve diğer elemanlar, öngörülen kullanım koşullarının gerektirdiği düşük düzeyde bir ısı iletkenlik katsayısına sahip olmalıdır. Düşük sıcaklıktaki ortamlarda kullanılacak KKD’lerde bulunan esnek kısımlar ve diğer elemanlar, kullanıcının uygun pozisyonu alabilmesi, hareketlerini rahatça yapabilmesi için gerekli esneklik derecesine sahip olmalıdır.
+Soğuk maddelerin büyük miktardaki sıçramalarına karşı kullanılacak KKD’nin malzemesi ve diğer elemanları, yeterli mekanik darbe emici özelliğe de sahip olmalıdır.
+3.7.2. Kullanıma Hazır KKD’ler
+Öngörülen kullanım koşullarında;
+a) Giyildiği süre boyunca, KKD’den kullanıcıya iletilen ısı akışı, her koşulda, el ve ayak parmak uçları da dâhil vücudun korunması gerekli herhangi bir noktasında oluşacak soğuk birikimi sağlığa zarar vermeyecek ve ağrı eşiğine ulaşmayacak düzeyde düşük olmalıdır.
+b) KKD’ler, yağmur suyu ve benzeri sıvıların içeri sızmasını mümkün olduğunca önlemeli, soğuk koruyucu yüzeylerin kullanıcı ile teması herhangi bir yaralanmaya neden olmamalıdır.
+Soğuğa karşı koruyucu KKD ile birleştirilerek kullanılacak solunum cihazı, öngörülen kullanım koşullarında, kendisinden beklenilen koruma görevini tam olarak gerçekleştirmelidir.
+Düşük sıcaklıktaki ortamlarda kısa süreli kullanım için üretilmiş KKD’ler ile birlikte verilen kullanım kılavuzu; cihaz tarafından kullanıcıya iletilen soğuğa maruziyetin müsaade edilen maksimum düzeyine ilişkin gerekli bütün bilgileri de bulundurmalıdır.
+3.8. Elektrik Çarpmasına Karşı Korunma
+3.8.1. Yalıtım Ekipmanı
+Elektrik akımının etkilerine karşı vücudun tamamını veya bir bölümünü korumak için tasarlanmış KKD’ler, öngörülen en olumsuz koşullar altında kullanıcının maruz kalabileceği voltajlara karşı yeterli bir şekilde yalıtılmış olmalıdır.
+Bu amaca ulaşmak için, bu tip KKD’lerin yapıldığı malzeme ve diğer elemanlar, gerçek çalışma ortamlarında karşılaşılabilecek voltajlara uygun koşullarda test edilmeli ve koruyucu yüzeyden geçen kaçak akımın miktarı ölçülmelidir. KKD’lerin malzemesi ve diğer elemanlar, ölçülen değerin her koşulda tolerans eşik değerine karşılık gelen azami izin verilen değerin altında olacak şekilde seçilmeli, tasarlanmalı ve birleştirilmelidir.
+Gerilim altında olan veya olabilecek elektrik tesisatında yapılan çalışmalarda kullanılacak tipteki KKD’ler ve ambalajlarında; özellikle, üretim tarihi, seri numarası, uygun kullanım voltajı ve/veya koruma sınıfını belirten işaretler bulundurulmalıdır. Ayrıca bu tip KKD’lerin dış yüzeyinde de kullanıma başlama tarihi ile yapılacak periyodik test ve kontrol tarihlerinin sırasıyla yazılacağı boş yer bırakılmalıdır.
+Kullanım kılavuzunda, özellikle kullanım ömrü boyunca yapılması gereken dielektrik testlerinin sıklığı, şekli ve bu tip KKD’lerin hangi tür amaçlar için kullanılacağı belirtilmelidir.
+3.8.2. İletken Ekipman
+Yüksek gerilimli canlı hatlarda çalışmada kullanılan KKD’ler kullanıcı ile kullanıcının müdahale ettiği tesisat arasında potansiyel farkının olmamasını sağlayacak şekilde tasarlanmalı ve üretilmelidir.
+3.9. Radyasyondan Korunma
+3.9.1. İyonlaştırıcı Olmayan Radyasyon
+İyonlaştırıcı olmayan radyasyon kaynaklarının neden olduğu akut veya kronik zararlardan gözü korumak için tasarlanan KKD’ler, zararlı dalga boylarında yayılan ışık enerjisinin büyük çoğunluğunu emebilecek veya yansıtabilecek kapasitede olmalıdır. Ancak öngörülen kullanım koşullarının gerektirdiği, renklerin ayırt edilebilmesini, ayrıntıların algılanabilmesini ve görme aralığındaki zararsız ışığın geçmesini olumsuz yönde etkilememelidir.
+Bu amaca ulaşmak için, koruyucu gözlükler, zararlı her dalga boyu için, filtreden geçerek kullanıcının gözüne ulaşabilen ışık enerjisi aydınlatma yoğunluğunu en aza indirecek ve hiçbir şekilde müsaade edilen azami maruziyet değerini aşmayacak bir spektral geçirgenlik faktörüne sahip olacak şekilde tasarlanıp üretilmiş olmalıdır.
+Ayrıca, öngörülen kullanım koşullarında, gözlüklerin özellikleri yayılan ışınların etkisiyle bozulmamalı veya kaybolmamalıdır. Piyasaya arz edilen bütün gözlük çeşitlerinde, geçirgenlik faktörünün spektral dağılım eğrisine karşılık gelen koruma faktör numarası bulunmalıdır.
+Aynı tip radyasyon kaynakları için kullanılacak gözlükler, koruma faktörlerinin düzeylerine göre sınıflandırılacaktır. Kullanım kılavuzunda; özellikle, kaynağa olan uzaklığa göre kullanma koşulları ve bu uzaklıkta yayılan enerjinin spektral dağılımı gibi işin özelliğinden kaynaklanan faktörler de dikkate alınarak, en uygun KKD’nin seçilmesini mümkün kılacak geçirgenlik eğrisi verilmelidir.
+İmalatçı tarafından filtre edici gözlüklerin bütün çeşitlerine, ilgili koruma faktör numarası konulmalıdır.
+3.9.2. İyonlaştırıcı Radyasyon
+3.9.2.1. Dış Ortamdaki Radyoaktif Kirlilikten Korunma
+Vücudun tamamını veya bir bölümünü radyoaktif tozlar, gazlar, sıvılar veya bunların karışımından korumak için tasarlanan KKD’lerin yapıldığı malzeme ve diğer elemanlar, öngörülen kullanım koşullarında, radyoaktif kirleticilerin içeri sızmasını etkili bir şekilde önleyecek biçimde seçilmeli, tasarlanmalı ve birleştirilmelidir.
+Bu kirleticilerin yapısına veya durumuna bağlı olarak, gerekli olan sızdırmazlık, koruyucu yüzeyin geçirmezliğiyle ve/veya bu kirleticilerin geri yayılmasını önleyecek şekilde tasarlanmış basınç uygulama ve normal havalandırma gibi herhangi bir başka uygun yolla sağlanmalıdır.
+KKD’lere uygulanan radyasyondan arındırma önlemlerinin hiçbiri, bu tür donanımların öngörülen kullanım ömrü içinde, tekrar kullanılmasına engel olmamalıdır.
+3.9.2.2. Dış Radyoaktif Işımaya Karşı Sınırlı Koruma
+Kullanıcının dış radyoaktif ışımadan tamamen korunması veya bunun sağlanamaması halinde radyasyonun etkisinin yeterli derecede azaltılması amacıyla kullanılan KKD’ler, öncelikle beta gibi zayıf elektron veya X, gama gibi zayıf foton radyasyonuna karşı koyacak şekilde tasarlanmalıdır.
+Bu sınıf KKD’lerin yapıldığı malzeme ve diğer elemanlar, kullanıcının hareketlerine veya duruş pozisyonuna engel teşkil ederek maruziyet süresinde bir artmaya neden olmaksızın, öngörülen kullanım koşullarının gerektirdiği koruma düzeyini sağlayacak şekilde seçilmeli veya tasarlanmalı ve birleştirilmelidir.
+KKD’lerde, öngörülen kullanım koşulları için uygun malzeme türü ve eşdeğer kalınlığını gösteren işaret bulunmalıdır.
+3.10. Tehlikeli Maddeler ve Karışımlar ile Zararlı Biyolojik Ajanlardan Korunma
+3.10.1. Solunumun Korunması
+Solunum sisteminin korunması için tasarlanan KKD’ler kirlenmiş ortam havasına maruz kalınması ve/veya ortamda yeterli miktarda oksijen olmaması durumunda, kullanıcıya solunabilir hava sağlayabilecek özellikte olmalıdır.
+KKD’den kullanıcıya sağlanan solunabilir hava; kirli havanın koruyucu alet veya cihazlarla filtre edilmesi veya temiz havanın bir kaynaktan sağlanması gibi uygun yöntemlerle elde edilmelidir.
+Bu sınıf KKD’lerin yapıldığı malzeme ve diğer elemanlar, öngörülen kullanım koşullarındaki giyilme süresince, kullanıcıya yeterli hijyenik solunumu sağlayacak şekilde seçilmeli veya tasarlanmalı ve birleştirilmelidir.
+Yüzü koruyan parçaların sızdırmazlığı, nefes alma sırasındaki basınç düşmesi ve filtreli araçların kullanılması durumunda filtrelerin temizleme kapasitesi, ortamdaki kirleticilerin girişini, kullanıcının sağlığını ve hijyenini koruyabilecek özellikte olmalıdır.
+KKD’lerde, imalatçının tanıtıcı işareti ve bu tip donanımların özelliklerini belirten detaylar bulunmalı; bu bilgiler kullanım kılavuzu ile birlikte, eğitilmiş ve kalifiye kişilerce KKD’lerin doğru olarak kullanılmasını mümkün kılmalıdır.
+Filtreli cihazların kullanıldığı durumlarda, kullanım kılavuzunda, bu cihazların hiç kullanılmadan orijinal ambalajında korunması durumunda filtrelerin depolanma ömrü de belirtilmelidir.
+3.10.2. Cildin ve Gözün Korunması
+Vücut yüzeyinin tamamını veya bir bölümünü tehlikeli maddeler ve karışımlar veya zararlı biyolojik ajanlarla temastan korumak amacıyla üretilen KKD’lerin koruyucu yüzeyleri öngörülen kullanım şartlarında, bu tür maddelerin kullanıcıya geçmesini veya sızmasını önleyebilecek özellikte olmalıdır.
+Bu amaçla, bu sınıf KKD’lerin yapıldığı malzemeler ve diğer elemanlar, gerektiğinde gün boyunca kullanılabilmesi için, mümkün olduğu kadar tam bir sızdırmazlık sağlayacak şekilde seçilmeli veya tasarlanmalı ve birleştirilmelidir. Sızdırmazlığın tam olarak sağlanamadığı durumlarda giyme süresi kısıtlanmalıdır.
+Yapılarından ve öngörülen kullanım koşullarından dolayı, yüksek sızma gücüne sahip belirli tehlikeli maddeler ve karışımlar veya zararlı biyolojik ajanların söz konusu olduğu ve bunların KKD’lerin sağladığı koruma süresini sınırladığı durumlarda, KKD’ler sınıflandırma amacıyla etkinlik esasına dayalı standart testlere tabi tutulmalıdır. Testlerde belirtilen özelliklere uygun olduğu kabul edilen KKD’lerde, özellikle testlerde kullanılan maddelerin isimlerini veya bunun yapılamaması halinde, kodlarını ve bunlara karşılık gelen standart koruma sürelerini gösteren bilgiler bulunmalıdır. Kullanım kılavuzunda, özellikle, kodların bir açıklaması, gerekiyorsa standart testlerin detaylı bir tanımlaması ve öngörülen değişik kullanım koşullarında müsaade edilen maksimum kullanma süresini belirlemek için gerekli bütün bilgiler de bulunmalıdır.
+3.11. Dalma Donanımları
+Solunum cihazları, özellikle, maksimum dalma derinliği dikkate alınarak ve öngörülen kullanım koşullarında, kullanıcıya solunabilir bir gaz karışımının sağlanmasını mümkün kılmalıdır.
+Öngörülen kullanım koşullarının gerektirmesi halinde, dalma donanımlarında aşağıdaki ekipmanlar bulunmalıdır:
+a) Kullanıcıyı, dalma derinliğinden kaynaklanan basınçtan ve/veya soğuktan koruyacak giysi takımı,
+b) Solunabilir gaz karışımı beslemesinin kesilmeye yaklaştığını, kullanıcıya anında haber verecek şekilde düzenlenmiş bir alarm sistemi,
+c) Kullanıcının tekrar yüzeye çıkabilmesini sağlayacak bir hayat kurtarıcı giysi takımı.
+
+
+Ek-3
+Teknik Dosya
+
+Kişisel koruyucu donanımların, bu Yönetmeliğin 6 ncı maddesinde atıf yapılan ve ek-2’de belirtilen temel sağlık ve güvenlik gerekliliklerine uygunluğunu göstermek için imalatçı tarafından kullanılan yöntemler teknik dosyada açıkça gösterilir.
+Teknik dosya aşağıdaki hususları ihtiva etmelidir:
+a) KKD’nin eksiksiz tanımı ve kullanım amacı,
+b) KKD’nin koruma amacına uygun risk değerlendirmesi,
+c) KKD için uygulanabilir olan temel sağlık ve güvenlik gereklerinin listesi,
+d) KKD’nin kendisi ile elemanlarının, tali parçalarının ve devrelerinin tasarım ve imalat çizimleri,
+e) KKD’nin kullanımının ve (d) bendinde atıf yapılan çizimlerin anlaşılması amacıyla tanımlar ve açıklamalar,
+f) KKD’nin tasarımında ve imalatında uygulanan, bu Yönetmeliğin 15 inci maddesinde atıf yapılan uyumlaştırılmış standartların referanslar numaraları ile uyumlaştırılmış standartların bir kısmının uygulanması durumunda hangi kısımların uygulandığı,
+g) Uyumlaştırılmış standartların uygulanmadığı veya kısmen uygulandığı durumlarda, temel sağlık ve güvenlik gerekliliklerine uygunluğun sağlanması için uygulanan diğer teknik şartnamelerin açıklamaları,
+h) KKD’nin uygulanabilir temel sağlık ve güvenlik gereklerine uygunluğunu doğrulamak için yapılan tasarım hesapları, tetkik ve inceleme sonuçları,
+i) KKD’nin uygulanabilir temel sağlık ve güvenlik gereklerine uygunluğunu doğrulamak için yapılan testlere ait raporlar ile uygulanabilir olduğu durumda belirlenen ilgili koruma sınıfı,
+j) KKD’nin tasarım özelliklerine uygunluğunu doğrulamak için imalatçı tarafından KKD’nin imalatı sırasında kullanılan yöntemlerin açıklaması,
+k) Ek-2’nin 1.4. üncü maddesinde belirtilen kullanım kılavuzunun bir kopyası,
+l) Özel olarak tek bir kullanıcıya uyacak şekilde tek bir birim olarak üretilen KKD’lerde; temel modeli onaylanmış söz konusu KKD’nin imalatı için gerekli tüm talimatlar,
+m) Her biri, bir bireye uyması için uyarlanabilen ve seri olarak üretilen KKD için; KKD’nin her birinin kullanıcıya uyarlanması ile imalatı esnasında onaylanan tip ve temel sağlık ve güvenlik gerekliliklerine uygunluğunu doğrulamak amacıyla imalatçı tarafından alınan önlemlerin açıklaması.
+
+
+Ek-4
+Modül A – Üretimin Dahili Kontrolü
+
+1. Üretimin dâhilî kontrolü, imalatçının, 2 nci, 3 üncü ve 4 üncü maddelerde sayılan yükümlülükleri yerine getirdiği ve KKD’nin bu Yönetmeliğin ilgili kurallarına uygunluğunu kendi sorumluluğu çerçevesinde sağladığı ve beyan ettiği uygunluk değerlendirme yöntemidir.
+2. Teknik dosya:
+İmalatçı, ek-3’te belirtilen teknik dosyayı hazırlar.
+3. KKD’nin imalatı:
+İmalatçı, imalat sürecinin ve bu sürecin gözetiminin, imal edilmiş KKD’lerin ikinci maddede belirtilen teknik dosyaya ve bu Yönetmeliğin ilgili kurallarına uygunluğunu sağlaması için gerekli her türlü tedbiri alır.
+4. “CE” İşareti ve AB Uygunluk Beyanı
+4.1. İmalatçı “CE” işaretini, bu Yönetmeliğin ilgili kurallarını karşılayan her bir KKD’nin üzerine koyar,
+4.2. Her bir KKD modeli için yazılı bir AB Uygunluk Beyanı hazırlar ve bu beyanı, teknik dosya ile birlikte, Bakanlığa sunmak üzere, KKD’nin piyasaya arz edildiği tarihten sonra 10 yıl süreyle muhafaza eder. AB Uygunluk Beyanı, ilgili olduğu KKD’nin tanımını içerir,
+AB Uygunluk Beyanının bir örneğini, talep edilmesi hâlinde Bakanlığa sunar.
+5. Yetkili Temsilci
+İmalatçının 4 üncü maddede sayılan yükümlülükleri, imalatçının adına yapılması, sorumluluğunda olması ve ilgili görevlendirmede belirtilmesi kaydıyla yetkili temsilcisi tarafından yerine getirilebilir.
+
+
+Ek-5
+Modül B – AB Tip İncelemesi
+
+1. AB Tip İncelemesi, bir uygunluk değerlendirme işleminin, bir onaylanmış kuruluşun KKD’nin teknik tasarımını incelediği ve bu tasarımın bu Yönetmeliğin ilgili kurallarına uygun olduğunu doğruladığı ve tasdik ettiği bölümüdür.
+2. AB Tip İncelemesi, teknik dosyanın incelenmesi suretiyle KKD’nin teknik tasarımının yeterliliğinin değerlendirilmesi ile üretilmesi hedeflenen KKD’nin bitmiş hâlini (üretim tipini) temsil eden numunenin incelenmesini içerir.
+3. AB Tip İnceleme Başvurusu
+İmalatçı, AB Tip İncelemesi başvurusunu, kendi seçtiği tek bir onaylanmış kuruluşa yapar. Başvuru aşağıdakileri içerir:
+a) İmalatçının adı ve adresi, başvuru yetkili temsilci tarafından yapılıyorsa ayrıca yetkili temsilcinin de adı ve adresi,
+b) Aynı başvurunun başka bir onaylanmış kuruluşa yapılmadığını belirten yazılı bir beyan,
+c) Ek-3’de tanımlanan teknik dosya,
+d) Üretilmesi hedeflenen KKD’yi temsil eden numuneler. Onaylanmış kuruluş, test programı için gerekli olması hâlinde, ilave numuneler talep edebilir. Her biri, bir bireye uyması için uyarlanabilen ve seri olarak imal edilen KKD için farklı kullanıcıları kapsayan aralıkta KKD’leri temsil eden numuneler ile özel olarak tek bir kullanıcıya uyacak şekilde tek bir birim olarak imal edilen KKD için temel model sağlanır.
+4. AB Tip İncelemesi
+Onaylanmış kuruluş;
+a) KKD’nin teknik tasarımının yeterliliğini değerlendirmek için teknik dosyayı inceler. Bu incelemede, ek-3’ün (j) bendinde belirtilen hususlar göz önünde bulundurulur,
+b) Her biri, bir bireye uyması için uyarlanabilen ve seri olarak imal edilen KKD için bunların yeterliliğini değerlendirmek amacıyla imalatçı tarafından alınan tedbirlere ilişkin açıklamaların incelenmesi,
+c) Özel olarak tek bir kullanıcıya uyacak şekilde tek bir birim olarak imal edilen KKD için bunların yeterliliklerini değerlendirmek amacıyla onaylanmış temel modele dayanarak bu KKD’nin imalatına ilişkin talimatlarının incelenmesi,
+d) Numunenin teknik dosyaya uygun imal edildiğini doğrular ve uyumlaştırılmış standartların ve/veya teknik şartnamelerin ilgili hükümlerine uygun şekilde tasarlanmış unsurları belirler,
+e) İmalatçının ilgili uyumlaştırılmış standartlarda yer alan çözümleri uygulamayı tercih ettiği durumlarda, bunların doğru uygulanıp uygulanmadığını kontrol etmek üzere uygun inceleme ve testleri yapar veya yaptırır,
+f) İlgili uyumlaştırılmış standartlar ve/veya teknik şartnamelerde yer alan çözümlerin uygulanmadığı durumlarda, imalatçı tarafından benimsenen diğer çözümlerin, temel sağlık ve güvenlik gereklerini karşılayıp karşılamadığını kontrol etmek üzere uygun inceleme ve testleri yapar veya yaptırır.
+5. Değerlendirme Raporu
+Onaylanmış kuruluş, dördüncü maddeye istinaden gerçekleştirilen faaliyetler ile bunların sonuçlarını içeren bir değerlendirme raporu hazırlar. Onaylanmış kuruluş, Bakanlığa karşı sorumlulukları saklı kalmak kaydıyla, bu raporun içeriğinin bir bölümünü veya tamamını, sadece imalatçının rızası hâlinde açıklayabilir.
+6. AB Tip İnceleme Belgesi
+6.1. Değerlendirilen tipin temel sağlık ve güvenlik gereklerini karşıladığı durumlarda, onaylanmış kuruluş, imalatçıya bir AB Tip İnceleme Belgesi düzenler.
+Yeni düzenlenen AB Tip İnceleme Belgesi ile uygun olduğu durumda yenilenen AB Tip İnceleme Belgesinin geçerlilik süresi 5 yılı aşamaz.
+6.2. AB Tip İnceleme Belgesi asgari olarak;
+a) Onaylanmış kuruluşun adı ve kimlik kayıt numarasını,
+b) İmalatçının adı ve adesi ile başvurunun yetkili temsilcisi tarafından yerine getirildiği durumda yetkili temsilcisinin adı ve adresi,
+c) AB Tip İnceleme Belgesi düzenlenen KKD’nin tanımı (tip numarası)
+d) KKD’nin uygulanabilir temel sağlık ve güvenlik gereklerine uygun olduğuna ilişkin beyan,
+e) Uyumlaştırılmış standartların tamamının veya bir kısmının uygulandığı durumlarda, bu standartlara veya ilgili bölümlerine ilişkin atıflar,
+f) Diğer teknik şartnamelerin uygulandığı durumlarda, bunlara ilişkin atıflar,
+g) Uygulanabilir olduğu durumlarda, KKD’nin performans seviyesi veya koruma sınıfı,
+h) Her biri, bir bireye uyması için uyarlanabilen ve seri olarak imal edilen KKD için onaylanmış temel modele dayanan ilgili parametrelerin izin verilen varyasyon aralığı,
+i) AB Tip İnceleme Belgesinin düzenlenme tarihi, geçerliliğine ilişkin son tarih ve yenilendiği durumda yenileme tarihi,
+j) AB Tip İnceleme Belgesinin düzenlenmesine ilişkin bir koşul mevcutsa, bu koşula ilişkin açıklama,
+k) Kategori III olarak sınıflandırılan KKD’ler için, AB Tip İnceleme Belgesinin yalnızca bu Yönetmeliğin 20 nci maddesinin birinci fıkrasının (c) bendinde atıfta bulunulan uygunluk değerlendirme yöntemlerinden biriyle birlikte kullanılacağına dair bir açıklama,
+bulunur.
+6.3. AB Tip İnceleme Belgesinde bir veya daha çok ek bulunabilir.
+6.4. Tipin, temel sağlık ve güvenlik gereklerini karşılamadığı durumlarda, onaylanmış kuruluş AB Tip İnceleme Belgesini vermeyi reddeder ve başvuru sahibini ayrıntılı gerekçelerini de sunarak red kararı hakkında bilgilendirir.
+7. AB Tip İnceleme Belgesinin Gözden Geçirilmesi
+7.1. Onaylanmış kuruluş, onaylanmış tipin temel sağlık ve güvenlik gereklerini artık karşılamadığını gösterebilecek sektördeki en son teknolojik yenilikleri takip eder ve bu gibi yeniliklerin tip üzerinde daha ileri bir incelemeyi gerektirip gerektirmediğine karar verir. Gerektirdiği kararını aldığı takdirde, imalatçıyı bu yönde bilgilendirir.
+7.2. İmalatçı, onaylanmış tip üzerinde yaptığı ve KKD’nin temel sağlık ve güvenlik gereklerine uygunluğunu veya AB Tip İnceleme Belgesinin geçerlilik şartlarını etkileyebilecek her türlü değişiklik hakkında bu AB Tip İnceleme Belgesine ilişkin teknik dosyayı muhafaza eden onaylanmış kuruluşa bilgi verir. Bu gibi değişiklikler, AB Tip İnceleme Belgesinin aslına yansıtılmak üzere ilave bir onay gerektirir.
+7.3. İmalatçı, sektördeki en son teknolojik yenilikler ışığında KKD’nin uygulanabilir temel sağlık ve güvenlik gereklerini karşıladığından emin olur.
+7.4. İmalatçı, aşağıda belirtilen durumlarda onaylanmış kuruluştan AB Tip İnceleme Belgesini gözden geçirmesini ister:
+a) Ek-5’in 7.2 nci maddesinde belirtildiği üzere onaylanmış tip üzerinde değişiklik yaptığında,
+b) Ek-5’in 7.3 üncü maddesinde belirtildiği üzere sektördeki en son teknolojik yeniliklerde meydana gelen değişikliklerde,
+c) En az AB Tip İnceleme Belgesinin geçerliliğine ilişkin son tarihten önce.
+Onaylanmış kuruluşun görevlerini yerine getirebilmesini teminen imalatçı, AB Tip İnceleme Belgesinin geçerliliğine ilişkin son tarihten en erken 12 ay, en geç ise 6 ay önce başvuruda bulunmalıdır.
+7.5. Onaylanmış kuruluş, KKD’ye ait tipi inceler ve gerektiğinde, yapılan değişiklikler ışığında onaylanan tipin uygulanabilir temel sağlık ve güvenlik gereklerine uygunluğunun devam etmesini sağlamak için ilgili testleri yapar. Onaylanmış kuruluş, onaylanan tipin uygulanabilir temel sağlık ve güvenlik gereklerine uygunluğunun devam ettiğine kanaat getirirse AB Tip İnceleme Belgesini yeniler. Onaylanmış kuruluş, yenileme işlemlerinin AB Tip İnceleme Belgesinin geçerlilik tarihinden önce tamamlanmasını sağlar.
+7.6. Ek-5’in 7.4 üncü maddesinin (a) ve (b) bentlerinde belirtilen durumların gerçekleşmediği durumda basitleştirilmiş bir gözden geçirme işlemi uygulanır. Bu durumda imalatçı onaylanmış kuruluşa:
+a) Adı, adresi ve ilgili AB Tip İnceleme Belgesini tanımlayan bilgiyi,
+b) Onaylanmış tipin malzemesinde, bileşenlerinde ve tali parçalarında 7.2 nci maddede belirtildiği şekilde değişiklik yapılmadığı, bununla birlikte uygulanan uyumlaştırılmış standart ya da teknik şartnamelerde değişikliğe gidilmediğine ilişkin beyanını,
+c) Ek-5’in 7.3 üncü maddesinde atıf yapılan sektördeki en son teknolojik yeniliklerde herhangi bir değişiklik olmadığına ilişkin beyanını,
+d) Hali hazırda tedarik edilmemiş olması durumunda, mevcut KKD’ye ait çizimler ve fotoğrafların örnekleri, KKD’ye ait işaretlemeler ile imalatçı tarafından sağlanan kullanım kılavuzunu,
+e) Kategori III KKD’ler için, önceden onaylanmış kuruluşa sunulmadığı durumda, ek-7 uyarınca yürütülen ürünün rastgele aralıklarla denetimli muayenesine ait sonuçlarına ilişkin veya ek-8’e göre yürütülen kalite sisteminin denetim sonuçlarına ilişkin bilgileri,
+sağlar.
+Onaylanmış kuruluşun 7.2 nci maddede belirtilen onaylı tip ile 7.3 üncü maddede belirtilen sektördeki en son teknolojik yenilikler hususunda herhangi bir değişiklik olmadığını teyit ettiği durumda, 7.5 inci maddede belirtilen inceleme ve testler yapılmaksızın basitleştirilmiş gözden geçirme işlemini uygular. Bu durumda onaylanmış kuruluş, AB Tip İnceleme Belgesini yeniler.
+Başvuruda bulunana yansıtılacak yenileme işlemine ilişkin maliyetler basitleştirilmiş gözden geçirme işleminden kaynaklanan idari giderlerle orantılı olur.
+Onaylanmış kuruluş, 7.3 üncü maddede belirtilen sektördeki en son teknolojik yenilikler hususunda bir değişiklik tespit ederse 7.5 inci maddede belirtilen usulü uygular.
+7.7 Gözden geçirme işlemini müteakip onaylanmış kuruluş AB Tipi İnceleme Belgesinin artık geçerli olmadığı sonucuna varırsa belgeyi geri çeker ve imalatçı ilgili KKD’nin piyasaya arzını durdurur.
+8. Her onaylanmış kuruluş, verdiği veya geri çektiği AB Tip İnceleme Belgeleri ve/veya bunlardaki herhangi bir ilave hakkında Bakanlığı bilgilendirir ve düzenli olarak veya talep edilmesi hâlinde Bakanlığa, vermeyi reddettiği, askıya aldığı veya diğer türlü kısıtladığı AB Tip İnceleme Belgelerinin ve/veya bunlardaki ilavelerin bir listesini sunar.
+Her onaylanmış kuruluş AB Tip İnceleme Belgeleri ve/veya bunlardaki ilavelerle ilgili diğer onaylanmış kuruluşları, vermeyi reddettiği, askıya aldığı, geri çektiği veya diğer türlü kısıtladığı ve talep edilmesi hâlinde, verdiği AB Tip İnceleme Belgeleri ve/veya bunlardaki ilaveler hakkında bilgilendirir.
+Avrupa Komisyonu, Avrupa Birliği üyesi devletler ve diğer onaylanmış kuruluşlar talep etmeleri hâlinde AB Tip İnceleme Belgelerinin ve/veya ilavelerinin bir örneğini temin edebilir. Talep etmeleri hâlinde Komisyon ve Avrupa Birliği üyesi devletler, teknik dosyanın bir örneğini ve onaylanmış kuruluş tarafından gerçekleştirilen inceleme sonuçlarını da temin edebilir.
+Onaylanmış kuruluş, AB Tip İnceleme Belgesinin, eklerinin ve ilavelerinin ve imalatçı tarafından sunulan belgeleri de içeren teknik dosyanın birer örneğini, belgenin geçerliliğini yitirdiği tarihten itibaren 5 yıl süreyle, talep edilmesi halinde Bakanlığa sunmak üzere muhafaza eder.
+9. İmalatçı, AB Tip İnceleme Belgesinin, belgenin eklerinin ve ilavelerinin bir örneğini teknik dosya ile birlikte KKD’nin piyasaya arz edildiği tarihten sonra 10 yıl süreyle, talep edilmesi hâlinde Bakanlığa sunmak üzere muhafaza eder.
+10. İmalatçının yetkili temsilcisi, ilgili görevlendirmede belirtilmiş olması kaydıyla, üçüncü maddede belirtilen başvuruyu yapabilir ve 7.2, 7.4 ve 9 uncu maddelerde sayılan yükümlülükleri yerine getirebilir.
+
+
+Ek-6
+Modül C- Üretimin Dâhilî Kontrolüne Dayalı Tipe Uygunluk
+
+1. Üretimin dâhilî kontrolüne dayalı tipe uygunluk, bir uygunluk değerlendirme işleminin, imalatçının, 2 nci ve 3 üncü maddelerde sayılan yükümlülükleri yerine getirdiği ve KKD’lerinin, AB Tip İnceleme Belgesinde tarif edilen tipe ve bu Yönetmeliğin ilgili kurallarına uygunluğunu sağladığı ve beyan ettiği bölümüdür.
+2. İmalat
+İmalatçı, imalat sürecinin ve bu sürecin gözetiminin, imal edilmiş KKD’lerin AB Tip İnceleme Belgesinde tanımlandığı şekliyle onaylanmış tipe ve bu Yönetmeliğin ilgili kurallarına uygunluğunu sağlaması için gerekli her türlü tedbiri alır.
+3. “CE” İşareti ve AB Uygunluk Beyanı
+3.1. İmalatçı “CE” işaretini, AB Tip İnceleme Belgesinde tarif edilen tipe uygun olan ve bu Yönetmeliğin ilgili kurallarını karşılayan her KKD’ye koyar.
+3.2. İmalatçı, her KKD modeli için yazılı bir AB Uygunluk Beyanı hazırlar ve bu beyanı, gerektiğinde Bakanlığa sunmak üzere, KKD’nin piyasaya arz edildiği tarihten sonra 10 yıl süreyle muhafaza eder. AB Uygunluk Beyanı, ilgili olduğu KKD’nin tanımını içerir.
+AB Uygunluk Beyanının bir örneğini, talep edilmesi hâlinde Bakanlığa sunar.
+4. Yetkili Temsilci
+İmalatçının 3 üncü maddede sayılan yükümlülükleri, imalatçının adına yapılması, sorumluluğunda olması ve ilgili görevlendirmede belirtilmesi kaydıyla yetkili temsilcisi tarafından yerine getirilebilir.
+
+
+Ek-7
+Modül C2- Üretimin Dâhilî Kontrolü ve Ürünün Rastgele Aralıklarla Denetimli Muayenesine Dayalı Tipe Uygunluk
+
+1. Üretimin dâhilî kontrolü ve ürünün rastgele aralıklarla denetimli muayenesine dayalı tipe uygunluk, bir uygunluk değerlendirme işleminin, imalatçının, 2 nci, 3 üncü, 5.2 nci ve 6 ncı maddelerde sayılan yükümlülükleri yerine getirdiği ve 4 üncü madde hükümleri kapsamında KKD’nin AB Tip İnceleme Belgesinde tarif edilen tipe ve bu Yönetmeliğin ilgili kurallarına uygunluğunu kendi sorumluluğu çerçevesinde sağladığı ve beyan ettiği bölümüdür.
+2.İmalat
+İmalatçı, imalat sürecinin ve bu sürecin gözetiminin, imal edilmiş KKD’nin AB Tip İnceleme Belgesinde tarif edilen onaylanmış tipe ve bu Yönetmeliğin ilgili kurallarına uygunluğunu sağlaması için gerekli her türlü tedbiri alır.
+3. Ürünün Rastgele Aralıklarla Denetimli Muayenesine Başvuru
+İmalatçı, seçimi doğrultusunda belirleyeceği bir onaylanmış kuruluşa, rastgele aralıklarla ürünün dâhilî kontrollerinin yapılması için başvuruda bulunur.
+Söz konusu başvuru aşağıdakileri içerir:
+a) İmalatçının adı ve adresi, başvuru yetkili temsilci tarafından yapılıyorsa ayrıca yetkili temsilcinin de adı ve adresi,
+b) Aynı başvurunun başka bir onaylanmış kuruluşa yapılmadığını belirten yazılı bir beyan,
+c) İlgili KKD’nin tanımı.
+Seçilen onaylanmış kuruluşun AB Tip İnceleme Belgesini düzenleyen onaylanmış kuruluştan farklı bir kuruluş olması durumunda başvuru yukarıda belirtilenlere ek olarak:
+a) Ek-3’de atıf yapılan teknik dosyayı,
+b) AB Tip İnceleme Belgesinin bir örneğini,
+içerir.
+4. Ürün Denetimleri
+4.1. Onaylanmış kuruluş üretimin homojenliğinin ve KKD’nin AB Tip İnceleme Belgesinde belirtilen tipe ve temel sağlık ve güvenlik gereklerine uygunluğunun sağlanması amacıyla ürün denetimlerini gerçekleştirir.
+4.2. Ürün denetimleri yılda en az bir kere olmak üzere onaylanmış kuruluşça belirlenecek rastgele aralıklarda gerçekleştirilir. Gerçekleştirilecek ilk ürün denetimi AB Tip İnceleme Belgesinin düzenlenmesinden itibaren 1 yılı aşmayacak şekilde gerçekleştirilir.
+4.3. Bitmiş KKD’nin yeterli miktarda numunesi onaylanmış kuruluş ve imalatçının mutabık kaldığı bir noktadan onaylanmış kuruluşça seçilerek alınır. KKD’ye ait her bir numune incelenir ve KKD’nin AB Tip İnceleme Belgesinde belirtilen onaylı tipe ve temel sağlık ve güvenlik gereklerine uygunluğunun teyit edilmesi amacıyla ilgili uyumlaştırılmış standart ve/veya teknik şartnamelerin ilgili bölümlerinde belirtilen uygun testler veya eşdeğer testler yapılır.
+4.4 3 üncü maddede belirtilen onaylanmış kuruluşun AB Tip İnceleme Belgesini düzenleyen onaylanmış kuruluştan farklı bir onaylanmış kuruluş olması durumunda, numunelerin uygunluğunun değerlendirilmesinde güçlükle karşılaştığı durumda diğer kuruluşla iletişime geçer.
+4.5. Uygulanacak numune alma usûlü ürünün uygunluğunun sağlanması açısından imalat sürecinin kabul edilebilir sınırlar içinde işleyip işlemediğine karar verilmesini mümkün kılar.
+4.6. İnceleme ve testler sonucunda üretimin homojen olarak gerçekleştirilmediği, KKD’nin AB Tip İnceleme Belgesinde tanımlanan tipe veya temel sağlık ve güvenlik gereklerine uygun olmadığının tespit edilmesi durumunda onaylanmış kuruluş, uygunsuzluğun niteliğiyle orantılı olarak gerekli tedbirleri alır ve Bakanlığı bilgilendirir.
+5. Test Raporu
+5.1. Onaylanmış kuruluş testlerin sonuçlarına ilişkin imalatçıya bir rapor sunar.
+5.2. İmalatçı test raporunu gerektiğinde Bakanlığa sunulmak üzere, KKD’nin piyasaya arzından sonra 10 yıl süre ile muhafaza eder.
+5.3. İmalatçı, onaylanmış kuruluşun kimlik kayıt numarasını imalat aşamasında yine bu kuruluşun sorumluluğunda KKD’nin üzerine koyar.
+6. “CE” İşareti ve AB Uygunluk Beyanı
+6.1. İmalatçı, “CE” işareti ile 3 üncü maddede belirtilen onaylanmış kuruluşun kimlik kayıt numarasını, yine bu kuruluşun sorumluluğunda; AB Tip İnceleme Belgesinde tanımlanan tipe ve bu Yönetmeliğin ilgili kurallarına uygun olan her bir KKD’nin üzerine koyar.
+6.2. Her bir KKD modeli için yazılı bir AB Uygunluk Beyanı hazırlar ve bu beyanı, teknik dosya ile birlikte, gerektiğinde Bakanlığa sunmak üzere, KKD’nin piyasaya arz edildiği tarihten sonra 10 yıl süreyle muhafaza eder. AB Uygunluk Beyanı, ilgili olduğu KKD’nin tanımını içerir.
+AB Uygunluk Beyanının bir örneğini, talep edilmesi hâlinde Bakanlığa sunar.
+7. Yetkili Temsilci
+İmalatçının yükümlülükleri; imalatçının adına yapılması, sorumluluğunda olması ve ilgili görevlendirmede belirtilmesi kaydıyla yetkili temsilcisi tarafından yerine getirilebilir. Yetkili temsilci, 2 nci maddede belirtilen imalatçının yükümlülüklerini yerine getiremez.
+
+
+Ek-8
+Modül D- Üretim Sürecinin Kalite Güvencesine Dayalı Tipe Uygunluk
+
+1. Üretim sürecinin kalite güvencesine dayalı tipe uygunluk, bir uygunluk değerlendirme işleminin, imalatçının, 2 nci, 5 inci ve 6 ncı maddelerde sayılan yükümlülükleri yerine getirdiği ve KKD’lerinin AB Tip İnceleme Belgesinde tanımlanan tipe ve bu Yönetmelikteki ilgili kurallara uygunluğunu kendi sorumluluğu çerçevesinde sağladığı ve beyan ettiği bölümüdür.
+2. İmalat
+İmalatçı, 3 üncü maddede belirtilen şekilde, üretim süreci, bitmiş ürünün muayenesi ve testi için onaylanmış bir kalite sistemi işletir ve 4 üncü maddede belirtildiği şekilde gözetime tâbi olur.
+3. Kalite Sistemi
+3.1. İmalatçı, ürünleri için uyguladığı kalite sisteminin değerlendirilmesi amacıyla kendi seçtiği bir onaylanmış kuruluşa başvurur. Başvuru aşağıdaki bilgileri içerir:
+a) İmalatçının adı ve adresi, başvurunun yetkili temsilci tarafından gerçekleştirildiği durumlarda ayrıca yetkili temsilcinin adı ve adresi,
+b) İncelemenin gerçekleştirileceği imalatçının tesisine ait adres bilgiler,
+c) Aynı başvurunun başka bir onaylanmış kuruluşa yapılmadığını belirten yazılı beyan,
+d) Söz konusu KKD’nin tanımı,
+e) Kalite sistemiyle ilgili dokümantasyon.
+İmalatçı tarafından seçilen onaylanmış kuruluşun AB Tip İnceleme Belgesini düzenleyenden farklı bir kuruluş olması durumunda başvuru:
+(a) Ek-3’de tanımlanan KKD’nin teknik dosyasını,
+(b) AT Tip İnceleme Belgesinin bir örneğini
+içerir.
+3.2. Kalite sistemi, ürünlerin AB Tip İnceleme Belgesinde tarif edilen tipe ve bu Yönetmeliğin ilgili kurallarına uygunluğunu sağlar.
+İmalatçı tarafından benimsenen tüm unsurlar, kurallar ve hükümler, sistematik ve düzenli bir biçimde yazılı politikalar, usûller ve talimatlar şeklinde dosyalanarak muhafaza edilir. Kalite sistemi dokümantasyonu; kalite programları, planları, el kitapları ve kayıtlarının tutarlı bir şekilde yorumlanabilmesine imkân verecek biçimde düzenlenir.
+Kalite sistemi dokümantasyonu aşağıdaki hususlar hakkında yeterli bilgi ve açıklamaları içerir:
+a) Yönetimin kalite hedefleri ve organizasyon yapısı ile ürün kalitesine dair sorumlulukları ve yetkileri,
+b) İlgili imalat, kalite kontrol ve kalite güvencesi teknikleri, süreçleri ve yapılacak sistematik eylemleri,
+c) İmalat öncesinde, imalat sırasında ve imalat sonrasında gerçekleştirilecek muayeneler ve testler ile bunların gerçekleştirilme sıklıkları,
+d) Muayene raporları, test ve kalibrasyon verileri, ilgili personele ait nitelik raporları gibi kalite kayıtları,
+e) İstenilen ürün kalitesinin sağlanmasının ve kalite sisteminin etkin işlemesinin gözetimi için araçları.
+3.3. Onaylanmış kuruluş, 3.2 nci maddede belirtilen şartları sağlayıp sağlamadığını tespit etmek üzere kalite sistemini değerlendirir.
+Onaylanmış kuruluş, ilgili bir uyumlaştırılmış standarda ve/veya teknik şartnamelerin ilgili kurallarına uygun kalite sistemi unsurlarının 3.2 nci maddede belirtilen şartlara uygun olduğunu varsayar.
+Kalite yönetim sistemleri hakkındaki deneyime ilave olarak, denetimi gerçekleştiren grubun en az bir üyesi ilgili KKD sahasında ve teknolojisinde değerlendirme deneyimine ve bu Yönetmeliğin ilgili kurallarına dair bilgiye sahip olmalıdır. Denetim, imalatçının tesisine değerlendirme ziyareti yapılmasını da içerir. Denetim ekibi, imalatçının temel sağlık ve güvenlik gereklerini teşhis edebilme ve KKD’nin bu gereklere uygunluğunu sağlamak için gerekli tetkikleri yerine getirebilme kabiliyetini doğrulamak amacıyla 3.1 inci maddede atıf yapılan KKD’nin teknik dosyasını gözden geçirir.
+Onaylanmış kuruluş verdiği kararı imalatçıya bildirir. Bildirim, denetimin sonuçlarını ve karara ilişkin gerekçeli değerlendirmeleri de içerir.
+3.4. İmalatçı, onaylandığı şekliyle kalite sisteminden doğan yükümlülüklerini yerine getirmeyi ve kalite sistemini yeterli ve etkin kalacak şekilde sürdürmeyi taahhüt eder.
+3.5. İmalatçı, kalite sisteminde yapmayı düşündüğü herhangi bir değişiklik hakkında kalite sistemini onaylayan onaylanmış kuruluşu bilgilendirir.
+Onaylanmış kuruluş, önerilen değişiklikleri değerlendirir ve değiştirilmiş kalite sisteminin 3.2 nci maddede belirtilen şartları yerine getirip getirmediğine veya yeniden bir değerlendirmenin gerekli olup olmadığına karar verir.
+Onaylanmış kuruluş kararını imalatçıya bildirir. Bildirim, denetimin sonuçlarını ve karara ilişkin gerekçeli değerlendirmeleri de içerir.
+3.6. Onaylanmış kuruluş kendisine ait kimlik kayıt numarasının, AB Tip İnceleme Belgesinde tarif edilen tipe uygun olan ve bu Yönetmeliğin ilgili kurallarını karşılayan her bir KKD’nin üzerine konulması konusunda imalatçıyı yetkilendirir.
+4. Onaylanmış Kuruluşun Sorumluluğunda Gözetim
+4.1. Gözetimin amacı, imalatçının onaylanmış kalite sisteminden doğan yükümlülüklerini tam olarak yerine getirmesini sağlamaktır.
+4.2. İmalatçı, değerlendirme yapabilmesi için onaylanmış kuruluşun imalat tesislerine, muayene ve test laboratuvarlarına ve depolarına girmesine izin verir ve onaylanmış kuruluşa, özellikle aşağıda belirtilenler olmak üzere, gerekli her türlü bilgiyi temin eder:
+a) Kalite sistemine ilişkin dokümantasyon,
+b) Muayene raporları, test ve kalibrasyon verileri, ilgili personele ait nitelik raporları gibi kalite kayıtları.
+4.3. Onaylanmış kuruluş, imalatçının kalite sistemini sürdürdüğünden ve uyguladığından emin olmak için yılda en az bir kere olmak üzere periyodik olarak denetim yapar ve imalatçıya bir denetim raporu düzenler.
+4.4. Onaylanmış kuruluş, ilave olarak, haber vermeden imalatçıya ziyaretlerde bulunabilir. Bu ziyaretlerde onaylanmış kuruluş, gerekiyorsa, kalite sisteminin doğru işlediğini teyit etmek için KKD’lerin testlerini yapabilir veya yaptırabilir. Onaylanmış kuruluş, imalatçıya ziyaret raporu ve test yapılmışsa test raporu düzenler.
+5. “CE” İşareti ve AB Uygunluk Beyanı
+5.1. İmalatçı, “CE” işaretini ve 3.1 inci maddede belirtilen onaylanmış kuruluşun sorumluluğunda olmak kaydıyla bu kuruluşun kimlik kayıt numarasını, AB Tip İnceleme Belgesinde tarif edilen tipe uygun olan ve bu Yönetmeliğin ilgili kurallarını karşılayan her bir KKD’nin üzerine koyar.
+5.2. İmalatçı, her bir KKD modeli için yazılı bir AB Uygunluk Beyanı hazırlar ve bu beyanı, gerektiğinde Bakanlığa sunmak üzere, KKD’nin piyasaya arz edildiği tarihten sonra 10 yıl süreyle muhafaza eder. AB Uygunluk Beyanı ilgili olduğu KKD’nin tanımını içerir.
+İmalatçı, AB Uygunluk Beyanının bir örneğini, talep edilmesi hâlinde Bakanlığa sunar.
+6. İmalatçı, Bakanlığa sunulmak üzere KKD’nin piyasaya arz edildiği tarihten sonra 10 yıl süreyle:
+a) 3.1 inci maddede belirtilen belgeleri,
+b) Onaylanmış şekliyle 3.5 inci maddede belirtilen değişiklikleri,
+c) 3.5, 4.3 ve 4.4 üncü maddelerde belirtilen onaylanmış kuruluş kararlarını ve raporlarını
+muhafaza eder.
+7. Onaylanmış kuruluş, verdiği veya geri çektiği kalite sistem onayları hakkında Bakanlığı bilgilendirir ve düzenli olarak veya talep edilmesi hâlinde Bakanlığa, vermeyi reddettiği, askıya aldığı veya diğer türlü kısıtladığı kalite sistem onaylarının bir listesini sunar. Onaylanmış kuruluş kalite sistem onaylarıyla ilgili diğer onaylanmış kuruluşları, vermeyi reddettiği, askıya aldığı, geri çektiği veya diğer türlü kısıtladığı ve talep edilmesi hâlinde, verdiği kalite sistem onayları hakkında bilgilendirir.
+8. Yetkili Temsilci
+İmalatçının 3.1, 3.5, 5 ve 6 ncı maddelerde belirtilen yükümlülükleri, imalatçının adına yapılması, sorumluluğunda olması ve ilgili görevlendirmede belirtilmesi kaydıyla yetkili temsilcisi tarafından yerine getirilebilir.
+
+
+Ek-9
+AB Uygunluk Beyanı No …………..(1)
+
+1 KKD’nin tanımı (Ürün, tip/model, parti veya seri numarası):
+
+2 İmalatçı ve varsa yetkili temsilcisinin adı ve adresi:
+
+3 Bu uygunluk beyanı, imalatçının kendi yetki ve sorumluluğu altında düzenlenmiştir (İmalatçının adı):
+
+4 Beyanın konusu (KKD’nin izlenebilirliğini garanti eden tanımını ve gerekli olduğu durumda KKD’nin tanımlanmasını sağlayacak şekilde yeterli belirginlikte renkli bir fotoğrafını içerir):
+
+5 Yukarıda tarif edilen beyan konusu, aşağıda ismi yazan mevzuata uygundur.
+(Mevzuatın adı):………………………………………………………..............
+
+6 Kullanılan ilgili uyumlaştırılmış standardın referans numarası ve tarihi veya atıf yapılan diğer teknik özelliklerin referansı ve tarihi:
+
+7 Onaylanmış kuruluşun AB Tip İncelemesini (Modül B) yerine getirdiği durumda; Onaylanmış kuruluş………………………….. (Adı ve kimlik kayıt numarası) ve AB Tip İnceleme Belgesi ………………….. (Belgenin referans numarası)
+
+8 KKD’nin, üretimin dâhilî kontrolü ve ürünün rastgele aralıklarla denetimli muayenesine dayalı tipe uygunluk (Modül C2) veya üretim sürecinin kalite güvencesine dayalı tipe uygunluk (Modül D) kapsamında uygunluğunun değerlendirildiği durumda ……………………. (İlgili modüle atıf) ………………… (Onaylanmış kuruluşun adı ve kimlik kayıt numarası)
+
+9 Ek bilgi:
+
+………………………………..için veya adına imzalanmıştır
+(Yeri ve düzenleniş tarihi):
+(Ad, görev/unvan) (İmza):

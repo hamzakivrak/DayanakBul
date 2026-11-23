@@ -1,0 +1,281 @@
+Ek-I
+TEMEL GÜVENLİK GEREKLİLİKLERİ
+
+1.Malzemeler
+Malzemeler, kabın kullanım amacı doğrultusunda, madde 1.1 ile madde 1.4’e uygun olarak seçilir.
+1.1.Basınçlı parçalar
+Kapların basınçlı parçalarını imal etmek için kullanılan malzemeler:
+a) Kaynak yapılabilir.
+b) Asgari çalışma sıcaklığındaki kopmanın parça parça veya kırılgan tip kırılmaya yol açmaması için şekil verilebilir süneklikte ve toklukta olur.
+c) Yaşlanmadan olumsuz şekilde etkilenmez.
+Çelik kaplar için, malzeme ayrıca madde 1.1.1.’de belirtilen özellikleri ve alüminyum veya alaşımlı alüminyum kaplar için ise madde 1.1.2.’de belirtilen özellikleri sağlamalıdır.
+Bunlara, malzemelerin imalatçısı tarafından hazırlanan, Ek-III, madde 3.1, madde (i)'de tanımlanan muayene etiketi eklenir.
+1.1.1. Çelik kaplar
+Alaşımsız vasıflı çeliklerde aşağıda belirtilen özellikler aranır:
+a) Kaynak edilebilir olmalı ve normalleştirme işleminden geçirildikten sonra veya buna eşdeğer bir durumda temin edilir.
+b) Her mamuldeki karbon miktarı % 0,25’ten, kükürt ve fosfor miktarı % 0,05’ten az olur.
+c) Her mamul aşağıda belirtilen mekanik özelliklere sahip olur:
+i) Azami çekme mukavemeti Rm,max 580 N/mm² ’den az olur.
+ii) Kopmadan sonraki uzama:
+- Test parçaları haddeleme yönüne paralel olarak alınırsa:
+Kalınlık ≥ 3 mm : A ≥ % 22
+Kalınlık < 3 mm : A80 mm ≥ %17
+- Test parçaları haddeleme yönüne dik yönde alınırsa :
+Kalınlık ≥ 3 mm : A ≥ % 20
+Kalınlık < 3 mm : A80 mm ≥ % 15 olur.
+iii) Asgari çalışma sıcaklığında, üç adet boylamasına test parçasının ortalama eğmede koparma enerjisi KCV 35 J/cm² ’den az olmamalıdır. Bu üç değerden en fazla birisi, 35 J /cm² ’den az olabilir ancak 25 J/cm² az olamaz.
+Asgari çalışma sıcaklığı –10°C’nin altında olan ve et kalınlığı 5mm’den fazla olan kapların imalatında kullanılan çeliklerde bu özellik kontrol edilir.
+1.1.2.Alüminyum kaplar
+Alaşımsız alüminyumdaki alüminyum miktarı en az % 99,5 olmalı ve madde 1.1.b’de belirtilen alaşımlar azami çalışma sıcaklığında, taneler arası korozyona yeterli direnci gösterir.
+Ayrıca bu malzemeler aşağıda belirtilen gereklilikleri karşılar:
+a) Tavlanmış durumda temin edilir.
+b) Her ürün aşağıda belirtilen mekanik özelliklere sahip olur:
+i) Azami gerilme direnci Rm,max en çok 350 N/mm2 olur.
+ii) Kırılmadan sonraki uzama:
+- A ≥ %16 test parçası haddeleme yönüne paralel olarak alınırsa.
+- A ≥ %14 test parçası haddeleme yönüne dik olarak alınırsa.
+1.2.Kaynak malzemeleri
+Kap üzerindeki kaynakları yapmak veya kabın imalatı için kullanılan kaynak dolgu malzemeleri kaynağı yapılacak olan malzemeye uygun ve uyumlu olur.
+1.3. Kabın direncine yönelik katkı sağlayan donanımlar
+Bu donanımlar (cıvatalar, somunlar, vb.,) basınca maruz kalan parçaların imalatında kullanılanlara uyumlu ve madde 1.1.’de belirtilen malzemeden veya diğer çelik türlerinden, uygun alüminyum alaşımından yapılır.
+Alüminyum alaşımı asgari çalışma sıcaklığında, kırılma ve bükme kopma enerjisinden sonra uygun bir uzamaya sahip olur.
+1.4. Basınca maruz kalmayan parçalar
+Kaynaklı kapların basınca maruz kalmayan bütün parçaları, kaynaklandıkları bileşenlerin gereklerine uygun malzemeden imal edilmiş olur.
+2.Kap tasarımı
+a) İmalatçı kabı tasarımlarken, kabın hangi amaç için kullanılacağını ve aşağıdaki hususları belirler:
+i) Asgari çalışma sıcaklığını Tmin.
+ii) Azami çalışma sıcaklığını Tmax.
+iii) Azami çalışma basıncını PS.
+Ancak –10 °C’den düşük bir asgari çalışma sıcaklığı belirlendiği takdirde, malzeme –10 °C de istenen özellikleri sağlar.
+b) İmalatçı, aşağıdaki hükümleri de dikkate alır:
+i) Kabın iç kısmının muayenesi mümkün olur.
+ii) Kabın boşaltılması mümkün olur.
+iii) Kabın mekanik özellikleri, kullanım amacı doğrultusunda, kullanıldığı süre boyunca muhafaza edilir.
+iv) Kaplar, belirtilen kullanım amacına uygun olarak korozyona karşı yeterince korunur.
+c) İmalatçı öngörülen kullanım koşulları çerçevesinde aşağıdaki hükümleri dikkate alır:
+i) Kaplar, kullanım güvenliğini muhtemel olarak bozabilecek gerilmelere maruz bırakılmaz.
+ii) İç basınç, azami çalışma basıncı PS’yi sürekli olarak geçmemelidir. Ancak çalışma basıncı çok kısa sürelerle % 10 oranında aşılır.
+ç) Dairesel ve boylamasına dikişler, tam nüfuz sağlayan kaynaklar veya buna eşdeğer etki gösterebilen kaynaklar kullanılarak yapılır. Yarım küre şeklinde olanlar haricinde, dışbükey uçlar silindirik bir kenara sahip olur.
+2.1.Et kalınlığı
+PS x V’nin çarpımının sonucu 3000 bar × litre’den fazla olmadığı takdirde, imalatçı kabın et kalınlığını tespit etmek için madde 2.1.1.’de ve madde 2.1.2.’de belirtilen yöntemlerden birini seçer. PS x V’nin çarpımının sonucu 3000 bar × litre’den fazla veya azami çalışma sıcaklığı 100 °C’yi geçerse et kalınlığı madde 2.1.1.’de belirtilen yönteme göre tayin edilir.
+Bununla birlikte silindirik bölümün ve uçların gerçek et kalınlığı, çelik kaplarda 2 mm’den, alüminyum veya alaşımlı alüminyum kaplarda, 3 mm’den az olmaz.
+2.1.1.Hesaplama yöntemi
+Basınca maruz kalan parçaların asgari et kalınlığı, gerilme şiddeti ve aşağıdaki hükümler dikkate alınarak hesaplanır:
+a) Dikkate alınacak hesaplama basıncı, seçilen azami çalışma basıncından az olmaz.
+b) Müsaade edilen genel membran gerilmesi 0,6 ReT veya 0,3 Rm değerlerinden daha düşük olanını geçmez. İmalatçı, müsaade edilebilir gerilmeyi tayin edebilmek için malzeme imalatçısı tarafından garanti edilen ReT ve Rm minimum değerlerini kullanır.
+Bununla birlikte, kabın silindirik kısmında, otomatik olmayan bir kaynak işlemi kullanılarak yapılmış bir veya daha fazla boylamasına kaynak mevcut olduğunda, yukarıda belirtildiği şekilde hesaplanan kalınlık 1,15 katsayısı ile çarpılır.
+2.1.2.Deneysel yöntem
+Et kalınlığı, kapların ortam sıcaklığında, azamî çalışma basıncının en az beş katı basınca dayanabilecek şekilde, kalıcı çevresel deformasyon faktörü % 1’den daha fazla olmamak üzere dayanabileceği öngörülerek tayin edilir.
+3.İmalat süreçleri
+Kaplar, EK-II’nin 2 nci, 3 üncü ve 4 üncü maddelerinde belirtilen tasarıma ve imalat programına uygun olarak imal edilir ve kontrollere tâbi tutulur.
+3.1. Detay parçaların hazırlanması
+Parçaların hazırlanması (örneğin şekillendirme ve pahlama) muhtemel olarak kapların güvenliğine zarar verecek şekilde yüzey bozulmalarına ya da çatlaklara veya mekanik özelliklerde değişmelere neden olmaz.
+3.2. Basınca maruz parçalar üzerindeki kaynaklar
+Basınca maruz parçalar üzerindeki kaynak yerleri ve bitişik bölgelerin özellikleri, kaynak edilen malzemenin gereksinimlerine benzer olur ve kapların güvenliğine zarar verecek herhangi bir yüzeysel veya iç bozulma olmaz.
+Kaynaklar, onaylı kaynak işlemlerine uygun olarak, gerekli yeterlilik düzeyinde olan kalifiye kaynakçılar veya operatörler tarafından yapılır. Bu tür onay ve kalite testleri onaylanmış kuruluşlar tarafından yapılır.
+İmalatçı, aynı zamanda, imalat esnasında, uygun yöntemleri kullanarak gerekli testleri yapmak suretiyle, kaynak kalitesinin uygunluğunu garanti eder. Bu testler bir raporla belirtilir.
+4. Kapların kullanıma sunulması
+Kaplarda, imalatçı tarafından EK–III’ün 2 nci maddesinde belirtildiği şekilde hazırlanan talimatlar bulunur.
+
+Ek-II
+UYGUNLUK DEĞERLENDİRME PROSEDÜRLERİ
+
+1. AB-Tip incelemesi (Modül B)
+1.1. AB-tip incelemesi, uygunluk değerlendirme prosedürünün bir parçası olup bu incelemede onaylanmış kuruluş, kabın teknik tasarımını inceler ve kabın teknik tasarımının bu Yönetmelik şartlarını yerine getirdiğini doğrular ve tasdik eder.
+1.2. AB-tip incelemesi, bu Yönetmeliğin 16 ncı maddesine uygun olarak aşağıdaki yöntemlerden biri ile gerçekleştirilir:
+a) Kabın teknik tasarımının yeterliliğinin, bu maddenin 1.3'te belirtilen teknik dosyanın ve destekleyici kanıtların incelenmesi ile öngörülen imalatı temsilen kabın tümünün bir prototipinin incelenmesi yoluyla değerlendirilmesi (imalat tipi),
+b) Kabın teknik tasarımının yeterliliğinin, bu maddenin 1.3'te belirtilen numune incelemesi olmaksızın teknik dosyanın ve destekleyici kanıtların incelenmesi yoluyla değerlendirilmesi (tasarım tipi).
+1.3. İmalatçı seçmiş olduğu tek bir onaylanmış kuruluşa AB-tip incelemesi için başvuruda bulunur. Başvuru aşağıdaki hususları içerir:
+a) İmalatçının adı ve adresi, eğer başvuru yetkili temsilci tarafından yapılmışsa, yetkili temsilcinin adı ve adresi;
+b) Aynı başvurunun başka bir onaylanmış kuruluşa yapılmadığına dair yazılı beyan;
+c) Teknik dosya; kabın bu Yönetmeliğin ilgili şartlarına uyumluluğunu değerlendirmeyi mümkün kılar ve risklere dair yeterli analiz ve değerlendirmeyi içerir. Teknik dosyada ilgili şartlar belirtilir ve değerlendirme ile ilgili olarak kabın tasarımını, imalatını ve çalıştırılmasını kapsar. Teknik dosyada, mümkün olan hallerde, en az aşağıdaki unsurlar yer alır:
+i) Kabın genel tanımı.
+ii) Kavramsal tasarım ve imalat çizimleri ve bileşen şemaları vb.
+iii) Bu çizimlerin ve şemaların yanı sıra kabın çalışmasının anlaşılması için gerekli açıklamalar.
+iv) Kısmen ya da tamamen uygulanan uyumlaştırılmış standartlar listesi ve bu standartların uygulanmadığı hallerde de uygulanan diğer ilgili teknik şartnamelerin listesi de dahil olmak üzere bu Yönetmeliğin temel güvenlik gereklerini karşılamak amacıyla uygulanan çözümlerin açıklamalarını içerir. Uyumlaştırılmış standartların kısmen uygulanması durumunda teknik dosyada hangi kısımların uygulandığı belirtilir.
+v) Yapılan tasarım hesaplamalarının, gerçekleştirilen incelemenin sonuçları vb.
+vi) Test raporları.
+vii) Bu Yönetmeliğin Ek-III’ünün 2 nci maddesinde belirtilen talimat ve güvenlik bilgileri.
+viii) Aşağıdakileri tanımlayan belge:
+Seçilen malzemeler.
+Seçilen kaynak yöntemleri.
+Seçilen kontroller.
+Kap tasarımıyla ilgili her türlü bilgi.
+ç) Uygun olan hallerde, başvuruda öngörülen imalatı temsilen prototip kaplar sunulur. Onaylanmış kuruluş, test programının yürütülmesi için ihtiyaç duyması halinde ek prototip kaplar talep edebilir.
+d) Teknik tasarım çözümünün yeterliliği için destekleyici kanıt. Bu destekleyici kanıtta, özellikle uyumlaştırılmış standartların tamamen uygulanmadığı hallerde kullanılmış olan her tür belgeye yer verilir. Destekleyici kanıtta gerekirse diğer ilgili teknik şartnamelere uygun olarak imalatçının ilgili laboratuvarınca veya adına ve sorumluluğu altında başka test laboratuvarınca gerçekleştirilen testlerin sonuçları da yer alır.
+Prototip kap incelendiğinde teknik dosya ayrıca şunları da içerir:
+Kaynak işlemlerinin ve kaynakçıların ya da kaynak operatörlerinin uygunluğuna dair belge ve sertifikalar.
+Kabın direncine katkıda bulunan parçaların veya bileşenlerin imalatında kullanılan malzemelerin muayene etiketi.
+Gerçekleştirilen inceleme ve testlere dair rapor veya önerilen kontrollerin açıklamaları.
+1.4. Onaylanmış kuruluş aşağıdakileri yapar:
+Kap için:
+1.4.1. Kabın teknik tasarımının yeterliliğini değerlendirmek amacıyla teknik dosyayı ve destekleyici kanıtı inceler.
+Prototip kap için:
+1.4.2. Prototip kabın teknik dosyası ile uyumlu bir şekilde imal edildiğini, amaçlanan çalışma koşulları altında güvenli bir şekilde kullanılabileceğini doğrulayacak ve ilgili uyumlaştırılmış standart hükümlerine göre tasarlanmış unsurların yanı sıra diğer ilgili teknik şartnamelere göre tasarlanmış unsurları da belirler.
+1.4.3. imalatçının ilgili uyumlaştırılmış standartlardaki çözümleri uygulamak amacıyla seçmiş olduğu yöntemlerin doğru şekilde uygulanıp uygulanmadığını kontrol etmek amacıyla ilgili muayeneleri ve testleri gerçekleştirecek veya gerçekleştirilmesini sağlar.
+1.4.4. ilgili uyumlaştırılmış standartlardaki çözümlerin uygulanmadığı hallerde imalatçının bu Yönetmeliğin temel güvenlik gereklerini yerine getirmek amacıyla diğer ilgili teknik şartnameleri uygulayarak hayata geçirdiği çözümleri kontrol etmek için ilgili muayeneleri ve testleri gerçekleştirecek veya gerçekleştirilmesini sağlar.
+1.4.5. imalatçı ile muayene ve testlerin gerçekleştirileceği yer konusunda mutabakata varır.
+1.5. Onaylanmış kuruluş, madde 1.4'e uygun olarak gerçekleştirilen faaliyetleri ve bunların sonuçlarını kaydeden bir değerlendirme raporu düzenler. Bakanlığa karşı olan yükümlülüklerine halel getirmeksizin onaylanmış kuruluş bu raporun içeriğini sadece imalatçı ile mutabakata varmasının ardından kısmen veya tamamen yayınlar.
+1.6. Tipin bu Yönetmeliğin şartlarına uyduğu hallerde onaylanmış kuruluş imalatçı için bir AB-tip incelemesi belgesi düzenler. Bu belgede imalatçının adı ve adresi, inceleme sonuçları, geçerlilik koşulları (varsa) ve onaylanmış tipin tanımlanması için gerekli veriler yer alır. AB-tip incelemesi belgesi, bir veya daha fazla ek içerebilir.
+AB-tip incelemesi belgesi ve eklerinde imal edilen kapların değerlendirilecek olan incelenen tiple uyumluluğuna imkan tanıyan ve kullanım sırasında denetime imkan tanıyan tüm ilgili bilgiler yer alır. Ayrıca düzenlenmesinin tabi olabileceği ve onaylanmış tipin belirlenmesi için gereken açıklamaların ve çizimlerin eşlik edeceği her tür koşulu da belirtir.
+Tipin bu Yönetmeliğin ilgili şartlarını yerine getirmediği hallerde onaylanmış kuruluş, AB-tip incelemesi belgesi düzenlemeyi reddeder ve başvuru sahibini de reddetmesinin ayrıntılı nedenlerini belirterek bilgilendirir.
+1.7.Onaylanmış kuruluş, onaylanmış tipin artık bu Yönetmeliğin ilgili şartlarına uygun olamayacağını belirten ve genel olarak kabul gören en yeni sürümde gerçekleşen her tür değişiklikten haberdar olur ve bu değişikliklerin ek araştırma gerektirip gerektirmediğine karar verir. Gerektirmesi halinde onaylanmış kuruluş imalatçıyı bu konuda bilgilendirir.
+İmalatçı, AB-tip incelemesi belgesiyle ilgili teknik dosyayı elinde bulunduran onaylanmış kuruluşu onaylanmış tipe yönelik olup kabın bu Yönetmeliğin temel güvenlik gerekleriyle uyumluluğunu veya ilgili belgenin geçerlilik koşullarını etkileyebilecek tüm değişiklikler konusunda bilgilendirir. Bu gibi değişiklikler için orijinal AB-tip incelemesi belgesine ek olarak ilave onay gerekir.
+1.8. Her bir onaylanmış kuruluş, düzenlenmiş veya geri çekilmiş AB-tip incelemesi belgeleriyle ve/veya bunların her tür ekiyle ilgili olarak Bakanlığı bilgilendirir ve periyodik olarak ya da talepte bulunulması halinde Bakanlığa reddedilmiş, askıya alınmış veya bir başka şekilde sınırlandırılmış olan bu belgelerin ve/veya eklerinin listesini sunar.
+Her bir onaylanmış kuruluş, reddedilmiş, geri çekilmiş, askıya alınmış veya bir başka şekilde sınırlandırılmış AB-tip incelemesi belgeleri ve/veya herhangi bir ekiyle ilgili olarak diğer onaylanmış kuruluşları bilgilendirir.
+Komisyon, üye ülkeler ve diğer onaylanmış kuruluşlar, talepte bulunulması halinde, AB-tip incelemesi belgelerinin ve/veya bunların eklerinin bir kopyasını temin edebilirler. Talep üzerine Komisyon ve üye ülkeler teknik dosyanın ve onaylanmış kuruluş tarafından gerçekleştirilen incelemelerin sonuçlarının bir kopyasını da edinebilirler. Onaylanmış kuruluş AB-tip incelemesi belgesinin, eklerinin ve ilavelerinin yanı sıra imalatçı tarafından gönderilen dosyayı da içeren teknik dosyanın bir kopyasını ilgili belgenin geçerlilik süresinin sonuna kadar saklar.
+1.9. İmalatçı, AB-tip incelemesi belgesinin, eklerinin ve ilavelerinin kopyasıyla birlikte teknik dosyayı da kabın pazarda kullanıma sunulmasını takip eden 10 yıl boyunca ulusal yetkililerin kullanımına sunar.
+1.10. İmalatçının yetkili temsilcisi, vekaletnamesinde belirtilmesi halinde madde 1.7 ve 1.9'da belirtilen yükümlülükleri yerine getirebilir ve madde 1.3'de belirtilen başvuruyu yapabilir.
+2.Dahili imalat denetimi artı denetimli kap testine (Modül C1) tabi olarak tip uygunluğu
+2.1.Dahili imalat denetimi artı denetimli kap testine tabi olarak tip uygunluğu, imalatçının madde 2.2, 2.3 ve 2.4'de belirtilen yükümlülükleri yerine getirdiği ve kendi münhasır sorumluluğu çerçevesinde ilgili kapların AB-tip incelemesi belgesinde açıklanan tip ile uyumluluğunu ve bu kaplara uygulanan Yönetmelik şartlarını yerine getirdiğini temin ve beyan ettiği uygunluk değerlendirmesi prosedürünün bir parçasıdır.
+2.2. İmalat
+İmalatçı, imalat sürecinin ve gerçekleştirdiği takibin imal edilen kapların AB-tip incelemesi belgesinde açıklanan tip ile ve bu kaplara uygulanan Yönetmelik şartları ile uyumluluğunu temin amacıyla gereken tüm önlemleri alır.
+İmalata başlamadan önce imalatçı, seçtiği bir onaylanmış kuruluşa gerekli tüm bilgileri, özellikle de aşağıdakileri sunar:
+a) Aşağıdakileri de içerecek olan teknik dosya:
+Kaynak işlemlerinin ve kaynakçıların ya da kaynak operatörlerinin uygun kalifikasyonlarıyla ilgili belgeler.
+Kabın direncine katkıda bulunan parçaların veya bileşenlerin imalatında kullanılan malzemelerin muayene etiketi.
+Gerçekleştirilen inceleme ve testlere ait rapor.
+b) Gerçekleştirilme sıklıkları ve ilgili prosedürler ile birlikte imalat esnasında gerçekleştirilecek olan uygun incelemeleri ve testleri açıklayan denetim belgesi.
+c) AB-tip incelemesi belgesi.
+2.3.Kap kontrolleri
+2.3.1.İmal edilen her bir kap için onaylanmış kuruluş, kabın AB-tip inceleme belgesinde açıklanan tiple ve bu Yönetmeliğin ilgili şartlarıyla uyumluğunu doğrulamak amacıyla uygun olan incelemeleri ve testleri aşağıdaki hususlar doğrultusunda yapar:
+a) İmalatçı kaplarını tek biçimli gruplar halinde sunar ve imalat sürecinin, imal edilen her grubun tek biçimliliğini sağlaması adına gerekli olan tüm önlemleri alır.
+b) Bir parti incelendiğinde onaylanmış kuruluş, kapların teknik dosyaya uygun olarak imal edilmesini ve kontrol edilmesini sağlar ve partideki her bir kap üzerinde kabın gücünü kontrol etmek amacıyla tasarım basıncının 1,5 katına eşit bir basınçta Ph hidrostatik test veya eşdeğer etkiye sahip pnömatik test gerçekleştirir. Pnömatik test, testin gerçekleştirildiği Üye Devlet tarafından test güvenlik prosedürlerinin kabulüne tabi olur.
+c) Dahası, onaylanmış kuruluş, kaynak kalitesini incelemek için imalatçının seçimine göre, temsili bir imalat test parçasından veya kaptan alınan numuneler üzerinde testleri gerçekleştirir. Testler uzunlamasına kaynaklar üzerinde gerçekleştirilir. Ancak uzunlamasına ve çevresel kaynaklar için farklı kaynak tekniklerinin kullanıldığı hallerde testler çevresel kaynaklar üzerinde de tekrarlanır.
+ç) Ek-I'in 2.1.2 no'lu maddesinde atıfta bulunulan deneysel yönteme tabi kaplar için bu testler yerine, Ek-I'in 2.1.2 no'lu maddesinde belirtilen temel güvenlik gerekliliklerine uygun olup olmadığını kontrol etmek için her gruptan rastgele seçilen beş kap üzerinde hidrostatik test uygulanır.
+d) Kabul edilen partiler olması durumunda, onaylanmış kuruluş her kaba tanımlama numarasını ekler veya bu numaranın eklenmesini sağlar ve gerçekleştirilen testlerle ilgili olarak yazılı bir uyum belgesi hazırlar. Hidrostatik veya pnömatik testten başarılı olarak geçmeyen kaplar hariç parti içindeki tüm kaplar piyasaya arz edilebilir.
+e) Partinin reddedilmesi halinde onaylanmış kuruluş, ilgili partinin pazara arz edilmesini önleyecek önlemleri alır. Partilerin sık sık reddedilmesi halindeyse onaylanmış kuruluş istatistiksel doğrulamayı askıya alabilir.
+f) İlgili yetkililerin talebi doğrultusunda imalatçı, (e) maddesinde bahsedilen onaylanmış kuruluşun uyumluluk belgelerini ibraz edebilir.
+2.3.2. Onaylanmış kuruluş, kendisi tarafından düzenlenmiş denetim raporunun bir kopyasını onaylayan üye ülkeye ve talep edilmesi durumunda diğer onaylanmış kuruluşlara, diğer üye ülkelere ve Komisyona gönderir.
+2.3.3. İmalatçı, onaylanmış kuruluşun sorumluluğu çerçevesinde onaylanmış kuruluşun kimlik numarasını imalat sürecinde takar.
+2.4. “CE” işareti ve AB uygunluk beyanı
+2.4.1.İmalatçı, “CE” işaretini AB-tip inceleme belgesinde açıklanan tip ile uyumlu olan ve bu Yönetmeliğin ilgili şartlarını karşılayan her bir kaba ekler.
+2.4.2. İmalatçı, her bir kap modeli için yazılı bir AB-tip incelemesi belgesi düzenler ve bu belgeyi, kabın pazarda kullanıma sunulmasını takip eden 10 yıl boyunca ulusal yetkililerin kullanımına sunar. AB uygunluk beyanı düzenlenmiş olduğu kabın modelinin kimlik bilgileri yer alır.
+2.4.3. AB uygunluk beyanının bir kopyası, talepte bulunulması halinde ilgili yetkililerin kullanımına sunulur.
+2.5.Yetkili temsilci
+İmalatçının madde 2.4'de belirtilen yükümlülükleri, ilgili vekaletnamede belirtilmiş olması kaydıyla imalatçı adına ve imalatçının sorumluluğu çerçevesinde yetkili temsilcisi tarafından da gerçekleştirilebilir.
+3.Dahili imalat denetimi artı rastgele zaman aralıklarında gerçekleştirilen denetimli kap testine (Modül C2) tabi olarak tip uygunluğu
+3.1.Dahili imalat denetimi artı rastgele zaman aralıklarında gerçekleştirilen denetimli kap testine tabi olarak tip uygunluğu, imalatçının madde 3.2, 3.3 ve 3.4'de belirtilen yükümlülükleri yerine getirdiği ve kendi münhasır sorumluluğu çerçevesinde ilgili kapların AB-tip incelemesi belgesinde açıklanan tip ile uygunluğunu ve bu kaplara uygulanan Yönetmelik şartlarını yerine getirdiğini temin ve beyan ettiği uygunluk değerlendirmesi prosedürünün bir parçasıdır.
+
+3.2.İmalat
+3.2.1.İmalatçı, imalat sürecinin ve gerçekleştirdiği takibin imal edilen kapların AB-tip incelemesi belgesinde açıklanan tip ile ve bu kaplara uygulanan Yönetmelik şartları ile uyumluluğunu temin amacıyla gereken tüm önlemleri alır.
+3.2.2. imalata başlamadan önce imalatçı, seçtiği bir onaylanmış kuruluşa gerekli tüm bilgileri, özellikle de aşağıdakileri sunar:
+a) Aşağıdakileri de içerecek olan teknik dosya:
+Kaynak işlemlerinin ve kaynakçıların ya da kaynak operatörlerinin uygun kalifikasyonlarıyla ilgili belgeler.
+Kabın mukavemetine katkıda bulunan parçaların veya bileşenlerin imalatında kullanılan malzemelerin muayene etiketi.
+Gerçekleştirilen inceleme ve testlere ait rapor.
+b) AB-tip incelemesi belgesi.
+c) İmalat süreçlerini ve kapların AB-tip inceleme belgesinde açıklanan tip ile uygunluğunu temin amacıyla alınan, önceden belirlenmiş sistematik önlemlerin tümünü açıklayan bir belge.
+Onaylanmış kuruluş, herhangi bir imalatın başlangıç tarihinden önce AB-tip inceleme belgesiyle uygunluklarını tasdik etmek için bu belgeleri inceler.
+3.2.3.Madde 3.2.2'nin (c) maddesinde bahsedilen belgede şunlar yer alır:
+a) İmalat yöntemlerinin ve kapların imalatının uygunluğuna dair kontrollerin açıklaması.
+b) Gerçekleştirilme sıklıkları ve ilgili prosedürler ile birlikte imalat esnasında gerçekleştirilecek olan uygun incelemeleri ve testleri açıklayan bir denetim belgesi.
+c) İnceleme ve testleri denetim belgesine göre gerçekleştirme ve imal edilen her bir kap üzerinde bir hidrostatik test ya da, üye ülkenin mutabakatına tabi olarak, tasarım basıncının 1,5 katına eşit bir test basıncında pnömatik test yaptırma taahhüdü; bu incelemeler ve testler, imalat personelinden bağımsız kalifiye personelin sorumluluğunda gerçekleştirilir ve bunlarla ilgili bir rapor hazırlanır.
+ç) İmalat ve depolama yerlerinin adresleri ve imalatın başladığı tarih.
+3.3.Kap kontrolleri
+Onaylanmış kuruluş, kap üzerindeki dahili kontrollerin kalitesini, kabın teknolojik karmaşıklığını ve imalat miktarını da göz önüne alarak doğrulamak amacıyla kendisi tarafından belirlenen rastgele zaman aralıklarında ve rastgele örnekler üzerinde kap kontrollerini gerçekleştirir veya gerçekleştirilmesini sağlar. Onaylanmış kuruluş tarafından kabın pazara arz edilmesinden önce nihai kaplar arasından alınan yeterli sayıdaki numune incelenecek ve uyumlaştırılmış standartların ilgili kısımlarınca belirtilen ilgili testler ve/veya ilgili teknik şartnamelerde belirtilen eşdeğer nitelikteki testler de kabın AB-tip incelemesi belgesinde açıklanan tip ile ve bu Yönetmeliğin ilgili şartlarıyla uygunluğunu kontrol etmek amacıyla gerçekleştirilir.
+Onaylanmış kuruluş ayrıca imalatçının madde 3.2.3'ün (c) maddesine uygun olarak imal edilen kapların kontrol edilmesini de sağlar.
+Bir kabın kabul edilebilir kalite seviyesine uygun olmadığı hallerde onaylanmış kuruluş ilgili önlemleri alır.
+Uygulanacak olan numune alma prosedürü, kabın imalat sürecinin, kabın uyumluluğunu temin amacıyla kabul edilebilir sınırlar dahilinde gerçekleştirilip gerçekleştirilmediğini tespit etme maksadıyla uygulanır.
+Onaylanmış kuruluş, kendisi tarafından düzenlenmiş denetim raporunun bir kopyasını, kendisini onaylayan üye ülkeye veya Bakanlığa ve talep edilmesi durumunda diğer onaylanmış kuruluşlara, diğer üye ülkelere ve Komisyona gönderir.
+İmalatçı, onaylanmış kuruluş sorumluluğu çerçevesinde onaylanmış kuruluş kimlik numarasını imalat sürecinde takar.
+3.4.CE işareti ve AB uygunluk beyanı
+3.4.1. İmalatçı, CE işaretini AB-tip inceleme belgesinde açıklanan tip ile uyumlu olan ve bu Yönetmeliğin ilgili şartlarını karşılayan her bir kaba ekler.
+3.4.2. İmalatçı, her bir kap modeli için yazılı bir AB-tip incelemesi belgesi düzenler ve bu belgeyi, kabın pazarda kullanıma sunulmasını takip eden 10 yıl boyunca ulusal yetkililerin kullanımına sunar. AB uygunluk beyanında düzenlenmiş olduğu kabın modelinin kimlik bilgileri yer alır.
+3.4.3. AB uygunluk beyanının bir kopyası, talepte bulunulması halinde ilgili yetkililerin kullanımına sunulur.
+3.5.Yetkili temsilci
+İmalatçının madde 3.4'de belirtilen yükümlülükleri, ilgili vekaletnamede belirtilmiş olması kaydıyla imalatçı adına ve imalatçının sorumluluğu çerçevesinde yetkili temsilcisi tarafından da gerçekleştirilebilir.
+4.Dahili imalat denetimine tabi olarak tip uyumluluğu (Modül C)
+4.1.Dahili imalat denetimine tabi olarak tip uyumluluğu, imalatçının madde 4.2 ve 4.3'de belirtilen yükümlülükleri yerine getirdiği ve ilgili kapların AB-tip incelemesi belgesinde açıklanan tip ile uyumluluğunu ve bu kaplara uygulanan Yönetmelik şartlarını yerine getirdiğini temin ve beyan ettiği uygunluk değerlendirmesi prosedürünün bir parçasıdır.
+4.2.İmalat
+İmalatçı, imalat sürecinin ve gerçekleştirdiği takibin imal edilen kapların AB-tip incelemesi belgesinde açıklanan onaylanmış tip ile ve bu kaplara uygulanan Yönetmelik şartları ile uyumluluğunu temin amacıyla gereken tüm önlemleri alır.
+İmalata başlamadan önce imalatçı, AB-tip incelemesi belgesini düzenlemiş olan onaylanmış kuruluşa gerekli tüm bilgileri, özellikle de aşağıdakileri sunar:
+a) Kaynak işlemlerinin ve kaynakçıların ya da kaynak operatörlerinin uygun kalifikasyonlarıyla ilgili belgeler.
+b) Kabın direncine katkıda bulunan parçaların veya bileşenlerin imalatında kullanılan malzemelerin muayene etiketi.
+c) Gerçekleştirilen inceleme ve testlere ait rapor.
+ç) İmalat süreçlerini ve kapların AB-tip inceleme belgesinde açıklanan tip ile uyumluluğunu temin amacıyla alınan, önceden belirlenmiş sistematik önlemlerin tümünü açıklayan bir belge.
+Bu belgede şunlar yer alır:
+i) İmalat yöntemlerinin ve kapların imalatının uygunluğuna dair kontrollerin açıklaması.
+ii) Gerçekleştirilme sıklıkları ve ilgili prosedürler ile birlikte imalat esnasında gerçekleştirilecek olan uygun incelemeleri ve testleri açıklayan bir denetim belgesi.
+iii) İnceleme ve testleri denetim belgesine göre gerçekleştirme ve imal edilen her bir kap üzerinde bir hidrostatik test ya da, üye ülkenin mutabakatına tabi olarak, tasarım basıncının 1,5 katına eşit bir test basıncında pnömatik test yaptırma taahhüdü; bu incelemeler ve testler, imalat personelinden bağımsız kalifiye personelin sorumluluğunda gerçekleştirilecektir ve bunlarla ilgili bir rapor hazırlanacaktır.
+iv) İmalat ve depolama yerlerinin adresleri ve imalatın başladığı tarih.
+Onaylanmış kuruluş, herhangi bir imalatın başlangıç tarihinden önce AB-tip inceleme belgesiyle uyumluluklarını tasdik etmek için bu belgeleri inceler.
+
+4.3. “CE” işareti ve AB uygunluk beyanı
+4.3.1. İmalatçı, “CE” işaretini AB-tip inceleme belgesinde açıklanan tip ile uyumlu olan ve bu Yönetmeliğin ilgili şartlarını karşılayan her bir kaba ekler.
+4.3.2. İmalatçı, her bir kap modeli için yazılı bir AB-tip incelemesi belgesi düzenler ve bu belgeyi, kabın pazarda kullanıma sunulmasını takip eden 10 yıl boyunca ulusal yetkililerin kullanımına sunar. AB uygunluk beyanında düzenlenmiş olduğu kabın modelinin kimlik bilgileri yer alır.
+4.3.3. AB uygunluk beyanının bir kopyası, talepte bulunulması halinde ilgili yetkililerin kullanımına sunulur.
+4.4.Yetkili temsilci
+İmalatçının madde 4.3'de belirtilen yükümlülükleri, ilgili vekaletnamede belirtilmiş olması kaydıyla imalatçı adına ve imalatçının sorumluluğu çerçevesinde yetkili temsilcisi tarafından da gerçekleştirilebilir.
+
+Ek-III
+İBARELER, TALİMATLAR, TANIMLAR VE SEMBOLLER
+
+1.CE işareti ve ibareleri
+1.1. PS x V çarpımı 50 bar x litreyi aşan kaplarda “CE İşareti Yönetmeliğinde belirtilen CE işareti olmalıdır ve CE işaretinin yılının son iki basamağı yazılır.
+1.2. Kapta veya veri plakalarında en azından aşağıda belirtilen bilgiler yer alır:
+a) Azami çalışma basıncı (bar cinsinden PS).
+b) Azami çalışma sıcaklığı (Tmax, °C cinsinden).
+c) Asgari çalışma sıcaklığı (Tmin, °C cinsinden).
+ç) Kabın kapasitesi (V, L cinsinden).
+d) İmalatçının adı, tescilli ticari adı veya tescilli ticari markası ve adresi.
+e) Kabın tipi ve seri veya parti kimlik bilgileri.
+1.3. Veri plakası kullanılan hallerde bu plaka yeniden kullanılamayacak şekilde tasarlanacaktır ve verilecek diğer bilgilerin de yazılabileceği kadar boş yeri olur.
+2.Talimatlar ve güvenlik bilgileri
+Talimatlar aşağıdaki bilgileri içerir:
+a) Kabın seri veya parti kimlik bilgileri haricinde madde 1.2'de belirtilen bilgiler.
+b) Kabın amaçlanan kullanımı.
+c) Kabın güvenliği için bakım ve kurulum şartları.
+3. Tanımlar ve semboller
+3.1.Tanımlar
+a) Tasarım basıncı 'P', imalatçı tarafından seçilen ve kabın basınçlı parçalarının kalınlığını belirlemek amacıyla kullanılan gösterge basıncıdır.
+b) Azami çalışma basıncı ‘PS’, kabın normal çalışma koşulları altında uygulanabilecek azami gösterge basıncıdır.
+c) Asgari çalışma sıcaklığı Tmin, kabın etinin normal kullanım koşullarında erişebileceği en düşük sabit sıcaklıktır.
+ç) Azami çalışma sıcaklığı Tmax, kabın etinin normal kullanım koşullarında erişebileceği en yüksek sabit sıcaklıktır.
+d) Akma dayanımı ‘ReT’, aşağıdakilerden herhangi birinin azami çalışma sıcaklığındaki Tmax değeridir:
+i) Hem alt hem de üst akma noktası olan bir malzeme için üst akma noktası ReH.
+ii) Zorlama mukavemetinin %0,2'si Rp0,2.
+iii) Alaşımsız alüminyumda zorlama mukavemetinin %1,0'ı Rp1,0.
+e) Kap aileleri:
+Ek I'in 2.1.1 veya 2.1.2 no'lu maddelerinde belirtilen izin verilen isteklere uygun olması koşuluyla prototipinde sadece çap bakımından farklılık gösteren ve/veya silindirik kısımlarının boyları aşağıda belirtilen sınırlar içinde olan, aynı seriyi oluşturan kaplardır:
+i) Bir prototipin uçlarına ek olarak bir veya daha fazla kabuk halkası varsa varyantlar en azından bir kabuk halkasına sahip olur.
+ii) Bir prototipin sadece iki bombeli ucu varsa varyantlarda herhangi bir kabuk halkası olmaz.
+Uzunluktaki açıklıklara ve/veya penetrasyona neden olan düzeltilecek değişiklikler, her değişken için çizimde gösterilir.
+f) Bir kap grubu aynı tipteki modellerden en fazla 3.000 kaptan oluşur.
+g) Aynı tipteki birden fazla kap, aynı imalat işlemleri kullanılarak ve ortak bir tasarım uyarınca devamlı imalat işlemleri ile verilen süre içerisinde imal edilmiş ise, işbu Yönetmelik kapsamında seri imalattır.
+ğ) Denetim belgesi: malzemelerin imalatçısının, teslim ettiği ürünlerin sipariş gerekliliklerini karşıladığını ve rutin tesis denetim testlerinin sonuçlarını belirttiğini ve özellikle kimyasal bileşimin ve mekanik özelliklerin tedarik edilen ürünle aynı imalat işlemleri ile yapılan ürünler üzerinde gerçekleştirildiğini ancak, teslim edilen ürünler için gerekli olmadığını onayladığı belgedir.
+
+3.2.Semboller
+
+A	kırılma sonrası uzama (Lo = 5,65√So)	%
+A80 mm	kırılma sonrası uzama (Lo = 80 mm)	%
+KCV	bükme kopma enerjisi	J/cm2
+P	tasarım basıncı	Bar
+PS	azami çalışma basıncı	Bar
+Ph	hidrostatik veya pnömatik test basıncı	Bar
+Rp0,2	zorlama mukavemetinin %0,2'si	N/mm2
+ReT	azami çalışma sıcaklığındaki akma mukavemeti	N/mm2
+ReH	üst akma noktası	N/mm2
+Rm	gerilme mukavemeti	N/mm2
+Rm, max	azami gerilme mukavemeti	N/mm2
+Rp1,0	zorlama mukavemetinin %1,0'ı	N/mm2
+Tmax	azami çalışma sıcaklığı	°C
+Tmin	asgari çalışma sıcaklığı	°C
+V	kabın kapasitesi	L
+
+Ek-IV
+AB UYGUNLUK BEYANI (No XXXX) (1)
+
+1. Kap/kap modeli (ürün, tip, grup veya seri numarası):
+2. İmalatçının adı ve adresi, varsa yetkili temsilcisi:
+3. Bu uygunluk beyanı, imalatçının münhasır sorumluluğunda düzenlenmiştir.
+4. Beyanın amacı (takip edilebilirliğe imkân tanıyacak şekilde kabın kimlik bilgiler; kabın tanımlanması için ihtiyaç duyulabilecek hallerde bir resim de içerebilir):
+5. Yukarıda açıklanan beyanın amacı, ilgili Birlik uyumlaştırma mevzuatıyla uygundur:
+6. Kullanılan ilgili uyumlaştırılmış standartlara yapılan atıflar veya uyumluluğun beyanıyla ilgili diğer teknik şartnamelere yapılan atıflar:
+7. Onaylanmış kuruluş ... (adı, numarası), ... (müdahalenin açıklaması) gerçekleştirmiş ve bu belgeyi düzenlemiştir:
+8. Ek bilgiler:
+İçin ve adına imzalayan:
+(düzenleme yeri ve tarihi)
+(adı, görevi) (imza)
+
+(1) İmalatçı için uygunluk beyanına bir numara atamak isteğe bağlıdır.

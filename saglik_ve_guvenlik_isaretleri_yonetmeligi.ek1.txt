@@ -1,0 +1,271 @@
+Ek- 1
+İŞYERİNDE KULLANILAN SAĞLIK VE GÜVENLİK İŞARETLERİ İLE İLGİLİ ASGARİ GENEL GEREKLER
+Genel hususlar
+Bu Yönetmeliğin 5 inci maddesindeki genel yükümlülüğe göre, işyerinde bulunması gereken sağlık ve güvenlik işaretleri ek-2 ve sonrasındaki tüm eklerde belirtilen özel koşullara uygun olacaktır.
+Bu ekte; 1.1’de belirtilen gereklerin tanıtımı, sağlık ve güvenlik işaretlerinin değişik kullanımları ve bu işaretlerin birlikte veya birbirinin yerine kullanılmasındaki genel kurallar belirlenmiştir.
+Sağlık ve güvenlik işaretleri sadece bu Yönetmelikte belirlenen mesaj veya bilgiyi iletmek üzere kullanılacaktır.
+2. İşaret çeşitleri
+2.1. Sabit ve kalıcı işaretler
+2.1.1. Sabit ve kalıcı işaret levhaları; yasaklamalar, uyarılar ve yapılması zorunlu işler ile acil kaçış yollarının ve ilk yardım bölümlerinin yerlerinin belirtilmesi ve tanınması için kullanılacaktır.
+Yangınla mücadele ekipmanının bulunduğu yerler, işaret levhası ve kırmızı renkle kalıcı şekilde işaretlenecektir.
+2.1.2. Konteynır ve borular üzerindeki işaretler ek-3’te belirtildiği şekilde olacaktır.
+2.1.3. Engellere çarpma veya düşme riski olan yerler, işaret levhası ve güvenlik rengi ile kalıcı şekilde belirlenecektir.
+2.1.4. Trafik yolları güvenlik rengi ile kalıcı olarak işaretlenecektir.
+2.2. Geçici işaretler
+2.2.1. Gerekli hallerde ve aşağıda 3 üncü maddede belirtildiği şekilde işaretlerin birlikte ve birbirinin yerine kullanılma imkanı da dikkate alınarak; tehlike sinyali vermek, gerekli önlemlerin alınması için ilgili kişinin çağrılması ve çalışanların acil tahliyesi için ışıklı işaretler, sesli sinyaller ve/veya sözlü iletişim kullanılacaktır.
+2.2.2. Gerekli durumlarda, tehlikeye yol açabilecek ya da tehlikeli manevralar yapan kimseleri yönlendirmek için el işaretleri ve/veya sözlü iletişim kullanılacaktır.
+3. İşaretlerin birlikte ve birbirinin yerine kullanılması
+3.1. Aynı derecede etkili ise, aşağıdaki işaretlerden herhangi biri kullanılabilir:
+– Engel veya düşme tehlikesi olan yerlerde; işaret levhası veya güvenlik rengi
+– Işıklı işaret, sesli sinyal veya sözlü iletişim
+– El işaretleri veya sözlü iletişim
+3.2. Aşağıda belirtilen işaretler birlikte kullanılabilir.
+– Işıklı işaret ve sesli sinyal
+– Işıklı işaret ve sözlü iletişim
+– El işaretleri ve sözlü iletişim
+
+4. Aşağıdaki tabloda yer alan hususlar, güvenlik rengi kullanılan tüm işaretlere uygulanır.
+
+Renk	Anlamı veya Amacı	Talimat ve Bilgi
+Kırmızı	Yasak işareti	Tehlikeli hareket veya davranış
+Tehlike alarmı	Dur, kapat, düzeneği acil durdur, tahliye et
+Yangınla mücadele ekipmanı	Ekipmanların yerinin gösterilmesi ve tanımlanması
+Sarı	Uyarı işareti	Dikkatli ol, önlem al, kontrol et
+Mavi (1)	Zorunluluk işareti	Özel bir davranış ya da eylem
+Kişisel koruyucu donanım kullan
+Yeşil	Acil çıkış, ilk yardım işareti	Kapılar, çıkış yerleri ve yolları, ekipman, tesisler
+Tehlike yok	Normale dön
+
+(1) Mavi:
+
+(2) Parlak turuncu:	Sadece dairevi bir şekil içinde kullanıldığında emniyet rengi olarak kabul edilir.
+Emniyet işaretleri dışında sarı yerine kullanılabilir. Özellikle zayıf doğal görüş şartlarında floresan özellikli bu renk çok dikkat çekicidir.
+
+5. Güvenlik işaretinin işlevinin aşağıda belirtilenler tarafından olumsuz etkilenmemesi için :
+5.1. Görülmesini veya işitilmesini zorlaştıracak veya engelleyecek, aynı türden bir başka emisyon kaynağının bulunması önlenecek, özellikle;
+5.1.1. Çok sayıda işaret birbirine çok yakın bir şekilde yerleştirilmeyecektir.
+5.1.2. Karıştırılma ihtimali olan iki ışıklı işaret aynı anda kullanılmayacaktır.
+5.1.3. Işıklı bir işaret bir diğer ışıklı işaretin çok yakınında kullanılmayacaktır.
+5.1.4. Birden fazla sesli sinyal aynı anda kullanılmayacaktır.
+5.1.5. Çok fazla ortam gürültüsü olan yerlerde sesli sinyal kullanılmayacaktır.
+5.2. İşaretlerin ya da sinyal aygıtlarının; uygun tasarımı, yeterli sayıda olması, uygun bir şekilde yerleştirilmesi, bakım ve onarımının iyi yapılması ve doğru çalışması sağlanacaktır.
+6. İşaretler ve sinyal aygıtları imalindeki karakteristik özelliklerini ve/veya işlevsel niteliğini korumak için, düzenli aralıklarla temizlenecek, kontrol, bakım ve tamiri yapılacak ve gerektiğinde değiştirilecektir.
+7. İşaretlerin ve sinyal aygıtlarının sayısı ve yerleştirileceği yerler, tehlikenin büyüklüğüne ve bunların uygulanacağı alana göre belirlenecektir.
+8. Herhangi bir enerji ile çalışan işaretlerin, enerjinin kesilmesi ve tehlikenin başka bir şekilde önlenememesi durumunda, işaretlerin yedek enerji kaynağı ile derhal çalışması sağlanacaktır. Kullanılan enerji kaynakları, güvenlik koşullarına uygun nitelikte olacaktır.
+9. Işıklı işaret ve/veya sesli sinyallerin çalışmaya başlaması, yapılacak işin veya hareketin başlayacağını belirtir. Yapılan iş veya hareket süresince ışıklı işaret veya sesli sinyal çalışmasına devam edecektir. Işıklı işaret ve sesli sinyal kullanılıp durmasından hemen sonra tekrar çalışabilir olacaktır.
+10. Işıklı işaretler ve sesli sinyaller, doğru ve etkili çalışmalarını sağlamak için, kullanılmadan önce ve kullanım süresince yeterli sıklıktaki aralıklarla kontrol edilecektir.
+11. Kişisel koruyucu kullanımından kaynaklanan hususlar da dahil olmak üzere, çalışanların görme ve işitmelerine engel olacak herhangi bir husus var ise; ilgili işaretlerin güçlendirilmesi veya değiştirilmesi için gerekli önlemler alınacaktır.
+12. Önemli miktarda tehlikeli madde ya da preparat depolanan alanlarda, odalarda veya kapalı yerlerde bulunan her bir paket ya da kap üzerinde bulunan etiketlerin, bu yerlerde alınması gereken güvenlik önlemlerini ikaz için yeterli değilse, ek-2’nin 3.2 inci maddesi ve ek-3’ün 1 inci bölümünde belirtilenlere uygun olarak ikaz işareti bulundurulacak veya işaretlenecektir.
+
+Ek-2
+İŞARET LEVHALARIYLA İLGİLİ ASGARİ GEREKLER
+
+1. Temel nitelikler
+1.1. Kendi özel amaçlarına göre; yasaklama, uyarı, emir, kaçış yolu, acil durumlarda kullanılacak ya da yangınla mücadele amaçlı ekipmanı belirten ve benzeri işaret levhalarının biçim ve renkleri bölüm 3’te verilmiştir.
+1.2. Piktogramlar mümkün olduğunca yalın olacak ve sadece temel ayrıntıları içerecektir.
+1.3. Aynı anlamı veriyorsa ve yapılan değişiklik ya da düzenleme anlamını belirsiz hale getirmeyecekse, kullanılan piktogramlar bölüm 3’te belirtilenlerden biraz farklı ya da daha ayrıntılı olabilir.
+1.4. İşaret levhaları kullanıldıkları ortama uygun, darbeye ve hava koşullarına dayanıklı malzemeden yapılacaktır.
+1.5. İşaret levhalarının boyutları ile kolorimetrik ve fotometrik özellikleri, bunların kolayca görülebilir ve anlaşılabilir olmalarını sağlayacaktır.
+2. Kullanım koşulları
+2.1. İşaret levhaları özel bir tehlike olan yerlerin ve tehlikeli cisimlerin hemen yakınına, genel tehlike olan yerlerin girişine, engeller dikkate alınarak, görüş seviyesine uygun yükseklik ve konumda, iyi aydınlatılmış, erişimi kolay ve görünür bir şekilde yerleştirilecektir. İşyeri Bina ve Eklentilerinde Alınacak Sağlık ve Güvenlik Önlemlerine İlişkin Yönetmelik hükümleri saklı kalmak şartıyla, doğal ışığın zayıf olduğu yerlerde floresan renkler, reflektör malzeme veya yapay aydınlatma kullanılacaktır.
+2.2. İşaret levhasının gösterdiği durum ortadan kalktığında, işaret levhası da kaldırılacaktır.
+3. Kullanılacak işaret levhaları
+3.1. Yasaklayıcı işaretler
+Temel nitelikler
+- Daire biçiminde,
+- Beyaz zemin üzerine siyah piktogram, kırmızı çerçeve ve diyagonal çizgi (kırmızı kısımlar işaret alanının en az % 35’ini kapsayacaktır)
+Sigara İçilmez	Sigara içmek ve açık alev kullanmak yasaktır	Yaya giremez
+Suyla söndürmek yasaktır	İçilmez	Yetkisiz kimse giremez
+İş makinası giremez	Dokunma
+
+3.2. Uyarı işaretleri
+Temel nitelikler
+- Üçgen şeklinde
+- Sarı zemin üzerine siyah piktogram, siyah çerçeve (sarı kısımlar işaret alanının en az % 50’sini kapsayacaktır)
+Parlayıcı madde veya yüksek ısı	Patlayıcı madde	Toksik (Zehirli) madde
+Aşındırıcı madde	Radyoaktif madde	Asılı yük
+İş makinası	Elektrik tehlikesi	Tehlike
+Lazer ışını	Oksitleyici madde	İyonlaştırıcı olmayan radyasyon
+Kuvvetli manyetik alan	Engel	Düşme tehlikesi
+Biyolojik risk	Düşük sıcaklık	Zararlı veya tahriş edici madde
+
+3.3. Emredici işaretler
+Temel nitelikler
+- Daire biçiminde,
+- Mavi zemin üzerine beyaz piktogram (mavi kısımlar işaret alanının en az %50’sini kapsayacaktır)
+Gözlük kullan	Baret tak	Eldiven giy
+Maske kullan	İş ayakkabısı giy	Yaya yolunu kullan
+Koruyucu elbise giy	Yüz siperi kullan	Emniyet kemeri kullan
+Kulak koruyucu tak	Genel emredici işaret (gerektiğinde başka işaretle birlikte kullanılacaktır)
+
+3.4. Acil çıkış ve ilkyardım işaretleri
+Temel nitelikler
+- Dikdörtgen veya kare biçiminde,
+- Yeşil zemin üzerine beyaz piktogram (yeşil kısımlar işaret alanının en az %50’sini kapsayacaktır)
+
+Acil çıkış ve kaçış yolu
+Yönler (Yardımcı bilgi işareti)
+İlk Yardım	Sedye	Güvenlik duşu
+Göz duşu	Acil yardım ve ilk yardım telefonu
+
+3.5. Yangınla mücadele işaretleri
+Temel nitelikler
+- Dikdörtgen veya kare biçiminde,
+- Kırmızı zemin üzerine beyaz piktogram (kırmızı kısımlar işaret alanının en az % 50’sini kapsayacaktır)
+
+Yangın Hortumu	Yangın Merdiveni	Yangın Söndürme Cihazı	Acil Yangın Telefonu
+Yönler (Yardımcı bilgi işareti)
+
+Ek- 3
+BORU VE KAPLAR ÜZERİNDEKİ İŞARETLER İLE İLGİLİ ASGARİ GEREKLER
+
+İçinde tehlikeli madde veya preparatların bulunduğu veya depolandığı kaplar ile bunları ihtiva eden veya taşıyan, görünür borular; meri mevzuata uygun olarak, renkli zemin üzerinde piktogram veya sembol bulunan etiket ile işaretlenir.
+Söz konusu etiketler;
+- Aynı piktogram veya semboller kullanılarak, ek-2’de verilen uyarı işaretleri ile değiştirilebilir.
+- Tehlikeli madde veya preparatın adı ve/veya formülü ve tehlikesi hakkında ek bilgileri de içerebilir.
+2. İçinde tehlikeli madde veya preparatların bulunduğu borular, vanalar, supaplar ve bunlarla ilgili parçalar, taşındıkları maddelere göre ayrı renklerde boyanır ve kolay görülebilen yerlere belirti işaretler konulur ve kollu veya saplı vana ve muslukların üzerinde, bunların açık veya kapalı olduklarını gösteren işaret veya tertibat bulundurulur.
+3. İşaretler; katlanmaz, kendinden yapışkanlı ya da boyama biçiminde yapılır ve görünür yüzeylere yerleştirilir.
+4. Bu Ek’in 1 inci bölümünde belirtilen işaretler, ek-2, bölüm 1.4’te belirtilen temel nitelikleri ve ek-2, bölüm 2’de yer alan işaret levhalarının kullanımıyla ilgili şartları sağlar.
+5. Borular üzerinde kullanılan işaretler, 1, 2, 3 ve 4 üncü bölümlerde belirtilen hususlar ile birlikte, vanalar ve bağlantı yerleri gibi tehlikeli noktaların yakınına görünür şekilde ve uygun aralıklarla konulur.
+6. Önemli miktarlarda tehlikeli madde veya preparat içeren paketler veya konteynerler ek-2, Bölüm 1.5’de belirtilen şartlara göre etiketlenmemiş ise, bunların depolandığı alanlar, odalar veya kapalı yerler, ek-2, bölüm 3.2’de yer alan uygun ikaz işareti ile belirtilir veya ek-3, bölüm 1’de belirtilen şekilde işaretlenir.
+7. Değişik tehlikeli madde ya da preparatın depolandığı yerlerde, genel tehlikeyi belirten uyarı işareti kullanılabilir.
+8. Bu işaret veya etiketler depolama bölgesinin yakınına ya da depo için kullanılan odanın giriş kapısına yerleştirilir.
+
+Ek- 4
+YANGINLA MÜCADELE İŞARETLERİ İLE İLGİLİ ASGARİ GEREKLER
+Genel hususlar
+1. Bu Ek yangınla mücadele amacıyla kullanılan ekipmana uygulanır.
+2. Yangınla mücadele ekipmanı özel bir renk ile belirtilir ve yerini bildiren bir işaret levhası yerleştirilir ve/veya bu gibi ekipmanın saklandığı yer ya da erişim noktaları için özel bir renk kullanılır.
+3. Bu tür ekipmanı belirlemede kırmızı renk kullanılır. Kırmızı alan, ekipmanın kolayca tanınabilmesi için yeterince geniş olması sağlanır.
+4. Bu tür ekipmanın bulunduğu yeri işaretlemek için ek-2, bölüm 3.5’te verilen işaret levhaları kullanılır.
+
+Ek- 5
+ENGELLER, TEHLİKELİ YERLER VE TRAFİK YOLLARINI BELİRLEMEK İÇİN KULLANILAN İŞARETLER İLE İLGİLİ ASGARİ GEREKLER
+
+1. Engeller ve tehlikeli yerlerde kullanılan işaretler
+1.1. Engellere çarpma, düşme ya da nesnelerin düşme tehlikesinin bulunduğu yerler ile işletme tesisleri içinde çalışanların çalışmaları esnasında dolaştıkları bölgeler, birbirini takip eden sarı ve siyah ya da kırmızı ve beyaz renk şeritleriyle işaretlenir.
+1.2. İşaretlerin boyutu, engelin ya da tehlikeli bölgenin büyüklüğü ile orantılı olur.
+1.3. Sarı–siyah ya da kırmızı–beyaz şeritler yaklaşık olarak 45 derece açıyla ve aynı büyüklükte boyanır.
+1.4. Örnek:
+
+2. Trafik yollarının işaretlenmesi
+2.1. Çalışma yerlerinin kullanım biçimi ve ekipmanlar, çalışanların korunmasını gerektiriyorsa; araç trafiğine açık yollar, zemin rengi de dikkate alınarak, açıkça seçilebilir şekilde, sarı ya da beyaz renkli sürekli şeritlerle belirtilir.
+2.2. Şeritler; araçlar ile araçlara yakın bulunabilecek nesneler arasında ve araçlarla yayalar arasında, emniyetli bir mesafeyi belirtecek şekilde çizilir.
+2.3. Tesislerin açık alanlarındaki sürekli trafiğin olduğu yollar, uygun bariyerler ve kaldırımlar yoksa, uygulanabilir olduğu ölçüde, yukarıda belirtildiği şekilde işaretlenir.
+
+Ek- 6
+IŞIKLI İŞARETLER İÇİN ASGARİ KURALLAR
+1. Temel Nitelikler
+1.1. Işıklı işaretlerin, kullanım amacına ve şartlarına uygun olarak, bulunduğu ortama göre iyi görünür ve seçilir olması, aşırı ışık nedeniyle parlamaması veya yetersiz ışık nedeniyle görünürlüğünün azalmaması sağlanır.
+1.2. Işıklı işaretlerin sinyal gönderen ışıklı alanı, tek renk ya da belirli bir zemin üzerinde piktogramdan oluşur.
+1.3. Kullanılacak tek renk ek-1, bölüm 4’te yer alan renk tablosuna uygun seçilir.
+1.4. İşaret bir piktogram içeriyorsa, bu piktogram ek-2’de belirtilen ilgili kuralların hepsine uygun olması sağlanır.
+2. Özel kullanım kuralları
+2.1. Bir aygıt hem sürekli hem de aralıklı işaretler gönderiyorsa, aralıklı gönderilen işaret sürekli işaretin belirttiğinden daha fazla tehlikeli bir durumu ya da daha acil olarak yapılması istenen/emredilen müdahale ya da eylemi ifade eder. Aralıklı gönderilen ışıklı işaret için, ışığın yanık kalma süresi ve yanıp sönme sıklığı,
+- mesajın tam olarak anlaşılmasını sağlar
+- diğer ışıklı işaretlerle veya sürekli yanan ışıklı işaretlerle karışmaz.
+2.2. Yanıp sönen ışıklı işaret, sesli sinyal yerine ya da sesli sinyalle birlikte kullanılıyorsa, aynı kodlama kullanılacaktır.
+2.3. Ciddi bir tehlikeyi bildiren yanıp sönen ışıklı işaretler, özel olarak gözlem altında tutulacak ve yedek bir lamba bulundurulacaktır.
+
+Ek- 7
+SESLİ SİNYALLER İÇİN ASGARİ KURALLAR
+
+1. Temel Nitelikler
+1.1. Sesli sinyaller;
+(a) ortam gürültüsünden hayli yüksek, ancak aşırı derecede yüksek ve zarar verici olmayacak şekilde duyulabilir bir ses düzeyinde olacak ve
+(b) teknik özellikleri itibariyle kolaylıkla tanınabilir, diğer sesli sinyaller ile ortamdaki seslerden açıkça ayırt edilebilir olacaktır.
+1.2. Eğer bir aygıt sabit ve değişken frekansta sesli sinyal yayıyorsa; aygıtın yaydığı değişken frekanslı sinyal, sabit frekanslı sinyale göre daha tehlikeli bir durumu veya daha acil olarak yapılması istenen/emredilen müdahale ya da eylemi ifade eder.
+2. Kodlama
+Tahliye işaretleri sürekli olacaktır.
+
+Ek- 8
+SÖZLÜ İLETİŞİM İÇİN ASGARİ KURALLAR
+1. Temel Nitelikler
+1.1. Bir veya birden fazla kişiler arasında yapılan sözlü iletişimde; belirli bir formda veya kodlanmış haldeki kısa metinler, cümleler, kelime veya kelime grupları kullanılacaktır.
+1.2. Sözlü mesajlar mümkün olduğunca kısa, yalın ve açık olmalıdır. Konuşanın konuşma becerisi ve dinleyenin duyma yeteneği güvenilir bir sözlü iletişime uygun olacaktır.
+1.3. Sözlü iletişim doğrudan insan sesi veya uygun bir vasıtayla yayınlanan insan sesi ya da yapay insan sesi ile olacaktır.
+2. Özel kullanım kuralları
+2.1. Sözlü iletişimde yer alan kişiler, sağlık ve güvenlik açısından istenilen davranışı yapabilmeleri için sözlü mesajı doğru telaffuz edebilecek ve anlayabilecek seviyede kullanılan dili bileceklerdir.
+2.2. Sözlü iletişim, el–kol hareketleri yerine ya da onlarla birlikte kullanıldığında aşağıda verilen komutlar kullanılacaktır.
+– başlat: bir işlem veya hareketi başlatmak için
+– dur: bir hareketi durdurmak veya sona erdirmek için
+– tamam: bir işlemi sona erdirmek için
+– yukarı: bir yükü yukarı kaldırmak için
+– aşağı: bir yükü aşağı indirmek için
+– ileri – geri – sağ – sol: (Bu komutlar uygun el hareketleri ile eşgüdümlü olacak şekilde kullanılacaktır.)
+– kes: acil olarak durdurmak için
+– çabuk: güvenlik nedeniyle bir hareketi hızlandırmak için
+
+Ek- 9
+
+EL İŞARETLERİ İÇİN ASGARİ GEREKLER
+1. Özellikler
+El işaretleri kesin, yalın, yapılması ve anlaşılması kolay olacak ve benzer işaretlerden belirgin bir şekilde farklı olacaktır.
+Aynı anda iki kol birden kullanılıyorsa, bunlar simetrik olarak hareket ettirilecek ve bir harekette sadece bir işaret verilecektir.
+Yukarıdaki şartlara uymak, aynı anlamı vermek ve anlaşılabilir olmak kaydıyla 3 üncü bölümde gösterilen işaretlerden biraz farklı veya daha detaylı işaretler kullanılabilir.
+
+2. Özel kullanım kuralları
+2.1. İşaretçi: El–kol hareketleri ile İşaretleri veren kişi,
+Operatör: İşaretçinin talimatları ile hareket eden kişi
+İşaretçi, operatöre manevra talimatlarını vermek için el–kol hareketleri kullanacaktır.
+2.2. İşaretçi, kendisi tehlikeye düşmeyecek şekilde, bulunduğu yerden bütün manevraları görsel olarak izleyebilmelidir.
+2.3. İşaretçinin esas görevi; manevraları yönlendirmek ve manevra alanındaki çalışanların güvenliğini sağlamaktır.
+2.4. Yukarıda, 2.2’deki şart yerine getirilemiyorsa ek olarak bir veya daha fazla işaretçi konuşlandırılacaktır.
+2.5. Operatör, almış olduğu emirleri güvenlik içerisinde yerine getiremeyeceği durumlarda yürütmekte olduğu manevrayı durdurarak yeni talimat isteyecektir.
+2.6. Yardımcı unsurlar:
+- Operatör, işaretçiyi kolaylıkla fark edebilmelidir.
+- İşaretçi, ceket, baret, kolluk veya kol bandı gibi ayırt edici eşyalardan bir veya daha fazlasını giyecek ya da uygun bir işaret aracı taşıyacaktır.
+- Ayırt edici eşyalar; parlak renkli, tercihen hepsi aynı renkte ve sadece işaretçilere özel olacaktır.
+3. Kodlanmış işaretler.
+Genel hususlar
+Aşağıda verilen kodlanmış işaretler, belirli sektörlerde aynı manevralar için kullanılacaktır.
+A. Genel İşaretler
+Anlamı	Tarifi	Şekil
+
+BAŞLAT
+Hazır ol
+Başlama komutu	Avuç içleri öne bakacak şekilde her iki kol yere paralel
+
+DUR
+Kesinti / ara
+Hareketi durdur	Avuç içi öne bakacak şekilde sağ kol yukarı kalkık
+
+TAMAM
+İşlemin sonu	Her iki kol göğüs hizasında eller kenetli
+
+B. Dikey hareketler
+Anlamı	Tarifi	Şekil
+KALDIR	Sağ kol avuç içi öne bakacak şekilde yukarı kalkıkken yavaşça daire çizer
+İNDİR	Sağ kol avuç içi içeri bakacak şekilde yere doğru indirilmişken yavaşça daire çizer
+DÜŞEY MESAFE	Mesafe her iki elin arasındaki boşlukla ifade edilir
+
+C. Yatay Hareketler
+Anlamı	Tarifi	Şekil
+İLERİ	Her iki kol avuç içleri yukarı bakacak şekilde bel hizasında bükülüyken kollar dirsekten kırılarak yukarı hareket eder
+GERİ	Her iki kol avuç içleri aşağı bakacak şekilde göğüs önünde bükülüyken kollar dirsekten kırılarak yavaşça gövdeden uzaklaşır
+
+SAĞ
+İşaretçinin sağı*	Sağ kol avuç içi yere bakacak şekilde yere paralel sağa uzatılmışken sağa doğru yavaşça küçük hareketler
+
+SOL
+İşaretçinin solu*	Sol kol avuç içi yere bakacak şekilde yere paralel sola uzatılmışken sola doğru yavaşça küçük hareketler
+YATAY MESAFE	Eller arasındaki boşluk mesafeyi ifade eder
+
+D. Tehlike
+
+Anlamı	Tarifi	Şekil
+
+KES
+Acil dur.	Avuç içleri öne bakacak şekilde her iki kol yukarı kalkık
+HIZLI	Bütün hareketler daha hızlı
+YAVAŞ	Bütün hareketler daha yavaş
+
+Ek- 10
+KALDIRMA ARAÇLARIYLA YAPILAN İŞLEMLERDE SAĞLIK VE GÜVENLİK İŞARETLERİ İLE İLGİLİ ASGARİ GEREKLİLİKLER
+Kaldırma makinalarında yüklerin kaldırılmaları, indirilmeleri veya taşınmaları, yetiştirilmiş işaretçiler tarafından verilecek el ve kol işaretlerine göre yapılır.
+Bir kaldırma makinasında birden çok çalışanın görevli bulunduğu hallerde, kaldırma makinası operatörü, işaretçi veya diğer görevlilerden yalnız birinden işaret alacak ve işaretçi, operatör tarafından kolayca görülebilecek yerlerde duracaktır. Operatör, her kim tarafından verilirse verilsin, her dur işaretini daima yerine getirecektir.
+Kaldırma araçlarının veya kaldırılan yükün hareketi esnasında çalışanları uyarmak için operatör, sesi açıkça işitilebilen zil, ışıklı işaret ve benzerleriyle işaret verir ve bunlar hareket halinde devamlı olarak çalışır.
+Araçlarda onarım yapılıyorsa, araçların üzerine ve uygun yerlere, onarım yapıldığına dair uyarma levhaları konulur.
+Kaldırma Araçlarının kaldıracakları en ağır yükler, kabinlerin içinde veya dışında bilgilendirme işareti olarak belirtilir ve kaldırılabilecek en ağır yükten fazlası kaldırıldığında, durumu bildiren sesli ve ışıklı otomatik bir uyarma tertibatı bulundurulur.
+Kaldırma araçlarında kullanılan zil sesleri, ışıklı işaretler işyerindeki diğer sinyal seslerinden ve ışıklı işaretlerden farklı, diğer makinaların meydana getirdiği gürültüleri bastıracak kadar kuvvetli, kolayca fark edilebilen olmalı ve aynı işyerinde çalışan tüm kaldırma araçları için aynı olmalıdır.
+Ağır parçaların ekip halinde kaldırıldığı veya taşındığı hallerde, önceden belirtilen kodlanmış hareket ve işaretler kullanılır.

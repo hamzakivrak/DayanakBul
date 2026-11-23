@@ -1,0 +1,583 @@
+EK–I
+
+BİYOLOJİK ETKENLERE MARUZİYETİN OLABİLECEĞİ BAZI İŞLER LİSTESİ
+
+Gıda üretilen fabrikalarda çalışma.
+Tarımda çalışma.
+Hayvanlarla ve/veya hayvan kaynaklı ürünlerle çalışma.
+Sağlık hizmetlerinin verildiği yerlerde, karantina dahil morglarda çalışma.
+Mikrobiyolojik teşhis laboratuvarları dışındaki klinik, veterinerlik ve teşhis laboratuvarlarındaki çalışma.
+Atıkları yok eden fabrikalarda çalışma.
+Kanalizasyon, arıtma tesislerindeki çalışma.
+
+EK–II
+
+BİYOLOJİK TEHLİKE İŞARETİ
+
+( Sarı zemin üzerine siyah sembol)
+
+BİYOLOJİK RİSK
+
+EK–III
+
+SINIFLANDIRILMIŞ BİYOLOJİK ETKENLER LİSTESİ
+
+Açıklamalar
+
+1– Bu Yönetmeliğin kapsamına uygun olarak, sınıflandırma listesine yalnızca insanı enfekte ettiği bilinen etkenler dâhil edilmiştir.
+Gerekli yerlerde, bu etkenlerin toksik ve alerji yapma potansiyelleri belirtilmiştir.
+İnsanı etkilemediği bilinen hayvan ve bitki patojenleri çıkarılmıştır.
+Sınıflandırılmış biyolojik etkenler listesine, genetik olarak yapısı değiştirilmiş mikroorganizmalar dâhil edilmemiştir.
+2– Sınıflandırılmış etkenler listesi sağlıklı çalışanlarda o etkenlerin yaptıkları etkilere dayandırılmıştır.
+Önceden var olan bir hastalık, ilaç kullanımı, kazanılmış bağışıklık, gebelik veya emzirme gibi bir nedenle ya da başka bir nedenden dolayı bir kişinin duyarlılığının etkilenebileceği özel durumlardaki etkiler dikkate alınmamıştır.
+Bu tür çalışanlardaki ek riskler bu Yönetmelikte öngörülen risk değerlendirmesi kapsamında ele alınacaktır.
+Grup 3 veya Grup 4 de yer alan biyolojik etkenlere maruz kalınan veya maruz kalınabilecek bazı sanayi proseslerinde, laboratuvar çalışmalarında veya hayvanlarla yapılan çalışmalarda bu Yönetmeliğin 17 nci maddesine uygun teknik önlemler alınacaktır.
+3 – Herhangi bir biyolojik etkenin Grup 2, Grup 3 veya Grup 4 de sınıflandırılmamış olması ve listede yer almaması, bu biyolojik etkenin Grup 1 de yer aldığı anlamına gelmez.
+Listede, birden çok türünün insanda patojen olduğu bilinen etkenlerin hastalıklara en fazla neden olduğu bilinen türleri yer alacak ayrıca, aynı cinsin diğer türlerinin de sağlığı etkileyebileceğini gösteren daha genel bir bilgi bulunacaktır.
+Sınıflandırılmış biyolojik etkenler listesinde yer alan bir cinsin patojen olmadığı bilinen türleri ve tipleri (strains) listeye alınmamıştır.
+4– Bir suş (strain) zayıflatıldığında ya da bilinen virülans genlerini yitirdiğinde, ait olduğu ve işyerindeki uygun risk değerlendirmesine bağlı ana suşun sınıflandırılması için gerek görülen korumanın mutlak olarak uygulanması gerekli değildir.
+Örneğin, böyle bir suş, koruyucu veya tedavi edici amaçlar için bir ürün veya bu ürünün bir parçası olarak kullanıldığı durumlarda.
+5– Bu listeyi oluşturmak için kullanılan sınıflandırılmış etkenlerin nomenklatürü (bilimsel adlandırması) bu listenin hazırlandığı tarihteki etkenlerin taksonomisi (hayvan veya bitkilerin tasnifi) ve nomenklatürü ile ilgili uluslararası anlaşmalara uygundur.
+6– Sınıflandırılmış biyolojik etkenler listesi, oluşturulduğundaki bilgileri yansıtır ve en güncel bilgiyi yansıtacak şekilde güncellenir.
+7- İnsanda yeni izole edilen ve henüz değerlendirilmemiş olan ve bu ekte yer almayan bütün virüslerin hastalığa neden olmadığı kanıtlanmadıkça en az Grup 2’de sınıflandırılmış sayılacaktır.
+8– Grup 3 de sınıflandırılan ve karşılarında (**) işareti bulunan biyolojik etkenler, genel olarak hava yolu ile bulaşıcı olmadıklarından çalışanlar için sınırlı enfeksiyon riski taşırlar.
+9– İşyerinde, parazitlerin sınıflandırılması sonucuna göre belirlenen koruma düzeyine uygun gerekler, sadece insanda enfeksiyona neden olabilecek parazitin yaşam döngüsünün evrelerine uygulanır.
+10– Bu listede ayrıca biyolojik etkenin alerjik veya toksik reaksiyonlara sebep olma ihtimalinin bulunduğunu, etkili aşısının olduğunu veya maruz kalan çalışanların isim listesinin 15 yıldan daha fazla tutulmasının tavsiye edildiği de gösterilmiştir.
+
+Bu göstergeler aşağıdaki harflerle ifade edilir.
+A: Olası alerjik etkileri olan.
+D: Bu biyolojik etkene maruz kalan çalışanların listesinin bilinen son maruziyetten sonra 15 yıldan daha fazla saklanması gereken.
+T: Toksin üretimi olan.
+V: Etkili aşısı bulunan.
+Koruyucu aşılamanın uygulanması Ek–VII’de verilen kılavuza göre yürütülecektir.
+
+BAKTERİLER VE BENZER ORGANİZMALAR
+
+Listede görülen biyolojik etkenler için “spp.” ifadesi, insanda patojen olduğu bilinen diğer türleri belirtir.
+
+Biyolojik Etken Sınıflandırma Notlar
+Actinobacillus actinomycetemcomitans 2
+Actinomadura madurae 2
+Actinomadura pelletieri 2
+Actinomyces gerencseriae 2
+Actinomyces israelii 2
+Actinomyces pyogenes 2
+Actinomyces spp. 2
+Arcanobacterium haemolyticum (corynebacterium
+haemolyticum) 2
+Bacillus anthracis 3
+Bacteroides fragilis 2
+Bartonella bacilliformis 2
+Bartonella quintana (Rochalimea quintana) 2
+Bartonella (Rochalimea) spp. 2
+Bordetella bronchiseptica 2
+Bordetella parapertussis 2
+Bordetella pertussis 2 V
+Borrelia burgdorferi 2
+Borrelia duttonii 2
+Borrelia recurrentis 2
+Borrelia spp. 2
+Brucella abortus 3
+Brucella canis 3
+Brucella melitensis 3
+Brucella suis 3
+Burkholderia mallei (Pseudomonas mallei) 3
+Burkholderia pseudomallei(Pseudomonas pseudomallei) 3
+Campylabacter fetus 2
+Campylabacter jejuni 2
+Campylabacter spp. 2
+Cardiobacterium hominis 2
+Chlamydia pneumoniae 2
+Chlamydia trachomatis 2
+Chlamydia psittaci (avian suşları) 3
+Chlamydia psittaci (diğer suşları) 2
+Clostridium botulinum 2 T
+Clostridium perfringens 2
+Clostridium tetani 2 T, V
+Clostridium spp. 2
+Corynebacterium diphteriae 2 T, V
+Corynebacterium minutissimum 2
+Corynebacterium pseudotuberculosis 2
+Corynebacterium spp. 2
+Coxiella burnetii 3
+Edwardsiella tarda 2
+Ehrlichia sennetsu (Rickettsia sennetsu) 2
+Ehrlichia spp. 2
+Eikenella corrodens 2
+Enterobacter aerogenes/cloacae 2
+Enterobacter spp. 2
+Enterococcus spp. 2
+Erysipelothrix rhusiopathiae 2
+Escherichia coli (patojen olmayan suşları dışındakiler) 2
+Escherichia coli, verocytotoxigenic suşları
+(örn. O157: H7 veya O103) 3 (**) T
+Flavobacterium meningosepticum 2
+Fluoribacter bozemanae (Legionella) 2
+Francisella tularensis (Tip A) 3
+Francisella tularensis (Tip B) 2
+Fusobacterium necrophorum 2
+Gardnerella vaginalis 2
+Haemophilus ducreyi 2
+Haemophilus influenzae 2
+Haemophilus spp. 2
+Helicobacter pylori 2
+Klebsiella oxytoca 2
+Klebsiella pneumoniae 2
+Klebsiella spp. 2
+Legionella pneumophila 2
+Legionella spp. 2
+Leptospira interrogans (bütün serovarları) 2
+Listeria monocytogenes 2
+Listeria ivanovii 2
+Morganella morganii 2
+Mycobacterium africanum 3 V
+Mycobacterium avium / intracellulare 2
+Mycobacterium bovis (BCG suşu hariç) 3 V
+Mycobacterium chelonae 2
+Mycobacterium fortuitum 2
+Mycobacterium kansasii 2
+Mycobacterium leprae 3
+Mycobacterium malmoense 2
+Mycobacterium marinum 2
+Mycobacterium microti 3 (**)
+Mycobacterium paratuberculosis 2
+Mycobacterium scrofulaceum 2
+Mycobacterium simiae 2
+Mycobacterium szulgai 2
+Mycobacterium tuberculosis 3 V
+Mycobacterium ulcerans 3 (**)
+Mycobacterium xenopi 2
+Mycobacterium caviae 2
+Mycoplasma hominis 2
+Mycoplasma pneumoniae 2
+Neisseria gonorrhoeae 2
+Neisseria meningitidis 2 V
+Nocardia asteroides 2
+Nocardia brasiliensis 2
+Nocardia farcinica 2
+Nocardia nova 2
+Nocardia otitidiscaviarum 2
+Pasteurella multocida 2
+Pasteurella spp. 2
+Peptostreptococcus anaerobius 2
+Plesiomonas shigelloides 2
+Porphyromonas spp. 2
+Prevotella spp. 2
+Proteus mirabilis 2
+Proteus penneri 2
+Proteus vulgaris 2
+Providencia alcalifaciens 2
+Providencia rettgeri 2
+Providencia spp. 2
+Pseudomonas aeruginosa 2
+Rhodococcus equi 2
+Rickettsia akari 3 (**)
+Rickettsia canada 3 (**)
+Rickettsia conorii 3
+Rickettsia montana 3 (**)
+Rickettsia typhi (Rickettsia mooseri) 3
+Rickettsia prowazekii 3
+Rickettsia rickettsii 3
+Rickettsia tsutsugamushi 3
+Rickettsia spp. 2
+Bartonella quintana (Rochalimaea quintana) 2
+Salmonella Arizonae 2
+Salmonella Enteritidis 2
+Salmonella Typhimurium 2
+Salmonella Paratyphi A,B,C 2 V
+Salmonella Typhi 3 (**) V
+Salmonella (diğer serovarları) 2
+Serpulina spp. 2
+Shigella boydii 2
+Shigella dysenteriae (Tip 1) 3 (**) T
+Shigella dysenteriae (Tip 1 den farklı diğerleri) 2
+Shigella flexneri 2
+Shigella sonnei 2
+Staphylococcus aureus 2
+Streptobacillus moniliformis 2
+Streptococcus pneumoniae 2
+Streptococcus pyogenes 2
+Streptococcus suis 2
+Streptococcus spp. 2
+Treponema carateum 2
+Treponema pallidum 2
+Treponema pertenue 2
+Treponema spp. 2
+Vibrio cholerae (El Tor dahil) 2
+Vibrio parahaemolyticus 2
+Vibrio spp. 2
+Yersinia enterocolitica 2
+Yersinia pestis 3 V
+Yersinia pseudotuberculosis 2
+Yersinia spp. 2
+(**) Bkz. Açıklamalar (8 )
+VİRÜSLER (*)
+
+Biyolojik Etken Sınıflandırma Notlar
+Adenoviridae 2
+Arenaviridae
+LCM–Lassa–Virüs complex (old world arena virüsleri):
+Lassa virüsü 4
+Lymphocytic (suşları) 3
+Lymphocytic choriomeningitis
+virüsü(diğer suşları) 2
+Mopeia virüsü 2
+Diğer LCM–Lassa complex virüsleri 2
+Tacaribe –Virus– Complex (new world arena virüsleri):
+Guanarito virüsü 4
+Junin virüsü 4
+Sabia virüsü 4
+Machupo virüsü 4
+Flexal virüsü 3
+Diğer Tacaribe complex virüsleri 2
+Astroviridae 2
+Bunyaviridae
+Belgrade (Dobrava olarak da bilinir) 3
+Bhanja 2
+Bunyamwera virüsü 2
+Germiston 2
+Oropouche virüsü 3
+Sin Nombre (Muerto Canyon) 3
+California encephalitis virüsü 2
+Hantavirüsleri :
+Hantaan (Korean haemorrhagic fever) 3
+Seoul virüsü 3
+Puumala virüsü 2
+Prospect Hill virüsü 2
+Diğer hantavirüsleri 2
+Nairovirüsleri :
+Crimean–Congo haemorrhagic fever 4
+Hazara virüsü 2
+Phlebovirüsleri :
+Rift Valley fever 3 V
+Sandfly fever 2
+Toscana virüsü 2
+Patojenik olduğu bilinen diğer bunyaviridaeler 2
+Calciviridae
+Hepatitis E virüsü 3 (**)
+Norwalk virüsü 2
+Diğer calciviridae 2
+Coronaviridae 2
+Filoviridae
+Ebola virüsü 4
+Marburg virüsü 4
+Flaviviridae
+Australia encephalitis (Murray Valley encephalitis) 3
+Central European tick–borne encephalitis virüsü 3 (**) V
+Absettarov 3
+Hanzalova 3
+Hypr 3
+Kumlinge 3
+Dengue virüsü Tip 1–4 3
+Hepatitis C virüsü 3 (**) D
+Hepatitis G 3 (**) D
+Japanese B encephalitis 3 V
+Kyasanur Forest 3 V
+Louping ill 3 (**)
+Omsk (a) 3 V
+Powassan 3
+Rocio 3
+Russian spring–summer encephalitis (TBE)(a) 3 V
+St Louis encephalitis 3
+Wesselsbron virüsü 3(**)
+West Nile fever virüsü 3
+Yellow fever 3 V
+Patojenik olduğu bilinen diğer flavi virüsleri 2
+Hepadnaviridae
+Hepatitis B virüsü 3 (**) V, D
+Hepatitis D virüsü (Delta) (b) 3 (**) V, D
+Herpesviridae
+Cytomegalo virüsü 2
+Epstein–Barr virüsü 2
+Herpesvirus simiae (B virüsü) 3
+Herpes simplex virüsü Tip 1 ve 2 2
+Herpesvirus varicella–zoster 2
+Human B–lymphotropic virüsü (HBLV–HHV6) 2
+Human herpes virüsü 7 2
+Human herpes virüsü 8 2 D
+Orthomyxoviridae
+İnfluenza virüsleri Tip A, B ve C 2 V (c)
+Tick–borne ortomyxovrirdae: Dhori ve Thogoto virusu 2
+Papovaviridae
+BK ve JC virüsleri 2 D (d)
+Human papillomavirüsleri 2 D (d)
+Paramyxoviridae
+Measles virüsü 2 V
+Mumps virüsü 2 V
+Newcastel disease virüsü 2
+Parainfluenza virüsleri Tip 1 – 4 2
+Respiratory syncytial virüsü 2
+Parvoviridae
+Human parvovirüsü (B 19) 2
+Picornaviridae
+Acute haemorrhagic conjunctivitis virüsü (AHC) 2
+Coxsackie virüsleri 2
+Echo virüsleri 2
+Hepatitis A virüsü (insan entero virüsü Tip 72) 2 V
+Poliovirüsleri 2 V
+Rhinovirüsleri 2
+Poxviridae
+Buffalopox virüsü (e) 2
+Cowpox virüsü 2
+Elephantpox virüsü (f) 2
+Milkers node virüsü 2
+Molluscum contagiosum virüsü 2
+Monkeypox virüsü 3 V
+Orf virüsü 2
+Rabbitpox virüsü (g) 2
+Vaccinia virüsü 2
+Variola (major minor) virüsü 4 V
+Whitepox virüsü (“Variola virüsü”) 4 V
+Yatapox virüsü (Tana & Yaba) 2
+Reoviridae
+Coltivirüsü 2
+Human rotavirüsleri 2
+Orbivirüsleri 2
+Reovirüsleri 2
+Retroviridae
+Human immunodeficiency virüsleri 3(**) D
+Human T-cell lymphotropic virüsleri(HTLV),
+Tip1ve 2 3(**) D
+SIV virüsü (h) 3(**)
+Rhabdoviridae
+Rabies virüsü 3(**) V
+Visicular stomatitis virüsü 2
+Togaviridae
+Alfavirüsleri :
+Eastern equine encephalomyelitis 3 V
+Bebaru virüsü 2
+Chikungunya virüsü 3(**)
+Everglades virüsü 3(**)
+Mayaro virüsü 3
+Mucambo virüsü 3 (**)
+Ndumu virüsü 3
+O’nyong–nyong virüsü 2
+Ross River virüsü 2
+Semliki forest virüsü 2
+Sindbis virüsü 2
+Tonate virüsü 3(**)
+Venezuelan equine encephalomyelitis 3 V
+Western equine encephalomyelitis 3 V
+Bilinen diğer alpha virüsleri 2
+Rubivirüsü (rubella) 2 V
+Toroviridae 2
+Sınıflandırılmamış virüsler
+Equine morbillivirüsü 4
+Henüz tanımlanmamış Hepatitis virüsleri 3 (**) D
+Bulaşabilir spongiform ansefalopatiler (TSEs)
+ile birlikte nadiren görülen etkenler
+Creutzfeldt– Jakob hastalığı 3 (**) D (d)
+Variant Creutzfeldt– Jakob hastalığı 3 (**) D (d)
+Bovine spongiform ansefalopatiler (BSE) ve
+ilgili diğer hayvan TSE leri (i) 3 (**) D (d)
+Gertsmann– Straussler–Scheinker sendromu 3 (**) D (d)
+Kuru 3 (**) D (d)
+(*) Bkz. Açıklamalar (7)
+(**) Bkz. Açıklamalar (8)
+Tick–borne encephalitis.
+Hepatit D virüsü yalnızca hepatit B virüsü ile aynı anda veya ikincil olarak enfekte olmuş çalışanlarda patojendir.
+Bunun için, Hepatit B aşısı yalnızca Hepatit B virüsünden etkilenmemiş çalışanları Hepatit D virüsüne (Delta) karşı koruyacaktır.
+Yalnızca (A) ve (B) Tipleri için
+Bu etkenlerle doğrudan temas olan işler için önerilir.
+İki virüs tanımlanmıştır: birisi, Buffalopox tipi, diğeri de Vaccinia virüsünün bir türüdür.
+Cowpox virüsünün türüdür.
+Vaccinianın bir türüdür.
+Bugün için, simian kökenli diğer retrovirüslerin insanda hastalık yaptığı hakkında bir kanıt yoktur. Bu virüslerle çalışılırken, önlem olarak, üçüncü düzey korunma önerilir.
+Diğer hayvan TSE lerine yol açan etkenlerin insanda enfeksiyona yol açtığı hakkında kanıt yoktur. Bununla birlikte 3. risk grubunda (**) yer alan etkenler için alınacak önlemler, laboratuvar çalışmaları için de tavsiye edilen önlemlerdir. İkinci düzey korunmanın yeterli olduğu scrapie etkeninin tanımlanması ilgili laboratuvarlar bunun dışındadır.
+
+PARAZİTLER
+
+Biyolojik Etkenler Sınıflandırma Notlar
+Acanthamoeba castellani 2
+Ancylostoma duodenale 2
+Angiostrongylus cantonensis 2
+Angiostrongylus costaricensis 2
+Ascaris lumbricoides 2 A
+Ascaris suum 2 A
+Babesia divergens 2
+Babesia microti 2
+Balantidium coli 2
+Brugia malayi 2
+Brugia pahangi 2
+Capillaria philippinensis 2
+Capillaria spp. 2
+Clonorchis sinensis 2
+Clonorchis viverrini 2
+Cryptosporidium parvum 2
+Cryptosporidium spp. 2
+Cyclospora cayetanensis 2
+Dipetalonema streptocerca 2
+Diphylobothrium latum 2
+Dracunculus medinensis 2
+Echinococcus granulosus 3 (**)
+Echinococcus multilocularis 3 (**)
+Echinococcus vogeli 3 (**)
+Entemoeba histolytica 2
+Fasciola gigantica 2
+Fasciola hepatica 2
+Fasciolopsis buski 2
+Giardia lamblia (Giardia intestinalis) 2
+Hymenolepis diminuta 2
+Hymenolepis nana 2
+Leishmania brasiliensis 3 (**)
+Leishmania donovani 3 (**)
+Leishmania ethiopica 2
+Leishmania mexicana 2
+Leishmania peruviana 2
+Leishmania tropica 2
+Leishmania major 2
+Leishmania spp. 2
+Loa loa 2
+Mansonella ozzardi 2
+Mansonella perstans 2
+Naegleria fowleri 3
+Necator americanus 2
+Onchocerca volvulus 2
+Opisthorchis felineus 2
+Opisthorchis spp. 2
+Paragonimus westermani 2
+Plasmodium falciparum 3 (**)
+Pasmodium spp. (human ve simian) 2
+Sarcocystis suihominis 2
+Schistosoma haematobium 2
+Schistosoma intercalatum 2
+Schistosoma japonicum 2
+Schistosoma mansoni 2
+Schistosoma mekongi 2
+Strongyloides stercoralis 2
+Strongyloides spp. 2
+Taenia saginata 2
+Taenia solium 3 (**)
+Toxocara canis 2
+Toxoplasma gondii 2
+Trichinella spiralis 2
+Trichuris trichiura 2
+Trypanosoma brucei brucei 2
+Trypanosoma brucei gambiense 2
+Trypanosoma brucei rhodesiense 3 (**)
+Trypanosoma cruzi 3
+Wuchereria bancrofti 2
+
+(**) Bkz. Açıklamalar (8)
+
+MANTARLAR
+
+Biyolojik Etken Sınıflandırma Notlar
+Aspergillus fumigatus 2 A
+Blastomyces dermatitidis (ajellomyces dermatitidis) 3
+Candida albicans 2 A
+Candida tropicalis 2
+Cladophialophora bantiana (önceki; Xylohypha
+bantiana, Cladosporium bantianum or trichoides) 3
+Coccidioides immitis 3 A
+Cryptococcus neoformans var. Neoformans
+(Flobasidiella neoformans var. neoformans) 2 A
+Cryptococcus neoformans var. Gattii
+(Flobasidiella bacillispora) 2 A
+Emmonsia parva var. Parva 2
+Emmonsia parva var. Crescens 2
+Epidermophyton floccosum 2 A
+Fonsecaea compacta 2
+Fonsecaea pedrosoi 2
+Histoplasma capsulatum var. capsulatum
+(Ajellomyces capsulatus) 3
+Histoplasma capsulatum duboisii 3
+Madurella grisea 2
+Madurella mycetomatis 2
+Microsporum spp. 2 A
+Neotestudina rosatii 2
+Paracoccidioides brasiliensis 3
+Penicillium marneffei 2 A
+Scedosporium apiospermum (Pseudallescheria boydii) 2
+Scedosporium prolificans (inflatum) 2
+Sporothrix schenckii 2
+Trichophyton rubrum 2
+Trichophyton spp. 2
+
+EK–IV
+
+ÇALIŞANLARIN SAĞLIK GÖZETİMİNDE DİKKAT EDİLMESİ GEREKEN HUSUSLAR
+
+Biyolojik etkenlere maruz kalan çalışanların sağlık gözetiminden sorumlu olan işyeri hekimi, çalışanların sağlık durumlarını ve maruziyet koşullarını bilmelidir.
+Çalışanların sağlık gözetimi, işyeri hekimliğinin uygulama ve prensiplerine uygun olarak yürütülmeli ve aşağıdaki önlemleri içermelidir:
+Çalışanların mesleki ve tıbbi özgeçmişleri ile ilgili kayıtlarının tutulması,
+Çalışanların kişisel sağlık durumunun değerlendirilmesi,
+Uygun ise, erken ve geri dönüşü olan etkilerin saptanmasının yanı sıra biyolojik ölçümleme.
+Sağlık gözetimi yapılırken, her çalışan için, işyeri hekimliğinde ulaşılabilen son bilgiler ışığında, konu ile ilgili daha ileri testler yapılmasına karar verilebilir.
+
+EK–V
+
+KORUMA DÜZEYLERİ VE ALINACAK ÖNLEMLER İLE İLGİLİ GÖSTERGELER
+
+Bu ekte yer alan önlemler, çalışanlara yönelik risk değerlendirmesine, işin ve ilgili biyolojik etkenin doğasına göre uygulanacaktır.
+
+A– Koruma Önlemleri	B– Koruma Düzeyleri
+2	3	4
+Çalışma yeri, aynı bina içinde yürütülen diğer çalışmalardan ayrılmış olacaktır.	Gerekmez	Önerilir	Zorunlu
+Çalışma yerine giren ve çıkan hava HEPA (*) veya benzeri filtrelerle filtre edilecektir.	Gerekmez	Zorunlu, çıkan havada	Zorunlu,
+çıkan ve giren havada
+Çalışma yerine yalnızca görevli çalışanların girmesine izin verilecektir.	Önerilir	Zorunlu	Zorunlu,
+hava sızdırmaz araç ile
+Çalışma yeri, dezenfeksiyon yapılmasına olanak sağlayacak yapıda olmalıdır.	Gerekmez	Önerilir	Zorunlu
+Özel dezenfeksiyon yöntemleri.	Zorunlu	Zorunlu	Zorunlu
+Çalışma yerindeki hava negatif basınçta tutulmalıdır.	Gerekmez	Önerilir	Zorunlu
+
+Etkili vektör kontrolü.
+(Örnek; kemirgenler ve böcekler)	Önerilir	Zorunlu	Zorunlu
+Temizlemesi kolay ve su geçirmez yüzeyler.	Zorunlu, tezgah ve iş masaları için	Zorunlu, tezgah ve zeminler için	Zorunlu,
+tezgah, yer, duvar, tavan için
+Asit, alkali, çözücü ve dezenfek–tanlara dayanıklı yüzeyler.	Önerilir	Zorunlu	Zorunlu
+Biyolojik etken için güvenli depolama.	Zorunlu	Zorunlu	Zorunlu,
+emniyetli depolama
+Çalışma yerinde bulunanların görülebildiği gözetleme penceresi veya benzeri.	Önerilir	Önerilir	Zorunlu
+Bir laboratuvarda yalnızca kendi malzemeleri kullanılmalıdır.	Gerekmez	Önerilir	Zorunlu
+Herhangi bir hayvanın da dahil olduğu bütün enfekte maddeler bir güvenli bir kabin, veya yalıtılmış bir yerde veya diğer uygun bir kapta işleme tabi tutulmalıdır.	Uygun olması halinde	Zorunlu, enfeksiyonun havayla bulaştığı hallerde	Zorunlu
+Hayvan ölülerinin yok edilmesi için yakma fırını.	Önerilir	Zorunlu, mevcutsa	Zorunlu,
+alan içinde
+
+(*) HEPA (High Efficiency Particulate Air) : Büyüklüğü 0,3 mikron olan aerosolları, maksimum 1,52 metre/dakika hava akım hızında, minimum % 99,97 oranında tutabilen özellikte kuru tip değiştirilebilir filtre.
+
+EK–VI
+
+ENDÜSTRİYEL İŞLEMLERDE ALINACAK ÖNLEMLER
+
+Grup 1 biyolojik etkenler:
+
+Canlı zayıflatılmış (attenüe) aşılar dahil Grup 1 biyolojik etkenlerle çalışmalar için genel mesleki güvenlik ve hijyen ilkelerine uyulacaktır.
+
+Grup 2, Grup 3 ve Grup 4 biyolojik etkenler:
+
+İşlemin bir bölümü veya belirli bir işlemle ilgili risk değerlendirmesi sonucuna göre aşağıdaki farklı kategorilere karşılık gelen koruma önlemleri bir arada seçilerek uygulanabilir.
+
+A– Alınacak Önlemler	B– Koruma düzeyi
+2	3	4
+Canlı organizmalar, prosesi çevreden fiziksel olarak ayıran bir sistemde işleme tabi tutulacaktır.	Zorunlu	Zorunlu	Zorunlu
+Kapalı sistemden çıkan ekzost gazlarının tahliyesi şu şekilde olacaktır.	En az düzeyde sızdırır	Sızdırmaz	Sızdırmaz
+Numunelerin toplanması, kapalı bir sisteme materyallerin ilavesi ve bir başka kapalı sisteme canlı organizmanın transferi işlemleri şu şekilde olacaktır.	En az düzeyde sızdırır	Sızdırmaz	Sızdırmaz
+Büyük miktardaki kültür sıvıları, canlı organizmalar için yandaki önlemler alınmadıkça kapalı sistemden uzaklaştırılmayacaktır.	Geçerli yollarla inaktive edilmeli	Geçerli fiziksel ve kimyasal yolla inaktive edilmeli	Geçerli fiziksel ve kimyasal yolla inaktive edilmeli
+Sızdırmazlık sistemleri şöyle dizayn edilecektir.	En az düzeyde sızdırır	Sızdırmaz	Sızdırmaz
+Kapalı sistemler kontrollü alanlarda olacaktır.	İsteğe bağlı	İsteğe bağlı	Zorunlu, ve bu amaçla oluşturulmuş
+Biyotehlike işareti yapıştırılacaktır.	İsteğe bağlı	Zorunlu	Zorunlu
+Bu alanlara yalnızca görevli olan kişilerin girmesine izin verilecektir.	İsteğe bağlı	Zorunlu	Zorunlu, hava sızdırmaz araç ile
+Personel koruyucu giysi giyecektir.	Zorunlu, iş giysisi	Zorunlu	Zorunlu
+Giriş ve çıkışlarda tümüyle değiştirilecek
+Personel için dekontaminasyon ve yıkanma imkanları sağlanacaktır.	Zorunlu	Zorunlu	Zorunlu
+Personel kontrollü alandan ayrılmadan önce duş alacaktır.	Gerekmez	İsteğe bağlı	Zorunlu
+Lavabo ve duşlardan gelen atık sıvılar toplanacak ve tahliyeden önce inaktive edilecektir.	Gerekmez	İsteğe bağlı	Zorunlu
+Kontrollü alan, ortam havasının kirlenmesini minimize etmek için yeterince havalandırılacaktır.	İsteğe bağlı	İsteğe bağlı	Zorunlu
+Kontrollü alanın atmosferi negatif hava basıncında tutulacaktır.	Gerekmez	İsteğe bağlı	Zorunlu
+Kontrollü alana giren ve çıkan hava HEPA özellikli filtre ile filtre edilecektir.	Gerekmez	İsteğe bağlı	Zorunlu
+Kontrollü alan kapalı sistemin tümünü (bütün müştemilatı ile birlikte) içine alacak şekilde dizayn edilecektir.	Gerekmez	İsteğe bağlı	Zorunlu
+Kontrollü alan buharla dezenfekte edilmesine uygun şekilde sızdırmaz olacaktır.	Gerekmez	İsteğe bağlı	Zorunlu
+Atık sıvılar son tahliyeden önce işlemden geçirilecektir.	Geçerli yolla inaktive edilmeli	Geçerli fiziksel ve kimyasal yolla inaktive edilmeli	Geçerli fiziksel ve kimyasal yolla inaktive edilmeli
+
+EK–VII
+
+KORUYUCU AŞI UYGULAMA KLAVUZU
+
+Aşağıdaki hususlar, koruyucu aşılamanın uygulanmasında hesaba katılacaktır.
+
+Biyolojik etkenlere maruz kalanlar, etkene karşı etkili bir aşı varsa aşılanacaktır.
+Aşılama, ilgili mevzuat ve uygulamalara uygun yürütülecektir. Çalışanlar, aşılanmanın ve aşılanmamanın sakıncaları ve yararları hakkında bilgilendirilecektir.
+Aşılama bedeli çalışana yüklenmeyecektir.
+İstendiğinde yetkililere gösterilmek üzere, ilgili her çalışan için bir aşılama belgesi düzenlenecektir.

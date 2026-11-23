@@ -1,0 +1,858 @@
+Ek-I
+
+TEMEL GÜVENLİK GEREKLERİ
+
+ÖN İNCELEMELER
+1. Basınçlı ekipman hakkında bu Ekte listelenmiş olan temel gereklerden ortaya çıkan yükümlülükler aynı zamanda, aynı tehlikenin bulunduğu donanımları da içerir.
+2. Bu Yönetmelikte bildirilen temel gerekler zorunludur. Bu temel gereklerde ortaya konulan zorunluluklar, sadece, söz konusu olan basınçlı ekipman imalatçısı tarafından belirlenebilen işletme şartlarına ve öngörülen risklere uygun olarak kullanılması halinde geçerlidir.
+3. İmalatçı, kendi ekipmanındaki basınçtan dolayı, ortaya çıkabilecek tehlikeleri değerlendirmek yükümlülüğü altındadır. İmalatçı bu değerlendirme sonuçlarını dikkate alarak ekipmanı tasarlar ve imal eder.
+4. Temel güvenlik gerekleri, yüksek seviyede sağlık ve güvenlikle ilgili teknik ve ekonomik nedenleri olduğu kadar tasarım ve imalat aşamasındaki uygulamaları ve teknolojinin son halini dikkate alacak şekilde yorumlanır ve uygulanır.
+1. GENEL
+1.1. Basınçlı ekipman, mantıklı öngörülebilir şartlarda veya imalatçının kullanım talimatlarına uygun bir şekilde hizmete sokulduğunda, güvenliğini sağlayacak şekilde tasarımlanır, imal edilir, kontrol edilir ve kurulur.
+1.2. İmalatçı, en uygun çözümü seçerken, aşağıda bildirilen şartları sırasıyla uygular:
+- Uygulanabildiği oranda tehlikeleri yok eder veya azaltır.
+- Giderilemeyen tehlikelere karşı uygun koruma tedbirleri alır.
+- Gerektiğinde, kullanıcıları tehlikelere karşı bilgilendirilir ve kurma ya da kullanım sırasında bu riskleri azaltmak için özel tedbirlerin alınması hususunu belirtir.
+1.3. Yanlış kullanım olasılığı varsa veya açıkça bu durum öngörülebiliyorsa basınçlı ekipman bu yanlış kullanımdan doğacak tehlikeyi önleyecek şekilde tasarımlanmak zorundadır veya bu mümkün değilse basınçlı ekipmanın bu şekilde kullanılamayacağına ilişkin uygun uyarıları verir.
+2. TASARIM
+2.1. Genel
+Basınçlı ekipmanın amaçlanan ömrü süresince güvenli olmasının garantilenmesi için bütün faktörleri göz önünde bulundurularak basınçlı ekipman uygun bir şekilde tasarımlanır. Tasarım, kapsamlı yöntemler kullanılarak bütün hatalara karşı yeterli güvenlik payı olan, uygun güvenlik katsayısını içerir.
+2.2. Yeterli Dayanım için Tasarım
+2.2.1. Basınçlı ekipman amaçlanan kullanımına uygun yüklemelere ve öngörülebilen çalışma koşullarına uygun olarak tasarlanır. Özellikle aşağıdaki etkenler hesaba katılır:
+- İç/dış basınç.
+- Çevre ve işletme sıcaklığı.
+- İşletme ve test koşullarında statik basınç ve içeriğin kütlesi.
+- Trafik, rüzgar ve deprem yükü.
+-Taşıma, bağlantılar, boru donanımı ve benzeri. gibi durumlardan kaynaklanabilen karşı kuvvetler ve momentleri.
+- Korozyon ve aşınma, yorulma ve benzeri.
+- Kararsız olan akışkanların bileşiminin bozulması.
+Aynı zamanda oluşabilecek çeşitli yükler, eş zamanlı oluşma ihtimalleri göz önünde bulundurularak dikkate alınır.
+2.2.2. Yeterli dayanım için tasarım aşağıdakileri içerir:
+- Genel bir kural olarak 2.2.3 maddesinde tanımlanan hesaplama modeli ve gerektiğinde desteklemek için madde 2.2.4 maddesinde tanımlanan deneysel tasarım metodu ile veya.
+- Ürünün izin verilebilir maksimum basıncı PS ile V çarpımı, 6000 bar x litreden daha az veya ürünün PS x DN çarpımı 3000 bar dan daha az ise hesaplama olmadan deneysel tasarım metodu ile madde 2.2.4 maddesinde tanımlandığı gibi yapılır.
+2.2.3. Hesaplama Yöntemi
+a) Basınç sınırlaması ve diğer yükleme hususları
+Basınçlı ekipman için izin verilebilen gerilim, çalışma koşullarında öngörülebilen makul arıza şekli dikkate alınarak sınırlandırılır. Bu noktada, güvenlik katsayısı imalatta gerçek işletme şartları, gerilmeler, hesaplama modelleri ve malzemenin özellikleri ile ortaya çıkan her belirsizliği tamamen yok etmek için uygulanır. Bu hesaplama metotları, 7 inci bölümdeki gerekleri ile birlikte, gereken her yerde, yeterli güvenlik payı temin eder. Belirtilen gerekler, uygun olan yerlerde, diğerlerine ek olarak ya da diğer yöntemlerle birlikte, aşağıdaki yöntemlerden biri uygulanarak sağlanabilir:
+- Formüle göre tasarım.
+- Analize göre tasarım.
+- Kırılma mekaniklerine göre tasarım.
+b) Dayanım
+İlgili basınçlı ekipmanın dayanım gücünü oluşturmak için uygun tasarım hesapları kullanılır.
+Özellikle:
+- Hesaplama basınçları izin verilebilen maksimum çalışma basıncından daha az olamazı ve statik buhar basıncı ile dinamik sıvı basıncı ve kararsız akışkanların bozulmaları hesaba katılır, bir kabın ayrı basınçlı haznelere ayrıldığı durumlarda parçaların ayrışma duvarları, bitişik parçanın mümkün olan en düşük basıncına bağlı olarak azami mümkün olan parça basıncına göre tasarlanır.
+- Hesaplanan sıcaklıklar uygun güvenlik payını içerir.
+- Tasarım, ekipmanın öngörülen işletme koşulları altında meydana gelebilecek olan bütün muhtemel ısı ve basınç birleşimlerini göz önünde bulundurur.
+- Maksimum gerilmeler ve en yüksek gerilme yığılması güvenlik sınırları içerisinde olur.
+- Basınçlı kısmın hesaplamasında, 4 üncü bölümde belirtilen uygun güvenlik faktörleri ile birlikte verilen koşullar dikkate alınarak, belgelendirilmiş bilgilere dayanılarak, malzemenin özelliklerine uygun değerlerden faydalanılır. Göz önüne alınacak malzeme karakteristikleri aşağıdakileri içerir:
+- Akma dayanımı, % 0,2 veya hesaplanan sıcaklıktaki yaklaşık % 1,0 uzama sınırı gerilmesi.
+- Çekme dayanımı.
+- Zamana bağlı dayanım, örneğin; sürünme dayanımı.
+- Yorulma.
+- Elastiklik modülü (Young modülü).
+- Uygun miktarda plastik gerilme özelliği.
+- Çentik darbe dayanımı.
+- Kopma dayanıklılığı.
+- Malzeme özelliğine bağlı olarak uygun kaynak faktörü seçilir. Örneğin: tahribatsız test türü, malzemenin kaynağı ve çalışma şartları göz önünde bulundurulur.
+- Tasarımda ekipmanın öngörülen kullanımında tüm ilgili zayıflatıcı etkiler (Örneğin: korozyon, esneme, yorulma) ve ekipmanın ömrü ile ilgili tasarımın belirli düzenlemeleri dikkate alınır. 3.4 maddesinde anlatılan malzemenin ömrü ile ilgili tasarımın belirli düzenlemeleri dikkate alınır.
+Örneğin:
+- Sürünme için: belirli sıcaklıkta işletme süresi tasarımı.
+- Yorulma için: belirli gerilme seviyesinde yük tekrarı sayısı tasarımı.
+- Korozyon için: korozyon ilavesi tasarımı.
+c) Kararlılık durumu
+Hesaplanan kalınlığın uygun yapısal kararlılığa izin vermediği durumlarda, nakliye ve işleme tarzı riskleri dikkate alınarak durum düzeltmesi için gerekli tedbirler alınır.
+2.2.4. Deneysel tasarım metodu
+Ekipmanın tasarımı, bütün olarak veya kısmi olarak bir örneği veya kategorisi üzerinde yapılan, uygun bir test programı ile geçerliliği onaylanabilir. Testten önce test programı açıkça tanımlanır ve eğer varsa uygunluk değerlendirmesi modülünden sorumlu Onaylanmış Kuruluş tarafından kabul edilir. Bu program test şartlarını ve kabul edilme veya ret kriterlerini tanımlar. Testten önce, test edilmesi gereken ekipmanı oluşturan malzemelerin temel özellikleri ve boyutlarının gerçek değerleri ölçülür. Test sırasında, gerektiği yerde, basınçlı ekipmanın kritik bölgelerinin, uzama ve gerilimlerinin yeterli hassaslıkta ölçülüp kaydedebilen aletler ile gözlenebilmesi mümkün olması sağlanır.
+Test programı aşağıdakileri içerir:
+a) Basınç dayanım testinin amacı, belirlenen bir güvenlik payı ile izin verilebilir maksimum basınçta, malzemenin kayda değer bir sızdırma veya belirlenen bir aralığı aşan deformasyon olmadığını tespit etmektir. Test basıncı, tasarım amaçlı kullanılan değerlerle, test koşulları altında ölçülen malzeme karakteristiği değerleri ile geometrik değerler arasındaki farklılıklar esasına göre belirlenir, test ve tasarım sıcaklığı arasındaki farklılıklar hesaba katılır.
+b) Sürünme veya yorulma riskinin olduğu yerde, ekipman için çalışma koşulları esasına göre belirlenmiş uygun testler tanımlanır. Örneğin, belirtilen sıcaklıklarda tutmak, belirlenen gerilme seviyesindeki yük tekrarı ve benzeri.
+c) Gerektiğinde, madde 2.2.1 de bildirilen, örneğin, korozyon, dış hasar ve benzeri gibi diğer faktörlerle ilgili testler.
+2.3. Güvenli kullanım ve çalışma sağlamak için şartlar
+Basınç ekipmanı için belirlenmiş olan çalışma metodu, ekipmanın çalışmasında öngörülebilen makul riskleri engellemeye uygun olur. Aşağıdakiler özel olarak dikkate alınır:
+- Kapaklar ve delikler.
+- Basınç güvenlik valfinin tehlikeli basıncı boşaltımı.
+- Bir basınç veya vakum mevcutken fiziksel girişleri önleme cihazları.
+- Tasarlanan kullanımı göz önünde bulunduran yüzey sıcaklığı.
+- Kararsız olan akışkanların bileşiminin bozulması.
+Özellikle, bir giriş kapağı yerleştirilmiş basınçlı ekipmanda, kapak açılırken herhangi bir tehlike arz etmemesini kolayca temin etmek için otomatik veya el ile çalışan bir alet ile donatılır. Ayrıca, kapağın çabuk açıldığı durumlarda, basınçlı ekipman akışkan basıncının veya sıcaklığının tehlike arz ettiğinde hemen açılmayı önleyecek bir cihaz ile donatılır.
+2.4. Muayene araçları
+a) Basınçlı ekipmanlar, güvenliği sağlayan bütün gerekli incelemelerin tatbik edilebileceği gibi tasarlanır ve yapılır.
+b) Basınçlı ekipmanın güvenliğini ve bu güvenliğin sürekli olduğunu inceleyebilmek için fiziksel olarak içine giriş yapılabilir ve bu giriş güvenli ve ergonomik olur.
+c) Basınçlı ekipmanın güvenlik koşullarını temin etmek için aşağıdaki durumlarda başka araçlar da uygulanabilir:
+- Fiziksel olarak içeri girişleri engelleyecek kadar küçük olma durumları veya
+- Basınçlı ekipmanın açılmasının iç kısmı kötü etkilediğinde veya
+- İçerik maddesinin, basınçlı ekipmanın yapıldığı malzemeye ve basınç düşürücü mekanizmaya zararlı olmadığı belirlendiğinde ve herhangi bir zayıflatıcı iç etkinin söz konusu olmadığında.
+2.5. Boşaltma ve hava/gaz alma araçları yolları
+Gerektiğinde, basınçlı ekipmanın havasının alınması ve boşaltılması için aşağıdaki şekilde yeterli düzenle donatılır:
+- Su vuruntusu, vakum çökmesi, korozyon ve kontrolsüz kimyasal reaksiyonlar gibi zararlı etkilerden kaçınılır, etkileri önlemek için bütün işletme ve test kademeleri, özellikle basınç testi, dikkate alınır.
+- Temizlik, muayene ve bakımın güvenli bir şekilde yapılmasına izin verilir.
+2.6. Korozyon ve diğer kimyasal zararlar
+Gerektiğinde, tasarlanan ve önceden görülebilen makul ölçülerde, korozyon veya diğer kimyasal zararlara karşı yeterli dikkat veya koruma temin edilir.
+2.7. Aşınma
+Korozyon veya aşındırmanın fazla olduğu durumlarda aşağıdaki hususları dikkate alan yeterli tedbirler alınır:
+- Uygun tasarımla o etki mümkün olduğu kadar azaltılır, örneğin; ilave malzeme kalınlığı ya da kaplama maddesi veya astar kullanarak.
+- En çok etkilenmiş olan parçaların değiştirilmesine izin verilir.
+- Sürekli güvenli kullanım için gerekli ölçümlere, 3.4 maddesinde belirtilen tedbirlere dikkat çekilir.
+2.8. Donanımlar
+Donanımlar, aşağıdaki şartları taşıyacak şekilde tasarlanır:
+- Donanımı oluşturan parçalar işlevlerini güvenli olarak yapacak tarzda uygun şekilde bir araya getirecek şekilde olur.
+- Bütün parçalar uygun bir şekilde birleştirilmiş ve uygun tarzda monte edilmiş olur.
+2.9. Doldurma ve boşaltmaya ilişkin hükümler
+Uygun olduğu yerlerde, basınçlı ekipman aşağıda belirtilenler gibi tehlikeleri dikkate alarak güvenli bir şekilde doldurma ve boşaltma yapabilecek aksesuarlarla veya söz konusu bağlantıların yapılabileceği şekilde donatılmış olarak tasarlanır.
+a) Doldururken:
+- Aşırı doldurma veya aşırı basınç için, özellikle doldurma oranı ve referans sıcaklığındaki buhar basıncı dikkate alınır.
+- Basınçlı ekipmanın kararsızlığı dikkate alınır.
+b) Boşaltırken; basınç altında tutulan akışkanın kontrolsüz boşaltılması dikkate alınır.
+c) Doldururken veya boşaltırken; güvensiz bağlantı ve bağlantının kesilmesi dikkate alınır.
+2.10. Basınçlı ekipmanın müsaade edilebilen değerleri geçmesine karşı korunması
+Öngörülebilen makul koşullar altında, izin verilen değerlerin aşılması durumunda, basınçlı ekipmanın montajlı ayrı bir koruyucu cihazla korunması tasarlanmamışsa uygun korunma donanımları ile korunma sağlanır veya buna izin verilir. Uygun ekipman veya donanım teçhizatın veya montajın bilinen karakteristikleri göz önüne alınarak kararlaştırılır. Uygun koruyucu ekipman veya donanım aşağıdakileri kapsar:
+a) 2.4 maddesinde tanımlanan güvenlik aksesuarları.
+b) Uygun olan yere, gösterge ya da basınç aletini izin verilebilen limitte tutmak için elle veya otomatik olarak gerekli tedbirin alınmasını sağlayacak alarm gibi izleme veya gözlem sisteminin yerleştirilmesi.
+2.11. Güvenlik aksesuarları
+2.11.1. Güvenlik aksesuarları:
+- Gerektiği yerde cihazların bakım ve test gereklerini dikkate alarak, amaçlanan görevlerine uygun ve sağlam tasarlanır.
+- Şayet güvenlik fonksiyonu bir başka fonksiyondan etkilenmiyorsa, diğer fonksiyonlardan bağımsız olur.
+- Uygun ve sağlam bir koruma elde etmek için uygun tasarım prensiplerine uyar. Bu ilkeler, özellikle, tedbirli tarz yöntemi, aşırılık, farklılık ve otomatik tanıyı kapsar.
+2.11.2. Basıncı sınırlandıran cihazlar
+Bu cihazlar, basıncın sürekli olarak izin verilebilen basıncı (PS) aşmayacak şekilde tasarlanır; ancak, gerektiğinde 7.3 maddesinde belirtilen özelliklere uygun olarak kısa süreli basınç dalgalanmasına izin verilebilir olur.
+2.11.3. Sıcaklık izleme cihazları
+Bu cihazlar, güvenlik açısından ölçme fonksiyonları ile uyumlu ve yeterli sürede cevap alınabilecek özellikte olur.
+2.12. Dış ortamdaki yangın
+Gerekli yerlerde basınçlı ekipman öyle tasarlanır ve uygun olduğu yerlerde uygun aksesuarlar ile donatılır veya ona uygun bağlantılar ile donatılır, bir dış yangın durumunda zararı sınırlama gereklerini, özellikle amaçlanan kullanım süresi de göz önüne alarak karşılar.
+3. İMALAT
+3.1. İmalat prosedürleri
+İmalatçı, tasarım aşamasındaki hükümlerin yeterli uygulamasını sağlamak için özellikle aşağıda belirtilen uygun teknik ve ilgili yöntemleri uygular.
+3.1.1. Bileşim parçalarının hazırlanması
+Bileşim parçalarının hazırlanması (Örneğin: şekil verme ve pah kırma). basınçlı ekipmanın güvenliğinde noksanlıklara veya çatlaklara veya muhtemel zararlı mekanik özellik değişimlerine yol açmaz.)
+3.1.2. Sabit bağlantı
+Sabit bağlantılar ve bitişik bölgeler, ekipmanın güvenliği için her türlü yüzey ve iç hatalardan arındırılmış olur. Sabit birleşimlerin özellikleri, tasarım hesaplamasında ilgili başka özel değerler özellikle dikkate alınmamışsa, birleştirilecek malzemeler için belirlenmiş olan minimum özellikleri karşılar. Basınçlı ekipman için, ekipmanın basınç direncine yardımcı olan parçaların sabit bağlantıları ve onlara doğrudan takılmış olan parçaların birleştirilmeleri, uygun işlem yöntemlerine göre vasıflı personel tarafından yapılır.
+II. III. ve IV. Kategorideki basınçlı ekipman için işlem yöntemleri ve personel, imalatçıların seçeceği, tanınmış üçüncü taraf kuruluşu tarafından onaylanır. bu:
+- Onaylanmış Kuruluş veya
+- 23 üncü maddede belirtildiği gibi, tanınmış üçüncü taraf uygunluk değerlendirme kuruluşu olabilir.
+Bu onayların gerçekleştirilebilmesi için tanınmış üçüncü taraf kuruluş, uygun uyumlaştırılmış standartta belirtilen incelemeler ve testler veya benzer eşdeğer incelemeler ve testler uygular ya da uygulatır.
+3.1.3. Tahribatsız testler
+Basınçlı ekipman ve donanımlar için sabit birleştirmelerin tahribatsız testleri uygun nitelikteki personel tarafından yapılır. Kategori III ve IV sınıfı basınçlı ekipman için personel 23 üncü maddede belirtildiği gibi tanınmış üçüncü taraf uygunluk değerlendirme kuruluşunca onaylanır.
+3.1.4. Isıl işlem
+Malzeme özelliğinin, üretim işlemleri sırasında, basınçlı ekipmanın güvenliğini zayıflatacak bir ölçüde, değişme riski varsa, üretimin uygun aşamasında uygun bir ısıl işlem uygulanır.
+
+3.1.5. İzlenebilirlik
+Ekipmanın basınca maruz kalan parçalarının üretildiği malzemeyi tanımlamak için, uygun yöntemlerle, satın alınan malzemenin gelişinden başlayarak, üretim esnasında ve son deneye kadar izlemeyi sağlayacak uygun yöntemler kurulur ve devam ettirilir.
+3.2. Son değerlendirme
+Basınçlı ekipman aşağıda tanımlandığı gibi bir son değerlendirmeye tabi tutulur.
+3.2.1. Son muayene
+Basınçlı ekipman görsel olarak ve bu Yönetmelikteki gereklere uygunluğunun incelenmesi yoluyla bir son muayeneye tabi tutulur. İmalat sırasında uygulanan testler dikkate alınır. Güvenlik yönünden gerekli olduğu durumlarda son muayene imalat sırasında uygun olan yerde (son muayene sırasında uzun inceleme mümkün olmadığı yerlerde) ekipmanın her parçası için içeriden ve dışarıdan yapılır.
+3.2.2. Dayanıklılık testi
+Basınçlı ekipmanın son değerlendirmesi, basınç yönünden de bir test içerir. Bu uygun olduğu yerde hidrolik basınç testi şeklinde olur ve gerektiğinde 7.4 maddesinde bildirilen değerde veya en azından eşit değerde olur.
+I. kategori seri üretilen basınçlı ekipman için bu test istatistiksel olarak yapılabilir. Hidrostatik basınç testinin zararlı veya elverişsiz olduğu durumlarda, belirlenen değerlerde başka testler uygulanabilir. Hidrostatik testten başka testler için, ilave tedbirler. örneğin; Tahribatsız muayene veya eşdeğer başka geçerli yöntemler, bu testler yapılmadan önce uygulanır.
+3.2.3. Güvenlik cihazlarının muayenesi
+Donanımlar için son değerlendirme, 2.10 maddesinde belirtilen gereklere tam uyumlu olarak kontrol edilmesi tasarlanan güvenlik cihazlarının kontrolünü de kapsar.
+3.3. İşaretleme ve etiketleme
+21 ve 22 nci maddelerde belirtilen CE işaretine ve 9 uncu maddenin altıncı fıkrası ve 11 inci maddenin üçüncü fıkrası uyarınca sağlanacak bilgilere ilaveten aşağıdaki bilgiler de verilir:
+a) Tüm basınçlı ekipmanlar için:
+- İmal yılı.
+- Basınçlı ekipmanın tipi, seri veya parti tanımlaması ve seri numarası gibi.
+- Gerekli izin verilebilen maksimum/minimum sınırları.
+b) Basınçlı ekipmanın türüne bağlı olarak, güvenli kurulum, işletme veya kullanım, bakım ve periyodik muayenesi için gerekli bilgiler aşağıdaki gibidir:
+- Basınçlı ekipmanın litre cinsinden hacmi V.
+- Boru donanımı için standart çapı, DN.
+- Bar cinsinden uygulanan test basıncı PT ve tarihi.
+- Güvenlik aletinin ayar basıncı, bar olarak.
+- Basınçlı ekipmanın çıkış gücü kW.
+- Uygulanan gerilim V (volt).
+- Amaçlanan kullanımı.
+- Dolum oranı kg/L.
+- Kg olarak maksimum doldurma kütlesi.
+- Dara ağırlığı kg.
+- Ürün grubu.
+c) Gerektiği yerlerde tecrübelere göre oluşabilecek yanlış kullanıma dikkat çekmek için basınçlı ekipmana iliştirilmiş uyarılar.
+(a), (b) ve (c) bentlerinde bildirilen bilgiler basınçlı ekipmanın üzerinde aşağıdaki istisnalarla birlikte sıkı bir şekilde tutturulan bir bilgi plakası ile verilir:
+- Gerektiğinde, aynı donanım için tasarlanmış olan, boru parçaları gibi ayrı parçalara tekrar işaretleme yapılmasını önlemek için, uygulanabilen yere, uygun belgelendirme sistemi kullanılabilir.
+- Basınçlı ekipmanın çok küçük olması halinde, örneğin; Aksesuarlar, bu bilgiler, basınçlı ekipmana bir etiket ile tutturulabilir.
+- Doldurulacak miktar ve (c) bendinde bahsedilen uyarılar için uygun süre, okunabilir kalmaları sağlamak kaydıyla etiketleme veya diğer yeterli araçlar kullanılabilir.
+3.4. İşletim talimatları
+a) Basınçlı ekipman kullanıcı için, mümkün olduğu kadar aşağıdakilerle ilgili bütün gerekli güvenlik bilgilerinin bulunduğu talimatlar ile birlikte piyasaya sunulur:
+- Çeşitli parçalarının montajını içeren basınçlı ekipmanın kurulması.
+- Hizmete sunulması.
+- Kullanımı.
+- Kullanıcı kontrollerini içeren bakım.
+b) 3.3 maddesine göre basınçlı ekipmana iliştirilen bilgiler kullanım talimatlarında seri numarası yazılmaksızın belirtilir ayrıca uygun teknik dosyayı çizimleri ve diyagramları ve bu talimatları anlaşılır kılacak tüm esasları kapsar.
+c) Uygun olursa, bu talimatlar 1.3 maddesine göre yanlış kullanım nedeniyle olabilecek riskleri içerir ve 2.2.3 maddesinde belirtilen tasarımla ilgili önemli hususlar hakkında bilgi verir.
+4. MALZEMELER
+Basınçlı ekipmanın üretimi için kullanılacak malzemeler değiştirilmesi öngörülmedikçe programlanan ömrü süresince bu tür uygulama için uygun olur. Kaynak malzemeleri ve diğer bağlantı malzemeleri yalnızca 4.1, 4.2.a ve 4.3 maddelerindeki ilgili gerekleri ve birbirinden farklı iki yapıyı birleştirmeye uygun olur.
+4.1. Basınçlı parçaların malzemeleri:
+a) Öngörülen bütün işletme koşullarına ve test şartlarına uygun özellikte ve özellikle yeterli dayanım ve şekil vermeye uygun olur. Gerektiği yerde malzemenin karakteristiği 7.5 maddesinin gerekleriyle uyumlu olur. Ayrıca, gerekli durumlarda gevrek tip kırılmaları önlemek için özellikle malzeme seçimine özen gösterilir, özel nedenlerden dolayı kırılgan malzeme kullanılması gerekiyorsa uygun tedbirler alınır.
+b) Basınçlı ekipmanın içerdiği sıvıya karşı yeterli kimyasal direnci olur; işletme güvenliği için gerekli kimyasal ve fiziksel özellikler, ekipmanın programlanan ömründen dolayı önemli bir şekilde etkilenmez.
+c) Yaşlanmadan kayda değer ölçüde etkilenmez.
+ç) Tasarlanan işlem yöntemleri için uygun olur.
+d) Bir araya getirilen, çeşitli malzemelerin seçiminde kayda değer istenilmeyen etkilerden kaçınılır.
+4.2. Basınçlı ekipmanın imalatçısı
+a) 2.2.3 maddesindeki tasarım hesapları için gereken değerleri ve 4.1 maddesinde geçen malzemelerin temel özellikleri ve işlemleri uygun bir şekilde tanımlanır,
+b) İmalatçı uygunluğa ilişkin diğer teknik belgelendirme sisteminde aşağıdaki hususlardan biriyle Yönetmeliğin malzemelere ilişkin özelliklerini sağlar;
+- Uyumlaştırılmış standartlara uygun malzemelerin kullanımıyla,
+- 18 inci maddede belirtilen Avrupa onaylı basınçlı ekipman malzemelerinin kullanımıyla,
+- Özel malzeme değerlendirmesiyle,
+c) Kategori III ve IV’ deki basınçlı ekipman için özel değerlendirme, basınçlı ekipmanın uygunluk değerlendirmesi yöntemleri ile görevlendirilmiş bir onaylanmış kuruluşça yapılır.
+4.3. Ekipman imalatçıları, kullanılan malzemenin istenen özelliklere uymasını temin etmek için uygun tedbirleri alır. Özellikle, ekipman imalatçısı tüm malzemeler için malzeme özelliklerine uygun olarak malzeme imalatçısı tarafından hazırlanan belgeleri temin eder. II. III. ve IV kategorideki ekipmanın basınç etkisi altındaki ana bölümleri için, özel ürün kontrol sertifikası olur. Malzeme imalatçısının, Bakanlıkça belgeli ve malzemelerin özel bir değerlendirmeden geçtiği kalite güvenlik sisteminin olduğu yerlerde, imalatçı tarafından yayımlanan belgelerde bu bölümün ilgili gereklerine uygunluğu sağladığı varsayılır.
+ÖZEL BASINÇLI EKİPMAN GEREKLERİ
+Ek’in 1 nci maddesi ila 4 üncü maddesindeki uygulanabilir gereklere ilaveten 5 inci ve 6 ncı maddelerde belirtilen basınçlı ekipman gerekleri de uygulanır.
+5. BU YÖNETMELİĞİN 7 NCİ MADDESİNİN BİRİNCİ FIKRASINDA BELİRTİLDİĞİ GİBİ FAZLA ISINMA RİSKİ OLAN, ATEŞLE VEYA BAŞKA TÜRLÜ ISITILMIŞ BASINÇ EKİPMAN
+Bu basınçlı ekipman aşağıdakileri içerir:
+- 7 nci maddenin birinci fıkrasının (b) bendinde belirtildiği gibi buhar ve sıcak su jeneratörleri, buhar ve sıcak su kazanları, kızdırıcılar ve tekrar kızdırıcılar, atık ısı kazanları, atık yakma kazanları, elektrot veya daldırma türü elektrikle ısıtılan kazanlar, basınçlı pişiriciler, örneğin: Aksesuarları ile birlikte ve uygulanabildiği yere besleme suyu hazırlama ve yakıt temin sistemleri gibi.
+- 7 nci maddenin birinci fıkrasının (a) bendinde belirtilen buhar ve sıcak su ekipmanlarından başka bir sistem ısıtma ekipmanı, örneğin: Kimyasal veya başka benzer işlemler ve basınçlı gıda işleme ekipmanı gibi ısıtıcılar.
+- Bu basınçlı ekipman, aşırı ısınma sonucu önemli bir içerik kaybetme riskini en düşük seviyede tutacak şekilde hesaplanır, tasarlanır ve yapılır. Özellikle uygun olduğu yerlerde aşağıdakiler güvence altına alınır:
+a) Isı giriş, çıkış, ısıtma ve uygulanabilir olduğu yerlerde akışkan seviyesinin kısmi ve genel ısınma riskinden korunması için kullanım parametrelerini kesin belirleyecek uygun koruma araçları temin edilir.
+b) Tortu ya da aşınma ile ilgili riskleri önlemek için sıvının özelliklerinin değerlendirilmesine izin vermek için, gerekli yerlere, numune noktaları temin edilir.
+c) Tortulardan dolayı olan riskleri gidermek için yeterli tedbirler alınır.
+ç) Kapattıktan sonra artakalan ısının güvenli bir şekilde giderilmesi için araçlar temin edilir.
+d) Yanıcı maddelerin hava veya alev geri tepmesi gibi, tutuşabilen karışımların tehlikeli birikimini önlemek için tedbirler alınır.
+6. BU YÖNETMELİĞİN 7 NCİ MADDESİNİN BİRİNCİ FIKRASININ (C) BENDİNDE BELİRTİLEN BORULAR
+Tasarım ve yapım aşağıdakileri sağlar:
+a) Kabul edilemeyen serbest hareketlerden veya aşırı güçlerin üretilmesinin, örneğin; Flanşlarda, bağlantılarda, körük veya hortumlar üzerindeki gerilim riskinin, destekleme, sınırlama, sıkıca tutturma, sıraya koyma ve ön gerilim alma aracılığıyla, yeterli olarak kontrol altına alınır.
+b) Gazlı akışkanlar için borular içinde yoğunlaşma oluşması olasılığının olduğu yerlerde, su vuruntusu veya korozyondan dolayı oluşacak zarardan kaçınmak için en alçak seviyedeki alanlardan tortuların çekilmesi sağlanır.
+c) Türbülans ve girdabın vereceği potansiyel hasara karşı dikkat edilir, 2.7 maddesinin ilgili bölümleri uygulanır.
+ç) Borulardaki titreşim nedeniyle aşırı metal yorgunluk riskine yeterli önem verilir.
+d) Boru sisteminde Grup 1 akışkanları varsa; büyüklüğü önemli bir risk gösteren doldurma-boşaltma borularını izole etmek için yeterli tedbirler alınır.
+e) Elde olmayan boşaltma riski en aza indirilir. İçerideki sıvının miktarını da gösterecek şekilde boşaltma noktaları ekipmanın sabit bir tarafına, işaretlenmiş olur.
+f) Yer altı borularının pozisyonu ve rotasının, güvenli bakımını, incelemesini veya tamirini kolaylaştırmak için en azından teknik belgelerde kayıtlı olması gerekir.
+7. BELİRLİ BASINÇLI EKİPMANLAR İÇİN ÖZEL NİCEL GEREKLER
+Aşağıdaki koşullar genel kural olarak uygulanır. Bununla birlikte, malzemelerin özelliklerinin kesin olmadığı durumlar dâhil ve uyumlaştırılmış standart uygulanmayan durumlarda, imalatçı genel güvenlik seviyesinin elde edilmesi için uygun tedbirlerin alındığını kanıtlamak zorundadır. Bu bölümde belirtilen hükümler basınçlı ekipman için uygulanan ve bu Ekin 1 inci maddesi ila 6 ncı maddesinde belirtilen temel güvenlik gerekliliklerine ek niteliğindedir.
+7.1. İzin verilebilir gerilimler
+7.1.1. Semboller
+Re/t, Akma sınırı, aşağıdaki hesaplama sıcaklığındaki Akma sınırı değeri gösterir:
+- Malzemenin üst ve alt akma sınırını temsil eden üst akma sınırı.
+- Östenit çeliğin ve alaşımsız alüminyumun %1,0 uzama sınırı.
+- Diğer durumlardaki %0,2 uzama sınırı.
+Rm/20, 20°C’ deki minimum çekme dayanımı değerini göstermektedir. Rm/t, hesaplama sıcaklıktaki çekme dayanımını belirtir.
+7.1.2. İzin verilen genel statik gerilme ve sıcaklığa bağlı sürünmede, kullanılan malzemeye göre aşağıdaki değerlerden en küçüğü alınır:
+- Ferritik çelik halinde normalize dâhil (normalize haddelenmesi) ince taneli çelik hariç ve özellikle ısıl işlemi yapılmış çelik halinde Re/t’nin 2/3 ü ve R m/20’nin 5/12’si.
+- Paslanmaz çelik durumunda:
+- Kopma sonrası uzama %30 geçerse, Re/t nin 2/3 ü.
+- Veya alternatif olarak ve kopma sonrası uzama %35 geçerse, Re/t nin 5/6 sı ve Rm/t nin 1/3 ü.
+- Alaşımsız veya düşük alaşımlı dökme çelik durumunda, Re/t nin 10/19 u ve Rm/20 nin 1/3 ü.
+- Alüminyum durumunda, Re/t nin 2/3 ü.
+- Çöktürülerek yapılmış sertleştirilmişler hariç alüminyum alaşımları durumunda Re/t nin 2/3 ü ve Rm/20 nin 5/12 si.
+7.2. Kaynak Faktörü (Bağlantı katsayıları)
+Kaynaklı bağlantılarda, bağlantı katsayıları aşağıdaki değerleri aşmaz:
+- Bütün dikiş yerlerinin özel bir hasar göstermediğini teyit eden, tahribatlı ve tahribatsız muayeneye tabi tutulan ekipman için: 1.
+- Gelişigüzel tahribatsız muayeneye tabi tutulan ekipman için: 0.85.
+- Görsel muayene dışında tahribatsız muayeneye tabi tutulmamış ekipman için: 0.7.
+Gerektiğinde, gerilme tipleri ve bağlantının mekanik ve teknolojik özellikleri de hesaba katılır.
+7.3. Özellikle basınçlı kaplar için basınç sınırlayan aletler
+2.11.2 maddesinde anlatılan anlık basınç dalgalanması, maksimum izin verilebilir basıncın %10 unda tutulur.
+7.4. Hidrostatik test basıncı
+Basınçlı kaplar için, 3.2.2 maddesinde bildirilen hidrostatik test basıncı, aşağıdakilerden daha az olmaz;
+- Azami izin verilebilen basınç ve azami izin verilebilen sıcaklığı dikkate alınarak hizmetteki basınçlı ekipmanın maruz kaldığı azami basıncın 1,25 katsayısı ile çarpılmasına denk gelen değer veya
+- Daha yüksek değerler için azami izin verilebilir basıncın 1,43 ile çarpılmasına denk gelen değer.
+
+7.5. Malzeme karakteristikleri
+Dikkat edilecek diğer kriterlere uygunluk için başka değerler istenmediği sürece bir çelik, 7 nci maddenin birinci fıkrasının (a) bendini karşılayan bir çelik ise yeterli olarak değerlendirilir. Şayet standart bir işlemde gerçekleştirilen çekme deneyinde kopma sonrası uzama % 14 den az değil ise ve IS0 V parça testinde ölçülen darbe enerjisi 20 °C de veya belirlenen işletme sıcaklığının en düşüğünden yüksek olmayan sıcaklıkta 27 J den az değildir.
+
+Ek-II
+
+UYGUNLUK DEĞERLENDİRMESİ TABLOLARI
+
+1. Modüllerin kategorilerine ilişkin referanslar şunlardır:
+
+I	=	Modül A:
+II	=	Modül A2, D1, E1
+III	=	Modül B (tasarım tipi) + D, B (tasarım tipi) + F, B (üretim tipi) + E, B (üretim tipi) + C2, H
+IV	=	Modül B (üretim tipi) + D, B (ürertim tipi) + F, G, H1
+
+2. 5 inci maddede ve 7 nci maddenin birinci fıkrasının (ç) bendinde belirtilen güvenlik aksesuarları, Kategori IV de sınıflandırılır. Fakat istisna olarak özel teçhizat için imal edilmiş olan güvenlik aksesuarları korudukları teçhizat ile aynı kategoride sınıflandırılabilir.
+3. 5 inci maddede ve 7 nci maddenin birinci fıkrasının (ç) bendinde belirtilen basınç aksesuarları, aşağıdaki esaslara göre sınıflandırılır:
+- İzin verilen maksimum basınç PS.
+- Hacimleri V veya nominal ölçü DN (Hangisi kullanılıyorsa).
+- Kullanım için amaçlanan akışkan grubu.
+Uygunluk değerlendirmesi kategorilerini saptamak için kaplar ve boru sistemleri için uygun tablolar kullanılır. Hacim ve standart çaptan her ikisi de düşünüldüğü takdirde basınç aksesuarı azami kategoride sınıflandırılır.
+4. Aşağıdaki uygunluk değerlendirmesi tablolarındaki sınır çizgileri, her bir kategori için en üst sınırı gösterir.
+
+Madde 7 (3)
+Madde 7 (3)
+
+Tablo 1
+
+7 nci maddenin birinci fıkrasının (a) bendinin (1.1)’inde belirtilen kaplar
+
+Kararsız bir gaz içeren ve Tablo I’e göre Kategori I veya Kategori II’de yer alan kaplar, Kategori III’de sınıflandırılır.
+
+Madde 7 (3)
+Madde 7 (3)
+
+Tablo 2
+
+7 nci maddenin birinci fıkrasının (a) bendinin (1.2)’sinde belirtilen kaplar
+
+Bunun dışında, taşınabilir yangın söndürücüler ve nefes alma tüpleri en az Kategori III’de sınıflandırılır.
+
+Madde 7 (3)
+Madde 7 (3)
+
+Tablo 3
+
+7 nci maddenin birinci fıkrasının (a) bendinin (2.1)’inde belirtilen kaplar
+
+Madde 7 (3)
+Madde 7 (3)
+
+Tablo 4
+
+7 nci maddenin birinci fıkrasının (a) bendinin (2.2)’sinde belirtilen kaplar
+
+7 nci maddenin ikinci fıkrasının (b) bendinde belirtilen sıcak su üreten donanımlar, Avrupa Birliği tasarım değerlerine uygun olur (Modül B-tasarım tipi) ve uygunluk Ek-I’in 2.10, 2.11, 3.4 maddeleri ve 5 nci maddesinin (a) ve (ç) bendinde belirtilen kalite güvence değerlerine uyar. (Modül H)
+
+Mad. 7 (3)
+Mad. 7 (3)
+
+Tablo 5
+
+7 nci maddenin birinci fıkrasının (b) bendinde belirtilen basınçlı ekipmanlar
+
+Bunun dışında, basınçlı pişiricilerin tasarımı en az Kategori III modüllerinden birine eş uygunluk değerlendirmesi prosedürlerine tabi tutulur.
+
+Madde 7 (3)
+Madde 7 (3)
+Tablo 6
+
+7 nci maddenin birinci fıkrasının (c) bendinin (1.1)’inde belirtilen boru sistemi
+
+Kararsız gaz için ve Tablo 6’ya göre Kategori I ve Kategori II’ye giren boru sistemleri Kategori III içinde sınıflandırılır.
+
+Madde 7 (3)
+Madde 7 (3)
+
+Tablo 7
+
+7 nci maddenin birinci fıkrasının (c) bendinin (1.2)’sinde belirtilen boru sistemi
+
+350°C’den yüksek sıcaklıkta akışkan içeren ve Tablo 7’ye göre Kategori II’ye giren tüm boru sistemleri Kategori III içinde sınıflandırılır.
+
+Madde 7 (3)
+Madde 7 (3)
+
+Tablo 8
+
+7 nci maddenin birinci fıkrasının (c) bendinin (2.1)’inde belirtilen boru sistemi
+
+Madde 7 (3)
+Madde 7 (3)
+
+Tablo 9
+
+7 nci maddenin birinci fıkrasının (c) bendinin (2.2)’sinde belirtilen boru sistemi
+
+Ek-III
+
+UYGUNLUK DEĞERLENDİRMESİ YÖNTEMLERİ
+
+Bu Ekteki basınçlı ekipmanlar ile ilgili hükümlerden kaynaklanan yükümlülükler aynı şekilde donanımlara da uygulanır.
+1. MODUL A: (İÇ ÜRETİM KONTROLÜ)
+1. İç üretim kontrolü, imalatçının 2, 3 ve 4 üncü maddelerde belirtilen yükümlülükleri yerine getirdiği ve ilgili basınçlı ekipmanın bu Yönetmeliğin gereklerini yerine getirdiğine dair münferit sorumluluğunu ilan ettiği bir uygunluk değerlendirmesi prosedürüdür.
+2. Teknik dosya
+İmalatçı teknik dosyayı hazırlar. Teknik dosya, basınçlı ekipmanın ilgili gereklere uygunluğunun değerlendirilmesini mümkün kılar ve risk veya risklerin yeterli bir analizi ve değerlendirmesini içerir. Teknik dosya geçerli gerekleri belirtir ve bu tür değerlendirme için ilgili olduğu müddetçe, basınçlı ekipmanın tasarımını, imalini ve işletimini kapsar. Teknik dosya, mümkün ise, asgari olarak aşağıdakileri içerir:
+- Basınçlı ekipmanın genel bir tanımı.
+- Kavramsal tasarım ve imalat çizimleri, parçaların, alt parçaların, devrelerin ve benzeri şemaları.
+- Belirtilen çizimlerin, şemaların ve basınçlı ekipmanın çalışmasının anlaşılması için gerekli tanımlamalar ve açıklamalar.
+- Avrupa Birliği Resmî Gazetesinde referansları yayınlanmış olan ve tamamen veya kısmen uyumlaştırılmış standartların listesi ve bu standartların uyumlaştırılmadığı durumlarda Yönetmeliğin temel güvenlik gereklerini karşılaması için benimsenen çözümlerin açıklamalar. Kısmen uygulanan uyumlaştırılmış standartlar durumunda, teknik dosya uygulanmış olan kısımları belirtir.
+- Yapılan tasarım hesaplarının ve muayenelerin sonuçları.
+- Deney raporları.
+3. İmalat
+İmalatçı, imalat süreci ve izlenmesinin imal edilen basınçlı ekipmanın 2 nci maddede belirtilen teknik dosyaya ve bu Yönetmeliğin gereklerine uygunluğunu sağlamak amacıyla gerekli olan her türlü tedbiri alır.
+4. CE İşareti ve AB uygunluk beyanı
+4.1. İmalatçı, bu Yönetmeliğin geçerli gereklerini karşılayan her bir basınçlı ekipmana CE işaretini iliştirir.
+4.2. İmalatçı, basınçlı ekipman modeli için yazılı bir AB uygunluk beyanı hazırlar ve basınçlı ekipman piyasaya arz edildikten sonraki 10 yıl boyunca ulusal kurumların tasarrufuna teknik dosya ile birlikte saklar. AB uygunluk beyanı, hazırlanmış olduğu basınçlı ekipmanı tanımlar. Bir AB uygunluk beyanının bir kopyası talep üzerine ilgili kurumlara sunulur.
+5. Yetkili temsilci
+Ekin 4 üncü maddesinde belirtilen imalatçı yükümlülükleri, yetki belgesinde belirtilmiş olmaları şartıyla adına ve sorumluluğu altındaki yetkili temsilcisi tarafından yerine getirilebilir.
+2. MODUL A2: RASTGELE ARALIKLARLA DENETLENMİŞ BASINÇLI EKİPMAN KONTROLLERİYLE BİRLİKTE İÇ ÜRETİM KONTROLÜ
+1. Rastgele aralıklarda denetlenmiş basınçlı ekipman kontrolleriyle birlikte iç üretim kontrolü, imalatçının 2, 3, 4 ve 5 inci maddelerinde belirtilen yükümlülükleri yerine getirdiği ve ilgili basınçlı ekipmanın bu Yönetmeliğin gereklerini yerine getirdiğine dair münferit sorumluluğunu ilan ettiği bir uygunluk değerlendirmesi prosedürüdür.
+2. Teknik dosya
+İmalatçı teknik dosyayı hazırlar. Teknik dosya, basınçlı ekipmanın ilgili gereklere uygunluğunun değerlendirilmesini mümkün kılar ve risk veya risklerin yeterli bir analizi ve değerlendirmesini içerir. Teknik dosya geçerli gerekleri belirtir ve bu tür değerlendirme için ilgili olduğu müddetçe, basınçlı ekipmanın tasarımını, imalini ve işletimini kapsar. Teknik dosya, mümkün ise, asgari olarak aşağıdakileri içerir:
+- Basınçlı ekipmanın genel bir tanımı.
+- Kavramsal tasarım ve imalat çizimleri, parçaların, alt parçaların, devrelerin ve benzeri şemaları.
+- Belirtilen çizimlerin, şemaların ve basınçlı ekipmanın çalışmasının anlaşılması için gerekli tanımlamalar ve açıklamalar.
+- Avrupa Birliği Resmî Gazetesi’nde referansları yayınlanmış olan ve tamamen veya kısmen uyumlaştırılmış standartların listesi ve bu standartların uyumlaştırılmadığı durumlarda Yönetmeliğin temel gereklerini karşılaması için benimsenen çözümlerin açıklamalar. Kısmen uygulanan uyumlaştırılmış standartlar durumunda, teknik dosya uygulanmış olan kısımları belirtir.
+- Yapılan tasarım hesaplarının ve muayenelerin sonuçları.
+- Deney raporları.
+3. İmalat
+İmalatçı, imalat süreci ve izlenmesinin imal edilen basınçlı ekipmanın 2 nci maddede belirtilen teknik dosyaya ve bu Yönetmeliğin gereklerine uygunluğunu sağlamak amacıyla gerekli olan her türlü tedbiri alır.
+4. Son değerlendirme ve basınçlı ekipman kontrolleri
+İmalatçı, seçtiği bir onaylanmış kuruluşun resen ziyaretleriyle izlenen basınçlı ekipmanın bir son değerlendirmesini yapar. Onaylanmış kuruluş, basınçlı ekipmanların iç kontrollerinin kalitesini doğrulamak amacıyla, diğerlerinin yanı sıra basınçlı ekipmanın teknolojik karmaşıklığı ve imalat miktarını dikkate almak suretiyle kuruluş tarafından belirlenen rastgele aralıklarla ürün kontrolleri gerçekleştirir veya gerçekleştirilmesini sağlar.
+Resen ziyaretler sırasında, onaylanmış kuruluş:
+- İmalatçının Ek-I’in 3.2. maddesine uygun bir şekilde son değerlendirmeyi fiilen yaptığını tesis eder.
+- Kontroller gerçekleştirmek üzere imalat veya depolama yerlerinde basınçlı ekipmanın numunelerini alır. Onaylanmış kuruluş, numune alınacak ekipman sayısını ve basınçlı ekipman numunelerinin son değerlendirmesinin tamamı veya bir kısmının yapılması veya yapılmasını sağlanmasının gerekli olup olmadığını değerlendirir. Uygulanacak numune kabul prosedürü, basınçlı ekipmanın uygunluğunu sağlamak açısından basınçlı ekipmanın imalat sürecinin kabul edilebilir limitler dâhilinde olup olmadığını belirlemeyi amaçlar. Bir veya daha fazla basınçlı ekipman veya donanımların uygunsuz olması halinde, onaylanmış kuruluş uygun tedbirleri alır. İmalatçı, onaylanmış kuruluşun sorumluluğu çerçevesinde, imalat sürecinde onaylanmış kuruluşun kimlik numarasını iliştirir.
+5. CE İşareti ve AB uygunluk beyanı
+5.1. İmalatçı, bu Yönetmeliğin geçerli gereklerini karşılayan her bir basınçlı ekipmana CE işaretini iliştirir.
+5.2. İmalatçı, basınçlı ekipman modeli için yazılı bir AB uygunluk beyanı hazırlayacak ve basınçlı ekipman piyasaya arz edildikten sonraki 10 yıl boyunca ulusal kurumların tasarrufuna teknik dosya ile birlikte saklar. AB uygunluk beyanı, hazırlanmış olduğu basınçlı ekipmanı tanımlar. Bir AB uygunluk beyanının bir kopyası talep üzerine ilgili kurumlara sunulur.
+6. Yetkili temsilci
+5 nci maddede belirtilen imalatçı yükümlülükleri, yetki belgesinde belirtilmiş olmaları şartıyla adına ve sorumluluğu altındaki yetkili temsilcisi tarafından yerine getirilebilir.
+
+3. MODÜL B: AB TİP İNCELEMESİ
+3.1. AB-Tip İncelemesi- Üretim tipi
+1. AB tip incelemesi- üretim tipi, bir onaylanmış kuruluşun basınçlı ekipmanların teknik tasarımını incelediği ve basınçlı ekipmanın teknik tasarımının bu Yönetmeliğin gereklerini karşıladığını doğrulayarak tasdik ettiği uygunluk değerlendirmesi prosedürünün bir aşamasıdır.
+2. AB tip incelemesi- üretim tipi, 3 üncü maddede belirtilen teknik dosya ve destekleyici delillerin incelenmesi ve komple basınçlı ekipmanın öngörülen imalat temsilcisi olan numunesinin incelenmesiyle basınçlı ekipmanın teknik tasarımının yeterliliğinin bir değerlendirmesinden oluşur.
+3. İmalatçı seçtiği tek bir onaylanmış kuruluşa AB tip incelemesi başvurusunda bulunur.
+Başvuru aşağıdakileri içerir:
+- İmalatçının adı ve adresi ve şayet başvuru Türkiye’de yerleşik yetkili temsilcisi tarafından yapılmışsa onun da adı ve adresi.
+- Aynı başvurunun başka bir onaylanmış kuruluşa yapılmadığını belirten yazılı bir beyan.
+- Teknik dosya. Teknik dosya, basınçlı ekipmanın bu Yönetmeliğin geçerli gereklerine uygunluğunun değerlendirilmesini mümkün kılar ve risk veya risklerin yeterli bir analizi ve değerlendirmesini içerir. Teknik dosya geçerli gerekleri belirtir ve bu tür değerlendirme için ilgili olduğu müddetçe, basınçlı ekipmanın tasarımını, imalini ve işletimini kapsar. Teknik dosya, mümkün ise, asgari olarak aşağıdakileri içerir:
+- Basınçlı ekipmanın genel bir tanımı.
+- Kavramsal tasarım ve imalat çizimleri, parçaların, alt parçaların, devrelerin ve benzeri şemaları.
+- Belirtilen çizimlerin, şemaların ve basınçlı ekipmanın çalışmasının anlaşılması için gerekli tanımlamalar ve açıklamalar.
+- Avrupa Birliği Resmî Gazetesinde referansları yayınlanmış olan ve tamamen veya kısmen uyumlaştırılmış standartların listesi ve bu standartların uyumlaştırılmadığı durumlarda bu Yönetmeliğin temel gereklerini karşılaması için benimsenen çözümlerin açıklamalar. Kısmen uygulanan uyumlaştırılmış standartlar durumunda, teknik dosya uygulanmış olan kısımları belirtir.
+- Yapılan tasarım hesaplarının ve muayenelerin sonuçları.
+- Deney raporları.
+- İmalatta sağlanan testlerle ilgili bilgiler.
+- Ek-I’in 3.1.2 ve 3.1.3 maddeleri çerçevesinde gerekli olan özellikler ve onaylarla ilgili bilgiler.
+- Öngörülen imalatı temsil eden numuneler.
+Numune, versiyonlar arasındaki farklılıkların güvenlik seviyesini etkilememesi şartıyla basınçlı ekipmanın çeşitli versiyonlarını kapsayabilir. Onaylanmış kuruluş, test programını gerçekleştirmek için ihtiyaç duyulması halinde ilave numuneler talep edebilir:
+- Teknik tasarım çözümünün yeterliliğini destekleyen deliller. Bu destekleyici delil, özellikle ilgili uyumlaştırılmış standartların tam olarak uygulanmadığı hallerde kullanılmış olan her türlü dokümanı belirtir. Destekleyici delil, gerektiğinde, diğer ilgili teknik spesifikasyonları uygulayan imalatçının uygun laboratuvarı tarafından veya kendi adına ve sorumluluğu altında başka bir test laboratuvarı tarafından yapılan testlerin sonuçlarını içerir.
+4. Onaylanmış kuruluş:
+4.1. Basınçlı ekipmanın teknik tasarımının ve imalat prosedürlerinin yeterliliğini değerlendirmek için teknik dosya ve destekleyici delilleri inceler.
+Özellikle, onaylanmış kuruluş:
+- Basınçlı ekipmanın malzemesinin ilgili uyumlaştırılmış standartlarına veya Avrupa malzeme onayına uygun olmaması halinde, malzemelerin denetlenmesi ve Ek-I’in 4.3 maddesine göre malzeme imalatçısı tarafından düzenlenen sertifikanın kontrolünü yapar.
+-Basınçlı ekipmanın sabit bağlanan parçalarının işlemini onaylar veya daha önce Ek-I’in 3.1.2 maddesine uygun olarak onaylanmış olduğunu kontrol eder.
+Basınçlı ekipmanın sabit bağlanan parçalarının işlemini gerçekleştiren ve tahribatsız testleri yapan personelin Ek-I’in 3.1.2 veya 3.1.3 maddesine uygun veya onaylı olduğunu doğrular.
+4.2. Numunelerin teknik dosyaya uygun bir şekilde üretilmiş olduğunu doğrular ve geçerli uyumlaştırılmış standartların geçerli hükümlerine uygun bir şekilde tasarlanmış olan elemanlar yanı sıra bu standartların geçerli hükümlerini uygulamaksızın diğer ilgili teknik spesifikasyonlar kullanılarak tasarlanmış olan elemanları tespit eder.
+4.3. İmalatçının ilgili standartları uygulamayı tercih etmesi halinde, bunların gerçekten uygulanıp uygulanmamış olduğunu tespit etmek için uygun muayeneleri ve gerekli testleri yapar veya yaptırır.
+4.4. Geçerli uyumlaştırılmış standartların uygulanmadığı durumlarda, diğer geçerli teknik spesifikasyonları uygulamak suretiyle imalatçı tarafından benimsenmiş olan çözümlerin, bu Yönetmeliğin temel güvenlik gereklerini karşılayıp karşılamadığını tespit etmek için, uygun muayeneleri ve gerekli testleri yapar veya yaptırır.
+4.5. Başvuru sahibi ile birlikte incelemelerin ve gerekli testlerin yapılacağı yeri tespit eder.
+5. Onaylanmış kuruluş 4 üncü madde uyarınca yapılan faaliyetleri ve sonuçlarını kayıt altına alan bir değerlendirme raporu hazırlar. Bakanlığa karşı olan yükümlülüklerine halel gelmeksizin, onaylanmış kuruluş, bu raporun içeriğini kısmen veya tamamen yalnızca imalatçının bunu kabul etmesi üzerine yayınlar.
+6. Tipin bu Yönetmeliğin gereklerini karşılaması halinde, onaylanmış kuruluş, imalatçıya bir AB tip inceleme belgesi - üretim tipini verir. 7 nci maddeye halel gelmeksizin, belge 10 yıl boyunca geçerli ve yenilenebilir olur ve imalatçının adı ve adresini, inceleme sonuçları ve geçerliliği için (varsa) şartları ve onaylı tipin tanımlanması için gerekli bilgileri içerir. Teknik dosyanın ilgili kısımlarının bir listesi, belgeye iliştirilir ve bir kopyası onaylanmış kuruluş tarafından saklanır. Belge ve ekleri, imal edilen basınçlı ekipmanın, incelenen tipe uygunluğunun değerlendirilmesine izin verir ve kullanım sırasında kontrole izin verecek tüm ilgili bilgileri içerir. Tipin bu Yönetmeliğin geçerli gereklerini karşılamaması halinde, onaylanmış kuruluş bir AB tip inceleme belgesi - üretim tipini vermeyi reddeder ve ret nedenlerini detaylı olarak açıklamak suretiyle başvuru sahibini bilgilendirir. İtiraz prosedürü için hükümler düzenlenir.
+7. Onaylanmış kuruluş, onaylanan tipin artık bu Yönetmeliğin geçerli gereklerine uygun olmadığını gösteren genel olarak kabul edilmiş son teknolojik değişikler hakkında sürekli bilgi sahibi olur ve böyle değişikliklerin ilave araştırma gerektirip gerektirmediğine karar verir. Onaylanmış kuruluş buna göre imalatçıyı bilgilendirir. İmalatçı, AB tip incelemesi belgesi - üretim tipiyle ilgili teknik dosyası, basınçlı ekipmanların temel güvenlik gerekleri veya belgenin geçerlilik şartlarına uygunluğu etkileyebilecek onaylı tipte tüm değişiklikler için tuttuğunu onaylanmış kuruluşa bildirir. Değişiklikler, asıl AB tip inceleme belgesi - üretim tipine bir ekleme şekilde ek bir onay gerektirir.
+8. Her onaylanmış kuruluş, AB tip inceleme belgeleri - üretim tipiyle ve/veya verilmiş veya iptal edilmiş herhangi bir eklemeyle ilgili olarak Bakanlığa bildirimde bulunur ve düzenli olarak veya talep üzerine, reddedilen, askıya alınan veya başka türlü sınırlandırılan belgelerin ve/veya herhangi bir ekin listesini Bakanlığa sunar. Her onaylanmış kuruluş, reddettiği, geri çektiği, askıya aldığı veya başka türlü sınırladığı AB tip inceleme belgeleri - üretim tipi ve/veya herhangi bir ekle ilgili olarak ve talep üzerine verilmiş olan belgeleri ve eklerini diğer onaylanmış kuruluşlara bildirir. Komisyon, üye ülkeler ve diğer onaylanmış kuruluşlar, talep üzerine, AB tipi inceleme belgeleri - üretim tipi ve/veya eklerinin bir kopyasını alabilir. Talep üzerine, Komisyon ve üye ülkeler teknik dosyanın ve onaylanmış kuruluş tarafından yapılan incelemelerin sonuçlarını alabilir. Onaylanmış kuruluş AB tip inceleme belgesi - üretim tipi, ekleri ve ekleri yanı sıra, imalatlı tarafından ibraz edilen dokümanlar dahil teknik dosyayı belgenin geçerlilik süresi sonuna kadar bir kopyasını tutar.
+9. İmalatçı, teknik dosya ile birlikte AB tip inceleme belgesi - üretim tipini, ekleri ve ilavelerinin bir kopyasını basınçlı ekipman piyasaya arz edildikten sonraki 10 yıl boyunca ulusal kurumların tasarrufuna saklar.
+10. İmalatçının yetkili temsilcisi, yetki belgesinde belirtilmesi şartıyla 3 üncü maddede belirtilen başvurularda bulunabilir ve 7 ve 9 uncu maddedeki yükümlülükleri yerine getirebilir.
+3.2. AB-Tip İncelemesi- tasarım tipi
+1. AB tip incelemesi-tasarım tipi, bir onaylanmış kuruluşun basınçlı ekipmanların teknik tasarımını incelediği ve basınçlı ekipmanın teknik tasarımının bu Yönetmeliğin gereklerini karşıladığını doğrulayarak tasdik ettiği uygunluk değerlendirmesi prosedürünün bir aşamasıdır.
+2. AB tip incelemesi- tasarım tipi, numune incelemesi olmaksızın, madde 3'te belirtilen teknik dosya ve destekleyici delillerin incelenmesiyle basınçlı ekipmanın teknik tasarımının yeterliliğinin bir değerlendirmesinden oluşur. Ek-I’in 2.2.4 maddesinde verilen deneysel tasarım yöntemi, bu modülün kapsamında kullanılmaz.
+3. İmalatçı seçtiği tek bir onaylanmış kuruluşa AB tip incelemesi - tasarım tipi başvurusunda bulunur.
+Başvuru aşağıdakileri içerir:
+- İmalatçının adı ve adresi ve şayet başvuru Türkiye’de yerleşik yetkili temsilcisi tarafından yapılmışsa onun da adı ve adresi.
+- Aynı başvurunun başka bir onaylanmış kuruluşa yapılmadığını belirten yazılı bir beyan.
+- Teknik dosya. Teknik dosya, basınçlı ekipmanın bu Yönetmeliğin geçerli gereklerine uygunluğunun değerlendirilmesini mümkün kılar ve risk veya risklerin yeterli bir analizi ve değerlendirmesini içerir. Teknik dosya geçerli gerekleri belirtir ve bu tür değerlendirme için ilgili olduğu müddetçe, basınçlı ekipmanın tasarımını, imalini ve işletimini kapsar. Teknik dosya, mümkün ise, asgari olarak aşağıdakileri içerir:
+- Basınçlı ekipmanın genel bir tanımı.
+- Kavramsal tasarım ve imalat çizimleri, parçaların, alt parçaların, devrelerin ve benzeri şemaları.
+- Belirtilen çizimlerin, şemaların ve basınçlı ekipmanın çalışmasının anlaşılması için gerekli tanımlamalar ve açıklamalar.
+- Avrupa Birliği Resmî Gazetesinde referansları yayınlanmış olan ve tamamen veya kısmen uyumlaştırılmış standartların listesi ve bu standartların uyumlaştırılmadığı durumlarda Yönetmeliğin temel gereklerini karşılaması için benimsenen çözümlerin açıklamalar. Kısmen uygulanan uyumlaştırılmış standartlar durumunda, teknik dosya uygulanmış olan kısımları belirtir.
+- Yapılan tasarım hesaplarının ve muayenelerin sonuçları.
+- Ek-I’in 3.1.2 ve 3.1.3 maddeleri çerçevesinde gerekli olan özellikler ve onaylarla ilgili bilgiler.
+- Teknik tasarım çözümünün yeterliliğini destekleyen deliller. Bu destekleyici delil, özellikle ilgili uyumlaştırılmış standartların tam olarak uygulanmadığı hallerde kullanılmış olan her türlü dokümanı belirtir. Destekleyici delil, gerektiğinde, imalatçının uygun laboratuvarı tarafından veya kendi adına ve sorumluluğu altında başka bir test laboratuvarı tarafından yapılan testlerin sonuçlarını içerir. Başvuru, versiyonlar arasındaki farklılıkların güvenlik seviyesini etkilememesi şartıyla basınçlı ekipmanın çeşitli versiyonlarını kapsayabilir.
+4. Onaylanmış kuruluş:
+4.1. Basınçlı ekipmanın teknik tasarımının yeterliliğini değerlendirmek için teknik dosya ve destekleyici delilleri inceler.
+Özellikle, onaylanmış kuruluş:
+- Basınçlı ekipmanın malzemesinin ilgili uyumlaştırılmış standartlarına veya Avrupa malzeme onayına uygun olmaması halinde, malzemeleri değerlendirir.
+- Basınçlı ekipmanın sabit bağlanan parçalarının işlemini onaylamak veya daha önce Ek-I’in 3.1.2 maddesine uygun olarak onaylanmış olduğunu kontrol eder.
+4.2. İmalatçının ilgili standartları uygulamayı tercih etmesi halinde, bunların gerçekten uygulanıp uygulanmamış olduğunu tespit etmek için uygun incelemeleri yapar veya yaptırır.
+4.3. Geçerli uyumlaştırılmış standartların uygulanmadığı durumlarda, imalatçı tarafından benimsenmiş olan çözümlerin, bu Yönetmeliğin temel güvenlik gereklerini karşılayıp karşılamadığını tespit etmek için, uygun incelemeleri yapar veya yaptırır.
+5. Onaylanmış kuruluş 4 üncü madde uyarınca yapılan faaliyetleri ve sonuçlarını kayıt altına alan bir değerlendirme raporu hazırlar. Bakanlığa karşı olan yükümlülüklerine halel gelmeksizin, onaylanmış kuruluş, bu raporun içeriğini kısmen veya tamamen yalnızca imalatçının bunu kabul etmesi üzerine yayınlar.
+6. Tasarım bu Yönetmeliğin gereklerini karşılaması halinde, onaylanmış kuruluş, imalatçıya bir AB tip inceleme belgesi - tasarım tipini verir. 7 nci maddeye halel gelmeksizin, belge 10 yıl boyunca geçerli ve yenilenebilir olur ve imalatçının adı ve adresini, inceleme sonuçları ve geçerliliği için (varsa) şartları ve onaylı tasarımın tanımlanması için gerekli bilgileri içerir. Teknik dosyanın ilgili kısımlarının bir listesi, belgeye iliştirilir ve bir kopyası onaylanmış kuruluş tarafından saklanır. Belge ve ekleri, imal edilen basınçlı ekipmanın, incelenen tasarıma uygunluğunun değerlendirilmesine izin verir ve kullanım sırasında kontrole izin verecek tüm ilgili bilgileri içerir. Tasarımın bu Yönetmeliğin geçerli gereklerini karşılamaması halinde, onaylanmış kuruluş bir AB tip inceleme belgesi - tasarım tipini vermeyi reddeder ve ret nedenlerini detaylı olarak açıklamak suretiyle başvuru sahibini bilgilendirir.
+7. Onaylanmış kuruluş, onaylanan tasarımın artık bu Yönetmeliğin geçerli gereklerine uygun olmadığını gösteren genel olarak kabul edilmiş son teknolojik değişikler hakkında sürekli bilgi sahibi olur ve değişikliklerin ilave araştırma gerektirip gerektirmediğine karar verir. O halde, onaylanmış kuruluş buna göre imalatçıyı bilgilendirir. İmalatçı, AB tasarım incelemesi belgesi - tasarım tipiyle ilgili teknik dosyası, basınçlı ekipmanların temel güvenlik gerekleri veya belgenin geçerlilik şartlarına uygunluğu etkileyebilecek onaylı tipte tüm değişiklikler için tuttuğunu onaylanmış kuruluşa bildirir. Değişiklikler, asıl AB tip inceleme belgesi - tasarım tipine bir ekleme şekilde ek bir onay gerektirir.
+8. Her onaylanmış kuruluş, AB tip inceleme belgeleri - tasarım tipiyle ve/veya verilmiş veya iptal edilmiş herhangi bir eklemeyle ilgili olarak Bakanlığa bildirimde bulunur ve düzenli olarak veya talep üzerine, reddedilen, askıya alınan veya başka türlü sınırlandırılan belgelerin ve/veya herhangi bir ekin listesini Bakanlığa sunar. Her onaylanmış kuruluş, reddettiği, geri çektiği, askıya aldığı veya başka türlü sınırladığı AB tip inceleme belgeleri - tasarım tipi ve/veya herhangi bir ekle ilgili olarak ve talep üzerine verilmiş olan belgeleri ve eklerini diğer onaylanmış kuruluşlara bildirir. Komisyon, üye ülkeler ve diğer onaylanmış kuruluşlar, talep üzerine, AB tipi inceleme belgeleri - tasarım tipi ve/veya eklerinin bir kopyasını alabilir. Talep üzerine, Komisyon ve üye ülkeler teknik dosyanın ve onaylanmış kuruluş tarafından yapılan incelemelerin sonuçlarını alabilir. Onaylanmış kuruluş AB tip inceleme belgesi - tasarım tipi, ekleri ve ekleri yanı sıra, imalatlı tarafından ibraz edilen dokümanlar dahil teknik dosyayı belgenin geçerlilik süresi sonuna kadar bir kopyasını tutar.
+9. İmalatçı, teknik dosya ile birlikte AB tip inceleme belgesi - tasarım tipini, ekleri ve ilavelerinin bir kopyasını basınçlı ekipman piyasaya arz edildikten sonraki 10 yıl boyunca ulusal kurumların tasarrufuna saklar.
+10. İmalatçının yetkili temsilcisi, yetki belgesinde belirtilmesi şartıyla 3 üncü Madde belirtilen başvurularda bulunabilir ve 7 ve 9 uncu maddedeki yükümlülükleri yerine getirebilir.
+4. MODÜL C2: RASTGELE ARALIKLARLA DENETLENMİŞ BASINÇLI EKİPMAN KONTROLLERİYLE BİRLİKTE İÇ ÜRETİM KONTROLÜNE DAYANAN TİPE UYGUNLUK
+1. Rastgele aralıklarda denetimli basınçlı ekipmanlar kontrolleriyle birlikte iç üretim kontrolüne dayanan tipe uygunluk, imalatçının 2, 3 ve 4 üncü madde yer alan yükümlülükleri yerine getirdiği ve ilgili basınçlı ekipmanın AB tip inceleme belgesinde açıklanan tipe uygun olduğunu ve geçerli bu Yönetmeliğin gereklerini karşıladığını münferit sorumluluğu altında temin ve beyan ettiği uygunluk değerlendirmesi prosedürünün bir aşamasıdır.
+2. İmalat
+İmalatçı, imalat süreci ve izlenmesinin imal edilen basınçlı ekipmanın AB tip inceleme belgesinde belirtilen tipe ve bu Yönetmeliğin geçerli gereklerine uygunluğunu sağlamak amacıyla gerekli olan her türlü tedbiri alır.
+3. Son değerlendirme ve basınçlı ekipman kontrolleri
+İmalatçı tarafından seçilen onaylanmış kuruluş, basınçlı ekipmanların son değerlendirmenin ve iç kontrollerinin kalitesini doğrulamak amacıyla, diğerlerinin yanı sıra basınçlı ekipmanın teknolojik karmaşıklığı ve imalat miktarını dikkate almak suretiyle kuruluş tarafından belirlenen rastgele aralıklarla ürün kontrolleri gerçekleştirir veya gerçekleştirilmesini sağlar. Onaylanmış kuruluş, imalatçının Ek-I’in 3.2 maddesi uyarınca son değerlendirmeyi fiilen yaptığını onaylar. Piyasaya sürülmeden önce onaylanmış kuruluş tarafından yerinde alınan son basınçlı ekipmanın yeterli bir numunesi incelenir ve uyumlaştırılmış standartlarla belirlenen uygun testler ve/veya diğer teknik spesifikasyonları uygulayan eşdeğer testler, basınçlı ekipmanın bu Yönetmeliğin geçerli gereklerine uygunluğunu kontrol etmek için yapılır. Onaylanmış kuruluş, numune alınacak ekipman sayısını ve basınçlı ekipman numunelerinin son değerlendirmesinin tamamı veya bir kısmının yapılması veya yapılmasını sağlanmasının gerekli olup olmadığını değerlendirir. Bir numunenin kabul edilebilir kalite seviyesine uymadığı hallerde, kuruluş uygun tedbirleri alır. Uygulanacak numune kabul prosedürü, basınçlı ekipmanın uygunluğunu sağlamak açısından basınçlı ekipmanın imalat sürecinin kabul edilebilir limitler dahilinde olup olmadığını belirlemeyi amaçlar. Testlerin bir onaylanmış kuruluş tarafından yapıldığı hallerde, imalatçı, onaylanmış kuruluşun sorumluluğu çerçevesinde, imalat sürecinde onaylanmış kuruluşun kimlik numarasını iliştirir.
+4. CE İşareti ve AB uygunluk beyanı
+4.1. İmalatçı, AB tip inceleme belgesinde açıklanan tipe uygun olan ve bu Yönetmeliğin geçerli gereklerini karşılayan her bir basınçlı ekipman veya donanıma CE işaretini iliştirir.
+4.2. İmalatçı, basınçlı ekipman modeli için yazılı bir AB uygunluk beyanı hazırlar ve basınçlı ekipman piyasaya arz edildikten sonraki 10 yıl boyunca ulusal kurumların tasarrufuna saklar. AB uygunluk beyanı, hazırlanmış olduğu basınçlı ekipman modelini tanımlar. Bir AB uygunluk beyanının bir kopyası talep üzerine ilgili kurumlara sunulur.
+5. Yetkili temsilci
+4 üncü maddede belirtilen imalatçı yükümlülükleri, yetki belgesinde belirtilmiş olmaları şartıyla adına ve sorumluluğu altındaki yetkili temsilcisi tarafından yerine getirilebilir.
+5. MODÜL D: ÜRETİM SÜRECİNİN KALİTE GÜVENCESİNE DAYANAN TİPE UYGUNLUK
+1. Üretim sürecinin kalite güvencesine dayanan tipe uygunluk, imalatçının 2 ve 5 nci maddede yer alan yükümlülükleri yerine getirdiği ve ilgili basınçlı ekipmanın veya donanımın AB tip inceleme belgesinde açıklanan tipe uygun olduğunu ve geçerli bu Yönetmeliğin gereklerini karşıladığını münferit sorumluluğu altında temin ve beyan ettiği uygunluk değerlendirmesi prosedürünün bir aşamasıdır.
+
+2. İmalat
+İmalatçı, 3 üncü maddede belirtildiği üzere ilgili basınçlı ekipmanların üretim, son ürün kontrol ve testi için onaylı bir kalite sistemi işletir ve 4 üncü maddede belirtilen gözetime tabi tutulur.
+3. Kalite sistemi
+3.1. İmalatçı, ilgili basınç ekipmanı için seçtiği bir onaylanmış kuruluşa kalite sisteminin değerlendirilmesi için bir başvuruda bulunur.
+Başvuru aşağıdakileri içerir:
+- İmalatçının adı ve adresi ve şayet başvuru Türkiye’de yerleşik yetkili temsilcisi tarafından yapılmışsa onun da adı ve adresi.
+- Aynı başvurunun başka bir onaylanmış kuruluşa yapılmadığını belirten yazılı bir beyan.
+- Öngörülen basınçlı ekipman tipi hakkında tip ilgili bilgiler.
+- Kalite sistemiyle ilgili dokümanlar.
+- Onaylı tipin teknik dosyası ve AB tip inceleme belgesinin bir kopyası.
+3.2. Kalite sistemi, basınçlı ekipmanın AB tip inceleme belgesinde açıklanan tipe uygun olmasını ve bu Yönetmeliğin geçerli gereklerine uymasını sağlar. İmalatçı tarafından uygulanan tüm elemanlar, gerekler ve hükümler yazılı politikalar, prosedürler ve talimatlar şeklinde sistematik ve düzenli bir şekilde belgelenir. Bu kalite sistemi dokümantasyonu, kalite programları, planlar, el kitapları ve kayıtların tutarlı bir yorumlanmasına izin verir.
+Özellikle, aşağıdakilerin yeterli bir açıklamasını içerir:
+- Basınçlı ekipmanın kalitesi bakımından, yönetimin sorumlulukları ve gücü, organizasyon yapısı ve kalite hedefleri.
+- Uygulanacak olan imalat, kalite kontrol ve kalite güvencesi teknikleri, özellikle Ek-I’in 3.1.2 maddesine göre onaylanan sabit bağlantı parçaları için kullanılan yöntemler olmak üzere, kullanılacak yöntem ve sistematik faaliyetler.
+- Üretim öncesi, üretim esnasında ve üretimden sonra uygulanacak olan testler ve muayeneler ve bunların hangi sıklıkla uygulanacağı.
+- Muayene raporları, test verileri gibi kalite kayıtları, kalibrasyon verileri, özellikle Ek-I’in 3.1.2 ve 3.1.3 maddelerine göre parçaların birleştirilmesi ve tahribatsız muayeneleri yapanlar olmak üzere ilgili personelin nitelikleri veya onayları.
+- İstenilen kalitenin sağlanması ve kalite sisteminin verimli işlemesi için kullanılan izleme araçları.
+3.3. Onaylanmış kuruluş, 3.2 maddesinde bildirilen gerekleri yerine getirip getirmediğini belirlemek üzere kalite sistemini değerlendirir. Değerlendirmede, ilgili uyumlaştırılmış standartları esas alan kalite sistemi unsurlarının ilgili uyumlaştırılmış standartların karşılık gelen spesifikasyonlarına uygun olduğu varsayılır. Kalite yönetim sistemlerindeki deneyime ek olarak, denetim ekibi ilgili basınçlı ekipman alanında ve basınçlı ekipman teknolojisinin değerlendirilmesinde deneyime ve bu Yönetmeliğin geçerli gereklerine dair bilgiye sahip en az bir üyeye sahip olur. Denetim imalatçının yerinde denetim ziyareti içerir. Denetim ekibi, ürünün bu gereklere uyumunu temin etmek açısından imalatçının bu Yönetmeliğin ilgili gereklerini tanımlayabilme ve gerekli incelemeleri yapabilme kabiliyetini onaylamak amacıyla 3.1.5 maddesinde belirtilen teknik dosyayı gözden geçirir. Karar imalatçıya bildirilir. Bildirim denetimin sonuçlarını ve gerekçeli değerlendirme kararını içerir.
+3.4. İmalatçı, onaylandığı şekliyle kalite sisteminden doğan yükümlülüklerini yerine getirmeli etkinliğini ve devamlılığını sağlar.
+3.5. İmalatçı kalite sistemini onaylamış olan onaylanmış kuruluşu, kalite sistemi ile ilgili olarak yapmayı öngördükleri güncelleştirmeler hakkında bilgilendirir. Onaylanmış kuruluş yapılması düşünülen değişiklikleri değerlendirir ve değiştirilmiş kalite sisteminin 3.2. maddesinde bildirilen gerekleri hala yerine getirip getirmediğine ve yeniden bir değerlendirmenin gerekli olup olmadığına karar verir. Kararını imalatçıya bildirir. Bildirim inceleme sonuçlarını ve gerekçeli değerlendirme kararını içerir.
+4. Onaylanmış kuruluşun gözetim sorumluluğu
+4.1. Gözetimin amacı, imalatçının onaylı kalite sistemi ile ilgili yükümlülüklerini yerine getirdiğinden emin olmaktır.
+4.2. İmalatçı, onaylanmış kuruluşun kontrol amacıyla imalat, kontrol, test ve depolama mahallerine giriş izni verir ve özellikle aşağıda belirtilenler olmak üzere bütün gerekli bilgileri temin eder:
+- Kalite sistem dokümanları.
+- Muayene raporları ve test verileri, kalibrasyon verileri, ilgili personelin nitelik raporları ve benzeri gibi kalite kayıtları.
+4.3. Onaylanmış kuruluş, imalatçının kalite sistemini sürdürdüğünü ve uyguladığını belirlemek amacıyla periyodik olarak denetler ve imalatçıya denetleme raporlarını sunar. Periyodik denetlemelerin sıklığı, her üç yılda bir yeniden değerlendirme yapılacak şekilde olur.
+4.4. Onaylanmış kuruluş imalatçıya resen ziyaretlerde bulunur. Bu ilave ziyaretin gerekliliği ve sıklığı onaylanmış kuruluş tarafından uygulanan kontrol sistemi temelinde belirlenir. Özellikle, aşağıdaki faktörler ziyaret kontrol sisteminde dikkate alınır:
+- Basınçlı ekipmanın kategorisi.
+- Daha önceki denetim ziyaretlerinin sonuçları.
+- Düzeltici faaliyetini sürdürme ihtiyacı.
+- Uygulanabilir olduğunda sistemin onayıyla bağlantılı özel koşullar.
+- İmalat organizasyonunda, politikada veya tekniğinde önemli değişiklikler.
+Bu ziyaretler sırasında onaylanmış kuruluş, gerektiğinde, kalite sisteminin doğru işlediğini teyit etmek için testler yapabilir veya yaptırabilir. Onaylanmış kuruluş imalatçıya bir denetim raporu, şayet bir test yapılmışsa bir de test raporu sunar.
+5. CE İşareti ve AB uygunluk beyanı
+5.1. İmalatçı, AB tip inceleme belgesinde açıklanan tipe uygun olan ve bu Yönetmeliğin geçerli gereklerini karşılayan her bir basınçlı ekipman veya donanıma CE işaretini ve 3.1 maddesinde belirtilen onaylanmış kuruluşun kimlik numarasını iliştirir.
+5.2. İmalatçı, basınçlı ekipman modeli için yazılı bir AB uygunluk beyanı hazırlar ve basınçlı ekipman piyasaya arz edildikten sonraki 10 yıl boyunca ulusal kurumların tasarrufuna saklar. AB uygunluk beyanı, hazırlanmış olduğu basınçlı ekipman modelini tanımlar. AB uygunluk beyanının bir kopyası talep üzerine ilgili kurumlara sunulur.
+6. İmalatçı, aşağıdaki bilgileri basınçlı ekipmanın son üretildiği tarihten itibaren on yıl süre ile muhafaza eder ve istenildiğinde yetkili kamu kuruluşuna sunar:
+- 3.1 maddesinde belirtilen dokümanları.
+- 3.5 maddesinde belirtilen onaylanan güncellemeleri.
+- 3.3, 3.5, 4.3 ve 4.4 maddelerinde belirtilen onaylanmış kuruluşun karar ve raporları.
+7. Her onaylanmış kuruluş, verilen veya geri çekilen kalite sistemi onaylarını Bakanlığa bildirir ve düzenli olarak veya talep üzerine, reddedilen, askıya alınan veya başka türlü kısıtlanan kalite sistemi onayların bir listesini Bakanlığa sunar. Her onaylanmış kuruluş reddettiği, askıya aldığı, geri çektiği veya başka türlü kısıtladığı kalite sistem onaylarını ve talep üzerine verdiği kalite sistem onaylarını diğer onaylanmış kuruluşlara bildirir.
+8. Yetkili temsilci
+3.1, 3.5 ve 6 ncı maddelerde belirtilen imalatçı yükümlülükleri, yetki belgesinde belirtilmiş olmaları şartıyla adına ve sorumluluğu altındaki yetkili temsilcisi tarafından yerine getirilebilir.
+
+6. MODUL D1: ÜRETİM SÜRECİ KALİTE GÜVENCESİ
+1. Üretim Süreci Kalite Güvencesi, imalatçının 2, 4 ve 7 nci maddelerde belirtilen yükümlülükleri yerine getirdiği ve ilgili basınçlı ekipmanın bu Yönetmeliğin gereklerini yerine getirdiğine dair münferit sorumluluğunu ilan ettiği bir uygunluk değerlendirmesi prosedürüdür.
+2. Teknik dosya
+İmalatçı teknik dosyayı hazırlar. Teknik dosya, basınçlı ekipmanın ilgili gereklere uygunluğunun değerlendirilmesini mümkün kılar ve risk veya risklerin yeterli bir analizi ve değerlendirmesini içerir. Teknik dosya geçerli gerekleri belirtir ve bu tür değerlendirme için ilgili olduğu müddetçe, basınçlı ekipmanın tasarımını, imalini ve işletimini kapsar. Teknik dosya, mümkün ise, asgari olarak aşağıdakileri içerir:
+- Basınçlı ekipmanın genel bir tanımı.
+- Kavramsal tasarım ve imalat çizimleri, parçaların, alt parçaların, devrelerin ve benzeri şemaları.
+- Belirtilen çizimlerin, şemaların ve basınçlı ekipmanın çalışmasının anlaşılması için gerekli tanımlamalar ve açıklamalar.
+- Avrupa Birliği Resmî Gazetesinde referansları yayınlanmış olan ve tamamen veya kısmen uyumlaştırılmış standartların listesi ve bu standartların uyumlaştırılmadığı durumlarda Yönetmeliğin temel gereklerini karşılaması için benimsenen çözümlerin açıklamalar. Kısmen uygulanan uyumlaştırılmış standartlar durumunda, teknik dosya uygulanmış olan kısımları belirtir.
+- Yapılan tasarım hesaplarının ve muayenelerin sonuçları.
+- Deney raporları.
+3. İmalatçı, teknik dosyayı basınçlı ekipman veya donanımların piyasaya sürülmesine müteakip 10 yıl boyunca yetkili ulusal kurumların tasarrufunda saklar.
+4. İmalat
+İmalatçı, 5 nci maddede belirtildiği üzere ilgili basınçlı ekipmanların üretim, son ürün kontrol ve testi için onaylı bir kalite sistemi işletecek ve 6 ncı maddede belirtilen gözetime tabi tutulur.
+5. Kalite sistemi
+5.1. İmalatçı, ilgili basınç ekipmanı için seçtiği bir onaylanmış kuruluşa kalite sisteminin değerlendirilmesi için bir başvuruda bulunur.
+Başvuru aşağıdakileri içerir:
+- İmalatçının adı ve adresi ve şayet başvuru Türkiye’de yerleşik yetkili temsilcisi tarafından yapılmışsa onun da adı ve adresi.
+- Aynı başvurunun başka bir onaylanmış kuruluşa yapılmadığını belirten yazılı bir beyan.
+- Öngörülen basınçlı ekipman tipi hakkında tip ilgili bilgiler.
+- Kalite sistemiyle ilgili dokümanlar.
+- 2 nci maddede belirtilen teknik dosya.
+5.2. Kalite sistemi bu Yönetmeliğin geçerli gereklerini yerine getirmesini temin eder.
+İmalatçı tarafından uygulanan tüm elemanlar, gerekler ve hükümler yazılı politikalar, prosedürler ve talimatlar şeklinde sistematik ve düzenli bir şekilde belgelenir. Bu kalite sistemi dokümantasyonu, kalite programları, planlar, el kitapları ve kayıtların tutarlı bir yorumlanmasına izin verir.
+Özellikle, aşağıdakilerin yeterli açıklamasını içerir:
+- Basınçlı ekipmanın kalitesi bakımından, yönetimin sorumlulukları ve gücü, organizasyon yapısı ve kalite hedefleri.
+- Uygulanacak olan imalat, kalite kontrol ve kalite güvencesi teknikleri, özellikle Ek-I’in 3.1.2 maddesine göre onaylanan sabit bağlantı parçaları için kullanılan yöntemler olmak üzere, kullanılacak yöntem ve sistematik faaliyetler.
+- İmalat öncesi, imalat esnasında ve imalattan sonra uygulanacak olan testler ve muayeneler ve bunların hangi sıklıkla uygulanacağı.
+- Muayene raporları, test verileri gibi kalite kayıtları, kalibrasyon verileri, özellikle Ek-I’in 3.1.2. maddesine göre parçaların birleştirilmesini yapanlar olmak üzere ilgili personelin nitelikleri veya onayları.
+- İstenilen ürün kalitesinin sağlanması ve kalite sisteminin verimli işlemesi için kullanılan izleme araçları.
+5.3. Onaylanmış kuruluş, 5.2 maddesinde bildirilen gerekleri yerine getirip getirmediğini belirlemek üzere kalite sistemini değerlendirir. Geçerli uyumlaştırılmış standartlarına uyan kalite sistemi unsurları, 5.2 maddesine gereklere uygun olduğu varsayılır. Kalite yönetim sistemlerindeki deneyime ek olarak, denetim ekibi basınçlı ekipman teknolojisinin değerlendirilmesinde deneyime ve bu Yönetmeliğin geçerli gereklerine dair bilgiye sahip en az bir üyeye sahip olur. Denetim imalatçının yerinde değerlendirme ziyareti içerir. Denetim ekibi, ürünün bu gereklere uyumunu temin etmek açısından imalatçının bu Yönetmeliğin ilgili gereklerini tanımlayabilme ve gerekli incelemeleri yapabilme kabiliyetini onaylamak amacıyla 2 nci maddede belirtilen teknik dosyayı gözden geçirir. Karar imalatçıya bildirilir. Bildirim denetimin sonuçlarını ve gerekçeli değerlendirme kararını içerir.
+5.4. İmalatçı, onaylandığı şekliyle kalite sisteminden doğan yükümlülüklerini yerine getirmeli etkinliğini ve devamlılığını sağlar.
+5.5. İmalatçı kalite sistemini onaylamış olan onaylanmış kuruluşu, kalite sistemi ile ilgili olarak yapmayı öngördükleri güncelleştirmeler hakkında bilgilendirir. Onaylanmış kuruluş yapılması düşünülen değişiklikleri değerlendirir ve değiştirilmiş kalite sisteminin 5.2. maddesinde bildirilen gerekleri hala yerine getirip getirmediğine ve yeniden bir değerlendirmenin gerekli olup olmadığına karar verir. Kararını imalatçıya bildirir. Bildirim inceleme sonuçlarını ve gerekçeli değerlendirme kararını içerir.
+6. Onaylanmış kuruluşun gözetim sorumluluğu
+6.1. Gözetimin amacı, imalatçının onaylı kalite sistemi ile ilgili yükümlülüklerini yerine getirdiğinden emin olmaktır.
+6.2. İmalatçı, onaylanmış kuruluşun kontrol amacıyla imalat, kontrol, test ve depolama mahallerine giriş izni verir ve özellikle aşağıda belirtilenler olmak üzere bütün gerekli bilgileri temin eder:
+- Kalite sistem dokümanları.
+- 2 nci maddede belirtilen teknik dosya.
+- Muayene raporları ve test verileri, kalibrasyon verileri, ilgili personelin nitelik raporları ve benzeri gibi kalite kayıtları.
+6.3. Onaylanmış kuruluş, imalatçının kalite sistemini sürdürdüğünü ve uyguladığını belirlemek amacıyla periyodik olarak denetler ve imalatçıya denetleme raporlarını sunar. Periyodik denetlemelerin sıklığı, her üç yılda bir yeniden değerlendirme yapılacak şekilde olur.
+6.4. Onaylanmış kuruluş imalatçıya resen ziyaretlerde bulunur. Bu ilave ziyaretin gerekliliği ve sıklığı onaylanmış kuruluş tarafından uygulanan kontrol sistemi temelinde belirlenir. Özellikle, aşağıdaki faktörler ziyaret kontrol sisteminde dikkate alınır:
+- Basınçlı ekipmanın kategorisi.
+- Daha önceki denetim ziyaretlerinin sonuçları.
+- Düzeltici faaliyetini sürdürme ihtiyacı.
+- Uygulanabilir olduğunda sistemin onayıyla bağlantılı özel koşullar.
+- İmalat organizasyonunda, politikada veya tekniğinde önemli değişiklikler.
+Bu ziyaretler sırasında onaylanmış kuruluş, gerektiğinde, kalite sisteminin doğru işlediğini teyit etmek için testler yapabilir veya yaptırabilir. Onaylanmış kuruluş imalatçıya bir denetim raporu, şayet bir test yapılmışsa bir de test raporu sunar.
+
+7. CE İşareti ve AB uygunluk beyanı
+7.1. İmalatçı, AB tip inceleme belgesinde açıklanan tipe uygun olan ve bu Yönetmeliğin geçerli gereklerini karşılayan her bir basınçlı ekipman veya donanıma CE işaretini ve 3.1 maddesinde belirtilen onaylanmış kuruluşun kimlik numarasını iliştirir.
+7.2. İmalatçı, basınçlı ekipman modeli için yazılı bir AB uygunluk beyanı hazırlar ve basınçlı ekipman piyasaya arz edildikten sonraki 10 yıl boyunca ulusal kurumların tasarrufunda saklar. AB uygunluk beyanı, hazırlanmış olduğu basınçlı ekipman modelini tanımlar. AB uygunluk beyanının bir kopyası talep üzerine ilgili kurumlara sunulur.
+8. İmalatçı, aşağıdaki bilgileri basınçlı ekipmanın piyasanın arz edildiği tarihten itibaren on yıl süre ile muhafaza eder ve istenildiğinde yetkili kamu kuruluşuna sunar:
+- 5.1 maddesinde belirtilen teknik dosya.
+- 5.5 maddesinde belirtilen değişiklik.
+- 5.5, 6.3 ve 6.4 maddelerinde belirtilen onaylanmış kuruluşun karar ve raporları.
+9. Her onaylanmış kuruluş, verilen veya geri çekilen kalite sistemi onaylarını Bakanlığa bildirir ve düzenli olarak veya talep üzerine, reddedilen, askıya alınan veya başka türlü kısıtlanan kalite sistemi onayların bir listesini Bakanlığa sunar. Her onaylanmış kuruluş reddettiği, askıya aldığı veya geri çektiği kalite sistem onaylarını ve talep üzerine verdiği kalite sistem onaylarını diğer onaylanmış kuruluşlara bildirir.
+10. Yetkili temsilci
+3.1, 5.1, 7 ve 8 maddelerde belirtilen imalatçı yükümlülükleri, yetki belgesinde belirtilmiş olmaları şartıyla adına ve sorumluluğu altındaki yetkili temsilcisi tarafından yerine getirilebilir.
+7. MODÜL E: BASINÇLI EKİPMAN KALİTE GÜVENCESİNE DAYANAN TİPE UYGUNLUK
+1. Basınçlı ekipman kalite güvencesine dayanan tipe uygunluk, imalatçının 2 ve 5 nci maddelerde yer alan yükümlülükleri yerine getirdiği ve ilgili basınçlı ekipmanın AB tip inceleme belgesinde açıklanan tipe uygun olduğunu ve geçerli bu Yönetmeliğin gereklerini karşıladığını münferit sorumluluğu altında temin ve beyan ettiği uygunluk değerlendirmesi prosedürünün bir aşamasıdır.
+2. İmalat
+İmalatçı, 3 üncü maddede belirtildiği üzere ilgili basınçlı ekipmanların son ürün kontrol ve testi için onaylı bir kalite sistemi işletir ve 4 üncü maddede belirtilen gözetime tabi tutar.
+3. Kalite sistemi
+3.1. İmalatçı, ilgili basınç ekipmanı için seçtiği bir onaylanmış kuruluşa kalite sisteminin değerlendirilmesi için bir başvuruda bulunur.
+Başvuru aşağıdakileri içerir:
+- İmalatçının adı ve adresi ve şayet başvuru Türkiye’de yerleşik yetkili temsilcisi tarafından yapılmışsa onun da adı ve adresi.
+- Aynı başvurunun başka bir onaylanmış kuruluşa yapılmadığını belirten yazılı bir beyan.
+- Öngörülen basınçlı ekipman tipi hakkında tip ilgili bilgiler.
+- Kalite sistemiyle ilgili dokümanlar.
+- Onaylı tipin teknik dosyası ve AB tip inceleme belgesinin bir kopyası.
+3.2. Kalite sistemi, basınçlı ekipmanın AB tip inceleme belgesinde açıklanan tipe uygun olmasını ve bu Yönetmeliğin geçerli gereklerine uymasını sağlar. İmalatçı tarafından uygulanan tüm elemanlar, gerekler ve hükümler yazılı politikalar, prosedürler ve talimatlar şeklinde sistematik ve düzenli bir şekilde belgelenir. Bu kalite sistemi dokümantasyonu, kalite programları, planlar, el kitapları ve kayıtların tutarlı bir yorumlanmasına izin verir.
+Özellikle, aşağıdakilerin yeterli bir açıklamasını içerir:
+- Basınçlı ekipmanın kalitesi bakımından, yönetimin sorumlulukları ve gücü, organizasyon yapısı ve kalite hedefleri.
+- İmalattan sonra yapılacak muayeneler ve testler.
+- Muayene raporları, test verileri gibi kalite kayıtları, kalibrasyon verileri, özellikle Ek-I’in 3.1.2. ve 3.1.3. maddelerine göre parçaların birleştirilmesi ve tahribatsız muayeneleri yapanlar olmak üzere ilgili personelin nitelikleri veya onayları.
+- Kalite sisteminin etkili işleyişini izleme araçları.
+3.3. Onaylanmış kuruluş, 3.2 maddesinde bildirilen gerekleri yerine getirip getirmediğini belirlemek üzere kalite sistemini değerlendirir. Değerlendirmede, ilgili uyumlaştırılmış standartları esas alan kalite sistemi unsurlarının ilgili uyumlaştırılmış standartların karşılık gelen spesifikasyonlarına uygun olduğu varsayılır. Kalite yönetim sistemlerindeki deneyime ek olarak, denetim ekibi ilgili basınçlı ekipman alanında ve basınçlı ekipman teknolojisinin değerlendirilmesinde deneyime ve bu Yönetmeliğin geçerli gereklerine dair bilgiye sahip en az bir üyeye sahip olur. Denetim, imalatçının yerinde değerlendirme ziyareti içerir. Denetim ekibi, ürünün bu gereklere uyumunu temin etmek açısından imalatçının bu Yönetmeliğin ilgili gereklerini tanımlayabilme ve gerekli incelemeleri yapabilme kabiliyetini onaylamak amacıyla 3.1.1 maddesinde belirtilen teknik dosyayı gözden geçirir. Karar imalatçıya bildirilir. Bildirim denetimin sonuçlarını ve gerekçeli değerlendirme kararını içerir.
+3.4. İmalatçı, onaylandığı şekliyle kalite sisteminden doğan yükümlülüklerini yerine getirmeli etkinliğini ve devamlılığını sağlar.
+3.5. İmalatçı kalite sistemini onaylamış olan onaylanmış kuruluşu, kalite sistemi ile ilgili olarak yapmayı öngördükleri güncelleştirmeler hakkında bilgilendirir. Onaylanmış kuruluş yapılması düşünülen değişiklikleri değerlendirir ve değiştirilmiş kalite sisteminin 3.2 maddesinde bildirilen gerekleri hala yerine getirip getirmediğine ve yeniden bir değerlendirmenin gerekli olup olmadığına karar verir. Kararını imalatçıya bildirir. Bildirim inceleme sonuçlarını ve gerekçeli değerlendirme kararını içerir.
+4. Onaylanmış kuruluşun gözetim sorumluluğu
+4.1. Gözetimin amacı, imalatçının onaylı kalite sistemi ile ilgili yükümlülüklerini yerine getirdiğinden emin olmaktır.
+4.2. İmalatçı, onaylanmış kuruluşun kontrol amacıyla imalat, kontrol, test ve depolama mahallerine giriş izni verir ve özellikle aşağıda belirtilenler olmak üzere bütün gerekli bilgileri temin eder:
+- Kalite sistem dokümanları.
+- Teknik dosya.
+- Muayene raporları ve test verileri, kalibrasyon verileri, ilgili personelin nitelik raporları ve benzeri gibi kalite kayıtları.
+4.3. Onaylanmış kuruluş, imalatçının kalite sistemini sürdürdüğünü ve uyguladığını belirlemek amacıyla periyodik olarak denetler ve imalatçıya denetleme raporlarını sunar. Periyodik denetlemelerin sıklığı, her üç yılda bir yeniden değerlendirme yapılacak şekilde olur.
+4.4. Onaylanmış kuruluş imalatçıya resen ziyaretlerde bulunur. Bu ilave ziyaretin gerekliliği ve sıklığı onaylanmış kuruluş tarafından uygulanan kontrol sistemi temelinde belirlenir. Özellikle, aşağıdaki faktörler ziyaret kontrol sisteminde dikkate alınır:
+- Basınçlı ekipmanın kategorisi.
+- Daha önceki denetim ziyaretlerinin sonuçları.
+- Düzeltici faaliyetini sürdürme ihtiyacı.
+- Uygulanabilir olduğunda sistemin onayıyla bağlantılı özel koşullar.
+- İmalat organizasyonunda, politikada veya tekniğinde önemli değişiklikler.
+Bu ziyaretler sırasında onaylanmış kuruluş, gerektiğinde, kalite sisteminin doğru işlediğini teyit etmek için testler yapabilir veya yaptırabilir. Onaylanmış kuruluş imalatçıya bir denetim raporu, şayet bir test yapılmışsa bir de test raporu sunar.
+5. CE İşareti ve AB uygunluk beyanı
+5.1. İmalatçı, AB tip inceleme belgesinde açıklanan tipe uygun olan ve bu Yönetmeliğin geçerli gereklerini karşılayan her bir basınçlı ekipman veya donanıma CE işaretini ve 3.1 maddesinde belirtilen onaylanmış kuruluşun kimlik numarasını iliştirir.
+5.2. İmalatçı, basınçlı ekipman modeli için yazılı bir AB uygunluk beyanı hazırlar ve basınçlı ekipman piyasaya arz edildikten sonraki 10 yıl boyunca ulusal kurumların tasarrufunda saklar. AB uygunluk beyanı, hazırlanmış olduğu basınçlı ekipman modelini tanımlar. AB uygunluk beyanının bir kopyası talep üzerine ilgili kurumlara sunulur.
+6. İmalatçı, aşağıdaki bilgileri basınçlı ekipmanın piyasaya arz edildiği tarihten itibaren on yıl süre ile muhafaza eder ve istenildiğinde yetkili kamu kuruluşuna sunar:
+- 3.1 maddesinde belirtilen teknik dosya.
+- 3.5 maddesinde belirtilen onaylanan güncellemeler.
+- 3.3, 3.5, 4.3 ve 4.4 maddelerinde belirtilen onaylanmış kuruluşun karar ve raporları.
+7. Her onaylanmış kuruluş, verilen veya geri çekilen kalite sistemi onaylarını Bakanlığa bildirir ve düzenli olarak veya talep üzerine, reddedilen, askıya alınan veya başka türlü kısıtlanan kalite sistemi onayların bir listesini Bakanlığa sunar. Her onaylanmış kuruluş reddettiği, askıya aldığı veya geri çektiği kalite sistem onaylarını ve talep üzerine verdiği kalite sistem onaylarını diğer onaylanmış kuruluşlara bildirir.
+8. Yetkili temsilci
+3.1, 3.5 ve 6 ncı maddelerde belirtilen imalatçı yükümlülükleri, yetki belgesinde belirtilmiş olmaları şartıyla adına ve sorumluluğu altındaki yetkili temsilcisi tarafından yerine getirilebilir.
+8. MODÜL E1: SON BASINÇLI EKİPMAN MUAYENE VE TESTİNİN KALİTE GÜVENCESİ
+1. Son Basınçlı Ekipman Muayene ve Testin Kalite Güvencesi, imalatçının 2, 4 ve 7nci maddelerde belirtilen yükümlülükleri yerine getirdiği ve ilgili basınçlı ekipmanın bu Yönetmeliğin gereklerini yerine getirdiğine dair münferit sorumluluğunu ilan ettiği bir uygunluk değerlendirmesi prosedürüdür.
+2. Teknik dosya
+İmalatçı teknik dosyayı hazırlar. Teknik dosya, basınçlı ekipmanın ilgili gereklere uygunluğunun değerlendirilmesini mümkün kılar ve risk veya risklerin yeterli bir analizi ve değerlendirmesini içerir. Teknik dosya geçerli gerekleri belirtir ve bu tür değerlendirme için ilgili olduğu müddetçe, basınçlı ekipmanın tasarımını, imalini ve işletimini kapsar. Teknik dosya, mümkün ise, asgari olarak aşağıdakileri içerir:
+- Basınçlı ekipmanın genel bir tanımı.
+- Kavramsal tasarım ve imalat çizimleri, parçaların, alt parçaların, devrelerin ve benzeri şemaları.
+- Belirtilen çizimlerin, şemaların ve basınçlı ekipmanın çalışmasının anlaşılması için gerekli tanımlamalar ve açıklamalar.
+- Avrupa Birliği Resmî Gazetesinde referansları yayınlanmış olan ve tamamen veya kısmen uyumlaştırılmış standartların listesi ve bu standartların uyumlaştırılmadığı durumlarda Yönetmeliğin temel gereklerini karşılaması için benimsenen çözümlerin açıklamalar. Kısmen uygulanan uyumlaştırılmış standartlar durumunda, teknik dosya uygulanmış olan kısımları belirtir.
+- Yapılan tasarım hesaplarının ve muayenelerin sonuçları.
+- Deney raporları.
+3. İmalatçı, teknik dosyayı basınçlı ekipman veya donanımların piyasaya sürülmesine müteakip 10 yıl boyunca yetkili ulusal kurumların tasarrufunda saklar.
+4. İmalat
+İmalatçı, 5 inci maddede belirtildiği üzere ilgili basınçlı ekipmanların son ürün kontrol ve testi için onaylı bir kalite sistemi işletir ve 6 ncı maddede belirtilen gözetime tabi tutar.
+5. Kalite sistemi
+5.1. İmalatçı, ilgili basınç ekipmanı için seçtiği bir onaylanmış kuruluşa kalite sisteminin değerlendirilmesi için bir başvuruda bulunur. Başvuru aşağıdakileri içerir:
+- İmalatçının adı ve adresi ve şayet başvuru Türkiye’de yerleşik yetkili temsilcisi tarafından yapılmışsa onun da adı ve adresi.
+- Aynı başvurunun başka bir onaylanmış kuruluşa yapılmadığını belirten yazılı bir beyan.
+- Öngörülen basınçlı ekipman tipi hakkında tip ilgili bilgiler.
+- Kalite sistemiyle ilgili dokümanlar.
+- 2 nci maddede belirtilen teknik dosya.
+5.2. Kalite sistemi bu Yönetmeliğin geçerli gereklerini yerine getirmesini temin eder. Kalite sistemi çerçevesinde, her basınçlı ekipman muayene edilecek ve 15 inci maddede belirtilen ilgili standartlarda belirtilen uygun testler veya eşdeğer testler ve özellikle Ek-I’in 3.2 maddesinde belirtilen son değerlendirme, bu Yönetmeliğin geçerli gereklerine uygunluğunu sağlamak için yapılır. İmalatçı tarafından uygulanan tüm elemanlar, gerekler ve hükümler yazılı politikalar, prosedürler ve talimatlar şeklinde sistematik ve düzenli bir şekilde belgelenir. Bu kalite sistemi dokümantasyonu, kalite programları, planlar, el kitapları ve kayıtların tutarlı bir yorumlanmasına izin verir. Özellikle, aşağıdakilerin yeterli bir açıklamasını içerir:
+- Basınçlı ekipmanın kalitesi bakımından, yönetimin sorumlulukları ve gücü, organizasyon yapısı ve kalite hedefleri.
+- Ek-I’in 3.1.2 maddesi uyarınca onaylanan sabit parçaların birleştirilmesi için kullanılan prosedürler.
+- İmalattan sonra yapılacak muayeneler ve testler.
+- Muayene raporları, test verileri gibi kalite kayıtları, kalibrasyon verileri, özellikle Ek-I’in 3.1.2 maddesine göre parçaların birleştirilmesini yapanlar olmak üzere ilgili personelin nitelikleri veya onayları.
+- Kalite sisteminin etkili işleyişini izleme araçları.
+5.3. Onaylanmış kuruluş, 5.2 maddesinde bildirilen gerekleri yerine getirip getirmediğini belirlemek üzere kalite sistemini değerlendirir. Değerlendirmede, ilgili uyumlaştırılmış standartları esas alan kalite sistemi unsurlarının ilgili uyumlaştırılmış standartların karşılık gelen spesifikasyonlarına uygun olduğu varsayılır. Kalite yönetim sistemlerindeki deneyime ek olarak, denetim ekibi ilgili basınçlı ekipman alanında ve basınçlı ekipman teknolojisinin değerlendirilmesinde deneyime ve bu Yönetmeliğin geçerli gereklerine dair bilgiye sahip en az bir üyeye sahip olur. Denetim imalatçını yerinde değerlendirme ziyareti içerir. Denetim ekibi, ürünün bu gereklere uyumunu temin etmek açısından imalatçının bu Yönetmeliğin ilgili gereklerini tanımlayabilme ve gerekli incelemeleri yapabilme kabiliyetini onaylamak amacıyla 2 nci maddede belirtilen teknik dosyayı gözden geçirir. Karar imalatçıya bildirilir. Bildirim denetimin sonuçlarını ve gerekçeli değerlendirme kararını içerir.
+5.4. İmalatçı, onaylandığı şekliyle kalite sisteminden doğan yükümlülüklerini yerine getirmeli etkinliğini ve devamlılığını sağlar.
+5.5. İmalatçı kalite sistemini onaylamış olan onaylanmış kuruluşu, kalite sistemi ile ilgili olarak yapmayı öngördükleri güncelleştirmeler hakkında bilgilendirir. Onaylanmış kuruluş yapılması düşünülen değişiklikleri değerlendirir ve değiştirilmiş kalite sisteminin 5.2 maddesinde bildirilen gerekleri hala yerine getirip getirmediğine ve yeniden bir değerlendirmenin gerekli olup olmadığına karar verir. Kararını imalatçıya bildirir. Bildirim inceleme sonuçlarını ve gerekçeli değerlendirme kararını içerir.
+6. Onaylanmış kuruluşun gözetim sorumluluğu
+6.1. Gözetimin amacı, imalatçının onaylı kalite sistemi ile ilgili yükümlülüklerini yerine getirdiğinden emin olmaktır.
+6.2. İmalatçı, onaylanmış kuruluşun kontrol amacıyla imalat, kontrol, test ve depolama mahallerine giriş izni verir ve özellikle aşağıda belirtilenler olmak üzere bütün gerekli bilgileri temin eder:
+- Kalite sistem dokümanları.
+- 2 nci maddede belirtilen teknik dosya.
+- Muayene raporları ve test verileri, kalibrasyon verileri, ilgili personelin nitelik raporları ve benzeri gibi kalite kayıtları.
+6.3. Onaylanmış kuruluş, imalatçının kalite sistemini sürdürdüğünü ve uyguladığını belirlemek amacıyla periyodik olarak denetler ve imalatçıya denetleme raporlarını sunar. Periyodik denetlemelerin sıklığı, her üç yılda bir yeniden değerlendirme yapılacak şekilde olur.
+6.4. Onaylanmış kuruluş imalatçıya resen ziyaretlerde bulunur. Bu ilave ziyaretin gerekliliği ve sıklığı onaylanmış kuruluş tarafından uygulanan kontrol sistemi temelinde belirlenir. Özellikle, aşağıdaki faktörler ziyaret kontrol sisteminde dikkate alınır:
+- Basınçlı ekipmanın kategorisi.
+- Daha önceki denetim ziyaretlerinin sonuçları.
+- Düzeltici faaliyetini sürdürme ihtiyacı.
+- Uygulanabilir olduğunda sistemin onayıyla bağlantılı özel koşullar.
+- İmalat organizasyonunda, politikada veya tekniğinde önemli değişiklikler
+Bu ziyaretler sırasında onaylanmış kuruluş, gerektiğinde, kalite sisteminin doğru işlediğini teyit etmek için testler yapabilir veya yaptırabilir. Onaylanmış kuruluş imalatçıya bir denetim raporu, şayet bir test yapılmışsa bir de test raporu sunar.
+7. CE İşareti ve AB uygunluk beyanı
+7.1. İmalatçı, AB tip inceleme belgesinde açıklanan tipe uygun olan ve bu Yönetmeliğin geçerli gereklerini karşılayan her bir basınçlı ekipman veya donanıma CE işaretini ve 5.1 maddesinde belirtilen onaylanmış kuruluşun kimlik numarasını iliştirir.
+7.2. İmalatçı, basınçlı ekipman modeli için yazılı bir AB uygunluk beyanı hazırlar ve basınçlı ekipman piyasaya arz edildikten sonraki 10 yıl boyunca Bakanlığın tasarrufunda saklar. AB uygunluk beyanı, hazırlanmış olduğu basınçlı ekipman modelini tanımlar. AB uygunluk beyanının bir kopyası talep üzerine ilgili kurumlara sunulur.
+8. İmalatçı, aşağıdaki bilgileri basınçlı ekipmanın piyasaya arz edildiği tarihten itibaren on yıl süre ile muhafaza eder ve istenildiğinde yetkili kamu kuruluşuna sunar:
+- 5.1 maddesinde belirtilen teknik dosya.
+- 5.5 maddesinde belirtilen onaylanan güncellemeler.
+- 5.3, 5.5, 6.3 ve 6.4 maddelerinde belirtilen onaylanmış kuruluşun karar ve raporları.
+9. Her onaylanmış kuruluş, verilen veya geri çekilen kalite sistemi onaylarını Bakanlığa bildirir ve düzenli olarak veya talep üzerine, reddedilen, askıya alınan veya başka türlü kısıtlanan kalite sistemi onayların bir listesini Bakanlığa sunar. Her onaylanmış kuruluş reddettiği, askıya aldığı veya geri çektiği kalite sistem onaylarını ve talep üzerine verdiği kalite sistem onaylarını diğer onaylanmış kuruluşlara bildirir.
+10. Yetkili temsilci
+3.1, 5.1, 7 ve 8 inci maddelerinde belirtilen imalatçı yükümlülükleri, yetki belgesinde belirtilmiş olmaları şartıyla adına ve sorumluluğu altındaki yetkili temsilcisi tarafından yerine getirilebilir.
+
+9. MODÜL F: BASINÇLI EKİPMAN DOĞRULAMASINA DAYANAN TİPE UYGUNLUK
+1. Basınçlı ekipman doğrulamasına dayanan tipe uygunluk, imalatçının 2 ve 5 nci maddelerde yer alan yükümlülükleri yerine getirdiği ve 3 ncü madde hükümlerine tabi olmuş ilgili basınçlı ekipmanın AB tip inceleme belgesinde açıklanan tipe uygun olduğunu ve geçerli bu Yönetmeliğin gereklerini karşıladığını münferit sorumluluğu altında temin ve beyan ettiği uygunluk değerlendirmesi prosedürünün bir aşamasıdır.
+2. İmalat
+İmalatçı, imalat süreci ve izlenmesinin imal edilen basınçlı ekipmanın AB tip inceleme belgesinde belirtilen onaylı tipe ve bu Yönetmeliğin geçerli gereklerine uygunluğunu sağlamak amacıyla gerekli olan her türlü tedbiri alır.
+3. Doğrulama
+Onaylanmış kuruluş, basınçlı ekipmanın AB tip incelemesi belgesinde belirtilen onaylı tipe ve bu Yönetmeliğin geçerli gereklerini yerine getirdiğini kontrol etmek amacıyla uygun muayeneler ve testler yapar.
+Basınçlı ekipmanın uygun gerekleri yerine getirdiğini kontrol edecek olan muayeneler ve testler, 4 üncü maddede belirtilen her ürün muayenesi ve testiyle yapılır.
+4. Her basınçlı ekipman parçasının muayenesi ve testiyle uygunluğun doğrulanması
+4.1. Tüm basınçlı ekipmanlar, AB tip inceleme belgesinde belirtilen onaylı tipe ve bu Yönetmeliğin geçerli gereklerine uygun olduklarını doğrulamak amacıyla tek tek incelenir ve geçerli uyumlaştırılmış standartlarda belirtilen geçerli testler veya eşdeğer testler yapılır. Uyumlaştırılmış standart yok ise, onaylanmış kuruluş yapılacak uygun testlere karar verir.
+Özellikle, onaylanmış kuruluş:
+- Basınçlı ekipmanın sabit bağlanan parçalarının işlemini gerçekleştiren ve tahribatsız testleri yapan personelin Ek-I’in 3.1.2 ve 3.1.3 maddelerine uygun veya onaylı olduğunu doğrular.
+- Ek-I’in 4.3 maddesine göre malzeme imalatçısı tarafından düzenlenen belgeyi doğrular.
+- Ek-I’in 3.2 maddesinde belirtilen son muayene ve dayanıklılık testini yapar veya yaptırır ve gerekliyse güvenlik cihazlarını muayene eder.
+4.2. Onaylanmış kuruluş yapılan muayeneler ve testler açısından bir uygunluk belgesi düzenler ve basınçlı ekipmanın onaylanan her bir parçasına kimliğini iliştirir veya sorumluluğu altında iliştirilmesini sağlar. İmalatçı, uygunluk belgesini basınçlı ekipman veya donanımların piyasaya arzına müteakip 10 yıl boyunca yetkili ulusal kurumların kontrolü için saklar.
+5. CE İşareti ve AB uygunluk beyanı
+5.1. İmalatçı CE işaretini ve 3 üncü maddede belirtilen onaylanmış kuruluşun sorumluluğu altında bu kuruluşun kimlik numarasını, AB tip inceleme belgesinde açıklanan onaylı tipe uygun olan ve bu Yönetmeliğin gereklerini yerine getiren her basınçlı ekipman parçasına iliştirir.
+5.2. İmalatçı, basınçlı ekipman modeli için yazılı bir AB uygunluk beyanı hazırlar ve basınçlı ekipman piyasaya arz edildikten sonraki 10 yıl boyunca ulusal kurumların tasarrufunda saklar. AB uygunluk beyanı, hazırlanmış olduğu basınçlı ekipman modelini tanımlar. AB uygunluk beyanının bir kopyası talep üzerine ilgili kurumlara sunulur. 3 üncü maddede belirtilen onaylanmış kuruluşun kabulü ve sorumluluğu altında, imalatçı ayrıca onaylanmış kuruluşun kimlik numarasını basınçlı ekipmana iliştirir.
+6. Onaylanmış kuruluşun kabulü ve sorumluluğu altında, imalatçı onaylanmış kuruluşun kimlik numarasını imalat sürecindeyken basınçlı ekipmana iliştirebilir.
+
+7. Yetkili temsilci
+İmalatçı yükümlülükleri, yetki belgesinde belirtilmiş olmaları şartıyla adına ve sorumluluğu altındaki yetkili temsilcisi tarafından yerine getirilebilir. Yetkili temsilci, 2 nci maddede belirtilen imalatçının yükümlülüklerini yerine getiremeyebilir.
+10. MODÜL G: BİRİM DOĞRULAMASINA DAYANAN UYGUNLUK
+1. Birim doğrulamasına dayanan tipe uygunluk, imalatçının 2 ve 5 nci maddelerde yer alan yükümlülükleri yerine getirdiği ve 4 üncü madde hükümlerine tabi olmuş ilgili basınçlı ekipmanın bu Yönetmeliğin geçerli gereklerini karşıladığını yegane sorumluluğu altında temin ve beyan ettiği uygunluk değerlendirmesi prosedürüdür.
+2. Teknik dosya
+İmalatçı, teknik dosyayı hazırlar ve 4 üncü maddede belirtilen onaylanmış kuruluşa sunar. Teknik dosya, basınçlı ekipmanın ilgili gereklere uygunluğunun değerlendirilmesini mümkün kılar ve risk veya risklerin yeterli bir analizi ve değerlendirmesini içerir. Teknik dosya geçerli gerekleri belirtir ve bu tür değerlendirme için ilgili olduğu müddetçe, basınçlı ekipmanın tasarımını, imalini ve işletimini kapsar. Teknik dosya, mümkün ise, asgari olarak aşağıdakileri içerir:
+- Basınçlı ekipmanın genel bir tanımı.
+- Kavramsal tasarım ve imalat çizimleri, parçaların, alt parçaların, devrelerin ve benzeri şemaları.
+- Belirtilen çizimlerin, şemaların ve basınçlı ekipmanın çalışmasının anlaşılması için gerekli tanımlamalar ve açıklamalar.
+- Avrupa Birliği Resmî Gazetesinde referansları yayınlanmış olan ve tamamen veya kısmen uyumlaştırılmış standartların listesi ve bu standartların uyumlaştırılmadığı durumlarda Yönetmeliğin temel gereklerini karşılaması için benimsenen çözümlerin açıklamalar. Kısmen uygulanan uyumlaştırılmış standartlar durumunda, teknik dosya uygulanmış olan kısımları belirtir.
+- Yapılan tasarım hesaplarının ve muayenelerin sonuçları.
+- Deney raporları.
+- Ek-I’in 3.1.2 ve 3.1.3. maddelerine uygun olarak ilgili personelin nitelik ve onayları, imalat ve test işlemlerinin onayı hakkındaki uygun ayrıntılar.
+İmalatçı, teknik dosyayı basınçlı ekipman veya donanımların piyasaya arzına müteakip 10 yıl boyunca yetkili ulusal kurumların tasarrufunda saklar.
+3. İmalat
+İmalatçı, imalat süreci ve izlenmesinin imal edilen basınçlı ekipmanın bu Yönetmeliğin geçerli gereklerine uygunluğunu sağlamak amacıyla gerekli olan her türlü tedbiri alır.
+4. Doğrulama
+İmalatçı tarafından seçilen bir onaylanmış kuruluş, basınçlı ekipmanın bu Yönetmeliğin geçerli gereklerini yerine getirdiğini kontrol etmek amacıyla geçerli uyumlaştırılmış standartlarda belirtilen uygun muayeneler ve testleri ve/veya eşdeğer testleri yapar veya yaptırır. Uyumlaştırılmış standart yok ise, onaylanmış kuruluş diğer teknik spesifikasyonları kullanarak yapılacak uygun testlere karar verir. Özellikle, onaylanmış kuruluş:
+- Teknik dosyayı tasarım ve imalat yöntemleri yönünden inceler.
+- Basınçlı ekipmanın malzemesinin ilgili uyumlaştırılmış standartlarına veya Avrupa malzeme onayına uygun olmaması halinde, malzemelerin denetlenmesi ve Ek-I’in 4.3 maddesine göre malzeme imalatçısı tarafından düzenlenen sertifikanın kontrolünü yapar.
+-Basınçlı ekipmanın sabit bağlanan parçalarının işlemini onaylar veya daha önce Ek-I’in 3.1.2 maddesine uygun olarak onaylanmış olduğunu kontrol eder.
+- Ek-I’in 3.1.2 ve 3.1.3 maddeleri çerçevesinde gerekli olan özellikler ve onayları doğrular.
+- Ek-I’in 3.2.1 maddesinde bildirilen son muayeneleri gerçekleştirir, Ek-I’in 3.2.2. maddesinde bildirilen dayanıklılık testlerini yapar veya yaptırır şayet varsa güvenlik donanımını muayene eder.
+Onaylanmış kuruluş yapılan muayeneler ve testler açısından bir uygunluk belgesi düzenler ve onaylanan basınçlı ekipmana kimliğini iliştirir veya sorumluluğu altında iliştirilmesini sağlar. İmalatçı, uygunluk belgesini basınçlı ekipman veya donanımların piyasaya arzına müteakip 10 yıl boyunca yetkili ulusal kurumların kontrolü için saklar.
+5. CE İşareti ve AB uygunluk beyanı
+5.1. İmalatçı CE işaretini ve 4 üncü maddesinde belirtilen onaylanmış kuruluşun sorumluluğu altında bu kuruluşun kimlik numarasını, bu Yönetmeliğin gereklerini yerine getiren basınçlı ekipmana iliştirir.
+5.2. İmalatçı, yazılı bir AB uygunluk beyanı hazırlar ve basınçlı ekipman piyasaya arz edildikten sonraki 10 yıl boyunca ulusal kurumların tasarrufunda saklar. AB uygunluk beyanı, hazırlanmış olduğu basınçlı ekipmanı tanımlar. AB uygunluk beyanının bir kopyası talep üzerine ilgili kurumlara sunulur.
+6. Yetkili temsilci
+2 ve 5 nci maddelerde belirtilen imalatçı yükümlülükleri, yetki belgesinde belirtilmiş olmaları şartıyla adına ve sorumluluğu altındaki yetkili temsilcisi tarafından yerine getirilebilir.
+11. MODÜL H: TAM KALİTE GÜVENCESİNE DAYANAN UYGUNLUK
+1. Tam Kalite Güvencesine dayanan uygunluk, imalatçının 2 ve 5 nci maddelerinde belirtilen yükümlülükleri yerine getirdiği ve ilgili basınçlı ekipmanın bu Yönetmeliğin gereklerini yerine getirdiğine dair münferit sorumluluğunu ilan ettiği bir uygunluk değerlendirmesi prosedürüdür.
+2. İmalat
+İmalatçı, 3 üncü maddede belirtildiği üzere ilgili basınçlı ekipmanların tasarım, imalat, son ürün kontrol ve testi için onaylı bir kalite sistemi işletir ve 4 üncü maddede belirtilen gözetime tabi tutulur.
+3. Kalite sistemi
+3.1. İmalatçı, ilgili basınç ekipmanı için seçtiği bir onaylanmış kuruluşa kalite sisteminin değerlendirilmesi için bir başvuruda bulunur.
+Başvuru aşağıdakileri içerir:
+- İmalatçının adı ve adresi ve şayet başvuru Türkiye’de yerleşik yetkili temsilcisi tarafından yapılmışsa onun da adı ve adresi.
+- İmal edilmesi planlanan basınçlı ekipmanın her tipinin bir modeline ait teknik dosya. Teknik dosya, mümkün ise, asgari olarak aşağıdakileri içerir:
+- Basınçlı ekipmanın genel bir tanımı:
+- Kavramsal tasarım ve imalat çizimleri, parçaların, alt parçaların, devrelerin ve benzeri şemaları.
+- Belirtilen çizimlerin, şemaların ve basınçlı ekipmanın çalışmasının anlaşılması için gerekli tanımlamalar ve açıklamalar.
+- Avrupa Birliği Resmî Gazetesinde referansları yayınlanmış olan ve tamamen veya kısmen uyumlaştırılmış standartların listesi ve bu standartların uyumlaştırılmadığı durumlarda Yönetmeliğin temel gereklerini karşılaması için benimsenen çözümlerin açıklamalar. Kısmen uygulanan uyumlaştırılmış standartlar durumunda, teknik dosya uygulanmış olan kısımları belirtir.
+- Yapılan tasarım hesaplarının ve muayenelerin sonuçları.
+- Deney raporları.
+- Kalite sistemiyle ilgili dokümanlar.
+- Aynı başvurunun başka bir onaylanmış kuruluşa yapılmadığını belirten yazılı bir beyan.
+3.2. Kalite sistemi bu Yönetmeliğin geçerli gereklerini yerine getirmesini temin eder. İmalatçı tarafından uygulanan tüm elemanlar, gerekler ve hükümler yazılı politikalar, prosedürler ve talimatlar şeklinde sistematik ve düzenli bir şekilde belgelenir. Bu kalite sistemi dokümantasyonu, kalite programları, planlar, el kitapları ve kayıtların tutarlı bir yorumlanmasına izin verir. Özellikle, aşağıdakilerin yeterli bir açıklamasını içerir:
+- Basınçlı ekipmanın tasarım ve ürün kalitesi bakımından, yönetimin sorumlulukları ve gücü, organizasyon yapısı ve kalite hedefleri.
+- Uygulanacak standartlar dahil teknik tasarım spesifikasyonları ve geçerli uyumlaştırılmış standartların tam olarak uygulanmayacağı yerlerde, basınçlı ekipmana uygulanan bu Yönetmeliğin temel gereklerinin yerine getirilmesini sağlamak için kullanılacak araçlar.
+- Özellikle Ek-I’in 4 üncü maddesi uyarınca malzemelerle ilgili olarak kapsanacak ürün tipiyle ilgili olarak basınçlı ekipmanın tasarım aşamasında kullanılacak tasarım kontrol ve tasarım doğrulama teknikleri, süreçleri ve sistematik işlemler.
+- Uygulanacak olan üretim, kalite kontrol ve kalite güvencesi teknikleri, özellikle Ek-I’in 3.1.2 maddesine göre onaylanan sabit bağlantı parçaları için kullanılan yöntemler olmak üzere, kullanılacak yöntem ve sistematik faaliyetler.
+- İmalat öncesi, imalat esnasında ve imalattan sonra uygulanacak olan testler ve muayeneler ve bunların hangi sıklıkla uygulanacağı.
+- Muayene raporları, test verileri gibi kalite kayıtları, kalibrasyon verileri, özellikle Ek-I’in 3.1.2 ve 3.1.3 maddelerine göre parçaların birleştirilmesi ve tahribatsız muayeneleri yapanlar olmak üzere ilgili personelin nitelikleri veya onayları.
+- İstenilen tasarım ve basınçlı ekipman kalitesinin sağlanması ve kalite sisteminin verimli işlemesi için kullanılan izleme araçları.
+3.3. Onaylanmış kuruluş, 3.2 maddesinde bildirilen gerekleri yerine getirip getirmediğini belirlemek üzere kalite sistemini değerlendirir. Değerlendirmede, ilgili uyumlaştırılmış standartları esas alan kalite sistemi unsurlarının ilgili uyumlaştırılmış standartların karşılık gelen spesifikasyonlarına uygun olduğu varsayılır. Kalite yönetim sistemlerindeki deneyime ek olarak, denetim ekibi basınçlı ekipman teknolojisinin değerlendirilmesinde deneyime ve bu Yönetmeliğin geçerli gereklerine dair bilgiye sahip en az bir üyeye sahip olur. Denetim imalatçının yerinde değerlendirme ziyareti içerir. Denetim ekibi, ürünün bu gereklere uyumunu temin etmek açısından imalatçının bu Yönetmeliğin ilgili gereklerini tanımlayabilme ve gerekli incelemeleri yapabilme kabiliyetini onaylamak amacıyla 3.1.2 maddesinde belirtilen teknik dosyayı gözden geçirir. Karar imalatçı veya yetkili temsilcisine bildirilir. Bildirim denetimin sonuçlarını ve gerekçeli değerlendirme kararını içerir.
+3.4. İmalatçı, onaylandığı şekliyle kalite sisteminden doğan yükümlülüklerini yerine getirmeli etkinliğini ve devamlılığını sağlar.
+3.5. İmalatçı kalite sistemini onaylamış olan onaylanmış kuruluşu, kalite sistemi ile ilgili olarak yapmayı öngördükleri güncelleştirmeler hakkında bilgilendirir. Onaylanmış kuruluş yapılması düşünülen değişiklikleri değerlendirir ve değiştirilmiş kalite sisteminin. 3.2 maddesinde bildirilen gerekleri hala yerine getirip getirmediğine ve yeniden bir değerlendirmenin gerekli olup olmadığına karar verir. Kararını imalatçıya bildirir. Bildirim inceleme sonuçlarını ve gerekçeli değerlendirme kararını içerir.
+4. Onaylanmış kuruluşun gözetim sorumluluğu
+4.1. Gözetimin amacı, imalatçının onaylı kalite sistemi ile ilgili yükümlülüklerini yerine getirdiğinden emin olmaktır.
+4.2. İmalatçı, onaylanmış kuruluşun kontrol amacıyla tasarım, imalat, kontrol, test ve depolama mahallerine giriş izni vermeli ve özellikle aşağıda belirtilenler olmak üzere bütün gerekli bilgileri temin eder:
+- Kalite sistem dokümanları.
+- Analizlerin, hesaplamaların, testlerin ve benzeri sonuçları gibi, kalite sisteminin tasarım kısmı tarafından tutulan kalite kaliteleri.
+- Muayene raporları ve test verileri, kalibrasyon verileri, ilgili personelin nitelik raporları ve benzeri gibi kalite sistemi imalat kısmı tarafından tutulan kalite kayıtları.
+4.3. Onaylanmış kuruluş, imalatçının kalite sistemini sürdürdüğünü ve uyguladığını belirlemek amacıyla periyodik olarak denetler ve imalatçıya denetleme raporlarını sunar. Periyodik denetlemelerin sıklığı, her üç yılda bir yeniden değerlendirme yapılacak şekilde olur.
+4.4. Onaylanmış kuruluş imalatçıya resen ziyaretlerde bulunur. Bu ilave ziyaretin gerekliliği ve sıklığı onaylanmış kuruluş tarafından uygulanan kontrol sistemi temelinde belirlenir. Özellikle, aşağıdaki faktörler ziyaret kontrol sisteminde dikkate alınır:
+- Basınçlı ekipmanın kategorisi.
+- Daha önceki denetim ziyaretlerinin sonuçları.
+- Düzeltici faaliyetini sürdürme ihtiyacı.
+- Uygulanabilir olduğunda sistemin onayıyla bağlantılı özel koşullar.
+- İmalat organizasyonunda, politikada veya tekniğinde önemli değişiklikler.
+Bu ziyaretler sırasında onaylanmış kuruluş, gerektiğinde, kalite sisteminin doğru işlediğini teyit etmek için testler yapabilir veya yaptırabilir. Onaylanmış kuruluş imalatçıya bir denetim raporu, şayet bir test yapılmışsa bir de test raporu sunar.
+5. CE İşareti ve AB uygunluk beyanı
+5.1. İmalatçı, AB tip inceleme belgesinde açıklanan tipe uygun olan ve bu Yönetmeliğin geçerli gereklerini karşılayan her bir basınçlı ekipman veya donanıma CE işaretini ve 3.1 maddesinde belirtilen onaylanmış kuruluşun kimlik numarasını iliştirir.
+5.2. İmalatçı, basınçlı ekipman modeli için yazılı bir AB uygunluk beyanı hazırlar ve basınçlı ekipman piyasaya arz edildikten sonraki 10 yıl boyunca ulusal kurumların tasarrufunda saklar. AB uygunluk beyanı, hazırlanmış olduğu basınçlı ekipman modelini tanımlar. AB uygunluk beyanının bir kopyası talep üzerine ilgili kurumlara sunulur.
+6. İmalatçı, aşağıdaki bilgileri basınçlı ekipmanın piyasaya arz edildiği tarihten itibaren on yıl süre ile muhafaza eder ve istenildiğinde yetkili kamu kuruluşuna sunar:
+- 3.1 maddesinde belirtilen teknik dosya.
+- 3.1 maddesinde belirtilen kalite sistemiyle ilgili dokümantasyon.
+- 3.4 maddesinde belirtilen onaylanan güncellemeler.
+- 3.3, 3.4, 4.3 ve 4.4 maddelerinde belirtilen onaylanmış kuruluşun karar ve raporları.
+7. Her onaylanmış kuruluş, verilen veya geri çekilen kalite sistemi onaylarını Bakanlığa bildirir ve düzenli olarak veya talep üzerine, reddedilen, askıya alınan veya başka türlü kısıtlanan kalite sistemi onayların bir listesini Bakanlığa sunar. Her onaylanmış kuruluş reddettiği, askıya aldığı veya geri çektiği kalite sistem onaylarını ve talep üzerine verdiği kalite sistem onaylarını diğer onaylanmış kuruluşlara bildirir.
+8. Yetkili temsilci
+3.1, 3.5 ve 6 ncı maddelerinde belirtilen imalatçı yükümlülükleri, yetki belgesinde belirtilmiş olmaları şartıyla adına ve sorumluluğu altındaki yetkili temsilcisi tarafından yerine getirilebilir.
+12. MODÜL H1: TAM KALİTE GÜVENCESİ VE TASARIM MUAYENESİNE DAYANAN UYGUNLUK
+1. Tam Kalite Güvencesi ve tasarım muayenesi ve son değerlendirmenin özel gözetimine dayanan uygunluk, imalatçının 2 ve 6 ncı maddelerde belirtilen yükümlülükleri yerine getirdiği ve ilgili basınçlı ekipmanın bu Yönetmeliğin gereklerini yerine getirdiğine dair münferit sorumluluğunu ilan ettiği bir uygunluk değerlendirmesi prosedürüdür.
+
+2. İmalat
+İmalatçı, 3 üncü maddede belirtildiği üzere ilgili basınçlı ekipmanların tasarım, imalat, son ürün kontrol ve testi için onaylı bir kalite sistemi işletir ve 5 nci maddede belirtilen gözetime tabi tutulur. Basınçlı ekipmanların teknik tasarımının yeterliliği, 4 üncü maddeye uygun bir şekilde incelenmiş olur.
+3. Kalite sistemi
+3.1. İmalatçı, ilgili basınç ekipmanı için seçtiği bir onaylanmış kuruluşa kalite sisteminin değerlendirilmesi için bir başvuruda bulunur. Başvuru aşağıdakileri içerir:
+- İmalatçının adı ve adresi ve şayet başvuru Türkiye’de yerleşik yetkili temsilcisi tarafından yapılmışsa onun da adı ve adresi.
+- İmal edilmesi planlanan basınçlı ekipmanın her tipinin bir modeline ait teknik dosya. Teknik dosya, mümkün ise, asgari olarak aşağıdakileri içerir:
+- Basınçlı ekipmanın genel bir tanımı.
+- Kavramsal tasarım ve imalat çizimleri, parçaların, alt parçaların, devrelerin ve benzeri şemaları.
+- Belirtilen çizimlerin, şemaların ve basınçlı ekipmanın çalışmasının anlaşılması için gerekli tanımlamalar ve açıklamalar.
+- Avrupa Birliği Resmî Gazetesinde referansları yayınlanmış olan ve tamamen veya kısmen uyumlaştırılmış standartların listesi ve bu standartların uyumlaştırılmadığı durumlarda Yönetmeliğin temel gereklerini karşılaması için benimsenen çözümlerin açıklamalar. Kısmen uygulanan uyumlaştırılmış standartlar durumunda, teknik dosya uygulanmış olan kısımları belirtir.
+- Yapılan tasarım hesaplarının ve muayenelerin sonuçları.
+- Deney raporları.
+- Kalite sistemiyle ilgili dokümanlar.
+- Aynı başvurunun başka bir onaylanmış kuruluşa yapılmadığını belirten yazılı bir beyan.
+3.2. Kalite sistemi bu Yönetmeliğin geçerli gereklerini yerine getirmesini temin eder. İmalatçı tarafından uygulanan tüm elemanlar, gerekler ve hükümler yazılı politikalar, prosedürler ve talimatlar şeklinde sistematik ve düzenli bir şekilde belgelenir. Bu kalite sistemi dokümantasyonu, kalite programları, planlar, el kitapları ve kayıtların tutarlı bir yorumlanmasına izin verir. Özellikle, aşağıdakilerin yeterli bir açıklamasını içerir:
+- Basınçlı ekipmanın tasarım ve ürün kalitesi bakımından, yönetimin sorumlulukları ve gücü, organizasyon yapısı ve kalite hedefleri.
+- Uygulanacak standartlar dahil teknik tasarım spesifikasyonları ve geçerli uyumlaştırılmış standartların tam olarak uygulanmayacağı yerlerde, basınçlı ekipmana uygulanan bu Yönetmeliğin temel güvenlik gereklerinin yerine getirilmesini sağlamak için kullanılacak araçlar.
+- Özellikle Ek-I’in 4 üncü maddesi uyarınca malzemelerle ilgili olarak kapsanacak ürün tipiyle ilgili olarak basınçlı ekipmanın tasarım aşamasında kullanılacak tasarım kontrol ve tasarım doğrulama teknikleri, süreçleri ve sistematik işlemler.
+- Uygulanacak olan imalat, kalite kontrol ve kalite güvencesi teknikleri, özellikle Ek-I’in 3.1.2 maddesine göre onaylanan sabit bağlantı parçaları için kullanılan yöntemler olmak üzere, kullanılacak yöntem ve sistematik faaliyetler.
+- İmalat öncesi, imalat esnasında ve imalattan sonra uygulanacak olan testler ve muayeneler ve bunların hangi sıklıkla uygulanacağı.
+- Muayene raporları, test verileri gibi kalite kayıtları, kalibrasyon verileri, özellikle Ek-I’in 3.1.2 ve 3.1.3 maddelerine göre parçaların birleştirilmesi ve tahribatsız muayeneleri yapanlar olmak üzere ilgili personelin nitelikleri veya onayları.
+- İstenilen tasarım ve basınçlı ekipman kalitesinin sağlanması ve kalite sisteminin verimli işlemesi için kullanılan izleme araçları.
+3.3. Onaylanmış kuruluş, 3.2 maddesinde bildirilen gerekleri yerine getirip getirmediğini belirlemek üzere kalite sistemini değerlendirir. Değerlendirmede, ilgili uyumlaştırılmış standartları esas alan kalite sistemi unsurlarının ilgili uyumlaştırılmış standartların karşılık gelen spesifikasyonlarına uygun olduğu varsayılır. Kalite yönetim sistemlerindeki deneyime ek olarak, denetim ekibi ilgili basınçlı ekipman alanında ve basınçlı ekipman teknolojisinin değerlendirilmesinde deneyime ve bu Yönetmeliğin geçerli gereklerine dair bilgiye sahip en az bir üyeye sahip olur. Denetim üretim yerinde değerlendirme ziyareti içerir. Denetim ekibi, ürünün bu gereklere uyumunu temin etmek açısından imalatçının bu Yönetmeliğin ilgili gereklerini tanımlayabilme ve gerekli incelemeleri yapabilme kabiliyetini onaylamak amacıyla 3.1.2 maddesinde belirtilen teknik dosyayı gözden geçirir. Karar imalatçı veya yetkili temsilcisine bildirilir. Bildirim denetimin sonuçlarını ve gerekçeli değerlendirme kararını içerir.
+3.4. İmalatçı, onaylandığı şekliyle kalite sisteminden doğan yükümlülüklerini yerine getirmeli etkinliğini ve devamlılığını sağlar.
+3.5. İmalatçı kalite sistemini onaylamış olan onaylanmış kuruluşu, kalite sistemi ile ilgili olarak yapmayı öngördükleri güncelleştirmeler hakkında bilgilendirir. Onaylanmış kuruluş yapılması düşünülen değişiklikleri değerlendirir ve değiştirilmiş kalite sisteminin 3.2 maddesinde bildirilen gerekleri hala yerine getirip getirmediğine ve yeniden bir değerlendirmenin gerekli olup olmadığına karar verir. Kararını imalatçıya bildirir. Bildirim inceleme sonuçlarını ve gerekçeli değerlendirme kararını içerir.
+3.6. Her onaylanmış kuruluş, verilen veya geri çekilen kalite sistemi onaylarını Bakanlığa bildirir ve düzenli olarak veya talep üzerine, reddedilen, askıya alınan veya başka türlü kısıtlanan kalite sistemi onayların bir listesini Bakanlığa sunar. Her onaylanmış kuruluş reddettiği, askıya aldığı veya geri çektiği kalite sistem onaylarını ve talep üzerine verdiği kalite sistem onaylarını diğer onaylanmış kuruluşlara bildirir.
+4. Tasarım incelemesi
+4.1. İmalatçı, 3.1 maddesinde belirtilen onaylanmış kuruluşa önceki tasarım incelemesinin kapsamında olmayan her bir basınçlı ekipman parçasının tasarım incelemesi başvurusunda bulunur.
+4.2. Başvuru, basınçlı ekipmanın tasarım, imalat ve işletiminin anlaşılmasını ve bu Yönetmeliğin geçerli olan gereklerine uygunluğun değerlendirilmesini mümkün kılar ve şunları içerir:
+- İmalatçının adı ve adresi.
+- Aynı başvurunun başka bir onaylanmış kuruluşa yapılmadığını belirten yazılı bir beyan.
+- Teknik dosya. Teknik dosya, basınçlı ekipmanın ilgili gereklere uygunluğunun değerlendirilmesini mümkün kılar ve risk veya risklerin yeterli bir analizi ve değerlendirmesini içerir. Teknik dosya geçerli gerekleri belirtir ve bu tür değerlendirme için ilgili olduğu müddetçe, basınçlı ekipmanın tasarımını ve işletimini kapsar. Teknik dosya, mümkün ise, asgari olarak aşağıdakileri içerir:
+- Basınçlı ekipmanın genel bir tanımı.
+- Kavramsal tasarım ve imalat çizimleri, parçaların, alt parçaların, devrelerin ve benzeri şemaları.
+- Belirtilen çizimlerin, şemaların ve basınçlı ekipmanın çalışmasının anlaşılması için gerekli tanımlamalar ve açıklamalar.
+- Avrupa Birliği Resmî Gazetesinde referansları yayınlanmış olan ve tamamen veya kısmen uyumlaştırılmış standartların listesi ve bu standartların uyumlaştırılmadığı durumlarda Yönetmeliğin temel gereklerini karşılaması için benimsenen çözümlerin açıklamalar. Kısmen uygulanan uyumlaştırılmış standartlar durumunda, teknik dosya uygulanmış olan kısımları belirtir.
+- Yapılan tasarım hesaplarının ve muayenelerin sonuçları.
+- Deney raporları.
+- Teknik tasarımın yeterliliğini destekleyen deliller. Bu destekleyici delil, özellikle ilgili uyumlaştırılmış standartların tam olarak uygulanmadığı hallerde kullanılmış olan her türlü dokümanı belirtir ve gerektiğinde, imalatçının uygun laboratuvarı tarafından veya kendi adına ve sorumluluğu altında başka bir test laboratuvarı tarafından yapılan testlerin sonuçlarını içerir.
+4.3. Onaylanmış kuruluş başvuruyu inceler ve tasarımın basınçlı ekipman için geçerli olan bu Yönetmeliğin gereklerini karşıladığı hallerde, imalatçıya bir AB tasarım inceleme belgesi verir. Belge, imalatçının unvanı ve adresini, inceleme sonuçlarını, geçerliliği için varsa şartlar ve onaylı tasarımın tanımlanması için gerekli olan bilgileri verir. Belge bir veya daha fazla eke sahip olabilir. Belge ve ekleri, imal edilen basınçlı ekipmanın, incelenen tasarıma uygunluğunun değerlendirilmesine izin verir ve gerektiğinde kullanım sırasında kontrole izin verecek tüm ilgili bilgileri içerir. Tasarımın bu Yönetmeliğin geçerli gereklerini karşılamaması halinde, onaylanmış kuruluş bir tasarım inceleme belgesini vermeyi reddeder ve ret nedenlerini detaylı olarak açıklamak suretiyle başvuru sahibini bilgilendirir.
+4.4. Onaylanmış kuruluş, onaylanan tasarımın artık Yönetmeliğin geçerli gereklerine uygun olmadığını gösteren genel olarak kabul edilmiş son teknolojik değişikler hakkında sürekli bilgi sahibi olur ve değişikliklerin ilave araştırma gerektirip gerektirmediğine karar verir. Onaylanmış kuruluş buna göre imalatçıyı bilgilendirir. İmalatçı, basınçlı ekipmanların temel güvenlik gerekleri veya belgenin geçerlilik şartlarına uygunluğu etkileyebilecek onaylı tasarımdaki tüm değişiklikleri AB tasarım incelemesi belgesini vermiş olan onaylanmış kuruluşa bildirir. Değişiklikler AB tasarım inceleme belgesi aslında bir ek şeklinde, AB tasarım inceleme belgesini düzenlemiş olan onaylanmış kuruluştan ek bir onay gerektirir.
+4.5. Her onaylanmış kuruluş, AB tasarım inceleme belgeleri ve/veya verilmiş veya iptal edilmiş herhangi bir eklemeyle ilgili olarak Bakanlığa bildirimde bulunur ve düzenli olarak veya talep üzerine, reddedilen, askıya alınan veya başka türlü sınırlandırılan belgelerin ve/veya herhangi bir ekin listesini Bakanlığa sunar. Her onaylanmış kuruluş, reddettiği, geri çektiği, askıya aldığı veya başka türlü sınırladığı AB tasarım inceleme belgeleri ve/veya herhangi bir ekle ilgili olarak ve talep üzerine verilmiş olan belgeleri ve eklerini diğer onaylanmış kuruluşlara bildirir. Komisyon, üye ülkeler ve diğer onaylanmış kuruluşlar, talep üzerine, AB tasarım inceleme belgeleri ve/veya eklerinin bir kopyasını alabilir. Talep üzerine, Komisyon ve üye ülkeler teknik dosyanın ve onaylanmış kuruluş tarafından yapılan incelemelerin sonuçlarını alabilir. Onaylanmış kuruluş AB tasarım inceleme belgesi, ekleri ve ekleri yanı sıra, imalatlı tarafından ibraz edilen dokümanlar dâhil teknik dosyayı belgenin geçerlilik süresi sonuna kadar bir kopyasını tutar.
+4.6. İmalatçı, teknik dosya ile birlikte AB tasarım inceleme belgesi, ekleri ve ilavelerinin bir kopyasını basınçlı ekipman piyasaya arz edildikten sonraki 10 yıl boyunca ulusal kurumların tasarrufuna saklar.
+5. Onaylanmış kuruluşun gözetim sorumluluğu
+5.1. Gözetimin amacı, imalatçının onaylı kalite sistemi ile ilgili yükümlülüklerini yerine getirdiğinden emin olmaktır.
+5.2. İmalatçı, onaylanmış kuruluşun kontrol amacıyla tasarım, imalat, kontrol, test ve depolama mahallerine giriş izni verir ve özellikle aşağıda belirtilenler olmak üzere bütün gerekli bilgileri temin eder:
+- Kalite sistem dokümanları.
+- Analizlerin, hesaplamaların, testlerin ve benzeri sonuçları gibi, kalite sisteminin tasarım kısmı tarafından tutulan kalite kaliteleri.
+- Muayene raporları ve test verileri, kalibrasyon verileri, ilgili personelin nitelik raporları ve benzeri gibi kalite sistemi imalat kısmı tarafından tutulan kalite kayıtları.
+5.3. Onaylanmış kuruluş, imalatçının kalite sistemini sürdürdüğünü ve uyguladığını belirlemek amacıyla periyodik olarak denetler ve imalatçıya denetleme raporlarını sunar. Periyodik denetlemelerin sıklığı, her üç yılda bir yeniden değerlendirme yapılacak şekilde olur.
+5.4. Onaylanmış kuruluş imalatçıya resen ziyaretlerde bulunur. Bu ilave ziyaretin gerekliliği ve sıklığı onaylanmış kuruluş tarafından uygulanan kontrol sistemi temelinde belirlenir. Özellikle, aşağıdaki faktörler ziyaret kontrol sisteminde dikkate alınır:
+- Basınçlı ekipmanın kategorisi.
+- Daha önceki denetim ziyaretlerinin sonuçları.
+- Düzeltici faaliyetini sürdürme ihtiyacı.
+- Uygulanabilir olduğunda sistemin onayıyla bağlantılı özel koşullar.
+- İmalat organizasyonunda, politikada veya tekniğinde önemli değişiklikler.
+Bu ziyaretler sırasında onaylanmış kuruluş, gerektiğinde, kalite sisteminin doğru işlediğini teyit etmek için testler yapabilir veya yaptırabilir. Onaylanmış kuruluş imalatçıya bir denetim raporu, şayet bir test yapılmışsa bir de test raporu sunar.
+5.5. Son değerlendirme özel gözetimi
+Ek-I’in 3.2 maddesinde belirtildiği üzere son değerlendirme, onaylanmış kuruluş tarafından resen ziyaretler şeklinde artırılmış gözetime tabi tutulur. Ziyaretlerde, onaylanmış kuruluş basınçlı ekipman üzerinde incelemeler yapar. Onaylanmış kuruluş imalatçıya bir denetim raporu, şayet bir test yapılmışsa bir de test raporu sunar.
+6. CE İşareti ve AB uygunluk beyanı
+6.1. İmalatçı, AB tip inceleme belgesinde açıklanan tipe uygun olan ve bu Yönetmeliğin geçerli gereklerini karşılayan her bir basınçlı ekipman veya donanıma CE işaretini ve 3.1 maddesinde belirtilen onaylanmış kuruluşun kimlik numarasını iliştirir.
+6.2. İmalatçı, basınçlı ekipman modeli için yazılı bir AB uygunluk beyanı hazırlar ve basınçlı ekipman piyasaya arz edildikten sonraki 10 yıl boyunca ulusal kurumların tasarrufunda saklar. AB uygunluk beyanı, hazırlanmış olduğu basınçlı ekipman modelini belirtir ve tasarım inceleme belgesinin numarasını da verir. AB uygunluk beyanının bir kopyası talep üzerine ilgili kurumlara sunulur.
+7. İmalatçı, aşağıdaki bilgileri basınçlı ekipmanın piyasaya arz edildiği tarihten itibaren on yıl süre ile muhafaza eder ve istenildiğinde yetkili kamu kuruluşuna sunar:
+- 3.1 maddesinde belirtilen kalite sistemiyle ilgili dokümantasyon.
+- 3.5 maddesinde belirtilen onaylanan güncellemeler.
+- 3.5, 5.3 ve 5.4 maddelerinde belirtilen onaylanmış kuruluşun karar ve raporları.
+8. Yetkili temsilci
+İmalatçının yetkili temsilcisi, yetki belgesinde belirtilmesi şartıyla 4.1 ve 4.2 maddelerinde belirtilen başvurularda bulunabilir ve kendi adına veya sorumluluğu altında 3.1, 3.5, 4.4, 4.6, 6 ve 7 nci maddelerindeki yükümlülükleri yerine getirebilir.
+
+Ek-IV
+
+AB UYGUNLUK BEYANI (No XXXX) (1)
+
+1. Basınçlı ekipman veya donanım (ürün, tip, parti veya seri numarası):
+2. İmalatçının adı ve adresi ve varsa, yetkili temsilcisi:
+3. Bu uygunluk beyanı, imalatçının münhasır sorumluluğunda düzenlenmiştir.
+4. Beyanın amacı (takip edilebilirliğe imkan tanıyacak şekilde basınçlı ekipman veya donanımın kimlik bilgileri; basınçlı ekipman veya donanımın tanımlanması için ihtiyaç duyulabilecek hallerde bir resim de içerebilir):
+- basınçlı ekipman veya donanımın açıklaması,
+- uygulanan uygunluk değerlendirmesi prosedürü,
+- donanımlar için, donanımı oluşturan basınçlı ekipmanların açıklaması ve uygulanan uygunluk değerlendirmesi prosedürleri,
+5. Yukarıda açıklanan beyanın amacı, ilgili Birlik uyumlaştırma mevzuatıyla uygundur:
+6. Kullanılan ilgili uyumlaştırılmış standartlara yapılan atıflar veya uyumluluğun beyanıyla ilgili diğer teknik şartnamelere yapılan atıflar:
+7. Gerekliyse, uygunluk değerlendirmesini yapmış olan onaylanmış kuruluşun unvanı, adresi ve numarası ve verilen belge numarası ve AB tip inceleme belgesi- üretim tipi, AB-tip inceleme belgesi - tasarım tipi, AB tasarım inceleme belgesi veya uygunluk belgesinin referansı.
+8. Ek Bilgiler:
+Hazırlayan ve imzalayan:
+(düzenlendiği yer ve tarih):
+(adı, soyadı ve görevi) (imza):
+(gerekliyse, imalatçı veya yetkili temsilcisi adına yasal olarak bağlayıcı beyanı imzalama yetkisine sahip imza yetkilisinin bilgileri)
+
+(1) İmalatçıların uygunluk beyanına bir numara vermeleri tercihe bağlıdır.

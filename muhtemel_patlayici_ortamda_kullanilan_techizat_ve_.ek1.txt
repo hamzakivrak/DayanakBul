@@ -1,0 +1,470 @@
+Ek-1
+Teçhizat gruplarının kategoriler halinde sınıflandırılmasını belirleyen kriterler
+1. I. Grup teçhizat
+a) M1 kategorisi, üretici tarafından belirlenen işletme parametrelerine uygun çalışabilecek ve çok yüksek seviyede korunma sağlayabilecek şekilde tasarımlanmış ve gerektiğinde buna yönelik olarak ilave özel korunma vasıtaları ile teçhiz edilmiş teçhizatı kapsar.
+Bu kategorideki teçhizatın, madenlerin yeraltı bölümlerinde ve bu madenlerin grizu ve/veya yanıcı toz tehlikesi altındaki yerüstü bölümlerinde kullanılması için tasarımlanmıştır.
+Bu kategorideki teçhizatın, patlayıcı bir ortam nedeniyle istisnai olaylarda bile çalışır durumda kalması gerekir ve aşağıdaki gibi korunma vasıtaları ile karakterize edilir:
+- Bir korunma vasıtası arıza yaptığında en azından bağımsız ikinci bir vasıta gerekli olan korunma seviyesini sağlar veya
+- Gerekli korunma seviyesi birbirinden bağımsız olarak iki arıza olması durumunda sağlanır.
+Bu kategorideki teçhizat Ek-2’nin Madde 2.0.1’inde belirtilen ilave gereklere uygun olmalıdır.
+b) M2 kategorisi, üretici tarafından belirlenen işletme parametrelerine uygun çalışabilecek ve yüksek seviyede korunma sağlayabilecek şekilde tasarımlanmış teçhizatı kapsar.
+Bu kategorideki teçhizat, madenlerin yeraltı bölümlerinde ve bu madenlerin grizu ve/veya yanıcı toz tehlikesine maruz kalabilecek yerüstü bölümlerinde kullanılması için tasarımlanmıştır.
+Bu teçhizat, bir patlayıcı ortam oluşması halinde enerjisi kesilecek şekilde tasarımlanmıştır.
+Bu kategorideki teçhizatla ilgili korunma vasıtası, normal çalışma esnasında ve aynı zamanda daha ağır çalışma şartları söz konusu olduğunda, özellikle de kötü muamele ve değişen ortam şartlarından kaynaklanan şartlar altında gerekli korunma seviyesini sağlar.
+Bu kategorideki teçhizat, Ek-2’nin Madde 2.0.2’sinde belirtilen ilave şartlara uygun olmalıdır.
+2. II. Grup teçhizat
+a) Kategori 1, üretici tarafından belirlenen işletme parametrelerine uygun olarak çalışabilecek ve çok yüksek seviyede bir korunma sağlayabilecek şekilde tasarımlanmış teçhizatı kapsar.
+Bu kategorideki teçhizat, hava ve gaz, buhar veya sis ya da hava/toz karışımlarından kaynaklanan patlayıcı ortamların uzun bir süreyle sürekli olarak veya sık sık mevcut olduğu alanlarda kullanılır.
+Bu kategorideki teçhizat, gerekli korunma seviyesini teçhizatla ilgili istisnai olaylarda bile sağlamalıdır. Bu teçhizat aşağıdaki korunma vasıtaları ile karakterize edilir:
+- Bir korunma vasıtasının arızalanması halinde bağımsız en az ikinci bir vasıta gerekli korunma seviyesini sağlar veya
+- Birbirinden bağımsız olarak iki arıza çıkması halinde gerekli korunma seviyesini sağlar.
+Bu kategorideki teçhizat Ek-2’nin Madde 2.1’inde belirtilen ilave şartlara uygun olmalıdır.
+b) Kategori 2, üretici tarafından belirlenen işletme parametrelerine uygun olarak çalışabilecek ve yüksek seviyede bir korunma sağlayabilecek şekilde tasarlanmış teçhizatı kapsar.
+Bu kategorideki teçhizat gaz, buhar, sis veya hava/toz karışımlarının yol açtığı patlayıcı ortamların nadiren oluşabileceği alanlarda kullanılır.
+Bu kategorideki teçhizat ile ilgili korunma araçları sık sık oluşan bozulmalarda veya normal olarak dikkate alınması gereken teçhizat arızalarında bile gerekli korunma seviyesini sağlar.
+Bu kategorideki teçhizat Ek-2’nin Madde 2.2’sinde belirtilen ilave şartlara uygun olmalıdır.
+c) Kategori 3, üretici tarafından belirlenen işletme parametrelerine uygun olarak çalışabilecek ve normal seviyede bir korunma sağlayabilecek şekilde tasarımlanmış teçhizatı kapsar.
+Bu kategorideki teçhizat, gaz, buhar, sis veya hava/toz karışımlarından kaynaklanan patlayıcı ortamların oluşma ihtimali olmayan veya seyrek olarak ve yalnızca kısa süreyle oluştuğu alanlarda kullanılır.
+Bu kategorideki teçhizat gerekli korunma seviyesini, normal çalışma esnasında sağlar.
+Bu kategorideki teçhizat, Ek-2’nin 2.3’ünde belirtilen ilave şartlara uygun olmalıdır.
+
+Ek-2
+Muhtemel patlayıcı ortamlarda kullanılacak teçhizat ve koruyucu sistemlerin tasarım ve yapımı ile ilgili temel sağlık ve güvenlik gerekleri
+
+Ön gözlemler
+A. Hızla değişebilen teknolojik bilgi mümkün olduğunca dikkate alınmalı ve hemen kullanılmalıdır.
+B. 2 nci maddenin birinci fıkrasının (b) bendinde belirtilen cihazlar için temel sağlık ve güvenlik gerekleri, sadece patlama riskleri açısından emniyetli ve güvenilir çalışmaları için gerekli olmaları halinde geçerlidir.
+1. Teçhizat ve koruyucu sistemlere ait ortak gerekler
+1.0. Genel gerekler
+1.0.1. Bütünleşik patlama güvenliğinin ilkeleri
+Muhtemel patlayıcı ortamlarda kullanılacak teçhizat ve koruyucu sistemler bütünleşik patlama güvenliğine göre tasarımlanmalıdır.
+Bu bağlamda, üretici aşağıda belirtilen durumlar için gerekli tedbiri almalıdır:
+- Her şeyden önce mümkün olduğu kadar teçhizatın ve koruyucu sistemlerin kendi kendine üretebileceği veya ortaya çıkarabileceği patlayıcı ortamların oluşmasını engellemek,
+- Her bir elektrikli ve elektriksiz ateşleme kaynağının yapısını dikkate alarak patlayıcı ortamların ateşlenmeyle patlamasını önlemek,
+- Kişileri ve duruma göre evcil hayvanları veya eşyaları doğrudan ya da dolaylı olarak etkileyebilecek patlamanın oluşması halinde bunu derhal durduracak ve/veya patlama alevlerinin ve patlama basınçlarının yayılım uzaklığını yeterli güvenlik seviyesine kadar sınırlamak.
+1.0.2. Teçhizat ve koruyucu sistemler, tehlikeli durumları mümkün olduğunca ortadan kaldırmak için gerektiği şekilde muhtemel işletme hataları analiz edildikten sonra tasarımlanmalı ve imal edilmelidir.
+Makul olarak beklenebilecek herhangi bir yanlış kullanım dikkate alınmalıdır.
+1.0.3. Özel kontrol ve bakım şartları
+Özel kontrol ve bakım şartlarına tâbi teçhizat ve koruyucu sistemleri, bu şartlar göz önünde bulundurularak tasarımlanmalı ve imal edilmelidir.
+
+1.0.4. Çevre şartları
+Teçhizat ve koruyucu sistemleri, fiili veya öngörülebilen çevre şartlarının üstesinden gelebilecek şekilde tasarımlanmalı ve imal edilmelidir.
+1.0.5. (Değişik:RG-27/6/2020-31168) İşaretleme
+Tüm teçhizat ve koruyucu sistemler aşağıdaki asgari ayrıntılara sahip biçimde, okunaklı ve silinmeyecek bir şekilde işaretlenmelidir:
+- İmalatçının adı ve adresi, kayıtlı ticari unvanı veya tescilli ticari markası,
+- CE işareti (“CE” İşareti Yönetmeliği Ek-1’e bakınız.),
+- Seri veya tip gösterimleri,
+- Varsa, parti veya seri numarası,
+- İmal yılı,
+- Patlamaya karşı korunma özel işaretini () takiben teçhizat grup ve kategorisinin simgesini,
+- II. Grup teçhizat için, “G” harfi (gaz, buhar veya sisten kaynaklanan patlayıcı ortamlarla ilgili),
+ve/veya
+- “D” harfi (tozdan kaynaklanan patlayıcı ortamlarla ilgili).
+Ayrıca, gerekli olması durumunda, emniyetli kullanımı için zorunlu tüm bilgiler de yukarıdaki teçhizat ve koruyucu sistemler üzerine işaretlenir.
+1.0.6. Talimatlar
+a) Tüm teçhizat ve koruyucu sistemlerle birlikte talimatlar bulunmalıdır, bu talimatlar en az aşağıdaki ayrıntıları içermelidir:
+- Parti veya seri numarası hariç (bu Ek’in Madde1.0.5’ine bakınız), bakımı kolaylaştıracak uygun ilave bilgiler (örneğin; ithalatçının, tamircinin ve benzeri adresi) ile birlikte teçhizat veya koruyucu sistemler üzerinde işaretli bulunan bilgilerin tekrarı,
+- Güvenlik için talimatlar:
+- Hizmete sunma,
+- Kullanım,
+- Montaj ve demontaj,
+- Bakım (servis ve acil durumda tamir),
+- Kurulum,
+- Ayar,
+- Gerektiğinde, basınç güvenlik tertibatlarının ön tarafındaki tehlike alanlarının gösterilmesi,
+- Gerektiğinde, eğitim talimatları,
+- Herhangi bir şüphe halinde belli bir kategorideki bir teçhizatın veya bir koruyucu sistemin istenen alanda beklenen işletme şartları altında emniyetli bir şekilde kullanılıp kullanılamayacağına dair karar alınmasını sağlayan detaylar,
+- Elektrik ve basınç parametreleri, azami yüzey sıcaklıkları ve diğer kritik değerler,
+- Gerektiğinde, tecrübelerin gösterdiği muhtemel yanlış kullanımlar ile ilgili oluşabilir hususlar da dâhil olmak üzere özel kullanım şartları,
+- Gerektiğinde, teçhizat veya koruyucu sisteme takılabilir olan parçaların temel özellikleri.
+b) Talimatlar, özellikle emniyetle ilgili tüm faydalı talimatlarla birlikte kullanım için gerekli çizimleri ve diyagramları, bakım, muayene, doğru çalışma kontrolleri ve uygun olduğu takdirde teçhizatın veya koruyucu sistemin tamirini içermelidir.
+c) Teçhizat veya koruyucu sistemi açıklayan literatür, güvenlik konularıyla ilgili talimatlara ters düşmemelidir.
+1.1. Malzemelerin seçimi
+1.1.1. Teçhizat ve koruyucu sistemlerin yapımında kullanılan malzemeler, öngörülebilen işletme gerilmeleri dikkate alınarak, patlamaya yol açmamalıdır.
+1.1.2. Üretici tarafından belirtilen işletme şartlarının sınırları dâhilinde kullanılan malzemelerle muhtemel patlayıcı ortamın bileşenleri arasında patlamaya karşı korunma özelliğini bozabilecek bir reaksiyon oluşmamalıdır.
+1.1.3. Malzemeler, özelliklerinde tahmin edilebilen değişiklikler ve diğer malzemelerle uyumu; özellikle, malzemenin korozyon ve aşınma direnci, elektrik iletkenliği, mekanik mukavemeti, yaşlanma direnci ve sıcaklık değişimlerinin etkileri yeterince dikkate alınması nedeniyle sağlanan korunmanın azalmasına yol açmayacak şekilde seçilmelidir.
+1.2. Tasarım ve yapım
+1.2.1. Teçhizat ve koruyucu sistemler, öngörülen ömürleri boyunca emniyetli bir şekilde çalıştırılabilmesi için, patlamaya karşı korunma hakkındaki teknolojik bilgi gerektiği şekilde dikkate alınarak tasarımlanmalı ve imal edilmelidir.
+1.2.2. Teçhizata ve koruyucu sistemlere dâhil edilecek veya teçhizatta yedek parça olarak kullanılacak parçalar, üreticinin talimatlarına uygun olarak monte edildiğinde, patlamaya karşı korunma amacı doğrultusunda emniyetli çalışacak şekilde tasarımlanmalı ve imal edilmelidir.
+1.2.3. Muhafazalı yapılar ve sızıntıların önlenmesi
+Yanıcı gaz veya toz yayabilecek teçhizatlar mümkün olduğu kadar yalnızca muhafazalı yapıda olmalıdır.
+Teçhizatın açıklıklar veya sızdıran contalar içermesi halinde, oluşan gaz veya tozlar mümkün olduğunca teçhizatın dış kısmında patlayıcı ortam oluşturamayacak şekilde tasarlanmalıdır.
+Malzemelerin getirildiği ve gönderildiği noktalar mümkün olduğunca, doldurma veya boşaltma sırasında yanıcı malzemelerin açığa çıkmasını sınırlayacak şekilde tasarımlanmalı ve teçhiz edilmelidir.
+1.2.4. Toz birikintileri
+Toza maruz alanlarda kullanılacak teçhizat ve koruyucu sistemler, yüzeylerinde biriken tozları tutuşturmayacak şekilde tasarlanmalıdır.
+Genel olarak, toz birikmesi mümkünse sınırlanmalıdır. Teçhizat ve koruyucu sistemler kolayca temizlenebilmelidir.
+Teçhizat parçalarının yüzey sıcaklıkları, biriken tozun kendiliğinden tutuşma sıcaklığının oldukça altında tutulmalıdır.
+Biriken tozun kalınlığı dikkate alınmalı ve mümkünse ısı oluşumunu önlemek için sıcaklığı sınırlayacak tedbirler alınmalıdır.
+1.2.5. İlave korunma vasıtaları
+Belli tiplerde harici gerilmelere maruz kalabilecek teçhizat ve koruyucu sistemler, gerektiğinde ilave korunma vasıtaları ile teçhiz edilmelidir.
+Teçhizat, patlamaya karşı korunmayı olumsuz yönde etkilemeden, ilgili gerilmelere dayanmalıdır.
+1.2.6. Güvenli açma
+Teçhizat ve koruyucu sistemler, patlamaya karşı korunmanın bir parçasını oluşturan bir mahfaza veya kilitli bir kap içinde ise, bu mahfaza veya kap sadece özel bir araç veya uygun korunma tedbirleri ile açılabilmelidir.
+1.2.7. Diğer tehlikelere karşı korunma
+Teçhizat ve koruyucu sistemler, aşağıdakileri sağlayacak şekilde tasarımlanmalı ve imal edilmelidir:
+a) Doğrudan ya da dolaylı temas yoluyla ortaya çıkabilecek fiziksel yaralanma veya diğer zararları önlemek,
+b) Erişilebilen parçalarda tehlikeye yol açabilecek yüzey sıcaklıklarının veya radyasyonun oluşmamasını sağlamak,
+c) Tecrübe ile ortaya çıkan elektriksel olmayan tehlikeleri ortadan kaldırmak,
+ç) Öngörülebilen aşırı yük şartlarının tehlikeli durumlara yol açmamasını sağlamak.
+Teçhizat ve koruyucu sistemler için, bu maddede belirtilen riskler tamamen veya kısmen Avrupa Birliği mevzuatına dayanan diğer yönetmeliklerin kapsamında olması halinde, bu özel yönetmeliklerin böyle teçhizat ve koruyucu sistemler ve böyle riskler üzerine uygulandığı takdirde bu Yönetmelik uygulanmaz veya uygulanması sona erer.
+1.2.8. Teçhizatın aşırı yüklenmesi
+Teçhizatın tehlikeli bir şekilde aşırı yüklenmesi, aşırı akım kesicileri, sıcaklık sınırlayıcıları, diferansiyel basınç anahtarları, debimetreler, zaman röleleri, aşırı hız monitörleri ve/veya benzer tipte izleme cihazları gibi bütünleşmiş ölçüm, regülasyon ve kumanda cihazları ile tasarım aşamasında önlenmelidir.
+1.2.9. Aleve dayanıklı mahfaza sistemleri
+Bir mahfazanın içine patlayıcı bir ortamı oluşturabilecek parçalar yerleştirilmesi halinde mahfazanın, dâhili olarak patlayıcı bir karışımın patlaması sırasında oluşan basınca dayanmasını sağlayacak, mahfazayı çevreleyen patlayıcı ortama patlamanın sirayetini önleyecek tedbirler alınmalıdır.
+1.3. Muhtemel tutuşma kaynakları
+1.3.1. Farklı tutuşma kaynaklarından ortaya çıkan tehlikeler
+Kıvılcım, alev, elektrik arkı, yüksek yüzey sıcaklıkları, akustik enerji, optik radyasyon, elektromanyetik dalga ve diğer ateşleme kaynakları gibi muhtemel ateşleme kaynakları oluşmamalıdır.
+1.3.2. Statik elektrikten kaynaklanan tehlikeler
+Tehlikeli deşarjlarda ortaya çıkarabilecek elektrostatik yükler uygun tedbirlerle önlenmelidir.
+1.3.3. Kaçak elektrik ve kaçak akımlardan kaynaklanan tehlikeler
+İletken teçhizat parçalarında, ateşlemeye neden olabilecek örneğin tehlikeli korozyona, yüzeylerin aşırı ısınmasına veya kıvılcımlara yol açabilecek kaçak elektrik ve kaçak akımlar önlenmelidir.
+1.3.4. Aşırı ısınmadan kaynaklanan tehlikeler
+Örneğin, dönerken veya yabancı madde girmesiyle birbiri ile temas halindeki malzeme veya parçalar arasındaki sürtünme veya çarpmadan kaynaklanan aşırı ısınma mümkünse tasarım aşamasında önlenmelidir.
+1.3.5. Basınç dengeleme işlemlerinden kaynaklanan tehlikeler
+Teçhizat ve koruyucu sistemler, kendilerinden kaynaklanan basınç dengelemeleri tutuşmaya yol açabilecek şok dalgaları veya baskılar oluşturmayacak şekilde tasarımlanmalı veya bütünleşmiş ölçme, kumanda ve regülâsyon cihazları ile teçhiz edilmelidir.
+1.4. Dış etkilerden kaynaklanan tehlikeler
+1.4.1. Teçhizat ve koruyucu sistemler, üretici tarafından belirlenen çalışma şartları sınırları dikkate alınarak, değişen çevre şartlarında ve yabancı dış gerilmelerde, nem, titreşim, kirlenme ve diğer dış etkiler mevcutken dahi tamamen emniyetli olarak kendilerinden beklenen fonksiyonu yerine getirebilecek şekilde tasarımlanmalı ve imal edilmelidir.
+1.4.2. Kullanılan teçhizat parçaları, tasarlanan mekanik ve ısıl gerilmelere uygun olmalı ve mevcut veya öngörülebilen agresif maddelerin etkilerine dayanabilmelidir.
+1.5. Güvenlikle ilgili cihazlar hususunda gerekler
+1.5.1. Güvenlik cihazları çalışma için gerekli herhangi bir ölçme ve/veya kumanda cihazlarından bağımsız olarak çalışmalıdır.
+Mümkün olduğunca, bir güvenlik cihazının arızalandığı, tehlikeli durumların ortaya çıkma ihtimalinin çok düşük olmasını sağlayacak uygun teknik vasıtalarla yeterince hızlı bir şekilde tespit edilmelidir.
+Arızaya karşı güvenli olma ilkesi genel olarak uygulanır.
+Güvenlikle ilgili anahtarlama genel olarak ilgili kumanda devrelerini, ara bir yazılım komutu olmadan doğrudan çalıştırmalıdır.
+1.5.2. Bir güvenlik cihazının arızalanması halinde, teçhizat ve/veya koruyucu sistemler mümkünse emniyete alınmalıdır.
+1.5.3. Güvenlik cihazlarının acil durdurma kumandaları mümkünse, yeniden başlatma kilitleri ile teçhiz edilmelidir. Yeni bir başlatma komutu, yeniden başlatma kilitleri başlangıçta yeniden ilk ayar konumuna döndükten sonra sadece normal çalışmada devreye girebilir.
+1.5.4. Kumanda ve ekran üniteleri
+Kumanda ve ekran üniteleri kullanıldığında, bunlar, patlama tehlikesine karşı mümkün olan en üst seviyede çalışma güvenliğini sağlamak için ergonomi ilkelerine uygun olarak tasarlanmalıdır.
+1.5.5. Patlamaya karşı korunmaya ait ölçme işlevine sahip cihazlarla ilgili gerekler
+Patlayıcı ortamlarda kullanılan teçhizat ile ilgili olduğu kadarıyla, ölçme işlevine sahip cihazlar öngörülen çalışma şartları ve özel kullanım gereklerine dayanabilecek şekilde tasarımlanmalı ve imal edilmelidir.
+1.5.6. Gerektiğinde, ölçme işlevine sahip cihazların gösterge değerinin doğruluğu ve hizmete uygunluğu kontrol edilebilmelidir.
+1.5.7. Ölçme işlevine sahip cihazların tasarımı özellikle tesisatın çalışma şartları ve ölçme sistemindeki muhtemel sapmalar dikkate alınarak, alarm eşiği, kaydedilecek ortamların patlama ve/veya ateşleme sınırlarının yeterince dışında kalmasını sağlayan bir güvenlik faktörü içermelidir.
+1.5.8. Yazılımdan kaynaklanan tehlikeler
+Yazılım kontrollü teçhizatın, koruyucu sistemlerin ve güvenlik cihazlarının tasarımında, programdaki hatalardan kaynaklanan tehlikelere karşı özel bir dikkat gösterilmelidir.
+1.6. Sistemle ilgili güvenlik gereklerinin dâhil edilmesi
+1.6.1. Güvenliği azaltmaması kaydıyla, istenen çalışma şartlarından sapma gösteren otomatik işlemler içinde yer alan teçhizat ve koruyucu sistemleri durdurmak için manüel durdurma mümkün olmalıdır.
+1.6.2. Acil durumda kapama sistemi çalıştığı zaman, biriken enerji mümkün olduğunca hızlı ve güvenli bir şekilde dağıtılmalı veya bir daha tehlike oluşturmayacak şekilde izole edilmelidir.
+Bu, elektrokimyasal olarak depolanan enerji için geçerli değildir.
+1.6.3. Enerji kesilmesinden kaynaklanan tehlikeler
+Teçhizat ve koruyucu sistemlerin, enerji kesilmesi durumunda ilave tehlikeler yayması halinde, bağımsız olarak çalışan ünitenin diğer bölümünün emniyetli çalışma durumunda kalmasını sağlamak mümkün olmalıdır.
+1.6.4. Bağlantılardan kaynaklanan tehlikeler
+Teçhizat ve koruyucu sistemlerde uygun kablo ve tesisat girişleri bulunmalıdır.
+Teçhizat ve koruyucu sistemler diğer teçhizat ve koruyucu sistemlerle birlikte kullanılacağı zaman ara yüz emniyetli olmalıdır.
+1.6.5. Uyarı cihazlarının teçhizatın parçaları olarak yerleştirilmesi
+Teçhizat veya koruyucu sistemlerde patlayıcı ortamların oluşmasını izlemek için uyarı cihazları bulunması halinde, bunların uygun yerlere konmasını sağlayacak gerekli talimatlar verilmelidir.
+2. Teçhizatla ilgili ilave gerekler
+2.0. I. Grup teçhizata uygulanabilir gerekler
+2.0.1. I. Grup teçhizatın M1 kategorisindeki teçhizata uygulanabilir gerekler
+2.0.1.1. Teçhizatla ilgili nadiren gerçekleşen olaylarda bile ateşleme kaynaklarının aktif hale geçmeyecek şekilde teçhizat tasarımlanmalı ve imal edilmelidir.
+Teçhizat, aşağıdaki korunma vasıtaları ile teçhiz edilmelidir:
+- Bir korunma vasıtasının arızalanması halinde bağımsız en az ikinci bir vasıta gerekli korunma seviyesini sağlayan korunma vasıtası veya
+- Birbirinden bağımsız olarak iki arıza çıkması halinde gerekli korunma seviyesi sağlayan korunma vasıtası.
+Gerektiğinde bu teçhizat özel ilave korunma vasıtaları ile teçhiz edilmelidir.
+Mevcut bir patlayıcı ortamda çalışır durumda kalmalıdır.
+2.0.1.2. Gerektiğinde teçhizat, içine toz girmeyecek şekilde imal edilmelidir.
+2.0.1.3. Asılı tozların ateşlenmesini önlemek için, teçhizat parçalarının yüzey sıcaklıkları öngörülebilen hava/toz karışımlarının patlamasına neden olan ateşleme sıcaklığının yeterince altında tutulmalıdır.
+2.0.1.4. Ateşleme kaynağı olabilen teçhizat parçalarının açılması, yalnızca aktif olmayan veya yapısal olarak emniyetli şartlar altında gerçekleşecek şekilde teçhizat tasarımlanmalıdır. Teçhizatı devre dışı bırakmak mümkün değilse, üretici teçhizatın açılan bölümüne bir uyarı etiketi iliştirmelidir.
+Gerekirse, teçhizatta uygun ek kilit sistemleri bulunmalıdır.
+2.0.2. I. Grup M 2 kategorideki teçhizata uygulanabilen gerekler
+2.0.2.1. Normal çalışma esnasında ateşleme kaynaklarının özellikle kaba muamele ve değişen çevre şartlarından kaynaklanan daha ağır çalışma şartları altında bile aktif olmamasını sağlayan korunma vasıtalarıyla teçhizat donatılmalıdır.
+Bir patlayıcı ortam söz konusu olduğu takdirde teçhizatın enerjisinin kesilmesi amaçlanır.
+2.0.2.2. Ateşleme kaynağına sahip olabilen teçhizat parçalarının açılması, yalnızca aktif olmayan veya uygun kilitleme sistemleri vasıtayla emniyetli şartlar altında gerçekleşecek şekilde teçhizat tasarımlanmalıdır. Teçhizatı devre dışı bırakmak mümkün değilse, üretici teçhizatın açılan bölümüne bir uyarı etiketi iliştirmelidir.
+2.0.2.3. Tozdan kaynaklanan patlama tehlikeleri konusunda, M1 kategorisine uygulanabilen gerekler uygulanmalıdır.
+2.1. II. Grup 1. kategori teçhizata uygulanabilen gerekler
+2.1.1. Gaz, buhar veya sisin sebep olduğu patlayıcı ortamlar
+2.1.1.1. Teçhizat ile ilgili nadir olaylarda bile ateşleme kaynakları aktif olmayacak şekilde teçhizat tasarımlanmalı ve imal edilmelidir.
+Teçhizat aşağıdaki korunma vasıtaları ile teçhiz edilmelidir:
+- Bir korunma vasıtasının arızalanması halinde bağımsız en az ikinci bir vasıta gerekli korunma seviyesini sağlayan korunma vasıtası veya
+- Birbirinden bağımsız olarak iki arıza çıkması halinde gerekli korunma seviyesi sağlayan korunma vasıtası.
+2.1.1.2. Isınabilecek yüzeylere sahip teçhizat için en kararsız durumlarda dahi belirtilen azami yüzey sıcaklığının aşılmamasını sağlayacak tedbirler alınmalıdır.
+Isınmadan ve kimyasal reaksiyonlardan kaynaklanan sıcaklık yükselmeleri de dikkate alınmalıdır.
+2.1.1.3. Ateşleme kaynağına sahip olabilen teçhizat parçalarının açılması, yalnızca aktif olmayan veya yapısal olarak emniyetli şartlar altında gerçekleşecek şekilde teçhizat tasarımlanmalıdır. Teçhizatı devre dışı bırakmak mümkün değilse, üretici teçhizatın açılan bölümüne bir uyarı etiketi iliştirmelidir.
+Gerekirse, teçhizat uygun ek kilit sistemleri ile teçhiz edilmelidir.
+2.1.2. Hava/toz karışımlarının sebep olduğu patlayıcı ortamlar
+2.1.2.1. Teçhizat, teçhizatla ilgili nadir olaylarda bile hava/toz karışımlarında ateşleme oluşturmayacak şekilde tasarımlanmalı ve imal edilmelidir.
+Teçhizat aşağıdaki korunma vasıtaları ile teçhiz edilmelidir:
+- Bir korunma vasıtasının arızalanması halinde bağımsız en az ikinci bir vasıta gerekli korunma seviyesini sağlayan korunma vasıtası veya
+- Birbirinden bağımsız olarak iki arıza çıkması halinde gerekli korunma seviyesi sağlayan korunma vasıtası.
+2.1.2.2. Gerektiğinde teçhizat, tozun yalnızca özel olarak belirlenen noktalardan teçhizata girip çıkabileceği şekilde tasarlanmalıdır.
+Bu şartı, kablo delikleri ve bağlantı parçaları da sağlamalıdır.
+2.1.2.3. Asılı tozların ateşlenmesini önlemek için, teçhizat parçalarının yüzey sıcaklıkları, öngörülen hava/toz karışımlarının ateşleme sıcaklığının oldukça altında tutulmalıdır.
+2.1.2.4. Teçhizat parçalarının emniyetli bir şekilde açılması konusunda bu Ek’in Madde 2.1.1.3’ündeki gerekler uygulanır.
+2.2. II. Grup 2. kategori teçhizata uygulanabilir gerekler
+2.2.1. Gaz, buhar veya sisin sebep olduğu patlayıcı ortamlar
+2.2.1.1. Teçhizat, sıkça ortaya çıkan bozukluklar ve teçhizat işletme arızalarında bile, normal olarak dikkate alınması gereken ateşleme kaynaklarının meydana gelmesini önleyecek şekilde tasarımlanmalı ve imal edilmelidir.
+2.2.1.2. Teçhizat parçaları, üretici tarafından öngörülen normal olmayan durumlardan kaynaklanan tehlikelerde bile, belirtilen yüzey sıcaklıklarını aşmayacak şekilde tasarımlanmalı ve imal edilmelidir.
+2.2.1.3. Ateşleme kaynağına sahip olabilen teçhizat parçalarının açılması, yalnızca aktif olmayan veya uygun kilitleme sistemleri vasıtayla emniyetli şartlar altında gerçekleşecek şekilde teçhizat tasarımlanmalıdır. Teçhizatı devre dışı bırakmak mümkün değilse, üretici teçhizatın açılan bölümüne bir uyarı etiketi iliştirmelidir.
+2.2.2. Hava/toz karışımlarının sebep olduğu patlayıcı ortamlar
+2.2.2.1. Teçhizat, sıkça oluşan bozulmalar veya normal olarak dikkate alınması gereken teçhizat arızalarında dahi hava/toz karışımlarının ateşlenmesi önlenecek şekilde tasarımlanmalı ve imal edilmelidir.
+2.2.2.2. Yüzey sıcaklıkları konusunda bu Ek’in Madde 2.1.2.3’ündeki gerekler uygulanır.
+2.2.2.3. Toza karşı korunma konusunda bu Ek’in Madde 2.1.2.2’sindeki gerekler uygulanır.
+2.2.2.4. Teçhizat parçalarının emniyetli bir şekilde açılması konusunda, bu Ek’in Madde 2.2.1.3’ündeki gerekler uygulanır.
+2.3. II. Grup 3. kategori teçhizata uygulanabilen gerekler
+2.3.1. Gaz, buhar veya sisin sebep olduğu patlayıcı ortamlar
+2.3.1.1. Teçhizat, normal çalışma sırasında ortaya çıkabilecek öngörülebilen ateşleme kaynaklarını önleyecek şekilde tasarımlanmalı ve imal edilmelidir.
+2.3.1.2. Yüzey sıcaklıkları, tasarımlanan çalışma şartlarında belirtilen azami yüzey sıcaklıklarını aşmamalıdır. İstisnai durumlardaki yüksek sıcaklıklara yalnızca üreticinin özel ilave koruyucu tedbirler belirlemesi halinde izin verilir.
+2.3.2. Hava/toz karışımlarının sebep olduğu patlayıcı ortamlar
+2.3.2.1. Hava/toz karışımları, normal çalışma sırasında öngörülen ateşleme kaynakları tarafından tutuşturulamayacak şekilde tasarlanmalı ve imal edilmelidir.
+2.3.2.2. Yüzey sıcaklıkları konusunda bu Ek’in Madde 2.1.2.3’ünde belirtilen gerekler uygulanır.
+2.3.2.3. Teçhizat, kablo girişleri ve bağlantı parçaları dâhil, toz, tane boyutunu dikkate alarak, hava ile patlayıcı karışım oluşturmayacak ve teçhizat içinde tehlikeli birikimler oluşturmayacak şekilde imal edilmelidir.
+
+3. Koruyucu sistemlerle ilgili ilave gerekler
+3.0. Genel gerekler
+3.0.1. Koruyucu sistemler, patlama etkilerini yeterli güvenlik seviyesine indirecek şekilde boyutlandırılmalıdır.
+3.0.2. Koruyucu sistemler, tehlikeli zincirleme reaksiyonlarından veya sıçramalarından patlamanın yayılmasını önleyecek şekilde veya yeni başlayan patlamalarda infilaklar olmayacak şekilde tasarımlanmalıdır.
+3.0.3. Enerji kesilmesi durumunda koruyucu sistemler tehlikeli durumu engellemeye yetecek süreyle çalışabilecek kapasitelerini muhafaza etmelidir.
+3.0.4. Koruyucu sistemler dış müdahaleler nedeniyle arızalanmamalıdır.
+3.1. Planlama ve tasarım
+3.1.1. Malzemelerin özellikleri
+Malzemelerin özelliklerine ilişkin olarak, planlama aşamasında dikkate alınacak azami basınç ve sıcaklık, sıra dışı çalışma şartları ve alevin tahmin edilen ısıtma etkisi altında oluşan bir patlama sırasında beklenen basınçtır.
+3.1.2. Patlamalara mukavemet gösterecek veya bastıracak şekilde tasarlanmış koruyucu sistemler, üretilen şok dalgalarına, sistem bütünlüğünü kaybetmeden dayanabilmelidir.
+3.1.3. Koruyucu sistemlere bağlı aksesuarlar, çalışma kapasitelerini kaybetmeden beklenen azami patlama basıncına dayanabilmelidir.
+3.1.4. Çevre teçhizatındaki ve bağlı olan boru tesisatındaki basınçların yol açtığı reaksiyonlar koruyucu sistemlerin planlama ve tasarımında dikkate alınmalıdır.
+3.1.5. Basınç tahliye sistemleri
+Koruyucu sistemler üzerindeki gerilmelerin yapısal mukavemetini aşma ihtimali varsa, tasarımda çevredeki insanları tehlikeye düşürmeyecek uygun basınç tahliye tertibatları için gerekli önlemler alınmalıdır.
+3.1.6. Patlamayı bastırma sistemleri
+Patlamayı bastırma sistemleri, azami basınç artış oranını ve azami patlama basıncını gerektiği şekilde dikkate alınarak, bir olay vukuunda yeni başlamış bir patlamaya mümkün olan en erken aşamada tepki verecek ve en etkili şekilde durduracak şekilde planlanmalı ve tasarlanmalıdır.
+3.1.7. Patlama dekuplaj sistemleri
+Yeni başlamış patlamalarda, teçhizatın bağlantısını uygun tertibatlarla mümkün olan en hızlı şekilde kesmek için düşünülmüş dekuplaj (bağlantı ayırma) sistemleri iç tutuşmanın iletilmesine karşı sağlam kalacak ve çalışma şartları altında mekanik mukavemetini koruyacak şekilde planlanmalı ve tasarlanmalıdır.
+3.1.8. Koruyucu sistemler, emniyetli çalışmayan teçhizat parçalara malzeme beslemesinin ve enerji girişinin kesilmesi ve bu parçaların durdurulması için uygun bir alarm eşiğine sahip bir devreye bağlanabilmelidir.
+
+Ek-3
+Modül B: AB tip incelemesi
+1. AB tip incelemesi, onaylanmış kuruluş tarafından bir ürünün teknik tasarımının incelendiği ve bu teknik tasarımın, ürüne yönelik bu Yönetmeliğin uygulanabilen gereklerini yerine getirdiğinin onaylandığı ve doğrulandığı uygunluk değerlendirme prosedürünün bir parçasıdır.
+2. AB tip incelemesi, ürün bütününü (imalat tipi) ve öngörülen imalatı temsil eden bir numunenin incelenmesiyle yapılmalıdır.
+3. Üretici, AB tip incelemesi için kendi seçtiği tek bir onaylanmış kuruluşa başvuru yapmalıdır.
+Başvuru şunları içermelidir:
+a) Üreticinin adresi ve unvanı ve başvuru yetkili temsilcisi tarafından yapılıyorsa, ayrıca ismi ve adresi,
+b) Aynı başvurunun bir diğer onaylanmış kuruluşa yapılmadığını gösteren yazılı bir beyan,
+c) Bir teknik dosya. Bu teknik dosya, riskin/risklerin değerlendirmesini ve yeterli bir analizini ihtiva etmeli ve ürünün bu Yönetmeliğin uygulanabilir gereklerine uygunluğunun değerlendirmesine imkân vermelidir. Teknik dosya, mümkün olduğu kadar uygunluk değerlendirmesi ile ilgili ürünün tasarımını, imalatını ve kullanımını kapsamalı ve uygulanabilir gerekleri belirtmelidir. Teknik dosya, en azından aşağıdaki unsurları içermelidir:
+(i) Ürünün genel bir tanımı,
+(ii) Ürün tasarımı ve imalat resimleri ve parça şemaları, alt grupları, devreleri vb.,
+(iii) Ürünün resimleri ve şemaları ve çalışmasının anlaşılabilmesi için gerekli tanımlamalar ve açıklamaları,
+(iv) Tamamen veya kısmen uygulanan uyumlaştırılmış standardların bir listesi ve söz konusu standardların uygulanmadığı durumlarda uygulanan diğer ilgili teknik şartnamelerin bir listesi dâhil, bu Yönetmeliğin temel sağlık ve güvenlik gereklerini karşılamak için kullanılan çözümlerin açıklamaları ve kısmi uygulanan uyumlaştırılmış standardlar varsa uygulanan bölümler,
+(iv) Yapılan tasarım hesaplamaları, gerçekleştirilen incelemelerin vb. sonuçları,
+(v) Deney raporları.
+ç) Deney programını yapmak için öngörülen imalatı temsil eden numuneleri. Onaylanmış kuruluş ihtiyaç duyarsa başka numuneleri isteyebilir.
+
+4. Onaylanmış kuruluş:
+4.1. Teknik dosyayı incelemeli, numune/numunelerin teknik dosyaya uygun imal edildiğini doğrulamalı ve diğer ilgili teknik şartnamelere uygun tasarımlanan unsurlarla birlikte ilgili uyumlaştırılmış standardların uygulanabilir hükümlerine uygun olarak tasarımlanan unsurları belirlemelidir.
+4.2. Üretici ilgili uyumlaştırılmış standardlar içindeki yöntemleri uygulamayı seçmek zorunda ise, bunların doğru olarak uygulanıp uygulanmadığını kontrol etmek için uygun incelemeleri ve deneyleri yapmalı veya bunları yaptırmalıdır.
+4.3. İlgili uyumlaştırılmış standardlardaki yöntemler uygulanmamışsa, üretici tarafından kabul edilen yöntemlerin ve uygulanan diğer ilgili teknik şartnamelerinin bu Yönetmeliğin temel sağlık ve güvenlik gereklerini karşılayıp karşılayamadığını kontrol etmek için uygun incelemeleri ve deneyleri yapmalı veya bunları yaptırmalıdır.
+4.4. İncelemelerin ve deneylerin yapılacağı bir yeri belirlemek üzere üretici ile anlaşma yapmalıdır.
+5. Onaylanmış kuruluş, bu Ek’in Madde 4’üne ve diğer sonuçlara göre yapacağı faaliyetlerini içeren bir değerlendirme raporu hazırlamalıdır. Bakanlığa karşı kendi yükümlülükleri saklı olmak kaydıyla onaylanmış kuruluş sadece imalatçıyla anlaşarak, bu raporun kısmen veya tamamen içeriğini açıklamalıdır.
+6. İlgili ürüne uygulanan bu Yönetmeliğin gereklerini bu ürün tipi karşılar ise, onaylanmış kuruluş AB tip inceleme sertifikasını üretici için düzenlemelidir. Bu sertifika, üreticinin unvanı ve adresini, incelemenin sonuçlarını, (eğer varsa) geçerlilik şartlarını, onay şeklini tanımlamak için gerekli bilgiyi içermelidir. AB tip inceleme sertifikası bir veya birden fazla iliştirilmiş eklere sahip olabilir.
+AB tip inceleme sertifikası ve onun ekleri, çalışma sırasında kontrolünü sağlayacak ve değerlendirilmesi gereken incelenen tipe uygun imal edilen ürünlerin uygunluğunu sağlayacak ilgili tüm bilgileri kapsamalıdır.
+İlgili ürüne uygulanan bu Yönetmeliğin gereklerini bu ürün tipi karşılamazsa, onaylanmış kuruluş bir AB tip inceleme sertifikası düzenlemeyi ret etmeli ve bunun reddinin detaylı gerekçelerini sunarak uygun biçimde başvuru yapanı bilgilendirmelidir.
+
+7. Onaylanmış kuruluş, onaylanmış bir ürün tipinin bu Yönetmeliğin uygulanabilir gereklerine uygun olmamasına neden olacak genel olarak kabul edilen teknik yöntemlerde oluşan tüm değişikliklerden bilgilenmeyi kendi kendine sağlamalı ve böyle değişikliklerin ileriki araştırmalarda gerekliliğine karar vermelidir. Bu değişiklikler gerçekleşmişse, onaylanmış kuruluş imalatçıyı uygun bir biçimde bilgilendirmelidir.
+Üretici, bu Yönetmeliğin temel sağlık ve güvenlik gereklerine ürünün uygunluğunu veya sertifikanın geçerlilik şartlarını etkileyebilecek onaylanmış ürün tipinde gerçekleşen tüm değişiklikleri, AB tip inceleme sertifikası teknik dosyası ile ilgili onaylanmış kuruluşa bildirmelidir. Bu tür önemli yapısal değişiklikler, orijinal AB tip inceleme sertifikasına ilave bir onayı gerektirir.
+8. Her bir onaylanmış kuruluş, düzenlediği veya iptal ettiği AB tip inceleme sertifikalarının ve/veya herhangi bir ilaveleri hakkında düzenli olarak ve/veya talep ettiğinde Bakanlığı bilgilendirmeli ve iptal ettiği veya askıya aldığı veya diğer sınırlamalar söz konusu olan AB tip inceleme sertifikaları ve ilaveleri hakkında bir listeyi Bakanlık için hazır bulundurmalıdır.
+Her bir onaylanmış kuruluş, düzenlediği AB tip inceleme sertifikalarının ve/veya herhangi bir ilaveleriyle ilgili ret ettiği, iptal ettiği, askıya aldığı veya diğer sınırladığı bu tür sertifikalar ile ilgili talep ettiğinde diğer onaylanmış kuruluşları bilgilendirmelidir.
+Komisyon ve AB üyesi ülkeler ve diğer onaylanmış kuruluşlar, talep etmeleri halinde, AB tipi inceleme sertifikalarının ve/veya ilavelerinin birer kopyasını alabilir. Onaylanmış kuruluş tarafından yapılan incelemelerin sonuçlarını ve teknik dosyanın birer kopyasını Komisyon ve AB üyesi ülkeler talep ettiğinde alabilir. Onaylanmış kuruluş, üretici tarafından gönderilen dosyayı içeren teknik dosya ile birlikte AB tip inceleme sertifikasının, bunun eklerinin ve ilavelerinin bir kopyasını bu sertifikanın geçerlilik süresinin sonuna kadar muhafaza etmelidir.
+9. Üretici, ürünün piyasaya arzından sonra on yıl boyunca teknik dosyası ile birlikte AB tip inceleme sertifikasının, bunun eklerinin ve ilavelerinin bir kopyasını Bakanlık tarafından istenildiğinde sunulmak üzere muhafaza etmelidir.
+10. İmalatçıdan yazılı yetki aldıklarını belirtmeleri şartıyla yetkilendirilen temsilciler, bu Ek’in Madde 3’ünde belirtilen başvuruyu yapabilir ve bu Ek’in Madde 7 ve Madde 9’unda belirtilen yükümlülükleri yerine getirebilir.
+
+Ek-4
+Modül D: İmalat sürecinin kalite güvencesini esas alan tipe uygunluğu
+1. Bu modül; bu Ek’in Madde 2’sinde ve Madde 5’inde belirtilen yükümlülüklerin üretici tarafından yerine getirildiği ve ilgili ürünlere uygulanan bu Yönetmeliğin gereklerini bunların karşıladığını ve üreticinin, AB tip inceleme sertifikasında tanımlanan tipe bu ürünlerin uygunluğunu sadece kendi sorumluluğunda sağladığı ve beyan ettiği uygunluk değerlendirme prosedürünün bir parçasıdır.
+2. İmalat
+Üretici, bu Ek’in Madde 3’ünde belirtildiği gibi imalat için ve nihai ürün muayenesi ve deneyi için onaylanmış bir kalite sistemi uygulamalı ve bu Ek’in Madde 4’ünde belirtilen gözetime ve denetime tabi olmalıdır.
+
+3. Kalite sistemi
+3.1. Üretici, söz konusu ürünlere yönelik kendi kalite sisteminin onaylanması için kendi seçtiği onaylanmış kuruluşa başvurmalıdır.
+Başvuru şunları içerir:
+a) Üreticinin adresi ve unvanı ve yetkili temsilcisi tarafından başvuru yapılıyorsa, ayrıca ismi ve adresi,
+b) Aynı başvurunun bir diğer onaylanmış kuruluşa yapılmadığını gösteren yazılı bir beyan,
+c) Öngörülen ürün kategorisi hakkında ilgili tüm bilgiler,
+ç) Kalite sistemi ile ilgili dosya,
+d) AB tip inceleme sertifikasının bir sureti ve onaylı tipin teknik dosyası.
+3.2. Kalite sistemi, ilgili ürünlere bu Yönetmeliğin uygulanan gereklerine bu ürünlerin uygunluğunu ve AB tip inceleme sertifikasında tanımlanan tip ile bu ürünlerin uygunluğunu sağlamalıdır.
+Üretici tarafından yerine getirilen tüm unsurlar, gerekler ve hükümler; sistematik ve yazılı talimatların, prosedürlerin, ilkelerin belirlediği biçimde düzenli olarak dosyalanmalıdır. Kalite sistemi dosyası, kalite programlarını, planlarını, el kitapçıkları ve kayıtların uygun bir yorumuna imkân vermelidir.
+Özellikle aşağıdakilerin yeterli bir tanımını içermelidir:
+a) Ürünün kalitesine ilişkin olarak yönetimin kalite hedefleri ve organizasyonun yapısı, yükümlülükleri ve yetkisi,
+b) Kullanılacak imalat süreçleri, kalite kontrol ve kalite güvence teknikleri ve sistematik faaliyetleri,
+c) İmalat öncesinde, sonrasında ve imalat boyunca yapılacak muayene, deney ve bunların uygulanma sıklığı,
+ç) Muayene raporları, deney bilgileri, kalibrasyon bilgileri, ilgili personelin nitelikleri hakkındaki raporlar gibi kalite kayıtları vb.,
+d) Ürünün istenilen kalitesinin sağlanması ve kalite sisteminin etkin işleyişini izleme metodu.
+3.3. Onaylanmış kuruluş bu Ek’in Madde 3.2’sinde belirtilen gerekleri karşılayıp karşılamadığının belirlemek için kalite sistemini değerlendirmelidir.
+Onaylanmış kuruluş, ilgili uyumlaştırılmış standardların ilgili hükümlerine uygun olan kalite sisteminin unsurlarına ilişkin bu gereklerin uygunluğunu kabul etmelidir.
+Kalite yönetim sistemlerinde tecrübeye ilave olarak denetleme ekibi, ilgili ürün alanında ve ürün teknolojisinde değerlendirme deneyimi olan ve bu Yönetmeliğin uygulanabilir gerekleri konusunda bilgiye sahip en azından bir üyeye sahip olmalıdır. Bu denetim, üreticinin tesislerine bir değerlendirme ziyareti yapılmasını ihtiva etmelidir. Denetleme ekibi, bu Yönetmeliğin ilgili gereklerini belirleme ve bu gereklere ürünün uygunluğunu sağlanması için gerekli incelemeleri gerçekleştirmesi yönünde üreticinin yeteneğini doğrulamak için Bu Ek’in Madde 3.1 (d) bendinde belirtilen teknik dosyayı değerlendirmelidir.
+Bu değerlendirmeden çıkan karar, imalatçıya bildirilmelidir. Bildirim, denetimin sonuçlarını ve gerekçeli değerlendirme kararını içermelidir.
+3.4. Üretici onaylandığı gibi kalite sisteminden doğan yükümlülükleri yerine getirmeyi ve yeterli ve etkin kalmasını sağlayacak şekilde bunu devam ettirdiğini taahhüt etmelidir.
+3.5. Üretici, kalite teknolojisi ve anlayışlarının sebep olduğu kalite sisteminde istediği tüm değişikliklerden, kalite sistemini onaylayan onaylanmış kuruluşu haberdar etmelidir.
+Onaylanmış kuruluş, tüm önerilen değişiklik tekliflerini inceler ve değiştirilen kalite sisteminin bu Ek’in Madde 3.2’sinde belirtilen gereklere uygunluğu sağlayıp sağlamadığı veya yeniden değerlendirmenin gerekip gerekmediğine karar verir.
+Kararını imalatçıya bildirir. Bildirim, inceleme sonuçlarını ve gerekçeli değerlendirme kararını içermelidir.
+4. Onaylanmış kuruluşun sorumluluğunda bulunan gözetim ve denetim
+4.1. Gözetim ve denetimin amacı, üreticinin onaylı kalite sisteminden doğan yükümlülüklerini lâyıkıyla yerine getirmesini sağlamaktır.
+4.2. Üretici, imalat, muayene, deney ve depo mahallerine inceleme amacıyla onaylanmış kuruluşun erişimine izin vermeli ve özellikle; aşağıdaki hususlara ilişkin olmak üzere gerekli tüm bilgileri sağlamalıdır:
+a) Kalite sistemi dosyası,
+b) Muayene raporları, deney bilgileri, kalibrasyon bilgileri, ilgili personelin nitelikleri hakkındaki raporlar gibi kalite kayıtları ve benzeri
+4.3. Onaylanmış kuruluş, üreticinin onaylı kalite sistemini sürdürdüğünü ve uyguladığını doğrulamak için periyodik olarak denetimler yapmalı ve denetim raporunu imalatçıya sunmalıdır.
+4.4. Buna ilave olarak onaylanmış kuruluş, imalatçıya beklenmedik ziyaretler yapabilir. Onaylanmış kuruluş böyle ziyaretler sırasında, kalite sisteminin doğru şekilde işletiliyor olduğunu doğrulamak için, gerekirse, ürün deneylerini yapabilir veya yaptırabilir. Deneyler yapılmışsa, bir deney raporu ile birlikte bir ziyaret raporunu imalatçıya vermelidir.
+5. CE işaretlemesi, AB uygunluk beyanı ve uygunluk onayı
+5.1. Üretici, bu Yönetmeliğin uygulanabilir gereklerini yerine getiren ve AB tip inceleme sertifikasında tanımlanan tipe uygun olan bileşen harici her bir ürüne, bu Ek’in Madde 3.1’inde belirtilen onaylanmış kuruluşun sorumluluğunda CE işaretini ve bu işaret sonrasında onaylanmış kuruluşun kimlik kayıt numarasını iliştirmelidir.
+5.2. Üretici, bileşen harici her bir ürün modeli için yazılı bir AB uygunluk beyanı hazırlamalı ve bu ürünün (bileşen harici) piyasada arzından sonra on yıl boyunca Bakanlık tarafından istenildiğinde sunulmak üzere bu beyanı muhafaza etmelidir. Ürün modeli için hazırlanan AB uygunluk beyanı, bu ürün modelini tanıtmalıdır.
+Bileşen harici her bir ürünle birlikte AB uygunluk beyanının bir sureti bulunmalıdır.
+5.3. Üretici, her bir bileşen modeli için bir yazılı uygunluk onayı hazırlamalı ve bu bileşenin piyasaya arz edilmesinden sonra on yıl boyunca Bakanlık tarafından istenildiğinde sunulmak üzere bunu muhafaza etmelidir. Bileşen modeli için hazırlanan uygunluk onayı o bileşeni tanıtmalıdır. Her bir bileşenle birlikte uygunluk onayının bir sureti bulunmalıdır.
+6. Üretici, ürün piyasaya arz edildikten sonra on yıllık süre sonuna kadar Bakanlık tarafından istenildiğinde sunulmak üzere aşağıda belirtilenleri muhafaza etmelidir:
+a) Bu Ek’in Madde 3.1’inde belirtilen dosya,
+b) Onaylandığı gibi, bu Ek’in Madde 3.5’inde belirtilen değişikliğe ilişkin bilgiler,
+c) Bu Ek’in Madde 3.5, Madde 4.3 ve Madde 4.4’ünde belirtilen onaylanmış kuruluşun raporları ve kararları.
+7. Her bir onaylanmış kuruluş; düzenlediği veya iptal edilen kalite sistem onaylarını Bakanlığa bildirmeli ve ret edilen, askıya alınan veya başka türlü sınırlandırılan kalite sistem onaylarının listesini, periyodik olarak veya Bakanlık tarafından istenildiğinde sunmalıdır.
+Her bir onaylanmış kuruluş; düzenlediği kalite sistem onaylarını, ret ettiği, askıya aldığı, iptal ettiği veya başka türlü sınırlandırdığı kalite sistem onayları ile talep olması halinde düzenlediği kalite sistem onayların hakkında diğer onaylanmış kuruluşları bilgilendirmelidir.
+8. Yetkili temsilci
+Bu Ek’in Madde 3.1’inde, Madde 3.5’inde, Madde 5’inde ve Madde 6’sında belirtilen üreticinin yükümlülüklerini üretici namına ve onun sorumluluğu altında imalatçıdan yazılı yetki aldıklarını belirtmeleri şartıyla yetkili bir temsilcisi yerine getirebilir.
+
+Ek-5
+Modül F: Ürün doğrulamayı esas alan tipe uygunluk
+1. Bu modül; bu Ek’in Madde 2’sinde ve Madde 5’inde belirtilen yükümlülüklerin üretici tarafından yerine getirildiği ve bu Ek’in Madde 3’ü hükümlerine tabi olan ilgili ürünlerin, bu Yönetmeliğin bunlara uygulanan gereklerini karşıladığını ve üreticinin, AB tip inceleme sertifikasında tanımlanan tipe uygunluğu sadece kendi sorumluluğunda sağladığı ve beyan ettiği uygunluk değerlendirme prosedürünün bir parçasıdır.
+2. İmalat
+Üretici, imalat işlemi ve bunun izlenmesiyle imal edilen ürünlerin AB tip inceleme sertifikasında belirtilen tipe ve bu Yönetmeliğin ilgili gereklerine uygunluğunun sağlanması için gerekli tüm tedbirleri alır.
+3. Doğrulama
+Üretici tarafından seçilen bir onaylanmış kuruluş, bu Yönetmeliğin gereklerine ve AB tip inceleme sertifikasında tanımlanan ürün tipine ürünlerin uygunluğunu kontrol etmek için gerekli incelemeleri ve deneyleri yapmalıdır.
+Uygun gerekler ile ürünlerin uygunluğunu kontrol etmek için gerekli incelemeler ve deneyler, bu Ek’in Madde 4’ünde belirtildiği gibi her ürünün deneye tabi tutulmasıyla ve incelenmesiyle yapılmalıdır.
+4. Her ürünün deneye tabi tutulması ve incelenmesiyle uygunluk doğrulaması
+4.1. Bu Yönetmeliğin gereklerine ve AB tip inceleme sertifikasında tanımlanan ürün tipine ürünün uygunluğu doğrulamak için; bütün ürünler tek tek incelenmeli ve ilgili uyumlaştırılmış standardlarda belirtilen uygun deneyler ve/veya diğer ilgili teknik şartnamelerde belirtilen muadil deneyler gerçekleştirilmelidir.
+Böyle bir uyumlaştırılmış standard olmaması durumunda ilgili onaylanmış kuruluş yapılacak uygun deneylere karar vermelidir.
+
+4.2. Onaylanmış kuruluş yapılan deneylere ve incelemeye göre bir uygunluk sertifikası düzenlemeli ve her bir onaylı ürüne kimlik kayıt numarasını iliştirmeli veya kendi sorumluluğunda iliştirtmelidir.
+Üretici ürünün piyasaya arz edilmesinden sonra on yıl boyunca Bakanlık tarafından denetlenmesi için uygunluk sertifikalarını muhafaza etmelidir.
+5. CE işaretlemesi, AB uygunluk beyanı ve uygunluk onayı
+5.1. Üretici, bu Ek’in Madde 3’ünde belirtilen onaylanmış kuruluşun sorumluluğunda bu Yönetmeliğin uygulanabilir gereklerini yerine getiren ve AB tip inceleme sertifikasında tanımlanan tipe uygun bileşen harici her bir ürüne, CE işaretini ve sonrasında kimlik numarasını iliştirmelidir.
+5.2. Üretici bileşen harici her bir ürün modeli için yazılı bir AB uygunluk beyanı hazırlamalı ve ürünün piyasaya arz edilmesinden sonra on yıl boyunca Bakanlık tarafından istenildiğinde sunulmak üzere bunu muhafaza etmelidir. Böyle ürün modeli için tanzim edilen AB uygunluk beyanı o ürünü tanıtmalıdır.
+Bileşen harici her bir ürünle birlikte AB uygunluk beyanının bir sureti bulunmalıdır.
+Bu Ek’in Madde 3’ünde belirtilen onaylanmış kuruluş kabul ederse, onaylanmış kuruluşun sorumluluğunda üretici, bileşen harici ürünlere onaylanmış kuruluşun kimlik kayıt numarasını da iliştirebilir.
+5.3. Üretici, her bir bileşen modeli için yazılı bir uygunluk onayı hazırlamalı ve bileşenler piyasaya arz edildikten sonra on yıl boyunca Bakanlığa sunulmak üzere onu muhafaza etmelidir. Böyle bir bileşen modeli için hazırlanan uygunluk onayı o bileşeni tanıtmalıdır. Uygunluk onayının bir sureti her bir bileşene eşlik etmelidir.
+6. Onaylanmış kuruluş kabul ederse, onaylanmış kuruluşun sorumluluğunda üretici ürünlere Onaylanmış kuruluşun kimlik kayıt numarasını iliştirebilir.
+7. Yetkili temsilci
+Üreticinin yükümlülüklerini onun namına ve sorumluluğu altında imalatçıdan yazılı yetki aldıklarını belirtmeleri şartıyla yetkili bir temsilcisi yerine getirebilir. Üreticinin bu Ek’in Madde 2’sinde belirtilen yükümlülüklerini yetkili bir temsilcisi yerine getirmeyebilir.
+
+Ek-6
+Modül C1: Denetimli ürün deneyi ve üretimin dahili kontrolünü esas alan tipe uygunluk
+
+1. Bu modül; bu Ek’in Madde 2’sinde ve Madde 3’ünde ve Madde 4’ünde belirtilen yükümlülüklerin üretici tarafından yerine getirildiği ve bu Ek’in Madde 3’ü hükümlerine tabi olan ilgili ürünlerin, bu Yönetmeliğin bunlara uygulanan gereklerini karşıladığını ve üreticinin AB tip inceleme sertifikasında tanımlanan tipe ürünlerin uygunluğunu sadece kendi sorumluluğunda sağladığı ve beyan ettiği uygunluk değerlendirme prosedürünün bir parçasıdır.
+2. İmalat
+Üretici, imalat işlemi ve izlenmesiyle imal edilen ürünün AB tip inceleme sertifikasında belirtilen tipe ve bu Yönetmeliğin ilgili gereklerine uygunluğunun sağlaması için gerekli tüm tedbirleri alır.
+3. Ürün kontrolleri
+Bu Yönetmeliğin ilgili gereklerini bu ürünün karşıladığını ve AB tip inceleme sertifikasında tanımlanan tip ile bu ürünün uygunluğunu doğrulamak için üretici tarafından ve onun adına imalatı gerçekleşmiş her bir münferit ürünün bir veya daha fazla belli özellikleri üzerinde bir veya daha fazla deneyler gerçekleştirilmelidir. Bu deneyler üretici tarafından seçilen bir onaylanmış kuruluşun sorumluluğunda yapılmalıdır.
+Onaylanmış kuruluşun sorumluluğu altında imalat süreci boyunca onaylanmış kuruluşun kimlik kayıt numarası üretici tarafından iliştirmelidir.
+4. CE işaretlemesi, AB uygunluk beyanı ve uygunluk onayı
+4.1. Üretici bu Yönetmeliğin uygulanabilir gereklerini karşılayan ve AB tip inceleme sertifikasında tanımlanan tipe uygun olan bileşen harici her bir ürüne CE işareti iliştirmelidir.
+4.2. Üretici bir bileşen harici bir ürün modeli için yazılı bir AB uygunluk beyanı düzenlemeli ve piyasaya arz edildikten sonra on yıl boyunca istenildiğinde Bakanlığa sunulmak üzere bunu muhafaza etmelidir. Bu tür ürün modeli için hazırlanan AB uygunluk beyanı o ürün modelini tanıtmalıdır.
+Bileşen harici her bir ürünle birlikte AB uygunluk beyanının bir sureti bulunmalıdır.
+4.3. Üretici, her bir bileşen modeli için yazılı bir uygunluk onayı hazırlamalı ve bileşenler piyasaya arz edildikten sonra on yıl boyunca Bakanlığa sunulmak üzere bunu muhafaza etmelidir. Bu tür bileşen modeli için hazırlanan uygunluk onayı o bileşeni tanıtmalıdır. Uygunluk onayının bir sureti her bileşene eşlik etmelidir.
+5. Yetkili temsilci
+Üretici tarafından yazılı olarak yetkilendirildiğini belirtmesi şartıyla, bu Ek’in Madde 4’ünde belirtilen üreticinin yükümlülüklerini onun namına ve sorumluluğunda yetkilendirilmiş bir temsilcisi yerine getirebilir.
+
+Ek-7
+Modül E: Ürün kalite güvencesini esas alan tipe uygunluk
+1. Bu modül; bu Ek’in Madde 2’sinde ve Madde 5’inde belirtilen yükümlülüklerin üretici tarafından yerine getirildiği ve ilgili ürünlerin, bunlara uygulanan bu Yönetmeliğin gereklerini karşıladığını ve üreticinin AB tip inceleme sertifikasında tanımlanan tipe ürünün uygun olduğunu sadece kendi sorumluluğunda sağladığı ve beyan ettiği uygunluk değerlendirme prosedürünün bir parçasıdır.
+2. İmalat
+Üretici bu Ek’in Madde 4’ünde belirtildiği gibi gözetime tabi olmalı ve bu Ek’in Madde 3’ünde belirtildiği gibi ilgili ürünün nihai ürün denetimi ve deneyi için bir onaylı kalite güvence sistemini işletmelidir.
+3. Kalite güvence sistemi
+3.1. Üretici, ilgili ürünle ilişkili kendi kalite güvence sisteminin değerlendirilmesini gerçekleştirmesi için kendi seçtiği onaylanmış kuruluşa bir başvuru yapmalıdır.
+Başvuru aşağıdakileri içermelidir:
+a) Üreticinin unvanı ve adresi, başvuru yetkilendirilmiş bir temsilci tarafından yapılıyorsa, ayrıca onun ismi ve adresi,
+b) Aynı başvurunun bir diğer onaylanmış kuruluşa yapılmadığını gösteren yazılı bir beyanı,
+c) Öngörülen ürün kategorisi ile ilgili tüm bilgileri,
+ç) Kalite güvence sistemi ile ilgili dosyası,
+d) AB tip inceleme sertifikasının bir sureti ve onaylanan tipin teknik dosyası.
+3.2. Kalite güvence sistemi, bu Yönetmeliği uygulanabilir gerekleriyle ve AB tip inceleme sertifikasında tanımlanan tip ile ürünün uygunluğunu sağlamalıdır.
+Üretici tarafından yerine getirilen tüm konular, gerekler ve hükümler; yazılı ilkeler, prosedürler ve talimatlar biçiminde sistematik ve düzenli bir şekilde dosyalanmalıdır. Kalite güvence sistemi dosyası; kalite güvence programlarının, planlarının, kitapçıklarının ve kayıtlarının tam bir yorumuna izin vermelidir.
+Bu dosya, özellikle aşağıdakilerin uygun tanımlarını içermelidir:
+a) Ürünün kalitesine ilişkin olarak yönetimin kalite güvence hedefleri ve organizasyonun yapısı, yükümlülükleri ve yetkisi,
+b) İmalat sonrasında yapılacak incelemeler ve deneyleri,
+c) İlgili personel hakkında muayene (denetim) raporları, deney bilgileri, kalibrasyon bilgileri, yeterlilik raporları gibi kalite güvence kayıtları vb.,
+ç) Kalite güvence sisteminin etkili çalışmasını sağlayan izleme vasıtaları.
+3.3. Onaylanmış kuruluş, bu Ek’in Madde 3.2’sinde belirtilen gerekleri karşılayıp karşılayamadığına karar vermek için kalite güvence sistemini değerlendirmelidir.
+Onaylanmış kuruluş, ilgili uyumlaştırılmış standardın ilgili teknik gereklerine uygun olan kalite güvence sisteminin unsurlarına ilişkin bu gereklerin uygunluğunu kabul etmelidir.
+Kalite yönetim sistemlerinde tecrübeye ilave olarak denetleme ekibi, ilgili ürün alanında ve ürün teknolojisinde değerlendirme deneyimi olan ve bu Yönetmeliğin uygulanabilir gerekleri konusunda bilgiye sahip en azından bir üyeye sahip olmalıdır. Bu denetim, üreticinin tesislerine bir değerlendirme ziyareti yapılmasını içermelidir. Denetleme ekibi, bu Yönetmeliğin ilgili gereklerini belirleme ve bu gereklere ürünün uygunluğunu sağlanması için gerekli incelemeleri gerçekleştirmesi konusunda üreticinin yeteneğini doğrulamak için Bu Ek’in Madde 3.1 (d) bendinde belirtilen teknik dosyayı değerlendirmelidir.
+Bu değerlendirme sonucu verilen karar, imalatçıya bildirilmelidir. Bildirim, denetimin sonuçlarını ve gerekçeli değerlendirme kararını içermelidir.
+3.4. Üretici onaylandığı gibi kalite güvence sisteminden doğan yükümlülükleri yerine getirmeyi ve yeterli ve etkin kalmasını sağlayacak şekilde bunu devam ettirdiğini taahhüt etmelidir.
+3.5. Üretici, kalite güvence sisteminde istediği tüm değişikliklerden, kalite güvence sistemini onaylayan onaylanmış kuruluşu haberdar etmelidir.
+Onaylanmış kuruluş, tüm önerilen değişiklik tekliflerini inceler ve değiştirilen kalite güvence sisteminin Bu Ek’in Madde 3.2’sinde belirtilen gereklere uygunluğu sağlayıp sağlamadığı veya yeniden değerlendirmenin gerekip gerekmediğine karar verir.
+Kararını imalatçıya bildirir. Bildirim, inceleme sonuçlarını ve gerekçeli değerlendirme kararını içermelidir.
+4. Onaylanmış kuruluşun sorumluluğunda bulunan gözetim ve denetim
+4.1. Gözetim ve denetimin amacı, üreticinin onaylı kalite güvence sisteminden doğan yükümlülüklerini lâyıkıyla yerine getirmesini sağlamaktır.
+4.2. Üretici, onaylanmış kuruluşun imalat, muayene, deney ve depo mahallerine inceleme amacıyla erişimine izin vermeli ve özellikle; aşağıdaki hususlara ilişkin olmak üzere gerekli tüm bilgileri sağlamalıdır:
+a) Kalite güvence sistemi dosyası,
+b) Muayene raporları, deney bilgileri, kalibrasyon bilgileri, ilgili personelin nitelikleri hakkındaki raporlar gibi kalite kayıtları vb.
+4.3. Onaylanmış kuruluş, üreticinin onaylı kalite güvence sistemini sürdürdüğünü ve uyguladığını sağlamak için periyodik olarak denetimler yapmalı ve denetim raporunu imalatçıya sunmalıdır.
+4.4. Buna ilave olarak onaylanmış kuruluş, imalatçıya beklenmedik ziyaretler yapabilir. Onaylanmış kuruluş böyle ziyaretler sırasında, kalite güvence sisteminin doğru şekilde işletiliyor olduğunu doğrulamak için, gerekirse, ürün deneylerini yapabilir veya yaptırabilir. Deneyler yapılmışsa, bir deney raporu ile birlikte bir ziyaret raporunu imalatçıya vermelidir.
+5. CE işaretlemesi, AB uygunluk beyanı ve uygunluğun onayı
+5.1. Üretici, bu Yönetmeliğin uygulanabilir gereklerini yerine getiren ve AB tip inceleme sertifikasında tanımlanan tipe uygun olan bileşen harici her bir ürüne, bu Ek’in Madde 3.1’inde belirtilen onaylanmış kuruluşun sorumluluğunda CE işaretini ve bu işaret sonrasında onaylanmış kuruluşun kimlik kayıt numarasını iliştirmelidir.
+
+5.2. Üretici, bileşen harici her bir ürün modeli için yazılı bir AB uygunluk beyanı hazırlamalı ve bu ürünün (bileşen harici) piyasaya arz edilmesinden sonra on yıl boyunca Bakanlığa istenildiğinde sunulmak üzere bunu muhafaza etmelidir. Ürün modeli için hazırlanan AB uygunluk beyanı, bu ürün modelini tanıtmalıdır.
+Bileşen harici her bir ürünle birlikte AB uygunluk beyanının bir sureti bulunmalıdır.
+5.3. Üretici, her bir bileşen modeli için bir yazılı uygunluk onayı hazırlamalı ve bu bileşenin piyasaya arz edilmesinden sonra on yıl boyunca Bakanlık tarafından istenildiğinde sunulmak üzere bunu muhafaza etmelidir. Bileşen modeli için hazırlanan uygunluk onayı o bileşeni tanıtmalıdır. Uygunluk onayının bir sureti her bir bileşenle birlikte bulunmalıdır.
+6. Üretici ürünün piyasaya arz edilmesinden sonra on yıllık bir süre sonuna kadar Bakanlığa istenildiğinde sunulmak üzere aşağıda belirtilenleri muhafaza etmelidir:
+a) Bu Ek’in Madde 3.1 ünde belirtilen dosya,
+b) Onaylandığı gibi, bu Ek’in Madde 3.5’inde belirtilen değişikliğe ilişkin bilgiler,
+c) Bu Ek’in Madde 3.5, Madde 4.3 ve Madde 4.4’ünde belirtilen onaylanmış kuruluşun raporları ve kararları.
+7. Her bir onaylanmış kuruluş; düzenlediği veya iptal ettiği kalite güvence sistem onaylarını Bakanlığa bildirmeli ve ret edilen, askıya alınan veya başka türlü sınırlandırılan kalite güvence sistem onaylarının listesini periyodik olarak veya istenildiğinde Bakanlığa sunmalıdır.
+Her bir onaylanmış kuruluş; ret ettiği, askıya aldığı, iptal ettiği veya başka türlü sınırlandırdığı kalite güvence sistem onaylarını ve istenildiğinde düzenlediği kalite güvence sistem onaylarını diğer onaylanmış kuruluşlara bildirmelidir.
+
+6. Yetkili temsilci
+Üreticinin bu Ek’in Madde 3.1’inde, Madde 3.5’inde, Madde 5’inde ve Madde 6’sında belirtilen yükümlülüklerini üretici namına ve onun sorumluluğu altında imalatçıdan yazılı yetki aldıklarını belirtmeleri şartıyla yetkili bir temsilcisi yerine getirebilir.
+
+Ek-8
+Modül A: Üretimin dahili kontrolü
+1. Bu modül; bu Ek’in Madde 2’sinde, Madde 3’ünde ve Madde 4’ünde belirtilen yükümlülüklerin üretici tarafından yerine getirildiği ve üreticinin, ilgili ürünlerin bu Yönetmeliğin bunlara uygulanabilir gereklerine uygunluğunu sadece kendi sorumluluğunda sağladığı ve beyan ettiği uygunluk değerlendirme prosedürünün bir parçasıdır.
+2. Teknik dosya
+Üretici teknik dosya oluşturmalı ve bulundurmalıdır. Dosya, ilgili gereklere ürünün uygunluğunu değerlendirmeye imkân sağlamalı ve risk/risklerin değerlendirilmesi ve yeterli bir analizini içermelidir.
+Teknik dosya, uygulanabilir gerekleri belirtmeli ve mümkün olduğu kadar ürünün değerlendirilmesi ile ilgili tasarımı, imalatını ve kullanılmasını içermelidir. Teknik dosya en azından aşağıdaki unsurları içermelidir:
+a) Ürünün genel bir tanımı,
+b) Tasarım uygunluğu ve imalat resimleri ve bileşenlerin şemaları, alt grupları, devreleri vb.
+c) Ürüne ait resimlerin ve şemaların ve çalışmasının anlaşılabilmesi için gerekli tanımlamalar ve açıklamaları,
+ç) Tamamen veya kısmen uygulanan uyumlaştırılmış standardların bir listesi ve söz konusu standardların uygulanmadığı durumlarda uygulanan diğer ilgili teknik şartnamelerin bir listesi dâhil, bu Yönetmeliğin temel sağlık ve güvenlik gereklerini karşılamak için kullanılan çözümlerin açıklamaları ve kısmi uygulanan uyumlaştırılmış standardlar varsa uygulanan bölümleri,
+d) Yapılan tasarım hesaplamaları ve gerçekleştirilen incelemelerinin vb. sonuçları
+e) Deney raporları.
+3. İmalat
+Üretici, imalat işlemi ve bunun izlenmesiyle imal edilen ürünlerin bu Ek’in Madde 2’sinde belirtilen teknik dosyaya ve bu Yönetmeliğin ilgili gereklerine uygunluğunun sağlanması için gerekli tüm tedbirleri alır.
+4. CE işaretlemesi, AB uygunluk beyanı ve uygunluk onayı
+4.1. Üretici, bu Yönetmeliğin uygulanabilir gereklerini karşılayan bileşen harici her bir ürüne CE işretini iliştirmelidir.
+4.2. Üretici, bileşen harici bir ürün modeli için yazılı bir AB uygunluk beyanı tanzim etmeli ve bu ürünün piyasaya arz edilmesinden sonra on yıl boyunca Bakanlığa sunulmak üzere teknik dosyayla ile birlikte bunu muhafaza etmelidir. Bu tür ürün modeli için hazırlanan AB uygunluk beyanı bu ürün modelini tanıtmalıdır.
+Bileşen harici her bir ürünle birlikte AB uygunluk beyanının bir sureti bulunmalıdır.
+4.3. Üretici her bir bileşen modeli için bir yazılı uygunluk onayı tanzim etmeli ve bu bileşenin piyasaya arz edilmesinden sonra on yıl boyunca Bakanlığa sunulmak üzere teknik dosyayla birlikte bunu muhafaza etmelidir. Bileşen için tanzim edilen uygunluk onayı o bileşeni tanıtmalıdır. Uygunluk onayının bir sureti her birleşene eşlik etmelidir.
+5. Yetkili temsilci
+Üreticinin yükümlülüklerini onun namına ve sorumluluğu altında ve imalatçıdan yazılı yetki aldıklarını belirtmeleri şartıyla üreticinin bu Ek’in Madde 4’ünde belirtilen yükümlülüklerini yetkili bir temsilcisi yerine getirebilir.
+
+Ek-9
+Modül G: Birim doğrulamasını esas alan uygunluk
+1. Bu modül; bu Ek’in Madde 2’sinde ve Madde 3’ünde ve Madde 5’inde belirtilen yükümlülüklerin üretici tarafından yerine getirildiği ve bu Ek’in Madde 4’ünde belirtilen hükümlerine tabi olan ilgili ürünlerin, bu Yönetmeliğin bunlara uygulanabilir gereklerine uygunluğunu üreticinin sadece kendi sorumluluğunda sağladığı ve beyan ettiği uygunluk değerlendirme prosedürünün bir parçasıdır.
+2. Teknik dosya
+2.1. Üretici, teknik dosyayı oluşturmalı ve bu Ek’in Madde 4’ünde belirtilen onaylanmış kuruluş için hazır bulundurmalıdır. Dosya, ilgili gereklere ürünün uygunluğunu değerlendirmeye imkân sağlamalı ve risk/risklerin değerlendirmesi ve yeterli bir analizini içermelidir. Teknik dosya, uygulanabilir gerekleri belirtmeli ve mümkün olduğu kadar ürünün değerlendirmesi ile ilgili tasarımı, imalatını ve kullanılmasını içermelidir. Teknik dosya en azından aşağıdaki unsurları içermelidir:
+a) Ürünün genel bir tanımı,
+b) Tasarım uygunluğu ve imalat resimleri ve bileşenlerin şemaları, alt grupları, devreleri vb.
+c) Ürüne ait resimler, şemalar ve kullanımının anlaşılması için gerekli tanımlar ve açıklamaları,
+ç) Tamamen veya kısmen uygulanan uyumlaştırılmış standardların bir listesi ve söz konusu standardların uygulanmadığı durumlarda uygulanan diğer ilgili teknik şartnamelerin bir listesi dâhil, bu Yönetmeliğin temel sağlık ve güvenlik gereklerini karşılamak için kullanılan çözümlerin açıklamaları ve kısmi uygulanan uyumlaştırılmış standardlar varsa uygulanan bölümleri,
+d) Yapılan tasarım hesaplamalar ve gerçekleştirilen incelemelerin ve benzeri sonuçları,
+e) Deney raporları.
+2.2. Üretici ürünün piyasaya arz edilmesinden sonra on yıl boyunca teknik dosyayı ilgili Bakanlığa sunulmak üzere muhafaza etmelidir.
+3. İmalat
+Üretici, imalat işlemi ve bunun izlenmesiyle imal edilen ürünlerin bu Yönetmeliğin ilgili gereklerine uygunluğunun sağlanması için gerekli tüm tedbirleri alır.
+
+4. Doğrulama
+Üreticinin seçtiği bir onaylanmış kuruluş; bu Yönetmeliğin uygulanabilir gerekleriyle ürünün uygunluğunu kontrol etmek için uygun incelemeleri ve ilgili uyumlaştırılmış standardlarda belirtilen deneyleri ve/veya diğer ilgili teknik şartnamelerde belirtilen muadil deneyleri yapmalı veya yaptırmalıdır. Böyle bir standardın olmaması durumunda ilgili onaylanmış kuruluş yapılacak uygun deneylere karar vermelidir.
+Onaylanmış kuruluş yapılan deneyler ve incelemelere göre bir uygunluk sertifikası tanzim etmeli ve kimlik kayıt numarasını onaylanan ürüne iliştirmeli veya kendi sorumluluğu altında iliştirtmelidir.
+Üretici uygunluk sertifikasını istenildiğinde Bakanlığa sunmak üzere ürünün piyasaya arz edilmesinden sonra on yıl boyunca muhafaza etmelidir.
+5. CE işaretlemesi, AB uygunluk beyanı ve uygunluğun onayı
+5.1. Üretici, bu Ek’in Madde 4’ünde belirtilen onaylanmış kuruluşun sorumluluğunda bu Yönetmeliğin uygulanabilir gereklerine uygun olan bileşen harici her bir ürüne, CE işaretini ve sonrasında kimlik kayıt numarasını iliştirmelidir.
+5.2. Üretici bileşen harici her ürün modeli için yazılı bir AB uygunluk beyanı hazırlamalı ve ürünün piyasaya arz edilmesinden sonra on yıl boyunca Bakanlık tarafından istenildiğinde sunmak üzere bunu muhafaza etmelidir. Böyle bir ürün modeli için tanzim edilen AB uygunluk beyanı o ürünü tanıtmalıdır.
+AB uygunluk beyanının bir sureti bileşen harici her bir ürün ile birlikte bulunmalıdır.
+5.3. Üretici, her bir bileşen için yazılı bir uygunluk onayı hazırlamalı ve bileşenler piyasaya arz edildikten sonra on yıl boyunca Bakanlığa sunulmak üzere onu muhafaza etmelidir. Bu bileşen için hazırlanan uygunluk onayı o bileşeni tanıtmalıdır. Uygunluk onayının bir sureti her bir bileşene eşlik etmelidir.
+6. Yetkili temsilci
+Üreticinin yükümlülüklerini onun namına ve sorumluluğu altında ve imalatçıdan yazılı yetki aldıklarını belirtmeleri şartıyla yetkilendirilmiş bir temsilcisi yerine getirebilir. Üreticinin bu Ek’in Madde 2.2’sinde ve Madde 5’inde belirtilen yükümlülüklerini yetkilendirilmiş bir temsilcisi yerine getirebilir.
+
+Ek-10
+AB uygunluk beyanı (No XXXX)1)
+
+1. Ürün modeli/ürün (ürün, tipi, grubu veya seri numarası):
+2. Üreticinin ve varsa yetkili temsilcisinin ismi ve adresi:
+3. Bu uygunluk beyanı, sadece üreticinin kendi sorumluluğunda düzenlenmiştir.
+4. Beyan konusu (izlenebilirliğine imkân veren ürünün bir tanımlaması; ürünün tanımlanması için gerektiğinde bir resim eklenebilir):
+5. Yukarıda belirtilen beyanın amacı, aşağıda verilen ilgili AB uyum mevzuatına uygunluk sağlandığını belirtmektir:
+6. Uygunluk beyanına ilişkin olarak uygulanan ilgili uyumlaştırılmış standardlar ve /veya diğer teknik gereklere yapılan atıflar:
+7. Uygulanabildiği hallerde, onaylanmış kuruluş… (ismi, kimlik kayıt numarası) gerçekleştirilen iş…(yapılan müdahalenin tanımı) ve düzenlenen sertifika:
+8. İlave bilgiler:
+İmzalayan yetkili kişi veya adına imzalayan:
+(Düzenlenen yer ve tarih):
+(İsim, görevi) (imza):
