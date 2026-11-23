@@ -1,0 +1,2210 @@
+
+    <style>
+        * {
+            font-size: 12pt !important;
+            line-height: 127% !important;
+        }
+
+        @media print {
+            a {
+                visibility: hidden;
+            }
+
+            #section-to-print, #section-to-print * {
+                visibility: visible;
+            }
+
+            #section-to-print {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+        /*aşağıda js kodu var table width değiştirmek için*/
+        table {
+            width: 100% !important;
+            page-break-inside: initial !important;
+            white-space: initial !important;
+            padding: 0 !important;
+            text-indent: 0 !important;
+        }
+
+        @media screen and (max-width: 768px) {
+
+            tr, p, table {
+                width: initial !important;
+                page-break-inside: initial !important;
+                white-space: initial !important;
+                padding: 0 !important;
+                text-indent: 0 !important;
+            }
+
+            table {
+                width: 100% !important;
+            }
+
+
+            td {
+                /*white-space: nowrap !important;*/
+            }
+
+            img {
+                max-width: 100%;
+            }
+        }
+    </style>
+
+    <link href="/lib/tooltip/tooltip.css" rel="stylesheet" />
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=Windows-1254">
+<meta name=Generator content="Microsoft Word 14 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:12.0pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{mso-style-link:"Başlık 8 Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	line-height:150%;
+	page-break-after:avoid;
+	font-size:9.5pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{mso-style-link:"Başlık 9 Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	layout-grid-mode:char;
+	font-size:9.5pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:12.0pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:12.0pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:12.0pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:12.0pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+span.Balk8Char
+	{mso-style-name:"Başlık 8 Char";
+	mso-style-link:"Başlık 8";
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+span.Balk9Char
+	{mso-style-name:"Başlık 9 Char";
+	mso-style-link:"Başlık 9";
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+p.msobodytextindent, li.msobodytextindent, div.msobodytextindent
+	{mso-style-name:msobodytextindent;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:14.15pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.msobodytextindent3, li.msobodytextindent3, div.msobodytextindent3
+	{mso-style-name:msobodytextindent3;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:14.15pt;
+	font-size:8.0pt;
+	font-family:"Times New Roman","serif";}
+p.2-OrtaBaslk, li.2-OrtaBaslk, div.2-OrtaBaslk
+	{mso-style-name:"2-Orta Baslık";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	font-size:9.5pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+p.3-NormalYaz, li.3-NormalYaz, div.3-NormalYaz
+	{mso-style-name:"3-Normal Yazı";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	font-size:9.5pt;
+	font-family:"Times New Roman","serif";}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri","sans-serif";}
+p.msopapdefault, li.msopapdefault, div.msopapdefault
+	{mso-style-name:msopapdefault;
+	margin-right:0cm;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:12.0pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+.MsoChpDefault
+	{font-size:10.0pt;
+	font-family:"Calibri","sans-serif";}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 70.85pt 70.85pt 70.85pt;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+<script type="text/javascript">window.av = { database:'2' , rnApp:'False' }</script><script src="https://www.mevzuat.gov.tr/lib/jquery/dist/jquery.js"></script><script src="https://www.mevzuat.gov.tr/js/iframescript.min.js?v=1.05"></script><style><!--* {font-family:inherit!important;}--></style></head>
+
+<body lang=TR>
+
+<div class=WordSection1>
+
+<p class=MsoNormal align=center style='margin-top:2.8pt;text-align:center'><b>TEHLİKELİ
+VE ÇOK TEHLİKELİ SINIFTA YER ALAN İŞLERDE ÇALIŞTIRILACAKLARIN MESLEKİ
+EĞİTİMLERİNE DAİR YÖNETMELİK</b></p>
+
+<p class=MsoNormal align=center style='margin-top:2.8pt;text-align:center'><b>&nbsp;</b></p>
+
+<p class=MsoNormal style='text-indent:28.3pt'><b>Amaç</b></p>
+
+<p class=MsoNormal style='text-indent:28.3pt'><b>MADDE 1 –</b> (1) Bu
+Yönetmeliğin amacı, 20/6/2012 tarihli ve 6331 sayılı İş Sağlığı ve Güvenliği
+Kanununa göre belirlenen tehlikeli ve çok tehlikeli sınıfta yer alan işlerde
+çalışanların mesleki eğitimlerinin usul ve esaslarını düzenlemektir.</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'><b>Kapsam</b></p>
+
+<p class=MsoNormal style='text-indent:28.3pt'><b>MADDE 2 –</b> (1) Bu
+Yönetmelik, 6331 sayılı İş Sağlığı ve Güvenliği Kanununa göre belirlenen
+tehlikeli ve çok tehlikeli sınıfta yer alan ve ek-1’de belirtilen işleri ve bu
+işlerde çalışanları kapsar.</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'><b>Dayanak</b></p>
+
+<p class=MsoNormal style='text-indent:28.3pt'><b>MADDE 3 –</b> (1) Bu
+Yönetmelik, 6331 sayılı İş Sağlığı ve Güvenliği Kanununun 17 nci ve 30 uncu
+maddelerine dayanılarak hazırlanmıştır.</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'><b>Tanımlar</b></p>
+
+<p class=MsoNormal style='text-indent:28.3pt'><b>MADDE 4 –</b> (1) Bu
+Yönetmeliğin uygulanmasında;</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'>a) Bakanlık: Çalışma ve Sosyal
+Güvenlik Bakanlığını,</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'>b) Mesleki eğitim: Örgün veya
+yaygın eğitim yoluyla bireyleri mesleğe hazırlamak, meslek sahibi olanların
+mesleklerindeki gelişimlerini ve yeni mesleklere uyumlarını sağlamak amacıyla
+gerekli bilgi, beceri, tavır ve değer duygularını geliştiren ve bireylerin
+fiziki, sosyal, kültürel ve ekonomik yeteneklerinin gelişim sürecinin bir plan
+içerisinde yürütülmesini sağlayan eğitimi,</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'>ifade eder.</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'><b>Mesleki eğitim zorunluluğu</b></p>
+
+<p class=MsoNormal style='text-indent:28.3pt'><b>MADDE 5 –</b> (1) Ek-1’deki
+çizelgede yer alan işlerde çalışacakların, işe alınmadan önce, mesleki eğitime
+tabi tutulmaları zorunludur.</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'>(2) İşyerinde yapılan işler, asıl
+iş itibariyle tehlikeli ve çok tehlikeli işler kapsamında yer almakla birlikte,
+çalışanın yaptığı iş ek-1 çizelgede belirtilen işler dışında ise, 5/6/1986
+tarihli ve 3308 sayılı Mesleki Eğitim Kanunu hükümleri saklı kalmak kaydıyla
+6331 sayılı İş Sağlığı ve Güvenliği Kanununun 17 nci maddesi kapsamında mesleki
+eğitim alma zorunluluğu aranmaz.</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'><b>Mesleki eğitimin
+belgelendirilmesi</b></p>
+
+<p class=MsoNormal style='text-indent:28.3pt'><b>MADDE 6 –</b> (1) Ek-1
+çizelgede yer alan işlerde fiilen çalıştırılacakların, yaptığı işe uygun
+aşağıda belirtilen belgelerden birisine sahip olmaları zorunludur:</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'>a) 3308 sayılı Mesleki Eğitim
+Kanununa göre verilen diploma, bitirme belgesi, yetki belgesi, sertifika,
+bağımsız işyeri açma belgesi, kalfalık, ustalık ve usta öğreticilik
+belgelerinden birisi,</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'>b) 12/3/2013 tarihli ve 28585
+sayılı Resmî Gazete’de yayımlanan Aktif İşgücü Hizmetleri Yönetmeliğine göre
+mesleki eğitim kursları veya mesleki eğitim modülü/kursları ile eşit süreli
+olmak koşuluyla işbaşı eğitim programları sonucu alınan belgeler,</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'>c) Millî Eğitim Bakanlığı veya
+Millî Eğitim Bakanlığı tarafından yetkilendirilen kurumlarca verilen operatör
+belgesi ve sürücü belgesi,</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'>ç) 11/7/2002 tarihli ve 24812
+sayılı Resmî Gazete'de yayımlanan Patlayıcı Madde Ateşleyici Yeterlilik
+Belgesinin Verilmesi Esas ve Usullerinin Belirlenmesi Hakkında Yönetmelik
+kapsamında alınan ateşleyici yeterlilik belgesi,</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'>d) Kuruluş kanunlarında veya
+ilgili kanunlarca yetkilendirilmiş kamu kurum ve kuruluşları tarafından
+düzenlenen eğitim faaliyetleri sonucunda verilen belgeler,</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'>e) Millî Eğitim Bakanlığının
+ilgili biriminin onayının alınması şartıyla; kamu kurumu niteliğindeki meslek
+kuruluşları, eğitim amaçlı faaliyet gösteren vakıf ve dernekler, işçi ve
+işveren kuruluşları ile bünyelerinde kurulu iktisadi işletmeler, işçi ve
+işveren kuruluşları tarafından Türk Ticaret Kanunu hükümlerine göre kurulmuş
+eğitim amaçlı şirketler ve işveren tarafından düzenlenen eğitim faaliyetleri
+sonucunda verilen belgeler,</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'>f) Uluslararası kurum ve
+kuruluşlardan alınan ve Millî Eğitim Bakanlığı tarafından denkliği sağlanan
+belgeler,</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'>g) <b>(Değişik:RG-11/5/2017-30063)</b>
+15/10/2015 tarihli ve 29503 sayılı Resmî Gazete'de yayımlanan Mesleki
+Yeterlilik Kurumu Sınav, Ölçme, Değerlendirme ve Belgelendirme Yönetmeliği
+kapsamında verilen meslekî yeterlilik belgeleri,</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'>(2) <b>(Değişik:RG-11/5/2017-30063)</b>
+Bu Yönetmelik kapsamına giren işlerde, Sosyal Güvenlik Kurumuna ait kayıtlar
+esas alınarak 1/5/2017 tarihinden önce çalışmaya başlayanlar, Millî Eğitim
+Bakanlığı ile birinci fıkranın (e) bendinde sayılan kurum ve kuruluşlar
+arasında yapılacak protokoller çerçevesinde verilecek en az 32 saatlik eğitim
+modüllerini tamamlayarak belgelendirilmeleri halinde bu Yönetmelik kapsamında
+mesleki eğitim almış olarak kabul edilir.</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'>(3) 22/5/2003 tarihli ve 4857
+sayılı İş Kanununa göre istihdam edilecekler hariç olmak üzere, kamu kurum ve
+kuruluşlarında çalışacaklar için gerekli olan mesleki eğitim belgeleri kurum ve
+kuruluşlarca önceden belirlenir ve işe alımlar bu esaslar da göz önünde
+bulundurularak yapılır.</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'><b>Mesleki eğitim zorunluluğunun
+denetlenmesi</b></p>
+
+<p class=MsoNormal style='text-indent:28.3pt'><b>MADDE 7 –</b> (1) Ek-1 çizelgede
+yer alan işlerde çalıştırılacakların yapılan işe uygun mesleki eğitim belgesi
+olarak diploma, sertifika veya belgelerinin bulunup bulunmadığı hususu,
+Bakanlık iş müfettişleri tarafından denetlenir.</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'>(2) İşverenler, bu Yönetmelik
+kapsamında yer alan işlerde çalıştırılacakların mesleki eğitim belgelerinin bir
+örneğini özlük dosyalarında saklamak ve istendiğinde yetkili memurlara
+göstermek zorundadır.</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'><b>Geçerli sayılan belgeler</b></p>
+
+<p class=MsoNormal style='text-indent:28.3pt'><b>GEÇİCİ MADDE 1 –</b> (1) 4857
+sayılı İş Kanununun mülga 85 inci maddesi kapsamında 31/5/2009 tarihli ve 27244
+sayılı Resmî Gazete’de yayımlanan Ağır ve Tehlikeli İşlerde Çalıştırılacak
+İşçilerin Mesleki Eğitimlerine Dair Tebliğe göre alınan mesleki eğitim
+belgeleri bu Yönetmelik kapsamında da geçerli sayılır.</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'><b>Yürürlük</b></p>
+
+<p class=MsoNormal style='text-indent:28.3pt'><b>MADDE 8 –</b> (1) Bu
+Yönetmelik yayımı tarihinde yürürlüğe girer.</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'><b>Yürütme</b></p>
+
+<p class=MsoNormal style='text-indent:28.3pt'><b>MADDE 9 –</b> (1) Bu
+Yönetmeliğin 6 ncı maddesinin birinci fıkrasının (a), (c), (e), (f) bentleri ve
+ikinci fıkrasını Çalışma ve Sosyal Güvenlik Bakanı ile Millî Eğitim Bakanı
+birlikte, diğer hükümlerini Çalışma ve Sosyal Güvenlik Bakanı yürütür. </p>
+
+<p class=MsoNormal style='text-indent:28.3pt'>&nbsp;</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'>--------------------</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'><i><sup>(1)</sup> 25/7/2013
+tarihli ve 28718 Mükerrer sayılı Resmî Gazete’de yayımlanan düzeltme ile, altı
+çizili ibare metne işlendiği şekilde değiştirilmiştir. </i></p>
+
+<p class=MsoNormal align=center style='text-align:center'>&nbsp;</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 style='border-collapse:collapse'>
+ <tr>
+  <td width=31 rowspan=5 valign=top style='width:23.4pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=left style='text-align:left;line-height:normal'>&nbsp;</p>
+  </td>
+  <td width=480 colspan=2 style='width:360.0pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:normal'><b>Yönetmeliğin
+  Yayımlandığı Resmî Gazete’nin</b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:normal'><b>Tarihi</b></p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:normal'><b>Sayısı</b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:normal'>13/7/2013</p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:normal'>28706</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=480 colspan=2 style='width:360.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:normal'><b>Yönetmelikte
+  Değişiklik Yapan Yönetmeliklerin Yayımlandığı Resmî Gazetelerin</b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:normal'><b>Tarihi</b></p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:normal'><b>Sayısı</b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=31 valign=top style='width:23.4pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=left style='text-align:left;line-height:normal'>1</p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:normal'>11/5/2017</p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:normal'>30063</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=31 valign=top style='width:23.4pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=left style='text-align:left;line-height:normal'>2</p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'></td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'></td>
+ </tr>
+ <tr>
+  <td width=31 valign=top style='width:23.4pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=left style='text-align:left;line-height:normal'>3</p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'></td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'></td>
+ </tr>
+</table>
+
+</div>
+
+<b><span style='font-size:11.0pt;font-family:"Calibri","sans-serif";layout-grid-mode:
+line'><br clear=all style='page-break-before:always'>
+</span></b>
+
+<p class=MsoNormal><b><span style='layout-grid-mode:line'>&nbsp;</span></b></p>
+
+<p class=MsoNormal align=center style='margin-top:0cm;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:14.15pt;text-align:center;line-height:normal'><b><span style='layout-grid-mode:line'>EK-1</span></b></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-indent:1.0cm;
+line-height:normal'><span style='layout-grid-mode:line'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;line-height:normal;
+page-break-after:avoid'><b>MESLEKİ EĞİTİM ALINACAK İŞLERE AİT ÇİZELGE</b></p>
+
+<p class=MsoNormal align=left style='margin-top:0cm;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:14.15pt;text-align:left;text-indent:1.0cm;
+line-height:normal'><span style='layout-grid-mode:line'>&nbsp;</span></p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=567 style='width:15.0cm;border-collapse:collapse'>
+ <tr style='height:1.0pt'>
+  <td width=619 colspan=2 valign=top style='width:464.3pt;border:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><b><span style='layout-grid-mode:
+  line'>ARAMA VE SONDAJ İŞLERİ</span></b></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>1</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Petrol, tabii gaz, su, her çeşit maden, maden filizleri ve mineralleri
+  arama ve her çeşit sondaj işleri. </span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>2</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Petrol, tabii gaz, su ve her çeşit maden ve maden filizleri ve
+  mineralleri ile taş, toprak, kum ve benzeri maddelerin çıkarılması ve üretimi
+  işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>3</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Petrol, tabii gaz, su, her çeşit maden ve maden filizleri mineralleri
+  ile taş, toprak, kum ve benzeri maddelerin çıkartılması ile üretim</span>i
+  işlerinin yapılmasında ta<span style='layout-grid-mode:line'>mamlayıcı
+  nitelikte olan kırma, yıkama, zenginleştirme, taşıma, depolama ve benzeri
+  işler </span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=619 colspan=2 valign=top style='width:464.3pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><b><span style='layout-grid-mode:
+  line'>METALURJİ SANAYİİ İLE İLGİLİ İŞLER</span></b></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>4</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Metallerin ve metalsilerin filiz ve minerallerden itibaren
+  pirometalurjisel, kimyasal, elektrolitik usullerle üretimi işleri ve bunlarla
+  ilgili işler.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>5</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Metallerin ve metalsilerin eritilmesi, saflaştırılması, alaşımlarının
+  üretimi ve bu maksatlarla yapılan her çeşit işler.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>6</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Metal ve alaşımlarının, metalsi ve alaşımlarının her çeşit döküm ve
+  haddeleme, presleme suretiyle sıcak ve soğuk olarak şekillendirilme işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>7</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Font, çelik ve diğer madenlerin ve alaşımlarının eritilip potalara
+  dökülmek sureti ile çeşitli eşyaların imali işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>8</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Metal ve alaşımlarına, metalsi ve alaşımlarına uygulanan ısıl işlemleri
+  (Tav, su verme ve benzeri işlemler).</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>9</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Kükürdün eritme yoluyla üretimi, öğütülmesi ambalajı ve depolanması ve
+  bunlarla ilgili işler.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=619 colspan=2 valign=top style='width:464.3pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><b><span style='layout-grid-mode:
+  line'>TAŞ VE TOPRAK SANAYİİ İLE İLGİLİ İŞLER</span></b></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>10</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Taş ocaklarında her çeşit taşın çıkartılması ve işlenmesi işleri
+  (Kırma, kesme, taşıma, öğütme, yontma, cilalama ve benzeri işler).</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'>11<span style='font-size:7.0pt;font-family:"Times New Roman","serif"'> </span>&nbsp;</p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=left style='margin-left:6.6pt;text-align:left'>Çimento
+  fabrikalarında ve taş ocaklarında; dinamitleme, konkasör ve yağcılığı,
+  konkasöre vagon devirme ve monitör havai hat yağcılığı ekskavatör işleri ile
+  çimento üretiminde kalker stoklanması, kalsinatör, klinker&nbsp; elevatörü,
+  ambalaj, gezer vinç, kaynak, santralde ocakçılık ve külcülük, ocak ve fırın
+  duvarcılığı ve tamirciliği, yükleme ve boşaltma, su kulesi, baca ve boya
+  tamiri, gezer vinç yolları, kanalizasyon ve bakım işleri.</p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>12</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Kireç ve alçı taşının yakılması ve bunları öğütme ve eleme işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>13</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Toprağın pişirilmesi suretiyle imal olunan kiremit, tuğla, ateş
+  tuğlası, boru, pota, künk ve benzeri inşaat ve mimari malzeme işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>14</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Fayans, porselen ve seramik imaline ait işler.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>15</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Cam, şişe, optik ve benzeri malzeme fabrika ve imalathanelerinde
+  üretime ilişkin işler ve bunların işlenmesine ait işler.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>16</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>13, 14 ve 15 numaralı bentlerde belirtilen işlerden fırın işleri ile
+  silis tozları saçan işler.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=619 colspan=2 valign=top style='width:464.3pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><b><span style='layout-grid-mode:
+  line'>METAL VE METALDEN MAMUL EŞYA SANAYİİ İLE İLGİLİ İŞLER</span></b></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>17</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Ağır saç levhaları bağlama, perçinleme ve presleme işleri ile kalafat
+  işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>18</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Gemi inşaat ve tamiratında iskele, dikme ve kızak işleri ile vinçler,
+  iş iskeleleri, bumbalar, direkler, demir ve zincirler ve benzeri teçhizatlara
+  ait işler.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>19</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>İskeleler, çarpantlar, köprüler, motorlar,&nbsp; makinalar, kazanların
+  imali ve bunların montajı ile işletilmesi işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>20</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Demir tel ve çubuktan malzeme imalatı işleri (Çivi, zincir, vida vb.
+  gibi).</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>21</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Demiri ısıtıp döverek şekillendirme veya presleme suretiyle çeşitli
+  eşya imali işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>22</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Soğuk demircilik ve her çeşit kaynak işleri (Oksijen, elektrik, punta
+  ve dikiş kaynağı işleri gibi).</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>23</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Altın, gümüş, bakır, pirinç, alüminyum ve benzeri malzemeden eşya
+  imalatı işleri. </span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>24</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Kurşun kaynak işleri, seri ve devamlı lehim işleri. </span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>25</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>10 kg’yi aşan tornacılık, tesviyecilik gibi talaşlı imalat ve taşlama
+  işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>26</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Her türlü madeni ve fiber optik kablo imali, çelik ve benzeri malzemelerden
+  tel, şerit gibi soğuk haddeleme, imali işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>27</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Muharrik kuvvetle işleyen tam otomatik soğuk şekillendirme
+  tezgahlarında yapılan işler.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>28</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Metal yüzeylerde yapılan, mekanik ve kimyasal temizlik işleri ile elektroliz
+  yolu ile yapılan koruyucu kaplama (Nikelaj, kromaj ve kadmiyum kaplama vb.)
+  sıcak daldırma yolu ile yapılan koruyucu kaplama (Kurşun, kalay, çinko vb.)
+  çeşitli kimyasal maddelerle yapılan diğer koruyucu kaplama (fosfatlama,
+  eloksal vb.) teflon ve&nbsp; emaye işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=619 colspan=2 valign=top style='width:464.3pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><b><span style='layout-grid-mode:
+  line'>AĞAÇ VE BUNLARDAN MAMUL EŞYA SANAYİİ İLE İLGİLİ İŞLER</span></b></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>29</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Muharrik kuvvetle çalışan her türlü bıçaklar ve testereler ile kesici,
+  yontucu, soyucu, delici makinalar ve hızarlarla yapılan işler.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>30</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Kurutma işleri, yapıştırma işler, kontraplak, kontrtabla, yonga ağaçtan
+  mamul suni tahta ve pvc yüzey kaplamalı suni tahta imali işleri ile emprenye
+  işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=619 colspan=2 valign=top style='width:464.3pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><b><span style='layout-grid-mode:
+  line'>YAPI İŞLERİ</span></b></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>31</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Bina, duvar, set, baraj, yol, demiryolu, köprü,&nbsp; tünel, metro, her
+  türlü raylı sistem, iskele, liman, marina, dalgakıran, balıkçı barınağı, hava
+  alanı, havai hat, çelik konstrüksiyon yapı kanalizasyon, yağmur suyu drenajı
+  ve her türlü drenaj sistemleri, kanal, kanalet, foseptik, kuyu, havuz, spor
+  tesisleri, her türlü sondaj işleri, her nevi yer üstü ve yer altı inşaat, su
+  üstü ve su altı inşaatları, her türlü temel inşaatı işleri (Ankrajlı istinat
+  duvarı, fore kazık yapımı, palplanşlı çalışmalar vb. ), yıkım işleri, arazi
+  ölçüm, etüt, araştırma, her çeşit onarım ve güçlendirme ve benzeri işler ve
+  bu işler için gerekli araç, malzeme, sabit tesis ve ekipmanın kullanılması
+  işleri.&nbsp; </span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>32</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Her türlü prefabrik yapı elemanı (pabuç, kolon, kiriş, aşık, mertek
+  gibi) üretimi ve yerinde montajı işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>33</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Çimento ve betondan eşya ve inşaat malzemesi (Bina, karayolu,
+  demiryolu, köprü, baraj ve benzeri üst yapılarla, her türlü alt yapılar ve
+  tünellerde kullanılan elemanlar) imali ve tatbikatı.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>34</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Beton, asfalt, çimento, alçı ve kireç gibi yapı malzeme ve maddelerinin
+  üretimi, işlenmesi,&nbsp; bunlardan elde edilen yarı mamul ve mamul ürünlerin
+  hazırlanması ve yerinde uygulanmasına ait işler.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>35</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Her türlü zeminin hafriyatı, yarma ve doldurulma işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=619 colspan=2 valign=top style='width:464.3pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><b><span style='layout-grid-mode:
+  line'>KİMYA SANAYİ İLE İLGİLİ İŞLER</span></b></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>36</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Klorür asidi, sülfat asidi, nitrat asidi vb. her çeşit tahriş edici ve
+  yakıcı asitler ile sodyum ve potasyum hidroksit, amonyak gibi her türlü
+  alkalilerin üretimi ve bunlarla yapılan işler.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>37</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Aldehitler, ketonlar, eterler, karbon sülfür, analin, alkoller,
+  solventler, tinerler, triklor-etilen ve benzerleri gibi ve parlayıcı
+  maddelerin imali ve bunlarla yapılan işler.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>38</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Ham petrol ve katranların distilasyonu, bitum, madeni yağlar ve her türlü
+  akaryakıt ve rafinasyon işleri. </span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>39</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Odun ve kömürlerin gazlaştırılmaları,&nbsp; koklaştırılmaları ve
+  bunlardan elde edilen&nbsp; bitum, katran gibi ara ve art ürünlerin
+  distilasyonu işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>40</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Doğal gaz, Likit petrol gazı, hava gazı, bio gaz, ve asetilen gazı gibi
+  her türlü gaz üretimi, stoklanması ve arz işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>41</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Asfalt ile dam tecrit maddeleri ve yağlamaya özgü, olup petrol
+  rafinerilerinde elde edilemeyen sıvı ve katı yağların imali işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>42</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Her türlü patlayıcı madde ve mühimmatın imali, depolanması ve nakli
+  işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>43</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Her türlü zehirli gazların ve savaş gazlarının üretimi, kullanılması,
+  depolanması ve nakli işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>44</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Aktif kömürlerin, diğer aktif maddelerin ve çeşitli kimyasal maddelerin
+  emprenyasyon işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>45</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Her türlü patlayıcı maddenin kullanıldığı işler ile toz ve gaz
+  maskeleri, koruyucu başlık, elbiseler ile diğer koruyucuların kullanılması
+  zorunluluğu bulunan işler.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>46</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Piroteknik malzemesi hazırlama ve imali işleri (Aydınlatma ve işaret
+  fişekleri, havai fişekler şenlik maytapları, tabanca mantarı benzerleri).</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>47</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Her türlü organik ve anorganik zehirli veya tahriş edici maddelerle
+  boya ve vernik imali ve bunlardan meydana gelen zehirli ve tahriş edici
+  boyaların kullanılması işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>48</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Kimyasal gübrelerin üretimi ve depolanması işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>49</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Selülozik, sentetik ve her çeşit boya imali işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>50</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Sellüloit imali ve lak nitrosellülozu ile yapılan çeşitli kimyasal
+  maddelerin imali işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>51</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Ensektisit, rodentisit ve tarımsal mücadele ilaçları hazırlanması,
+  üretimi ve depolanması işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>52</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Flor, klor, brom, iyot üretimi ve bunların zarar verici türevlerinin
+  imali işleri. </span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>53</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Organik ve anorganik pigmentlerin imali işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>54</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>İnsan sağlığına zarar verici kimyasal maddelerin üretimi, yükleme,
+  boşaltma ve nakli işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>55</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Akümülatör imali ve seri olarak akümülatörlerin bakım ve şarj işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>56</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Uyuşturucu maddelerin imali işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>57</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Bitkisel ve hayvansal yağların üretimi ve bunlardan yapılan maddelerin
+  imaline ilişkin işler. </span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>58</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Tabakhaneler ile her çeşit deri fabrika ve imalathanelerinde tabaklama,
+  nakil ve depolama işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>59</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Tüylü olarak kullanılacak derileri hazırlama işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>60</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Ham kürkleri işleme ve boyama işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>61</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Kauçuk ve lastik sanayiinde, lastik hamurunun hazırlanmasından her
+  çeşit şekillendirilmiş mamul yapımına kadar bütün işler. </span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>62</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Plastik maddelerin şekillendirilmesi ve plastik eşya imali işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=619 colspan=2 valign=top style='width:464.3pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><b><span style='layout-grid-mode:
+  line'>İPLİK, DOKUMA VE GİYİM SANAYİ İLE İLGİLİ İŞLER</span></b></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>63</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Çırçır fabrikalarındaki işler.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>64</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Pamuk,keten,yün ipek ve benzerleriyle bunların döküntülerinin hallaç
+  haşıl, tarak, presleme ve kolalama işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>65</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Her türlü ilkel ve mamul maddelerin temizlenmesi, boyanması,
+  gazlanması, ağartılması, basılması ve hazır hale getirilmesi işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>66</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Suni ipek imalinde hazırlama ve üretme işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>67</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Linolyum ve diğer sert satıhta zemin döşemeleri, suni deri (Plastik
+  hariç muşamba ve kaplanmış kumaşlar, hasır, lif ve sair keçeler, paspaslar ve
+  her türlü elyaftan vatka ve koltukçuluk malzemesi imali işleri), bu ürünlerin
+  döküntü ve paçavralarının elyaf haline getirilmesi işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=619 colspan=2 valign=top style='width:464.3pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><b><span style='layout-grid-mode:
+  line'>KAĞIT VE SELÜLOZ SANAYİİ İLE İLGİLİ İŞLER</span></b></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>68</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Kağıt hamuru ve odun hamuru üretimi işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>69</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Selüloz üretimi işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>70</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Kağıt ve selüloz üretiminde klor, hipoklorit, kükürt dioksit,&nbsp;
+  hiposulfit gibi tahriş edici ve zararlı maddelerin üretimi ile çözeltilerinin
+  hazırlanması, kullanılması ve geri kazanılması işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=619 colspan=2 valign=top style='width:464.3pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><b><span style='layout-grid-mode:
+  line'>GIDA SANAYİİ İLE İLGİLİ İŞLER</span></b></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>71</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Her türlü canlı hayvanın kesilmesi, işlenmesi, ambalajlanması, sakatat tesislerindeki
+  işler. </span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>72</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Deniz ve göl tuzlalarıyla kaya tuzu işletmelerinde yapılan üretim,
+  rafine, ambalajlama, doldurma ve taşıma işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=619 colspan=2 valign=top style='width:464.3pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><b><span style='layout-grid-mode:
+  line'>TÜTÜN SANAYİİ İLE İLGİLİ İŞLER</span></b></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 valign=top style='width:40.8pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>73</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>İmalathane ve depolardaki aktarma işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=619 colspan=2 valign=top style='width:464.3pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><b><span style='layout-grid-mode:
+  line'>ENERJİ ÜRETİMİ, NAKLİ VE DAĞITIMI İLE İLGİLİ İŞLER</span></b></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>74</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Buhar, gaz ve sair muharrik kuvvet üretimiyle ilgili işler.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>75</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Elektriğin üretimi, nakli ve dağıtımı işleri, elektrik bakım ve onarım
+  işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>76</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Hareket halinde bulunan makine, motor ve aksamı ile transmisyon
+  tertibatının yağlanması, tamiri ve temizlenmesi gibi işler. </span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=619 colspan=2 valign=top style='width:464.3pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><b><span style='layout-grid-mode:
+  line'>NAKLİYE BENZERİ İŞLER</span></b></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>77</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Araçsız olarak yirmi beş kilodan yukarı ağırlık taşıma, boşaltma ve
+  yükleme işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>78</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>El arabası gibi araçlarla elli kilodan yukarı ağırlık taşıma, boşaltma
+  ve yükleme işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>79</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Üç ve dört tekerlekli ve pedallı arabalarla altmış kilodan yukarı
+  ağırlık taşıma, boşaltma ve yükleme işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>80</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>En çok %10 rampalı yerlerde vagonetlerle üç yüz kilodan yukarı ağırlık
+  taşıma, boşaltma ve yükleme işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>81</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Gaz, petrol, su ve benzeri maddelerin her çeşit boru vasıtasıyla
+  taşınması ve bu nakil hatlarında yapılan bakım, onarım, tamirat ve benzeri
+  işler.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=619 colspan=2 valign=top style='width:464.3pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt;page-break-after:avoid;
+  layout-grid-mode:char'><b>TARIM VE HAYVANCILIK İŞLERİ</b></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>82</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Denizlerde göllerde ve nehirlerde balık ve diğer hayvanların ve
+  bitkilerin avlanması, toplanması, üretilmesi, (bunlardan elde edilecek ürün
+  ve yan ürünler) ve dalyan işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>83</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Tarım ilaçları kullanımı işleri</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=619 colspan=2 valign=top style='width:464.3pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><b><span style='layout-grid-mode:
+  line'>ARDİYE VE ANTREPOCULUK</span></b></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>84</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Ardiyeler, antrepolar, umumi mağazalar ve iskelelerde yapılan her türlü
+  ambarlama, depolama, yükleme ve boşaltma işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=619 colspan=2 valign=top style='width:464.3pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><b><span style='layout-grid-mode:
+  line'>HABERLEŞME</span></b></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'>85<span style='font-size:7.0pt;font-family:"Times New Roman","serif"'> </span>&nbsp;</p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'>Posta, telefon, telgraf, telsiz,
+  radyo, televizyon gibi iletişim araçları için yapılan her türlü yapım, bakım,
+  onarım ve alt yapı işleri.</p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=619 colspan=2 valign=top style='width:464.3pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><b><span style='layout-grid-mode:
+  line'>ÇEŞİTLİ İŞLER</span></b></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>86</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Asbest tozları ile yapılan her çeşit imalat ile (Dam tecrit malzemesi,
+  çimento ve asbest esaslı borular, kauçuklu ve plastikli yer döşemeleri imali,
+  çeşitli sanayi ürünleri, kişisel koruyucular gibi) asbest hamuru hazırlama ve
+  şekillendirme işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>87</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Sünger avcılığı işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>88</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Süngerleri temizleme, yıkama, beyazlatma ve boyama işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>89</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>İtfaiye işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>90</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Ocakçılık, ateşçilik işleri ile ocak ve baca temizleme işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>91</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Kanalizasyon ve foseptik işleri. </span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>92</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Her türlü çöp ve atık maddeler (toplanması, taşınması,
+  depolanması,&nbsp; işlenmesi, yok edilmesi vb.) ile ilgili işler.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>93</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Bataklık kurutma, su altı ve toprak altı işleri ile suya girilerek
+  yapılan her türlü işler.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>94</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Radyoloji işleri ile radyum ve radyo aktif maddelerle ve radyasyon
+  yayan her türlü cihazla (Çeşitli röntgen, manyetik rezonans ve benzeri
+  elektronik cihazlar) çalışılan işler.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>95</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:10.7pt'><span style='layout-grid-mode:
+  line'>Vahşi veya zehirli hayvan bulunduran bahçelerdeki ve hayvan terbiyesi
+  yapılan yerlerdeki her türlü işler.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>96</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Her türlü mürekkep imali işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>97</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Hayvan tahniti işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>98</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Kemik, boynuz, tırnak ve hayvan kanı ile ilgili üretim işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>99</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Metalden matbaa harfi imali ve klişe imali işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>100</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Deri sanayiinde mamul derilere yüz ve fantezi fason yapma ve derileri
+  perdahlama işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>101</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Makinesiz deniz nakil araçlarında (Mavna, şat ve benzerleri) yapılan
+  bütün işler.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>102</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Yüzer vinç ve taraklarda yapılan işler.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>103</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Hava alanlarındaki uçuşa hazırlık işleri ile yer hizmetleri ve bakım
+  işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>104</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Uçaklarda yapılan bütün işler ve uçaklarla yapılan ilaçlama ve yangın
+  söndürme işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'>105<span style='font-size:7.0pt;font-family:"Times New Roman","serif"'> </span>&nbsp;</p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'>Kara, demiryolu, deniz ve göl
+  taşıt araçları için bakım, ikmal, onarım ve park yerlerinde yapılan işler.</p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>106</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Her türlü siloculuk işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>107</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Matbaacılık işleri (Her türlü basım işleri)</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>108</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:6.6pt'><span style='layout-grid-mode:
+  line'>Her türlü katı ve sıvı ara ürün ve nihai ürünlerin ambalajlanması,
+  paketlenmesi ve dolumu işleri.</span></p>
+  </td>
+ </tr>
+ <tr style='height:1.0pt'>
+  <td width=54 style='width:40.8pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span style='layout-grid-mode:line'>109</span><span style='font-size:7.0pt;
+  font-family:"Times New Roman","serif";layout-grid-mode:line'> </span><span style='layout-grid-mode:line'>&nbsp;</span></p>
+  </td>
+  <td width=565 style='width:423.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:1.0pt'>
+  <p class=MsoNormal style='margin-left:3.6pt'><span style='layout-grid-mode:
+  line'>&nbsp;Deri, suni deri, plastik, ağaç ve diğer malzemelerden mamul her
+  türlü ayakkabı,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; terlik ve
+  benzerleri imalat işleri.</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal align=left style='margin-top:0cm;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:14.15pt;text-align:left;text-indent:1.0cm;
+line-height:normal'><span style='layout-grid-mode:line'>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='margin-top:0cm;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:14.15pt;text-align:left;text-indent:1.0cm;
+line-height:normal'><span style='layout-grid-mode:line'>&nbsp;</span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+</div>
+
+</body>
+
+</html>
+    <p id="page-end"></p>
+    <script src="/lib/tooltip/tooltip.js"></script>
+    <script>
+        $(document).ready(function () {
+            jQuery('table').each(function (cmp) {
+                var parent = this.parentNode;
+                var wrapper = document.createElement('div');
+
+                parent.replaceChild(wrapper, this);
+                wrapper.appendChild(this);
+                this.parentElement.style.overflowX = 'auto';
+            });
+            if (window.location.search.indexOf("2709") != -1 || window.location.search.indexOf("MevzuatTur=19") != -1) {
+                var tableCss = document.styleSheets[0].cssRules[2].style;
+                tableCss.cssText = tableCss.cssText.replace("100%", "initial");
+            }
+            //$('.tooltip').tooltipster();
+            //replaceTable();
+            //$(window).on('resize', function () {
+            //    replaceTable();
+            //});
+            //replaceTable();
+        });
+            //function replaceTable() {
+            //    //if (window.location.search.indexOf("MevzuatTur=19") == -1) {
+            //    //    var iframe = document.getElementsByTagName("td");
+            //    //    var value = $('body').width() - 10;
+            //    //    for (var i = 0; i < iframe.length; i++) {
+            //    //        iframe[i].style.width = "initial !important";
+            //    //    }
+            //    //}
+
+
+            //    //var iframe = document.getElementsByClassName("MsoNormalTable");
+            //    //var value = $('body').width() - 10;
+            //
+            //    //for (var i = 0; i < iframe.length; i++) {
+            //    //    iframe[i].style.width = value;
+            //    //}
+
+            //    //var iframe2 = document.getElementsByClassName("MsoNormal");
+            //    ////for (var j = 0; j < iframe2.length; j++) {
+            //    ////    iframe2[j].style.width = value;
+            //    ////}
+            //}
+    </script>
+
+
+

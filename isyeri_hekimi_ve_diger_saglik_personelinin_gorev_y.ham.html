@@ -1,0 +1,2281 @@
+
+    <style>
+        * {
+            font-size: 12pt !important;
+            line-height: 127% !important;
+        }
+
+        @media print {
+            a {
+                visibility: hidden;
+            }
+
+            #section-to-print, #section-to-print * {
+                visibility: visible;
+            }
+
+            #section-to-print {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+        /*aşağıda js kodu var table width değiştirmek için*/
+        table {
+            width: 100% !important;
+            page-break-inside: initial !important;
+            white-space: initial !important;
+            padding: 0 !important;
+            text-indent: 0 !important;
+        }
+
+        @media screen and (max-width: 768px) {
+
+            tr, p, table {
+                width: initial !important;
+                page-break-inside: initial !important;
+                white-space: initial !important;
+                padding: 0 !important;
+                text-indent: 0 !important;
+            }
+
+            table {
+                width: 100% !important;
+            }
+
+
+            td {
+                /*white-space: nowrap !important;*/
+            }
+
+            img {
+                max-width: 100%;
+            }
+        }
+    </style>
+
+    <link href="/lib/tooltip/tooltip.css" rel="stylesheet" />
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=Windows-1254">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:12.0pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+h1
+	{mso-style-link:"Başlık 1 Char";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:"Arial",sans-serif;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{mso-style-link:"Gövde Metni Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	font-size:11.0pt;
+	font-family:"Tahoma",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p.MsoPlainText, li.MsoPlainText, div.MsoPlainText
+	{mso-style-link:"Düz Metin Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:12.0pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+span.Balk1Char
+	{mso-style-name:"Başlık 1 Char";
+	mso-style-link:"Başlık 1";
+	font-family:"Arial",sans-serif;
+	font-weight:bold;}
+span.GvdeMetniChar
+	{mso-style-name:"Gövde Metni Char";
+	mso-style-link:"Gövde Metni";
+	font-family:"Tahoma",sans-serif;}
+span.DzMetinChar
+	{mso-style-name:"Düz Metin Char";
+	mso-style-link:"Düz Metin";
+	font-family:"Courier New";}
+p.msolistparagraphcxspfirst, li.msolistparagraphcxspfirst, div.msolistparagraphcxspfirst
+	{mso-style-name:msolistparagraphcxspfirst;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:12.0pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.msolistparagraphcxspmiddle, li.msolistparagraphcxspmiddle, div.msolistparagraphcxspmiddle
+	{mso-style-name:msolistparagraphcxspmiddle;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:12.0pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.msolistparagraphcxsplast, li.msolistparagraphcxsplast, div.msolistparagraphcxsplast
+	{mso-style-name:msolistparagraphcxsplast;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:12.0pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+p.msopapdefault, li.msopapdefault, div.msopapdefault
+	{mso-style-name:msopapdefault;
+	margin-right:0cm;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:12.0pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+p.Metin, li.Metin, div.Metin
+	{mso-style-name:Metin;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:28.3pt;
+	font-size:9.5pt;
+	font-family:"Times New Roman",serif;}
+span.grame
+	{mso-style-name:grame;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 70.85pt 70.85pt 70.85pt;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+<script type="text/javascript">window.av = { database:'2' , rnApp:'False' }</script><script src="https://www.mevzuat.gov.tr/lib/jquery/dist/jquery.js"></script><script src="https://www.mevzuat.gov.tr/js/iframescript.min.js?v=1.05"></script><style><!--* {font-family:inherit!important;}--></style></head>
+
+<body lang=TR link=blue vlink=purple>
+
+<div class=WordSection1>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>İŞYERİ
+HEKİMİ VE DİĞER SAĞLIK PERSONELİNİN GÖREV, YETKİ, SORUMLULUK VE EĞİTİMLERİ
+HAKKINDA YÖNETMELİK</b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>&nbsp;</b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>BİRİNCİ
+BÖLÜM</b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>Amaç,
+Kapsam, Dayanak ve Tanımlar</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Amaç</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 1</b> – (1) Bu
+Yönetmeliğin amacı; iş sağlığı ve güvenliği hizmetlerinde görevli işyeri hekimlerinin
+ve diğer sağlık personelinin nitelikleri, belgelendirilmeleri, eğitimleri,
+görev, yetki ve sorumlulukları ile çalışma usul ve esaslarını düzenlemektir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Kapsam</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 2</b> – (1) Bu
+Yönetmelik, 20/6/2012 tarihli ve 6331 sayılı İş Sağlığı ve Güvenliği Kanunu
+kapsamında yer alan işyerleri ile eğitim kurumlarını kapsar.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Dayanak</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 3</b> – (1) Bu
+Yönetmelik; 6331 sayılı İş Sağlığı ve Güvenliği Kanununun (<b>Değişik
+ibare:RG-18/12/2014-29209) </b><u>3 üncü, 24 üncü, 27 nci, 30 uncu ve 31 inci
+maddeleri ile</u>, 9/1/1985 tarihli ve 3146 sayılı Çalışma ve Sosyal Güvenlik
+Bakanlığının Teşkilat ve Görevleri Hakkında Kanunun 2 ve 12 nci maddelerine
+dayanılarak hazırlanmıştır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Tanımlar</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 4</b> – (1) Bu
+Yönetmelikte geçen:</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Bakanlık: Çalışma ve Sosyal
+Güvenlik Bakanlığını,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) Diğer sağlık personeli: İş
+sağlığı ve güvenliği hizmetlerinde görevlendirilmek üzere Bakanlıkça
+belgelendirilmiş hemşire, sağlık memuru, acil tıp teknisyeni ve çevre sağlığı
+teknisyeni diplomasına sahip olan kişiler ile Bakanlıkça verilen işyeri hemşireliği
+belgesine sahip kişileri,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) Eğiticilerin eğitimi belgesi:
+En az 40 saatlik eğitim sonunda kamu kurum ve kuruluşları, üniversiteler veya
+8/2/2007 tarihli ve 5580 sayılı Özel Öğretim Kurumları Kanununa göre
+yetkilendirilen kurumlar tarafından tek bir program sonucunda verilen
+eğiticilerin eğitimi belgesini,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>ç) Eğitim kurumu: (<b>Değişik
+ibare:RG-18/12/2014-29209) </b><u>İş güvenliği uzmanı, işyeri hekimi</u> ve
+diğer sağlık personeli eğitimlerini vermek üzere Bakanlıkça yetkilendirilen
+kamu kurum ve kuruluşları, üniversiteler ve 13/1/2011 tarihli ve 6102 sayılı
+Türk Ticaret Kanununa göre faaliyet gösteren şirketler tarafından kurulan
+müesseseleri,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>d) (<b>Değişik:RG-18/12/2014-29209)
+</b>Eğitim programı: Uzaktan, yüz yüze ve uygulamalı eğitimlerin tarih ve
+saatleri, eğiticileri, katılımcıları ile eğitim verilen adres gibi unsurlardan
+ve bu unsurlara ilişkin her türlü bilgi ve belgeden oluşan programı,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>e) Genel Müdürlük: İş Sağlığı ve
+Güvenliği Genel Müdürlüğünü,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>f) İSG-KATİP: İş sağlığı ve
+güvenliği hizmetleri ile ilgili iş ve işlemlerin Genel Müdürlükçe kayıt, takip
+ve izlenmesi amacıyla kullanılan İş Sağlığı ve Güvenliği Kayıt, Takip ve İzleme
+Programını,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>g) İşyeri hekimi: İş sağlığı ve
+güvenliği alanında görev yapmak üzere Bakanlıkça yetkilendirilmiş işyeri
+hekimliği belgesine sahip hekimi,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>ğ) Sorumlu müdür: İşyeri hekimliği
+ve iş güvenliği uzmanlığı eğitici belgesine sahip olan, tam süreli istihdam
+edilen ve eğitim kurumlarının iş ve işlemlerinden Bakanlığa karşı sorumlu olan
+kişiyi,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>h) (<b>Ek:RG-18/12/2014-29209)</b>
+<b>(Değişik:RG-28/2/2020-31053)</b> İtiraz komisyonu: Bu Yönetmelik kapsamında
+hizmet veren kişi veya kurumların belgelerinin askıya alınma veya iptali ile
+ilgili itirazlarını değerlendirmek ve sonuçlandırmak üzere; İş Sağlığı ve
+Güvenliği Genel Müdürü başkanlığında, ilgili Genel Müdür Yardımcısı, ilgili
+Daire Başkanı ile Genel Müdürlükte görevli ve değerlendirmeye konu denetim
+sürecinde yer almamış dört personel olmak üzere toplam yedi üyeden oluşan
+komisyonu,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>ı) (<b>Ek:RG-18/12/2014-29209) </b>Komisyon:
+İş Sağlığı ve Güvenliği Genel Müdürü veya Yardımcısının başkanlığında Genel
+Müdürlükten üç üye ve İş Teftiş Kurulu Başkanlığından seçilecek bir üye ile
+gerek görüldüğünde üniversitelerin tıp, hukuk, eğitim, mühendislik ve iletişim
+fakültelerinden seçilecek öğretim üyelerinden oluşan Komisyonu,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>ifade eder.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>&nbsp;</b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>İKİNCİ
+BÖLÜM</b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>İşverenin
+Yükümlülükleri</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>İşyeri hekimi ve diğer sağlık
+personeli görevlendirme yükümlülüğü</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 5</b> – (<b>Mülga:RG-18/12/2014-29209)
+</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>İşyeri sağlık ve güvenlik
+birimi kurma yükümlüğü</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 6</b> – (<b>Mülga:RG-18/12/2014-29209)
+</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>&nbsp;</b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>ÜÇÜNCÜ
+BÖLÜM</b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>İşyeri
+Hekiminin Nitelikleri, Görev, Yetki ve Yükümlülükleri ile</b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>Çalışma
+Usûl ve Esasları</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>İşyeri hekimlerinin nitelikleri
+ve görevlendirilmeleri</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 7</b> – (1) İşverence
+işyeri hekimi olarak görevlendirilecekler, bu Yönetmeliğe göre geçerli işyeri
+hekimliği belgesine sahip olmak zorundadır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) İşyeri hekimlerinin
+görevlendirilmesinde, bu Yönetmeliğe göre hesaplanan çalışma süreleri bölünerek
+birden fazla işyeri hekimine verilemez.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) Vardiyalı çalışma yapılan
+işyerlerinde işveren tarafından vardiyalara uygun şekilde görevlendirme
+yapılır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>İşyeri hekimliği belgesi</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 8</b> – (1) İşyeri
+hekimliği belgesi;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) İşyeri hekimliği eğitim
+programını tamamlayan ve eğitim sonunda Bakanlıkça yapılacak veya yaptırılacak
+işyeri hekimliği sınavında başarılı olan hekimlere,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) İş sağlığı veya iş sağlığı ve
+güvenliği bilim uzmanı unvanına sahip olan Bakanlıkça yapılacak veya
+yaptırılacak işyeri hekimliği sınavında başarılı olan hekimlere,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) Hekimlik diplomasına sahip iş
+sağlığı, iş sağlığı ve güvenliği bilim doktorlarına, iş sağlığı ve güvenliği
+alanında yardımcılık süresi dahil en az sekiz yıl teftiş yapmış olan hekim iş
+müfettişlerine, Genel Müdürlük ve bağlı birimlerinde iş sağlığı ve güvenliği
+alanında en az sekiz yıl fiilen çalışmış hekimlere istekleri halinde,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>ç) (<b>Ek:RG-18/12/2014-29209) </b>İş
+ve meslek hastalıkları yan dal uzmanlığını alan hekimlere istekleri halinde,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>EK-1’deki örneğine uygun olarak
+Genel Müdürlükçe verilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>İşyeri hekimlerinin görevleri</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 9</b> – (1) İşyeri
+hekimi, işyerinde bulunması halinde diğer sağlık personeli ile birlikte
+çalışır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) İşyeri hekimleri, iş sağlığı
+ve güvenliği hizmetleri kapsamında aşağıdaki görevleri yapmakla yükümlüdür:</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Rehberlik;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>1) İş sağlığı ve güvenliği
+hizmetleri kapsamında çalışanların sağlık gözetimi ve çalışma ortamının
+gözetimi ile ilgili işverene rehberlik yapmak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>2) İşyerinde yapılan çalışmalar ve
+yapılacak değişikliklerle ilgili olarak işyerinin tasarımı, kullanılan maddeler
+de dâhil olmak üzere işin planlanması, organizasyonu ve uygulanması, kişisel
+koruyucu donanımların seçimi konularının iş sağlığı ve güvenliği mevzuatına ve
+genel iş sağlığı kurallarına uygun olarak sürdürülmesini sağlamak için işverene
+önerilerde bulunmak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>3) İşyerinde çalışanların
+sağlığının geliştirilmesi amacıyla gerekli aktiviteler konusunda işverene
+tavsiyelerde bulunmak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>4) İş sağlığı ve güvenliği
+alanında yapılacak araştırmalara katılmak, ayrıca işin yürütümünde ergonomik ve
+psikososyal riskler açısından çalışanların fiziksel ve zihinsel kapasitelerini
+dikkate alarak iş ile çalışanın uyumunun sağlanması ve çalışma ortamındaki
+stres faktörlerinden korunmaları için araştırmalar yapmak ve bu araştırma
+sonuçlarını rehberlik faaliyetlerinde dikkate almak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>5) Kantin, yemekhane, yatakhane,
+kreş ve emzirme odaları ile soyunma odaları, duş ve tuvaletler dahil olmak
+üzere işyeri bina ve eklentilerinin genel hijyen şartlarını sürekli izleyip
+denetleyerek, çalışanlara yürütülen işin gerektirdiği beslenme ihtiyacının ve
+uygun içme suyunun sağlanması konularında tavsiyelerde bulunmak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>6) İşyerinde meydana gelen iş
+kazası ve meslek hastalıklarının nedenlerinin araştırılması ve tekrarlanmaması
+için alınacak önlemler konusunda çalışmalar yaparak işverene önerilerde
+bulunmak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>7) İşyerinde meydana gelen ancak
+ölüm ya da yaralanmaya neden olmadığı halde çalışana, ekipmana veya işyerine
+zarar verme potansiyeli olan olayların nedenlerinin araştırılması konusunda
+çalışma yapmak ve işverene önerilerde bulunmak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>8) İş sağlığı ve güvenliğiyle
+ilgili alınması gereken tedbirleri işverene yazılı olarak bildirmek.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) Risk değerlendirmesi;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>1) İş sağlığı ve güvenliği
+yönünden risk değerlendirmesi yapılmasıyla ilgili çalışmalara ve uygulanmasına
+katılmak, risk değerlendirmesi sonucunda alınması gereken sağlık ve güvenlik
+önlemleri konusunda işverene önerilerde bulunmak ve takibini yapmak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>2) Gebe veya emziren kadınlar, 18
+yaşından küçükler, meslek hastalığı tanısı veya ön tanısı olanlar, kronik
+hastalığı olanlar, yaşlılar, malul ve engelliler, alkol, ilaç ve uyuşturucu
+bağımlılığı olanlar, birden fazla iş kazası geçirmiş olanlar gibi özel politika
+gerektiren grupları yakın takip ve koruma altına almak, bilgilendirmek ve
+yapılacak risk değerlendirmesinde özel olarak dikkate almak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) Sağlık gözetimi;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>1) Sağlık gözetimi kapsamında
+yapılacak işe giriş ve periyodik muayeneler ve tetkikler ile ilgili olarak
+çalışanları bilgilendirmek ve onların rızasını almak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>2) Gece postaları da dâhil olmak
+üzere çalışanların sağlık gözetimini yapmak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>3) (<b>Değişik:RG-18/12/2014-29209)</b>
+Çalışanın kişisel özellikleri, işyerinin tehlike sınıfı ve işin niteliği
+öncelikli olarak göz önünde bulundurularak uluslararası standartlar ile
+işyerinde yapılan risk değerlendirmesi sonuçları doğrultusunda; az tehlikeli
+sınıftaki işlerde en geç beş yılda bir, tehlikeli sınıftaki işlerde en geç üç yılda
+bir, çok tehlikeli sınıftaki işlerde en geç yılda bir, özel politika gerektiren
+grupta yer alanlardan çocuk, genç ve gebe çalışanlar için en geç altı ayda bir
+defa olmak üzere periyodik muayene tekrarlanır. Ancak işyeri hekiminin gerek
+görmesi halinde bu süreler kısaltılır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>4) Çalışanların yapacakları işe
+uygun olduklarını belirten işe giriş ve periyodik sağlık muayenesi ile gerekli
+tetkiklerin sonuçlarını EK-2’de verilen örneğe uygun olarak düzenlemek ve
+işyerinde muhafaza etmek.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>5) Özel politika gerektiren
+gruplar, meslek hastalığı tanısı veya ön tanısı alanlar, kronik hastalığı,
+madde bağımlılığı, birden fazla iş kazası geçirmiş olanlar gibi çalışanların,
+uygun işe yerleştirilmeleri için gerekli sağlık muayenelerini yaparak rapor
+düzenlemek, meslek hastalığı tanısı veya ön tanısı almış çalışanın olması
+durumunda kişinin çalıştığı ortamdaki diğer çalışanların sağlık muayenelerini
+tekrarlamak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>6) Sağlık sorunları nedeniyle işe
+devamsızlık durumları ile işyerinde olabilecek sağlık tehlikeleri arasında bir
+ilişkinin olup olmadığını tespit etmek, gerektiğinde çalışma ortamı ile ilgili
+ölçümler yapılmasını planlayarak işverenin onayına sunmak ve alınan sonuçların
+çalışanların sağlığı yönünden değerlendirmesini yapmak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>7) Çalışanların sağlık nedeniyle
+tekrarlanan işten uzaklaşmalarından sonra işe dönüşlerinde talep etmeleri
+halinde işe dönüş muayenesi yaparak eski görevinde çalışması sakıncalı
+bulunanlara mevcut sağlık durumlarına uygun bir görev verilmesini tavsiye
+ederek işverenin onayına sunmak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>8) Bulaşıcı hastalıkların kontrolü
+için yayılmayı önleme ve bağışıklama çalışmalarının yanı sıra gerekli hijyen
+eğitimlerini vermek, gerekli muayene ve tetkiklerinin yapılmasını sağlamak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>9) İşyerindeki sağlık gözetimi ile
+ilgili çalışmaları kaydetmek, iş güvenliği uzmanı ile işbirliği yaparak iş
+kazaları ve meslek hastalıkları ile ilgili değerlendirme yapmak, tehlikeli
+olayın tekrarlanmaması için inceleme ve araştırma yaparak gerekli önleyici
+faaliyet planlarını hazırlamak ve bu konuları da içerecek şekilde yıllık çalışma
+planını hazırlayarak işverenin onayına sunmak, uygulamaların takibini yapmak ve
+EK-3’te belirtilen örneğine uygun yıllık değerlendirme raporunu hazırlamak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>10) (<b>Ek:RG-18/12/2014-29209)</b>
+Bir başka işverenden iş görmek için işyerine geçici olarak gönderilen
+çalışanlar ile alt işveren çalışanlarının yapacakları işe uygun olduğunu
+gösteren sağlık raporlarının süresinin dolup dolmadığını kontrol etmek.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>ç) Eğitim, bilgilendirme ve kayıt;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>1) Çalışanların iş sağlığı ve
+güvenliği eğitimlerinin ilgili mevzuata uygun olarak planlanması konusunda
+çalışma yaparak işverenin onayına sunmak ve uygulamalarını yapmak veya kontrol
+etmek.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>2) İşyerinde ilkyardım ve acil
+müdahale hizmetlerinin organizasyonu ve personelin eğitiminin sağlanması
+çalışmalarını ilgili mevzuat doğrultusunda yürütmek.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>3) Yöneticilere, bulunması halinde
+iş sağlığı ve güvenliği kurulu üyelerine ve çalışanlara genel sağlık, iş
+sağlığı ve güvenliği, hijyen, bağımlılık yapan maddelerin kullanımının
+zararları, kişisel koruyucu donanımlar ve toplu korunma yöntemleri konularında
+eğitim vermek, eğitimin sürekliliğini sağlamak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>4) Çalışanları işyerindeki
+riskler, sağlık gözetimi, yapılan işe giriş ve periyodik muayeneler konusunda
+bilgilendirmek.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>5) İş sağlığı ve güvenliği
+çalışmaları ve sağlık gözetimi sonuçlarının kaydedildiği yıllık değerlendirme
+raporunu iş güvenliği uzmanı ile işbirliği halinde EK-3’teki örneğine uygun
+olarak hazırlamak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>6) (<b>Ek:RG-18/12/2014-29209)</b>
+Bakanlıkça belirlenecek iş sağlığı ve güvenliğini ilgilendiren konularla ilgili
+bilgileri İSG KATİP sistemi üzerinden Genel Müdürlüğe bildirmek.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>d) İlgili birimlerle işbirliği;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>1) Sağlık gözetimi sonuçlarına
+göre, iş güvenliği uzmanı ile işbirliği içinde çalışma ortamının gözetimi
+kapsamında gerekli ölçümlerin yapılmasını önermek, ölçüm sonuçlarını
+değerlendirmek.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>2) Bulunması halinde üyesi olduğu
+iş sağlığı ve güvenliği kuruluyla işbirliği içinde çalışmak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>3) İşyerinde iş sağlığı ve
+güvenliği konularında bilgi ve eğitim sağlanması için ilgili taraflarla
+işbirliği yapmak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>4) İş kazaları ve meslek hastalıklarının
+analizi, iş uygulamalarının iyileştirilmesine yönelik programlar ile yeni
+teknoloji ve donanımın sağlık açısından değerlendirilmesi ve test edilmesi gibi
+mevcut uygulamaların iyileştirilmesine yönelik programların geliştirilmesi
+çalışmalarına katılmak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>5) Çalışma Gücü ve Meslekte
+Kazanma Gücü Kaybı Oranı Yönetmeliğine göre meslek hastalığı ile ilgili sağlık
+kurulu raporlarını düzenlemeye yetkili hastaneler ile işbirliği içinde çalışmak,
+iş kazasına uğrayan veya meslek hastalığına yakalanan çalışanların
+rehabilitasyonu konusunda ilgili birimlerle işbirliği yapmak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>6) İş sağlığı ve güvenliği
+alanında yapılacak araştırmalara katılmak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>7) Gerekli yerlerde kullanılmak
+amacıyla iş sağlığı ve güvenliği talimatları ile çalışma izin prosedürlerinin
+hazırlanmasında iş güvenliği uzmanına katkı vermek.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>8) Bir sonraki yılda
+gerçekleştirilecek iş sağlığı ve güvenliğiyle ilgili faaliyetlerin yer aldığı
+yıllık çalışma planını iş güvenliği uzmanıyla birlikte hazırlamak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>9) İşyerinde görevli çalışan
+temsilcisi ve destek elemanlarının çalışmalarına destek sağlamak ve bu
+kişilerle işbirliği yapmak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>İşyeri hekiminin yetkileri</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 10</b> – (1) İşyeri
+hekiminin yetkileri aşağıda belirtilmiştir:</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) (<b>Mülga:RG-18/12/2014-29209) </b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) İşyerinde belirlediği hayati
+tehlikenin ciddi ve önlenemez olması ve bu hususun acil müdahale gerektirmesi
+halinde işin durdurulması için işverene başvurmak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) Görevi gereği işyerinin bütün
+bölümlerinde iş sağlığı ve güvenliği konusunda inceleme ve araştırma yapmak,
+gerekli bilgi ve belgelere ulaşmak ve çalışanlarla görüşmek.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>ç) Görevinin gerektirdiği
+konularda işverenin bilgisi dâhilinde ilgili kurum ve kuruluşlarla işyerinin iç
+düzenlemelerine uygun olarak işbirliği yapmak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) Tam süreli iş sözleşmesi ile
+görevlendirilen işyeri hekimleri, çalıştıkları işyeri ile ilgili mesleki
+gelişmelerini sağlamaya yönelik eğitim, seminer ve panel gibi organizasyonlara
+katılma hakkına sahiptir. Bu gibi organizasyonlarda geçen sürelerden bir yıl
+içerisinde toplam beş iş günü kadarı çalışma süresinden sayılır ve bu süreler
+sebebiyle işyeri hekiminin ücretinden herhangi bir kesinti yapılamaz.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>İşyeri hekiminin yükümlülükleri</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 11</b> – (1) İşyeri
+hekimleri, bu Yönetmelikte belirtilen görevlerini yaparken, işin normal akışını
+mümkün olduğu kadar aksatmamak ve verimli bir çalışma ortamının sağlanmasına
+katkıda bulunmak, işverenin ve işyerinin meslek sırları, ekonomik ve ticari
+durumları hakkındaki bilgiler ile çalışanın kişisel sağlık dosyasındaki bilgileri
+gizli tutmakla yükümlüdürler.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) İşyeri hekimleri, iş sağlığı
+ve güvenliği hizmetlerinin yürütülmesindeki ihmallerinden dolayı, hizmet
+sundukları işverene karşı sorumludur.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) (<b>Değişik:RG-18/12/2014-29209)</b>
+İşyeri hekimleri, işverene yazılı olarak bildirdikleri iş sağlığı ve
+güvenliğiyle ilgili alınması gereken tedbirlerden acil durdurma gerektiren
+haller ile yangın, patlama, göçme, kimyasal sızıntı gibi hayati tehlike arz
+edenleri, belirlenecek makul bir süre içinde işveren tarafından yerine getirilmemesi
+hâlinde, işyerinin bağlı bulunduğu çalışma ve iş kurumu il müdürlüğüne yazılı
+olarak bildirmekle yükümlüdürler. </p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(4) İşyeri hekimi,
+görevlendirildiği işyerinde yapılan çalışmalara ilişkin tespit ve tavsiyeleri
+ile işyeri hekiminin görevleri başlıklı dokuzuncu maddede belirtilen hususlara
+ait çalışmalarını, iş güvenliği uzmanı ile birlikte yapılan çalışmaları ve
+gerekli gördüğü diğer hususları onaylı deftere yazar.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(5) İşyeri hekimi, meslek
+hastalığı ön tanısı koyduğu vakaları, Sosyal Güvenlik Kurumu tarafından
+yetkilendirilen sağlık hizmeti sunucularına sevk eder.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>İşyeri hekimlerinin çalışma
+süreleri</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 12</b> – (1) (<b>Değişik:RG-18/12/2014-29209)</b>
+&nbsp;İşyeri hekimleri, bu Yönetmelikte belirtilen görevlerini yerine getirmek için
+aşağıda belirtilen sürelerde görev yaparlar:</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Az tehlikeli sınıfta yer
+alanlarda, çalışan başına ayda en az 5 dakika.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) Tehlikeli sınıfta yer
+alanlarda, çalışan başına ayda en az 10 dakika.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) Çok tehlikeli sınıfta yer
+alanlarda, çalışan başına ayda en az 15 dakika.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>&nbsp;(2) Az tehlikeli sınıfta yer
+alan 2000 ve daha fazla çalışanı olan işyerlerinde her 2000 çalışan için tam
+gün çalışacak en az bir işyeri hekimi görevlendirilir. Çalışan sayısının 2000
+sayısının tam katlarından fazla olması durumunda geriye kalan çalışan sayısı
+göz önünde bulundurularak birinci fıkrada belirtilen kriterlere uygun yeteri
+kadar işyeri hekimi ek olarak görevlendirilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) Tehlikeli sınıfta yer alan (<b>Değişik
+ibare:RG-18/12/2014-29209)</b> &nbsp;<u>1000 </u>ve daha fazla çalışanı olan
+işyerlerinde her (<b>Değişik ibare:RG-18/12/2014-29209)</b> &nbsp;<u>1000 </u>&nbsp;çalışan
+için tam gün çalışacak en az bir işyeri hekimi görevlendirilir. Çalışan
+sayısının (<b>Değişik ibare:RG-18/12/2014-29209)</b> <u>1000 </u>&nbsp;sayısının
+tam katlarından fazla olması durumunda geriye kalan çalışan sayısı göz önünde
+bulundurularak birinci fıkrada belirtilen kriterlere uygun yeteri kadar işyeri
+hekimi ek olarak görevlendirilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(4) Çok tehlikeli sınıfta yer alan
+(<b>Değişik ibare:RG-18/12/2014-29209)</b> &nbsp;<u>750 </u>ve daha fazla
+çalışanı olan işyerlerinde her (<b>Değişik ibare:RG-18/12/2014-29209)</b>
+&nbsp;<u>750 </u>çalışan için tam gün çalışacak en az bir işyeri hekimi
+görevlendirilir. Çalışan sayısının (<b>Değişik ibare:RG-18/12/2014-29209)</b>
+&nbsp;<u>750 </u>&nbsp;sayısının tam katlarından fazla olması durumunda geriye
+kalan çalışan sayısı göz önünde bulundurularak birinci fıkrada belirtilen
+kriterlere uygun yeteri kadar işyeri hekimi ek olarak görevlendirilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(5) İşyeri hekiminin
+görevlendirilmesinde sözleşmede belirtilen süre kadar işyerinde hizmet sunulur.
+Birden fazla işyeri ile kısmi süreli iş sözleşmesi yapıldığı takdirde bu
+işyerleri arasında yolda geçen süreler haftalık kanuni çalışma süresinden
+sayılmaz.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(6) (<b>Ek:RG-18/12/2014-29209)</b>
+Kamu kurum ve kuruluşlarında çalışan ve yöneticilik görevi bulunmayan tabipler
+ile aile hekimleri hariç diğer işyerlerinde çalışan işyeri hekimleri tam gün
+çalıştığı işyeri dışında fazla çalışma yapamaz.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>İşyeri hekimlerinin
+belgelendirilmesi</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 13</b> – (<b>Mülga:RG-18/12/2014-29209)</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>&nbsp;</b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>DÖRDÜNCÜ
+BÖLÜM</b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>Diğer
+Sağlık Personelinin Nitelikleri, Görev, Yetki ve Yükümlülükleri ile</b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>Çalışma
+Usûl ve Esasları</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Diğer sağlık personelinin
+nitelikleri ve görevlendirilmeleri</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 14</b> – (1) İşverence
+diğer sağlık personeli olarak görevlendirilecekler, bu Yönetmeliğe göre geçerli
+diğer sağlık personeli belgesine sahip olmak zorundadır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) Tam süreli işyeri hekimi
+görevlendirilen işyerlerinde, diğer sağlık personeli görevlendirilmesi zorunlu
+değildir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) Diğer sağlık personelinin
+görevlendirilmesinde, bu Yönetmeliğe göre hesaplanan çalışma süreleri bölünerek
+birden fazla kişiye verilemez.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(4) Vardiyalı çalışma yapılan
+işyerlerinde işveren tarafından vardiyalara uygun şekilde görevlendirme
+yapılır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Diğer sağlık personeli belgesi</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 15</b> – (1) Diğer sağlık
+personeli belgesi, 4 üncü maddenin birinci fıkrasının (b) bendinde belirtilen
+unvana sahip kişilerden;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Diğer sağlık personeli eğitim
+programını tamamlayan ve eğitim sonunda Bakanlıkça yapılacak veya yaptırılacak
+diğer sağlık personeli sınavında başarılı olanlara,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) İş sağlığı veya iş sağlığı ve
+güvenliği programlarında lisansüstü eğitimini tamamlayanlara,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) Genel Müdürlük ve bağlı
+birimlerinde 5 yıl fiilen çalışmış olanlara,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>istekleri halinde EK-4’teki
+örneğine uygun olarak Genel Müdürlükçe verilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Diğer sağlık personelinin
+görevleri</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 16</b> – (1) Diğer sağlık
+personeli işyeri hekimi ile birlikte çalışır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) Diğer sağlık personelinin
+görevleri aşağıda belirtilmiştir:</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) İş sağlığı ve güvenliği
+hizmetlerinin planlanması, değerlendirilmesi, izlenmesi ve yönlendirilmesinde
+işyeri hekimi ile birlikte çalışmak, veri toplamak ve gerekli kayıtları tutmak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) Çalışanların sağlık ve çalışma
+öykülerini işe giriş/periyodik muayene formuna yazmak ve işyeri hekimi
+tarafından yapılan muayene sırasında hekime yardımcı olmak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) Özel politika gerektiren
+grupların takip edilmesi ve gerekli sağlık muayenelerinin yaptırılmasını
+sağlamak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>ç) İlk yardım hizmetlerinin
+organizasyonu ve yürütümünde işyeri hekimi ile birlikte çalışmak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>d) Çalışanların sağlık eğitiminde
+görev almak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>e) İşyeri bina ve eklentilerinin
+genel hijyen şartlarının sürekli izlenip denetlemesinde işyeri hekimiyle
+birlikte çalışmak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>f) İşyeri hekimince verilecek iş
+sağlığı ve güvenliği ile ilgili diğer görevleri yürütmek.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>g) İşyerinde görevli çalışan
+temsilcisi ve destek elemanlarının çalışmalarına destek sağlamak ve bu
+kişilerle işbirliği yapmak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Diğer sağlık personelinin
+yetkileri</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 17</b> – (1) İşyerinde
+görevli diğer sağlık personelinin yetkileri aşağıda belirtilmiştir:</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Görevi gereği işyerinin bütün
+bölümlerinde iş sağlığı ve güvenliği konusunda inceleme ve araştırma yapmak,
+gerekli bilgi ve belgelere ulaşmak ve çalışanlarla görüşmek.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) Görevinin gerektirdiği
+konularda işveren ve işyeri hekiminin bilgisi dâhilinde ilgili kurum ve
+kuruluşlarla işyerinin iç düzenlemelerine uygun olarak işbirliği yapmak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) Tam süreli iş sözleşmesi ile
+görevlendirilen diğer sağlık personeli, çalıştığı işyeri ile ilgili mesleki
+gelişmelerini sağlamaya yönelik eğitim, seminer ve panel gibi organizasyonlara
+katılma hakkına sahiptir. Bu gibi organizasyonlarda geçen sürelerden bir yıl
+içerisinde toplam beş iş günü kadarı çalışma süresinden sayılır ve bu süreler
+sebebiyle diğer sağlık personelinin ücretinden herhangi bir kesinti yapılamaz.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Diğer sağlık personelinin
+yükümlülükleri</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 18</b> – (1) İşyerinde
+görevli diğer sağlık personeli, bu Yönetmelikte belirtilen görevlerini
+yaparken, işin normal akışını mümkün olduğu kadar aksatmamak ve verimli bir
+çalışma ortamının sağlanmasına katkıda bulunmak, işverenin ve işyerinin meslek
+sırları, ekonomik ve ticari durumları hakkındaki bilgiler ile çalışanın kişisel
+sağlık dosyasındaki bilgileri gizli tutmakla yükümlüdürler.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) İşyerinde görevli diğer sağlık
+personeli, iş sağlığı ve güvenliği hizmetlerinin yürütülmesindeki ihmallerinden
+dolayı, hizmet sundukları işverene karşı sorumludur.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) Diğer sağlık personeli,
+görevlendirildiği işyerinde iş sağlığı ve güvenliğine ilişkin tespit ve
+tavsiyelerini işyeri hekimine iletmekle yükümlüdür.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Diğer sağlık personelinin
+çalışma süreleri</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 19</b> – (1) Diğer sağlık
+personeli, bu Yönetmelikte belirtilen görevlerini yerine getirmek için aşağıda
+belirtilen sürelerde görev yaparlar:</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) (<b>Değişik:RG-18/12/2014-29209)</b>
+Çok tehlikeli sınıfta yer alan 10 ila 49 çalışanı olan işyerlerinde çalışan
+başına ayda en az 10 dakika.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) (<b>Değişik:RG-18/12/2014-29209)</b>
+Çok tehlikeli sınıfta yer alan 50 ila 249 çalışanı olan işyerlerinde çalışan
+başına ayda en az 15 dakika. </p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) (<b>Ek:RG-18/12/2014-29209)</b>
+Çok tehlikeli sınıfta yer alan 250 ve üzeri çalışanı olan işyerlerinde çalışan
+başına ayda en az 20 dakika.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) Tam süreli işyeri hekiminin
+görevlendirildiği işyerlerinde, diğer sağlık personeli görevlendirilmesi şartı
+aranmaz. Ancak, iş sağlığı ve güvenliği hizmetlerinin daha etkin sunulması
+amacıyla bu işyerlerinde, işyeri hekiminin talebi ve işverenin uygun görmesi
+halinde diğer sağlık personeli görevlendirilebilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) Diğer sağlık personelinin
+görevlendirilmesinde sözleşmede belirtilen süre kadar işyerinde hizmet sunulur.
+Birden fazla işyeri ile kısmi süreli iş sözleşmesi yapıldığı takdirde bu
+işyerleri arasında yolda geçen süreler haftalık kanuni çalışma süresinden
+sayılmaz.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Diğer sağlık personelinin
+belgelendirilmesi</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 20</b> – (<b>Mülga:RG-18/12/2014-29209)</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>&nbsp;</b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>BEŞİNCİ
+BÖLÜM</b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>Eğitim
+Kurumlarına İlişkin Hükümler</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Eğitim kurumu başvuru işlemleri</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 21</b> – (1) (<b>Değişik
+cümleler:RG-18/12/2014-29209)</b> Eğitim kurumu yetki belgesi almak amacıyla,
+e-devlet sistemi üzerinden başvuru yapar. e-devlet sisteminin iki günden fazla
+çalışmadığı durumlarda doğrudan veya posta yoluyla başvuru yapılabilir. Başvuru
+dosyasında aşağıda belirtilen ekler bulunur:</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Ticari şirketler için tescil
+edildiğini gösteren Ticaret Sicil Gazetesi.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b)<b> (Mülga:RG-6/7/2021-31533) </b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) Eğitim kurumunun sorumlu
+müdürünün eğitici belgesi ile;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>1) Ticari şirketler için tam
+süreli iş sözleşmesi ve kabul şerhli görevlendirme yazısı,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>2) Kamu kurum ve kuruluşları ve
+üniversiteler için tam süreli görevlendirme yazısı,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>3) Şirket ortağı olanlar, sorumlu
+müdür olarak da görev yapacaklar ise bu görevi yapacaklarına dair taahhütname.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>ç) Tam süreli olarak
+görevlendirilen eğiticilerin iş sözleşmeleri ve eğitici belgeleri.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>d) Faaliyet gösterilecek yere ait
+yapı kullanma izni belgesi.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>e) (<b>Değişik:RG-18/12/2014-29209)</b>
+Faaliyet gösterilecek yere ait tapu senedi ile birlikte kira sözleşmesi veya
+intifa hakkı belgesi.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>f) (<b>Değişik:RG-18/12/2014-29209)</b>
+Faaliyet gösterilecek yere ait olan ve yetkili makamlarca verilen ada, pafta,
+parsel bilgilerinin yer aldığı numarataj veya adres tespit belgesi.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>g) (<b>Değişik:RG-18/12/2014-29209)</b>
+Faaliyet gösterilecek yere ait olan ve bu Yönetmelikte belirtilen bütün
+bölümlerin yer aldığı inşaat teknikeri, mimar veya inşaat mühendisi tarafından
+onaylanmış 1/100 ölçekli plan.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>ğ) Tapu kütüğünde mesken olarak
+kayıtlı bir ana gayrimenkulün bağımsız bölümlerinde eğitim kurumunun faaliyet
+gösterebileceğine dair kat malikleri kurulunun oybirliğiyle aldığı karar
+örneği.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>h) (<b>Mülga
+ibare:RG-18/12/2014-29209) (…) </b>göre faaliyet gösterilecek yerde yangına
+karşı gerekli tedbirlerin alındığına ve bu yerde eğitim kurumu açılmasında
+sakınca olmadığına dair yetkili merciler tarafından verilen belge.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) Kamu kurum ve kuruluşları
+için, yalnızca birinci fıkranın (c) bendinin (2) numaralı alt bendiyle (<b>Değişik
+ibare:RG-18/12/2014-29209)</b> <u>(ç), (g) ve (h)</u> bentlerinde belirtilen
+belgeler istenir. Ancak eğitim verilecek mekân kamu kurumuna ait değilse (a) ve
+(b) bentleri hariç diğer bentlerde belirtilen belgeler istenir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) Üniversitelerin eğitim kurumu
+olarak yetkilendirilme taleplerinde başvuru rektörlükçe yapılır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(4) (<b>Mülga:RG-18/12/2014-29209)
+</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Eğitim kurumu yeri ve yerleşim
+planında aranacak şartlar</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 22</b> – (1) Eğitim
+kurumunun yer alacağı binada; meyhane, kahvehane, kıraathane, bar, elektronik
+oyun merkezleri gibi umuma açık yerler ile açık alkollü içki satılan yerler
+bulunamaz.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2<b>)
+(Değişik:RG-18/12/2014-29209) </b>Eğitim kurumlarının;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Faaliyet gösterecekleri mekânda
+bulunan derslik ve diğer tüm bölümlerinin arasındaki geçişlerin kurum
+içerisinden olması ve eğitim kurumunun bir bütünlük arz edecek şekilde
+düzenlenmesi,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) Eğitici veya sorumlu müdür
+odalarının diğer bölümlere geçiş için kullanılmaması, tuvalet ve lavabonun
+derslik içinde bulunmaması,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) Derslik kapılarının sadece
+koridor veya dinlenme yerine açılacak şekilde düzenlenmesi ve dersliklerin
+diğer bölümlere geçiş için kullanılmaması,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>gerekir. Kamu kurumları ve
+üniversitelerce kurulan eğitim kurumları için kurumun yerleşkesi içinde olmak
+koşuluyla bu Yönetmelikte belirtilen zorunlu mekânlar, birbirine uzaklığı en
+fazla 100 metre olan ayrı bölümlerden oluşabilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>&nbsp;(3) Genel Müdürlükten izin
+alınmadan, onaylanmış yerleşim planlarında herhangi bir değişiklik yapılamaz ve
+yerleşim planında belirtilen bölümler, amaçları dışında kullanılamaz.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(4) Eğitim kurumlarınca, EK-5’teki
+örneğine uygun, kurum unvanına göre hazırlanan ve boy/en oranı 2/3 olan tabela
+asılır. Aynı binada, Genel Müdürlükçe yetkilendirilen birden fazla kurum
+bulunması durumunda, kullanılacak tabela için Genel Müdürlük onayı alınması
+şartıyla, tüm unvanları gösteren tek bir tabela kullanılabilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Derslik ve diğer bölümlerde
+aranan şartlar</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 23</b> – (1) Dersliklerde
+bulunması gereken şartlar aşağıda belirtilmiştir:</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Dersliklerde 25’ten fazla
+kursiyer bulunamaz.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) Dersliklerde kursiyer başına en
+az 10 metreküp hava hacmi bulunur ve derslikler ile diğer bölümlerin tavan
+yükseklikleri 2,40 metreden az olamaz. Dört metre üzerinde olan yükseklikler
+hacim hesabında dikkate alınmaz.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) Derslik ve diğer bölümlerde
+bulunan pencerelerde; doğal havalandırmaya müsaade edecek şekilde binanın dış
+cephesinde olması, pencere alanının bulunduğu bölümün taban alanının %10 undan
+az olmaması ve dersliklerde pencerenin yerden yüksekliğinin 90 santimetreden
+fazla olmaması şartları aranır. (<b>Mülga cümle:RG-18/12/2014-29209) (…)</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>ç) Derslik kapılarının genişliği
+80 santimetreden az olamaz ve kapı kasasının içten içe ölçülmesiyle belirlenir.
+(<b>Ek cümle:RG-18/12/2014-29209) </b>Derslik kapıları, sadece koridor veya
+dinlenme yerine açılacak şekilde düzenlenir ve derslikler diğer bölümlere geçiş
+için kullanılamaz. Derslik kapıları dışa doğru açılmalı ve çift taraflı derslik
+bulunan koridorlarda karşılıklı açılmamalıdır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) Diğer bölümlerde bulunması
+gereken şartlar aşağıda belirtilmiştir:</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Sorumlu müdür odası, en az 10
+metrekare.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) Eğitici odası tek derslik için
+en az 15 metrekare, birden fazla dersliğin olması durumunda ise en az 25
+metrekare.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) Büro hizmetleri, arşiv ve dosya
+odası, en az 15 metrekare; ayrı ayrı olmaları hâlinde toplamı en az 20
+metrekare.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>ç) Her derslik için erkek ve kadın
+ayrı olmak üzere en az birer tuvalet ve lavabo.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) Dinlenme yeri, kurum içinde
+bağımsız bir bölüm hâlinde veya ayrı ayrı bölümlerden meydana gelebilir ve tek
+derslik için en az 20 metrekare, birden fazla dersliğin olması durumunda ise en
+az 35 metrekare olur. Alan hesabında yönetim ve eğitime ayrılan diğer bölümler
+ile balkon ve koridorlar dikkate alınmaz.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(4) Eğitimlerde günün
+teknolojisine uygun araç ve gereçler kullanılır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(5) Bölümlerin, alan (metrekare)
+veya hacim (metreküp) ölçümü sonucu çıkan küsuratlı rakamlar ile kontenjanlar
+belirlenirken 0,5 ve daha büyük çıkan küsuratlı rakamlar bir üst tam sayıya
+yükseltilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Aydınlatma, gürültü ve termal
+konfor şartları</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 24</b> – (1) Eğitim
+kurumlarının bölümlerinde yeterli aydınlatma ve termal konfor şartları
+sağlanır, gürültüye karşı gerekli önlemler alınır. Genel Müdürlükçe gerekli
+görülmesi halinde, durumun tespitine yönelik ölçümlerin yaptırılması
+istenebilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Eğitim kurumlarının eğitici
+kadrosu</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 25</b> – (<b>Değişik:RG-18/12/2014-29209)</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(1) Eğitim kurumları,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) İşyeri hekimliği ve diğer
+sağlık personeli eğitimi için; bu Yönetmelikte belirtilen eğitici belgesine
+sahip olan biri işyeri hekimi olmak üzere en az iki eğiticiyle 60 günden az
+olmamak üzere tam süreli iş sözleşmesi yapar. Sözleşmenin 60 günden önce
+eğitici tarafından feshedilmesi halinde; eğiticinin başka bir eğitim
+programında görevlendirilmesi 60 gün tamamlanmadan önce onaylanmaz. Sözleşmenin
+eğitim kurumu tarafından feshedilmesi halinde ise tam süreli yeni eğiticinin
+görevlendirilmesi 60 gün tamamlanıncaya kadar onaylanmaz ve yürümekte olan
+eğitim programları askıya alınır. Bütün eğitim programlarında tam süreli
+eğiticilerin yer alması zorunludur.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) İş güvenliği uzmanlığı, işyeri
+hekimliği ve diğer sağlık personeli eğitimi için bu Yönetmelikte belirtilen
+eğitici belgesine sahip olan biri işyeri hekimi olmak üzere ikisi hekim, biri
+mühendis diğeri farklı meslek dalından olmak üzere en az dört eğiticiyle 60
+günden az olmamak üzere tam süreli iş sözleşmesi yapar. Sözleşmenin 60 günden
+önce eğitici tarafından feshedilmesi halinde; eğiticinin başka bir eğitim
+programında görevlendirilmesi 60 gün tamamlanmadan önce onaylanmaz. Sözleşmenin
+eğitim kurumu tarafından feshedilmesi halinde ise tam süreli yeni eğiticinin
+görevlendirilmesi 60 gün tamamlanıncaya kadar onaylanmaz ve eğitim programı
+askıya alınır. Tam süreli eğiticiler eğitim programında yer almak zorundadır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Eğitim kurumlarının
+yetkilendirilmesi</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 26</b> –(<b>Değişik:RG-18/12/2014-29209)</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>&nbsp;(1) Eğitim kurumları
+tarafından yetki belgesi almak amacıyla yapılan başvuru Genel Müdürlükçe 10 iş
+günü içinde incelenir. 19/1/2013 tarihli ve 28533 sayılı Resmî Gazete’de
+yayımlanan Elektronik Tebligat Yönetmeliği çerçevesinde kayıtlı elektronik
+posta sistemi üzerinden veya yazılı olarak bildirilen eksiklikler 45 gün içinde
+tamamlanır. Herhangi bir eksikliği bulunmayan başvurular için 20 iş günü içinde
+yerinde inceleme yapılır. Yerinde inceleme işlemlerinde tespit edilen
+eksikliklerin giderilmesi için 45 gün süre verilir. Belirlenen sürelerde
+eksiklikler giderilmez ise dosya iade edilir ve iade tarihinden itibaren bir
+yıl boyunca yapılan başvurular, bir yılın tamamlanmasına kadar askıya alınır.
+Dosya üzerinde ve yerinde incelemeleri tamamlanan başvuruların, bu Yönetmelikte
+belirtilen şartları taşımaları halinde, dosyasında belirtilen adres ve unvana
+münhasıran, 10 iş günü içinde Genel Müdürlükçe EK-4’teki örneğine uygun yetki
+belgesi düzenlenir. Başka bir adreste şube açılmak istendiği takdirde, aynı
+usul ve esaslar dâhilinde, bu bölümde belirtilen şartların yerine getirilmesi
+kaydıyla şube için ayrıca yetki belgesi düzenlenir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) Kanuna göre, işyeri hekimliği
+veya iş güvenliği uzmanlığı eğitimi için yetki alan eğitim kurumu, her iki
+eğitim için de yetki almak istediğinde başvurusu tek belge olarak
+değerlendirilir ve “İşyeri Hekimliği ve İş Güvenliği Uzmanlığı Eğitim Kurumu”
+belgesi düzenlenir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) Bu Yönetmelikteki şartları
+yerine getirmeyen eğitim kurumlarına yetki belgesi düzenlenemez.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(4) Eğitim kurumları, Genel
+Müdürlükçe düzenlenen yetki belgesini almadıkça eğitim için katılımcı kaydı
+yapamaz ve eğitime başlayamazlar.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(5) Eğitim kurumları, aşağıda
+belirtilen hususlara uyarlar:</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Tabela ve basılı evrak, broşür,
+afiş ve internet ile diğer dijital ortamlarda herhangi bir amaçla kullanılan
+her türlü yazılı ve görsel dokümanda sadece yetki belgesinde belirtilen isim ve
+unvanlar kullanılır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) Özel kuruluşlar tarafından,
+kamu kurum ve kuruluşlarına ait olan isimler ticari isim olarak kullanılamaz.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(6) Eğitim kurumlarında, eğitici
+olarak, sadece bu Yönetmelikte belirtilen eğitici belgesine sahip olanlar görev
+alabilirler.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Vize işlemleri ve belgelendirme
+(Değişik başlık:RG-19/11/2015-29537) </b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 27</b> – (1) (<b>Değişik:RG-18/12/2014-29209)
+(Değişik cümle:RG-19/11/2015-29537) </b>Bu Yönetmelik kapsamında
+yetkilendirilen kişi ve kurumlara ait yetki belgelerinin beş yılda bir vize
+ettirilmesi zorunludur. Belge almak veya vize işlemlerini yaptırmak isteyen <b>(Ek
+ibare:RG-19/11/2015-29537)</b> <u>kişi ve</u> kurumların;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Bu Yönetmeliğin ilgili
+hükümlerine uygunluk sağlamaları,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) Bakanlıkça belirlenen belge
+veya vize bedelini ödemeleri,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>gereklidir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) (<b>Değişik:RG-18/12/2014-29209)
+</b>Yetkilendirilen kurumlar beş yılın tamamlanmasına en fazla 60 gün kala vize
+işlemleri için Genel Müdürlüğe müracaat eder. Yukarıda belirtilen süre içinde
+müracaat etmeyen kurumların eğitim programları, vize işlemleri tamamlanıncaya
+kadar onaylanmaz. Vize süresinin bitiminden itibaren üç ay içinde vize
+işleminin tamamlanmaması durumunda yetki belgesi Genel Müdürlükçe doğrudan
+iptal edilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) Eğitim kurumları, herhangi bir
+sebeple faaliyetlerini bırakmaları halinde 30 gün içinde yetki belgelerinin
+asıllarını Genel Müdürlüğe iade eder.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(4) Belgelendirme ve vize
+aşamasında gerçeğe aykırı belge ibraz ettiği veya beyanda bulunduğu sonradan
+tespit edilenlere ait belgeler Genel Müdürlükçe iptal edilir ve yetkili yargı
+mercilerine suç duyurusunda bulunulur.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(5) (<b>Ek:RG-18/12/2014-29209) </b>Eğitim
+kurumlarında adres değişikliği yapmadan önce e-devlet sistemi kullanılarak Genel
+Müdürlüğe başvurulur. Yeni adresin Genel Müdürlükçe onaylanmasına müteakip
+işlemler ilk başvuru hükümlerine tabi olarak yürütülür. Adres değişikliği
+işlemi tamamlanıncaya kadar hizmet vermek isteyen eğitim kurumları yetki aldığı
+mevcut adreste faaliyetine devam eder.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(6) (<b>Ek:RG-18/12/2014-29209) </b>Eğitim
+kurumlarında unvan değişikliği yapılması halinde 30 gün içinde yetki belgesinin
+yenilenmesi talebiyle e-devlet sistemi kullanılarak başvurulur. Unvan
+değişikliği yapılması halinde yetki belgesinin yenilenmesi için Bakanlıkça
+belirlenen belge bedelinin ödenmesi gereklidir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(7) <b>(Ek:RG-7/3/2016-29646)</b>
+Bu Yönetmelik kapsamında yapılan sınavlarda başarılı olarak belgelendirilen
+kişilerden, vize tarihinden önce Bakanlığa başvuru yapmayanların yetki
+belgeleri vize işlemleri tamamlanıncaya kadar askıya alınır. Vize işlemleri
+için Bakanlığa başvuruda bulunan kişilerin, vize tarihinden itibaren 60 gün
+içerisinde vize işlemlerini tamamlaması gerekir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(8) <b>(Ek:RG-28/2/2020-31053)</b>
+Eğitim kurumları yetkilendirildikleri adrese ilişkin resmi makamlarca tahliye
+veya yıkım kararı alınması ya da yıkık veya hasarlı raporu verilmesi
+durumlarında, yeni adrese taşındıktan sonra otuz gün içerisinde İSG-KÂTİP
+üzerinden Genel Müdürlüğe başvuru yapılır. Yapılan başvuru doksan gün içinde
+tamamlanır. Başvuru sürecine ilişkin diğer hususlar mevcut adres değişikliği
+hükümlerine tabi olarak yürütülür.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(9) <b>(Ek:RG-28/2/2020-31053)</b>
+Sekizinci fıkraya tabi olarak yapılan adres değişikliğinde adres değişikliği
+bedeli ödenmez.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Eğitim kurumlarının görev,
+yetki ve sorumlulukları</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 28</b> – (1) Eğitim
+kurumları;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Eğitim hizmetlerinin bir
+kısmını veya tamamını başka bir kişi veya kuruma devredemezler.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) (<b>Değişik:RG-18/12/2014-29209)
+</b>Çalışanların iş sağlığı ve güvenliği eğitimleri ile katılımcılar için
+verilen tekrar ve hazırlık eğitimleri hariç yetki belgesini veriliş amacı
+dışında kullanamazlar. </p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) Eğitim kurumlarında tam veya
+kısmi süreli iş sözleşmesi ile görevlendirilen eğiticilerle ilgili sosyal
+güvenlik mevzuatından doğan bildirim ve prim ödeme gibi yükümlülüklerin yerine
+getirilmesi eğitim kurumlarınca sağlanır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) (<b>Değişik:RG-18/12/2014-29209)
+</b>Şirket ortaklarında değişiklik olması halinde, durum 30 gün içerisinde
+Genel Müdürlüğe bildirilir. Yeni şirket ortaklarının ilgili mevzuat hükümlerinde
+belirtilen şartlara uygun olmaması halinde durumun düzeltilmesi amacıyla Genel
+Müdürlükçe şirkete 30 gün süre verilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(4) (<b>Değişik:RG-18/12/2014-29209)
+</b>Eğitim kurumları, işyeri hekimi veya diğer sağlık personeli olma şartlarını
+taşımayan kişileri eğitim programlarına kayıt edemezler.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>&nbsp;(5) Eğitim kurumları,
+başvuru esnasında adaylardan katılacakları programın gerektirdiği şartları
+karşıladığını gösteren belgeleri istemek ve bu belgelerin sorumlu müdür
+tarafından onaylanmış bir örneğini beş yıl süreyle her bir aday için açılan
+dosyada saklamak zorundadır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(6) Tam süreli iş sözleşmesiyle
+görevlendirilen eğiticilerden biri, sorumlu müdür olarak atanır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(7) Eğitim programı süresince
+sorumlu müdür kurumda hazır bulunur. Sorumlu müdürün bu süre boyunca kurumda
+bulunmadığı durumlarda, tam süreli iş sözleşmesiyle görevlendirilen
+eğiticilerden birisinin sorumlu müdüre vekâlet amacıyla kurumda bulunması
+sağlanır. Vekâlet eden eğitici, sorumlu müdür tarafından yapılması gereken her
+türlü iş ve işlemin yapılmasını sağlar ve görevi süresince Genel Müdürlükçe
+sorumlu müdür olarak kabul edilir. Sorumlu müdür veya vekilinin mevzuat
+hükümlerine aykırı davranışlarından ve görev ve sorumluluklarını yerine
+getirmesinden eğitim kurumu tüzel kişiliği sorumludur.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(8) Eğitim kurumunda sorumlu müdür
+olarak görevlendirilen kişinin değişmesi veya bu kişinin görevinden ayrılması
+durumunda, 30 iş günü içerisinde yeni sorumlu müdür atanır ve durum Genel
+Müdürlüğe yazıyla (<b>Ek ibare:RG-18/12/2014-29209) </b>&nbsp;<u>veya e-devlet
+sistemi üzerinden </u>bildirilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(9) Eğitim kurumlarında görev
+yapan eğiticilerin işten ayrılması halinde üç işgünü içinde durum İSG-KATİP
+üzerinden eğitim kurumu tarafından bildirilir. 30 gün içerisinde tam süreli
+görevlendirilme zorunluluğu bulunan eğiticilerin yerine aranan niteliklere
+sahip personel görevlendirilmesi ve İSG-KATİP üzerinden Genel Müdürlüğe
+bildirilmesi zorunludur.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(10) Genel Müdürlüğe bildirilen
+eğitici sözleşmeleri, sözleşme hükümlerine aykırı olmayacak şekilde, eğitim
+kurumlarınca veya eğiticilerce tek taraflı feshedilene kadar, sözleşme
+süresince geçerlidir. Süresi dolan sözleşmelerin İSG-KATİP üzerinden
+yenilenmesi durumu yazılı bildirim olarak kabul edilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(11) Eğiticiler, görev aldıkları
+kurumların eğitim programlarında, söz konusu kurumla düzenleyerek Genel
+Müdürlüğe bildirilmiş olan sözleşmede belirtilen toplam görev süresinden fazla
+görevlendirilemez. Bu hükmün uygulanması eğiticiler tarafından, takibi ise
+kurumun sorumlu müdürü tarafından yürütülür.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(12) Eğitim kurumlarınca,
+adayların yüz yüze derslere devam durumunu gösteren çizelge EK-7’deki örneğine
+uygun şekilde günlük olarak düzenlenir ve ders başlangıcında derslikte hazır
+bulundurulur. (<b>Mülga cümle:RG-18/12/2014-29209) (…) </b>(<b>Mülga
+cümle:RG-18/12/2014-29209) (…)</b> Devam çizelgeleri eğitim kurumlarınca beş
+yıl süreyle saklanır ve istenmesi halinde kontrol ve denetime yetkili memurlara
+ibraz edilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(13) Eğitimi tamamlayan adaylara
+eğitim kurumları tarafından, EK-8’deki örneğine uygun eğitim katılım belgesi
+düzenlenir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(14) Bu Yönetmelikte eğitim kurumlarınca
+düzenlenmesi gerektiği belirtilen her türlü belge ve bildirimin doğruluğundan
+eğitim kurumları sorumludur.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(15) Bu Yönetmelikte belirtilen
+tabela hariç olmak üzere, eğitim kurumunun hiçbir evrak ve dokümanında Bakanlık
+logosu veya unvanı kullanılamaz.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(16) <b>(Ek:RG-7/3/2016-29646)<sup>
+</sup>&nbsp;</b>Onaylanmış programın yüz yüze eğitimleri devam ederken eğitim
+saatleri içerisinde eğitim kurumunun kapalı olması durumunda; denetimin
+yapıldığı gün eğitim verilmediği, eğitim programına kayıtlı olan katılımcıların
+tam gün devamsızlık yaptığı kabul edilir ve ayrıca ilgili eğitim kurumuna ihtar
+puanı uygulanır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Sorumlu müdürün görev ve
+sorumlulukları</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 29</b> – (1) Eğitim
+kurumu sorumlu müdürünün görev ve sorumlulukları aşağıda belirtilmiştir:</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Bakanlığa elektronik ortam, e-posta,
+yazı veya faks gibi araçlar vasıtasıyla gönderilmesi gereken her türlü bilgi ve
+belgeyi hazırlamak ve göndermek.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) Eğitim programlarının
+onaylanmış şekliyle uygulanmasını (<b>Değişik ibare:RG-18/12/2014-29209) </b><u>takip
+etmek</u>.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) Devam çizelgeleri ile eğitim
+katılım belgesinin usulüne uygun şekilde düzenlenmesini sağlamak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>ç) (<b>Ek:RG-18/12/2014-29209)</b>
+Günlük olarak, programa ait derslerin tamamının bitiminde katılımcı devam
+çizelgelerinin kontrolünü sağlamak ve imza altına almak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>d) (<b>Ek:RG-18/12/2014-29209) </b>Bu
+Yönetmelikte belirtilen diğer görevleri yapmak.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) Eğitim kurumlarınca talep
+edilen veya bildirilen her türlü bilgi ve belgeye ilişkin iş ve işlemlerde
+Genel Müdürlük tarafından sadece sorumlu müdür muhatap kabul edilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Eğitim programları</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 30</b> – (<b>Değişik:RG-18/12/2014-29209)</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(1) Eğitim kurumları eğitime
+başlayabilmek için; Komisyonca belirlenen müfredat esas alınarak hazırlanan ve
+eğitim verilecek konulara uygun eğiticiler ile teorik eğitim programını ve
+eğitime katılacakların listesini eğitimin başlangıç tarihinden en az üç iş günü
+önce Genel Müdürlüğe elektronik ortamda bildirirler. Bildirimden sonra
+katılımcı bilgilerine müdahale edilemez ve düzeltmeye ilişkin talepte
+bulunulamaz.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) Genel Müdürlükçe onaylanmamış
+programlarla eğitime başlanamaz. Onaylanmamış programla eğitime başlanması
+halinde doğacak hukuki sonuçlardan eğitim kurumları sorumludur.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) Yetkilendirilmiş eğitim
+kurumlarının 25 inci maddede belirtilen zorunlu eğitici kadrosuna ilişkin
+hükümleri yerine getirmemeleri durumunda, ilgili kurumlara eksikliklerini
+gidermeleri için 30 gün süre verilir. Verilen süre içerisinde zorunlu eğitici
+kadrosunu tamamlamayan kurumların eğitim programları Genel Müdürlükçe
+onaylanmaz.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(4) Eğitim Kurumları, eğitim
+programının unsurlarından olan uygulamalı eğitimlerin yapılacağı işyerlerinin
+listesini ve eğitim tarihlerini, teorik eğitimin bitişinden itibaren yapılacak
+ilk sınavdan önce Genel Müdürlükçe ilan edilecek tarihe kadar İSG-KATİP
+üzerinden bildirmekle yükümlüdür.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(5) Adaylar, teorik eğitimde mazeretli
+veya mazeretsiz en fazla altı ders saati devamsızlık hakkına sahiptir. Ancak
+uygulamalı eğitimin tamamına katılım zorunludur. Katılım zorunluluğuna
+aykırılığın tespiti halinde kişi hakkında belge düzenlenmiş olsa dahi 39 uncu
+maddenin ikinci fıkrası hükümleri gereğince belgeleri iptal edilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(6) Genel Müdürlükçe onaylanmış
+olan eğitim programının hiçbir unsurunda değişiklik yapılamaz. Ancak, sebebinin
+Genel Müdürlüğe e-devlet sistemi üzerinden aynı gün bildirilmesi ve yeni
+eğiticinin müfredatta belirlenen niteliklere uygun olması şartıyla sadece
+programda görevli eğiticilerde değişiklik yapılabilir. e-devlet sisteminin
+çalışmadığı durumlarda bildirimler faks yoluyla veya yazılı olarak yapılır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(7) Uzaktan eğitim tamamlanmadan
+yüz yüze eğitim başlatılamaz. İşyeri hekimleri için yüz yüze eğitim
+tamamlanmadan uygulamalı eğitim başlatılamaz ve uygulamalı eğitim dahil
+programın tümü tamamlanmadan adaylar sınava katılamazlar.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Eğitim programlarına başvuru</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 31</b> – (1) Eğitim
+programlarına katılmak isteyen adaylar eğitim kurumlarına aşağıdaki belgeler
+ile başvururlar:</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Başvuru yapılan eğitim kurumuna
+hitaben yazılan, adayın hangi eğitim programına katılacağını belirten ve T.C.
+kimlik numarası ile iletişim bilgilerini içeren ıslak imzalı başvuru yazısı.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) Adayın katılacağı eğitim
+programına uygun alanda eğitime sahip olduğunu gösteren diploma veya geçici
+mezuniyet belgesi.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) (<b>Mülga:RG-18/12/2014-29209) </b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>ç) (<b>Mülga:RG-18/12/2014-29209)</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) Adayların eğitim programlarına
+katılabilmesi için, ilgili eğitim programının başlangıç tarihinden önce
+eğitimini tamamlamış ve bu eğitime ilişkin mezuniyet diploması alabilecek
+yeterliliğe sahip olmaları gerekmektedir. Bu duruma ilişkin gerekli inceleme,
+başvuru yapılan eğitim kurumu tarafından yapılır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) Yukarıda belirtilen belgelerin
+aslı ile birlikte örneğinin getirilmesi halinde eğitim kurumları tarafından
+tasdiki yapılır. Başvuru sırasında gerçeğe aykırı belge ve beyanda bulunduğu
+tespit edilenlerin başvuruları reddedilir. Bu durumun sonradan tespiti halinde
+eğitim, sınav ve belgeleri geçersiz sayılır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(4) Bu Yönetmelikte belirtilen
+çalışma sürelerinin tespitinde Sosyal Güvenlik Kurumu kayıtları, diploma veya
+mezuniyet belgelerinin doğruluğunun tespitinde Millî Eğitim Bakanlığı veya
+Yükseköğretim Kurulu kayıtları esas alınır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>&nbsp;</b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>ALTINCI
+BÖLÜM</b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>(Değişik
+bölüm başlığı:RG-18/12/2014-29209)</b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>İşyeri
+Hekimlerinin ve Diğer Sağlık Personelinin Eğitimleri, Sınavları ve
+Belgelendirilmeleri</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>İşyeri hekimlerinin eğitimleri</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 32</b> – (1) İşyeri
+hekimlerinin eğitim programları teorik ve uygulamalı olmak üzere iki bölümden
+oluşur ve programın içeriği ile programda görevli eğiticilerin nitelikleri
+Genel Müdürlükçe belirlenir. Eğitim programının süresi, teorik kısmı 180
+saatten, uygulama kısmı 40 saatten ve toplamda 220 saatten az olamaz ve bu
+kısımlar ancak tek bir program dâhilinde uygulanabilir. Teorik eğitimin en
+fazla yarısı uzaktan eğitim ile verilebilir. Uygulamalı eğitimler, işyeri
+hekimleri için en az bir işyeri hekiminin görevlendirilmiş olduğu işyerlerinde
+yapılır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) <b>(Ek:RG-16/4/2020-31101)</b>
+Salgın hastalık ve doğal afet gibi mücbir sebepler nedeniyle işyeri hekimliği
+eğitim programının teorik kısmının tamamının uzaktan eğitim ile verilmesine
+karar vermeye Bakanlık yetkilidir. Bu karar İSG-KATİP&nbsp;üzerinden ilân
+edilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Diğer sağlık personelinin
+eğitimleri</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 33</b> – (1) Diğer sağlık
+personelinin eğitim programları uzaktan ve yüz yüze eğitim şeklinde uygulanır
+ve programın içeriği ile programda görevli eğiticilerin nitelikleri <b>(Değişik
+ibare:RG-18/12/2014-29209) </b><u>Komisyonca</u> belirlenir. Eğitim programının
+süresi 90 saatten az olamaz. Teorik eğitimin en fazla yarısı uzaktan eğitim ile
+verilebilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) <b>(Ek:RG-18/12/2014-29209) </b>Diğer
+sağlık personeli eğitimlerini verebilecek kamu kurumlarının kendi kanunlarından
+doğan hakları saklıdır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) <b>(Ek:RG-16/4/2020-31101)</b>
+Salgın hastalık ve doğal afet gibi mücbir sebepler nedeniyle diğer sağlık
+personeli eğitim programının teorik kısmının tamamının uzaktan eğitim ile
+verilmesine karar vermeye Bakanlık yetkilidir. Bu karar İSG-KATİP&nbsp;üzerinden
+ilân edilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Yenileme eğitimleri</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 34</b> – (<b>Mülga:RG-18/12/2014-29209)
+</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Sınavlar</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 35</b> – (1) <b>(Değişik:RG-18/12/2014-29209)
+</b>Eğitim programlarını tamamlayan adayların sınavları Bakanlıkça yapılır veya
+yaptırılır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) <b>(Değişik:RG-18/12/2014-29209)
+</b>Adaylardan 8 inci madde gereğince eğitim ve sınav şartı arananlar ancak
+eğitim programını tamamladıktan sonra düzenlenecek sınavlara katılabilirler.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) <b>(Değişik:RG-18/12/2014-29209)
+</b>Doğrudan sınava girme hakkı tanınan adayların, sınavlara katılabilmeleri için
+Genel Müdürlüğe yapılacak son başvuru tarihinden önce mezun olmaları
+gereklidir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>&nbsp;(4) Sınavlarda 100 puan
+üzerinden <b>(Değişik ibare:RG-7/3/2016-29646)<sup> </sup></b><u>&nbsp;işyeri
+hekimliği için en az 70, diğer sağlık personeli için en az 60 puan </u>alan
+adaylar başarılı sayılır, sınav sonuçlarına itirazlar sınavı düzenleyen kurum
+tarafından sonuçlandırılır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>İşyeri hekimlerinin
+belgelendirilmesi</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 35/A
+–(Ek:RG-18/12/2014-29209)</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>&nbsp;</b>(1) İşyeri hekimliği
+belgesi almaya hak kazanan adayların belgeleri e-devlet sistemine geçildikten
+sonra Genel Müdürlükçe elektronik olarak düzenlenir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) Adaylar, belgelerinin
+düzenlenebilmesi için bu Yönetmelikteki şartları yerine getirdiklerine dair
+belge ve bilgileri elektronik ortamda Genel Müdürlüğe bildirmekle yükümlüdür.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) Genel Müdürlüğe bildirilen
+belge ve bilgilerin doğruluğundan adaylar sorumludur.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Diğer sağlık personelinin
+belgelendirilmesi</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 35/B –</b> <b>(Ek:RG-18/12/2014-29209)</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(1) Diğer sağlık personeli belgesi
+almaya hak kazanan adayların belgeleri e-devlet sistemine geçildikten sonra
+Genel Müdürlükçe elektronik olarak düzenlenir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) Adaylar, belgelerinin
+düzenlenebilmesi için bu Yönetmelikteki şartları yerine getirdiklerine dair
+belge ve bilgileri elektronik ortamda Genel Müdürlüğe bildirmekle yükümlüdür.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) Genel Müdürlüğe bildirilen
+belge ve bilgilerin doğruluğundan adaylar sorumludur.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>&nbsp;</b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>YEDİNCİ
+BÖLÜM</b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>Eğiticiler
+ve Belgelendirme</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>İşyeri hekimliği ve iş
+güvenliği uzmanlığı eğitici belgesi ile diğer sağlık personeli eğitici belgesi</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 36</b> – (1) İşyeri
+hekimliği ve iş güvenliği uzmanlığı eğitici belgesi;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Pedagojik formasyona veya
+eğiticilerin eğitimi belgesine sahip olan;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>1) En az beş yıl işyeri hekimliği
+yaptığını belgeleyen işyeri hekimlerine,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>2) En az 5 yıllık mesleki tecrübeye
+sahip iş sağlığı ve güvenliği veya iş sağlığı programında doktora yapmış
+hekimlere,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>3) En az beş yıl teftiş yapmış
+hekim iş müfettişleri ile Genel Müdürlük ve bağlı birimlerinde en az beş yıl
+fiilen görev yapmış hekimlere,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>4) İş ve meslek hastalıkları ya da
+işyeri hekimliği yan dal uzmanlarına veya meslek hastalıkları hastanelerinde üç
+yıl çalışmış olan hekimlere,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) <b>(Değişik:RG-18/12/2014-29209)
+</b>Komisyonca belirlenen eğitim müfredatına göre üniversitelerde en az dört
+yarıyıl ders verdiğini belgeleyen ve bu belgeleri uygun görülen öğretim
+üyelerinden; hukuk fakültesi mezunları ile hekim, mühendis, mimar, fizikçi,
+kimyager, biyolog, teknik öğretmenlere,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>başvurmaları halinde, EK-9’daki
+örneğine uygun olarak düzenlenir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) Diğer sağlık personeli eğitici
+belgesi;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Diğer sağlık personeli
+tanımında belirtilen unvanlara ve pedagojik formasyona veya eğiticilerin
+eğitimi belgesine sahip olanlardan;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>1) En az beş yıllık mesleki
+tecrübeye sahip iş sağlığı ve güvenliği veya iş sağlığı programında doktora
+yapmış olanlara,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>2) Genel Müdürlük ve bağlı
+birimlerinde en az beş yıl fiilen görev yapmış olanlara,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>3) Meslek hastalıkları
+hastanelerinde en az üç yıl görev yapmış olanlara,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) Üniversitelerde Genel
+Müdürlükçe ilan edilen diğer sağlık personeli eğitim programına uygun, en az
+dört yarıyıl ders veren öğretim üyelerine</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>başvurmaları halinde, EK-10’daki
+örneğine uygun diğer sağlık personeli eğitici belgesi düzenlenir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) <b>(Değişik:RG-18/12/2014-29209)
+</b>Bu Yönetmelik kapsamında işyeri hekimliği ve iş güvenliği uzmanlığı eğitici
+belgesi sahiplerinden, müfredatta belirtilen niteliklere uygun olanlar işyeri
+hekimliği, iş güvenliği uzmanlığı ve diğer sağlık personeli eğitim
+programlarında görev alabilir. Diğer sağlık personeli eğitici belgesi
+sahiplerinden, müfredatta belirtilen niteliklere uygun olanlar sadece diğer
+sağlık personeli eğitim programlarında görev alabilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Eğiticilerin görev ve
+sorumlulukları</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 37</b> – (1) 36 ncı
+maddeye göre eğitici belgesi almış olanlar, Genel Müdürlükçe belirlenecek
+eğitim müfredatında kendilerine verilen görevleri yerine getirir ve müfredatta
+belirtilen konu içeriklerinin tamamının derslerde ele alınmasını ve öğrenim
+hedeflerine ulaşılmasını sağlar.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) Eğitim kurumlarında görevli
+olan eğiticiler, Bakanlığa bildirilen sözleşmelerde belirtilen sürelerden fazla
+görev alamaz.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) Eğitim kurumunda tam süreli
+olarak görevlendirilen eğiticiler, işyerlerinde iş güvenliği uzmanı, işyeri
+hekimi veya diğer sağlık personeli unvanıyla veya başka bir eğitim kurumunda
+eğitici unvanıyla görev alamaz.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(4)<b>(Ek:RG-18/12/2014-29209) </b>Her
+dersin tamamlanmasının ardından, imza çizelgelerinin devamsızlık nedeniyle boş
+kalan kısımları dersin eğiticisi tarafından anlaşılır şekilde doldurulur ve
+imza altına alınır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Eğiticilerin belgelendirilmesi</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 38</b> – (1) İşyeri
+hekimliği ve iş güvenliği uzmanlığı eğitici belgesi veya diğer sağlık personeli
+eğitici belgesi alma niteliklerine sahip olup, bu belgeyi almak isteyenlerin
+başvurularının değerlendirilebilmesi amacıyla; pedagojik formasyon veya
+eğiticilerin eğitimi belgesi ile <b>(Değişik ibare:RG-18/12/2014-29209)</b> <u>36
+ncı</u> maddede belirtilen nitelikleri haiz olduklarını gösteren belgeleri,
+Genel Müdürlüğe hitaben yazılmış dilekçe ekinde şahsen veya posta yoluyla Genel
+Müdürlüğe teslim etmesi gerekmektedir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) Üniversitelerde Genel
+Müdürlükçe ilan edilen eğitim programlarına uygun alanlarda ders verenlerin bu
+durumlarını gösteren belgelerinde, rektör onayı şartı aranır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) Bu madde uyarınca ibraz
+edilmesi gereken belgelerin aslı ile birlikte bir örneğinin getirilmesi halinde
+Genel Müdürlükçe tasdiki yapılır ve şahsen ibraz edilmesi gereken belgelerin
+doğruluğundan belge sahipleri sorumludur.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>&nbsp;</b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>SEKİZİNCİ
+BÖLÜM</b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>Çeşitli
+ve Son Hükümler</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Genel Müdürlüğün görev, yetki
+ve sorumlulukları ile denetim <span class=grame><span style='color:black'>(Değişik
+başlık:RG-4/2/2024-32450)</span></span> </b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 39</b> – (1) <span class=grame><b><span style='color:black'>(Değişik:RG-4/2/2024-32450)</span></b></span>
+Genel Müdürlük; eğitimlerin etkin ve verimli bir şekilde verilip verilmediğinin
+izlenmesi amacıyla kendi görev ve yetki alanına giren konularda eğitim
+kurumlarını, eğiticileri ve sorumlu müdürleri, yetki alınan mekânı, yerinde
+veya dijital altyapı vasıtasıyla uzaktan erişim yoluyla kontrol eder ve denetler.
+Bu kontrol ve denetimler, Genel Müdürlükte görevli çalışma uzmanı ve çalışma
+uzman yardımcıları, mühendis, fizikçi, kimyager, biyolog ve tabipler tarafından
+yerine getirilir. Denetimlerde tespit edilen ihlallere göre bu Yönetmelikte yer
+alan idari yaptırımların uygulanması hususunda denetim personeli tutanak tutar
+ve rapor hazırlar. Tutanak ve raporlar, denetim personelince Genel Müdürlüğe
+teslim edilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) Yetkilendirme ve belgelendirme
+aşamalarında gerçeğe aykırı belge ibraz edildiği veya beyanda bulunulduğunun bu
+aşamalarda veya daha sonradan tespiti halinde düzenlenen belgeler Genel
+Müdürlükçe doğrudan iptal edilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) Eğitim kurumlarınca yürütülen
+her türlü iş ve işleme ilişkin takip, kontrol, izleme, onay verme, başvuru alma
+gibi faaliyetler, yazılı olarak gerçekleştirilebileceği gibi, elektronik sistemler
+vasıtasıyla da yürütülebilir. Bu konuda düzenleme yapmaya Genel Müdürlük
+yetkilidir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(4) Belgesinin geçerliliği askıya
+alınanlar ve doğrudan iptal edilenlere Genel Müdürlükçe yazılı bildirim yapılır
+ve Genel Müdürlük internet sayfasında ilan edilir. Belgesinin geçerliliği
+askıya alınan kişi ve kurumların belgelerini tekrar kullanabilmeleri için Genel
+Müdürlük onayının alınması zorunludur.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(5) (<b>Mülga:RG-18/12/2014-29209)
+</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(6) (<b>Mülga:RG-18/12/2014-29209)</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>İhlaller ve ihtar puanı
+uygulanması</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 40</b> – (1) <b>(Değişik
+ibare:RG-18/12/2014-29209) </b><u>41 inci</u> maddede yer alan yetki belgesinin
+geçerliliğinin doğrudan iptalini gerektiren durumların dışındaki ihlallerde,
+EK-11 ve EK-12’de belirtilen ihtar puanları uygulanır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) Bir takvim yılı içinde hafif
+ihlallerin ihtar puanlarının toplamının 30’a, orta ihlallerin ihtar puanlarının
+toplamının 60’a ulaşması durumunda kişi ve kurumların o yıl içinde
+işleyecekleri diğer hafif ve orta ihlaller bir üst derecenin tavan puanı esas
+alınarak uygulanır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) Beş yıllık sürenin sonunda
+vize işlemini tamamlayan kişi ve kurumların; uygulanmasının üzerinden en az bir
+yıl geçmiş olan tüm ihtar puanları silinir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(4) <b>(Ek:RG-18/12/2014-29209) </b>Bu
+Yönetmelik uyarınca kişi ve kurumlara uygulanan ihtar puanlarına ilişkin
+itirazlar, işlemin tebliğ tarihinden itibaren en geç 10 iş günü içinde Genel
+Müdürlüğe yapılır. Bu süreden sonra yapılacak itirazlar dikkate alınmaz.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Yetkilerin askıya alınması,
+iptali ve itiraz</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 41 –(Başlığı ile birlikte
+değişik:RG-18/12/2014-29209)</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(1) Bu Yönetmelik uyarınca
+yetkilendirilen veya belgelendirilen kişi ve kurumların belgelerinin
+geçerliliği ihtar puanları toplamının, kişiler için 100, kurumlar için 200
+puana ulaşması durumunda altı ay süreyle askıya alınır. Sorumlu müdür ve
+eğiticilere verilen ihtar puanları kişinin sadece eğitici belgesine uygulanır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) Çalışanın ölümü veya
+maluliyetiyle sonuçlanacak şekilde vücut bütünlüğünün bozulmasına neden olan iş
+kazası veya meslek hastalığının meydana gelmesinde ihmali yargı kararı ile
+kesinleşen işyeri hekiminin belgesi altı ay süreyle askıya alınır. Belgesi
+askıya alınan işyeri hekiminin İSG-KATİP sistemi üzerindeki mevcut tüm
+sözleşmeleri, askıya alınma sürecinin başlangıcından itibaren herhangi bir
+işleme gerek kalmaksızın iptal edilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) Yetki belgelerinin geçerliliği
+askıya alınan kişi ve kurumlar askıya alınma süresince bu Yönetmelik
+kapsamındaki yetkilerini kullanamazlar. Ancak, yetki belgesinin geçerliliği
+askıya alınan veya belgesi doğrudan iptal edilen eğitim kurumunun faaliyeti
+onaylanmış eğitim programları bitinceye kadar devam eder. Askıya alınma süresi,
+programın bitiminde başlar. Yetki belgesi doğrudan iptal edilen kurumlar
+taahhüt ettikleri hizmetleri herhangi bir ek ücret talep etmeden bir başka
+eğitim kurumundan temin etmek zorundadırlar.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(4) Yetki belgesinin
+geçerliliğinin askıya alınması veya doğrudan iptali durumunda önceden yapılan
+aday kayıt işlemlerinden doğan hukuki sonuçlardan iptal edilen veya geçerliliği
+askıya alınan yetki belgesi sahipleri sorumludur.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(5) Bu Yönetmelik uyarınca yetkilendirilen
+kişi veya eğitim kurumlarında aşağıdaki durumlardan birinin varlığının tespiti
+halinde ilgili kişi, eğitim kurumu merkezi veya şubesine verilen yetki
+belgesinin geçerliliği;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Bu Yönetmelik gereği düzenlenen
+evrakın gerçeğe aykırılığının tespiti halinde üç ay,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) Şirket ortaklarının
+uygunsuzluğunun ilgili kuruma bildirilmesine rağmen durumun 30 gün içerisinde
+düzeltilmemesi halinde üç ay,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) Yetki aldığı adres dışında
+hizmet vermeleri veya irtibat bürosu açmaları halinde altı ay,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>ç) Sunmakla yükümlü oldukları
+hizmetlerin tamamını veya bir kısmını devretmeleri halinde altı ay,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>d) Genel Müdürlükten onay
+alınmadan adres değişikliği yapılması veya unvan değişikliği ile ilgili
+bildirim yükümlülüğünü 30 gün içinde yerine getirmemesi halinde bir yıl,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>süreyle askıya alınır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(6) Bu Yönetmelik uyarınca
+yetkilendirilen kişi veya eğitim kurumlarında aşağıdaki durumlardan birinin
+varlığının tespiti halinde ilgili kişi, eğitim kurumu merkezi veya şubesine
+verilen yetki belgesinin geçerliliği;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Bir vize döneminde eğitim
+kurumunun yetki belgesinin üç defa askıya alınması,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) Belgesi askıda olan kişi ve
+kurumların bu süre içinde faaliyetleri ile ilgili sözleşme yaptıklarının veya
+hizmet vermelerinin tespiti,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) 21 inci maddede istenen başvuru
+evraklarından herhangi birinin gerçeğe aykırılığının tespiti,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>halinde doğrudan iptal edilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(7) Yetki belgesi iptal edilen
+kişiler ve eğitim kurumları ile bu kurumlarda kurucu veya ortak olanların
+başvuruları, iptal tarihinden itibaren iki yılın tamamlanmasına kadar askıya
+alınır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(8) Bu Yönetmelik uyarınca kişi ve
+kurumlara uygulanan yetki belgesinin askıya alınması veya iptaline ilişkin
+itirazlar, işlemin tebliğ tarihinden itibaren en geç 10 iş günü içinde Genel
+Müdürlüğe yapılır. Bu süreden sonra yapılacak itirazlar dikkate alınmaz.
+Kesinleşen yargı kararı ile belgesi askıya alınan <u>işyeri hekimleri</u>,<sup>(2)</sup>
+bu maddede belirtilen itiraz hakkından yararlanamazlar.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>İtiraz komisyonunun çalışma
+şekli</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 41/A –
+(Ek:RG-18/12/2014-29209)</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(1) İtiraz Komisyonu, bu Yönetmelik
+uyarınca yetkilendirilen kişi veya kurumların belgelerinin askıya alınması veya
+iptali ile ilgili itirazları değerlendirerek karara bağlar. Komisyonun kararı,
+oy çokluğuyla alınır. Oyların eşitliği halinde Başkanın oyu belirleyicidir.
+Komisyon kararı, Genel Müdürlükçe uygulanır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) <b>(Ek:RG-28/2/2020-31053)</b>
+İtiraz Komisyonunu oluşturan unvan adlarının iptal olması veya değişmesi
+halinde yerine atanacak üyeler Bakanlık oluru ile belirlenir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Mesleki bağımsızlık ve etik
+ilkeler</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 42</b> – (1) İş sağlığı
+ve güvenliği hizmetleri ve bu Yönetmelik kapsamındaki eğitimlerde
+görevlendirilenler;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Sağlık ve güvenlik riskleri
+konusunda, işveren ve çalışanlara önerilerde bulunurken hiçbir etki altında
+kalmazlar.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) Hizmet sundukları kişilerle
+güven, gizlilik ve eşitliğe dayanan bir ilişki kurar ve ayrım gözetmeksizin
+tümünü eşit olarak değerlendirirler.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) Çalışma ortamı ve koşullarının
+düzenlenmesinde, kendi aralarında, yönetici ve çalışanlarla iletişime açık ve
+işbirliği içerisinde hareket ederler.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) Mesleki bağımsızlığın
+sonuçları hiçbir şekilde iş sağlığı ve güvenliği hizmetlerinde
+görevlendirilenlerin aleyhine kullanılamaz ve yapılan sözleşmelere mesleki
+anlamda bağımsız çalışmayı kısıtlayabilecek şartlar konulamaz.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) İş sağlığı ve güvenliği
+hizmetleri ile bu Yönetmelik kapsamındaki eğitimlerde görevlendirilenlerin hak
+ve yetkileri, görevlerini yerine getirmeleri nedeniyle kısıtlanamaz. Bu
+kişiler, görevlerini ve uzmanlık bilgilerini mesleğin gerektirdiği etik ilkeler
+ve mesleki bağımsızlık içerisinde sürdürür.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Tebligatların bildirimi ve
+elektronik tebligat</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 42/A –</b> <b>(Ek:RG-18/12/2014-29209)<sup>1</sup></b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(1) Genel Müdürlükçe kişi, kurum
+veya kuruluşlara yazılacak yazı ve yapılacak bildirimlerin tebliğinde,
+İSG-KATİP sisteminde veya Sosyal Güvenlik Kurumunda işyeri sicil sistemine
+beyan edilen adres ve/veya elektronik posta dikkate alınır. Adres ve/veya
+elektronik posta değişikliği olması halinde kişi, kurum veya kuruluşlar bu
+değişikliğin bir ay içinde İSG-KATİP sistemi üzerinden beyan edilmesi
+zorunludur. Değişikliği zamanında beyan etmeyenlerin daha önce beyan ettiği
+adrese ve elektronik postaya yapılan yazışma ve bildirimler geçerlidir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) Elektronik Tebligat
+Yönetmeliği kapsamında kurumlar, 26 ncı maddeye göre yapılacak tebligata esas
+olmak üzere elektronik tebligat adresinin İSG-KATİP sistemine kayıt edilmesi
+zorunludur.<b><sup> 1</sup></b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) Elektronik Tebligat
+Yönetmeliği kapsamı dışında bulunan kişi ve kurumlar ise 35/A, 35/B, 38, 39, 40
+ve 41 inci maddeleri çerçevesinde kendilerine elektronik tebligat yapılmalarını
+istemeleri halinde elektronik tebligat adreslerinin İSG-KATİP sistemine kayıt
+edilmesi zorunludur.<b><sup> 1</sup></b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Yürürlükten kaldırılan
+yönetmelik</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 43</b> – (1) 27/11/2010
+tarihli ve 27768 sayılı Resmî Gazete’de yayımlanan İşyeri Hekimlerinin Görev,
+Yetki, Sorumluluk ve Eğitimleri Hakkındaki Yönetmelik yürürlükten
+kaldırılmıştır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm;line-height:normal'><b>Doğal afet
+veya olağanüstü haller</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm;line-height:normal'><b>EK MADDE 1</b>-
+<span class=grame><b><span style='color:black'>(Ek:RG-4/2/2024-32450)</span></b></span>
+</p>
+
+<p class=MsoNormal style='text-indent:1.0cm;line-height:normal'>(1)&nbsp;15/5/1959&nbsp;tarihli
+ve 7269 sayılı Umumi Hayata Müessir Afetler&nbsp;Dolayısiyle&nbsp;Alınacak
+Tedbirlerle Yapılacak Yardımlara Dair Kanuna göre genel hayata etkili afet
+bölgesi veya 25/10/1983 tarihli ve 2935 sayılı Olağanüstü Hal Kanununa göre
+olağanüstü hal ilan edilen yerlerde bu Yönetmelik kapsamında yetkilendirilen
+kurum ve kuruluşların aşağıda belirtilen yükümlülükleri, Bakanın onayı ile
+değiştirilebilir veya ertelenebilir:</p>
+
+<p class=MsoNormal style='text-indent:1.0cm;line-height:normal'>a) Eğitim
+kurumlarının kurulabilmesi ve hizmet sunabilmesi için gerekli şartlar.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm;line-height:normal'>b) Başvuru ve
+bildirim süreleri.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm;line-height:normal'>c) Kurum ve
+kuruluşlarda personel istihdamı zorunluluğu.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm;line-height:normal'>ç) Kurum ve
+kuruluşların vize bedeli ödemeleri.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm;line-height:normal'>(2) Birinci
+fıkra kapsamında alınan onay, olağanüstü hal süresi veya genel hayata etkili
+afet bölgesi olduğunu gösteren kararın süresi boyunca geçerlidir. Olağanüstü
+hal süresi veya genel hayata etkili afet bölgesi olduğunu gösteren kararın
+süresi bir yılı aşsa bile birinci fıkra kapsamında alınan onayın süresi bir
+yılı aşamaz. Sürenin uzatılması gerekirse yeniden Bakan onayı alınır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm;line-height:normal'>(3) Genel
+hayata etkili afet bölgesi veya olağanüstü hal ilan edilen yerlerde, bu
+Yönetmelik kapsamında yetkilendirilen kurum veya kuruluşların,
+yetkilendirildikleri adrese ilişkin resmî makamlarca düzenlenen yıkık veya
+hasar raporunu beyan etmesi halinde kurum veya kuruluşun arşivinde bulunması
+gereken evraktan zayi olanlar ya da erişilemeyenler denetimlerde aranmaz.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Mevcut eğitim kurumlarının
+durumu</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>GEÇİCİ MADDE 1</b> – (1) Mevcut
+eğitim kurumlarının onaylanmış yerleşim planında değişiklik olması halinde,
+fiziki şartların bu Yönetmelik hükümlerine uygun olması şartı aranır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) (<b>Mülga:RG-18/12/2014-29209)
+</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Diğer sağlık personelinin
+durumu</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>GEÇİCİ MADDE 2</b> – (1)
+Yönetmeliğin 4 üncü maddesinin birinci fıkrasının (b) bendinde sayılan
+unvanlara sahip olan ve diğer sağlık personeli olarak görevlendirilecek
+kişilerde;</p>
+
+<p class=MsoNormal>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+a)<b>&nbsp; (Değişik fıkra:RG-7/3/2016-29646)<sup>(3) </sup></b><sup>&nbsp;&nbsp;</sup>Diğer
+sağlık personeli belgesine sahip olmayanlardan;</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'>1) Diğer sağlık personeli
+eğitimini tamamlayanlar, 1/7/2017 tarihine kadar,</p>
+
+<p class=MsoNormal style='text-indent:28.3pt'>2) Diğer sağlık personeli
+eğitimini almayanlar, 30/6/2016 tarihine kadar,</p>
+
+<p class=MsoNormal style='margin-left:1.0cm'>görevlendirilebilirler.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) <b>(Mülga
+fıkra:RG-7/3/2016-29646)</b> <b><sup>(3) </sup></b><sup>&nbsp;&nbsp;</sup></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>İşe giriş ve periyodik sağlık
+muayeneleri</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>GEÇİCİ MADDE 3</b> – (1) 6331
+sayılı İş Sağlığı ve Güvenliği Kanununun 38 inci maddesinin birinci fıkrasının (a)
+bendinin bir ve ikinci kısımlarında belirtilen işyerlerinde, iş sağlığı ve
+güvenliği yönünden özellikli rapor niteliğinde olan işe giriş ve periyodik
+sağlık muayeneleri aynı Kanunun yürürlüğe girdiği tarihten önce olduğu gibi
+kamu sağlık hizmeti sunucuları tarafından düzenlenir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Sınava katılma hakkı</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>GEÇİCİ MADDE 4</b> – (1) Bu
+Yönetmeliğin yayımı tarihinden önce eğitim alanlar girdiği sınav sayısına
+bakılmaksızın Yönetmeliğin yayımı tarihi itibariyle 1 yıl içinde ilgili
+sınavlara katılabilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Elektronik ortamlarda başvuru
+işlemleri ve geçiş hükümleri</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>GEÇİCİ MADDE 5 –</b> (<b>Ek:RG-18/12/2014-29209)
+</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(1) 21 inci maddeye göre eğitim
+kurumları yetki belgesi başvuru sistemi, e-devlet sistemi alt yapısı
+tamamlandığında Genel Müdürlük internet sayfasında duyurulur. İlgili duyuruya
+kadar yapılacak başvurular ve sonuçlandırılmasına ait iş ve işlemlerde mevcut
+hükümlerin uygulanmasına devam edilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) Bu Yönetmeliğin yürürlüğe
+girdiği tarihten önce 21 inci maddeye göre yapılmış ve sonuçlandırılmamış
+eğitim kurumu başvurularında bu Yönetmelikte belirtilen şartlar aranır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) 27 nci maddenin beşinci
+fıkrasına göre yapılacak başvurular ile 30 uncu maddenin altıncı fıkrasına göre
+eğitici değişikliği ile ilgili bildirimler, e-devlet sistemi alt yapısı ile
+ilgili ilân yapılıncaya kadar, 28 inci maddenin sekizinci fıkrasına göre
+sorumlu müdür değişikliği ile ilgili bildirimler ise İSG-KATİP sistemindeki
+gerekli düzenlemeler tamamlanıp ilan edilinceye kadar Genel Müdürlüğe yazılı
+olarak yapılmaya devam edilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Yetki belgelerinin birleştirilmesi</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>GEÇİCİ MADDE 6 –</b> (<b>Ek:RG-18/12/2014-29209)
+</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(1) İşyeri hekimi ve iş güvenliği
+uzmanı eğitimi için ayrı ayrı yetki alan eğitim kurumları yönetmeliğin
+yayımından itibaren bir ay içinde yetki belgelerini iade ederek birleştirilmiş
+belgelerini alacaklardır. Yetki belgesini yenilemeyen eğitim kurumlarının
+programları, yetki belgesi yenileninceye kadar onaylanmaz.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>İşyeri hemşiresi sertifikaları
+veya belgelerinin diğer sağlık personeli belgesi ile değiştirilmesi</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>GEÇİCİ MADDE 7 –</b> (<b>Ek:RG-18/12/2014-29209)
+</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(1) Bakanlıkça 30/6/2012
+tarihinden önce verilen işyeri hemşiresi sertifikası veya belgesi sahiplerinden
+bu Yönetmeliğin yayımı tarihinden itibaren bir yıl içerisinde Genel Müdürlüğe
+müracaat edenlere EK- 4’te belirtilen “Diğer Sağlık Personeli Belgesi” düzenlenir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Çalışma sürelerinde geçiş
+hükümleri</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>GEÇİCİ MADDE 8 – </b>(<b>Ek:RG-18/12/2014-29209)
+</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(1) 12 nci maddede belirlenen
+işyeri hekimlerinin çalışma süreleri ile tam gün çalıştırılmasına dair
+hükümler, 1/1/2016 tarihinde yürürlüğe girer. Bu tarihe kadar mevcut hükümlerin
+uygulanmasına devam edilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Vize işlemi yaptırmayan
+kişilerin belgelerinin durumu</b></p>
+
+<p class=MsoNormal align=left style='margin-left:5.4pt;text-align:left;
+text-indent:1.0cm'><b>GEÇİCİ MADDE 9 – (Ek:RG-7/3/2016-29646)<sup> &nbsp;</sup></b><sup>&nbsp;&nbsp;</sup><b>
+</b></p>
+
+<p class=MsoNormal align=left style='margin-left:5.4pt;text-align:left;
+text-indent:1.0cm'>&nbsp;(1) Vize süresi dolan veya süresi 60 günden az kalan
+işyeri hekimliği belgesine sahip olanlar bu maddenin yayımı tarihi itibarıyla
+60 gün içerisinde vize işlemlerini tamamlatmak zorundadır. Aksi takdirde vize
+süresi dolan belgelerin geçerliliği vize işlemleri tamamlanıncaya kadar askıya
+alınır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Yürürlük</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 44</b> – (1) Bu
+Yönetmelik yayımı tarihinde yürürlüğe girer.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Yürütme</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 45</b> – (1) Bu
+Yönetmelik hükümlerini Çalışma ve Sosyal Güvenlik Bakanı yürütür. </p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>_____________________</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><i><sup><span style='font-size:
+9.0pt'>(1)</span></sup></i><i><span style='font-size:9.0pt'> Bu değişiklik ile
+42/A maddesinin &nbsp;ikinci ve üçüncü fıkraları yayımlandığı tarihten üç ay
+sonra yürürlüğe girer.</span></i></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><i><sup><span style='font-size:
+9.0pt'>(2)</span></sup></i><i><span style='font-size:9.0pt'> 18/12/2014 tarihli
+ve 29209 sayılı Resmî Gazete’de aslına uygun olarak yayımlanan, İşyeri Hekimi
+ve Diğer Sağlık Personelinin Görev, Yetki, Sorumluluk ve Eğitimleri Hakkında
+Yönetmelikte Değişiklik Yapılmasına Dair Yönetmeliğin 25 inci maddesinde sehven
+yazılan “iş güvenliği uzmanı” ibaresi, “işyeri hekimleri” olarak düzeltilerek
+yerine işlenmiştir.</span></i></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><sup>&nbsp;</sup><i><sup><span style='font-size:9.0pt'>(3)</span></sup></i><i><span style='font-size:9.0pt'>
+Bu değişiklik 1/1/2016 tarihinden geçerli olmak üzere yayımı tarihinde
+yürürlüğe girer.</span></i></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>&nbsp;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>&nbsp;</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 style='border-collapse:collapse'>
+ <tr>
+  <td width=55 rowspan=5 valign=top style='width:41.35pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-indent:1.0cm'>&nbsp;</p>
+  </td>
+  <td width=480 colspan=2 style='width:360.0pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>Yönetmeliğin
+  Yayımlandığı Resmî Gazete’nin</b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>Tarihi</b></p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>Sayısı</b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'>20/7/2013</p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'>28713</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=480 colspan=2 style='width:360.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>Yönetmelikte
+  Değişiklik Yapan Yönetmeliklerin Yayımlandığı Resmî Gazetelerin</b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>Tarihi</b></p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>Sayısı</b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=55 valign=top style='width:41.35pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-left:19.85pt;text-indent:-17.0pt'>1.<span style='font-size:7.0pt;font-family:"Times New Roman",serif'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span>&nbsp;</p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'>18/12/2014</p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'>29209</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=55 valign=top style='width:41.35pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-left:19.85pt;text-indent:-17.0pt'>2.<span style='font-size:7.0pt;font-family:"Times New Roman",serif'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span>&nbsp;</p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'>19/11/2015</p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'>29537</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=55 valign=top style='width:41.35pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-left:19.85pt;text-indent:-17.0pt'>3.</p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'>7/3/2016&nbsp;</p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'>29646</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=55 valign=top style='width:41.35pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-left:19.85pt;text-indent:-17.0pt'>4.<span style='font-size:7.0pt;font-family:"Times New Roman",serif'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span>&nbsp;</p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'>28/2/2020</p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'>31053</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=55 valign=top style='width:41.35pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-left:19.85pt;text-indent:-17.0pt'>5.</p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'>16/4/2020</p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'>31101</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=55 valign=top style='width:41.35pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-left:19.85pt;text-indent:-17.0pt'>6.</p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'>6/7/2021</p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'>31533</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=55 valign=top style='width:41.35pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-left:19.85pt;text-indent:-17.0pt'>7.</p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'>4/2/2024</p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'>32450</p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal style='text-indent:1.0cm'>&nbsp;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>&nbsp;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>&nbsp;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b><a href="7.5.18615%20ek.doc">Yönetmeliğin
+eklerini görmek için tıklayınız</a></b></p>
+
+</div>
+
+</body>
+
+</html>
+    <p id="page-end"></p>
+    <script src="/lib/tooltip/tooltip.js"></script>
+    <script>
+        $(document).ready(function () {
+            jQuery('table').each(function (cmp) {
+                var parent = this.parentNode;
+                var wrapper = document.createElement('div');
+
+                parent.replaceChild(wrapper, this);
+                wrapper.appendChild(this);
+                this.parentElement.style.overflowX = 'auto';
+            });
+            if (window.location.search.indexOf("2709") != -1 || window.location.search.indexOf("MevzuatTur=19") != -1) {
+                var tableCss = document.styleSheets[0].cssRules[2].style;
+                tableCss.cssText = tableCss.cssText.replace("100%", "initial");
+            }
+            //$('.tooltip').tooltipster();
+            //replaceTable();
+            //$(window).on('resize', function () {
+            //    replaceTable();
+            //});
+            //replaceTable();
+        });
+            //function replaceTable() {
+            //    //if (window.location.search.indexOf("MevzuatTur=19") == -1) {
+            //    //    var iframe = document.getElementsByTagName("td");
+            //    //    var value = $('body').width() - 10;
+            //    //    for (var i = 0; i < iframe.length; i++) {
+            //    //        iframe[i].style.width = "initial !important";
+            //    //    }
+            //    //}
+
+
+            //    //var iframe = document.getElementsByClassName("MsoNormalTable");
+            //    //var value = $('body').width() - 10;
+            //
+            //    //for (var i = 0; i < iframe.length; i++) {
+            //    //    iframe[i].style.width = value;
+            //    //}
+
+            //    //var iframe2 = document.getElementsByClassName("MsoNormal");
+            //    ////for (var j = 0; j < iframe2.length; j++) {
+            //    ////    iframe2[j].style.width = value;
+            //    ////}
+            //}
+    </script>
+
+
+

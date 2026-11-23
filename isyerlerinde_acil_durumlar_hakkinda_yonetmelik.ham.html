@@ -1,0 +1,917 @@
+
+    <style>
+        * {
+            font-size: 12pt !important;
+            line-height: 127% !important;
+        }
+
+        @media print {
+            a {
+                visibility: hidden;
+            }
+
+            #section-to-print, #section-to-print * {
+                visibility: visible;
+            }
+
+            #section-to-print {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+        /*aşağıda js kodu var table width değiştirmek için*/
+        table {
+            width: 100% !important;
+            page-break-inside: initial !important;
+            white-space: initial !important;
+            padding: 0 !important;
+            text-indent: 0 !important;
+        }
+
+        @media screen and (max-width: 768px) {
+
+            tr, p, table {
+                width: initial !important;
+                page-break-inside: initial !important;
+                white-space: initial !important;
+                padding: 0 !important;
+                text-indent: 0 !important;
+            }
+
+            table {
+                width: 100% !important;
+            }
+
+
+            td {
+                /*white-space: nowrap !important;*/
+            }
+
+            img {
+                max-width: 100%;
+            }
+        }
+    </style>
+
+    <link href="/lib/tooltip/tooltip.css" rel="stylesheet" />
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=Windows-1254">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Times New Roman",serif;}
+h1
+	{mso-style-link:"Başlık 1 Char";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:"Arial",sans-serif;
+	font-weight:bold;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{mso-style-link:"Gövde Metni Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	font-size:11.0pt;
+	font-family:"Tahoma",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:#954F72;
+	text-decoration:underline;}
+p.MsoPlainText, li.MsoPlainText, div.MsoPlainText
+	{mso-style-link:"Düz Metin Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+p
+	{margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+span.Balk1Char
+	{mso-style-name:"Başlık 1 Char";
+	mso-style-link:"Başlık 1";
+	font-family:"Arial",sans-serif;
+	font-weight:bold;}
+span.GvdeMetniChar
+	{mso-style-name:"Gövde Metni Char";
+	mso-style-link:"Gövde Metni";
+	font-family:"Tahoma",sans-serif;}
+span.DzMetinChar
+	{mso-style-name:"Düz Metin Char";
+	mso-style-link:"Düz Metin";
+	font-family:"Courier New";}
+p.3-NormalYaz, li.3-NormalYaz, div.3-NormalYaz
+	{mso-style-name:"3-Normal Yazı";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	font-size:9.5pt;
+	font-family:"Times New Roman",serif;}
+p.2-OrtaBaslk, li.2-OrtaBaslk, div.2-OrtaBaslk
+	{mso-style-name:"2-Orta Baslık";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	font-size:9.5pt;
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+p.1-Baslk, li.1-Baslk, div.1-Baslk
+	{mso-style-name:1-Baslık;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Times New Roman",serif;
+	text-decoration:underline;}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:10.0pt;
+	font-family:"Times New Roman",serif;}
+p.msopapdefault, li.msopapdefault, div.msopapdefault
+	{mso-style-name:msopapdefault;
+	margin-right:0cm;
+	margin-left:0cm;
+	text-align:justify;
+	text-indent:42.55pt;
+	line-height:12.0pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+span.Normal1
+	{mso-style-name:Normal1;
+	font-family:"Times New Roman",serif;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+.MsoPapDefault
+	{text-align:justify;
+	text-indent:42.55pt;
+	line-height:12.0pt;}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 70.85pt 70.85pt 70.85pt;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+<script type="text/javascript">window.av = { database:'2' , rnApp:'False' }</script><script src="https://www.mevzuat.gov.tr/lib/jquery/dist/jquery.js"></script><script src="https://www.mevzuat.gov.tr/js/iframescript.min.js?v=1.05"></script><style><!--* {font-family:inherit!important;}--></style></head>
+
+<body lang=TR link="#0563C1" vlink="#954F72">
+
+<div class=WordSection1>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>İŞYERLERİNDE ACİL
+DURUMLAR HAKKINDA YÖNETMELİK</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>BİRİNCİ BÖLÜM</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Amaç, Kapsam, Dayanak
+ve Tanımlar</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Amaç</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>MADDE 1 –</span></b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'> (1) Bu Yönetmeliğin
+amacı, işyerlerinde acil durum planlarının hazırlanması, önleme, koruma,
+tahliye, yangınla mücadele, ilk yardım ve benzeri konularda yapılması gereken
+çalışmalar ile bu durumların güvenli olarak yönetilmesi ve&nbsp; bu konularda
+görevlendirilecek çalışanların belirlenmesi ile ilgili usul ve esasları
+düzenlemektir.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Kapsam</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>MADDE 2 –</span></b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'> (1) Bu Yönetmelik,
+20/6/2012 tarihli ve 6331 sayılı İş Sağlığı ve Güvenliği Kanunu kapsamında yer
+alan işyerlerini kapsar.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Dayanak</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>MADDE 3 –</span></b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'> (1) Bu Yönetmelik,
+İş Sağlığı ve Güvenliği Kanununun 11 inci, 12 nci ve 30 uncu maddelerine
+dayanılarak hazırlanmıştır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Tanımlar</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>MADDE 4 –</span></b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'> <b>(Değişik:RG-1/10/2021-31615)
+</b></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(1) Bu Yönetmelikte
+geçen;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>a) Acil durum:
+İşyerinin tamamında veya bir kısmında meydana gelebilecek veya işyerini
+dışarıdan etkileyebilecek yangın, patlama, tehlikeli kimyasal maddelerden
+kaynaklanan yayılım, zehirlenme, salgın hastalık, radyoaktif sızıntı, sabotaj
+ve doğal afet gibi ivedilikle müdahale gerektiren olayları,</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>b) Acil durum planı:
+İşyerlerinde meydana gelebilecek acil durumlarda yapılacak iş ve işlemler ile
+uygulamaya yönelik eylemlerin yer aldığı planı,</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>c) Toplanma yeri:
+Acil durumların olumsuz sonuçlarından çalışanların etkilenmeyeceği mesafede
+veya korunakta belirlenmiş güvenli yeri,</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>ifade eder.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>İKİNCİ BÖLÜM</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>İşveren ve
+ÇalışanlarınYükümlülüğü</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>İşverenin
+yükümlülükleri</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>MADDE 5 –</span></b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'> (1) İşverenin acil
+durumlara ilişkin yükümlülükleri aşağıda belirtilmiştir:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>a) Çalışma ortamı,
+kullanılan maddeler, iş ekipmanı ile çevre şartlarını dikkate alarak meydana
+gelebilecek ve çalışan ile çalışma çevresini etkileyecek acil durumları önceden
+değerlendirerek muhtemel acil durumları belirler.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>b) Acil durumların
+olumsuz etkilerini önleyici ve sınırlandırıcı tedbirleri alır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>c) Acil durumların olumsuz
+etkilerinden korunmak üzere gerekli ölçüm ve değerlendirmeleri yapar.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>ç) Acil durum
+planlarını hazırlar ve tatbikatların yapılmasını sağlar.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>d) Acil durumlarla
+mücadele için işyerinin büyüklüğü ve taşıdığı özel tehlikeler, yapılan işin
+niteliği, çalışan sayısı ile işyerinde bulunan diğer kişileri dikkate alarak;
+önleme, koruma, tahliye, yangınla mücadele, ilk yardım ve benzeri konularda
+uygun donanıma sahip ve bu konularda eğitimli yeterli sayıda çalışanı
+görevlendirir ve her zaman hazır bulunmalarını sağlar.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>e) Özellikle ilk
+yardım, acil tıbbi müdahale, kurtarma ve yangınla mücadele konularında, işyeri
+dışındaki kuruluşlarla irtibatı sağlayacak gerekli düzenlemeleri yapar.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>f) Acil durumlarda
+enerji kaynaklarının ve tehlike yaratabilecek sistemlerin olumsuz durumlar
+yaratmayacak ve koruyucu sistemleri etkilemeyecek şekilde devre dışı
+bırakılması ile ilgili gerekli düzenlemeleri yapar.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>g) <b>(Değişik:RG-1/10/2021-31615)</b>
+Varsa alt işveren ve geçici iş ilişkisi kurulan işverenin çalışanları, müşteri
+ve ziyaretçiler ile işyerinde toplantı, seminer, konferans ve eğitim gibi toplu
+halde gerçekleştirilen faaliyetler için bulunan katılımcılar ve diğer kişilerin
+acil durumlar, tahliye planı, kaçış yolları, toplanma yerleri ve acil durum
+ekipleri hakkında bilgilendirilmesini sağlar.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>ğ) <b>(Ek:RG-1/10/2021-31615)</b>
+Acil durumlarda kullanılacak kişisel koruyucu donanımların ve müdahale
+ekipmanlarının işyerinde belirlenmiş acil durumlara ve acil durum ekiplerinin
+görevlerine uygun olmasını sağlar.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(2) Acil durumlarla
+ilgili özel görevlendirilen çalışanların sorumlulukları işverenlerin konuya
+ilişkin yükümlülüğünü ortadan kaldırmaz.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Çalışanların
+yükümlülük ve sorumlulukları</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>MADDE 6 –</span></b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'> (1) Çalışanların
+acil durumlarla ilgili yükümlülükleri aşağıda belirtilmiştir:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>a) Acil durum
+planında belirtilen hususlar dahilinde alınan önleyici ve sınırlandırıcı
+tedbirlere uymak.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>b) İşyerindeki
+makine, cihaz, araç, gereç, tesis ve binalarda kendileri ve diğer kişilerin
+sağlık ve güvenliğini tehlikeye düşürecek acil durum ile karşılaştıklarında;
+hemen&nbsp; en yakın amirine, acil durumla ilgili görevlendirilen sorumluya
+veya çalışan temsilcisine haber vermek.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>c) Acil durumun
+giderilmesi için, işveren ile işyeri dışındaki ilgili kuruluşlardan olay yerine
+intikal eden ekiplerin talimatlarına uymak.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>ç) Acil durumlar
+sırasında kendisinin ve çalışma arkadaşlarının hayatını tehlikeye düşürmeyecek
+şekilde davranmak.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(2) İşveren,
+çalışanların kendileri veya diğer kişilerin güvenliği için ciddi ve yakın bir
+tehlike ile karşılaştıkları ve amirine hemen haber veremedikleri durumlarda;
+istenmeyen sonuçların önlenmesi için, bilgileri ve mevcut teknik donanımları
+çerçevesinde müdahale edebilmelerine imkân sağlar. Böyle bir durumda
+çalışanlar, ihmal veya dikkatsiz davranışları olmadıkça yaptıkları müdahaleden
+dolayı sorumlu tutulamaz.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>ÜÇÜNCÜ BÖLÜM</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Acil Durum Planının
+Hazırlanması</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Acil durum planı</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>MADDE 7 –</span></b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'> (1) Acil durum
+planı, tüm işyerleri için tasarım veya kuruluş aşamasından başlamak üzere acil
+durumların belirlenmesi, bunların olumsuz etkilerini önleyici ve sınırlandırıcı
+tedbirlerin alınması, görevlendirilecek kişilerin belirlenmesi, acil durum
+müdahale ve tahliye yöntemlerinin oluşturulması, dokümantasyon, tatbikat ve
+acil durum planının yenilenmesi aşamaları izlenerek hazırlanır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Acil durumların
+belirlenmesi</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>MADDE 8 –</span></b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'> <b>(Değişik:RG-1/10/2021-31615)</b>
+</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(1) İşyerinde meydana
+gelebilecek acil durumlar, yapılan risk değerlendirmesi sonuçları ile aşağıdaki
+ve benzeri hususlar dikkate alınarak belirlenir:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>a) Yangın ve patlama
+ihtimali.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>b) Tehlikeli
+kimyasal, biyolojik, radyoaktif ve nükleer maddelerden kaynaklanan yayılım,
+zehirlenme ve salgın hastalık ihtimali.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>c) Doğal afetlerin
+meydana gelme ihtimali.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>ç) Sabotaj ihtimali.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Önleyici ve
+sınırlandırıcı tedbirler</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>MADDE 9 –</span></b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'> (1) İşveren,
+belirlediği mümkün ve muhtemel acil durumların oluşturabileceği zararları
+önlemek ve daha büyük etkilerini sınırlandırmak üzere gerekli tedbirleri alır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(2) Acil durumların
+olumsuz etkilerinden korunmak üzere tedbirler belirlenirken gerekli olduğu
+durumda ölçüm ve değerlendirmeler yapılır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(3) Alınacak
+tedbirler, risklerden korunma ilkelerine uygun olur ve toplu korumayı esas
+alır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Acil durum müdahale
+ve tahliye yöntemleri</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>MADDE 10 –</span></b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'> (1) İşverence acil
+durumların meydana gelmesi halinde uyarı verme, arama, kurtarma, tahliye,
+haberleşme, ilk yardım ve yangınla mücadele gibi uygulanması gereken acil durum
+müdahale yöntemleri belirlenir ve yazılı hale getirilir.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(2) Tahliye sonrası,
+işyeri dâhilinde kalmış olabilecek çalışanların belirlenmesi için sayım da
+dâhil olmak üzere gerekli kontroller yapılır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(3) İşveren,
+işyerinde acil durumların meydana gelmesi halinde çalışanların bu durumun
+olumsuz etkilerinden korunması için bulundukları yerden güvenli bir yere
+gidebilmeleri amacıyla izlenebilecek uygun tahliye düzenlemelerini acil durum
+planında belirtir ve çalışanlara önceden gerekli talimatları verir.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(4) <b>(Değişik:RG-1/10/2021-31615)</b>
+İşyerlerindeki; yaşlı, engelli, gebe çalışanlar ile kreşteki çocuklara tahliye
+esnasında refakat edilmesi için tedbirler alınır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(5) Acil durum müdahale
+ve tahliye yöntemleri oluşturulurken 27/11/2007 tarihli ve 2007/12937 sayılı
+Bakanlar Kurulu Kararıyla yürürlüğe konulan Binaların Yangından Korunması
+Hakkında Yönetmelik hükümleri dikkate alınır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(6) Acil durum
+müdahale ve tahliye yöntemleri oluşturulurken çalışanlar dışında müşteri,
+ziyaretçi gibi işyerinde bulunması muhtemel diğer kişiler de göz önünde
+bulundurulur.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(7) <b>(Ek:RG-1/10/2021-31615)</b>
+Acil durum müdahale ve tahliye yöntemleri, yakındaki işyerleri ve çevreden
+gelebilecek olumsuz etkiler de dikkate alınarak belirlenir.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Acil durum ekipleri
+ve görevleri</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>MADDE 11 –&nbsp;(Başlığı
+ile Birlikte Değişik:RG-1/10/2021-31615) </span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(1) İşveren;
+işyerlerinde aşağıda yer alan acil durum ekiplerini oluşturur:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>a) Söndürme ekibi.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>b) Kurtarma ekibi.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>c) Koruma ekibi.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>ç) İlk yardım ekibi.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(2) Birinci fıkrada
+yer alan ekiplerin görevleri aşağıda belirtilmiştir:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>a) Söndürme ekibi:
+İşyerinde çıkabilecek yangınlara derhal müdahale ederek mümkünse yangını
+kontrol altına almak, yangının genişlemesine mani olmak ve söndürme
+faaliyetlerini yürütmek.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>b) Kurtarma ekibi:
+İşyerlerinde acil durum sonrası; çalışanların, ziyaretçilerin ve diğer
+kişilerin arama ve kurtarma işlerini gerçekleştirmek.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>c) Koruma ekibi: Acil
+durum nedeniyle ortaya çıkması muhtemel panik ve kargaşayı önlemek, acil durum
+ekipleri arasındaki koordinasyon işlerini gerçekleştirmek, sayım işlerini
+yürütmek, gerektiğinde ilgili ulusal ve yerel kurumların müdahale ekiplerine
+bilgi vermek.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>ç) İlk yardım ekibi:
+Acil durumdan olumsuz etkilenen kişilerin ilk yardım müdahalelerini
+gerçekleştirmek.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(3) İşveren, birinci
+fıkrada yer alan ekiplerden söndürme, kurtarma ve koruma ekiplerinin her biri
+için işyerlerinin tehlike sınıfına göre;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>a) Çok tehlikeli
+sınıfta yer alan işyerlerinde her 30 çalışana kadar,</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>b) Tehlikeli sınıfta
+yer alan işyerlerinde her 40 çalışana kadar,</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>c) Az tehlikeli
+sınıfta yer alan işyerlerinde her 50 çalışana kadar</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>uygun donanıma sahip
+ve özel eğitimli en az birer çalışanı destek elemanı olarak görevlendirir.
+Görevlendirme yapılırken (a) bendinde 30 ve katları, (b) bendinde 40 ve katları
+ve (c) bendinde 50 ve katları dâhil edilir. Ekiplerin görevlendirilmesine
+ilişkin örnek tablo Ek-3’te yer almaktadır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(4) 10’dan az
+çalışanı olan işyerlerinde; acil durumlara ilişkin ulusal ve yerel kurum ve
+kuruluşlarla irtibatı sağlamak ve birinci fıkrada yer alan ekiplerden söndürme,
+kurtarma ve koruma ekiplerinin tamamı için uygun donanıma sahip ve özel
+eğitimli en az bir çalışanın destek elemanı olarak görevlendirilmesi
+yeterlidir.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(5) İşveren, ilk
+yardım konusunda 29/7/2015 tarihli ve 29429 sayılı Resmî Gazete’de yayımlanan
+İlkyardım Yönetmeliği esaslarına göre destek elemanı görevlendirir.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(6) Her konu için
+birden fazla çalışanın görevlendirilmesi gereken işyerlerinde bu çalışanlar
+konularına göre ekipler halinde koordineli olarak görev yapar. Her ekipte bir
+ekip başı bulunur.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(7) İşveren
+tarafından acil durumlarda ekipler arası gerekli koordinasyonu sağlamak üzere
+koruma ekibinden sorumlu veya sorumlular görevlendirilir.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(8) Birinci fıkrada
+yer alan ekiplerde görevlendirilecek destek elemanları ve varsa yedekleri
+belirlenirken işyerindeki vardiya düzeni dikkate alınır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(9) Acil durum
+ekiplerinde görevlendirilen destek elemanlarının adı, soyadı, unvanı,
+sorumluluk alanı ve iletişim bilgilerini içeren liste, işyerinde çalışanların
+görüş seviyesine uygun yükseklikte ve görünür bir şekilde asılır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(10) Acil durum
+ekiplerinde görevlendirilen destek elemanlarının işyerinden ayrılma, yer
+değişikliği ve benzeri durumlarda yerine yeniden görevlendirme yapılır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Dokümantasyon</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>MADDE 12 –</span></b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'> (1) Acil durum planı
+asgarî aşağıdaki hususları kapsayacak şekilde dokümante edilir:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>a) İşyerinin unvanı,
+adresi ve işverenin adı.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>b) Hazırlayanların
+adı, soyadı ve unvanı.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>c) Hazırlandığı tarih
+ve geçerlilik tarihi.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>ç) Belirlenen acil
+durumlar.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>d) Alınan önleyici ve
+sınırlandırıcı tedbirler.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>e) Acil durum
+müdahale ve tahliye yöntemleri.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>f) Aşağıdaki
+unsurları içeren işyerini veya işyerinin bölümlerini gösteren <b>(Değişik ibare:RG-1/10/2021-31615)</b>
+<u>tahliye planı</u>:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>1) Yangın söndürme
+amaçlı kullanılacaklar da dâhil olmak üzere acil durum ekipmanlarının bulunduğu
+yerler.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>2) İlkyardım
+malzemelerinin bulunduğu yerler.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>3) Kaçış yolları,
+toplanma yerleri ve bulunması halinde uyarı sistemlerinin de yer aldığı <b>(Değişik
+ibare:RG-1/10/2021-31615)</b> <u>kroki</u>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>4) Görevlendirilen
+çalışanların ve varsa yedeklerinin adı, soyadı, unvanı, sorumluluk alanı ve
+iletişim bilgileri.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>5) <b>(Değişik:RG-1/10/2021-31615)</b>
+Acil durumlarla ilgili ulusal ve yerel kurum ve kuruluşların acil durum irtibat
+numaraları.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>6) <b>(Ek:RG-1/10/2021-31615)</b>
+İşyerlerinde kimyasal yayılım, parlama veya patlama tehlikesi ve benzeri özel
+riskleri barındıran bölümler.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>7) <b>(Ek:RG-1/10/2021-31615)</b>
+Elektrik ve gaz akışının kesim noktaları, vanaları.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(2) <b>(Değişik:RG-1/10/2021-31615)</b>
+İşveren tarafından onaylanan acil durum planının sayfaları numaralandırılarak;
+hazırlayan kişiler tarafından her sayfası paraflanıp, son sayfası imzalanır.
+15/1/2004 tarihli ve 5070 sayılı Elektronik İmza Kanununa uygun olarak güvenli
+elektronik imza ile imzalanmış olan acil durum planları da geçerlidir. Acil
+durum planı, acil durumla mücadele edecek ekiplerin kolayca ulaşabileceği
+şekilde işyerinde saklanır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(3) <b>(Değişik:RG-1/10/2021-31615)
+</b>Acil durum planı kapsamında hazırlanan tahliye planı, işyeri bina ve
+eklentilerinin giriş ve çıkışları ile katlarda, çalışanların görüş seviyesine
+uygun yükseklikte ve görünür bir şekilde asılır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(4) <b>(Ek:RG-1/10/2021-31615)
+</b>Acil durum planı hazırlanırken kullanılabilecek örnek form Ek-1’de yer
+almaktadır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Tatbikat</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>MADDE 13 – </span></b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(1) <b>(Değişik:RG-1/10/2021-31615)</b>
+Hazırlanan acil durum planının uygulama adımlarının düzenli olarak takip
+edilebilmesi ve uygulanabilirliğinden emin olunması için işyerlerinde, ikinci
+fıkrada belirtilen süreleri aşmamak kaydıyla belirlenen periyotlarla tatbikat
+yapılır, denetlenir ve gözden geçirilerek gerekli düzeltici ve önleyici
+tedbirler alınır. Gerçekleştirilen tatbikatın tarihi, görülen eksiklikler ve bu
+eksiklikler doğrultusunda yapılacak düzenlemeleri içeren tatbikat formu
+hazırlanır. Tatbikat formu hazırlanırken kullanılabilecek örnek form Ek-2’de
+yer almaktadır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(2) <b>(Ek:RG-1/10/2021-31615)<sup>(1)</sup></b><sup>
+</sup>Tatbikat 19/9/2013 tarihli ve 28770 sayılı Resmî Gazete’de yayımlanan
+Maden İşyerlerinde İş Sağlığı ve Güvenliği Yönetmeliği kapsamındaki işyerleri
+için anılan Yönetmelik hükümlerine göre, diğer işyerleri için en geç yılda bir
+yapılır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(3) Gerçekleştirilen
+tatbikat neticesinde varsa aksayan yönler ve kazanılan deneyimlere göre acil
+durum planları gözden geçirilerek gerekli düzeltmeler yapılır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(4) Birden fazla
+işyerinin bulunduğu iş merkezleri, iş hanlarındaki işyerlerinde tatbikatlar
+yönetimin koordinasyonu ile yürütülür.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Acil durum planının
+yenilenmesi</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>MADDE 14 –</span></b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'> (1) İşyerinde <b>(Ek
+ibare:RG-1/10/2021-31615)</b> <u>veya yakın çevresinde</u>, belirlenmiş olan
+acil durumları etkileyebilecek veya yeni acil durumların ortaya çıkmasına neden
+olacak değişikliklerin meydana gelmesi halinde <b>(Mülga ibare:RG-1/10/2021-31615)</b>
+acil durum planı tamamen veya kısmen yenilenir.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(2) Birinci fıkrada
+belirtilen durumlardan bağımsız olarak, hazırlanmış olan acil durum planları;
+tehlike sınıfına göre çok tehlikeli, tehlikeli ve az tehlikeli işyerlerinde
+sırasıyla en geç iki, dört ve altı yılda bir yenilenir.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Çalışanların
+bilgilendirilmesi ve eğitim</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>MADDE 15 –</span></b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'> <b>(Değişik:RG-1/10/2021-31615)</b>
+</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(1) Tüm çalışanlar
+acil durum planları ile söndürme, kurtarma, koruma ve ilk yardım ekiplerinde
+görevlendirilen destek elemanları hakkında bilgilendirilir.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(2) İşe yeni alınan
+çalışana ve herhangi bir işverenden geçici bir süre için çalışmak üzere
+devralınan çalışanlara, iş sağlığı ve güvenliği eğitimlerine ilave olarak acil
+durum planları ile ilgili bilgilendirme yapılır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(3) Acil durum
+konularıyla ilgili özel olarak görevlendirilenler, yürütecekleri faaliyetler
+ile ilgili özel olarak eğitilir. Söndürme, kurtarma ve koruma ekiplerine
+verilecek özel eğitimler Binaların Yangından Korunması Hakkındaki Yönetmelik
+hükümleri saklı kalmak kaydıyla işyerinde sağlık ve güvenlik hizmetini yürüten
+iş güvenliği uzmanı, işyeri hekimi veya iş sağlığı ve güvenliği hizmetlerinin
+işverence yürütülmesi halinde işveren tarafından verilebilir. Bu eğitimler,
+işveren ile eğitim verenlerce imzalanarak belgelendirilir. Ayrıca bu eğitimler;
+Afet ve Acil Durum Yönetimi Başkanlığı, işçi, işveren ve kamu görevlileri
+kuruluşları veya bu kuruluşlarca kurulan eğitim vakıfları ve ortaklaşa
+oluşturdukları eğitim merkezleri, kamu kurumu niteliğindeki meslek kuruluşları,
+üniversiteler, belediyeler veya itfaiyeler tarafından da verilebilir.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(4) İlk yardım
+ekibindeki destek elemanlarının alacağı ilk yardımcı eğitimlerinin İlkyardım
+Yönetmeliği esaslarınca alınması sağlanır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>DÖRDÜNCÜ BÖLÜM</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Çeşitli ve Son
+Hükümler</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Büyük endüstriyel
+tesislerde acil durum planı</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>MADDE 16 –</span></b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'> (1) İş Sağlığı ve
+Güvenliği Kanununun 29 uncu maddesi gereğince güvenlik raporu hazırlanan
+işyerlerinde hazırlanacak dahili acil durum planları bu Yönetmelikte belirtilen
+acil durum planı hazırlığında dikkate alınarak kullanılır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Birden fazla işveren
+olması durumunda acil durum planları</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>MADDE 17 –</span></b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'> (1) Aynı çalışma
+alanını birden fazla işverenin paylaşması durumunda, yürütülen işler için diğer
+işverenlerin yürüttüğü işler de göz önünde bulundurularak acil durum planı
+işverenlerce ortaklaşa hazırlanır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(2) Birden fazla
+işyerinin bulunduğu iş merkezleri, iş hanları, sanayi bölgeleri veya
+sitelerinin işyerlerince hazırlanan acil durum planlarının koordinasyonu
+yönetim tarafından yürütülür.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Asıl işveren ve alt
+işveren ilişkisinin bulunduğu işyerlerinde acil durum planları</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>MADDE 18 –</span></b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'> (1) Bir işyerinde
+bir veya daha fazla alt işveren bulunması halinde acil durum planlarının
+hazırlanması konusunda işyerinin bütünü için asıl işveren, kendi çalışma alanı
+ve yaptıkları işler ile sınırlı olmak üzere alt işverenler sorumludur.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(Değişik ibare:RG-1/10/2021-31615)
+<u>Süreksiz</u> işlerde acil durum planlaması</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>MADDE 19 –</span></b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'> (1)&nbsp; <b>(Değişik
+ibare:RG-1/10/2021-31615) </b><u>Otuz iş günü veya daha kısa süren</u> işlerde,
+işyerinin veya yapılacak işin mahiyeti itibarıyla çalışanları doğrudan
+etkilemesi muhtemel acil durumlar için bu Yönetmelik kapsamında yapılan özel
+görevlendirmeler işverence yapılır ve çalışanlar özel görevi bulunanlar ve acil
+durumlar ile ilgili bilgilendirilir.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Acil durum planı
+rehberleri</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>MADDE 20 –</span></b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'> (1) Kamu kurum ve
+kuruluşları, kamu kurumu niteliğindeki meslek kuruluşları, işçi-işveren ve
+memur sendikaları ile kamu yararına çalışan sivil toplum kuruluşlarının
+faaliyet gösterdikleri sektörde hazırladıkları rehber taslaklarından,
+Bakanlıkça bu Yönetmelik hükümlerine uygunluğu yönünden değerlendirilerek onaylanan
+taslaklar, Bakanlık tarafından sektör, meslek veya yapılan işlere özgü acil
+durum planı rehberleri olarak yayımlanır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Mevcut acil durum
+planları ve tatbikatlar</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>GEÇİCİ MADDE 1 –</span></b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'> (1) 6331 sayılı
+Kanun gereğince ve bu Yönetmeliğin yayım tarihi öncesinde;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>a) Hazırlanmış olan
+acil durum planları bir yıl içerisinde Yönetmeliğe göre gözden geçirilerek
+revize edilir.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>b) İşyerlerinde
+gerçekleştirilmiş olan tatbikatlar süresince geçerli sayılır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Ekip eğitimlerinin
+tamamlanması</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>GEÇİCİ MADDE 2 –</span></b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'> (1) Bu Yönetmelik
+kapsamında kurulacak olan ekiplerin eğitimleri, bu Yönetmeliğin yayımı
+tarihinden itibaren bir yıl içinde tamamlanır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Mevcut acil durum
+ekipleri</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>GEÇİCİ MADDE 3
+–&nbsp;(Ek:RG-1/10/2021-31615) </span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>(1) İşyerlerinde
+mevcut bulunan acil durum ekipleri, bu maddenin yayımı tarihinden itibaren altı
+ay boyunca görevlerini sürdürür ve mevcut dokümanlar geçerliliğini korur. Bu
+süre zarfında, bu Yönetmeliğin 11 inci maddesinde belirtilen ekiplere uygun
+olarak destek elemanlarının yeniden görevlendirilmesi ve dokümanların
+güncellenmesi sağlanır.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Yürürlük</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>MADDE 21 –</span></b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'> (1) Bu Yönetmelik
+yayımı tarihinde yürürlüğe girer.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Yürütme</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>MADDE 22 –</span></b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'> (1) Bu Yönetmelik
+hükümlerini Çalışma ve Sosyal Güvenlik Bakanı yürütür.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>_______________</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><i><span style='font-family:"Calibri",sans-serif'>(1) 1/10/2021 tarihli ve 31615 sayılı
+Resmî Gazete’de yayımlanan değişiklik ile Yönetmeliğe 13 üncü maddesinin birinci
+fıkrasından sonra gelmek üzere ikinci fıkra eklenmiş ve mevcut diğer fıkralar
+buna göre teselsül ettirilmiştir. &nbsp;</span></i></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif;color:red'><a href="7.5.18493-Ek.docx"><span style='color:red'>Ekleri için tıklayınız.</span></a></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>&nbsp;</span></p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=55 rowspan=5 valign=top style='width:34.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-indent:1.0cm'><span style='font-size:11.0pt;
+  font-family:"Calibri",sans-serif'>&nbsp;</span></p>
+  </td>
+  <td width=480 colspan=2 style='width:360.0pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Yönetmeliğin
+  Yayımlandığı Resmî Gazete’nin</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Tarihi</span></b></p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Sayısı</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>18/6/2013</span></p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>28681</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=480 colspan=2 style='width:360.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Yönetmelikte
+  Değişiklik Yapan Yönetmeliklerin Yayımlandığı Resmî Gazetelerin</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Tarihi</span></b></p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>Sayısı</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=55 valign=top style='width:34.8pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;</span></p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>1/10/2021</span></p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>31615</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=55 valign=top style='width:34.8pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;</span></p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>&nbsp;</span></p>
+  </td>
+  <td width=240 style='width:180.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>&nbsp;</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span style='font-size:11.0pt;font-family:"Calibri",sans-serif'>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
+    <p id="page-end"></p>
+    <script src="/lib/tooltip/tooltip.js"></script>
+    <script>
+        $(document).ready(function () {
+            jQuery('table').each(function (cmp) {
+                var parent = this.parentNode;
+                var wrapper = document.createElement('div');
+
+                parent.replaceChild(wrapper, this);
+                wrapper.appendChild(this);
+                this.parentElement.style.overflowX = 'auto';
+            });
+            if (window.location.search.indexOf("2709") != -1 || window.location.search.indexOf("MevzuatTur=19") != -1) {
+                var tableCss = document.styleSheets[0].cssRules[2].style;
+                tableCss.cssText = tableCss.cssText.replace("100%", "initial");
+            }
+            //$('.tooltip').tooltipster();
+            //replaceTable();
+            //$(window).on('resize', function () {
+            //    replaceTable();
+            //});
+            //replaceTable();
+        });
+            //function replaceTable() {
+            //    //if (window.location.search.indexOf("MevzuatTur=19") == -1) {
+            //    //    var iframe = document.getElementsByTagName("td");
+            //    //    var value = $('body').width() - 10;
+            //    //    for (var i = 0; i < iframe.length; i++) {
+            //    //        iframe[i].style.width = "initial !important";
+            //    //    }
+            //    //}
+
+
+            //    //var iframe = document.getElementsByClassName("MsoNormalTable");
+            //    //var value = $('body').width() - 10;
+            //
+            //    //for (var i = 0; i < iframe.length; i++) {
+            //    //    iframe[i].style.width = value;
+            //    //}
+
+            //    //var iframe2 = document.getElementsByClassName("MsoNormal");
+            //    ////for (var j = 0; j < iframe2.length; j++) {
+            //    ////    iframe2[j].style.width = value;
+            //    ////}
+            //}
+    </script>
+
+
+

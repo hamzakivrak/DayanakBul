@@ -1,0 +1,1006 @@
+
+    <style>
+        * {
+            font-size: 12pt !important;
+            line-height: 127% !important;
+        }
+
+        @media print {
+            a {
+                visibility: hidden;
+            }
+
+            #section-to-print, #section-to-print * {
+                visibility: visible;
+            }
+
+            #section-to-print {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+        /*aşağıda js kodu var table width değiştirmek için*/
+        table {
+            width: 100% !important;
+            page-break-inside: initial !important;
+            white-space: initial !important;
+            padding: 0 !important;
+            text-indent: 0 !important;
+        }
+
+        @media screen and (max-width: 768px) {
+
+            tr, p, table {
+                width: initial !important;
+                page-break-inside: initial !important;
+                white-space: initial !important;
+                padding: 0 !important;
+                text-indent: 0 !important;
+            }
+
+            table {
+                width: 100% !important;
+            }
+
+
+            td {
+                /*white-space: nowrap !important;*/
+            }
+
+            img {
+                max-width: 100%;
+            }
+        }
+    </style>
+
+    <link href="/lib/tooltip/tooltip.css" rel="stylesheet" />
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/2004/12/omml" xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=Windows-1254">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 14">
+<meta name=Originator content="Microsoft Word 14">
+<link rel=File-List href="7.5.18647_dosyalar/filelist.xml">
+<link rel=themeData href="7.5.18647_dosyalar/themedata.thmx">
+<link rel=colorSchemeMapping href="7.5.18647_dosyalar/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:View>Print</w:View>
+  <w:Zoom>110</w:Zoom>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:HyphenationZone>21</w:HyphenationZone>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>TR</w:LidThemeOther>
+  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SplitPgBreakAndParaMark/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"
+  DefSemiHidden="true" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="267">
+  <w:LsdException Locked="false" Priority="0" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 4"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 6"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 8"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 9"/>
+  <w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" Priority="10" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" Priority="11" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" Priority="22" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="59" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Table Grid"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:162;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1107305727 0 0 415 0;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;
+	mso-font-charset:162;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1073786111 1 0 415 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-family:"Times New Roman";}
+p.2-OrtaBaslk, li.2-OrtaBaslk, div.2-OrtaBaslk
+	{mso-style-name:"2-Orta Baslık";
+	mso-style-unhide:no;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	font-size:9.5pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	font-weight:bold;}
+p.3-NormalYaz, li.3-NormalYaz, div.3-NormalYaz
+	{mso-style-name:"3-Normal Yazı";
+	mso-style-unhide:no;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	font-size:9.5pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	mso-style-unhide:no;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-family:"Times New Roman";}
+p.msopapdefault, li.msopapdefault, div.msopapdefault
+	{mso-style-name:msopapdefault;
+	mso-style-unhide:no;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+span.Normal1
+	{mso-style-name:Normal1;
+	mso-style-unhide:no;
+	font-family:"Times New Roman","serif";
+	mso-ascii-font-family:"Times New Roman";
+	mso-hansi-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-size:10.0pt;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-hansi-font-family:Calibri;}
+.MsoPapDefault
+	{mso-style-type:export-only;
+	text-align:justify;
+	line-height:12.0pt;}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 70.85pt 70.85pt 70.85pt;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Normal Tablo";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Calibri","sans-serif";}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="1026"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+<script type="text/javascript">window.av = { database:'2' , rnApp:'False' }</script><script src="https://www.mevzuat.gov.tr/lib/jquery/dist/jquery.js"></script><script src="https://www.mevzuat.gov.tr/js/iframescript.min.js?v=1.05"></script><style><!--* {font-family:inherit!important;}--></style></head>
+
+<body lang=TR style='tab-interval:35.4pt'>
+
+<div class=WordSection1>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>ÇALIŞANLARIN
+GÜRÜLTÜ İLE İLGİLİ RİSKLERDEN KORUNMALARINA DAİR YÖNETMELİK</b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>&nbsp;</b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>BİRİNCİ
+BÖLÜM</b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>Amaç,
+Kapsam, Dayanak ve Tanımlar</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Amaç</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 1</b> – (1) Bu
+Yönetmeliğin amacı, çalışanların gürültüye maruz kalmaları sonucu oluşabilecek
+sağlık ve güvenlik risklerinden, özellikle işitme ile ilgili risklerden
+korunmaları için asgari gereklilikleri belirlemektir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Kapsam</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 2</b> – (1) Bu
+Yönetmelik, <span class=GramE>20/6/2012</span> tarihli ve 6331 sayılı İş
+Sağlığı ve Güvenliği Kanunu kapsamındaki işyerlerinde uygulanır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Dayanak</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 3</b> – (1) Bu
+Yönetmelik, 6331 sayılı Kanunun 30 uncu maddesine ve <span class=GramE>9/1/1985</span>
+tarihli ve 3146 sayılı Çalışma ve Sosyal Güvenlik Bakanlığının Teşkilat ve
+Görevleri Hakkında Kanuna dayanılarak ve 6/2/2003 tarihli ve 2003/10/EC sayılı
+Avrupa Parlamentosu ve Konseyi Direktifine paralel olarak hazırlanmıştır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Tanımlar</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 4</b> – (1) Bu
+Yönetmelikte geçen;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) En yüksek ses basıncı (<span class=SpellE>P<sub>tepe</sub></span>): C-frekans ağırlıklı anlık gürültü
+basıncının tepe değerini,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) Günlük gürültü <span class=SpellE>maruziyet</span> düzeyi (L<sub>EX</sub>, <sub>8saat</sub>) [<span class=SpellE>dB</span>(A) re. 20 µ<span class=SpellE>Pa</span>]: TS 2607 ISO
+1999 standardında tanımlandığı gibi en yüksek ses basıncının ve anlık darbeli
+gürültünün de <span class=GramE>dahil</span> olduğu A-ağırlıklı bütün gürültü <span class=SpellE>maruziyet</span> düzeylerinin, sekiz saatlik bir iş günü için
+zaman ağırlıklı ortalamasını,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) Haftalık gürültü <span class=SpellE>maruziyet</span> düzeyi (L<sub>EX, 8saat</sub>): TS 2607 ISO 1999
+standardında tanımlandığı gibi A-ağırlıklı günlük gürültü <span class=SpellE>maruziyet</span>
+düzeylerinin, sekiz saatlik beş iş gününden oluşan bir hafta için zaman
+ağırlıklı ortalamasını,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>d) Kanun: 6331 sayılı İş Sağlığı
+ve Güvenliği Kanununu,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><span class=GramE>ifade</span>
+eder.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>&nbsp;</p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>İKİNCİ
+BÖLÜM</b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><span class=SpellE><b>Maruziyet</b></span><b> Değerleri ve İşverenlerin
+Yükümlülükleri</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><span class=SpellE><b>Maruziyet</b></span><b>
+eylem değerleri ve <span class=SpellE>maruziyet</span> sınır değerleri</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 5</b> – (1) Bu
+Yönetmeliğin uygulanması bakımından, <span class=SpellE>maruziyet</span> eylem
+değerleri ve <span class=SpellE>maruziyet</span> sınır değerleri aşağıda
+verilmiştir:</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) En düşük <span class=SpellE>maruziyet</span>
+eylem değerleri: (L<sub>EX, 8saat</sub>) = 80 <span class=SpellE>dB</span>(A)
+veya (<span class=SpellE>P<sub>tepe</sub></span>) = 112 <span class=SpellE>Pa</span>
+[135 <span class=SpellE>dB</span>(C) re. 20 µ<span class=SpellE>Pa</span><span class=GramE>]</span> (20 µ<span class=SpellE>Pa</span> referans alındığında 135
+<span class=SpellE>dB</span> (C) olarak hesaplanan değer).</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) En yüksek <span class=SpellE>maruziyet</span>
+eylem değerleri: (L<sub>EX, 8saat</sub>) = 85 <span class=SpellE>dB</span>(A)
+veya (<span class=SpellE>P<sub>tepe</sub></span>) = 140 <span class=SpellE>Pa</span>
+[137 <span class=SpellE>dB</span>(C) re. 20 µ<span class=SpellE>Pa</span><span class=GramE>]</span>.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) <span class=SpellE>Maruziyet</span>
+sınır değerleri: (L<sub>EX, 8saat</sub>) = 87 <span class=SpellE>dB</span>(A)
+veya (<span class=SpellE>P<sub>tepe</sub></span>) = 200 <span class=SpellE>Pa</span>
+[140 <span class=SpellE>dB</span>(C) re. 20 µ<span class=SpellE>Pa</span><span class=GramE>]</span>.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) <span class=SpellE>Maruziyet</span>
+sınır değerleri uygulanırken, çalışanların <span class=SpellE>maruziyetinin</span>
+tespitinde, çalışanın kullandığı kişisel kulak koruyucu donanımların koruyucu
+etkisi de dikkate alınır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) <span class=SpellE>Maruziyet</span>
+eylem değerlerinde kulak koruyucularının etkisi dikkate alınmaz.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(4) Günlük gürültü <span class=SpellE>maruziyetinin</span> günden güne belirgin şekilde farklılık
+gösterdiğinin kesin olarak tespit edildiği işlerde, <span class=SpellE>maruziyet</span>
+sınır değerleri ile <span class=SpellE>maruziyet</span> eylem değerlerinin
+uygulanmasında günlük gürültü <span class=SpellE>maruziyet</span> düzeyi
+yerine, haftalık gürültü <span class=SpellE>maruziyet</span> düzeyi
+kullanılabilir. Bu işlerde;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Yeterli ölçümle tespit edilen
+haftalık gürültü <span class=SpellE>maruziyet</span> düzeyi, 87 <span class=SpellE>dB</span>(A) <span class=SpellE>maruziyet</span> sınır değerini
+aşamaz.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) Bu işlerle ilgili risklerin en
+aza indirilmesi için uygun tedbirler alınır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><span class=SpellE><b>Maruziyetin</b></span><b>
+belirlenmesi</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 6</b> – (1) İşveren, çalışanların
+maruz kaldığı gürültü düzeyini, işyerinde gerçekleştirilen risk
+değerlendirmesinde ele alır ve risk değerlendirmesi sonuçlarına göre gereken
+durumlarda gürültü ölçümleri yaptırarak <span class=SpellE>maruziyeti</span>
+belirler.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) Gürültü ölçümünde kullanılacak
+yöntem ve cihazlar;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Özellikle ölçülecek olan
+gürültünün niteliği, <span class=SpellE>maruziyet</span> süresi, çevresel
+faktörler ve ölçüm cihazının nitelikleri dikkate alınarak mevcut şartlara uygun
+olur.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) Gürültü <span class=SpellE>maruziyet</span>
+düzeyi ve ses basıncı gibi parametrelerin tespit edilebilmesi ile 5 inci
+maddede belirtilen <span class=SpellE>maruziyet</span> sınır değerleri ve <span class=SpellE>maruziyet</span> eylem değerlerinin aşılıp aşılmadığına karar
+verilebilmesine <span class=GramE>imkan</span> sağlar.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) Çalışanın kişisel <span class=SpellE>maruziyetini</span> gösterir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) Değerlendirme ve ölçüm
+sonuçları, gerektiğinde kullanılmak ve iş müfettişlerinin denetimlerinde
+istenildiğinde gösterilmek üzere uygun bir şekilde saklanır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Risklerin değerlendirilmesi</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 7</b> – (1) İşveren; <span class=GramE>29/12/2012</span> tarihli ve 28512 sayılı Resmî <span class=SpellE>Gazete’de</span>
+yayımlanan İş Sağlığı ve Güvenliği Risk Değerlendirmesi Yönetmeliği uyarınca
+işyerinde gerçekleştirilen risk değerlendirmesinde, gürültüden
+kaynaklanabilecek riskleri değerlendirirken;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Anlık darbeli gürültüye <span class=SpellE>maruziyet</span> <span class=GramE>dahil</span> <span class=SpellE>maruziyetin</span> türü, düzeyi ve süresine,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) <span class=SpellE>Maruziyet</span>
+sınır değerleri ile <span class=SpellE>maruziyet</span> eylem değerlerine,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) Başta özel politika gerektiren
+gruplar ile kadın çalışanlar olmak üzere tüm çalışanların sağlık ve
+güvenliklerine olan etkilerine,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>ç) Teknik olarak elde edilebildiği
+durumlarda, işle ilgili <span class=SpellE>ototoksik</span> maddeler ile
+gürültü arasındaki ve titreşim ile gürültü arasındaki etkileşimlerin,
+çalışanların sağlık ve güvenliğine olan etkisine,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>d) Kaza riskini azaltmak için
+kullanılan ve çalışanlar tarafından algılanması gereken uyarı sinyalleri ve
+diğer seslerin gürültü ile etkileşiminin, çalışanların sağlık ve güvenliğine
+olan dolaylı etkisine,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>e) İş <span class=GramE>ekipmanlarının</span>
+gürültü emisyonu hakkında, ilgili mevzuat uyarınca imalatçılardan sağlanan
+bilgilerine,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>f) Gürültü <span class=GramE>emisyonunu</span>
+azaltan alternatif bir iş ekipmanının bulunup bulunmadığına,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>g) Gürültüye <span class=SpellE>maruziyetin</span>,
+işverenin sorumluluğundaki normal çalışma saatleri dışında da devam edip
+etmediğine,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>ğ) Sağlık gözetiminde elde
+edinilen güncel bilgilere,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>h) Yeterli korumayı sağlayabilecek
+kulak koruyucularının bulunup bulunmadığına,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><span class=GramE>özel</span> önem
+verir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><span class=SpellE><b>Maruziyetin</b></span><b>
+önlenmesi ve azaltılması</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 8</b> – (1) İşveren,
+risklerin kaynağında kontrol edilebilirliğini ve teknik gelişmeleri dikkate
+alarak, gürültüye <span class=SpellE>maruziyetten</span> kaynaklanan risklerin
+kaynağında yok edilmesini veya en aza indirilmesini sağlar ve 8, 9, 10 ve 11
+inci maddelere göre hangi tedbirlerin alınacağını belirler.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) İşveren, <span class=SpellE>maruziyetin</span>
+önlenmesi veya azaltılmasında, Kanunun 5 inci maddesinde yer alan risklerden
+korunma ilkelerine uyar ve özellikle;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Gürültüye <span class=SpellE>maruziyetin</span>
+daha az olduğu başka çalışma yöntemlerinin seçilmesi,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) Yapılan işe göre mümkün olan en
+düşük düzeyde gürültü yayan uygun iş <span class=GramE>ekipmanının</span>
+seçilmesi,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) İşyerinin ve çalışılan yerlerin
+uygun şekilde tasarlanması ve düzenlenmesi,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>ç) İş <span class=GramE>ekipmanını</span>
+doğru ve güvenli bir şekilde kullanmaları için çalışanlara gerekli bilgi ve
+eğitimin verilmesi,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>d) Gürültünün teknik yollarla
+azaltılması ve bu amaçla;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>1) Hava yoluyla yayılan
+gürültünün; perdeleme, kapatma, gürültü emici örtüler ve benzeri yöntemlerle
+azaltılması,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>2) Yapı elemanları yoluyla iletilen
+gürültünün; yalıtım, sönümleme ve benzeri yöntemlerle azaltılması,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>e) İşyeri, işyeri sistemleri ve iş
+<span class=GramE>ekipmanları</span> için uygun bakım programlarının
+uygulanması,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>f) Gürültünün, iş organizasyonu
+ile azaltılması ve bu amaçla;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>1) <span class=SpellE>Maruziyet</span>
+süresi ve düzeyinin sınırlandırılması,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>2) Yeterli dinlenme aralarıyla
+çalışma sürelerinin düzenlenmesi,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><span class=GramE>hususlarını</span>
+göz önünde bulundurur.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(3) İşyerinde en yüksek <span class=SpellE>maruziyet</span> eylem değerlerinin aşıldığının tespiti halinde,
+işveren;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Bu maddede belirtilen önlemleri
+de dikkate alarak, gürültüye <span class=SpellE>maruziyeti</span> azaltmak için
+teknik veya iş organizasyonuna yönelik önlemleri içeren bir eylem planı
+oluşturur ve uygulamaya koyar.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) Gürültüye maruz kalınan çalışma
+yerlerini uygun şekilde işaretler. İşaretlenen alanların sınırlarını
+belirleyerek teknik olarak mümkün ise bu alanlara girişlerin kontrollü
+yapılmasını sağlar.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(4) İşveren, çalışanların
+dinlenmesi için ayrılan yerlerdeki gürültü düzeyinin, bu yerlerin kullanım
+şartları ve amacına uygun olmasını sağlar.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(5) İşveren, bu Yönetmeliğe göre
+alınacak tedbirlerin, Kanunun 10 uncu maddesi uyarınca özel politika gerektiren
+gruplar ile kadın çalışanların durumlarına uygun olmasını sağlar.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Kişisel korunma</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 9</b> – (1) Gürültüye <span class=SpellE>maruziyetten</span> kaynaklanabilecek riskler, 8 inci maddede belirtilen
+tedbirler ile önlenemiyor ise işveren;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Çalışanın gürültüye <span class=SpellE>maruziyeti</span> 5 inci maddede belirtilen en düşük <span class=SpellE>maruziyet</span> eylem değerlerini aştığında, kulak koruyucu
+donanımları çalışanların kullanımına hazır halde bulundurur.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) Çalışanın gürültüye <span class=SpellE>maruziyeti</span> 5 inci maddede belirtilen en yüksek <span class=SpellE>maruziyet</span> eylem değerlerine ulaştığında ya da bu değerleri
+aştığında, kulak koruyucu donanımların çalışanlar tarafından kullanılmasını
+sağlar ve denetler.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) Kulak koruyucu donanımların
+kullanılmasını sağlamak için her türlü çabayı gösterir ve bu madde gereğince
+alınan kişisel korunma tedbirlerinin etkinliğini kontrol eder.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) İşveren tarafından sağlanan
+kulak koruyucu donanımlar;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) <span class=GramE>2/7/2013</span>
+tarihli ve 28695 sayılı Resmî <span class=SpellE>Gazete’de</span> yayımlanan
+Kişisel Koruyucu Donanımların İşyerlerinde Kullanılması Hakkında Yönetmelik ve
+29/11/2006 tarihli ve 26361 sayılı Resmî <span class=SpellE>Gazete’de</span>
+yayımlanan Kişisel Koruyucu Donanım Yönetmeliği hükümlerine uygun olur.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) İşitme ile ilgili riski ortadan
+kaldıracak veya en aza indirecek şekilde seçilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) Çalışanlar tarafından doğru
+kullanılır ve korunur.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>ç) Çalışana tam olarak uyar.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>d) Hijyenik şartların gerektirdiği
+durumlarda çalışana özel olarak sağlanır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><span class=SpellE><b>Maruziyetin</b></span><b>
+sınırlandırılması</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 10</b> – (1) Çalışanın <span class=SpellE>maruziyeti</span>, hiçbir durumda <span class=SpellE>maruziyet</span>
+sınır değerlerini aşamaz. Bu Yönetmelikte belirtilen bütün kontrol
+tedbirlerinin alınmasına rağmen, 5 inci maddede belirtilen <span class=SpellE>maruziyet</span>
+sınır değerlerinin aşıldığının tespit edildiği durumlarda, işveren;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) <span class=SpellE>Maruziyeti</span>,
+sınır değerlerin altına indirmek amacıyla gerekli tedbirleri derhal alır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) <span class=SpellE>Maruziyet</span>
+sınır değerlerinin aşılmasının nedenlerini belirler ve bunun tekrarını önlemek
+amacıyla, koruma ve önlemeye yönelik tedbirleri gözden geçirerek yeniden
+düzenler.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Çalışanların bilgilendirilmesi
+ve eğitimi</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 11</b> – (1) İşveren,
+işyerinde 5 inci maddede belirtilen en düşük <span class=SpellE>maruziyet</span>
+eylem değerlerine eşit veya bu değerlerin üzerindeki gürültüye maruz kalan
+çalışanların veya temsilcilerinin gürültü <span class=SpellE>maruziyeti</span>
+ile ilgili olarak ve özellikle;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Gürültüden kaynaklanabilecek
+riskler,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) Gürültüden kaynaklanabilecek
+riskleri önlemek veya en aza indirmek amacıyla alınan tedbirler ve bu
+tedbirlerin uygulanacağı şartlar,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) 5 inci maddede belirtilen <span class=SpellE>maruziyet</span> sınır değerleri ve <span class=SpellE>maruziyet</span>
+eylem değerleri,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>ç) Gürültüden kaynaklanabilecek
+risklerin değerlendirilmesi ve gürültü ölçümünün sonuçları ile bunların önemi,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>d) Kulak koruyucularının doğru
+kullanılması,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>e) İşyerinde gürültüye bağlı
+işitme kaybı belirtisinin tespit ve bildiriminin nasıl ve neden yapılacağı,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>f) Bakanlıkça sağlık gözetimine
+ilişkin çıkarılacak ilgili mevzuat hükümlerine ve 13 üncü maddeye göre,
+çalışanların hangi şartlarda sağlık gözetimine tabi tutulacağı ve sağlık
+gözetiminin amacı,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>g) Gürültü <span class=SpellE>maruziyetini</span>
+en aza indirecek güvenli çalışma uygulamaları,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><span class=GramE>hususlarında</span>
+bilgilendirilmelerini ve eğitilmelerini sağlar.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Çalışanların görüşlerinin
+alınması ve katılımlarının sağlanması</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 12</b> – (1) İşveren, bu
+Yönetmeliğin kapsadığı konularda ve özellikle;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) 7 <span class=SpellE>nci</span>
+maddeye göre gerçekleştirilecek olan risk değerlendirmesi,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) 8 inci maddeye göre risklerin
+ortadan kaldırılması veya azaltılması için alınacak önlemlerin belirlenmesi ve
+uygulanacak tedbirler,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) 9 uncu maddede belirtilen kulak
+koruyucularının seçilmesi,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><span class=GramE>hususlarında</span>
+çalışanların veya temsilcilerinin görüşlerini alır ve katılımlarını sağlar.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Sağlık gözetimi</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 13</b> – (1) Gürültüye
+bağlı olan herhangi bir işitme kaybında erken tanı konulması ve çalışanların
+işitme kabiliyetinin korunması amacıyla;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) İşveren;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>1) Kanunun 15 inci maddesine göre
+gereken durumlarda,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>2) İşyerinde gerçekleştirilen risk
+değerlendirmesi sonuçlarına göre gerekli görüldüğü hallerde,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>3) İşyeri hekimince belirlenecek
+düzenli aralıklarla,</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><span class=GramE>çalışanların</span>
+sağlık gözetimine tabi tutulmalarını sağlar.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) 5 inci maddede belirtilen en
+yüksek <span class=SpellE>maruziyet</span> eylem değerlerini aşan gürültüye
+maruz kalan çalışanlar için, işitme testleri işverence yaptırılır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>c) Risk değerlendirmesi ve ölçüm
+sonuçlarının bir sağlık riski olduğunu gösterdiği yerlerde, 5 inci maddede
+belirtilen en düşük <span class=SpellE>maruziyet</span> eylem değerlerini aşan
+gürültüye maruz kalan çalışanlar için de işitme testleri yaptırılabilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>(2) İşitme ile ilgili sağlık
+gözetimi sonucunda, çalışanda tespit edilen işitme kaybının işe bağlı gürültü
+nedeniyle oluştuğunun tespiti halinde;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>a) Çalışan, işyeri hekimi
+tarafından, kendisi ile ilgili sonuçlar hakkında bilgilendirilir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>b) İşveren;</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>1) İşyerinde yapılan risk
+değerlendirmesini gözden geçirir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>2) Riskleri önlemek veya azaltmak
+için alınan önlemleri gözden geçirir.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>3) Riskleri önlemek veya azaltmak
+için çalışanın gürültüye maruz kalmayacağı başka bir işte görevlendirilmesi
+gibi gerekli görülen tedbirleri uygular.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>4) Benzer biçimde gürültüye maruz
+kalan diğer çalışanların, sağlık durumunun gözden geçirilmesini ve düzenli bir
+sağlık gözetimine tabi tutulmalarını sağlar.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'>&nbsp;</p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>ÜÇÜNCÜ
+BÖLÜM</b></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b>Çeşitli
+ve Son Hükümler</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Yürürlükten kaldırılan
+yönetmelik</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 14</b> – (1) <span class=GramE>23/12/2003</span> tarihli ve 25325 sayılı Resmî <span class=SpellE>Gazete’de</span>
+yayımlanan Gürültü Yönetmeliği yürürlükten kaldırılmıştır.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Yürürlük</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 15</b> – (1) Bu
+Yönetmelik yayımı tarihinde yürürlüğe girer.</p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>Yürütme</b></p>
+
+<p class=MsoNormal style='text-indent:1.0cm'><b>MADDE 16</b> – (1) Bu
+Yönetmelik hükümlerini Çalışma ve Sosyal Güvenlik Bakanı yürütür.</p>
+
+</div>
+
+</body>
+
+</html>
+    <p id="page-end"></p>
+    <script src="/lib/tooltip/tooltip.js"></script>
+    <script>
+        $(document).ready(function () {
+            jQuery('table').each(function (cmp) {
+                var parent = this.parentNode;
+                var wrapper = document.createElement('div');
+
+                parent.replaceChild(wrapper, this);
+                wrapper.appendChild(this);
+                this.parentElement.style.overflowX = 'auto';
+            });
+            if (window.location.search.indexOf("2709") != -1 || window.location.search.indexOf("MevzuatTur=19") != -1) {
+                var tableCss = document.styleSheets[0].cssRules[2].style;
+                tableCss.cssText = tableCss.cssText.replace("100%", "initial");
+            }
+            //$('.tooltip').tooltipster();
+            //replaceTable();
+            //$(window).on('resize', function () {
+            //    replaceTable();
+            //});
+            //replaceTable();
+        });
+            //function replaceTable() {
+            //    //if (window.location.search.indexOf("MevzuatTur=19") == -1) {
+            //    //    var iframe = document.getElementsByTagName("td");
+            //    //    var value = $('body').width() - 10;
+            //    //    for (var i = 0; i < iframe.length; i++) {
+            //    //        iframe[i].style.width = "initial !important";
+            //    //    }
+            //    //}
+
+
+            //    //var iframe = document.getElementsByClassName("MsoNormalTable");
+            //    //var value = $('body').width() - 10;
+            //
+            //    //for (var i = 0; i < iframe.length; i++) {
+            //    //    iframe[i].style.width = value;
+            //    //}
+
+            //    //var iframe2 = document.getElementsByClassName("MsoNormal");
+            //    ////for (var j = 0; j < iframe2.length; j++) {
+            //    ////    iframe2[j].style.width = value;
+            //    ////}
+            //}
+    </script>
+
+
+
